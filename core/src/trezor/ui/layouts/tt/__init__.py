@@ -33,10 +33,11 @@ class RustLayout(ui.Layout):
     BACKLIGHT_LEVEL = ui.style.BACKLIGHT_NORMAL
 
     # pylint: disable=super-init-not-called
-    def __init__(self, layout: Any):
+    def __init__(self, layout: Any, color: int | None = None):
         self.layout = layout
         self.timer = loop.Timer()
         self.layout.attach_timer_fn(self.set_timer)
+        self.color = color
 
     def set_timer(self, token: int, deadline: int) -> None:
         self.timer.schedule(deadline, token)
@@ -49,8 +50,11 @@ class RustLayout(ui.Layout):
         import storage.cache as storage_cache
 
         painted = self.layout.paint()
-
+        if self.color is not None:
+            print("PAINTING")
+            ui.display.bar(0, 0, ui.WIDTH, ui.HEIGHT - 60, self.color)
         ui.refresh()
+
         if storage_cache.homescreen_shown is not None and painted:
             storage_cache.homescreen_shown = None
 
@@ -248,6 +252,7 @@ async def confirm_action(
     reverse: bool = False,
     exc: ExceptionType = ActionCancelled,
     br_code: ButtonRequestType = BR_TYPE_OTHER,
+    color: int | None = None,
 ) -> None:
     if verb is not None:
         verb = verb.upper()
@@ -269,7 +274,8 @@ async def confirm_action(
                     hold=hold,
                     hold_danger=hold_danger,
                     reverse=reverse,
-                )
+                ),
+                color=color,
             ),
             br_type,
             br_code,

@@ -200,7 +200,7 @@ where
             label_style.text_color = theme::FG;
 
             let text = HomescreenText {
-                text: self.label.as_ref(),
+                text: "",
                 style: label_style,
                 offset: Offset::y(LABEL_Y),
                 icon: None,
@@ -219,7 +219,7 @@ where
                     homescreen(
                         &mut hs_img,
                         &[text],
-                        notification,
+                        None,
                         self.paint_notification_only,
                     );
                     show_default = false;
@@ -231,7 +231,7 @@ where
                     homescreen(
                         &mut hs_img,
                         &[text],
-                        notification,
+                        None,
                         self.paint_notification_only,
                     );
                     show_default = false;
@@ -242,12 +242,7 @@ where
                 let mut input = BufferInput(IMAGE_HOMESCREEN);
                 let mut pool = BufferJpegWork::get_cleared();
                 let mut hs_img = HomescreenJpeg::new(&mut input, pool.buffer.as_mut_slice());
-                homescreen(
-                    &mut hs_img,
-                    &[text],
-                    notification,
-                    self.paint_notification_only,
-                );
+                homescreen(&mut hs_img, &[text], None, self.paint_notification_only);
             }
         }
     }
