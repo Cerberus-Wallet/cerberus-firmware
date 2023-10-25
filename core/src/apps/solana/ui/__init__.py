@@ -29,15 +29,15 @@ def _format_property(value: str | int | bytes, type: str) -> str | bytes:
 
 
 def _format_path(path: list[int]) -> str:
-    from apps.common.paths import HARDENED
+    from apps.common.paths import HARDENED, unharden
+    from micropython import const
 
     if len(path) < 4:
         return address_n_to_str(path)
 
-    ACCOUNT_PATH_INDEX = 3
+    ACCOUNT_PATH_INDEX = const(3)
     account_index = path[ACCOUNT_PATH_INDEX]
-    unhardened_account_index: int = account_index ^ (account_index & HARDENED)
-    return f"#{unhardened_account_index + 1}"
+    return f"#{unharden(account_index) + 1}"
 
 
 async def show_confirm(
