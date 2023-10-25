@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import Any
 
 from trezor.crypto import base58
 
@@ -11,15 +11,6 @@ from ..constants import (
     ADDRESS_SIG_READ_ONLY,
 )
 from ..transaction.instructions import Instruction
-
-if TYPE_CHECKING:
-    from typing import Any
-
-    # `pass` is Needed because otherwise FW build fails due to invalid syntax error because
-    # `from typing ...` imports are commented out during pre-processing and since there's
-    # only a single import under the `if` statement, the statement would be empty which would result
-    # in an invalid syntax error.
-    pass
 
 
 def _format_property(value: str | int | bytes, type: str) -> str | bytes:
