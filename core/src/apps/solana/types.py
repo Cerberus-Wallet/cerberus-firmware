@@ -13,19 +13,12 @@ if TYPE_CHECKING:
 
 
 class InstructionIdFormat:
-    length: int
-    is_included_if_zero: bool
-
     def __init__(self, length: int, is_included_if_zero: bool):
         self.length = length
         self.is_included_if_zero = is_included_if_zero
 
 
 class PropertyTemplate:
-    name: str
-    type: str
-    optional: bool
-
     def __init__(self, name: str, type: str, optional: bool):
         self.name = name
         self.type = type
@@ -33,10 +26,6 @@ class PropertyTemplate:
 
 
 class AccountTemplate:
-    name: str
-    is_authority: bool
-    optional: bool
-
     def __init__(self, name: str, is_authority: bool, optional: bool):
         self.name = name
         self.is_authority = is_authority
@@ -44,11 +33,6 @@ class AccountTemplate:
 
 
 class UIProperty:
-    parameter: str | None
-    account: str | None
-    display_name: str
-    is_authority: bool
-
     def __init__(
         self,
         parameter: str | None,
