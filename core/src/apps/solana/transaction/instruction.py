@@ -6,14 +6,14 @@ from trezor.wire import ProcessError
 from .parse import parse_property
 
 if TYPE_CHECKING:
-    from typing import Any, TypeGuard
+    from typing import Any, TypeGuard, ClassVar
 
     from ..types import Account, AccountTemplate, PropertyTemplate, UIProperty
 
 
 class Instruction:
-    PROGRAM_ID: str
-    INSTRUCTION_ID: int
+    PROGRAM_ID: ClassVar[str]
+    INSTRUCTION_ID: ClassVar[int]
 
     program_id: str
     instruction_id: int
