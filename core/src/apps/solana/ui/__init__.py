@@ -22,7 +22,7 @@ if TYPE_CHECKING:
     pass
 
 
-def _format_property(value: Any, type: str) -> str | bytes | None:
+def _format_property(value: str | int | bytes, type: str) -> str | bytes:
     if type in ("pubkey", "authority"):
         return base58.encode(value)
     elif type == "lamports":

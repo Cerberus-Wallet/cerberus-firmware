@@ -170,7 +170,7 @@ def parse_memo(serialized_tx: BufferReader) -> str:
 
 def parse_property(
     reader: BufferReader, type: str, is_optional: bool = False
-) -> str | int | bytes | None:
+) -> str | int | bytes:
     if type == "u8":
         return reader.get()
     elif type == "u32":
