@@ -29,12 +29,15 @@ class Transaction:
     blockhash: bytes
 
     raw_instructions: list[RawInstruction]
-    instructions: list[Instruction] = []
+    instructions: list[Instruction]
 
-    address_lookup_tables_rw_addresses: list[AddressReference] = []
-    address_lookup_tables_ro_addresses: list[AddressReference] = []
+    address_lookup_tables_rw_addresses: list[AddressReference]
+    address_lookup_tables_ro_addresses: list[AddressReference]
 
     def __init__(self, serialized_tx: BufferReader) -> None:
+        self.instructions = []
+        self.address_lookup_tables_rw_addresses = []
+        self.address_lookup_tables_ro_addresses = []
         self._parse_transaction(serialized_tx)
         self._create_instructions()
         self._determine_if_blind_signing()
