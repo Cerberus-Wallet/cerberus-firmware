@@ -23,9 +23,6 @@ class Instruction:
 
     ui_name: str
 
-    ui_parameter_list: list[str] | None = None
-    ui_account_list: list[tuple[str, Account]] | None = None
-
     ui_properties: list[UIProperty]
 
     parsed_data: dict[str, Any] | None = None
