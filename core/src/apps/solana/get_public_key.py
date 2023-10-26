@@ -23,7 +23,10 @@ async def get_public_key(
     public_key = derive_public_key(keychain, msg.address_n)
 
     if msg.show_display:
-        await show_pubkey(base58.encode(public_key))
+        from apps.common.paths import address_n_to_str
+
+        path = address_n_to_str(msg.address_n)
+        await show_pubkey(base58.encode(public_key), path=path)
 
     return SolanaPublicKey(public_key=public_key)
 

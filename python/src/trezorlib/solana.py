@@ -12,8 +12,11 @@ if TYPE_CHECKING:
 def get_public_key(
     client: "TrezorClient",
     address_n: List[int],
+    show_display: bool,
 ) -> "MessageType":
-    return client.call(messages.SolanaGetPublicKey(address_n=address_n))
+    return client.call(
+        messages.SolanaGetPublicKey(address_n=address_n, show_display=show_display)
+    )
 
 
 @expect(messages.SolanaAddress)

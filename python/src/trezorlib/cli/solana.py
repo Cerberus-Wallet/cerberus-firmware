@@ -18,14 +18,16 @@ def cli() -> None:
 
 @cli.command()
 @click.option("-n", "--address", required=True, help=PATH_HELP)
+@click.option("-d", "--show-display", is_flag=True)
 @with_client
 def get_public_key(
     client: "TrezorClient",
     address: str,
+    show_display: bool,
 ) -> messages.SolanaPublicKey:
     """Get Solana public key."""
     address_n = tools.parse_path(address)
-    return solana.get_public_key(client, address_n)
+    return solana.get_public_key(client, address_n, show_display)
 
 
 @cli.command()
