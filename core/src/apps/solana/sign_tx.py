@@ -121,7 +121,7 @@ def calculate_fee(transaction: Transaction) -> int:
     base_fee = SOLANA_BASE_FEE_LAMPORTS * number_of_signers
 
     unit_price = 0
-    unit_limit: int = SOLANA_COMPUTE_UNIT_LIMIT
+    unit_limit = SOLANA_COMPUTE_UNIT_LIMIT
 
     for instruction in transaction.instructions:
         if instruction.program_id == COMPUTE_BUDGET_PROGRAM_ID:
