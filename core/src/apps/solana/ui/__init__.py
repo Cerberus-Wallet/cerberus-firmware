@@ -272,4 +272,5 @@ async def show_final_confirmation(
             ("Signer account:", _format_path(signer_path)),
             ("Signer address:", address),
         ],
+        hold=True,
     )
