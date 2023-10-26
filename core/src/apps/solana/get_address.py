@@ -28,6 +28,10 @@ async def get_address(
     address = base58.encode(public_key)
 
     if msg.show_display:
-        await show_address(address, path=paths.address_n_to_str(msg.address_n))
+        await show_address(
+            address,
+            path=paths.address_n_to_str(msg.address_n),
+            chunkify=bool(msg.chunkify),
+        )
 
     return SolanaAddress(address=address)

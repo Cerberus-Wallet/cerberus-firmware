@@ -356,6 +356,8 @@ pub struct SolanaGetAddress {
     pub address_n: ::std::vec::Vec<u32>,
     // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaGetAddress.show_display)
     pub show_display: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaGetAddress.chunkify)
+    pub chunkify: ::std::option::Option<bool>,
     // special fields
     // @@protoc_insertion_point(special_field:hw.trezor.messages.solana.SolanaGetAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
@@ -391,8 +393,27 @@ impl SolanaGetAddress {
         self.show_display = ::std::option::Option::Some(v);
     }
 
+    // optional bool chunkify = 3;
+
+    pub fn chunkify(&self) -> bool {
+        self.chunkify.unwrap_or(false)
+    }
+
+    pub fn clear_chunkify(&mut self) {
+        self.chunkify = ::std::option::Option::None;
+    }
+
+    pub fn has_chunkify(&self) -> bool {
+        self.chunkify.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_chunkify(&mut self, v: bool) {
+        self.chunkify = ::std::option::Option::Some(v);
+    }
+
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(2);
+        let mut fields = ::std::vec::Vec::with_capacity(3);
         let mut oneofs = ::std::vec::Vec::with_capacity(0);
         fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
             "address_n",
@@ -403,6 +424,11 @@ impl SolanaGetAddress {
             "show_display",
             |m: &SolanaGetAddress| { &m.show_display },
             |m: &mut SolanaGetAddress| { &mut m.show_display },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_option_accessor::<_, _>(
+            "chunkify",
+            |m: &SolanaGetAddress| { &m.chunkify },
+            |m: &mut SolanaGetAddress| { &mut m.chunkify },
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<SolanaGetAddress>(
             "SolanaGetAddress",
@@ -431,6 +457,9 @@ impl ::protobuf::Message for SolanaGetAddress {
                 16 => {
                     self.show_display = ::std::option::Option::Some(is.read_bool()?);
                 },
+                24 => {
+                    self.chunkify = ::std::option::Option::Some(is.read_bool()?);
+                },
                 tag => {
                     ::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                 },
@@ -449,6 +478,9 @@ impl ::protobuf::Message for SolanaGetAddress {
         if let Some(v) = self.show_display {
             my_size += 1 + 1;
         }
+        if let Some(v) = self.chunkify {
+            my_size += 1 + 1;
+        }
         my_size += ::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -460,6 +492,9 @@ impl ::protobuf::Message for SolanaGetAddress {
         };
         if let Some(v) = self.show_display {
             os.write_bool(2, v)?;
+        }
+        if let Some(v) = self.chunkify {
+            os.write_bool(3, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -480,6 +515,7 @@ impl ::protobuf::Message for SolanaGetAddress {
     fn clear(&mut self) {
         self.address_n.clear();
         self.show_display = ::std::option::Option::None;
+        self.chunkify = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
@@ -487,6 +523,7 @@ impl ::protobuf::Message for SolanaGetAddress {
         static instance: SolanaGetAddress = SolanaGetAddress {
             address_n: ::std::vec::Vec::new(),
             show_display: ::std::option::Option::None,
+            chunkify: ::std::option::Option::None,
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -1019,13 +1056,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     ages-common.proto\"T\n\x12SolanaGetPublicKey\x12\x1b\n\taddress_n\x18\
     \x01\x20\x03(\rR\x08addressN\x12!\n\x0cshow_display\x18\x02\x20\x01(\x08\
     R\x0bshowDisplay\"0\n\x0fSolanaPublicKey\x12\x1d\n\npublic_key\x18\x01\
-    \x20\x02(\x0cR\tpublicKey\"R\n\x10SolanaGetAddress\x12\x1b\n\taddress_n\
+    \x20\x02(\x0cR\tpublicKey\"n\n\x10SolanaGetAddress\x12\x1b\n\taddress_n\
     \x18\x01\x20\x03(\rR\x08addressN\x12!\n\x0cshow_display\x18\x02\x20\x01(\
-    \x08R\x0bshowDisplay\")\n\rSolanaAddress\x12\x18\n\x07address\x18\x01\
-    \x20\x02(\tR\x07address\"P\n\x0cSolanaSignTx\x12\x1b\n\taddress_n\x18\
-    \x01\x20\x03(\rR\x08addressN\x12#\n\rserialized_tx\x18\x02\x20\x02(\x0cR\
-    \x0cserializedTx\"1\n\x11SolanaTxSignature\x12\x1c\n\tsignature\x18\x01\
-    \x20\x02(\x0cR\tsignature\
+    \x08R\x0bshowDisplay\x12\x1a\n\x08chunkify\x18\x03\x20\x01(\x08R\x08chun\
+    kify\")\n\rSolanaAddress\x12\x18\n\x07address\x18\x01\x20\x02(\tR\x07add\
+    ress\"P\n\x0cSolanaSignTx\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08ad\
+    dressN\x12#\n\rserialized_tx\x18\x02\x20\x02(\x0cR\x0cserializedTx\"1\n\
+    \x11SolanaTxSignature\x12\x1c\n\tsignature\x18\x01\x20\x02(\x0cR\tsignat\
+    ure\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

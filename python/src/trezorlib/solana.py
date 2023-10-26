@@ -21,11 +21,13 @@ def get_address(
     client: "TrezorClient",
     address_n: List[int],
     show_display: bool,
+    chunkify: bool = False,
 ) -> "MessageType":
     return client.call(
         messages.SolanaGetAddress(
             address_n=address_n,
             show_display=show_display,
+            chunkify=chunkify,
         )
     )
 

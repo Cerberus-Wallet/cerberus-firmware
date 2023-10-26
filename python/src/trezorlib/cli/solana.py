@@ -31,15 +31,17 @@ def get_public_key(
 @cli.command()
 @click.option("-n", "--address", required=True, help=PATH_HELP)
 @click.option("-d", "--show-display", is_flag=True)
+@click.option("-C", "--chunkify", is_flag=True)
 @with_client
 def get_address(
     client: "TrezorClient",
     address: str,
     show_display: bool,
+    chunkify: bool,
 ) -> messages.SolanaAddress:
     """Get Solana address."""
     address_n = tools.parse_path(address)
-    return solana.get_address(client, address_n, show_display)
+    return solana.get_address(client, address_n, show_display, chunkify)
 
 
 @cli.command()
