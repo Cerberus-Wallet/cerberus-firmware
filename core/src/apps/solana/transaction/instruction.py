@@ -76,15 +76,18 @@ class Instruction:
         if not is_instruction_supported:
             self.instruction_data = reader.read()
             self.accounts = accounts
-
+        
+        parsed_data = {}
         for property_template in property_templates:
-            self.set_property(
-                property_template.name,
-                parse_property(
-                    reader, property_template.type, property_template.optional
-                ),
+            property = parse_property(
+                reader, property_template.type, property_template.optional
             )
+            
+            parsed_data[property_template.name] = property
+        self.parsed_data = parsed_data
 
+        
+        parsed_account = {}
         for i, account_template in enumerate(accounts_template):
             if i >= len(accounts):
                 if account_template.optional:
@@ -92,7 +95,9 @@ class Instruction:
                 else:
                     raise ValueError(f"Account {account_template.name} is missing")
 
-            self.set_account(account_template.name, accounts[i])
+            parsed_account[account_template.name] = accounts[i]
+        self.parsed_accounts = parsed_account
+
 
         if supports_multisig and len(accounts) > len(accounts_template):
             self.is_multisig = True
@@ -111,14 +116,6 @@ class Instruction:
             return self.parsed_accounts[attr]
 
         raise AttributeError(f"Attribute {attr} not found")
-
-    def set_property(self, attr: str, value: Any) -> None:
-        assert self.parsed_data is not None
-        self.parsed_data[attr] = value
-
-    def set_account(self, account: str, value: Account) -> None:
-        assert self.parsed_accounts is not None
-        self.parsed_accounts[account] = value
 
     def get_property_template(self, property: str) -> PropertyTemplate:
         for property_template in self.property_templates:
