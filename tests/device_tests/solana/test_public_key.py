@@ -35,6 +35,8 @@ pytestmark = [
 def test_solana_get_public_key(client: Client, parameters, result):
     client.init_device(new_session=True)
 
-    actual_result = get_public_key(client, address_n=parse_path(parameters["path"]))
+    actual_result = get_public_key(
+        client, address_n=parse_path(parameters["path"]), show_display=True
+    )
 
     assert actual_result.public_key.hex() == result["expected_public_key"]
