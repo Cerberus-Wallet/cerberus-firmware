@@ -29,11 +29,11 @@ def assert_cond(condition: bool, message: str = "") -> None:
 def parse_header(serialized_tx: BufferReader) -> tuple[bool, int, int, int, int]:
     assert_cond(serialized_tx.remaining_count() > 3)
 
-    isLegacy: bool = True
+    is_legacy: bool = True
     version: int = 0
 
     if serialized_tx.peek() & 0b10000000:
-        isLegacy = False
+        is_legacy = False
         version = serialized_tx.get() & 0b01111111
         # only version 0 is supported
         # less or equal is used in order to support future versions
@@ -44,7 +44,7 @@ def parse_header(serialized_tx: BufferReader) -> tuple[bool, int, int, int, int]
     num_read_only_addresses: int = serialized_tx.get()
 
     return (
-        isLegacy,
+        is_legacy,
         version,
         num_required_signatures,
         num_signature_read_only_addresses,
