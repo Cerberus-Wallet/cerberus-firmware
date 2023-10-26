@@ -22,8 +22,7 @@ class Transaction:
     blind_signing = False
     required_signers_count = 0
 
-    is_legacy: bool
-    version: int
+    version: int | None = None
 
     addresses: list[Address]
 
@@ -42,7 +41,6 @@ class Transaction:
 
     def _parse_transaction(self, serialized_tx):
         (
-            self.is_legacy,
             self.version,
             num_required_signatures,
             num_signature_read_only_addresses,
@@ -64,7 +62,7 @@ class Transaction:
             self.addresses, get_instruction_id_length, serialized_tx
         )
 
-        if not self.is_legacy:
+        if self.version is not None:
             (
                 self.address_lookup_tables_rw_addresses,
                 self.address_lookup_tables_ro_addresses,
