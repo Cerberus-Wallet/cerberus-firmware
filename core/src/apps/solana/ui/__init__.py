@@ -14,10 +14,13 @@ from ..transaction.instructions import Instruction
 
 
 def _format_property(value: str | int | bytes, type: str) -> str | bytes:
+    from trezor.strings import format_amount
+
     if type in ("pubkey", "authority"):
         return base58.encode(value)
     elif type == "lamports":
-        return f"{value / 10 ** 9} SOL"
+        formatted = format_amount(value, decimals=9)
+        return f"{formatted} SOL"
     elif type == "unix_timestamp":
         from trezor.strings import format_timestamp
 
