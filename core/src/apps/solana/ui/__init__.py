@@ -98,7 +98,7 @@ async def show_confirm(
                 if signer_public_key == account_value[0]:
                     continue
 
-            account_data = []
+            account_data: list[tuple[str, str]] = []
             if len(account_value) == 2:
                 signer_suffix = ""
                 if account_value[0] == signer_public_key:
