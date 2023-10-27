@@ -96,288 +96,152 @@ MEMO_LEGACY_PROGRAM_ID_INS_MEMO = 0
 
 
 def __getattr__(name: str) -> Type[Instruction]:
-    ids = {
-        "SystemProgramCreateAccountInstruction": (
-            "11111111111111111111111111111111",
-            0,
-        ),
-        "SystemProgramAssignInstruction": ("11111111111111111111111111111111", 1),
-        "SystemProgramTransferInstruction": ("11111111111111111111111111111111", 2),
-        "SystemProgramCreateAccountWithSeedInstruction": (
-            "11111111111111111111111111111111",
-            3,
-        ),
-        "SystemProgramAdvancenonceaccountInstruction": (
-            "11111111111111111111111111111111",
-            4,
-        ),
-        "SystemProgramWithdrawnonceaccountInstruction": (
-            "11111111111111111111111111111111",
-            5,
-        ),
-        "SystemProgramInitializenonceaccountInstruction": (
-            "11111111111111111111111111111111",
-            6,
-        ),
-        "SystemProgramAuthorizenonceaccountInstruction": (
-            "11111111111111111111111111111111",
-            7,
-        ),
-        "SystemProgramAllocateInstruction": ("11111111111111111111111111111111", 8),
-        "SystemProgramAllocateWithSeedInstruction": (
-            "11111111111111111111111111111111",
-            9,
-        ),
-        "SystemProgramAssignWithSeedInstruction": (
-            "11111111111111111111111111111111",
-            10,
-        ),
-        "SystemProgramTransferWithSeedInstruction": (
-            "11111111111111111111111111111111",
-            11,
-        ),
-        "SystemProgramUpgradeNonceAccountInstruction": (
-            "11111111111111111111111111111111",
-            12,
-        ),
-        "StakeProgramInitializeInstruction": (
-            "Stake11111111111111111111111111111111111111",
-            0,
-        ),
-        "StakeProgramAuthorizeInstruction": (
-            "Stake11111111111111111111111111111111111111",
-            1,
-        ),
-        "StakeProgramDelegateStakeInstruction": (
-            "Stake11111111111111111111111111111111111111",
-            2,
-        ),
-        "StakeProgramSplitInstruction": (
-            "Stake11111111111111111111111111111111111111",
-            3,
-        ),
-        "StakeProgramWithdrawInstruction": (
-            "Stake11111111111111111111111111111111111111",
-            4,
-        ),
-        "StakeProgramDeactivateInstruction": (
-            "Stake11111111111111111111111111111111111111",
-            5,
-        ),
-        "StakeProgramSetLockupInstruction": (
-            "Stake11111111111111111111111111111111111111",
-            6,
-        ),
-        "StakeProgramMergeInstruction": (
-            "Stake11111111111111111111111111111111111111",
-            7,
-        ),
-        "StakeProgramAuthorizeWithSeedInstruction": (
-            "Stake11111111111111111111111111111111111111",
-            8,
-        ),
-        "StakeProgramInitializeCheckedInstruction": (
-            "Stake11111111111111111111111111111111111111",
-            9,
-        ),
-        "StakeProgramAuthorizeCheckedInstruction": (
-            "Stake11111111111111111111111111111111111111",
-            10,
-        ),
-        "StakeProgramAuthorizeCheckedWithSeedInstruction": (
-            "Stake11111111111111111111111111111111111111",
-            11,
-        ),
-        "StakeProgramSetLockupCheckedInstruction": (
-            "Stake11111111111111111111111111111111111111",
-            12,
-        ),
-        "ComputeBudgetProgramRequestHeapFrameInstruction": (
-            "ComputeBudget111111111111111111111111111111",
-            1,
-        ),
-        "ComputeBudgetProgramSetComputeUnitLimitInstruction": (
-            "ComputeBudget111111111111111111111111111111",
-            2,
-        ),
-        "ComputeBudgetProgramSetComputeUnitPriceInstruction": (
-            "ComputeBudget111111111111111111111111111111",
-            3,
-        ),
-        "TokenProgramInitializeAccountInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            1,
-        ),
-        "TokenProgramInitializeMultisigInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            2,
-        ),
-        "TokenProgramTransferInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            3,
-        ),
-        "TokenProgramApproveInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            4,
-        ),
-        "TokenProgramRevokeInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            5,
-        ),
-        "TokenProgramSetAuthorityInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            6,
-        ),
-        "TokenProgramMinttoInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            7,
-        ),
-        "TokenProgramBurnInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            8,
-        ),
-        "TokenProgramCloseAccountInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            9,
-        ),
-        "TokenProgramFreezeAccountInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            10,
-        ),
-        "TokenProgramThawAccountInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            11,
-        ),
-        "TokenProgramTransferCheckedInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            12,
-        ),
-        "TokenProgramApproveCheckedInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            13,
-        ),
-        "TokenProgramMinttoCheckedInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            14,
-        ),
-        "TokenProgramBurnCheckedInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            15,
-        ),
-        "TokenProgramInitializeAccount2Instruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            16,
-        ),
-        "TokenProgramSyncNativeInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            17,
-        ),
-        "TokenProgramInitializeAccount3Instruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            18,
-        ),
-        "TokenProgramInitializeImmutableOwnerInstruction": (
-            "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
-            22,
-        ),
-        "Token2022ProgramInitializeAccountInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            1,
-        ),
-        "Token2022ProgramInitializeMultisigInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            2,
-        ),
-        "Token2022ProgramTransferInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            3,
-        ),
-        "Token2022ProgramApproveInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            4,
-        ),
-        "Token2022ProgramRevokeInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            5,
-        ),
-        "Token2022ProgramSetAuthorityInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            6,
-        ),
-        "Token2022ProgramMinttoInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            7,
-        ),
-        "Token2022ProgramBurnInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            8,
-        ),
-        "Token2022ProgramCloseAccountInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            9,
-        ),
-        "Token2022ProgramFreezeAccountInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            10,
-        ),
-        "Token2022ProgramThawAccountInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            11,
-        ),
-        "Token2022ProgramTransferCheckedInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            12,
-        ),
-        "Token2022ProgramApproveCheckedInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            13,
-        ),
-        "Token2022ProgramMinttoCheckedInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            14,
-        ),
-        "Token2022ProgramBurnCheckedInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            15,
-        ),
-        "Token2022ProgramInitializeAccount2Instruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            16,
-        ),
-        "Token2022ProgramSyncNativeInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            17,
-        ),
-        "Token2022ProgramInitializeAccount3Instruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            18,
-        ),
-        "Token2022ProgramInitializeImmutableOwnerInstruction": (
-            "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
-            22,
-        ),
-        "AssociatedTokenAccountProgramCreateInstruction": (
-            "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
-            0,
-        ),
-        "AssociatedTokenAccountProgramCreateIdempotentInstruction": (
-            "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
-            1,
-        ),
-        "AssociatedTokenAccountProgramRecoverNestedInstruction": (
-            "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
-            2,
-        ),
-        "MemoProgramMemoInstruction": (
-            "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr",
-            0,
-        ),
-        "MemoLegacyProgramMemoInstruction": (
-            "Memo1UhkJRfHyvLMcVucJwxXeuD728EqVDDwQDxFMNo",
-            0,
-        ),
-    }
-    id = ids[name]
+    if name == "SystemProgramCreateAccountInstruction":
+        id = ("11111111111111111111111111111111", 0)
+    elif name == "SystemProgramAssignInstruction":
+        id = ("11111111111111111111111111111111", 1)
+    elif name == "SystemProgramTransferInstruction":
+        id = ("11111111111111111111111111111111", 2)
+    elif name == "SystemProgramCreateAccountWithSeedInstruction":
+        id = ("11111111111111111111111111111111", 3)
+    elif name == "SystemProgramAdvancenonceaccountInstruction":
+        id = ("11111111111111111111111111111111", 4)
+    elif name == "SystemProgramWithdrawnonceaccountInstruction":
+        id = ("11111111111111111111111111111111", 5)
+    elif name == "SystemProgramInitializenonceaccountInstruction":
+        id = ("11111111111111111111111111111111", 6)
+    elif name == "SystemProgramAuthorizenonceaccountInstruction":
+        id = ("11111111111111111111111111111111", 7)
+    elif name == "SystemProgramAllocateInstruction":
+        id = ("11111111111111111111111111111111", 8)
+    elif name == "SystemProgramAllocateWithSeedInstruction":
+        id = ("11111111111111111111111111111111", 9)
+    elif name == "SystemProgramAssignWithSeedInstruction":
+        id = ("11111111111111111111111111111111", 10)
+    elif name == "SystemProgramTransferWithSeedInstruction":
+        id = ("11111111111111111111111111111111", 11)
+    elif name == "SystemProgramUpgradeNonceAccountInstruction":
+        id = ("11111111111111111111111111111111", 12)
+    elif name == "StakeProgramInitializeInstruction":
+        id = ("Stake11111111111111111111111111111111111111", 0)
+    elif name == "StakeProgramAuthorizeInstruction":
+        id = ("Stake11111111111111111111111111111111111111", 1)
+    elif name == "StakeProgramDelegateStakeInstruction":
+        id = ("Stake11111111111111111111111111111111111111", 2)
+    elif name == "StakeProgramSplitInstruction":
+        id = ("Stake11111111111111111111111111111111111111", 3)
+    elif name == "StakeProgramWithdrawInstruction":
+        id = ("Stake11111111111111111111111111111111111111", 4)
+    elif name == "StakeProgramDeactivateInstruction":
+        id = ("Stake11111111111111111111111111111111111111", 5)
+    elif name == "StakeProgramSetLockupInstruction":
+        id = ("Stake11111111111111111111111111111111111111", 6)
+    elif name == "StakeProgramMergeInstruction":
+        id = ("Stake11111111111111111111111111111111111111", 7)
+    elif name == "StakeProgramAuthorizeWithSeedInstruction":
+        id = ("Stake11111111111111111111111111111111111111", 8)
+    elif name == "StakeProgramInitializeCheckedInstruction":
+        id = ("Stake11111111111111111111111111111111111111", 9)
+    elif name == "StakeProgramAuthorizeCheckedInstruction":
+        id = ("Stake11111111111111111111111111111111111111", 10)
+    elif name == "StakeProgramAuthorizeCheckedWithSeedInstruction":
+        id = ("Stake11111111111111111111111111111111111111", 11)
+    elif name == "StakeProgramSetLockupCheckedInstruction":
+        id = ("Stake11111111111111111111111111111111111111", 12)
+    elif name == "ComputeBudgetProgramRequestHeapFrameInstruction":
+        id = ("ComputeBudget111111111111111111111111111111", 1)
+    elif name == "ComputeBudgetProgramSetComputeUnitLimitInstruction":
+        id = ("ComputeBudget111111111111111111111111111111", 2)
+    elif name == "ComputeBudgetProgramSetComputeUnitPriceInstruction":
+        id = ("ComputeBudget111111111111111111111111111111", 3)
+    elif name == "TokenProgramInitializeAccountInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 1)
+    elif name == "TokenProgramInitializeMultisigInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 2)
+    elif name == "TokenProgramTransferInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 3)
+    elif name == "TokenProgramApproveInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 4)
+    elif name == "TokenProgramRevokeInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 5)
+    elif name == "TokenProgramSetAuthorityInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 6)
+    elif name == "TokenProgramMinttoInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 7)
+    elif name == "TokenProgramBurnInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 8)
+    elif name == "TokenProgramCloseAccountInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 9)
+    elif name == "TokenProgramFreezeAccountInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 10)
+    elif name == "TokenProgramThawAccountInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 11)
+    elif name == "TokenProgramTransferCheckedInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 12)
+    elif name == "TokenProgramApproveCheckedInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 13)
+    elif name == "TokenProgramMinttoCheckedInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 14)
+    elif name == "TokenProgramBurnCheckedInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 15)
+    elif name == "TokenProgramInitializeAccount2Instruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 16)
+    elif name == "TokenProgramSyncNativeInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 17)
+    elif name == "TokenProgramInitializeAccount3Instruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 18)
+    elif name == "TokenProgramInitializeImmutableOwnerInstruction":
+        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 22)
+    elif name == "Token2022ProgramInitializeAccountInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 1)
+    elif name == "Token2022ProgramInitializeMultisigInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 2)
+    elif name == "Token2022ProgramTransferInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 3)
+    elif name == "Token2022ProgramApproveInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 4)
+    elif name == "Token2022ProgramRevokeInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 5)
+    elif name == "Token2022ProgramSetAuthorityInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 6)
+    elif name == "Token2022ProgramMinttoInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 7)
+    elif name == "Token2022ProgramBurnInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 8)
+    elif name == "Token2022ProgramCloseAccountInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 9)
+    elif name == "Token2022ProgramFreezeAccountInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 10)
+    elif name == "Token2022ProgramThawAccountInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 11)
+    elif name == "Token2022ProgramTransferCheckedInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 12)
+    elif name == "Token2022ProgramApproveCheckedInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 13)
+    elif name == "Token2022ProgramMinttoCheckedInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 14)
+    elif name == "Token2022ProgramBurnCheckedInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 15)
+    elif name == "Token2022ProgramInitializeAccount2Instruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 16)
+    elif name == "Token2022ProgramSyncNativeInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 17)
+    elif name == "Token2022ProgramInitializeAccount3Instruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 18)
+    elif name == "Token2022ProgramInitializeImmutableOwnerInstruction":
+        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 22)
+    elif name == "AssociatedTokenAccountProgramCreateInstruction":
+        id = ("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL", 0)
+    elif name == "AssociatedTokenAccountProgramCreateIdempotentInstruction":
+        id = ("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL", 1)
+    elif name == "AssociatedTokenAccountProgramRecoverNestedInstruction":
+        id = ("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL", 2)
+    elif name == "MemoProgramMemoInstruction":
+        id = ("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr", 0)
+    elif name == "MemoLegacyProgramMemoInstruction":
+        id = ("Memo1UhkJRfHyvLMcVucJwxXeuD728EqVDDwQDxFMNo", 0)
+    else:
+        raise AttributeError(f"Unknown instruction: {name}")
 
     class FakeClass(Instruction):
         @classmethod

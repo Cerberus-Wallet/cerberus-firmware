@@ -64,14 +64,19 @@ ${getInstructionIdText(program, instruction)} = ${instruction["id"]}
 % endfor
 
 def __getattr__(name: str) -> Type[Instruction]:
-    ids = {
-        %for program in programs["programs"]:
-            %for instruction in program["instructions"]:
-        "${getClassName(program, instruction)}": ("${program["id"]}", ${instruction["id"]}),
-            %endfor
+    %for program in programs["programs"]:
+        %for instruction in program["instructions"]:
+            % if instruction == program["instructions"][0] and program == programs["programs"][0]:
+    if name == "${getClassName(program, instruction)}":
+        id = ("${program["id"]}", ${instruction["id"]})
+            % else:
+    elif name == "${getClassName(program, instruction)}":
+        id = ("${program["id"]}", ${instruction["id"]})
+            % endif
         %endfor
-    }
-    id = ids[name]
+    %endfor
+    else:
+        raise AttributeError(f"Unknown instruction: {name}")
 
     class FakeClass(Instruction):
         @classmethod
