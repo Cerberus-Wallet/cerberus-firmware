@@ -42,7 +42,7 @@ class Transaction:
         self._create_instructions()
         self._determine_if_blind_signing()
 
-    def _parse_transaction(self, serialized_tx):
+    def _parse_transaction(self, serialized_tx: BufferReader) -> None:
         (
             self.version,
             num_required_signatures,
@@ -74,7 +74,7 @@ class Transaction:
         if serialized_tx.remaining_count() != 0:
             raise DataError("Invalid transaction")
 
-    def _get_combined_accounts(self):
+    def _get_combined_accounts(self) -> list[Account]:
         """
         Combine accounts from transaction's accounts field with accounts from address lookup tables.
         Instructions reference accounts by index in this combined list.
@@ -90,7 +90,7 @@ class Transaction:
 
         return accounts
 
-    def _create_instructions(self):
+    def _create_instructions(self) -> None:
         combined_accounts = self._get_combined_accounts()
 
         for (
@@ -112,7 +112,7 @@ class Transaction:
 
             self.instructions.append(instruction)
 
-    def _determine_if_blind_signing(self):
+    def _determine_if_blind_signing(self) -> None:
         for instruction in self.instructions:
             if (
                 not instruction.is_program_supported
