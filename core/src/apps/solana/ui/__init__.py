@@ -72,9 +72,8 @@ async def show_confirm(
             value = instruction.parsed_data[ui_property.parameter]
             _type = property_template.type
 
-            if _type == "authority":
-                if signer_public_key == value:
-                    continue
+            if _type == "authority" and signer_public_key == value:
+                continue
 
             await confirm_properties(
                 "confirm_instruction",
