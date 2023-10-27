@@ -32,8 +32,7 @@ class Instruction:
     is_instruction_supported: bool
     instruction_data: bytes | None = None
     accounts: list[Account] | None = None
-
-    is_multisig: bool = False
+    
     multisig_signers: list[Account] | None = None
 
     is_deprecated_warning: str | None = None
@@ -98,9 +97,10 @@ class Instruction:
         self.parsed_accounts = parsed_account
 
 
-        if supports_multisig and len(accounts) > len(accounts_template):
-            self.is_multisig = True
-            self.multisig_signers = accounts[len(accounts_template) :]
+        self.multisig_signers = accounts[len(accounts_template) :]
+
+        if self.multisig_signers and not supports_multisig:
+            raise ValueError("Multisig not supported")
 
         if reader.remaining_count() != 0:
             raise ProcessError("Invalid transaction")

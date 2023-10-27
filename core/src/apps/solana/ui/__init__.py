@@ -134,7 +134,7 @@ async def show_confirm(
         else:
             raise ValueError("Invalid ui property")
 
-    if instruction.is_multisig:
+    if instruction.multisig_signers:
         await confirm_metadata(
             "confirm_multisig",
             "Confirm multisig",
