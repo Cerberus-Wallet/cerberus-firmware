@@ -123,16 +123,18 @@ def calculate_fee(transaction: Transaction) -> int:
     unit_price = 0
     unit_limit = SOLANA_COMPUTE_UNIT_LIMIT
 
-    for instruction in transaction.instructions:
+    for instruction in transaction.instructions[:3]:
         if instruction.program_id == COMPUTE_BUDGET_PROGRAM_ID:
             if (
                 instruction.instruction_id
                 == COMPUTE_BUDGET_PROGRAM_ID_INS_SET_COMPUTE_UNIT_LIMIT
+                and unit_limit == SOLANA_COMPUTE_UNIT_LIMIT
             ):
                 unit_limit = instruction.units
             elif (
                 instruction.instruction_id
                 == COMPUTE_BUDGET_PROGRAM_ID_INS_SET_COMPUTE_UNIT_PRICE
+                and unit_price == 0
             ):
                 unit_price = instruction.lamports
 
