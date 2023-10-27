@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 from trezor.utils import BufferReader
-from trezor.wire import ProcessError
+from trezor.wire import DataError
 
 from .parse import parse_property
 
@@ -48,7 +48,7 @@ class Instruction:
             parsed_data[property_template.name] = property
         
         if reader.remaining_count() != 0:
-            raise ProcessError("Invalid transaction")
+            raise DataError("Invalid transaction")
         
         return parsed_data
     

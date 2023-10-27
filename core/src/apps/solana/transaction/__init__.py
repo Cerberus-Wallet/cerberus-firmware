@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 from trezor.crypto import base58
 from trezor.utils import BufferReader
-from trezor.wire import ProcessError
+from trezor.wire import DataError
 
 from .instruction import Instruction
 from .instructions import get_instruction, get_instruction_id_length
@@ -72,7 +72,7 @@ class Transaction:
             ) = parse_address_lookup_tables(serialized_tx)
 
         if serialized_tx.remaining_count() != 0:
-            raise ProcessError("Invalid transaction")
+            raise DataError("Invalid transaction")
 
     def _get_combined_accounts(self):
         """

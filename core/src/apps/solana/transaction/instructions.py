@@ -2,7 +2,7 @@
 # do not edit manually!
 from typing import TYPE_CHECKING
 
-from trezor.wire import ProcessError
+from trezor.wire import DataError
 
 from ..types import AccountTemplate, InstructionIdFormat, PropertyTemplate, UIProperty
 from .instruction import Instruction
@@ -4916,7 +4916,7 @@ class StakeAuthorize:
             return "Stake"
         if value == 1:
             return "Withdraw"
-        raise ProcessError(f"Unknown value: {value}")
+        raise DataError(f"Unknown value: {value}")
 
 
 class AuthorityType:
@@ -4934,7 +4934,7 @@ class AuthorityType:
             return "Account owner"
         if value == 3:
             return "Close account"
-        raise ProcessError(f"Unknown value: {value}")
+        raise DataError(f"Unknown value: {value}")
 
 
 def enum_type_to_class(enum_type: str):
@@ -4942,4 +4942,4 @@ def enum_type_to_class(enum_type: str):
         return StakeAuthorize
     if enum_type == "AuthorityType":
         return AuthorityType
-    raise ProcessError(f"Unknown enum type: {enum_type}")
+    raise DataError(f"Unknown enum type: {enum_type}")

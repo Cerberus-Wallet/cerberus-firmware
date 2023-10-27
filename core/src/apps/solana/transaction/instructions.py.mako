@@ -44,7 +44,7 @@ int\
 </%def>\
 from typing import TYPE_CHECKING
 
-from trezor.wire import ProcessError
+from trezor.wire import DataError
 
 from ..types import AccountTemplate, InstructionIdFormat, PropertyTemplate, UIProperty
 from .instruction import Instruction
@@ -208,7 +208,7 @@ class ${param["name"]}:
         if value == ${variant["value"]}:
             return "${variant["name"]}"
         % endfor
-        raise ProcessError(f"Unknown value: {value}")
+        raise DataError(f"Unknown value: {value}")
     % endif
 % endfor
 
@@ -220,4 +220,4 @@ def enum_type_to_class(enum_type: str):
         return ${param["name"]}
     % endif
 % endfor
-    raise ProcessError(f"Unknown enum type: {enum_type}")
+    raise DataError(f"Unknown enum type: {enum_type}")

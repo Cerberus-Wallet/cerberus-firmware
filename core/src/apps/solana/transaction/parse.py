@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 from trezor.crypto import base58
-from trezor.wire import ProcessError
+from trezor.wire import DataError
 
 from apps.common.readers import read_uint32_le, read_uint64_le
 
@@ -23,7 +23,7 @@ if TYPE_CHECKING:
 
 def assert_cond(condition: bool, message: str = "") -> None:
     if not condition:
-        raise ProcessError(message)
+        raise DataError(message)
 
 
 def parse_header(serialized_tx: BufferReader) -> tuple[bool, int, int, int, int]:
