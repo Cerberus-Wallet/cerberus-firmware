@@ -157,16 +157,15 @@ async def show_confirm(
 
 
 def get_address_type(address_type: int) -> str:
-    if ADDRESS_SIG == address_type:
+    if address_type == ADDRESS_SIG:
         return "(Writable, Signer)"
-    elif ADDRESS_SIG_READ_ONLY == address_type:
+    if address_type == ADDRESS_SIG_READ_ONLY:
         return "(Signer)"
-    elif ADDRESS_READ_ONLY == address_type:
+    if address_type == ADDRESS_READ_ONLY:
         return ""
-    elif ADDRESS_RW == address_type:
+    if address_type == ADDRESS_RW:
         return "(Writable)"
-    else:
-        raise ValueError(f"Invalid address type {address_type}")
+    raise ValueError(f"Invalid address type {address_type}")
 
 
 async def show_unsupported_instruction_details(
