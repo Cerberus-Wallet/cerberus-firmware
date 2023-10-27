@@ -1,4 +1,4 @@
-# generated from __init__.py.mako
+# generated from instructions.py.mako
 # do not edit manually!
 <%def name="getProgramId(program)">${"_".join(program["name"].upper().split(" ") + ["ID"])}</%def>\
 <%def name="getInstructionIdText(program, instruction)">${"_".join([getProgramId(program)] + ["INS"] + instruction["name"].upper().split(" "))}</%def>\
