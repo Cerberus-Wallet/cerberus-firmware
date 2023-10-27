@@ -1,10 +1,5 @@
 from typing import TYPE_CHECKING
 
-from trezor.utils import BufferReader
-from trezor.wire import DataError
-
-from .parse import parse_property
-
 if TYPE_CHECKING:
     from typing import Any, TypeGuard
     from typing_extensions import Self
@@ -37,6 +32,10 @@ class Instruction:
 
     @staticmethod
     def parse_instruction_data(instruction_data: bytes, property_templates: list[PropertyTemplate]):
+        from trezor.utils import BufferReader
+        from trezor.wire import DataError
+        from .parse import parse_property
+
         reader = BufferReader(instruction_data)
 
         parsed_data = {}
