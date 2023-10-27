@@ -256,11 +256,11 @@ async def show_final_confirmation(
     await confirm_properties(
         "confirm_transaction",
         "Confirm transaction",
-        [
+        (
             ("Expected fee:", f"{fee} lamports"),
             ("Blockhash:", base58.encode(blockhash)),
             ("Signer account:", _format_path(signer_path)),
             ("Signer address:", address),
-        ],
+        ),
         hold=True,
     )
