@@ -6,15 +6,13 @@ from trezor.wire import ProcessError
 from .parse import parse_property
 
 if TYPE_CHECKING:
-    from typing import Any, TypeGuard, ClassVar
+    from typing import Any, TypeGuard
+    from typing_extensions import Self
 
     from ..types import Account, AccountTemplate, PropertyTemplate, UIProperty
 
 
 class Instruction:
-    PROGRAM_ID: ClassVar[str]
-    INSTRUCTION_ID: ClassVar[int]
-
     program_id: str
     instruction_id: int
 
@@ -131,8 +129,6 @@ class Instruction:
         raise ValueError(f"Account {account_name} not found")
 
     @classmethod
-    def is_type_of(cls, ins: Any) -> TypeGuard["Instruction"]:
-        return (
-            ins.program_id == cls.PROGRAM_ID
-            and ins.instruction_id == cls.INSTRUCTION_ID
-        )
+    def is_type_of(cls, ins: Any) -> TypeGuard[Self]:
+        # gets overridden in `instructions.py` `FakeClass`
+        pass

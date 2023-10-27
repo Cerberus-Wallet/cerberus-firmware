@@ -8,7 +8,7 @@ from ..types import AccountTemplate, InstructionIdFormat, PropertyTemplate, UIPr
 from .instruction import Instruction
 
 if TYPE_CHECKING:
-    from typing import Any, Type, TypeGuard
+    from typing import Any, Type
 
     from ..types import Account
 
@@ -256,9 +256,6 @@ def __getattr__(name: str) -> Type[Instruction]:
 if TYPE_CHECKING:
 
     class SystemProgramCreateAccountInstruction(Instruction):
-        PROGRAM_ID = SYSTEM_PROGRAM_ID
-        INSTRUCTION_ID = SYSTEM_PROGRAM_ID_INS_CREATE_ACCOUNT
-
         lamports: int
         space: int
         owner: Account
@@ -266,50 +263,18 @@ if TYPE_CHECKING:
         funding_account: Account
         new_account: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["SystemProgramCreateAccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class SystemProgramAssignInstruction(Instruction):
-        PROGRAM_ID = SYSTEM_PROGRAM_ID
-        INSTRUCTION_ID = SYSTEM_PROGRAM_ID_INS_ASSIGN
-
         owner: Account
 
         assigned_account: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["SystemProgramAssignInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class SystemProgramTransferInstruction(Instruction):
-        PROGRAM_ID = SYSTEM_PROGRAM_ID
-        INSTRUCTION_ID = SYSTEM_PROGRAM_ID_INS_TRANSFER
-
         lamports: int
 
         funding_account: Account
         recipient_account: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["SystemProgramTransferInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class SystemProgramCreateAccountWithSeedInstruction(Instruction):
-        PROGRAM_ID = SYSTEM_PROGRAM_ID
-        INSTRUCTION_ID = SYSTEM_PROGRAM_ID_INS_CREATE_ACCOUNT_WITH_SEED
-
         base: int
         seed: str
         lamports: int
@@ -320,36 +285,13 @@ if TYPE_CHECKING:
         created_account: Account
         base_account: Account | None
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["SystemProgramCreateAccountWithSeedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class SystemProgramAdvancenonceaccountInstruction(Instruction):
-        PROGRAM_ID = SYSTEM_PROGRAM_ID
-        INSTRUCTION_ID = SYSTEM_PROGRAM_ID_INS_ADVANCE_NONCE_ACCOUNT
 
         nonce_account: Account
         recent_blockhashes_sysvar: Account
         nonce_authority: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["SystemProgramAdvancenonceaccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class SystemProgramWithdrawnonceaccountInstruction(Instruction):
-        PROGRAM_ID = SYSTEM_PROGRAM_ID
-        INSTRUCTION_ID = SYSTEM_PROGRAM_ID_INS_WITHDRAW_NONCE_ACCOUNT
-
         lamports: int
 
         nonce_account: Account
@@ -358,71 +300,25 @@ if TYPE_CHECKING:
         rent_sysvar: Account
         nonce_authority: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["SystemProgramWithdrawnonceaccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class SystemProgramInitializenonceaccountInstruction(Instruction):
-        PROGRAM_ID = SYSTEM_PROGRAM_ID
-        INSTRUCTION_ID = SYSTEM_PROGRAM_ID_INS_INITIALIZE_NONCE_ACCOUNT
-
         nonce_authority: Account
 
         nonce_account: Account
         recent_blockhashes_sysvar: Account
         rent_sysvar: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["SystemProgramInitializenonceaccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class SystemProgramAuthorizenonceaccountInstruction(Instruction):
-        PROGRAM_ID = SYSTEM_PROGRAM_ID
-        INSTRUCTION_ID = SYSTEM_PROGRAM_ID_INS_AUTHORIZE_NONCE_ACCOUNT
-
         nonce_authority: Account
 
         nonce_account: Account
         nonce_authority: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["SystemProgramAuthorizenonceaccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class SystemProgramAllocateInstruction(Instruction):
-        PROGRAM_ID = SYSTEM_PROGRAM_ID
-        INSTRUCTION_ID = SYSTEM_PROGRAM_ID_INS_ALLOCATE
-
         space: int
 
         new_account: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["SystemProgramAllocateInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class SystemProgramAllocateWithSeedInstruction(Instruction):
-        PROGRAM_ID = SYSTEM_PROGRAM_ID
-        INSTRUCTION_ID = SYSTEM_PROGRAM_ID_INS_ALLOCATE_WITH_SEED
-
         base: int
         seed: str
         space: int
@@ -431,19 +327,7 @@ if TYPE_CHECKING:
         allocated_account: Account
         base_account: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["SystemProgramAllocateWithSeedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class SystemProgramAssignWithSeedInstruction(Instruction):
-        PROGRAM_ID = SYSTEM_PROGRAM_ID
-        INSTRUCTION_ID = SYSTEM_PROGRAM_ID_INS_ASSIGN_WITH_SEED
-
         base: int
         seed: str
         owner: int
@@ -451,19 +335,7 @@ if TYPE_CHECKING:
         assigned_account: Account
         base_account: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["SystemProgramAssignWithSeedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class SystemProgramTransferWithSeedInstruction(Instruction):
-        PROGRAM_ID = SYSTEM_PROGRAM_ID
-        INSTRUCTION_ID = SYSTEM_PROGRAM_ID_INS_TRANSFER_WITH_SEED
-
         lamports: int
         from_seed: str
         from_owner: int
@@ -472,34 +344,11 @@ if TYPE_CHECKING:
         base_account: Account
         recipient_account: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["SystemProgramTransferWithSeedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class SystemProgramUpgradeNonceAccountInstruction(Instruction):
-        PROGRAM_ID = SYSTEM_PROGRAM_ID
-        INSTRUCTION_ID = SYSTEM_PROGRAM_ID_INS_UPGRADE_NONCE_ACCOUNT
 
         nonce_account: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["SystemProgramUpgradeNonceAccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class StakeProgramInitializeInstruction(Instruction):
-        PROGRAM_ID = STAKE_PROGRAM_ID
-        INSTRUCTION_ID = STAKE_PROGRAM_ID_INS_INITIALIZE
-
         staker: Account
         withdrawer: Account
         unix_timestamp: int
@@ -509,17 +358,7 @@ if TYPE_CHECKING:
         uninitialized_stake_account: Account
         rent_sysvar: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["StakeProgramInitializeInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class StakeProgramAuthorizeInstruction(Instruction):
-        PROGRAM_ID = STAKE_PROGRAM_ID
-        INSTRUCTION_ID = STAKE_PROGRAM_ID_INS_AUTHORIZE
-
         pubkey: int
         stake_authorize: int
 
@@ -528,16 +367,7 @@ if TYPE_CHECKING:
         stake_or_withdraw_authority: Account
         lockup_authority: Account | None
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["StakeProgramAuthorizeInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class StakeProgramDelegateStakeInstruction(Instruction):
-        PROGRAM_ID = STAKE_PROGRAM_ID
-        INSTRUCTION_ID = STAKE_PROGRAM_ID_INS_DELEGATE_STAKE
 
         initialized_stake_account: Account
         vote_account: Account
@@ -546,36 +376,14 @@ if TYPE_CHECKING:
         config_account: Account
         stake_authority: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["StakeProgramDelegateStakeInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class StakeProgramSplitInstruction(Instruction):
-        PROGRAM_ID = STAKE_PROGRAM_ID
-        INSTRUCTION_ID = STAKE_PROGRAM_ID_INS_SPLIT
-
         lamports: int
 
         stake_account: Account
         uninitialized_stake_account: Account
         stake_authority: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["StakeProgramSplitInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class StakeProgramWithdrawInstruction(Instruction):
-        PROGRAM_ID = STAKE_PROGRAM_ID
-        INSTRUCTION_ID = STAKE_PROGRAM_ID_INS_WITHDRAW
-
         lamports: int
 
         stake_account: Account
@@ -585,32 +393,13 @@ if TYPE_CHECKING:
         withdrawal_authority: Account
         lockup_authority: Account | None
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["StakeProgramWithdrawInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class StakeProgramDeactivateInstruction(Instruction):
-        PROGRAM_ID = STAKE_PROGRAM_ID
-        INSTRUCTION_ID = STAKE_PROGRAM_ID_INS_DEACTIVATE
 
         delegated_stake_account: Account
         clock_sysvar: Account
         stake_authority: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["StakeProgramDeactivateInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class StakeProgramSetLockupInstruction(Instruction):
-        PROGRAM_ID = STAKE_PROGRAM_ID
-        INSTRUCTION_ID = STAKE_PROGRAM_ID_INS_SET_LOCKUP
-
         unix_timestamp: int
         epoch: int
         custodian: int
@@ -618,16 +407,7 @@ if TYPE_CHECKING:
         initialized_stake_account: Account
         lockup_or_withdraw_authority: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["StakeProgramSetLockupInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class StakeProgramMergeInstruction(Instruction):
-        PROGRAM_ID = STAKE_PROGRAM_ID
-        INSTRUCTION_ID = STAKE_PROGRAM_ID_INS_MERGE
 
         destination_stake_account: Account
         source_stake_account: Account
@@ -635,17 +415,7 @@ if TYPE_CHECKING:
         stake_history_sysvar: Account
         stake_authority: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["StakeProgramMergeInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class StakeProgramAuthorizeWithSeedInstruction(Instruction):
-        PROGRAM_ID = STAKE_PROGRAM_ID
-        INSTRUCTION_ID = STAKE_PROGRAM_ID_INS_AUTHORIZE_WITH_SEED
-
         new_authorized_pubkey: int
         stake_authorize: int
         authority_seed: str
@@ -656,37 +426,14 @@ if TYPE_CHECKING:
         clock_sysvar: Account
         lockup_authority: Account | None
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["StakeProgramAuthorizeWithSeedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class StakeProgramInitializeCheckedInstruction(Instruction):
-        PROGRAM_ID = STAKE_PROGRAM_ID
-        INSTRUCTION_ID = STAKE_PROGRAM_ID_INS_INITIALIZE_CHECKED
 
         uninitialized_stake_account: Account
         rent_sysvar: Account
         stake_authority: Account
         withdrawal_authority: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["StakeProgramInitializeCheckedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class StakeProgramAuthorizeCheckedInstruction(Instruction):
-        PROGRAM_ID = STAKE_PROGRAM_ID
-        INSTRUCTION_ID = STAKE_PROGRAM_ID_INS_AUTHORIZE_CHECKED
-
         stake_authorize: int
 
         stake_account: Account
@@ -695,19 +442,7 @@ if TYPE_CHECKING:
         new_stake_or_withdraw_authority: Account
         lockup_authority: Account | None
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["StakeProgramAuthorizeCheckedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class StakeProgramAuthorizeCheckedWithSeedInstruction(Instruction):
-        PROGRAM_ID = STAKE_PROGRAM_ID
-        INSTRUCTION_ID = STAKE_PROGRAM_ID_INS_AUTHORIZE_CHECKED_WITH_SEED
-
         stake_authorize: int
         authority_seed: str
         authority_owner: int
@@ -718,19 +453,7 @@ if TYPE_CHECKING:
         new_stake_or_withdraw_authority: Account
         lockup_authority: Account | None
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["StakeProgramAuthorizeCheckedWithSeedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class StakeProgramSetLockupCheckedInstruction(Instruction):
-        PROGRAM_ID = STAKE_PROGRAM_ID
-        INSTRUCTION_ID = STAKE_PROGRAM_ID_INS_SET_LOCKUP_CHECKED
-
         unix_timestamp: int
         epoch: int
 
@@ -738,253 +461,88 @@ if TYPE_CHECKING:
         lockup_or_withdraw_authority: Account
         new_lockup_authority: Account | None
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["StakeProgramSetLockupCheckedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class ComputeBudgetProgramRequestHeapFrameInstruction(Instruction):
-        PROGRAM_ID = COMPUTE_BUDGET_PROGRAM_ID
-        INSTRUCTION_ID = COMPUTE_BUDGET_PROGRAM_ID_INS_REQUEST_HEAP_FRAME
-
         bytes: int
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["ComputeBudgetProgramRequestHeapFrameInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class ComputeBudgetProgramSetComputeUnitLimitInstruction(Instruction):
-        PROGRAM_ID = COMPUTE_BUDGET_PROGRAM_ID
-        INSTRUCTION_ID = COMPUTE_BUDGET_PROGRAM_ID_INS_SET_COMPUTE_UNIT_LIMIT
-
         units: int
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["ComputeBudgetProgramSetComputeUnitLimitInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class ComputeBudgetProgramSetComputeUnitPriceInstruction(Instruction):
-        PROGRAM_ID = COMPUTE_BUDGET_PROGRAM_ID
-        INSTRUCTION_ID = COMPUTE_BUDGET_PROGRAM_ID_INS_SET_COMPUTE_UNIT_PRICE
-
         lamports: int
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["ComputeBudgetProgramSetComputeUnitPriceInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramInitializeAccountInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_INITIALIZE_ACCOUNT
 
         account_to_initialize: Account
         mint_account: Account
         owner: Account
         rent_sysvar: Account
-
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["TokenProgramInitializeAccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
 
     class TokenProgramInitializeMultisigInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_INITIALIZE_MULTISIG
-
         number_of_signers: int
 
         multisig_account: Account
         rent_sysvar: Account
         signer_accounts: Account
-
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["TokenProgramInitializeMultisigInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
 
     class TokenProgramTransferInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_TRANSFER
-
         amount: int
 
         source_account: Account
         destination_account: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["TokenProgramTransferInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramApproveInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_APPROVE
-
         amount: int
 
         source_account: Account
         delegate_account: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["TokenProgramApproveInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramRevokeInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_REVOKE
 
         source_account: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["TokenProgramRevokeInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramSetAuthorityInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_SET_AUTHORITY
-
         authority_type: int
         new_authority: Account
 
         mint_account: Account
         current_authority: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["TokenProgramSetAuthorityInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramMinttoInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_MINT_TO
-
         amount: int
 
         mint: Account
         account_to_mint: Account
         minting_authority: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["TokenProgramMinttoInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramBurnInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_BURN
-
         amount: int
 
         account_to_burn_from: Account
         token_mint: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["TokenProgramBurnInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramCloseAccountInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_CLOSE_ACCOUNT
 
         account_to_close: Account
         destination_account: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["TokenProgramCloseAccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramFreezeAccountInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_FREEZE_ACCOUNT
 
         account_to_freeze: Account
         token_mint: Account
         freeze_authority: Account
-
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["TokenProgramFreezeAccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
 
     class TokenProgramThawAccountInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_THAW_ACCOUNT
 
         account_to_freeze: Account
         token_mint: Account
         freeze_authority: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["TokenProgramThawAccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramTransferCheckedInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_TRANSFER_CHECKED
-
         amount: int
         decimals: int
 
@@ -993,19 +551,7 @@ if TYPE_CHECKING:
         destination_account: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["TokenProgramTransferCheckedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramApproveCheckedInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_APPROVE_CHECKED
-
         amount: int
         decimals: int
 
@@ -1014,19 +560,7 @@ if TYPE_CHECKING:
         delegate: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["TokenProgramApproveCheckedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramMinttoCheckedInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_MINT_TO_CHECKED
-
         amount: int
         decimals: int
 
@@ -1034,19 +568,7 @@ if TYPE_CHECKING:
         account_to_mint: Account
         minting_authority: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["TokenProgramMinttoCheckedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramBurnCheckedInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_BURN_CHECKED
-
         amount: int
         decimals: int
 
@@ -1054,277 +576,100 @@ if TYPE_CHECKING:
         token_mint: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["TokenProgramBurnCheckedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramInitializeAccount2Instruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_INITIALIZE_ACCOUNT_2
-
         owner: int
 
         account_to_initialize: Account
         mint_account: Account
         rent_sysvar: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["TokenProgramInitializeAccount2Instruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramSyncNativeInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_SYNC_NATIVE
 
         token_account: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["TokenProgramSyncNativeInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramInitializeAccount3Instruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_INITIALIZE_ACCOUNT_3
-
         owner: int
 
         account_to_initialize: Account
         mint_account: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["TokenProgramInitializeAccount3Instruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class TokenProgramInitializeImmutableOwnerInstruction(Instruction):
-        PROGRAM_ID = TOKEN_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_PROGRAM_ID_INS_INITIALIZE_IMMUTABLE_OWNER
 
         account_to_initialize: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["TokenProgramInitializeImmutableOwnerInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramInitializeAccountInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_INITIALIZE_ACCOUNT
 
         account_to_initialize: Account
         mint_account: Account
         owner: Account
         rent_sysvar: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramInitializeAccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramInitializeMultisigInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_INITIALIZE_MULTISIG
-
         number_of_signers: int
 
         multisig_account: Account
         rent_sysvar: Account
         signer_accounts: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramInitializeMultisigInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramTransferInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_TRANSFER
-
         amount: int
 
         source_account: Account
         destination_account: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramTransferInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramApproveInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_APPROVE
-
         amount: int
 
         source_account: Account
         delegate_account: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramApproveInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramRevokeInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_REVOKE
 
         source_account: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["Token2022ProgramRevokeInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramSetAuthorityInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_SET_AUTHORITY
-
         authority_type: int
         new_authority: Account
 
         mint_account: Account
         current_authority: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramSetAuthorityInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramMinttoInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_MINT_TO
-
         amount: int
 
         mint: Account
         account_to_mint: Account
         minting_authority: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["Token2022ProgramMinttoInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramBurnInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_BURN
-
         amount: int
 
         account_to_burn_from: Account
         token_mint: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["Token2022ProgramBurnInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramCloseAccountInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_CLOSE_ACCOUNT
 
         account_to_close: Account
         destination_account: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramCloseAccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramFreezeAccountInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_FREEZE_ACCOUNT
 
         account_to_freeze: Account
         token_mint: Account
         freeze_authority: Account
-
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramFreezeAccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
 
     class Token2022ProgramThawAccountInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_THAW_ACCOUNT
 
         account_to_freeze: Account
         token_mint: Account
         freeze_authority: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramThawAccountInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramTransferCheckedInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_TRANSFER_CHECKED
-
         amount: int
         decimals: int
 
@@ -1333,19 +678,7 @@ if TYPE_CHECKING:
         destination_account: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramTransferCheckedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramApproveCheckedInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_APPROVE_CHECKED
-
         amount: int
         decimals: int
 
@@ -1354,19 +687,7 @@ if TYPE_CHECKING:
         delegate: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramApproveCheckedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramMinttoCheckedInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_MINT_TO_CHECKED
-
         amount: int
         decimals: int
 
@@ -1374,19 +695,7 @@ if TYPE_CHECKING:
         account_to_mint: Account
         minting_authority: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramMinttoCheckedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramBurnCheckedInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_BURN_CHECKED
-
         amount: int
         decimals: int
 
@@ -1394,85 +703,28 @@ if TYPE_CHECKING:
         token_mint: Account
         owner: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramBurnCheckedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramInitializeAccount2Instruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_INITIALIZE_ACCOUNT_2
-
         owner: int
 
         account_to_initialize: Account
         mint_account: Account
         rent_sysvar: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramInitializeAccount2Instruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramSyncNativeInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_SYNC_NATIVE
 
         token_account: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramSyncNativeInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramInitializeAccount3Instruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_INITIALIZE_ACCOUNT_3
-
         owner: int
 
         account_to_initialize: Account
         mint_account: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramInitializeAccount3Instruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class Token2022ProgramInitializeImmutableOwnerInstruction(Instruction):
-        PROGRAM_ID = TOKEN_2022_PROGRAM_ID
-        INSTRUCTION_ID = TOKEN_2022_PROGRAM_ID_INS_INITIALIZE_IMMUTABLE_OWNER
 
         account_to_initialize: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["Token2022ProgramInitializeImmutableOwnerInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class AssociatedTokenAccountProgramCreateInstruction(Instruction):
-        PROGRAM_ID = ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID
-        INSTRUCTION_ID = ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID_INS_CREATE
 
         funding_account: Account
         associated_token_account: Account
@@ -1480,19 +732,8 @@ if TYPE_CHECKING:
         token_mint: Account
         system_program: Account
         spl_token: Account
-
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["AssociatedTokenAccountProgramCreateInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
 
     class AssociatedTokenAccountProgramCreateIdempotentInstruction(Instruction):
-        PROGRAM_ID = ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID
-        INSTRUCTION_ID = ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID_INS_CREATE_IDEMPOTENT
 
         funding_account: Account
         associated_token_account: Account
@@ -1501,18 +742,7 @@ if TYPE_CHECKING:
         system_program: Account
         spl_token: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["AssociatedTokenAccountProgramCreateIdempotentInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class AssociatedTokenAccountProgramRecoverNestedInstruction(Instruction):
-        PROGRAM_ID = ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID
-        INSTRUCTION_ID = ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID_INS_RECOVER_NESTED
 
         nested_account: Account
         token_mint_nested: Account
@@ -1522,44 +752,15 @@ if TYPE_CHECKING:
         wallet_address: Account
         spl_token: Account
 
-        @classmethod
-        def is_type_of(
-            cls, ins: Any
-        ) -> TypeGuard["AssociatedTokenAccountProgramRecoverNestedInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     class MemoProgramMemoInstruction(Instruction):
-        PROGRAM_ID = MEMO_PROGRAM_ID
-        INSTRUCTION_ID = MEMO_PROGRAM_ID_INS_MEMO
-
         memo: str
 
         signer_accounts: Account | None
-
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["MemoProgramMemoInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
 
     class MemoLegacyProgramMemoInstruction(Instruction):
-        PROGRAM_ID = MEMO_LEGACY_PROGRAM_ID
-        INSTRUCTION_ID = MEMO_LEGACY_PROGRAM_ID_INS_MEMO
-
         memo: str
 
         signer_accounts: Account | None
-
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["MemoLegacyProgramMemoInstruction"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
 
 
 def get_instruction_id_length(program_id: str) -> InstructionIdFormat:

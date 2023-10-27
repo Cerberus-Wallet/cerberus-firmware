@@ -50,7 +50,7 @@ from ..types import AccountTemplate, InstructionIdFormat, PropertyTemplate, UIPr
 from .instruction import Instruction
 
 if TYPE_CHECKING:
-    from typing import Any, Type, TypeGuard
+    from typing import Any, Type
     from ..types import Account
 
 % for program in programs["programs"]:
@@ -89,9 +89,6 @@ if TYPE_CHECKING:
     ## generates classes for instructions
     % for instruction in program["instructions"]:
     class ${getClassName(program, instruction)}(Instruction):
-        PROGRAM_ID = ${getProgramId(program)}
-        INSTRUCTION_ID = ${getInstructionIdText(program, instruction)}
-
         ## generates properties for instruction parameters
         % for parameter in instruction["parameters"]:
         ${parameter["name"]}: ${getPythonType(parameter["type"])}
@@ -101,14 +98,6 @@ if TYPE_CHECKING:
         % for reference in instruction["references"]:
         ${getReferenceName(reference)}: Account${getReferenceOptionalType(reference)}
         % endfor
-
-        @classmethod
-        def is_type_of(cls, ins: Any) -> TypeGuard["${getClassName(program, instruction)}"]:
-            return (
-                ins.program_id == cls.PROGRAM_ID
-                and ins.instruction_id == cls.INSTRUCTION_ID
-            )
-
     % endfor
 % endfor
 
