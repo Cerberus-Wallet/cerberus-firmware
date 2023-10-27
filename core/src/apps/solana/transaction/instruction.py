@@ -35,6 +35,36 @@ class Instruction:
 
     is_deprecated_warning: str | None = None
 
+    @staticmethod
+    def parse_instruction_data(instruction_data: bytes, property_templates: list[PropertyTemplate]):
+        reader = BufferReader(instruction_data)
+
+        parsed_data = {}
+        for property_template in property_templates:
+            property = parse_property(
+                reader, property_template.type, property_template.optional
+            )
+            
+            parsed_data[property_template.name] = property
+        
+        if reader.remaining_count() != 0:
+            raise ProcessError("Invalid transaction")
+        
+        return parsed_data
+    
+    @staticmethod
+    def parse_instruction_accounts(accounts: list[Account], accounts_template: list[AccountTemplate]):
+        parsed_account = {}
+        for i, account_template in enumerate(accounts_template):
+            if i >= len(accounts):
+                if account_template.optional:
+                    continue
+                else:
+                    raise ValueError(f"Account {account_template.name} is missing")
+
+            parsed_account[account_template.name] = accounts[i]
+        return parsed_account
+
     def __init__(
         self,
         instruction_data: bytes,
@@ -60,9 +90,6 @@ class Instruction:
 
         self.ui_properties = ui_properties
 
-        self.parsed_data = {}
-        self.parsed_accounts = {}
-
         self.is_program_supported = is_program_supported
         self.is_instruction_supported = is_instruction_supported
 
@@ -71,37 +98,13 @@ class Instruction:
         self.instruction_data = instruction_data
         self.accounts = accounts
 
-        reader = BufferReader(instruction_data)
-        
-        parsed_data = {}
-        for property_template in property_templates:
-            property = parse_property(
-                reader, property_template.type, property_template.optional
-            )
-            
-            parsed_data[property_template.name] = property
-        self.parsed_data = parsed_data
-
-        
-        parsed_account = {}
-        for i, account_template in enumerate(accounts_template):
-            if i >= len(accounts):
-                if account_template.optional:
-                    continue
-                else:
-                    raise ValueError(f"Account {account_template.name} is missing")
-
-            parsed_account[account_template.name] = accounts[i]
-        self.parsed_accounts = parsed_account
-
+        self.parsed_data = self.parse_instruction_data(instruction_data, property_templates)
+        self.parsed_accounts = self.parse_instruction_accounts(accounts, accounts_template)
 
         self.multisig_signers = accounts[len(accounts_template) :]
 
         if self.multisig_signers and not supports_multisig:
             raise ValueError("Multisig not supported")
-
-        if reader.remaining_count() != 0:
-            raise ProcessError("Invalid transaction")
 
     def __getattr__(self, attr: str) -> Any:
         assert self.parsed_data is not None
