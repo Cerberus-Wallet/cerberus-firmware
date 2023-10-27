@@ -4,6 +4,8 @@ from trezor.crypto import base58
 
 from apps.common.paths import address_n_to_str
 
+from trezor.ui.layouts import confirm_metadata, confirm_properties
+
 from ..constants import (
     ADDRESS_READ_ONLY,
     ADDRESS_RW,
@@ -51,7 +53,6 @@ async def show_confirm(
     signer_public_key: bytes,
 ) -> None:
     from trezor.enums import ButtonRequestType
-    from trezor.ui.layouts import confirm_metadata, confirm_properties
 
     instruction_title = (
         f"{instruction_index}/{instructions_count}: {instruction.ui_name}"
