@@ -78,12 +78,12 @@ async def show_confirm(
             await confirm_properties(
                 "confirm_instruction",
                 f"{instruction_index}/{instructions_count}: {instruction.ui_name}",
-                [
+                (
                     (
                         ui_property.display_name,
                         _format_property(value, _type),
-                    )
-                ],
+                    ),
+                ),
             )
         elif ui_property.account is not None:
             account_template = instruction.get_account_template(ui_property.account)
