@@ -96,152 +96,154 @@ MEMO_LEGACY_PROGRAM_ID_INS_MEMO = 0
 
 
 def __getattr__(name: str) -> Type[Instruction]:
-    if name == "SystemProgramCreateAccountInstruction":
-        id = ("11111111111111111111111111111111", 0)
-    elif name == "SystemProgramAssignInstruction":
-        id = ("11111111111111111111111111111111", 1)
-    elif name == "SystemProgramTransferInstruction":
-        id = ("11111111111111111111111111111111", 2)
-    elif name == "SystemProgramCreateAccountWithSeedInstruction":
-        id = ("11111111111111111111111111111111", 3)
-    elif name == "SystemProgramAdvancenonceaccountInstruction":
-        id = ("11111111111111111111111111111111", 4)
-    elif name == "SystemProgramWithdrawnonceaccountInstruction":
-        id = ("11111111111111111111111111111111", 5)
-    elif name == "SystemProgramInitializenonceaccountInstruction":
-        id = ("11111111111111111111111111111111", 6)
-    elif name == "SystemProgramAuthorizenonceaccountInstruction":
-        id = ("11111111111111111111111111111111", 7)
-    elif name == "SystemProgramAllocateInstruction":
-        id = ("11111111111111111111111111111111", 8)
-    elif name == "SystemProgramAllocateWithSeedInstruction":
-        id = ("11111111111111111111111111111111", 9)
-    elif name == "SystemProgramAssignWithSeedInstruction":
-        id = ("11111111111111111111111111111111", 10)
-    elif name == "SystemProgramTransferWithSeedInstruction":
-        id = ("11111111111111111111111111111111", 11)
-    elif name == "SystemProgramUpgradeNonceAccountInstruction":
-        id = ("11111111111111111111111111111111", 12)
-    elif name == "StakeProgramInitializeInstruction":
-        id = ("Stake11111111111111111111111111111111111111", 0)
-    elif name == "StakeProgramAuthorizeInstruction":
-        id = ("Stake11111111111111111111111111111111111111", 1)
-    elif name == "StakeProgramDelegateStakeInstruction":
-        id = ("Stake11111111111111111111111111111111111111", 2)
-    elif name == "StakeProgramSplitInstruction":
-        id = ("Stake11111111111111111111111111111111111111", 3)
-    elif name == "StakeProgramWithdrawInstruction":
-        id = ("Stake11111111111111111111111111111111111111", 4)
-    elif name == "StakeProgramDeactivateInstruction":
-        id = ("Stake11111111111111111111111111111111111111", 5)
-    elif name == "StakeProgramSetLockupInstruction":
-        id = ("Stake11111111111111111111111111111111111111", 6)
-    elif name == "StakeProgramMergeInstruction":
-        id = ("Stake11111111111111111111111111111111111111", 7)
-    elif name == "StakeProgramAuthorizeWithSeedInstruction":
-        id = ("Stake11111111111111111111111111111111111111", 8)
-    elif name == "StakeProgramInitializeCheckedInstruction":
-        id = ("Stake11111111111111111111111111111111111111", 9)
-    elif name == "StakeProgramAuthorizeCheckedInstruction":
-        id = ("Stake11111111111111111111111111111111111111", 10)
-    elif name == "StakeProgramAuthorizeCheckedWithSeedInstruction":
-        id = ("Stake11111111111111111111111111111111111111", 11)
-    elif name == "StakeProgramSetLockupCheckedInstruction":
-        id = ("Stake11111111111111111111111111111111111111", 12)
-    elif name == "ComputeBudgetProgramRequestHeapFrameInstruction":
-        id = ("ComputeBudget111111111111111111111111111111", 1)
-    elif name == "ComputeBudgetProgramSetComputeUnitLimitInstruction":
-        id = ("ComputeBudget111111111111111111111111111111", 2)
-    elif name == "ComputeBudgetProgramSetComputeUnitPriceInstruction":
-        id = ("ComputeBudget111111111111111111111111111111", 3)
-    elif name == "TokenProgramInitializeAccountInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 1)
-    elif name == "TokenProgramInitializeMultisigInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 2)
-    elif name == "TokenProgramTransferInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 3)
-    elif name == "TokenProgramApproveInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 4)
-    elif name == "TokenProgramRevokeInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 5)
-    elif name == "TokenProgramSetAuthorityInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 6)
-    elif name == "TokenProgramMinttoInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 7)
-    elif name == "TokenProgramBurnInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 8)
-    elif name == "TokenProgramCloseAccountInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 9)
-    elif name == "TokenProgramFreezeAccountInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 10)
-    elif name == "TokenProgramThawAccountInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 11)
-    elif name == "TokenProgramTransferCheckedInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 12)
-    elif name == "TokenProgramApproveCheckedInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 13)
-    elif name == "TokenProgramMinttoCheckedInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 14)
-    elif name == "TokenProgramBurnCheckedInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 15)
-    elif name == "TokenProgramInitializeAccount2Instruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 16)
-    elif name == "TokenProgramSyncNativeInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 17)
-    elif name == "TokenProgramInitializeAccount3Instruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 18)
-    elif name == "TokenProgramInitializeImmutableOwnerInstruction":
-        id = ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 22)
-    elif name == "Token2022ProgramInitializeAccountInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 1)
-    elif name == "Token2022ProgramInitializeMultisigInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 2)
-    elif name == "Token2022ProgramTransferInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 3)
-    elif name == "Token2022ProgramApproveInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 4)
-    elif name == "Token2022ProgramRevokeInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 5)
-    elif name == "Token2022ProgramSetAuthorityInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 6)
-    elif name == "Token2022ProgramMinttoInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 7)
-    elif name == "Token2022ProgramBurnInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 8)
-    elif name == "Token2022ProgramCloseAccountInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 9)
-    elif name == "Token2022ProgramFreezeAccountInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 10)
-    elif name == "Token2022ProgramThawAccountInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 11)
-    elif name == "Token2022ProgramTransferCheckedInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 12)
-    elif name == "Token2022ProgramApproveCheckedInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 13)
-    elif name == "Token2022ProgramMinttoCheckedInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 14)
-    elif name == "Token2022ProgramBurnCheckedInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 15)
-    elif name == "Token2022ProgramInitializeAccount2Instruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 16)
-    elif name == "Token2022ProgramSyncNativeInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 17)
-    elif name == "Token2022ProgramInitializeAccount3Instruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 18)
-    elif name == "Token2022ProgramInitializeImmutableOwnerInstruction":
-        id = ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 22)
-    elif name == "AssociatedTokenAccountProgramCreateInstruction":
-        id = ("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL", 0)
-    elif name == "AssociatedTokenAccountProgramCreateIdempotentInstruction":
-        id = ("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL", 1)
-    elif name == "AssociatedTokenAccountProgramRecoverNestedInstruction":
-        id = ("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL", 2)
-    elif name == "MemoProgramMemoInstruction":
-        id = ("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr", 0)
-    elif name == "MemoLegacyProgramMemoInstruction":
-        id = ("Memo1UhkJRfHyvLMcVucJwxXeuD728EqVDDwQDxFMNo", 0)
-    else:
+    def get_id(name: str) -> (str, int):
+        if name == "SystemProgramCreateAccountInstruction":
+            return ("11111111111111111111111111111111", 0)
+        if name == "SystemProgramAssignInstruction":
+            return ("11111111111111111111111111111111", 1)
+        if name == "SystemProgramTransferInstruction":
+            return ("11111111111111111111111111111111", 2)
+        if name == "SystemProgramCreateAccountWithSeedInstruction":
+            return ("11111111111111111111111111111111", 3)
+        if name == "SystemProgramAdvancenonceaccountInstruction":
+            return ("11111111111111111111111111111111", 4)
+        if name == "SystemProgramWithdrawnonceaccountInstruction":
+            return ("11111111111111111111111111111111", 5)
+        if name == "SystemProgramInitializenonceaccountInstruction":
+            return ("11111111111111111111111111111111", 6)
+        if name == "SystemProgramAuthorizenonceaccountInstruction":
+            return ("11111111111111111111111111111111", 7)
+        if name == "SystemProgramAllocateInstruction":
+            return ("11111111111111111111111111111111", 8)
+        if name == "SystemProgramAllocateWithSeedInstruction":
+            return ("11111111111111111111111111111111", 9)
+        if name == "SystemProgramAssignWithSeedInstruction":
+            return ("11111111111111111111111111111111", 10)
+        if name == "SystemProgramTransferWithSeedInstruction":
+            return ("11111111111111111111111111111111", 11)
+        if name == "SystemProgramUpgradeNonceAccountInstruction":
+            return ("11111111111111111111111111111111", 12)
+        if name == "StakeProgramInitializeInstruction":
+            return ("Stake11111111111111111111111111111111111111", 0)
+        if name == "StakeProgramAuthorizeInstruction":
+            return ("Stake11111111111111111111111111111111111111", 1)
+        if name == "StakeProgramDelegateStakeInstruction":
+            return ("Stake11111111111111111111111111111111111111", 2)
+        if name == "StakeProgramSplitInstruction":
+            return ("Stake11111111111111111111111111111111111111", 3)
+        if name == "StakeProgramWithdrawInstruction":
+            return ("Stake11111111111111111111111111111111111111", 4)
+        if name == "StakeProgramDeactivateInstruction":
+            return ("Stake11111111111111111111111111111111111111", 5)
+        if name == "StakeProgramSetLockupInstruction":
+            return ("Stake11111111111111111111111111111111111111", 6)
+        if name == "StakeProgramMergeInstruction":
+            return ("Stake11111111111111111111111111111111111111", 7)
+        if name == "StakeProgramAuthorizeWithSeedInstruction":
+            return ("Stake11111111111111111111111111111111111111", 8)
+        if name == "StakeProgramInitializeCheckedInstruction":
+            return ("Stake11111111111111111111111111111111111111", 9)
+        if name == "StakeProgramAuthorizeCheckedInstruction":
+            return ("Stake11111111111111111111111111111111111111", 10)
+        if name == "StakeProgramAuthorizeCheckedWithSeedInstruction":
+            return ("Stake11111111111111111111111111111111111111", 11)
+        if name == "StakeProgramSetLockupCheckedInstruction":
+            return ("Stake11111111111111111111111111111111111111", 12)
+        if name == "ComputeBudgetProgramRequestHeapFrameInstruction":
+            return ("ComputeBudget111111111111111111111111111111", 1)
+        if name == "ComputeBudgetProgramSetComputeUnitLimitInstruction":
+            return ("ComputeBudget111111111111111111111111111111", 2)
+        if name == "ComputeBudgetProgramSetComputeUnitPriceInstruction":
+            return ("ComputeBudget111111111111111111111111111111", 3)
+        if name == "TokenProgramInitializeAccountInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 1)
+        if name == "TokenProgramInitializeMultisigInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 2)
+        if name == "TokenProgramTransferInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 3)
+        if name == "TokenProgramApproveInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 4)
+        if name == "TokenProgramRevokeInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 5)
+        if name == "TokenProgramSetAuthorityInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 6)
+        if name == "TokenProgramMinttoInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 7)
+        if name == "TokenProgramBurnInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 8)
+        if name == "TokenProgramCloseAccountInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 9)
+        if name == "TokenProgramFreezeAccountInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 10)
+        if name == "TokenProgramThawAccountInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 11)
+        if name == "TokenProgramTransferCheckedInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 12)
+        if name == "TokenProgramApproveCheckedInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 13)
+        if name == "TokenProgramMinttoCheckedInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 14)
+        if name == "TokenProgramBurnCheckedInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 15)
+        if name == "TokenProgramInitializeAccount2Instruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 16)
+        if name == "TokenProgramSyncNativeInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 17)
+        if name == "TokenProgramInitializeAccount3Instruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 18)
+        if name == "TokenProgramInitializeImmutableOwnerInstruction":
+            return ("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA", 22)
+        if name == "Token2022ProgramInitializeAccountInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 1)
+        if name == "Token2022ProgramInitializeMultisigInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 2)
+        if name == "Token2022ProgramTransferInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 3)
+        if name == "Token2022ProgramApproveInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 4)
+        if name == "Token2022ProgramRevokeInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 5)
+        if name == "Token2022ProgramSetAuthorityInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 6)
+        if name == "Token2022ProgramMinttoInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 7)
+        if name == "Token2022ProgramBurnInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 8)
+        if name == "Token2022ProgramCloseAccountInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 9)
+        if name == "Token2022ProgramFreezeAccountInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 10)
+        if name == "Token2022ProgramThawAccountInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 11)
+        if name == "Token2022ProgramTransferCheckedInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 12)
+        if name == "Token2022ProgramApproveCheckedInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 13)
+        if name == "Token2022ProgramMinttoCheckedInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 14)
+        if name == "Token2022ProgramBurnCheckedInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 15)
+        if name == "Token2022ProgramInitializeAccount2Instruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 16)
+        if name == "Token2022ProgramSyncNativeInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 17)
+        if name == "Token2022ProgramInitializeAccount3Instruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 18)
+        if name == "Token2022ProgramInitializeImmutableOwnerInstruction":
+            return ("TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb", 22)
+        if name == "AssociatedTokenAccountProgramCreateInstruction":
+            return ("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL", 0)
+        if name == "AssociatedTokenAccountProgramCreateIdempotentInstruction":
+            return ("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL", 1)
+        if name == "AssociatedTokenAccountProgramRecoverNestedInstruction":
+            return ("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL", 2)
+        if name == "MemoProgramMemoInstruction":
+            return ("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr", 0)
+        if name == "MemoLegacyProgramMemoInstruction":
+            return ("Memo1UhkJRfHyvLMcVucJwxXeuD728EqVDDwQDxFMNo", 0)
         raise AttributeError(f"Unknown instruction: {name}")
+
+    id = get_id(name)
 
     class FakeClass(Instruction):
         @classmethod
