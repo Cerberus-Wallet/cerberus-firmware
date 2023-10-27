@@ -7,14 +7,10 @@ from mako.template import Template
 
 @click.command()
 @click.argument("template_path", type=str)
-@click.option("-p", "--programs-path", type=str, default=None)
+@click.option("-p", "--programs-file", type=click.File(mode="r"), default="-")
 @click.option("-o", "--out-file", type=click.File(mode="w"), default="-")
-def render(template_path, programs_path, out_file):
-    if programs_path is None:
-        programs_path = template_path
-
-    with open(f"{programs_path}/programs.json", "r") as file:
-        programs = load(file)
+def render(template_path, programs_file, out_file):
+    programs = load(programs_file)
 
     template = Template(filename=f"{template_path}/instructions.py.mako")
 
