@@ -53,11 +53,6 @@ async def show_confirm(
     from trezor.enums import ButtonRequestType
     from trezor.ui.layouts import confirm_metadata, confirm_properties
 
-    # assertions for pyright
-    assert instruction.parsed_data is not None
-    assert instruction.parsed_accounts is not None
-    assert instruction.ui_properties is not None
-
     instruction_title = (
         f"{instruction_index}/{instructions_count}: {instruction.ui_name}"
     )
@@ -142,8 +137,6 @@ async def show_confirm(
             br_code=ButtonRequestType.Other,
         )
 
-        assert instruction.multisig_signers is not None
-
         signers: list[tuple[str, str]] = []
         for i, multisig_signer in enumerate(instruction.multisig_signers, 1):
             multisig_signer_public_key = multisig_signer[0]
@@ -184,9 +177,6 @@ async def show_unsupported_instruction_details(
 ) -> None:
     from trezor.ui import NORMAL
     from trezor.ui.layouts import confirm_properties, should_show_more
-
-    assert instruction.instruction_data is not None
-    assert instruction.accounts is not None
 
     should_show_instruction_details = await should_show_more(
         title,

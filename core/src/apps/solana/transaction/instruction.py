@@ -23,15 +23,15 @@ class Instruction:
 
     ui_properties: list[UIProperty]
 
-    parsed_data: dict[str, Any] | None = None
-    parsed_accounts: dict[str, Account] | None = None
+    parsed_data: dict[str, Any]
+    parsed_accounts: dict[str, Account]
 
     is_program_supported: bool
     is_instruction_supported: bool
-    instruction_data: bytes | None = None
-    accounts: list[Account] | None = None
+    instruction_data: bytes
+    accounts: list[Account]
     
-    multisig_signers: list[Account] | None = None
+    multisig_signers: list[Account]
 
     is_deprecated_warning: str | None = None
 
@@ -107,9 +107,6 @@ class Instruction:
             raise ValueError("Multisig not supported")
 
     def __getattr__(self, attr: str) -> Any:
-        assert self.parsed_data is not None
-        assert self.parsed_accounts is not None
-
         if attr in self.parsed_data:
             return self.parsed_data[attr]
         if attr in self.parsed_accounts:
