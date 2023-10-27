@@ -8,7 +8,8 @@ from . import with_client
 if TYPE_CHECKING:
     from ..client import TrezorClient
 
-PATH_HELP = "BIP-32 path to key, e.g. m/44'/501'/0'"
+PATH_HELP = "BIP-32 path to key, e.g. m/44h/501h/0h/0h"
+DEFAULT_PATH = "m/44h/501h/0h/0h"
 
 
 @click.group(name="solana")
@@ -17,7 +18,7 @@ def cli() -> None:
 
 
 @cli.command()
-@click.option("-n", "--address", required=True, help=PATH_HELP)
+@click.option("-n", "--address", default=DEFAULT_PATH, help=PATH_HELP)
 @click.option("-d", "--show-display", is_flag=True)
 @with_client
 def get_public_key(
@@ -31,7 +32,7 @@ def get_public_key(
 
 
 @cli.command()
-@click.option("-n", "--address", required=True, help=PATH_HELP)
+@click.option("-n", "--address", default=DEFAULT_PATH, help=PATH_HELP)
 @click.option("-d", "--show-display", is_flag=True)
 @click.option("-C", "--chunkify", is_flag=True)
 @with_client
@@ -47,8 +48,8 @@ def get_address(
 
 
 @cli.command()
-@click.option("-n", "--address", required=True, help=PATH_HELP)
-@click.option("-t", "--serialized-tx", required=True)
+@click.argument("serialized_tx", type=str)
+@click.option("-n", "--address", default=DEFAULT_PATH, help=PATH_HELP)
 @with_client
 def sign_tx(
     client: "TrezorClient",
