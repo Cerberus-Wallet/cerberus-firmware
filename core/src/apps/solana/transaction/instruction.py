@@ -71,11 +71,10 @@ class Instruction:
 
         self.is_deprecated_warning = is_deprecated_warning
 
-        reader = BufferReader(instruction_data)
+        self.instruction_data = instruction_data
+        self.accounts = accounts
 
-        if not is_instruction_supported:
-            self.instruction_data = reader.read()
-            self.accounts = accounts
+        reader = BufferReader(instruction_data)
         
         parsed_data = {}
         for property_template in property_templates:
