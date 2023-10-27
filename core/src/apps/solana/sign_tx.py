@@ -27,8 +27,8 @@ async def sign_tx(
 
     from .ui import show_final_confirmation
 
-    address_n = msg.address_n
-    serialized_tx = msg.serialized_tx
+    address_n = msg.address_n  # local_cache_attribute
+    serialized_tx = msg.serialized_tx  # local_cache_attribute
 
     node = keychain.derive(address_n)
     signer_public_key = seed.remove_ed25519_prefix(node.public_key())
