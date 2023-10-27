@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from trezor.crypto import base58
 from trezor.wire import ProcessError
 
-from apps.common.readers import read_compact_size, read_uint32_le, read_uint64_le
+from apps.common.readers import read_uint32_le, read_uint64_le
 
 from ..constants import (
     ADDRESS_READ_ONLY,
@@ -48,6 +48,18 @@ def parse_header(serialized_tx: BufferReader) -> tuple[bool, int, int, int, int]
         num_read_only_addresses,
     )
 
+def parse_var_int(serialized_tx: BufferReader) -> int:
+    value = 0
+    shift = 0
+    while(serialized_tx.remaining_count()):
+        B = serialized_tx.get()
+        value += (B & 0b01111111) << shift
+        shift += 7
+        if B & 0b10000000 == 0:
+            return value
+        
+    raise BufferError
+
 
 def parse_addresses(
     serialized_tx: BufferReader,
@@ -55,7 +67,7 @@ def parse_addresses(
     num_signature_read_only_addresses: int,
     num_read_only_addresses: int,
 ) -> list[Address]:
-    num_of_addresses = read_compact_size(serialized_tx)
+    num_of_addresses = parse_var_int(serialized_tx)
 
     assert_cond(
         num_of_addresses
@@ -100,21 +112,21 @@ def parse_instructions(
     serialized_tx: BufferReader,
     # [program_index, instruction_id, accounts, instruction_data]
 ) -> list[RawInstruction]:
-    num_of_instructions = read_compact_size(serialized_tx)
+    num_of_instructions = parse_var_int(serialized_tx)
 
     instructions: list[RawInstruction] = []
 
     for _ in range(num_of_instructions):
         program_index = serialized_tx.get()
         program_id = base58.encode(addresses[program_index][0])
-        num_of_accounts = read_compact_size(serialized_tx)
+        num_of_accounts = parse_var_int(serialized_tx)
         accounts: list[int] = []
         for _ in range(num_of_accounts):
             assert_cond(serialized_tx.remaining_count() > 0)
             account_index = serialized_tx.get()
             accounts.append(account_index)
 
-        data_length = read_compact_size(serialized_tx)
+        data_length = parse_var_int(serialized_tx)
 
         instruction_id_format = get_instruction_id_format(program_id)
         instruction_id_length = instruction_id_format.length
@@ -205,16 +217,16 @@ def parse_address_lookup_tables(
     address_lookup_tables_rw_addresses = []
     address_lookup_tables_ro_addresses = []
 
-    address_lookup_tables_count = read_compact_size(serialized_tx)
+    address_lookup_tables_count = parse_var_int(serialized_tx)
     for _ in range(address_lookup_tables_count):
         account = parse_pubkey(serialized_tx)
 
-        table_rw_indexes_count = read_compact_size(serialized_tx)
+        table_rw_indexes_count = parse_var_int(serialized_tx)
         for _ in range(table_rw_indexes_count):
             index = serialized_tx.get()
             address_lookup_tables_rw_addresses.append((account, index, ADDRESS_RW))
 
-        table_ro_indexes_count = read_compact_size(serialized_tx)
+        table_ro_indexes_count = parse_var_int(serialized_tx)
         for _ in range(table_ro_indexes_count):
             index = serialized_tx.get()
             address_lookup_tables_ro_addresses.append(
