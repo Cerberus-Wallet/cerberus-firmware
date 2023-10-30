@@ -1,4 +1,4 @@
-# generated from __init__.py.mako
+# generated from instructions.py.mako
 # do not edit manually!
 from typing import TYPE_CHECKING
 

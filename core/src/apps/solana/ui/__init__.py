@@ -6,12 +6,8 @@ from apps.common.paths import address_n_to_str
 
 from trezor.ui.layouts import confirm_metadata, confirm_properties
 
-from ..constants import (
-    ADDRESS_READ_ONLY,
-    ADDRESS_RW,
-    ADDRESS_SIG,
-    ADDRESS_SIG_READ_ONLY,
-)
+from ..types import AddressType
+
 from ..transaction.instructions import Instruction
 
 
@@ -157,13 +153,13 @@ async def show_confirm(
 
 
 def get_address_type(address_type: int) -> str:
-    if address_type == ADDRESS_SIG:
+    if address_type == AddressType.AddressSig:
         return "(Writable, Signer)"
-    if address_type == ADDRESS_SIG_READ_ONLY:
+    if address_type == AddressType.AddressSigReadOnly:
         return "(Signer)"
-    if address_type == ADDRESS_READ_ONLY:
+    if address_type == AddressType.AddressReadOnly:
         return ""
-    if address_type == ADDRESS_RW:
+    if address_type == AddressType.AddressRw:
         return "(Writable)"
     raise ValueError(f"Invalid address type {address_type}")
 

@@ -102,8 +102,8 @@ async def show_instructions(
 
 
 def calculate_fee(transaction: Transaction) -> int:
+    from .types import AddressType
     from .constants import (
-        ADDRESS_SIG,
         SOLANA_BASE_FEE_LAMPORTS,
         SOLANA_COMPUTE_UNIT_LIMIT,
     )
@@ -115,7 +115,7 @@ def calculate_fee(transaction: Transaction) -> int:
 
     number_of_signers = 0
     for address in transaction.addresses:
-        if address[1] == ADDRESS_SIG:
+        if address[1] == AddressType.AddressSig:
             number_of_signers += 1
 
     base_fee = SOLANA_BASE_FEE_LAMPORTS * number_of_signers

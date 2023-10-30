@@ -5,12 +5,10 @@ from trezor.wire import DataError
 
 from apps.common.readers import read_uint32_le, read_uint64_le
 
+from ..types import AddressType
+
 from ..constants import (
-    ADDRESS_READ_ONLY,
-    ADDRESS_RW,
-    ADDRESS_SIG,
-    ADDRESS_SIG_READ_ONLY,
-    ADDRESS_SIZE,
+    ADDRESS_SIZE
 )
 
 if TYPE_CHECKING:
@@ -81,18 +79,18 @@ def parse_addresses(
         assert_cond(ADDRESS_SIZE <= serialized_tx.remaining_count())
 
         if i < num_required_signatures:
-            type = ADDRESS_SIG
+            type = AddressType.AddressSig
         elif i < num_required_signatures + num_signature_read_only_addresses:
-            type = ADDRESS_SIG_READ_ONLY
+            type = AddressType.AddressSigReadOnly
         elif (
             i
             < num_required_signatures
             + num_signature_read_only_addresses
             + num_read_only_addresses
         ):
-            type = ADDRESS_RW
+            type = AddressType.AddressRw
         else:
-            type = ADDRESS_READ_ONLY
+            type = AddressType.AddressReadOnly
 
         address = parse_pubkey(serialized_tx)
 
@@ -224,13 +222,13 @@ def parse_address_lookup_tables(
         table_rw_indexes_count = parse_var_int(serialized_tx)
         for _ in range(table_rw_indexes_count):
             index = serialized_tx.get()
-            address_lookup_tables_rw_addresses.append((account, index, ADDRESS_RW))
+            address_lookup_tables_rw_addresses.append((account, index, AddressType.AddressRw))
 
         table_ro_indexes_count = parse_var_int(serialized_tx)
         for _ in range(table_ro_indexes_count):
             index = serialized_tx.get()
             address_lookup_tables_ro_addresses.append(
-                (account, index, ADDRESS_READ_ONLY)
+                (account, index, AddressType.AddressReadOnly)
             )
 
     return address_lookup_tables_rw_addresses, address_lookup_tables_ro_addresses

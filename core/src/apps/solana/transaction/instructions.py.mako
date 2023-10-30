@@ -9,21 +9,6 @@
  | None\
 % endif
 </%def>\
-<%def name="getReferenceTypeTemplate(reference)">\
-% if reference["signer"]:
-    % if reference["access"] == "w":
-ADDRESS_SIG\
-    % else:
-ADDRESS_SIG_READ_ONLY\
-    % endif
-% else:
-    % if reference["access"] == "w":
-ADDRESS_RW\
-    % else:
-ADDRESS_READ_ONLY\
-    % endif
-% endif
-</%def>\
 <%def name="getReferenceOptionalTemplate(reference)">\
 % if reference["optional"]:
 , True\

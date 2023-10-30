@@ -1,6 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
+    from enum import Enum
     Address = tuple[bytes, int]
     AddressReference = tuple[bytes, int, int]
     Account = Address | AddressReference
@@ -10,6 +11,14 @@ if TYPE_CHECKING:
     AccountIndex = int
     Data = memoryview
     RawInstruction = tuple[ProgramIndex, InstructionId, list[AccountIndex], Data]
+else:
+    Enum = object
+
+class AddressType(Enum):
+    AddressSig = 0
+    AddressSigReadOnly = 1
+    AddressReadOnly = 2
+    AddressRw = 3
 
 
 class InstructionIdFormat:
