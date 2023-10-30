@@ -21,7 +21,6 @@ async def sign_tx(
     from trezor.enums import ButtonRequestType
     from trezor.messages import SolanaTxSignature
     from trezor.ui.layouts import confirm_metadata, show_warning
-    from trezor.utils import BufferReader
 
     from apps.common import seed
 
@@ -33,7 +32,7 @@ async def sign_tx(
     node = keychain.derive(address_n)
     signer_public_key = seed.remove_ed25519_prefix(node.public_key())
 
-    transaction: Transaction = Transaction(BufferReader(serialized_tx))
+    transaction: Transaction = Transaction(serialized_tx)
 
     if transaction.blind_signing:
         await show_warning(

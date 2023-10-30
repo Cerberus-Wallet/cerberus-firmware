@@ -34,7 +34,7 @@ class Transaction:
     address_lookup_tables_rw_addresses: list[AddressReference]
     address_lookup_tables_ro_addresses: list[AddressReference]
 
-    def __init__(self, serialized_tx: BufferReader) -> None:
+    def __init__(self, serialized_tx: bytes) -> None:
         self.instructions = []
         self.address_lookup_tables_rw_addresses = []
         self.address_lookup_tables_ro_addresses = []
@@ -42,36 +42,37 @@ class Transaction:
         self._create_instructions()
         self._determine_if_blind_signing()
 
-    def _parse_transaction(self, serialized_tx: BufferReader) -> None:
+    def _parse_transaction(self, serialized_tx: bytes) -> None:
+        serialized_tx_reader = BufferReader(serialized_tx)
         (
             self.version,
             num_required_signatures,
             num_signature_read_only_addresses,
             num_read_only_addresses,
-        ) = parse_header(serialized_tx)
+        ) = parse_header(serialized_tx_reader)
 
         self.required_signers_count = num_required_signatures
 
         self.addresses = parse_addresses(
-            serialized_tx,
+            serialized_tx_reader,
             num_required_signatures,
             num_signature_read_only_addresses,
             num_read_only_addresses,
         )
 
-        self.blockhash = parse_block_hash(serialized_tx)
+        self.blockhash = parse_block_hash(serialized_tx_reader)
 
         self.raw_instructions = parse_instructions(
-            self.addresses, get_instruction_id_length, serialized_tx
+            self.addresses, get_instruction_id_length, serialized_tx_reader
         )
 
         if self.version is not None:
             (
                 self.address_lookup_tables_rw_addresses,
                 self.address_lookup_tables_ro_addresses,
-            ) = parse_address_lookup_tables(serialized_tx)
+            ) = parse_address_lookup_tables(serialized_tx_reader)
 
-        if serialized_tx.remaining_count() != 0:
+        if serialized_tx_reader.remaining_count() != 0:
             raise DataError("Invalid transaction")
 
     def _get_combined_accounts(self) -> list[Account]:
