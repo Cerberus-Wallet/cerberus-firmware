@@ -5,7 +5,7 @@
   },
   "tests": [
     {
-      "description": "Create account",
+      "description": "Unknown instruction",
       "parameters": {
         "address": "m/44'/501'/0'/0'",
         "construct": {

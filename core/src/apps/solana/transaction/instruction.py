@@ -97,13 +97,19 @@ class Instruction:
         self.instruction_data = instruction_data
         self.accounts = accounts
 
-        self.parsed_data = self.parse_instruction_data(instruction_data, property_templates)
-        self.parsed_accounts = self.parse_instruction_accounts(accounts, accounts_template)
+        if self.is_instruction_supported:
+            self.parsed_data = self.parse_instruction_data(
+                instruction_data, property_templates
+            )
 
-        self.multisig_signers = accounts[len(accounts_template) :]
+            self.parsed_accounts = self.parse_instruction_accounts(
+                accounts, accounts_template
+            )
 
-        if self.multisig_signers and not supports_multisig:
-            raise ValueError("Multisig not supported")
+            self.multisig_signers = accounts[len(accounts_template) :]
+
+            if self.multisig_signers and not supports_multisig:
+                raise ValueError("Multisig not supported")
 
     def __getattr__(self, attr: str) -> Any:
         if attr in self.parsed_data:
