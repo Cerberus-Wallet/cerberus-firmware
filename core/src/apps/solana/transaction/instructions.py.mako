@@ -17,7 +17,7 @@
 % endif
 </%def>\
 <%def name="getPythonType(type)">\
-% if type in ("u32", "u64", "i32", "i64", "timestamp", "lamports"):
+% if type in ("u32", "u64", "i32", "i64", "timestamp", "lamports", "token_amount"):
 int\
 % elif type in ("pubKey", "authority"):
 Account\

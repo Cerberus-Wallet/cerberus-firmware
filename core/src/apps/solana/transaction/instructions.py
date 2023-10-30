@@ -2625,7 +2625,7 @@ def get_instruction(
                 "Token Program: Initialize Multisig",
                 True,
                 True,
-                False,
+                True,
                 None,
             )
         if instruction_id == TOKEN_PROGRAM_ID_INS_TRANSFER:
@@ -3106,7 +3106,7 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
+                        "token_amount",
                         False,
                     ),
                     PropertyTemplate(
@@ -3139,9 +3139,15 @@ def get_instruction(
                 ],
                 [
                     UIProperty(
+                        None,
+                        "token_mint",
+                        "Transfer token",
+                        False,
+                    ),
+                    UIProperty(
                         "amount",
                         None,
-                        "Transfer tokens",
+                        "Transfer amount",
                         False,
                     ),
                     UIProperty(
@@ -3217,6 +3223,12 @@ def get_instruction(
                         False,
                     ),
                     UIProperty(
+                        None,
+                        "token_mint",
+                        "Approve token",
+                        False,
+                    ),
+                    UIProperty(
                         "amount",
                         None,
                         "Allowance",
@@ -3278,9 +3290,15 @@ def get_instruction(
                 ],
                 [
                     UIProperty(
+                        None,
+                        "mint",
+                        "Mint token",
+                        False,
+                    ),
+                    UIProperty(
                         "amount",
                         None,
-                        "Mint tokens",
+                        "Mint amount",
                         False,
                     ),
                     UIProperty(
@@ -3339,9 +3357,15 @@ def get_instruction(
                 ],
                 [
                     UIProperty(
+                        None,
+                        "token_mint",
+                        "Burn token",
+                        False,
+                    ),
+                    UIProperty(
                         "amount",
                         None,
-                        "Burn tokens",
+                        "Burn amount",
                         False,
                     ),
                     UIProperty(
@@ -3654,7 +3678,7 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
+                        "token_amount",
                         False,
                     ),
                 ],
@@ -4195,7 +4219,7 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
+                        "token_amount",
                         False,
                     ),
                     PropertyTemplate(
@@ -4267,7 +4291,7 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
+                        "token_amount",
                         False,
                     ),
                     PropertyTemplate(
@@ -4328,7 +4352,7 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
+                        "token_amount",
                         False,
                     ),
                     PropertyTemplate(

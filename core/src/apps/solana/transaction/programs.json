@@ -1396,7 +1396,7 @@
         {
           "id": 2,
           "name": "Initialize Multisig",
-          "is_multisig": false,
+          "is_multisig": true,
           "parameters": [
             {
               "name": "number_of_signers",
@@ -1797,7 +1797,7 @@
           "parameters": [
             {
               "name": "amount",
-              "type": "u64",
+              "type": "token_amount",
               "optional": false
             },
             {
@@ -1830,8 +1830,12 @@
           ],
           "ui_properties": [
             {
+              "account": "token_mint",
+              "display_name": "Transfer token"
+            },
+            {
               "parameter": "amount",
-              "display_name": "Transfer tokens"
+              "display_name": "Transfer amount"
             },
             {
               "account": "source_account",
@@ -1891,6 +1895,10 @@
               "display_name": "Approve delegate"
             },
             {
+              "account": "token_mint",
+              "display_name": "Approve token"
+            },
+            {
               "parameter": "amount",
               "display_name": "Allowance"
             },
@@ -1939,8 +1947,12 @@
           ],
           "ui_properties": [
             {
+              "account": "mint",
+              "display_name": "Mint token"
+            },
+            {
               "parameter": "amount",
-              "display_name": "Mint tokens"
+              "display_name": "Mint amount"
             },
             {
               "account": "account_to_mint",
@@ -1987,8 +1999,12 @@
           ],
           "ui_properties": [
             {
+              "account": "token_mint",
+              "display_name": "Burn token"
+            },
+            {
               "parameter": "amount",
-              "display_name": "Burn tokens"
+              "display_name": "Burn amount"
             },
             {
               "account": "account_to_burn_from",
@@ -2218,7 +2234,7 @@
           "parameters": [
             {
               "name": "amount",
-              "type": "u64",
+              "type": "token_amount",
               "optional": false
             }
           ],
@@ -2632,7 +2648,7 @@
           "parameters": [
             {
               "name": "amount",
-              "type": "u64",
+              "type": "token_amount",
               "optional": false
             },
             {
@@ -2689,7 +2705,7 @@
           "parameters": [
             {
               "name": "amount",
-              "type": "u64",
+              "type": "token_amount",
               "optional": false
             },
             {
@@ -2737,7 +2753,7 @@
           "parameters": [
             {
               "name": "amount",
-              "type": "u64",
+              "type": "token_amount",
               "optional": false
             },
             {

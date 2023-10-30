@@ -186,7 +186,7 @@ def parse_property(
         return read_uint64_le(reader)
     elif type == "i32":
         return read_uint32_le(reader)
-    elif type in ("i64", "unix_timestamp", "lamports"):
+    elif type in ("i64", "unix_timestamp", "lamports", "token_amount"):
         return read_uint64_le(reader)
     elif type in ("pubkey", "authority"):
         if is_optional:

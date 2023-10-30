@@ -645,6 +645,7 @@ TokenProgram_InitializeMultisig_Instruction = Struct(
         "multisig_account" / Byte,
         "rent_sysvar" / Byte,
         "signer_accounts" / Byte,
+        "multisig_signers" / Optional(GreedyRange(Byte)),
     ),
     "data"
     / CompactStruct(

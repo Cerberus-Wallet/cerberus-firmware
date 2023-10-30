@@ -11,7 +11,9 @@ from ..types import AddressType
 from ..transaction.instructions import Instruction
 
 
-def _format_property(value: str | int | bytes, type: str) -> str | bytes:
+def _format_property(
+    instruction: Instruction, value: str | int | bytes, type: str
+) -> str | bytes:
     from trezor.strings import format_amount
 
     if type in ("pubkey", "authority"):
@@ -19,6 +21,10 @@ def _format_property(value: str | int | bytes, type: str) -> str | bytes:
     elif type == "lamports":
         formatted = format_amount(value, decimals=9)
         return f"{formatted} SOL"
+    elif type == "token_amount":
+        decimals = instruction.decimals if instruction.decimals is not None else 0
+        formatted = format_amount(value, decimals=decimals)
+        return f"{formatted}"
     elif type == "unix_timestamp":
         from trezor.strings import format_timestamp
 
@@ -77,7 +83,7 @@ async def show_confirm(
                 (
                     (
                         ui_property.display_name,
-                        _format_property(value, _type),
+                        _format_property(instruction, value, _type),
                     ),
                 ),
             )
