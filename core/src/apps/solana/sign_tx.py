@@ -4,6 +4,7 @@ from apps.common.keychain import with_slip44_keychain
 
 from . import CURVE, PATTERNS, SLIP44_ID
 from .transaction import Transaction
+from trezor.wire import DataError
 
 if TYPE_CHECKING:
     from trezor.messages import SolanaSignTx, SolanaTxSignature
@@ -32,7 +33,11 @@ async def sign_tx(
     node = keychain.derive(address_n)
     signer_public_key = seed.remove_ed25519_prefix(node.public_key())
 
-    transaction: Transaction = Transaction(serialized_tx)
+    try:
+        transaction: Transaction = Transaction(serialized_tx)
+    except:
+        raise DataError # Invalid transaction
+
 
     if transaction.blind_signing:
         await show_warning(

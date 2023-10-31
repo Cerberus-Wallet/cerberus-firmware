@@ -8,11 +8,6 @@ if TYPE_CHECKING:
     from trezor.utils import BufferReader
 
 
-def assert_cond(condition: bool, message: str = "") -> None:
-    if not condition:
-        raise DataError(message)
-
-
 def parse_var_int(serialized_tx: BufferReader) -> int:
     value = 0
     shift = 0
@@ -22,29 +17,23 @@ def parse_var_int(serialized_tx: BufferReader) -> int:
         shift += 7
         if B & 0b10000000 == 0:
             return value
-        
-    raise BufferError
-
+    
 
 def parse_block_hash(serialized_tx: BufferReader) -> bytes:
-    assert_cond(serialized_tx.remaining_count() >= 32)
     return bytes(serialized_tx.read_memoryview(32))
 
 
 def parse_pubkey(serialized_tx: BufferReader) -> bytes:
-    assert_cond(serialized_tx.remaining_count() >= 32)
     return bytes(serialized_tx.read_memoryview(32))
 
 
 def parse_enum(serialized_tx: BufferReader) -> int:
-    assert_cond(serialized_tx.remaining_count() >= 1)
     return serialized_tx.get()
 
 
 def parse_string(serialized_tx: BufferReader) -> str:
     # TODO SOL: validation shall be checked (length is less than 2^32 or even less)
     length = read_uint64_le(serialized_tx)
-    assert_cond(serialized_tx.remaining_count() >= length)
     return bytes(serialized_tx.read_memoryview(length)).decode("utf-8")
 
 

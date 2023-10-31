@@ -54,7 +54,7 @@ class Transaction:
             self._parse_address_lookup_tables(serialized_tx_reader)
 
         if serialized_tx_reader.remaining_count() != 0:
-            raise DataError("Invalid transaction")
+            raise DataError # Invalid transaction
     
     def _parse_header(self, serialized_tx_reader: BufferReader) -> None:
 
@@ -126,7 +126,7 @@ class Transaction:
             # data (otherwise parsing would be impossible).
             if data_length < instruction_id_length:
                 if instruction_id_format.is_included_if_zero:
-                    raise ValueError("Invalid instruction data")
+                    raise DataError # Invalid instruction data
 
                 instruction_id = 0
                 instruction_id_length = 0
