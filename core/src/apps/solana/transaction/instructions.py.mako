@@ -56,7 +56,7 @@ def __getattr__(name: str) -> Type[Instruction]:
             return ("${program["id"]}", ${instruction["id"]})
         %endfor
     %endfor
-        raise AttributeError(f"Unknown instruction: {name}")
+        raise AttributeError # Unknown instruction
     
     id = get_id(name)
 
@@ -193,7 +193,7 @@ class ${param["name"]}:
         if value == ${variant["value"]}:
             return "${variant["name"]}"
         % endfor
-        raise DataError(f"Unknown value: {value}")
+        raise DataError # Unknown value
     % endif
 % endfor
 
@@ -205,4 +205,4 @@ def enum_type_to_class(enum_type: str):
         return ${param["name"]}
     % endif
 % endfor
-    raise DataError(f"Unknown enum type: {enum_type}")
+    raise DataError # Unknown enum type

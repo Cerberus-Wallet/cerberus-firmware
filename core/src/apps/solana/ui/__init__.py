@@ -121,7 +121,7 @@ async def show_confirm(
                 )
                 account_data.append(("Account index:", f"{account_value[1]}"))
             else:
-                raise ValueError("Invalid account value")
+                raise ValueError # Invalid account value
 
             await confirm_properties(
                 "confirm_instruction",
@@ -129,7 +129,7 @@ async def show_confirm(
                 account_data,
             )
         else:
-            raise ValueError("Invalid ui property")
+            raise ValueError # Invalid ui property
 
     if instruction.multisig_signers:
         await confirm_metadata(
@@ -167,7 +167,7 @@ def get_address_type(address_type: int) -> str:
         return ""
     if address_type == AddressType.AddressRw:
         return "(Writable)"
-    raise ValueError(f"Invalid address type {address_type}")
+    raise ValueError # Invalid address type
 
 
 async def show_unsupported_instruction_details(

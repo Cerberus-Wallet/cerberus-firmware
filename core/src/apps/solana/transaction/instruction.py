@@ -47,7 +47,7 @@ class Instruction:
             parsed_data[property_template.name] = property
         
         if reader.remaining_count() != 0:
-            raise DataError("Invalid transaction")
+            raise DataError # Invalid transaction data
         
         return parsed_data
     
@@ -59,7 +59,7 @@ class Instruction:
                 if account_template.optional:
                     continue
                 else:
-                    raise ValueError(f"Account {account_template.name} is missing")
+                    raise ValueError #"Account is missing
 
             parsed_account[account_template.name] = accounts[i]
         return parsed_account
@@ -109,7 +109,7 @@ class Instruction:
             self.multisig_signers = accounts[len(accounts_template) :]
 
             if self.multisig_signers and not supports_multisig:
-                raise ValueError("Multisig not supported")
+                raise ValueError # Multisig not supported
 
     def __getattr__(self, attr: str) -> Any:
         if attr in self.parsed_data:
@@ -117,21 +117,21 @@ class Instruction:
         if attr in self.parsed_accounts:
             return self.parsed_accounts[attr]
 
-        raise AttributeError(f"Attribute {attr} not found")
+        raise AttributeError # Attribute not found
 
     def get_property_template(self, property: str) -> PropertyTemplate:
         for property_template in self.property_templates:
             if property_template.name == property:
                 return property_template
 
-        raise ValueError(f"Property {property} not found")
+        raise ValueError # Property not found
 
     def get_account_template(self, account_name: str) -> AccountTemplate:
         for account_template in self.accounts_template:
             if account_template.name == account_name:
                 return account_template
 
-        raise ValueError(f"Account {account_name} not found")
+        raise ValueError # Account not found
 
     @classmethod
     def is_type_of(cls, ins: Any) -> TypeGuard[Self]:

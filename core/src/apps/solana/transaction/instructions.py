@@ -241,7 +241,7 @@ def __getattr__(name: str) -> Type[Instruction]:
             return ("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr", 0)
         if name == "MemoLegacyProgramMemoInstruction":
             return ("Memo1UhkJRfHyvLMcVucJwxXeuD728EqVDDwQDxFMNo", 0)
-        raise AttributeError(f"Unknown instruction: {name}")
+        raise AttributeError  # Unknown instruction
 
     id = get_id(name)
 
@@ -4940,7 +4940,7 @@ class StakeAuthorize:
             return "Stake"
         if value == 1:
             return "Withdraw"
-        raise DataError(f"Unknown value: {value}")
+        raise DataError  # Unknown value
 
 
 class AuthorityType:
@@ -4958,7 +4958,7 @@ class AuthorityType:
             return "Account owner"
         if value == 3:
             return "Close account"
-        raise DataError(f"Unknown value: {value}")
+        raise DataError  # Unknown value
 
 
 def enum_type_to_class(enum_type: str):
@@ -4966,4 +4966,4 @@ def enum_type_to_class(enum_type: str):
         return StakeAuthorize
     if enum_type == "AuthorityType":
         return AuthorityType
-    raise DataError(f"Unknown enum type: {enum_type}")
+    raise DataError  # Unknown enum type
