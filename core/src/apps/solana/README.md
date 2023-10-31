@@ -119,7 +119,7 @@ Each instruction carries a general purpose byte array that is passed to the prog
 
 Messages transmitted to Solana validators must not exceed the IPv6 MTU size to ensure fast and reliable network transmission of cluster info over UDP. Solana's networking stack uses a conservative MTU size of 1280 bytes which, after accounting for headers, leaves 1232 bytes for packet data like serialized transactions. Since each transaction must list all accounts the current cap is about 35 accounts after accounting for signatures and other transaction metadata. To resolve this problem a new transaction format is introduced to make use of on-chain address lookup tables to efficiently load more accounts in a single transaction.
 
-The new transaction format must be distinguished from the legacy transaction format. Legacy transactions can fit at most 19 signatures (64-bytes each) but the message header encodes num_required_signatures as a u8. Since the upper bit of the u8 will never be set for a valid transaction, we can enable it to denote whether a transaction should be decoded with the versioned format or not.
+The new transaction format must be distinguished from the legacy transaction format. Legacy transactions can fit at most 19 signatures (64-bytes each) but the message header encodes required_signers_count as a u8. Since the upper bit of the u8 will never be set for a valid transaction, we can enable it to denote whether a transaction should be decoded with the versioned format or not.
 
 ```
 +-------------------------------------------------------------------------------+
