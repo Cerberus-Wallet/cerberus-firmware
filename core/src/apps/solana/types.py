@@ -2,6 +2,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from enum import Enum
+
     Address = tuple[bytes, int]
     AddressReference = tuple[bytes, int, int]
     Account = Address | AddressReference
@@ -13,6 +14,7 @@ if TYPE_CHECKING:
     RawInstruction = tuple[ProgramIndex, InstructionId, list[AccountIndex], Data]
 else:
     Enum = object
+
 
 class AddressType(Enum):
     AddressSig = 0

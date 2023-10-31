@@ -7,14 +7,11 @@ from trezor.wire import DataError
 from ..types import AddressType
 from .instruction import Instruction
 from .instructions import get_instruction, get_instruction_id_length
-from .parse import (
-    parse_block_hash,
-    parse_var_int,
-    parse_pubkey
-)
+from .parse import parse_block_hash, parse_pubkey, parse_var_int
 
 if TYPE_CHECKING:
     from ..types import Account, Address, AddressReference, RawInstruction
+
 
 class Transaction:
     blind_signing = False
@@ -54,8 +51,8 @@ class Transaction:
             self._parse_address_lookup_tables(serialized_tx_reader)
 
         if serialized_tx_reader.remaining_count() != 0:
-            raise DataError # Invalid transaction
-    
+            raise DataError("Invalid transaction")
+
     def _parse_header(self, serialized_tx_reader: BufferReader) -> None:
 
         self.version: int | None = None
@@ -64,16 +61,16 @@ class Transaction:
             self.version = serialized_tx_reader.get() & 0b01111111
             # only version 0 is supported
             # less or equal is used in order to support future versions
-            raise DataError # Unsupported transaction version
+            raise DataError("Unsupported transaction version")
 
         self.required_signers_count: int = serialized_tx_reader.get()
         self.num_signature_read_only_addresses: int = serialized_tx_reader.get()
         self.num_read_only_addresses: int = serialized_tx_reader.get()
-    
+
     def _parse_addresses(self, serialized_tx_reader: BufferReader) -> None:
         num_of_addresses = parse_var_int(serialized_tx_reader)
 
-        assert(
+        assert (
             num_of_addresses
             >= self.required_signers_count
             + self.num_signature_read_only_addresses
@@ -84,7 +81,9 @@ class Transaction:
         for i in range(num_of_addresses):
             if i < self.required_signers_count:
                 type = AddressType.AddressSig
-            elif i < self.required_signers_count + self.num_signature_read_only_addresses:
+            elif (
+                i < self.required_signers_count + self.num_signature_read_only_addresses
+            ):
                 type = AddressType.AddressSigReadOnly
             elif (
                 i
@@ -99,9 +98,9 @@ class Transaction:
             address = parse_pubkey(serialized_tx_reader)
 
             addresses.append((address, type))
-        
+
         self.addresses = addresses
-    
+
     def _parse_instructions(self, serialized_tx_reader: BufferReader) -> None:
         num_of_instructions = parse_var_int(serialized_tx_reader)
 
@@ -126,23 +125,26 @@ class Transaction:
             # data (otherwise parsing would be impossible).
             if data_length < instruction_id_length:
                 if instruction_id_format.is_included_if_zero:
-                    raise DataError # Invalid instruction data
+                    raise DataError("Invalid instruction data")
 
                 instruction_id = 0
                 instruction_id_length = 0
             else:
                 instruction_id = int.from_bytes(
-                    serialized_tx_reader.read_memoryview(instruction_id_length), "little"
+                    serialized_tx_reader.read_memoryview(instruction_id_length),
+                    "little",
                 )
 
             instruction_data = serialized_tx_reader.read_memoryview(
                 data_length - instruction_id_length
             )
 
-            instructions.append((program_index, instruction_id, accounts, instruction_data))
+            instructions.append(
+                (program_index, instruction_id, accounts, instruction_data)
+            )
 
         self.raw_instructions = instructions
-    
+
     def _parse_address_lookup_tables(self, serialized_tx: BufferReader) -> None:
         self.address_lookup_tables_rw_addresses = []
         self.address_lookup_tables_ro_addresses = []
@@ -154,7 +156,9 @@ class Transaction:
             table_rw_indexes_count = parse_var_int(serialized_tx)
             for _ in range(table_rw_indexes_count):
                 index = serialized_tx.get()
-                self.address_lookup_tables_rw_addresses.append((account, index, AddressType.AddressRw))
+                self.address_lookup_tables_rw_addresses.append(
+                    (account, index, AddressType.AddressRw)
+                )
 
             table_ro_indexes_count = parse_var_int(serialized_tx)
             for _ in range(table_ro_indexes_count):

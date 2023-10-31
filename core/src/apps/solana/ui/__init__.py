@@ -1,14 +1,12 @@
 from typing import Any
 
 from trezor.crypto import base58
+from trezor.ui.layouts import confirm_metadata, confirm_properties
 
 from apps.common.paths import address_n_to_str
 
-from trezor.ui.layouts import confirm_metadata, confirm_properties
-
-from ..types import AddressType
-
 from ..transaction.instructions import Instruction
+from ..types import AddressType
 
 
 def _format_property(
@@ -19,16 +17,16 @@ def _format_property(
     if type in ("pubkey", "authority"):
         return base58.encode(value)
     elif type == "lamports":
-        formatted = format_amount(value, decimals=9)
+        formatted = format_amount(int(value), decimals=9)
         return f"{formatted} SOL"
     elif type == "token_amount":
         decimals = instruction.decimals if instruction.decimals is not None else 0
-        formatted = format_amount(value, decimals=decimals)
+        formatted = format_amount(int(value), decimals=decimals)
         return f"{formatted}"
     elif type == "unix_timestamp":
         from trezor.strings import format_timestamp
 
-        return format_timestamp(value)
+        return format_timestamp(int(value))
     elif isinstance(value, int):
         return str(value)
 
@@ -36,8 +34,9 @@ def _format_property(
 
 
 def _format_path(path: list[int]) -> str:
-    from apps.common.paths import HARDENED, unharden
     from micropython import const
+
+    from apps.common.paths import HARDENED, unharden
 
     if len(path) < 4:
         return address_n_to_str(path)
@@ -121,7 +120,7 @@ async def show_confirm(
                 )
                 account_data.append(("Account index:", f"{account_value[1]}"))
             else:
-                raise ValueError # Invalid account value
+                raise ValueError  # Invalid account value
 
             await confirm_properties(
                 "confirm_instruction",
@@ -129,7 +128,7 @@ async def show_confirm(
                 account_data,
             )
         else:
-            raise ValueError # Invalid ui property
+            raise ValueError  # Invalid ui property
 
     if instruction.multisig_signers:
         await confirm_metadata(
@@ -167,7 +166,7 @@ def get_address_type(address_type: int) -> str:
         return ""
     if address_type == AddressType.AddressRw:
         return "(Writable)"
-    raise ValueError # Invalid address type
+    raise ValueError  # Invalid address type
 
 
 async def show_unsupported_instruction_details(

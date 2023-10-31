@@ -11,13 +11,14 @@ if TYPE_CHECKING:
 def parse_var_int(serialized_tx: BufferReader) -> int:
     value = 0
     shift = 0
-    while(serialized_tx.remaining_count()):
+    while serialized_tx.remaining_count():
         B = serialized_tx.get()
         value += (B & 0b01111111) << shift
         shift += 7
         if B & 0b10000000 == 0:
             return value
-    
+    return value
+
 
 def parse_block_hash(serialized_tx: BufferReader) -> bytes:
     return bytes(serialized_tx.read_memoryview(32))
@@ -45,7 +46,7 @@ def parse_memo(serialized_tx: BufferReader) -> str:
 
 def parse_property(
     reader: BufferReader, type: str, is_optional: bool = False
-) -> str | int | bytes:
+) -> str | int | bytes | None:
     if type == "u8":
         return reader.get()
     elif type == "u32":

@@ -96,7 +96,7 @@ MEMO_LEGACY_PROGRAM_ID_INS_MEMO = 0
 
 
 def __getattr__(name: str) -> Type[Instruction]:
-    def get_id(name: str) -> (str, int):
+    def get_id(name: str) -> tuple[str, int]:
         if name == "SystemProgramCreateAccountInstruction":
             return ("11111111111111111111111111111111", 0)
         if name == "SystemProgramAssignInstruction":
@@ -4940,7 +4940,7 @@ class StakeAuthorize:
             return "Stake"
         if value == 1:
             return "Withdraw"
-        raise DataError  # Unknown value
+        raise DataError("Unknown value")
 
 
 class AuthorityType:
@@ -4958,7 +4958,7 @@ class AuthorityType:
             return "Account owner"
         if value == 3:
             return "Close account"
-        raise DataError  # Unknown value
+        raise DataError("Unknown value")
 
 
 def enum_type_to_class(enum_type: str):
@@ -4966,4 +4966,4 @@ def enum_type_to_class(enum_type: str):
         return StakeAuthorize
     if enum_type == "AuthorityType":
         return AuthorityType
-    raise DataError  # Unknown enum type
+    raise DataError("Unknown enum type")

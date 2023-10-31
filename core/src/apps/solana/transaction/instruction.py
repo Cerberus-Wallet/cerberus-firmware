@@ -2,6 +2,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import Any, TypeGuard
+
     from typing_extensions import Self
 
     from ..types import Account, AccountTemplate, PropertyTemplate, UIProperty
@@ -25,15 +26,18 @@ class Instruction:
     is_instruction_supported: bool
     instruction_data: bytes
     accounts: list[Account]
-    
+
     multisig_signers: list[Account]
 
     is_deprecated_warning: str | None = None
 
     @staticmethod
-    def parse_instruction_data(instruction_data: bytes, property_templates: list[PropertyTemplate]):
+    def parse_instruction_data(
+        instruction_data: bytes, property_templates: list[PropertyTemplate]
+    ):
         from trezor.utils import BufferReader
         from trezor.wire import DataError
+
         from .parse import parse_property
 
         reader = BufferReader(instruction_data)
@@ -43,23 +47,25 @@ class Instruction:
             property = parse_property(
                 reader, property_template.type, property_template.optional
             )
-            
+
             parsed_data[property_template.name] = property
-        
+
         if reader.remaining_count() != 0:
-            raise DataError # Invalid transaction data
-        
+            raise DataError("Invalid transaction data")
+
         return parsed_data
-    
+
     @staticmethod
-    def parse_instruction_accounts(accounts: list[Account], accounts_template: list[AccountTemplate]):
+    def parse_instruction_accounts(
+        accounts: list[Account], accounts_template: list[AccountTemplate]
+    ):
         parsed_account = {}
         for i, account_template in enumerate(accounts_template):
             if i >= len(accounts):
                 if account_template.optional:
                     continue
                 else:
-                    raise ValueError #"Account is missing
+                    raise ValueError  # "Account is missing
 
             parsed_account[account_template.name] = accounts[i]
         return parsed_account
@@ -109,7 +115,7 @@ class Instruction:
             self.multisig_signers = accounts[len(accounts_template) :]
 
             if self.multisig_signers and not supports_multisig:
-                raise ValueError # Multisig not supported
+                raise ValueError  # Multisig not supported
 
     def __getattr__(self, attr: str) -> Any:
         if attr in self.parsed_data:
@@ -117,21 +123,21 @@ class Instruction:
         if attr in self.parsed_accounts:
             return self.parsed_accounts[attr]
 
-        raise AttributeError # Attribute not found
+        raise AttributeError  # Attribute not found
 
     def get_property_template(self, property: str) -> PropertyTemplate:
         for property_template in self.property_templates:
             if property_template.name == property:
                 return property_template
 
-        raise ValueError # Property not found
+        raise ValueError  # Property not found
 
     def get_account_template(self, account_name: str) -> AccountTemplate:
         for account_template in self.accounts_template:
             if account_template.name == account_name:
                 return account_template
 
-        raise ValueError # Account not found
+        raise ValueError  # Account not found
 
     @classmethod
     def is_type_of(cls, ins: Any) -> TypeGuard[Self]:

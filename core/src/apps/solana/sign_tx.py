@@ -1,10 +1,11 @@
 from typing import TYPE_CHECKING
 
+from trezor.wire import DataError
+
 from apps.common.keychain import with_slip44_keychain
 
 from . import CURVE, PATTERNS, SLIP44_ID
 from .transaction import Transaction
-from trezor.wire import DataError
 
 if TYPE_CHECKING:
     from trezor.messages import SolanaSignTx, SolanaTxSignature
@@ -36,8 +37,7 @@ async def sign_tx(
     try:
         transaction: Transaction = Transaction(serialized_tx)
     except:
-        raise DataError # Invalid transaction
-
+        raise DataError("Invalid transaction")
 
     if transaction.blind_signing:
         await show_warning(
@@ -106,16 +106,13 @@ async def show_instructions(
 
 
 def calculate_fee(transaction: Transaction) -> int:
-    from .types import AddressType
-    from .constants import (
-        SOLANA_BASE_FEE_LAMPORTS,
-        SOLANA_COMPUTE_UNIT_LIMIT,
-    )
+    from .constants import SOLANA_BASE_FEE_LAMPORTS, SOLANA_COMPUTE_UNIT_LIMIT
     from .transaction.instructions import (
         COMPUTE_BUDGET_PROGRAM_ID,
         COMPUTE_BUDGET_PROGRAM_ID_INS_SET_COMPUTE_UNIT_LIMIT,
         COMPUTE_BUDGET_PROGRAM_ID_INS_SET_COMPUTE_UNIT_PRICE,
     )
+    from .types import AddressType
 
     number_of_signers = 0
     for address in transaction.addresses:

@@ -49,7 +49,7 @@ ${getInstructionIdText(program, instruction)} = ${instruction["id"]}
 % endfor
 
 def __getattr__(name: str) -> Type[Instruction]:
-    def get_id(name: str) -> (str, int):
+    def get_id(name: str) -> tuple[str, int]:
     %for program in programs["programs"]:
         %for instruction in program["instructions"]:
         if name == "${getClassName(program, instruction)}":
@@ -193,7 +193,7 @@ class ${param["name"]}:
         if value == ${variant["value"]}:
             return "${variant["name"]}"
         % endfor
-        raise DataError # Unknown value
+        raise DataError("Unknown value")
     % endif
 % endfor
 
@@ -205,4 +205,4 @@ def enum_type_to_class(enum_type: str):
         return ${param["name"]}
     % endif
 % endfor
-    raise DataError # Unknown enum type
+    raise DataError("Unknown enum type")
