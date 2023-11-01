@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from enum import Enum
+    from enum import IntEnum
     from typing import Callable, Generic, TypeVar
 
     from trezor.utils import BufferReader
@@ -20,12 +20,12 @@ if TYPE_CHECKING:
 
     T = TypeVar("T")
 else:
-    Enum = object
+    IntEnum = object
     T = 0
     Generic = {T: object}
 
 
-class AddressType(Enum):
+class AddressType(IntEnum):
     AddressSig = 0
     AddressSigReadOnly = 1
     AddressReadOnly = 2
