@@ -124,11 +124,11 @@ SystemProgram_CreateAccountWithSeed_Instruction = Struct(
     "data"
     / CompactStruct(
         "instruction_id" / InstructionIdAdapter(GreedyBytes),
-        "base" / Int64ul,
+        "base" / PublicKey,
         "seed" / String,
         "lamports" / Int64ul,
         "space" / Int64ul,
-        "owner" / Int64ul,
+        "owner" / PublicKey,
     ),
 )
 
@@ -215,10 +215,10 @@ SystemProgram_AllocateWithSeed_Instruction = Struct(
     "data"
     / CompactStruct(
         "instruction_id" / InstructionIdAdapter(GreedyBytes),
-        "base" / Int64ul,
+        "base" / PublicKey,
         "seed" / String,
         "space" / Int64ul,
-        "owner" / Int64ul,
+        "owner" / PublicKey,
     ),
 )
 
@@ -232,9 +232,9 @@ SystemProgram_AssignWithSeed_Instruction = Struct(
     "data"
     / CompactStruct(
         "instruction_id" / InstructionIdAdapter(GreedyBytes),
-        "base" / Int64ul,
+        "base" / PublicKey,
         "seed" / String,
-        "owner" / Int64ul,
+        "owner" / PublicKey,
     ),
 )
 
@@ -251,7 +251,7 @@ SystemProgram_TransferWithSeed_Instruction = Struct(
         "instruction_id" / InstructionIdAdapter(GreedyBytes),
         "lamports" / Int64ul,
         "from_seed" / String,
-        "from_owner" / Int64ul,
+        "from_owner" / PublicKey,
     ),
 )
 
@@ -338,7 +338,7 @@ StakeProgram_Authorize_Instruction = Struct(
     "data"
     / CompactStruct(
         "instruction_id" / InstructionIdAdapter(GreedyBytes),
-        "pubkey" / Int64ul,
+        "pubkey" / PublicKey,
         "stake_authorize" / Int64ul,
     ),
 )
@@ -419,7 +419,7 @@ StakeProgram_SetLockup_Instruction = Struct(
         "instruction_id" / InstructionIdAdapter(GreedyBytes),
         "unix_timestamp" / Int64ul,
         "epoch" / Int64ul,
-        "custodian" / Int64ul,
+        "custodian" / PublicKey,
     ),
 )
 
@@ -451,10 +451,10 @@ StakeProgram_AuthorizeWithSeed_Instruction = Struct(
     "data"
     / CompactStruct(
         "instruction_id" / InstructionIdAdapter(GreedyBytes),
-        "new_authorized_pubkey" / Int64ul,
+        "new_authorized_pubkey" / PublicKey,
         "stake_authorize" / Int64ul,
         "authority_seed" / String,
-        "authority_owner" / Int64ul,
+        "authority_owner" / PublicKey,
     ),
 )
 
@@ -505,7 +505,7 @@ StakeProgram_AuthorizeCheckedWithSeed_Instruction = Struct(
         "instruction_id" / InstructionIdAdapter(GreedyBytes),
         "stake_authorize" / Int64ul,
         "authority_seed" / String,
-        "authority_owner" / Int64ul,
+        "authority_owner" / PublicKey,
     ),
 )
 
@@ -874,7 +874,7 @@ TokenProgram_InitializeAccount2_Instruction = Struct(
     "data"
     / CompactStruct(
         "instruction_id" / InstructionIdAdapter(GreedyBytes),
-        "owner" / Int64ul,
+        "owner" / PublicKey,
     ),
 )
 
@@ -900,7 +900,7 @@ TokenProgram_InitializeAccount3_Instruction = Struct(
     "data"
     / CompactStruct(
         "instruction_id" / InstructionIdAdapter(GreedyBytes),
-        "owner" / Int64ul,
+        "owner" / PublicKey,
     ),
 )
 
@@ -1219,7 +1219,7 @@ Token2022Program_InitializeAccount2_Instruction = Struct(
     "data"
     / CompactStruct(
         "instruction_id" / InstructionIdAdapter(GreedyBytes),
-        "owner" / Int64ul,
+        "owner" / PublicKey,
     ),
 )
 
@@ -1245,7 +1245,7 @@ Token2022Program_InitializeAccount3_Instruction = Struct(
     "data"
     / CompactStruct(
         "instruction_id" / InstructionIdAdapter(GreedyBytes),
-        "owner" / Int64ul,
+        "owner" / PublicKey,
     ),
 )
 

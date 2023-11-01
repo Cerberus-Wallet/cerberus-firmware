@@ -1,34 +1,14 @@
+from typing import TYPE_CHECKING
+
 from trezor.crypto import base58
 from trezor.ui.layouts import confirm_metadata, confirm_properties
 
 from apps.common.paths import address_n_to_str
 
-from ..transaction.instructions import Instruction
 from ..types import AddressType
 
-
-def _format_property(
-    instruction: Instruction, value: str | int | bytes, type: str
-) -> str | bytes:
-    from trezor.strings import format_amount
-
-    if type in ("pubkey", "authority"):
-        return base58.encode(value)
-    elif type == "lamports":
-        formatted = format_amount(int(value), decimals=9)
-        return f"{formatted} SOL"
-    elif type == "token_amount":
-        decimals = instruction.decimals if instruction.decimals is not None else 0
-        formatted = format_amount(int(value), decimals=decimals)
-        return f"{formatted}"
-    elif type == "unix_timestamp":
-        from trezor.strings import format_timestamp
-
-        return format_timestamp(int(value))
-    elif isinstance(value, int):
-        return str(value)
-
-    return value
+if TYPE_CHECKING:
+    from ..transaction.instructions import Instruction
 
 
 def _format_path(path: list[int]) -> str:
@@ -69,9 +49,8 @@ async def show_confirm(
         if ui_property.parameter is not None:
             property_template = instruction.get_property_template(ui_property.parameter)
             value = instruction.parsed_data[ui_property.parameter]
-            _type = property_template.type
 
-            if _type == "authority" and signer_public_key == value:
+            if property_template.is_authority and signer_public_key == value:
                 continue
 
             await confirm_properties(
@@ -80,7 +59,7 @@ async def show_confirm(
                 (
                     (
                         ui_property.display_name,
-                        _format_property(instruction, value, _type),
+                        property_template.format(instruction, value),
                     ),
                 ),
             )

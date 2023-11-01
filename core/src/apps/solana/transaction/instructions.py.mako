@@ -31,11 +31,29 @@ from typing import TYPE_CHECKING
 
 from trezor.wire import DataError
 
+from apps.common.readers import read_uint32_le, read_uint64_le
+
 from ..types import AccountTemplate, InstructionIdFormat, PropertyTemplate, UIProperty
+from ..ui.format import (
+    format_int,
+    format_lamports,
+    format_pubkey,
+    format_identity,
+    format_token_amount,
+    format_unix_timestamp,
+)
 from .instruction import Instruction
+from .parse import (
+    parse_byte,
+    parse_memo,
+    parse_optional_pubkey,
+    parse_pubkey,
+    parse_string,
+)
 
 if TYPE_CHECKING:
     from typing import Any, Type
+
     from ..types import Account
 
 % for program in programs["programs"]:
@@ -57,7 +75,7 @@ def __getattr__(name: str) -> Type[Instruction]:
         %endfor
     %endfor
         raise AttributeError # Unknown instruction
-    
+
     id = get_id(name)
 
     class FakeClass(Instruction):
@@ -95,6 +113,17 @@ def get_instruction_id_length(program_id: str) -> InstructionIdFormat:
     return InstructionIdFormat(0, False)
 
 
+% for _, type in programs["types"].items():
+    % if "is_enum" in type and type["is_enum"]:
+def ${type["format"]}(_: Instruction, value: int) -> str:
+    % for variant in type["fields"]:
+    if value == ${variant["value"]}:
+        return "${variant["name"]}"
+    % endfor
+    raise DataError("Unknown value")
+    % endif
+% endfor
+
 <%def name="getOptionalString(obj, string)">\
 % if string in obj:
 "${obj[string]}"\
@@ -120,8 +149,9 @@ def get_instruction(
                 % for parameter in instruction["parameters"]:
                     PropertyTemplate(
                         "${parameter["name"]}",
-                        "${parameter["type"]}",
-                        ${parameter["optional"]},
+                        ${parameter["type"] == "authority"},
+                        ${programs["types"][parameter["type"]]["parse"]},
+                        ${programs["types"][parameter["type"]]["format"]},
                     ),
                 % endfor
                 ],
@@ -180,29 +210,3 @@ def get_instruction(
         False
     )
 
-% for param in programs["parameters"]:
-    % if param["family"] == "enum":
-class ${param["name"]}:
-    @classmethod
-    def type(cls) -> str:
-        return "${param["type"]}"
-
-    @classmethod
-    def from_int(cls, value: int) -> str:
-        % for variant in param["fields"]:
-        if value == ${variant["value"]}:
-            return "${variant["name"]}"
-        % endfor
-        raise DataError("Unknown value")
-    % endif
-% endfor
-
-
-def enum_type_to_class(enum_type: str):
-% for param in programs["parameters"]:
-    % if param["family"] == "enum":
-    if enum_type == "${param["name"]}":
-        return ${param["name"]}
-    % endif
-% endfor
-    raise DataError("Unknown enum type")

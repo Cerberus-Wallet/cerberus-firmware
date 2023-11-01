@@ -4,8 +4,25 @@ from typing import TYPE_CHECKING
 
 from trezor.wire import DataError
 
+from apps.common.readers import read_uint32_le, read_uint64_le
+
 from ..types import AccountTemplate, InstructionIdFormat, PropertyTemplate, UIProperty
+from ..ui.format import (
+    format_identity,
+    format_int,
+    format_lamports,
+    format_pubkey,
+    format_token_amount,
+    format_unix_timestamp,
+)
 from .instruction import Instruction
+from .parse import (
+    parse_byte,
+    parse_memo,
+    parse_optional_pubkey,
+    parse_pubkey,
+    parse_string,
+)
 
 if TYPE_CHECKING:
     from typing import Any, Type
@@ -505,7 +522,7 @@ if TYPE_CHECKING:
 
     class TokenProgramSetAuthorityInstruction(Instruction):
         authority_type: int
-        new_authority: Account
+        new_authority: int
 
         mint_account: Account
         current_authority: Account
@@ -632,7 +649,7 @@ if TYPE_CHECKING:
 
     class Token2022ProgramSetAuthorityInstruction(Instruction):
         authority_type: int
-        new_authority: Account
+        new_authority: int
 
         mint_account: Account
         current_authority: Account
@@ -784,6 +801,26 @@ def get_instruction_id_length(program_id: str) -> InstructionIdFormat:
     return InstructionIdFormat(0, False)
 
 
+def format_StakeAuthorize(_: Instruction, value: int) -> str:
+    if value == 0:
+        return "Stake"
+    if value == 1:
+        return "Withdraw"
+    raise DataError("Unknown value")
+
+
+def format_AuthorityType(_: Instruction, value: int) -> str:
+    if value == 0:
+        return "Mint tokens"
+    if value == 1:
+        return "Freeze account"
+    if value == 2:
+        return "Account owner"
+    if value == 3:
+        return "Close account"
+    raise DataError("Unknown value")
+
+
 def get_instruction(
     program_id: str,
     instruction_id: int,
@@ -800,18 +837,21 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "lamports",
-                        "lamports",
                         False,
+                        read_uint64_le,
+                        format_lamports,
                     ),
                     PropertyTemplate(
                         "space",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                     PropertyTemplate(
                         "owner",
-                        "authority",
-                        False,
+                        True,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -861,8 +901,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "owner",
-                        "authority",
-                        False,
+                        True,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -901,8 +942,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "lamports",
-                        "lamports",
                         False,
+                        read_uint64_le,
+                        format_lamports,
                     ),
                 ],
                 [
@@ -952,28 +994,33 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "base",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                     PropertyTemplate(
                         "seed",
-                        "string",
                         False,
+                        parse_string,
+                        format_identity,
                     ),
                     PropertyTemplate(
                         "lamports",
-                        "lamports",
                         False,
+                        read_uint64_le,
+                        format_lamports,
                     ),
                     PropertyTemplate(
                         "space",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                     PropertyTemplate(
                         "owner",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -1072,8 +1119,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "lamports",
-                        "lamports",
                         False,
+                        read_uint64_le,
+                        format_lamports,
                     ),
                 ],
                 [
@@ -1144,8 +1192,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "nonce_authority",
-                        "authority",
-                        False,
+                        True,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -1194,8 +1243,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "nonce_authority",
-                        "authority",
-                        False,
+                        True,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -1245,8 +1295,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "space",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                 ],
                 [
@@ -1285,23 +1336,27 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "base",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                     PropertyTemplate(
                         "seed",
-                        "string",
                         False,
+                        parse_string,
+                        format_identity,
                     ),
                     PropertyTemplate(
                         "space",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                     PropertyTemplate(
                         "owner",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -1345,18 +1400,21 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "base",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                     PropertyTemplate(
                         "seed",
-                        "string",
                         False,
+                        parse_string,
+                        format_identity,
                     ),
                     PropertyTemplate(
                         "owner",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -1400,18 +1458,21 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "lamports",
-                        "lamports",
                         False,
+                        read_uint64_le,
+                        format_lamports,
                     ),
                     PropertyTemplate(
                         "from_seed",
-                        "string",
                         False,
+                        parse_string,
+                        format_identity,
                     ),
                     PropertyTemplate(
                         "from_owner",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -1508,28 +1569,33 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "staker",
-                        "authority",
-                        False,
+                        True,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                     PropertyTemplate(
                         "withdrawer",
-                        "authority",
-                        False,
+                        True,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                     PropertyTemplate(
                         "unix_timestamp",
-                        "unix_timestamp",
                         False,
+                        read_uint64_le,
+                        format_unix_timestamp,
                     ),
                     PropertyTemplate(
                         "epoch",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                     PropertyTemplate(
                         "custodian",
-                        "authority",
-                        False,
+                        True,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -1597,13 +1663,15 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "pubkey",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                     PropertyTemplate(
                         "stake_authorize",
-                        "StakeAuthorize",
                         False,
+                        read_uint32_le,
+                        format_StakeAuthorize,
                     ),
                 ],
                 [
@@ -1740,8 +1808,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "lamports",
-                        "lamports",
                         False,
+                        read_uint64_le,
+                        format_lamports,
                     ),
                 ],
                 [
@@ -1802,8 +1871,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "lamports",
-                        "lamports",
                         False,
+                        read_uint64_le,
+                        format_lamports,
                     ),
                 ],
                 [
@@ -1923,18 +1993,21 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "unix_timestamp",
-                        "unix_timestamp",
-                        True,
+                        False,
+                        read_uint64_le,
+                        format_unix_timestamp,
                     ),
                     PropertyTemplate(
                         "epoch",
-                        "u64",
-                        True,
+                        False,
+                        read_uint64_le,
+                        format_int,
                     ),
                     PropertyTemplate(
                         "custodian",
-                        "pubkey",
-                        True,
+                        False,
+                        parse_optional_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -2056,23 +2129,27 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "new_authorized_pubkey",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                     PropertyTemplate(
                         "stake_authorize",
-                        "StakeAuthorize",
                         False,
+                        read_uint32_le,
+                        format_StakeAuthorize,
                     ),
                     PropertyTemplate(
                         "authority_seed",
-                        "string",
                         False,
+                        parse_string,
+                        format_identity,
                     ),
                     PropertyTemplate(
                         "authority_owner",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -2193,8 +2270,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "stake_authorize",
-                        "StakeAuthorize",
                         False,
+                        read_uint32_le,
+                        format_StakeAuthorize,
                     ),
                 ],
                 [
@@ -2259,18 +2337,21 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "stake_authorize",
-                        "StakeAuthorize",
                         False,
+                        read_uint32_le,
+                        format_StakeAuthorize,
                     ),
                     PropertyTemplate(
                         "authority_seed",
-                        "string",
                         False,
+                        parse_string,
+                        format_identity,
                     ),
                     PropertyTemplate(
                         "authority_owner",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -2347,13 +2428,15 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "unix_timestamp",
-                        "unix_timestamp",
-                        True,
+                        False,
+                        read_uint64_le,
+                        format_unix_timestamp,
                     ),
                     PropertyTemplate(
                         "epoch",
-                        "u64",
-                        True,
+                        False,
+                        read_uint64_le,
+                        format_int,
                     ),
                 ],
                 [
@@ -2434,8 +2517,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "bytes",
-                        "u32",
                         False,
+                        read_uint32_le,
+                        format_int,
                     ),
                 ],
                 [],
@@ -2462,8 +2546,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "units",
-                        "u32",
                         False,
+                        read_uint32_le,
+                        format_int,
                     ),
                 ],
                 [],
@@ -2490,8 +2575,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "lamports",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                 ],
                 [],
@@ -2587,8 +2673,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "number_of_signers",
-                        "u8",
                         False,
+                        parse_byte,
+                        format_int,
                     ),
                 ],
                 [
@@ -2637,8 +2724,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                 ],
                 [
@@ -2699,8 +2787,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                 ],
                 [
@@ -2794,13 +2883,15 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "authority_type",
-                        "AuthorityType",
                         False,
+                        parse_byte,
+                        format_AuthorityType,
                     ),
                     PropertyTemplate(
                         "new_authority",
-                        "authority",
-                        True,
+                        False,
+                        parse_optional_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -2856,8 +2947,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                 ],
                 [
@@ -2912,8 +3004,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                 ],
                 [
@@ -3106,13 +3199,15 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "token_amount",
                         False,
+                        read_uint64_le,
+                        format_token_amount,
                     ),
                     PropertyTemplate(
                         "decimals",
-                        "u8",
                         False,
+                        parse_byte,
+                        format_int,
                     ),
                 ],
                 [
@@ -3184,13 +3279,15 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                     PropertyTemplate(
                         "decimals",
-                        "u8",
                         False,
+                        parse_byte,
+                        format_int,
                     ),
                 ],
                 [
@@ -3262,13 +3359,15 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                     PropertyTemplate(
                         "decimals",
-                        "u8",
                         False,
+                        parse_byte,
+                        format_int,
                     ),
                 ],
                 [
@@ -3329,13 +3428,15 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                     PropertyTemplate(
                         "decimals",
-                        "u8",
                         False,
+                        parse_byte,
+                        format_int,
                     ),
                 ],
                 [
@@ -3396,8 +3497,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "owner",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -3480,8 +3582,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "owner",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -3628,8 +3731,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "number_of_signers",
-                        "u8",
                         False,
+                        parse_byte,
+                        format_int,
                     ),
                 ],
                 [
@@ -3678,8 +3782,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "token_amount",
                         False,
+                        read_uint64_le,
+                        format_token_amount,
                     ),
                 ],
                 [
@@ -3740,8 +3845,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                 ],
                 [
@@ -3835,13 +3941,15 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "authority_type",
-                        "AuthorityType",
                         False,
+                        parse_byte,
+                        format_AuthorityType,
                     ),
                     PropertyTemplate(
                         "new_authority",
-                        "authority",
-                        True,
+                        False,
+                        parse_optional_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -3897,8 +4005,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                 ],
                 [
@@ -3953,8 +4062,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                 ],
                 [
@@ -4147,13 +4257,15 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "u64",
                         False,
+                        read_uint64_le,
+                        format_int,
                     ),
                     PropertyTemplate(
                         "decimals",
-                        "u8",
                         False,
+                        parse_byte,
+                        format_int,
                     ),
                 ],
                 [
@@ -4219,13 +4331,15 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "token_amount",
                         False,
+                        read_uint64_le,
+                        format_token_amount,
                     ),
                     PropertyTemplate(
                         "decimals",
-                        "u8",
                         False,
+                        parse_byte,
+                        format_int,
                     ),
                 ],
                 [
@@ -4291,13 +4405,15 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "token_amount",
                         False,
+                        read_uint64_le,
+                        format_token_amount,
                     ),
                     PropertyTemplate(
                         "decimals",
-                        "u8",
                         False,
+                        parse_byte,
+                        format_int,
                     ),
                 ],
                 [
@@ -4352,13 +4468,15 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "amount",
-                        "token_amount",
                         False,
+                        read_uint64_le,
+                        format_token_amount,
                     ),
                     PropertyTemplate(
                         "decimals",
-                        "u8",
                         False,
+                        parse_byte,
+                        format_int,
                     ),
                 ],
                 [
@@ -4413,8 +4531,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "owner",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -4497,8 +4616,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "owner",
-                        "pubkey",
                         False,
+                        parse_pubkey,
+                        format_pubkey,
                     ),
                 ],
                 [
@@ -4816,8 +4936,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "memo",
-                        "memo",
                         False,
+                        parse_memo,
+                        format_identity,
                     ),
                 ],
                 [
@@ -4870,8 +4991,9 @@ def get_instruction(
                 [
                     PropertyTemplate(
                         "memo",
-                        "memo",
                         False,
+                        parse_memo,
+                        format_identity,
                     ),
                 ],
                 [
@@ -4927,43 +5049,3 @@ def get_instruction(
         False,
         False,
     )
-
-
-class StakeAuthorize:
-    @classmethod
-    def type(cls) -> str:
-        return "u32"
-
-    @classmethod
-    def from_int(cls, value: int) -> str:
-        if value == 0:
-            return "Stake"
-        if value == 1:
-            return "Withdraw"
-        raise DataError("Unknown value")
-
-
-class AuthorityType:
-    @classmethod
-    def type(cls) -> str:
-        return "u8"
-
-    @classmethod
-    def from_int(cls, value: int) -> str:
-        if value == 0:
-            return "Mint tokens"
-        if value == 1:
-            return "Freeze account"
-        if value == 2:
-            return "Account owner"
-        if value == 3:
-            return "Close account"
-        raise DataError("Unknown value")
-
-
-def enum_type_to_class(enum_type: str):
-    if enum_type == "StakeAuthorize":
-        return StakeAuthorize
-    if enum_type == "AuthorityType":
-        return AuthorityType
-    raise DataError("Unknown enum type")

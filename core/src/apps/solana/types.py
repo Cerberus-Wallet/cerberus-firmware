@@ -2,6 +2,11 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from enum import Enum
+    from typing import Callable, Generic, TypeVar
+
+    from trezor.utils import BufferReader
+
+    from .transaction import Instruction
 
     Address = tuple[bytes, int]
     AddressReference = tuple[bytes, int, int]
@@ -12,8 +17,12 @@ if TYPE_CHECKING:
     AccountIndex = int
     Data = memoryview
     RawInstruction = tuple[ProgramIndex, InstructionId, list[AccountIndex], Data]
+
+    T = TypeVar("T")
 else:
     Enum = object
+    T = 0
+    Generic = {T: object}
 
 
 class AddressType(Enum):
@@ -29,11 +38,18 @@ class InstructionIdFormat:
         self.is_included_if_zero = is_included_if_zero
 
 
-class PropertyTemplate:
-    def __init__(self, name: str, type: str, optional: bool):
+class PropertyTemplate(Generic[T]):
+    def __init__(
+        self,
+        name: str,
+        is_authority: bool,
+        parse: Callable[[BufferReader], T],
+        format: Callable[[Instruction, T], str],
+    ):
         self.name = name
-        self.type = type
-        self.optional = optional
+        self.is_authority = is_authority
+        self.parse = parse
+        self.format = format
 
 
 class AccountTemplate:

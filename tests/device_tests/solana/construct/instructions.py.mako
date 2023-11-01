@@ -13,7 +13,7 @@ Int64ul\
 Int32ul\
 % elif type == "u8":
 Byte\
-% elif type in ("pubKey", "authority"):
+% elif type in ("pubkey", "pubkey_optional", "authority", "authority_optional"):
 PublicKey\
 % elif type == "string":
 String\

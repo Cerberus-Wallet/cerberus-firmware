@@ -899,7 +899,7 @@
             },
             {
               "name": "custodian",
-              "type": "pubkey",
+              "type": "pubkey_optional",
               "optional": true
             }
           ],
@@ -1564,7 +1564,7 @@
             },
             {
               "name": "new_authority",
-              "type": "authority",
+              "type": "authority_optional",
               "optional": true
             }
           ],
@@ -2358,7 +2358,7 @@
             },
             {
               "name": "new_authority",
-              "type": "authority",
+              "type": "authority_optional",
               "optional": true
             }
           ],
@@ -3173,39 +3173,59 @@
       ]
     }
   ],
-  "parameters": [
-    {
-      "name": "u32",
-      "family": "basic"
+  "types": {
+    "u8": {
+      "parse": "parse_byte",
+      "format": "format_int"
     },
-    {
-      "name": "i32",
-      "family": "basic"
+    "u32": {
+      "parse": "read_uint32_le",
+      "format": "format_int"
     },
-    {
-      "name": "u64",
-      "family": "basic"
+    "u64": {
+      "parse": "read_uint64_le",
+      "format": "format_int"
     },
-    {
-      "name": "i64",
-      "family": "basic"
+    "unix_timestamp": {
+      "parse": "read_uint64_le",
+      "format": "format_unix_timestamp"
     },
-    {
-      "name": "String",
-      "family": "basic"
+    "lamports": {
+      "parse": "read_uint64_le",
+      "format": "format_lamports"
     },
-    {
-      "name": "Pubkey",
-      "family": "basic"
+    "token_amount": {
+      "parse": "read_uint64_le",
+      "format": "format_token_amount"
     },
-    {
-      "name": "Authority",
-      "family": "basic"
+    "pubkey": {
+      "parse": "parse_pubkey",
+      "format": "format_pubkey"
     },
-    {
-      "name": "StakeAuthorize",
-      "family": "enum",
-      "type": "u32",
+    "pubkey_optional": {
+      "parse": "parse_optional_pubkey",
+      "format": "format_pubkey"
+    },
+    "authority": {
+      "parse": "parse_pubkey",
+      "format": "format_pubkey"
+    },
+    "authority_optional": {
+      "parse": "parse_optional_pubkey",
+      "format": "format_pubkey"
+    },
+    "string": {
+      "parse": "parse_string",
+      "format": "format_identity"
+    },
+    "memo": {
+      "parse": "parse_memo",
+      "format": "format_identity"
+    },
+    "StakeAuthorize": {
+      "is_enum": true,
+      "parse": "read_uint32_le",
+      "format": "format_StakeAuthorize",
       "fields": [
         {
           "name": "Stake",
@@ -3217,10 +3237,10 @@
         }
       ]
     },
-    {
-      "name": "AuthorityType",
-      "family": "enum",
-      "type": "u8",
+    "AuthorityType": {
+      "is_enum": true,
+      "parse": "parse_byte",
+      "format": "format_AuthorityType",
       "fields": [
         {
           "name": "Mint tokens",
@@ -3240,5 +3260,5 @@
         }
       ]
     }
-  ]
+  }
 }

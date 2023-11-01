@@ -38,15 +38,11 @@ class Instruction:
         from trezor.utils import BufferReader
         from trezor.wire import DataError
 
-        from .parse import parse_property
-
         reader = BufferReader(instruction_data)
 
         parsed_data = {}
         for property_template in property_templates:
-            property = parse_property(
-                reader, property_template.type, property_template.optional
-            )
+            property = property_template.parse(reader)
 
             parsed_data[property_template.name] = property
 

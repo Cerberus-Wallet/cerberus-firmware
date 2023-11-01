@@ -701,6 +701,8 @@ if not utils.BITCOIN_ONLY:
     import apps.solana.types
     apps.solana.ui
     import apps.solana.ui
+    apps.solana.ui.format
+    import apps.solana.ui.format
     apps.stellar
     import apps.stellar
     apps.stellar.consts

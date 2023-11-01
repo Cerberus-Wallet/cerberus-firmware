@@ -1,8 +1,6 @@
 from typing import TYPE_CHECKING
 
-from trezor.wire import DataError
-
-from apps.common.readers import read_uint32_le, read_uint64_le
+from apps.common.readers import read_uint64_le
 
 if TYPE_CHECKING:
     from trezor.utils import BufferReader
@@ -28,6 +26,14 @@ def parse_pubkey(serialized_tx: BufferReader) -> bytes:
     return bytes(serialized_tx.read_memoryview(32))
 
 
+def parse_optional_pubkey(serialized_tx: BufferReader) -> bytes | None:
+    is_included = serialized_tx.get()
+    if is_included == 0:
+        return None
+
+    return parse_pubkey(serialized_tx)
+
+
 def parse_enum(serialized_tx: BufferReader) -> int:
     return serialized_tx.get()
 
@@ -44,35 +50,5 @@ def parse_memo(serialized_tx: BufferReader) -> str:
     )
 
 
-def parse_property(
-    reader: BufferReader, type: str, is_optional: bool = False
-) -> str | int | bytes | None:
-    if type == "u8":
-        return reader.get()
-    elif type == "u32":
-        return read_uint32_le(reader)
-    elif type == "u64":
-        return read_uint64_le(reader)
-    elif type == "i32":
-        return read_uint32_le(reader)
-    elif type in ("i64", "unix_timestamp", "lamports", "token_amount"):
-        return read_uint64_le(reader)
-    elif type in ("pubkey", "authority"):
-        if is_optional:
-            is_included = reader.get()
-            if is_included == 0:
-                return None
-
-        return parse_pubkey(reader)
-    elif type == "enum":
-        return parse_enum(reader)
-    elif type == "string":
-        return parse_string(reader)
-    elif type == "memo":
-        return parse_memo(reader)
-    else:
-        from .instructions import enum_type_to_class
-
-        int_value = parse_property(reader, enum_type_to_class(type).type())
-        assert isinstance(int_value, int)
-        return enum_type_to_class(type).from_int(int_value)
+def parse_byte(serialized_tx: BufferReader) -> int:
+    return serialized_tx.get()
