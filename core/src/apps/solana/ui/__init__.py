@@ -1,5 +1,3 @@
-from typing import Any
-
 from trezor.crypto import base58
 from trezor.ui.layouts import confirm_metadata, confirm_properties
 
@@ -36,7 +34,7 @@ def _format_property(
 def _format_path(path: list[int]) -> str:
     from micropython import const
 
-    from apps.common.paths import HARDENED, unharden
+    from apps.common.paths import unharden
 
     if len(path) < 4:
         return address_n_to_str(path)

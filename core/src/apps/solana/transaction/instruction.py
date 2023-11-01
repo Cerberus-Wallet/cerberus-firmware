@@ -142,4 +142,4 @@ class Instruction:
     @classmethod
     def is_type_of(cls, ins: Any) -> TypeGuard[Self]:
         # gets overridden in `instructions.py` `FakeClass`
-        pass
+        return False

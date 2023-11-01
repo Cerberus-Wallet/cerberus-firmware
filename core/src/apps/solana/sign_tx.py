@@ -36,7 +36,7 @@ async def sign_tx(
 
     try:
         transaction: Transaction = Transaction(serialized_tx)
-    except:
+    except Exception:
         raise DataError("Invalid transaction")
 
     if transaction.blind_signing:
