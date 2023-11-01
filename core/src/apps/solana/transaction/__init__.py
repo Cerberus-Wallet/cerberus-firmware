@@ -54,14 +54,13 @@ class Transaction:
             raise DataError("Invalid transaction")
 
     def _parse_header(self, serialized_tx_reader: BufferReader) -> None:
-
         self.version: int | None = None
 
         if serialized_tx_reader.peek() & 0b10000000:
             self.version = serialized_tx_reader.get() & 0b01111111
             # only version 0 is supported
-            # less or equal is used in order to support future versions
-            raise DataError("Unsupported transaction version")
+            if self.version > 0:
+                raise DataError("Unsupported transaction version")
 
         self.required_signers_count: int = serialized_tx_reader.get()
         self.num_signature_read_only_addresses: int = serialized_tx_reader.get()
