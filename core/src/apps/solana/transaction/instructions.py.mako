@@ -171,6 +171,7 @@ def get_instruction(
                         ${getOptionalString(ui_property, "account")},
                         "${ui_property["display_name"]}",
                         ${ui_property["is_authority"] if "is_authority" in ui_property else False},
+                        ${ui_property["default_value_to_hide"] if "default_value_to_hide" in ui_property else None},
                     ),
                 % endfor
                 ],

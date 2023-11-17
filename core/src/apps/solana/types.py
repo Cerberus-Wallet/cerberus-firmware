@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from enum import IntEnum
-    from typing import Callable, Generic, TypeVar
+    from typing import Any, Callable, Generic, TypeVar
 
     from trezor.utils import BufferReader
 
@@ -66,8 +66,10 @@ class UIProperty:
         account: str | None,
         display_name: str,
         is_authority: bool,
+        default_value_to_hide: Any | None,
     ) -> None:
         self.parameter = parameter
         self.account = account
         self.display_name = display_name
         self.is_authority = is_authority
+        self.default_value_to_hide = default_value_to_hide

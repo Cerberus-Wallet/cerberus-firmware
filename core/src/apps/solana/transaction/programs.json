@@ -615,11 +615,13 @@
             },
             {
               "parameter": "unix_timestamp",
-              "display_name": "Lockup time"
+              "display_name": "Lockup time",
+              "default_value_to_hide": 0
             },
             {
               "parameter": "epoch",
-              "display_name": "Lockup epoch"
+              "display_name": "Lockup epoch",
+              "default_value_to_hide": 0
             },
             {
               "parameter": "custodian",
@@ -922,11 +924,13 @@
             },
             {
               "parameter": "unix_timestamp",
-              "display_name": "Time"
+              "display_name": "Time",
+              "default_value_to_hide": 0
             },
             {
               "parameter": "epoch",
-              "display_name": "Epoch"
+              "display_name": "Epoch",
+              "default_value_to_hide": 0
             },
             {
               "account": "custodian",
@@ -1258,11 +1262,13 @@
             },
             {
               "parameter": "unix_timestamp",
-              "display_name": "Time"
+              "display_name": "Time",
+              "default_value_to_hide": 0
             },
             {
               "parameter": "epoch",
-              "display_name": "Epoch"
+              "display_name": "Epoch",
+              "default_value_to_hide": 0
             },
             {
               "account": "new_lockup_authority",

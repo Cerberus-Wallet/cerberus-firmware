@@ -53,6 +53,9 @@ async def show_confirm(
             if property_template.is_authority and signer_public_key == value:
                 continue
 
+            if ui_property.default_value_to_hide == value:
+                continue
+
             await confirm_properties(
                 "confirm_instruction",
                 f"{instruction_index}/{instructions_count}: {instruction.ui_name}",
