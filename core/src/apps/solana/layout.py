@@ -244,16 +244,13 @@ async def confirm_unsupported_program_confirm(
 async def confirm_transaction(
     signer_path: list[int], address: str, blockhash: bytes, fee: int
 ) -> None:
-    from trezor.ui.layouts import confirm_properties
+    from trezor.ui.layouts import confirm_summary
 
-    await confirm_properties(
-        "confirm_transaction",
-        "Confirm transaction",
-        (
-            ("Expected fee:", f"{fee} lamports"),
-            ("Blockhash:", base58.encode(blockhash)),
+    await confirm_summary(
+        [("Expected fee:", f"{fee} lamports")],
+        info_items=(
             ("Signer account:", _format_path(signer_path)),
             ("Signer address:", address),
+            ("Blockhash:", base58.encode(blockhash)),
         ),
-        hold=True,
     )

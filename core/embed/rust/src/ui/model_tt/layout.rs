@@ -1715,7 +1715,7 @@ pub static mp_module_trezorui2: Module = obj_module! {
     /// def confirm_total(
     ///     *,
     ///     title: str,
-    ///     items: list[tuple[str, str]],
+    ///     items: Iterable[tuple[str, str]],
     ///     info_button: bool = False,
     ///     cancel_arrow: bool = False,
     /// ) -> object:
