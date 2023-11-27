@@ -21,8 +21,9 @@ def format_lamports(_: Instruction, value: int) -> str:
 
 
 def format_token_amount(instruction: Instruction, value: int) -> str:
-    decimals = instruction.decimals if instruction.decimals is not None else 0
-    formatted = format_amount(value, decimals=decimals)
+    assert hasattr(instruction, "decimals")  # enforced in instructions.py.mako
+
+    formatted = format_amount(value, decimals=instruction.decimals)
     return f"{formatted}"
 
 
