@@ -8,8 +8,8 @@ if TYPE_CHECKING:
 
     from .transaction import Instruction
 
-    Address = tuple[bytes, int]
-    AddressReference = tuple[bytes, int, int]
+    Address = tuple[bytes, "AddressType"]
+    AddressReference = tuple[bytes, int, "AddressType"]
     Account = Address | AddressReference
 
     ProgramIndex = int

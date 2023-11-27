@@ -9,6 +9,7 @@ from .types import AddressType
 
 if TYPE_CHECKING:
     from .transaction.instructions import Instruction
+    from .types import AddressReference
 
 
 def _format_path(path: list[int]) -> str:
@@ -22,6 +23,14 @@ def _format_path(path: list[int]) -> str:
     ACCOUNT_PATH_INDEX = const(3)
     account_index = path[ACCOUNT_PATH_INDEX]
     return f"#{unharden(account_index) + 1}"
+
+
+def _get_address_reference_props(address: AddressReference, display_name: str):
+    return (
+        (f"{display_name} is provided via a lookup table.", ""),
+        ("Lookup table address:", base58.encode(address[0])),
+        ("Account index:", f"{address[1]}"),
+    )
 
 
 async def confirm_instruction(
@@ -92,13 +101,9 @@ async def confirm_instruction(
                     )
                 )
             elif len(account_value) == 3:
-                account_data.append(
-                    (f"{ui_property.display_name} is provided via a lookup table.", "")
+                account_data += _get_address_reference_props(
+                    account_value, ui_property.display_name
                 )
-                account_data.append(
-                    ("Lookup table address:", base58.encode(account_value[0]))
-                )
-                account_data.append(("Account index:", f"{account_value[1]}"))
             else:
                 raise ValueError  # Invalid account value
 
@@ -137,7 +142,7 @@ async def confirm_instruction(
         )
 
 
-def get_address_type(address_type: int) -> str:
+def get_address_type(address_type: AddressType) -> str:
     if address_type == AddressType.AddressSig:
         return "(Writable, Signer)"
     if address_type == AddressType.AddressSigReadOnly:
@@ -179,19 +184,27 @@ async def confirm_unsupported_instruction_details(
 
         accounts = []
         for i, account in enumerate(instruction.accounts, 1):
-            account_public_key = account[0]
-            address_type = get_address_type(account[1])
+            if len(account) == 2:
+                account_public_key = account[0]
+                address_type = get_address_type(account[1])
 
-            path_str = ""
-            if account_public_key == signer_public_key:
-                path_str = f" ({address_n_to_str(signer_path)})"
+                path_str = ""
+                if account_public_key == signer_public_key:
+                    path_str = f" ({address_n_to_str(signer_path)})"
 
-            accounts.append(
-                (
-                    f"Account {i}{path_str} {address_type}:",
-                    base58.encode(account_public_key),
+                accounts.append(
+                    (
+                        f"Account {i}{path_str} {address_type}:",
+                        base58.encode(account_public_key),
+                    )
                 )
-            )
+            elif len(account) == 3:
+                address_type = get_address_type(account[2])
+                accounts += _get_address_reference_props(
+                    account, f"Account {i} {address_type}"
+                )
+            else:
+                raise ValueError  # Invalid account value
 
         await confirm_properties(
             "accounts",
