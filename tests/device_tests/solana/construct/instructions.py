@@ -12,13 +12,14 @@ from construct import (
     Optional,
     Struct,
     Switch,
+    this,
 )
 
 from .custom_constructs import (
     CompactArray,
     CompactStruct,
     HexStringAdapter,
-    InstructionIdAdapter,
+    InstructionId,
     Memo,
     PublicKey,
     String,
@@ -79,7 +80,7 @@ SystemProgram_CreateAccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "lamports" / Int64ul,
         "space" / Int64ul,
         "owner" / PublicKey,
@@ -94,7 +95,7 @@ SystemProgram_Assign_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "owner" / PublicKey,
     ),
 )
@@ -108,7 +109,7 @@ SystemProgram_Transfer_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "lamports" / Int64ul,
     ),
 )
@@ -123,7 +124,7 @@ SystemProgram_CreateAccountWithSeed_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "base" / PublicKey,
         "seed" / String,
         "lamports" / Int64ul,
@@ -142,7 +143,7 @@ SystemProgram_Advancenonceaccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -158,7 +159,7 @@ SystemProgram_Withdrawnonceaccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "lamports" / Int64ul,
     ),
 )
@@ -173,7 +174,7 @@ SystemProgram_Initializenonceaccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "nonce_authority" / PublicKey,
     ),
 )
@@ -187,7 +188,7 @@ SystemProgram_Authorizenonceaccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "nonce_authority" / PublicKey,
     ),
 )
@@ -200,7 +201,7 @@ SystemProgram_Allocate_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "space" / Int64ul,
     ),
 )
@@ -214,7 +215,7 @@ SystemProgram_AllocateWithSeed_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "base" / PublicKey,
         "seed" / String,
         "space" / Int64ul,
@@ -231,7 +232,7 @@ SystemProgram_AssignWithSeed_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "base" / PublicKey,
         "seed" / String,
         "owner" / PublicKey,
@@ -248,7 +249,7 @@ SystemProgram_TransferWithSeed_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "lamports" / Int64ul,
         "from_seed" / String,
         "from_owner" / PublicKey,
@@ -263,13 +264,13 @@ SystemProgram_UpgradeNonceAccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
 
 SystemProgram_Instruction = Switch(
-    lambda this: this.instruction_id,
+    this.instruction_id,
     {
         SystemProgramInstruction.INS_CREATE_ACCOUNT: SystemProgram_CreateAccount_Instruction,
         SystemProgramInstruction.INS_ASSIGN: SystemProgram_Assign_Instruction,
@@ -317,7 +318,7 @@ StakeProgram_Initialize_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "staker" / PublicKey,
         "withdrawer" / PublicKey,
         "unix_timestamp" / Int64ul,
@@ -337,7 +338,7 @@ StakeProgram_Authorize_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "pubkey" / PublicKey,
         "stake_authorize" / Int64ul,
     ),
@@ -356,7 +357,7 @@ StakeProgram_DelegateStake_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -370,7 +371,7 @@ StakeProgram_Split_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "lamports" / Int64ul,
     ),
 )
@@ -388,7 +389,7 @@ StakeProgram_Withdraw_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "lamports" / Int64ul,
     ),
 )
@@ -403,7 +404,7 @@ StakeProgram_Deactivate_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -416,7 +417,7 @@ StakeProgram_SetLockup_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "unix_timestamp" / Int64ul,
         "epoch" / Int64ul,
         "custodian" / PublicKey,
@@ -435,7 +436,7 @@ StakeProgram_Merge_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -450,7 +451,7 @@ StakeProgram_AuthorizeWithSeed_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "new_authorized_pubkey" / PublicKey,
         "stake_authorize" / Int64ul,
         "authority_seed" / String,
@@ -469,7 +470,7 @@ StakeProgram_InitializeChecked_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -485,7 +486,7 @@ StakeProgram_AuthorizeChecked_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "stake_authorize" / Int64ul,
     ),
 )
@@ -502,7 +503,7 @@ StakeProgram_AuthorizeCheckedWithSeed_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "stake_authorize" / Int64ul,
         "authority_seed" / String,
         "authority_owner" / PublicKey,
@@ -519,7 +520,7 @@ StakeProgram_SetLockupChecked_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "unix_timestamp" / Int64ul,
         "epoch" / Int64ul,
     ),
@@ -527,7 +528,7 @@ StakeProgram_SetLockupChecked_Instruction = Struct(
 
 
 StakeProgram_Instruction = Switch(
-    lambda this: this.instruction_id,
+    this.instruction_id,
     {
         StakeProgramInstruction.INS_INITIALIZE: StakeProgram_Initialize_Instruction,
         StakeProgramInstruction.INS_AUTHORIZE: StakeProgram_Authorize_Instruction,
@@ -561,7 +562,7 @@ ComputeBudgetProgram_RequestHeapFrame_Instruction = Struct(
     "accounts" / CompactStruct(),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "bytes" / Int32ul,
     ),
 )
@@ -571,7 +572,7 @@ ComputeBudgetProgram_SetComputeUnitLimit_Instruction = Struct(
     "accounts" / CompactStruct(),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "units" / Int32ul,
     ),
 )
@@ -581,14 +582,14 @@ ComputeBudgetProgram_SetComputeUnitPrice_Instruction = Struct(
     "accounts" / CompactStruct(),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "lamports" / Int64ul,
     ),
 )
 
 
 ComputeBudgetProgram_Instruction = Switch(
-    lambda this: this.instruction_id,
+    this.instruction_id,
     {
         ComputeBudgetProgramInstruction.INS_REQUEST_HEAP_FRAME: ComputeBudgetProgram_RequestHeapFrame_Instruction,
         ComputeBudgetProgramInstruction.INS_SET_COMPUTE_UNIT_LIMIT: ComputeBudgetProgram_SetComputeUnitLimit_Instruction,
@@ -634,7 +635,7 @@ TokenProgram_InitializeAccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -649,7 +650,7 @@ TokenProgram_InitializeMultisig_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "number_of_signers" / Byte,
     ),
 )
@@ -665,7 +666,7 @@ TokenProgram_Transfer_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
     ),
 )
@@ -681,7 +682,7 @@ TokenProgram_Approve_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
     ),
 )
@@ -696,7 +697,7 @@ TokenProgram_Revoke_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -710,7 +711,7 @@ TokenProgram_SetAuthority_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "authority_type" / Int64ul,
         "new_authority" / PublicKey,
     ),
@@ -727,7 +728,7 @@ TokenProgram_Mintto_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
     ),
 )
@@ -743,7 +744,7 @@ TokenProgram_Burn_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
     ),
 )
@@ -759,7 +760,7 @@ TokenProgram_CloseAccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -774,7 +775,7 @@ TokenProgram_FreezeAccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -789,7 +790,7 @@ TokenProgram_ThawAccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -805,7 +806,7 @@ TokenProgram_TransferChecked_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
         "decimals" / Byte,
     ),
@@ -823,7 +824,7 @@ TokenProgram_ApproveChecked_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
         "decimals" / Byte,
     ),
@@ -840,7 +841,7 @@ TokenProgram_MinttoChecked_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
         "decimals" / Byte,
     ),
@@ -857,7 +858,7 @@ TokenProgram_BurnChecked_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
         "decimals" / Byte,
     ),
@@ -873,7 +874,7 @@ TokenProgram_InitializeAccount2_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "owner" / PublicKey,
     ),
 )
@@ -886,7 +887,7 @@ TokenProgram_SyncNative_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -899,7 +900,7 @@ TokenProgram_InitializeAccount3_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "owner" / PublicKey,
     ),
 )
@@ -912,13 +913,13 @@ TokenProgram_InitializeImmutableOwner_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
 
 TokenProgram_Instruction = Switch(
-    lambda this: this.instruction_id,
+    this.instruction_id,
     {
         TokenProgramInstruction.INS_INITIALIZE_ACCOUNT: TokenProgram_InitializeAccount_Instruction,
         TokenProgramInstruction.INS_INITIALIZE_MULTISIG: TokenProgram_InitializeMultisig_Instruction,
@@ -980,7 +981,7 @@ Token2022Program_InitializeAccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -994,7 +995,7 @@ Token2022Program_InitializeMultisig_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "number_of_signers" / Byte,
     ),
 )
@@ -1010,7 +1011,7 @@ Token2022Program_Transfer_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
     ),
 )
@@ -1026,7 +1027,7 @@ Token2022Program_Approve_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
     ),
 )
@@ -1041,7 +1042,7 @@ Token2022Program_Revoke_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -1055,7 +1056,7 @@ Token2022Program_SetAuthority_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "authority_type" / Int64ul,
         "new_authority" / PublicKey,
     ),
@@ -1072,7 +1073,7 @@ Token2022Program_Mintto_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
     ),
 )
@@ -1088,7 +1089,7 @@ Token2022Program_Burn_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
     ),
 )
@@ -1104,7 +1105,7 @@ Token2022Program_CloseAccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -1119,7 +1120,7 @@ Token2022Program_FreezeAccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -1134,7 +1135,7 @@ Token2022Program_ThawAccount_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -1150,7 +1151,7 @@ Token2022Program_TransferChecked_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
         "decimals" / Byte,
     ),
@@ -1168,7 +1169,7 @@ Token2022Program_ApproveChecked_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
         "decimals" / Byte,
     ),
@@ -1185,7 +1186,7 @@ Token2022Program_MinttoChecked_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
         "decimals" / Byte,
     ),
@@ -1202,7 +1203,7 @@ Token2022Program_BurnChecked_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "amount" / Int64ul,
         "decimals" / Byte,
     ),
@@ -1218,7 +1219,7 @@ Token2022Program_InitializeAccount2_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "owner" / PublicKey,
     ),
 )
@@ -1231,7 +1232,7 @@ Token2022Program_SyncNative_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -1244,7 +1245,7 @@ Token2022Program_InitializeAccount3_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "owner" / PublicKey,
     ),
 )
@@ -1257,13 +1258,13 @@ Token2022Program_InitializeImmutableOwner_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
 
 Token2022Program_Instruction = Switch(
-    lambda this: this.instruction_id,
+    this.instruction_id,
     {
         Token2022ProgramInstruction.INS_INITIALIZE_ACCOUNT: Token2022Program_InitializeAccount_Instruction,
         Token2022ProgramInstruction.INS_INITIALIZE_MULTISIG: Token2022Program_InitializeMultisig_Instruction,
@@ -1311,7 +1312,7 @@ AssociatedTokenAccountProgram_Create_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -1328,7 +1329,7 @@ AssociatedTokenAccountProgram_CreateIdempotent_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
@@ -1346,13 +1347,13 @@ AssociatedTokenAccountProgram_RecoverNested_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
     ),
 )
 
 
 AssociatedTokenAccountProgram_Instruction = Switch(
-    lambda this: this.instruction_id,
+    this.instruction_id,
     {
         AssociatedTokenAccountProgramInstruction.INS_CREATE: AssociatedTokenAccountProgram_Create_Instruction,
         AssociatedTokenAccountProgramInstruction.INS_CREATE_IDEMPOTENT: AssociatedTokenAccountProgram_CreateIdempotent_Instruction,
@@ -1377,14 +1378,14 @@ MemoProgram_Memo_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "memo" / Memo,
     ),
 )
 
 
 MemoProgram_Instruction = Switch(
-    lambda this: this.instruction_id,
+    this.instruction_id,
     {
         MemoProgramInstruction.INS_MEMO: MemoProgram_Memo_Instruction,
     },
@@ -1407,14 +1408,14 @@ MemoLegacyProgram_Memo_Instruction = Struct(
     ),
     "data"
     / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         "memo" / Memo,
     ),
 )
 
 
 MemoLegacyProgram_Instruction = Switch(
-    lambda this: this.instruction_id,
+    this.instruction_id,
     {
         MemoLegacyProgramInstruction.INS_MEMO: MemoLegacyProgram_Memo_Instruction,
     },
@@ -1423,7 +1424,7 @@ MemoLegacyProgram_Instruction = Switch(
 # Memo Legacy Program end
 
 Instruction = Switch(
-    lambda this: this.program_id,
+    this.program_id,
     {
         Program.SYSTEM_PROGRAM_ID: SystemProgram_Instruction,
         Program.STAKE_PROGRAM_ID: StakeProgram_Instruction,

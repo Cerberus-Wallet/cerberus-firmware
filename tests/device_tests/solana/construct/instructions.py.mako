@@ -33,12 +33,13 @@ from construct import (
     Optional,
     Struct,
     Switch,
+    this,
 )
 from .custom_constructs import (
     CompactArray,
     CompactStruct,
     HexStringAdapter,
-    InstructionIdAdapter,
+    InstructionId,
     Memo,
     PublicKey,
     String,
@@ -76,7 +77,7 @@ ${getInstructionConstructName(program, instruction)} = Struct(
         % endif
     ),
     "data" / CompactStruct(
-        "instruction_id" / InstructionIdAdapter(GreedyBytes),
+        "instruction_id" / InstructionId,
         % for parameter in instruction["parameters"]:
         "${parameter["name"]}" / ${getConstructType(parameter["type"])},
         % endfor
@@ -86,7 +87,7 @@ ${getInstructionConstructName(program, instruction)} = Struct(
     % endfor
 
 ${getProgramInstructionsConstructName(program)} = Switch(
-    lambda this: this.instruction_id,
+    this.instruction_id,
     {
     %for instruction in program["instructions"]:
         ${getProgramInstructionsEnumName(program)}.${getInstructionIdText(instruction)}: ${getInstructionConstructName(program, instruction)},
@@ -98,7 +99,7 @@ ${"#"} ${program["name"]} end
 % endfor
 
 Instruction = Switch(
-    lambda this: this.program_id,
+    this.program_id,
     {
 % for program in programs["programs"]:
         Program.${getProgramId(program)}: ${getProgramInstructionsConstructName(program)},

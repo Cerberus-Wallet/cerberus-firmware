@@ -36,8 +36,6 @@ pytestmark = [
     "solana/sign_tx.tmp.json",
 )
 def test_solana_tx_tmp(client: Client, parameters, result):
-    client.init_device(new_session=True)
-
     serialized_tx = parameters["tx"]
 
     actual_result = sign_tx(
