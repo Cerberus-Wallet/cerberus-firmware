@@ -6,8 +6,7 @@ from trezor.wire import DataError
 
 from apps.common.readers import read_uint32_le, read_uint64_le
 
-from ..types import AccountTemplate, InstructionIdFormat, PropertyTemplate, UIProperty
-from ..ui.format import (
+from ..format import (
     format_identity,
     format_int,
     format_lamports,
@@ -15,6 +14,7 @@ from ..ui.format import (
     format_token_amount,
     format_unix_timestamp,
 )
+from ..types import AccountTemplate, InstructionIdFormat, PropertyTemplate, UIProperty
 from .instruction import Instruction
 from .parse import (
     parse_byte,

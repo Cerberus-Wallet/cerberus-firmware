@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from trezor.strings import format_amount, format_timestamp
 
 if TYPE_CHECKING:
-    from ..transaction.instructions import Instruction
+    from .transaction.instructions import Instruction
 
 
 def format_pubkey(_: Instruction, value: bytes | None) -> str:

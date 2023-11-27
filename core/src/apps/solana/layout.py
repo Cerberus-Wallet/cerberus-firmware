@@ -5,10 +5,10 @@ from trezor.ui.layouts import confirm_metadata, confirm_properties
 
 from apps.common.paths import address_n_to_str
 
-from ..types import AddressType
+from .types import AddressType
 
 if TYPE_CHECKING:
-    from ..transaction.instructions import Instruction
+    from .transaction.instructions import Instruction
 
 
 def _format_path(path: list[int]) -> str:

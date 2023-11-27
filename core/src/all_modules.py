@@ -683,10 +683,14 @@ if not utils.BITCOIN_ONLY:
     import apps.solana
     apps.solana.constants
     import apps.solana.constants
+    apps.solana.format
+    import apps.solana.format
     apps.solana.get_address
     import apps.solana.get_address
     apps.solana.get_public_key
     import apps.solana.get_public_key
+    apps.solana.layout
+    import apps.solana.layout
     apps.solana.sign_tx
     import apps.solana.sign_tx
     apps.solana.transaction
@@ -699,10 +703,6 @@ if not utils.BITCOIN_ONLY:
     import apps.solana.transaction.parse
     apps.solana.types
     import apps.solana.types
-    apps.solana.ui
-    import apps.solana.ui
-    apps.solana.ui.format
-    import apps.solana.ui.format
     apps.stellar
     import apps.stellar
     apps.stellar.consts

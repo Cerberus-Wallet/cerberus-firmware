@@ -34,7 +34,7 @@ from trezor.wire import DataError
 from apps.common.readers import read_uint32_le, read_uint64_le
 
 from ..types import AccountTemplate, InstructionIdFormat, PropertyTemplate, UIProperty
-from ..ui.format import (
+from ..format import (
     format_int,
     format_lamports,
     format_pubkey,
