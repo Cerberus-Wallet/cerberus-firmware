@@ -3404,7 +3404,7 @@ def get_instruction(
                         "amount",
                         False,
                         read_uint64_le,
-                        format_int,
+                        format_token_amount,
                     ),
                     PropertyTemplate(
                         "decimals",
@@ -3489,7 +3489,7 @@ def get_instruction(
                         "amount",
                         False,
                         read_uint64_le,
-                        format_int,
+                        format_token_amount,
                     ),
                     PropertyTemplate(
                         "decimals",
@@ -3562,7 +3562,7 @@ def get_instruction(
                         "amount",
                         False,
                         read_uint64_le,
-                        format_int,
+                        format_token_amount,
                     ),
                     PropertyTemplate(
                         "decimals",
@@ -4434,7 +4434,7 @@ def get_instruction(
                         "amount",
                         False,
                         read_uint64_le,
-                        format_int,
+                        format_token_amount,
                     ),
                     PropertyTemplate(
                         "decimals",
