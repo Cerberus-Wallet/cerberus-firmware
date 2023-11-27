@@ -164,10 +164,6 @@ class Transaction:
                 )
 
     def _get_combined_accounts(self) -> list[Account]:
-        """
-        Combine accounts from transaction's accounts field with accounts from address lookup tables.
-        Instructions reference accounts by index in this combined list.
-        """
         accounts: list[Account] = []
         for address in self.addresses:
             accounts.append(address)
@@ -180,7 +176,12 @@ class Transaction:
         return accounts
 
     def _create_instructions(self) -> None:
-        combined_accounts = self._get_combined_accounts()
+        # Instructions reference accounts by index in this combined list.
+        combined_accounts = (
+            self.addresses  # type: ignore [Operator "+" not supported for types "list[Address]" and "list[AddressReference]"]
+            + self.address_lookup_tables_rw_addresses
+            + self.address_lookup_tables_ro_addresses
+        )
 
         self.instructions = []
         for (
