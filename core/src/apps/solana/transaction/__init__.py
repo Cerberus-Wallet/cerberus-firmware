@@ -116,8 +116,8 @@ class Transaction:
             instruction_id_length = instruction_id_format.length
             # Some programs e.g. Associated Token Account Program don't include the instruction
             # id in the data for instruction id 0 but they include it for the other instructions.
-            # Instructions with such optional instruction id also don't contain any other instruction
-            # data (otherwise parsing would be impossible).
+            # Other programs e.g. Memo program have only one instruction and so they don't use
+            # an instruction id at all.
             if data_length < instruction_id_length:
                 if instruction_id_format.is_included_if_zero:
                     raise DataError("Invalid instruction data")
