@@ -110,16 +110,16 @@
           ],
           "ui_properties": [
             {
+              "account": "recipient_account",
+              "display_name": "Recipient"
+            },
+            {
               "parameter": "lamports",
-              "display_name": "Transfer"
+              "display_name": "Amount"
             },
             {
               "account": "funding_account",
               "display_name": "Sender"
-            },
-            {
-              "account": "recipient_account",
-              "display_name": "Recipient"
             }
           ]
         },
@@ -515,16 +515,16 @@
           ],
           "ui_properties": [
             {
+              "account": "recipient_account",
+              "display_name": "Recipient"
+            },
+            {
               "parameter": "lamports",
-              "display_name": "Transfer"
+              "display_name": "Amount"
             },
             {
               "account": "funding_account",
               "display_name": "Sender"
-            },
-            {
-              "account": "recipient_account",
-              "display_name": "Recipient"
             }
           ]
         },
@@ -1469,16 +1469,16 @@
           ],
           "ui_properties": [
             {
+              "account": "destination_account",
+              "display_name": "Recipient"
+            },
+            {
               "parameter": "amount",
-              "display_name": "Transfer tokens"
+              "display_name": "Amount"
             },
             {
               "account": "source_account",
               "display_name": "From"
-            },
-            {
-              "account": "destination_account",
-              "display_name": "To"
             },
             {
               "account": "owner",
@@ -1837,19 +1837,19 @@
           "ui_properties": [
             {
               "account": "token_mint",
-              "display_name": "Transfer token"
+              "display_name": "Token"
+            },
+            {
+              "account": "destination_account",
+              "display_name": "Recipient"
             },
             {
               "parameter": "amount",
-              "display_name": "Transfer amount"
+              "display_name": "Amount"
             },
             {
               "account": "source_account",
               "display_name": "From"
-            },
-            {
-              "account": "destination_account",
-              "display_name": "To"
             },
             {
               "account": "owner",
@@ -1897,12 +1897,12 @@
           ],
           "ui_properties": [
             {
-              "account": "delegate",
-              "display_name": "Approve delegate"
-            },
-            {
               "account": "token_mint",
               "display_name": "Approve token"
+            },
+            {
+              "account": "delegate",
+              "display_name": "Approve delegate"
             },
             {
               "parameter": "amount",
@@ -2196,7 +2196,7 @@
         {
           "id": 2,
           "name": "Initialize Multisig",
-          "is_multisig": false,
+          "is_multisig": true,
           "parameters": [
             {
               "name": "number_of_signers",
@@ -2240,7 +2240,7 @@
           "parameters": [
             {
               "name": "amount",
-              "type": "token_amount",
+              "type": "u64",
               "optional": false
             }
           ],
@@ -2263,16 +2263,16 @@
           ],
           "ui_properties": [
             {
+              "account": "destination_account",
+              "display_name": "Recipient"
+            },
+            {
               "parameter": "amount",
-              "display_name": "Transfer tokens"
+              "display_name": "Amount"
             },
             {
               "account": "source_account",
               "display_name": "From"
-            },
-            {
-              "account": "destination_account",
-              "display_name": "To"
             },
             {
               "account": "owner",
@@ -2382,20 +2382,20 @@
           ],
           "ui_properties": [
             {
+              "account": "mint_account",
+              "display_name": "Set authority for"
+            },
+            {
               "parameter": "new_authority",
-              "display_name": "Set authority"
+              "display_name": "New authority"
             },
             {
               "parameter": "authority_type",
-              "display_name": "Type"
+              "display_name": "Authority type"
             },
             {
-              "parameter": "current_authority",
-              "display_name": "Type"
-            },
-            {
-              "parameter": "mint_account",
-              "display_name": "Token mint"
+              "account": "current_authority",
+              "display_name": "Current authority"
             }
           ]
         },
@@ -2630,16 +2630,20 @@
           ],
           "ui_properties": [
             {
+              "account": "token_mint",
+              "display_name": "Token"
+            },
+            {
+              "account": "destination_account",
+              "display_name": "Recipient"
+            },
+            {
               "parameter": "amount",
-              "display_name": "Transfer tokens"
+              "display_name": "Amount"
             },
             {
               "account": "source_account",
               "display_name": "From"
-            },
-            {
-              "account": "destination_account",
-              "display_name": "To"
             },
             {
               "account": "owner",
@@ -2686,6 +2690,10 @@
             }
           ],
           "ui_properties": [
+            {
+              "account": "token_mint",
+              "display_name": "Approve token"
+            },
             {
               "account": "delegate",
               "display_name": "Approve delegate"
@@ -2739,8 +2747,12 @@
           ],
           "ui_properties": [
             {
+              "account": "mint",
+              "display_name": "Mint token"
+            },
+            {
               "parameter": "amount",
-              "display_name": "Mint tokens"
+              "display_name": "Mint amount"
             },
             {
               "account": "account_to_mint",
@@ -2787,8 +2799,12 @@
           ],
           "ui_properties": [
             {
+              "account": "token_mint",
+              "display_name": "Burn token"
+            },
+            {
               "parameter": "amount",
-              "display_name": "Burn tokens"
+              "display_name": "Burn amount"
             },
             {
               "account": "account_to_burn_from",
