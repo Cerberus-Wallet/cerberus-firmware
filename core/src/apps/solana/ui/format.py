@@ -1,5 +1,7 @@
 from typing import TYPE_CHECKING
 
+from trezor.strings import format_amount, format_timestamp
+
 if TYPE_CHECKING:
     from ..transaction.instructions import Instruction
 
@@ -14,23 +16,17 @@ def format_pubkey(_: Instruction, value: bytes | None) -> str:
 
 
 def format_lamports(_: Instruction, value: int) -> str:
-    from trezor.strings import format_amount
-
     formatted = format_amount(value, decimals=9)
     return f"{formatted} SOL"
 
 
 def format_token_amount(instruction: Instruction, value: int) -> str:
-    from trezor.strings import format_amount
-
     decimals = instruction.decimals if instruction.decimals is not None else 0
     formatted = format_amount(value, decimals=decimals)
     return f"{formatted}"
 
 
 def format_unix_timestamp(_: Instruction, value: int) -> str:
-    from trezor.strings import format_timestamp
-
     return format_timestamp(value)
 
 

@@ -30,9 +30,6 @@ class Transaction:
     address_lookup_tables_ro_addresses: list[AddressReference]
 
     def __init__(self, serialized_tx: bytes) -> None:
-        self.instructions = []
-        self.address_lookup_tables_rw_addresses = []
-        self.address_lookup_tables_ro_addresses = []
         self._parse_transaction(serialized_tx)
         self._create_instructions()
         self._determine_if_blind_signing()
@@ -47,8 +44,7 @@ class Transaction:
 
         self._parse_instructions(serialized_tx_reader)
 
-        if self.version is not None:
-            self._parse_address_lookup_tables(serialized_tx_reader)
+        self._parse_address_lookup_tables(serialized_tx_reader)
 
         if serialized_tx_reader.remaining_count() != 0:
             raise DataError("Invalid transaction")
@@ -103,7 +99,7 @@ class Transaction:
     def _parse_instructions(self, serialized_tx_reader: BufferReader) -> None:
         num_of_instructions = parse_var_int(serialized_tx_reader)
 
-        instructions: list[RawInstruction] = []
+        self.raw_instructions = []
 
         for _ in range(num_of_instructions):
             program_index = serialized_tx_reader.get()
@@ -138,15 +134,16 @@ class Transaction:
                 data_length - instruction_id_length
             )
 
-            instructions.append(
+            self.raw_instructions.append(
                 (program_index, instruction_id, accounts, instruction_data)
             )
-
-        self.raw_instructions = instructions
 
     def _parse_address_lookup_tables(self, serialized_tx: BufferReader) -> None:
         self.address_lookup_tables_rw_addresses = []
         self.address_lookup_tables_ro_addresses = []
+
+        if self.version is None:
+            return
 
         address_lookup_tables_count = parse_var_int(serialized_tx)
         for _ in range(address_lookup_tables_count):
@@ -185,6 +182,7 @@ class Transaction:
     def _create_instructions(self) -> None:
         combined_accounts = self._get_combined_accounts()
 
+        self.instructions = []
         for (
             program_index,
             instruction_id,

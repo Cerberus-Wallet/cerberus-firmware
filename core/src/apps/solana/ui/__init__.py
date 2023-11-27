@@ -24,7 +24,7 @@ def _format_path(path: list[int]) -> str:
     return f"#{unharden(account_index) + 1}"
 
 
-async def show_confirm(
+async def confirm_instruction(
     instruction: Instruction,
     instructions_count: int,
     instruction_index: int,
@@ -149,7 +149,7 @@ def get_address_type(address_type: int) -> str:
     raise ValueError  # Invalid address type
 
 
-async def show_unsupported_instruction_details(
+async def confirm_unsupported_instruction_details(
     instruction: Instruction,
     title: str,
     signer_path: list[int],
@@ -200,7 +200,7 @@ async def show_unsupported_instruction_details(
         )
 
 
-async def show_unsupported_instruction_confirm(
+async def confirm_unsupported_instruction_confirm(
     instruction: Instruction,
     instructions_count: int,
     instruction_index: int,
@@ -209,12 +209,12 @@ async def show_unsupported_instruction_confirm(
 ) -> None:
     title = f"{instruction_index}/{instructions_count}: {instruction.ui_name}: instruction id ({instruction.instruction_id})"
 
-    return await show_unsupported_instruction_details(
+    return await confirm_unsupported_instruction_details(
         instruction, title, signer_path, signer_public_key
     )
 
 
-async def show_unsupported_program_confirm(
+async def confirm_unsupported_program_confirm(
     instruction: Instruction,
     instructions_count: int,
     instruction_index: int,
@@ -223,12 +223,12 @@ async def show_unsupported_program_confirm(
 ) -> None:
     title = f"{instruction_index}/{instructions_count}: {instruction.ui_name}"
 
-    return await show_unsupported_instruction_details(
+    return await confirm_unsupported_instruction_details(
         instruction, title, signer_path, signer_public_key
     )
 
 
-async def show_final_confirmation(
+async def confirm_transaction(
     signer_path: list[int], address: str, blockhash: bytes, fee: int
 ) -> None:
     from trezor.ui.layouts import confirm_properties

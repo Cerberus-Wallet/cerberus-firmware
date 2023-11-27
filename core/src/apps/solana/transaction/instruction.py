@@ -109,9 +109,12 @@ class Instruction:
             )
 
             self.multisig_signers = accounts[len(accounts_template) :]
-
             if self.multisig_signers and not supports_multisig:
                 raise ValueError  # Multisig not supported
+        else:
+            self.parsed_data = {}
+            self.parsed_accounts = {}
+            self.multisig_signers = []
 
     def __getattr__(self, attr: str) -> Any:
         if attr in self.parsed_data:
@@ -138,4 +141,4 @@ class Instruction:
     @classmethod
     def is_type_of(cls, ins: Any) -> TypeGuard[Self]:
         # gets overridden in `instructions.py` `FakeClass`
-        return False
+        raise NotImplementedError

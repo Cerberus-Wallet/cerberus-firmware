@@ -26,7 +26,7 @@ async def sign_tx(
 
     from apps.common import seed
 
-    from .ui import show_final_confirmation
+    from .ui import confirm_transaction
 
     address_n = msg.address_n  # local_cache_attribute
     serialized_tx = msg.serialized_tx  # local_cache_attribute
@@ -56,7 +56,7 @@ async def sign_tx(
 
     signer_address = base58.encode(seed.remove_ed25519_prefix(node.public_key()))
 
-    await show_final_confirmation(
+    await confirm_transaction(
         address_n,
         signer_address,
         transaction.blockhash,
@@ -74,9 +74,9 @@ async def show_instructions(
     instructions_count = len(transaction.instructions)
     for instruction_index, instruction in enumerate(transaction.instructions, 1):
         if not instruction.is_program_supported:
-            from .ui import show_unsupported_program_confirm
+            from .ui import confirm_unsupported_program_confirm
 
-            await show_unsupported_program_confirm(
+            await confirm_unsupported_program_confirm(
                 instruction,
                 instructions_count,
                 instruction_index,
@@ -84,9 +84,9 @@ async def show_instructions(
                 signer_public_key,
             )
         elif not instruction.is_instruction_supported:
-            from .ui import show_unsupported_instruction_confirm
+            from .ui import confirm_unsupported_instruction_confirm
 
-            await show_unsupported_instruction_confirm(
+            await confirm_unsupported_instruction_confirm(
                 instruction,
                 instructions_count,
                 instruction_index,
@@ -94,9 +94,9 @@ async def show_instructions(
                 signer_public_key,
             )
         else:
-            from .ui import show_confirm
+            from .ui import confirm_instruction
 
-            await show_confirm(
+            await confirm_instruction(
                 instruction,
                 instructions_count,
                 instruction_index,

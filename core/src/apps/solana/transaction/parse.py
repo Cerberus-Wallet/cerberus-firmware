@@ -14,7 +14,11 @@ def parse_var_int(serialized_tx: BufferReader) -> int:
         value += (B & 0b01111111) << shift
         shift += 7
         if B & 0b10000000 == 0:
-            return value
+            break
+
+    if value > 0xFFFF:
+        raise ValueError  # compact-u16 value too large
+
     return value
 
 
