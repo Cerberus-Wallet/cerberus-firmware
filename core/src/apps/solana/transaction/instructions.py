@@ -27,7 +27,7 @@ from .parse import (
 if TYPE_CHECKING:
     from typing import Any, Type
 
-    from ..types import Account
+    from ..types import Account, InstructionData
 
 SYSTEM_PROGRAM_ID = "11111111111111111111111111111111"
 STAKE_PROGRAM_ID = "Stake11111111111111111111111111111111111111"
@@ -825,7 +825,7 @@ def get_instruction(
     program_id: str,
     instruction_id: int,
     instruction_accounts: list[Account],
-    instruction_data: bytes,
+    instruction_data: InstructionData,
 ) -> Instruction:
     if program_id == SYSTEM_PROGRAM_ID:
         if instruction_id == SYSTEM_PROGRAM_ID_INS_CREATE_ACCOUNT:

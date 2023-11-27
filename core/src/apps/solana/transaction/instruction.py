@@ -5,7 +5,13 @@ if TYPE_CHECKING:
 
     from typing_extensions import Self
 
-    from ..types import Account, AccountTemplate, PropertyTemplate, UIProperty
+    from ..types import (
+        Account,
+        AccountTemplate,
+        InstructionData,
+        PropertyTemplate,
+        UIProperty,
+    )
 
 
 class Instruction:
@@ -24,7 +30,7 @@ class Instruction:
 
     is_program_supported: bool
     is_instruction_supported: bool
-    instruction_data: bytes
+    instruction_data: InstructionData
     accounts: list[Account]
 
     multisig_signers: list[Account]
@@ -33,7 +39,7 @@ class Instruction:
 
     @staticmethod
     def parse_instruction_data(
-        instruction_data: bytes, property_templates: list[PropertyTemplate]
+        instruction_data: InstructionData, property_templates: list[PropertyTemplate]
     ):
         from trezor.utils import BufferReader
         from trezor.wire import DataError
@@ -68,7 +74,7 @@ class Instruction:
 
     def __init__(
         self,
-        instruction_data: bytes,
+        instruction_data: InstructionData,
         program_id: str,
         accounts: list[Account],
         instruction_id: int,

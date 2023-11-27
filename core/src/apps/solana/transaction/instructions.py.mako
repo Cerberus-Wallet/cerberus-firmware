@@ -54,7 +54,7 @@ from .parse import (
 if TYPE_CHECKING:
     from typing import Any, Type
 
-    from ..types import Account
+    from ..types import Account, InstructionData
 
 % for program in programs["programs"]:
 ${getProgramId(program)} = "${program["id"]}"
@@ -133,7 +133,7 @@ None\
 </%def>\
 
 def get_instruction(
-    program_id: str, instruction_id: int, instruction_accounts: list[Account], instruction_data: bytes
+    program_id: str, instruction_id: int, instruction_accounts: list[Account], instruction_data: InstructionData
 ) -> Instruction:
 % for program in programs["programs"]:
 % if len(program["instructions"]) > 0:

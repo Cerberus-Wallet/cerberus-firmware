@@ -179,7 +179,7 @@ async def confirm_unsupported_instruction_details(
         await confirm_properties(
             "instruction_data",
             title,
-            (("Instruction data:", instruction.instruction_data),),
+            (("Instruction data:", bytes(instruction.instruction_data)),),
         )
 
         accounts = []

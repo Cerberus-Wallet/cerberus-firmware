@@ -15,8 +15,10 @@ if TYPE_CHECKING:
     ProgramIndex = int
     InstructionId = int
     AccountIndex = int
-    Data = memoryview
-    RawInstruction = tuple[ProgramIndex, InstructionId, list[AccountIndex], Data]
+    InstructionData = memoryview
+    RawInstruction = tuple[
+        ProgramIndex, InstructionId, list[AccountIndex], InstructionData
+    ]
 
     T = TypeVar("T")
 else:
