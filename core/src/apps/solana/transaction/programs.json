@@ -3218,7 +3218,8 @@
     },
     "token_amount": {
       "parse": "read_uint64_le",
-      "format": "format_token_amount"
+      "format": "format_token_amount",
+      "required_parameters": ["decimals"]
     },
     "pubkey": {
       "parse": "parse_pubkey",

@@ -132,6 +132,18 @@ None\
 % endif
 </%def>\
 
+<%
+    # Make sure that all required parameters are present in the instruction.
+    for program in programs["programs"]:
+        for instruction in program["instructions"]:
+            for parameter in instruction["parameters"]:
+                if "required_parameters" in programs["types"][parameter["type"]]:
+                    for required_parameter in programs["types"][parameter["type"]]["required_parameters"]:
+                        instruction_parameter_names = [parameter["name"] for parameter in instruction["parameters"]]
+                        if required_parameter not in instruction_parameter_names:
+                            raise Exception(f"Instruction \"{instruction['name']}\" is missing the required parameter \"{required_parameter}\" from paremeter \"{parameter['name']}\".")
+%>
+
 def get_instruction(
     program_id: str, instruction_id: int, instruction_accounts: list[Account], instruction_data: InstructionData
 ) -> Instruction:
