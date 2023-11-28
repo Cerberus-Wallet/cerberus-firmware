@@ -1,14 +1,28 @@
 from typing import TYPE_CHECKING
 
 from trezor.crypto import base58
-from trezor.ui.layouts import confirm_metadata, confirm_properties
+from trezor.enums import ButtonRequestType
+from trezor.strings import format_amount
+from trezor.ui.layouts import (
+    confirm_metadata,
+    confirm_properties,
+    confirm_summary,
+    confirm_value,
+)
 
 from apps.common.paths import address_n_to_str
 
 from .types import AddressType
 
 if TYPE_CHECKING:
-    from .transaction.instructions import Instruction
+    from trezor.ui.layouts import PropertyType
+
+    from .transaction.instructions import (
+        AssociatedTokenAccountProgramCreateInstruction,
+        Instruction,
+        SystemProgramTransferInstruction,
+        TokenProgramTransferCheckedInstruction,
+    )
     from .types import AddressReference
 
 
@@ -40,8 +54,6 @@ async def confirm_instruction(
     signer_path: list[int],
     signer_public_key: bytes,
 ) -> None:
-    from trezor.enums import ButtonRequestType
-
     instruction_title = (
         f"{instruction_index}/{instructions_count}: {instruction.ui_name}"
     )
@@ -241,13 +253,95 @@ async def confirm_unsupported_program_confirm(
     )
 
 
+async def confirm_system_transfer(
+    transfer_instruction: SystemProgramTransferInstruction,
+    fee: int,
+    signer_path: list[int],
+    blockhash: bytes,
+) -> None:
+    await confirm_value(
+        title="Recipient",
+        value=base58.encode(transfer_instruction.recipient_account[0]),
+        description="",
+        br_type="confirm_recipient",
+        br_code=ButtonRequestType.ConfirmOutput,
+        verb="CONTINUE",
+    )
+
+    await confirm_custom_transaction(
+        transfer_instruction.lamports,
+        9,
+        "SOL",
+        fee,
+        signer_path,
+        blockhash,
+    )
+
+
+async def confirm_token_transfer(
+    create_token_account_instruction: AssociatedTokenAccountProgramCreateInstruction
+    | None,
+    transfer_token_instruction: TokenProgramTransferCheckedInstruction,
+    fee: int,
+    signer_path: list[int],
+    blockhash: bytes,
+):
+    recipient_props: list[PropertyType] = [
+        ("", base58.encode(transfer_token_instruction.destination_account[0]))
+    ]
+    if create_token_account_instruction is not None:
+        recipient_props.append(("(account will be created)", ""))
+
+    await confirm_properties(
+        "confirm_recipient",
+        "Recipient",
+        recipient_props,
+    )
+
+    await confirm_value(
+        title="Token address",
+        value=base58.encode(transfer_token_instruction.token_mint[0]),
+        description="",
+        br_type="confirm_token_address",
+        br_code=ButtonRequestType.ConfirmOutput,
+        verb="CONTINUE",
+    )
+
+    await confirm_custom_transaction(
+        transfer_token_instruction.amount,
+        transfer_token_instruction.decimals,
+        "[TOKEN]",
+        fee,
+        signer_path,
+        blockhash,
+    )
+
+
+async def confirm_custom_transaction(
+    amount: int,
+    decimals: int,
+    unit: str,
+    fee: int,
+    signer_path: list[int],
+    blockhash: bytes,
+) -> None:
+    await confirm_summary(
+        [
+            ("Amount:", f"{format_amount(amount, decimals)} {unit}"),
+            ("Expected fee:", f"{format_amount(fee, 9)} SOL"),
+        ],
+        info_items=(
+            ("Account:", _format_path(signer_path)),
+            ("Blockhash:", base58.encode(blockhash)),
+        ),
+    )
+
+
 async def confirm_transaction(
     signer_path: list[int], address: str, blockhash: bytes, fee: int
 ) -> None:
-    from trezor.ui.layouts import confirm_summary
-
     await confirm_summary(
-        [("Expected fee:", f"{fee} lamports")],
+        [("Expected fee:", f"{format_amount(fee, 9)} SOL")],
         info_items=(
             ("Signer account:", _format_path(signer_path)),
             ("Signer address:", address),
