@@ -58,7 +58,7 @@ async def sign_tx(
     if not await try_confirm_predefined_transaction(
         transaction, fee, address_n, transaction.blockhash
     ):
-        await show_instructions(address_n, signer_public_key, transaction)
+        await confirm_instructions(address_n, signer_public_key, transaction)
         await confirm_transaction(
             address_n,
             signer_address,
@@ -121,7 +121,7 @@ async def try_confirm_predefined_transaction(
     return False
 
 
-async def show_instructions(
+async def confirm_instructions(
     signer_path: list[int], signer_public_key: bytes, transaction: Transaction
 ) -> None:
     instructions_count = len(transaction.instructions)
