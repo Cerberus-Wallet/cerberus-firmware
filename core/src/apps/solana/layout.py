@@ -36,7 +36,7 @@ def _format_path(path: list[int]) -> str:
 
     ACCOUNT_PATH_INDEX = const(3)
     account_index = path[ACCOUNT_PATH_INDEX]
-    return f"#{unharden(account_index) + 1}"
+    return f"Solana #{unharden(account_index) + 1}"
 
 
 def _get_address_reference_props(address: AddressReference, display_name: str):
