@@ -750,7 +750,7 @@ extern "C" fn new_show_info_with_cancel(n_args: usize, args: *const Obj, kwargs:
             Frame::left_aligned(
                 theme::label_title(),
                 title,
-                SimplePage::vertical(paragraphs.into_paragraphs(), theme::BG)
+                SimplePage::horizontal(paragraphs.into_paragraphs(), theme::BG)
                     .with_swipe_right_to_go_back(),
             )
             .with_cancel_button(),
@@ -1694,7 +1694,7 @@ pub static mp_module_trezorui2: Module = obj_module! {
     ///     title: str,
     ///     items: Iterable[Tuple[str, str]],
     /// ) -> object:
-    ///     """Show metadata when for outgoing transaction."""
+    ///     """Show metadata for outgoing transaction."""
     Qstr::MP_QSTR_show_info_with_cancel => obj_fn_kw!(0, new_show_info_with_cancel).as_obj(),
 
     /// def confirm_value(

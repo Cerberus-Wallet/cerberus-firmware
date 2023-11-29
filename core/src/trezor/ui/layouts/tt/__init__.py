@@ -914,7 +914,9 @@ async def confirm_total(
     if fee_rate_amount:
         info_items.append(("Fee rate:", fee_rate_amount))
 
-    await confirm_summary(items, "SUMMARY", info_items, br_type=br_type, br_code=br_code)
+    await confirm_summary(
+        items, "SUMMARY", info_items, br_type=br_type, br_code=br_code
+    )
 
 
 async def confirm_summary(
