@@ -26,8 +26,6 @@
     "addr_mismatch__key_mismatch": "Schlüsselfehlanpassung? (TODO)",
     "addr_mismatch__mismatch": "Adressenkonflikt?",
     "addr_mismatch__support_url": "trezor.io/support",
-    "addr_mismatch__title": "ADRESSENKONFLIKT?",
-    "addr_mismatch__title_key_mismatch": "Schlüsselfehlanpassung? (TODO)",
     "addr_mismatch__wrong_derivation_path": "Falscher Ableitungspfad für ausgewähltes Konto. (TODO)",
     "addr_mismatch__xpub_mismatch": "XPUB Mismatch? (TODO)",
     "address__public_key": "Öffentlicher Schlüssel (TODO)",

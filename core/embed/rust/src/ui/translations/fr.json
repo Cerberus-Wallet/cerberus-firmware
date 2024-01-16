@@ -26,8 +26,6 @@
     "addr_mismatch__key_mismatch": "Déliachance clé? (TODO)",
     "addr_mismatch__mismatch": "Erreur d'adresse?",
     "addr_mismatch__support_url": "trezor.io/support",
-    "addr_mismatch__title": "ERREUR D'ADRESSE?",
-    "addr_mismatch__title_key_mismatch": "Déliachance clé? (TODO)",
     "addr_mismatch__wrong_derivation_path": "Mauvais chemin de dérivation pour le compte sélectionné. (TODO)",
     "addr_mismatch__xpub_mismatch": "Xpub inadéquat? (TODO)",
     "address__public_key": "Clé publique (TODO)",

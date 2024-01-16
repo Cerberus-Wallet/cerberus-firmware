@@ -471,7 +471,7 @@ async def show_address(
     br_code: ButtonRequestType = ButtonRequestType.Address,
     chunkify: bool = False,
 ) -> None:
-    mismatch_title = mismatch_title or TR.addr_mismatch__title  # def_arg
+    mismatch_title = mismatch_title or TR.addr_mismatch__mismatch  # def_arg
     send_button_request = True
     if title is None:
         # Will be a marquee in case of multisig
@@ -552,7 +552,7 @@ def show_pubkey(
     br_type: str = "show_pubkey",
 ) -> Awaitable[None]:
     title = title or TR.address__public_key  # def_arg
-    mismatch_title = mismatch_title or TR.addr_mismatch__title_key_mismatch  # def_arg
+    mismatch_title = mismatch_title or TR.addr_mismatch__key_mismatch  # def_arg
     return show_address(
         address=pubkey,
         title=title.upper(),

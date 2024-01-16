@@ -13,8 +13,6 @@ class TR:
     addr_mismatch__key_mismatch: str
     addr_mismatch__mismatch: str
     addr_mismatch__support_url: str
-    addr_mismatch__title: str
-    addr_mismatch__title_key_mismatch: str
     addr_mismatch__wrong_derivation_path: str
     addr_mismatch__xpub_mismatch: str
     address__public_key: str

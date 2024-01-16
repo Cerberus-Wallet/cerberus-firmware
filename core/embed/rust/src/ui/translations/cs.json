@@ -26,8 +26,6 @@
     "addr_mismatch__key_mismatch": "Nesouhlasí klíč?",
     "addr_mismatch__mismatch": "Nesouhlasí adresa?",
     "addr_mismatch__support_url": "trezor.io/support",
-    "addr_mismatch__title": "NESOUHLASÍ ADRESA?",
-    "addr_mismatch__title_key_mismatch": "NESOUHLASÍ KLÍČ?",
     "addr_mismatch__wrong_derivation_path": "Špatná derivační cesta pro zvolený účet.",
     "addr_mismatch__xpub_mismatch": "Nesouhlasí XPUB?",
     "address__public_key": "Veřejný klíč",
