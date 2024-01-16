@@ -63,8 +63,8 @@ async def confirm_instruction(
     if instruction.multisig_signers:
         await confirm_metadata(
             "confirm_multisig",
-            "Confirm multisig",
-            "The following instruction is a multisig instruction.",
+            TR.solana__confirm_multisig,
+            TR.solana__instruction_is_multisig,
             br_code=ButtonRequestType.Other,
         )
 
