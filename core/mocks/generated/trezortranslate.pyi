@@ -127,10 +127,7 @@ class TR:
     cardano__block: str
     cardano__catalyst: str
     cardano__certificate: str
-    cardano__certificate_path: str
     cardano__change_output: str
-    cardano__change_output_path: str
-    cardano__change_output_staking_path: str
     cardano__check_all_items: str
     cardano__choose_level_of_details: str
     cardano__collateral_input_id: str
@@ -173,7 +170,6 @@ class TR:
     cardano__pool_metadata_hash: str
     cardano__pool_metadata_url: str
     cardano__pool_owner: str
-    cardano__pool_owner_path: str
     cardano__pool_reward_account: str
     cardano__reference_input_id: str
     cardano__reference_input_index: str
@@ -224,7 +220,6 @@ class TR:
     cardano__warning: str
     cardano__weight: str
     cardano__withdrawal_for_address_template: str
-    cardano__witness_path: str
     cardano__x_of_y_signatures_template: str
     coinjoin__access_account: str
     coinjoin__do_not_disconnect: str

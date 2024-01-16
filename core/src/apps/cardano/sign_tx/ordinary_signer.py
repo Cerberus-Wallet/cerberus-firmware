@@ -76,7 +76,7 @@ class OrdinarySigner(Signer):
             raise ProcessError("Invalid witness request")
 
     async def _show_witness_request(self, witness_path: list[int]) -> None:
-        from ..helpers.paths import SCHEMA_PAYMENT, SCHEMA_STAKING, WITNESS_PATH_NAME
+        from ..helpers.paths import SCHEMA_PAYMENT, SCHEMA_STAKING
 
         # super() omitted intentionally
         # We only allow payment, staking or minting paths.
@@ -90,7 +90,7 @@ class OrdinarySigner(Signer):
         if is_minting:
             await layout.confirm_witness_request(witness_path)
         elif not is_payment and not is_staking:
-            await self._fail_or_warn_path(witness_path, WITNESS_PATH_NAME)
+            await self._fail_or_warn_path(witness_path, "Witness path")
         else:
             await self._show_if_showing_details(
                 layout.confirm_witness_request(witness_path)
