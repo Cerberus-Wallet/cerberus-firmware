@@ -1065,7 +1065,9 @@ async def confirm_solana_tx(
     br_type: str = "confirm_solana_tx",
     br_code: ButtonRequestType = ButtonRequestType.SignTx,
 ):
-    amount_title = amount_title or f"{TR.words__amount}:"  # def_arg
+    amount_title = (
+        amount_title if amount_title is not None else f"{TR.words__amount}:"
+    )  # def_arg
     fee_title = fee_title or TR.words__fee  # def_arg
     await raise_if_not_confirmed(
         interact(
