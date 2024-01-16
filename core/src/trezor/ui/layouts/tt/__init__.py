@@ -803,7 +803,6 @@ async def confirm_address(
     br_type: str = "confirm_address",
     br_code: ButtonRequestType = BR_TYPE_OTHER,
 ) -> None:
-    description = description or f"{TR.words__address}:"  # def_arg
     return await confirm_value(
         title,
         address,

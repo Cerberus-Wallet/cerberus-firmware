@@ -866,7 +866,6 @@ def confirm_address(
     br_type: str = "confirm_address",
     br_code: ButtonRequestType = BR_TYPE_OTHER,
 ) -> Awaitable[None]:
-    description = description or f"{TR.words__address}:"  # def_arg
     return confirm_blob(
         br_type,
         title.upper(),
