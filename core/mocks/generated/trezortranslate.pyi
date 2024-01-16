@@ -141,6 +141,7 @@ class TR:
     cardano__confirm_signing_stake_pool: str
     cardano__confirm_transaction: str
     cardano__confirming_a_multisig_transaction: str
+    cardano__confirming_a_plutus_transaction: str
     cardano__confirming_pool_registration: str
     cardano__confirming_transction: str
     cardano__cost: str

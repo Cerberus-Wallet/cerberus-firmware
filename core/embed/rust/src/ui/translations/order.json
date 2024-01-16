@@ -859,5 +859,6 @@
   "857": "words__confirm_fee",
   "858": "words__no",
   "859": "words__yes",
-  "860": "words__account_colon"
+  "860": "words__account_colon",
+  "861": "cardano__confirming_a_plutus_transaction"
 }

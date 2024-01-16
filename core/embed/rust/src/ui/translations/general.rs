@@ -837,6 +837,7 @@ pub struct TranslationsGeneral {
     pub words__no: &'static str,
     pub words__yes: &'static str,
     pub words__account_colon: &'static str,
+    pub cardano__confirming_a_plutus_transaction: &'static str,
 }
 
 #[rustfmt::skip]
@@ -1683,6 +1684,7 @@ impl TranslationsGeneral {
             "words__no" => Some((self.words__no, 858)),
             "words__yes" => Some((self.words__yes, 859)),
             "words__account_colon" => Some((self.words__account_colon, 860)),
+            "cardano__confirming_a_plutus_transaction" => Some((self.cardano__confirming_a_plutus_transaction, 861)),
             _ => None,
         }
     }

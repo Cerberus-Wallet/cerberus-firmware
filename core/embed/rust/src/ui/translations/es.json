@@ -154,6 +154,7 @@
     "cardano__confirm_signing_stake_pool": "Confirma la firma del registro del stake pool como propietario.",
     "cardano__confirm_transaction": "Confirmar la transacción",
     "cardano__confirming_a_multisig_transaction": "Confirmar una transacción multifirma.",
+    "cardano__confirming_a_plutus_transaction": "Confirmando una transacción Plutus. (TODO)",
     "cardano__confirming_pool_registration": "Confirmar el registro del pool como propietario.",
     "cardano__confirming_transction": "Confirmar una transacción.",
     "cardano__cost": "Coste",

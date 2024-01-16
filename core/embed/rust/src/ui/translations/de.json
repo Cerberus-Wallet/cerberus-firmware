@@ -154,6 +154,7 @@
     "cardano__confirm_signing_stake_pool": "Bestätige, dass du die Registrierung des Pools als Eigentümer signiert hast.",
     "cardano__confirm_transaction": "Transaktion bestätigen",
     "cardano__confirming_a_multisig_transaction": "Multisig-Transaktion bestätigen.",
+    "cardano__confirming_a_plutus_transaction": "Bestätigung einer Plutus -Transaktion. (TODO)",
     "cardano__confirming_pool_registration": "Pool-Registrierung als Besitzer bestätigen.",
     "cardano__confirming_transction": "Transaktion bestätigen.",
     "cardano__cost": "Kosten",

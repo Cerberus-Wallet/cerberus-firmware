@@ -154,6 +154,7 @@
     "cardano__confirm_signing_stake_pool": "Potvrdit podepsání registrace stávkového poolu jako vlastníka.",
     "cardano__confirm_transaction": "Potvrdit transakci",
     "cardano__confirming_a_multisig_transaction": "Potvrzování multisig transakce.",
+    "cardano__confirming_a_plutus_transaction": "Potvrzení transakce Plutus. (TODO)",
     "cardano__confirming_pool_registration": "Potvrzení registrace stávkového poolu.",
     "cardano__confirming_transction": "Potvrzení transakce.",
     "cardano__cost": "Náklady",
