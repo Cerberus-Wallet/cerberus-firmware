@@ -189,6 +189,12 @@ int main(void) {
   ensure(sectrue * (zkp_context_init() == 0), NULL);
 #endif
 
+  while (1) {  // TODO:just for testing, remove later !!!
+    new_drawing_poc();
+
+    display_refresh();
+  }
+
   printf("CORE: Preparing stack\n");
   // Stack limit should be less than real stack size, so we have a chance
   // to recover from limit hit.

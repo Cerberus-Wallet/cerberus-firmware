@@ -10,6 +10,7 @@ impl Default for ffi::uzlib_uncomp {
     }
 }
 
+#[derive(Debug, Copy, Clone)]
 pub struct UzlibContext<'a> {
     uncomp: ffi::uzlib_uncomp,
     src_data: PhantomData<&'a [u8]>,
