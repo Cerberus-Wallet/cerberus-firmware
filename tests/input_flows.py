@@ -27,19 +27,12 @@ from .common import (
     click_info_button_tt,
     click_through,
     read_and_confirm_mnemonic,
+    get_text_possible_pagination,
+    swipe_if_necessary,
 )
 from .input_flows_helpers import BackupFlow, EthereumFlow, PinFlow, RecoveryFlow
 
 B = messages.ButtonRequestType
-
-
-def swipe_if_necessary(debug: DebugLink, br_code: B | None = None) -> BRGeneratorType:
-    br = yield
-    if br_code is not None:
-        assert br.code == br_code
-    if br.pages is not None:
-        for _ in range(br.pages - 1):
-            debug.swipe_up()
 
 
 class InputFlowBase:
@@ -341,8 +334,10 @@ class InputFlowShowAddressQRCodeCancel(InputFlowBase):
         self.debug.press_left()
         self.debug.press_left()
         # Cancel
-        self.debug.press_left()
+        self.debug.press_left(wait=True)
         # Confirm address mismatch
+        # Clicking right twice, as some languages can have two pages
+        self.debug.press_right()
         self.debug.press_right()
 
 
@@ -607,6 +602,7 @@ class InputFlowSignTxInformation(InputFlowBase):
 
     def input_flow_tr(self) -> BRGeneratorType:
         content = yield from sign_tx_go_to_info_tr(self.client)
+        print("content", content)
         self.assert_content(content, "confirm_total__title_sending_from")
         self.debug.press_yes()
 
@@ -691,7 +687,7 @@ class InputFlowSignTxInformationReplacement(InputFlowBase):
 
 def lock_time_input_flow_tt(
     debug: DebugLink,
-    layout_assert_func: Callable[[DebugLink], None],
+    layout_assert_func: Callable[[DebugLink, messages.ButtonRequest], None],
     double_confirm: bool = False,
 ) -> BRGeneratorType:
     yield  # confirm output
@@ -701,8 +697,8 @@ def lock_time_input_flow_tt(
     debug.wait_layout()
     debug.press_yes()
 
-    yield  # confirm locktime
-    layout_assert_func(debug)
+    br = yield  # confirm locktime
+    layout_assert_func(debug, br)
     debug.press_yes()
 
     yield  # confirm transaction
@@ -713,7 +709,7 @@ def lock_time_input_flow_tt(
 
 
 def lock_time_input_flow_tr(
-    debug: DebugLink, layout_assert_func: Callable[[DebugLink], None]
+    debug: DebugLink, layout_assert_func: Callable[[DebugLink, messages.ButtonRequest], None]
 ) -> BRGeneratorType:
     yield  # confirm address
     debug.wait_layout()
@@ -722,8 +718,8 @@ def lock_time_input_flow_tr(
     debug.wait_layout()
     debug.press_yes()
 
-    yield  # confirm locktime
-    layout_assert_func(debug)
+    br = yield  # confirm locktime
+    layout_assert_func(debug, br)
     debug.press_yes()
 
     yield  # confirm transaction
@@ -735,8 +731,8 @@ class InputFlowLockTimeBlockHeight(InputFlowBase):
         super().__init__(client)
         self.block_height = block_height
 
-    def assert_func(self, debug: DebugLink) -> None:
-        layout_text = debug.wait_layout().text_content()
+    def assert_func(self, debug: DebugLink, br: messages.ButtonRequest) -> None:
+        layout_text = get_text_possible_pagination(debug, br)
         TR.assert_in(layout_text, "bitcoin__locktime_set_to_blockheight")
         assert self.block_height in layout_text
 
@@ -754,8 +750,8 @@ class InputFlowLockTimeDatetime(InputFlowBase):
         super().__init__(client)
         self.lock_time_str = lock_time_str
 
-    def assert_func(self, debug: DebugLink):
-        layout_text = debug.wait_layout().text_content()
+    def assert_func(self, debug: DebugLink, br: messages.ButtonRequest) -> None:
+        layout_text = get_text_possible_pagination(debug, br)
         TR.assert_in(layout_text, "bitcoin__locktime_set_to")
         assert self.lock_time_str in layout_text
 

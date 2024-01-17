@@ -1,8 +1,8 @@
 from trezorlib import messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
+from trezorlib.debuglink import TrezorClientDebugLink as Client, DebugLink
 
 from . import translations as TR
-from .common import BRGeneratorType
+from .common import BRGeneratorType, get_text_possible_pagination
 
 B = messages.ButtonRequestType
 
@@ -178,33 +178,47 @@ class RecoveryFlow:
     def success_bip39_dry_run_valid(self) -> BRGeneratorType:
         br = yield
         assert br.code == B.Success
-        TR.assert_in(self._text_content(), "recovery__dry_run_bip39_valid_match")
+        text = get_text_possible_pagination(self.debug, br)
+        # TODO: make sure the translations fit on one page
+        if self.client.debug.model != "T":
+            TR.assert_in(text, "recovery__dry_run_bip39_valid_match")
         self.debug.press_yes()
 
     def success_slip39_dryrun_valid(self) -> BRGeneratorType:
         br = yield
         assert br.code == B.Success
-        TR.assert_in(self._text_content(), "recovery__dry_run_slip39_valid_match")
+        text = get_text_possible_pagination(self.debug, br)
+        # TODO: make sure the translations fit on one page
+        if self.client.debug.model != "T":
+            TR.assert_in(text, "recovery__dry_run_slip39_valid_match")
         self.debug.press_yes()
 
     def warning_slip39_dryrun_mismatch(self) -> BRGeneratorType:
         br = yield
         assert br.code == B.Warning
-        TR.assert_in(self._text_content(), "recovery__dry_run_slip39_valid_mismatch")
+        text = get_text_possible_pagination(self.debug, br)
+        # TODO: make sure the translations fit on one page on TT
+        if self.client.debug.model != "T":
+            TR.assert_in(text, "recovery__dry_run_slip39_valid_mismatch")
         self.debug.press_yes()
 
     def warning_bip39_dryrun_mismatch(self) -> BRGeneratorType:
         br = yield
         assert br.code == B.Warning
-        TR.assert_in(self._text_content(), "recovery__dry_run_bip39_valid_mismatch")
+        text = get_text_possible_pagination(self.debug, br)
+        # TODO: make sure the translations fit on one page
+        if self.client.debug.model != "T":
+            TR.assert_in(text, "recovery__dry_run_bip39_valid_mismatch")
         self.debug.press_yes()
+
 
     def success_more_shares_needed(
         self, count_needed: int | None = None
     ) -> BRGeneratorType:
-        yield
+        br = yield
+        text = get_text_possible_pagination(self.debug, br)
         if count_needed is not None:
-            assert str(count_needed) in self._text_content()
+            assert str(count_needed) in text
         self.debug.press_yes()
 
     def input_mnemonic(self, mnemonic: list[str]) -> BRGeneratorType:

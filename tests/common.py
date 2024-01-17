@@ -24,7 +24,6 @@ from unittest import mock
 import pytest
 
 from trezorlib import btc, messages, tools
-from trezorlib.messages import ButtonRequestType
 
 if TYPE_CHECKING:
     from _pytest.mark.structures import MarkDecorator
@@ -148,7 +147,7 @@ def generate_entropy(
 
 
 def click_through(
-    debug: "DebugLink", screens: int, code: Optional[ButtonRequestType] = None
+    debug: "DebugLink", screens: int, code: Optional[messages.ButtonRequestType] = None
 ) -> Generator[None, "ButtonRequest", None]:
     """Click through N dialog screens.
 
@@ -291,3 +290,26 @@ def compact_size(n: int) -> bytes:
         return bytes([254]) + n.to_bytes(4, "little")
     else:
         return bytes([255]) + n.to_bytes(8, "little")
+
+
+def get_text_possible_pagination(debug: "DebugLink", br: messages.ButtonRequest) -> str:
+    text = debug.wait_layout().text_content()
+    if br.pages is not None:
+        for _ in range(br.pages - 1):
+            debug.swipe_up()
+            text += " "
+            text += debug.wait_layout().text_content()
+    return text
+
+
+def swipe_if_necessary(debug: "DebugLink", br_code: messages.ButtonRequestType | None = None) -> BRGeneratorType:
+    br = yield
+    if br_code is not None:
+        assert br.code == br_code
+    swipe_till_the_end(debug, br)
+
+
+def swipe_till_the_end(debug: "DebugLink", br: messages.ButtonRequest) -> None:
+    if br.pages is not None:
+        for _ in range(br.pages - 1):
+            debug.swipe_up()

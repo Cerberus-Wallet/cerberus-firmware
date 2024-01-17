@@ -38,7 +38,11 @@ def _get_all_language_data() -> list[dict[str, dict[str, str]]]:
 
 def _get_language_data(lang: str) -> dict[str, dict[str, str]]:
     file = get_lang_json(lang)
-    return json.loads(file.read_text())["translations"]
+    translations = json.loads(file.read_text())["translations"]
+    # TODO: remove this before merge
+    translations = {k: v.replace(" (TODO)", "") for k, v in translations.items()}
+    return translations
+
 
 
 all_language_data = _get_all_language_data()
