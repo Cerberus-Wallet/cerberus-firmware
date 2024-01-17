@@ -33,21 +33,22 @@ UI_JOBS_ENGLISH = [
     "legacy device test",
 ]
 
-UI_JOBS_FRENCH = [
-    "core click R test french",
-    "core device R test french",
-    "core click test french",
-    "core device test french",
-]
 
-UI_JOBS_CZECH = [
-    "core click R test czech",
-    "core device R test czech",
-    "core click test czech",
-    "core device test czech",
-]
+def get_foreign_tests(langs: list[str]) -> list[str]:
+    result: list[str] = []
+    for lang in langs:
+        result += [
+            f"core click R test {lang}",
+            f"core device R test {lang}",
+            f"core click test {lang}",
+            f"core device test {lang}",
+        ]
+    return result
 
-UI_JOB_NAMES = UI_JOBS_ENGLISH + UI_JOBS_FRENCH + UI_JOBS_CZECH
+
+FOREIGN_LANGS = ["french", "czech", "german", "spanish"]
+
+UI_JOB_NAMES = UI_JOBS_ENGLISH + get_foreign_tests(FOREIGN_LANGS)
 
 SAVE_GRAPHQL_RESULTS = False
 
