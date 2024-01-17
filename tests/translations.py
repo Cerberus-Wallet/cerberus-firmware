@@ -44,7 +44,9 @@ def _get_language_data(lang: str) -> dict[str, dict[str, str]]:
 all_language_data = _get_all_language_data()
 
 
-def _resolve_path_to_texts(path: str, template: Iterable[Any] = (), lower: bool = True) -> list[str]:
+def _resolve_path_to_texts(
+    path: str, template: Iterable[Any] = (), lower: bool = True
+) -> list[str]:
     texts: list[str] = []
     lookups = path.split(".")
     for language_data in all_language_data:

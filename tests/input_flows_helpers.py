@@ -203,11 +203,6 @@ class RecoveryFlow:
         self, count_needed: int | None = None
     ) -> BRGeneratorType:
         yield
-        # TODO: do this plural assert
-        # assert (
-        #     "1 more share needed" in self._text_content()
-        #     or "More shares needed" in self._text_content()
-        # )
         if count_needed is not None:
             assert str(count_needed) in self._text_content()
         self.debug.press_yes()
@@ -217,11 +212,6 @@ class RecoveryFlow:
         assert br.code == B.MnemonicInput
         assert "MnemonicKeyboard" in self.debug.wait_layout().all_components()
         for _, word in enumerate(mnemonic):
-            # TODO: do this format assert
-            # if self.debug.model == "Safe 3":
-            #     assert f"WORD {index + 1}" in self.debug.wait_layout().title()
-            # else:
-            #     assert f"Type word {index + 1}" in self._text_content()
             self.debug.input(word)
 
     def input_all_slip39_shares(
