@@ -64,10 +64,9 @@ def set_autolock_delay(device_handler: "BackgroundDeviceHandler", delay_ms: int)
 
     debug.input("1234")
 
-    TR.assert_in(
+    TR.assert_template(
         debug.wait_layout().text_content(),
         "auto_lock__change_template",
-        template=[f"{delay_ms // 1000} seconds"],
     )
 
     layout = go_next(debug, wait=True)

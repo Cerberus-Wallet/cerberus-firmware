@@ -45,7 +45,7 @@ def set_selection(debug: "DebugLink", button: tuple[int, int], diff: int) -> Non
         layout = debug.read_layout()
         if layout.title() in TR.translate(
             "reset__title_number_of_shares"
-        ) + TR.translate("words.title_threshold"):
+        ) + TR.translate("words__title_threshold"):
             # Special info screens
             layout = debug.press_right(wait=True)
         assert "NumberInput" in layout.all_components()

@@ -44,7 +44,7 @@ def _get_language_data(lang: str) -> dict[str, dict[str, str]]:
 all_language_data = _get_all_language_data()
 
 
-def _resolve_path_to_texts(path: str, template: Iterable[Any] = ()) -> list[str]:
+def _resolve_path_to_texts(path: str, template: Iterable[Any] = (), lower: bool = True) -> list[str]:
     texts: list[str] = []
     lookups = path.split(".")
     for language_data in all_language_data:
@@ -57,8 +57,8 @@ def _resolve_path_to_texts(path: str, template: Iterable[Any] = ()) -> list[str]
             data = data.format(*template)
         texts.append(data)
 
-    # TODO: may make this only optional
-    texts = [t.lower() for t in texts]
+    if lower:
+        texts = [t.lower() for t in texts]
     return texts
 
 
@@ -95,4 +95,5 @@ def assert_template(text: str, template_path: str) -> None:
 
 
 def translate(path: str, template: Iterable[Any] = ()) -> list[str]:
-    return _resolve_path_to_texts(path, template)
+    # Do not converting to lowercase, we want the exact value
+    return _resolve_path_to_texts(path, template, lower=False)
