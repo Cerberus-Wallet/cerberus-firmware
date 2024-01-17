@@ -87,7 +87,7 @@ class RecoveryFlow:
         TR.assert_in(self._text_content(), "recovery__enter_backup")
         is_dry_run = any(
             title in self.debug.wait_layout().title().lower()
-            for title in TR.translate("recovery__title_dry_run")
+            for title in TR.translate("recovery__title_dry_run", lower=True)
         )
         if self.debug.model == "Safe 3" and not is_dry_run:
             # Normal recovery has extra info (not dry run)
@@ -100,7 +100,7 @@ class RecoveryFlow:
         TR.assert_in(self._text_content(), "recovery__enter_any_share")
         is_dry_run = any(
             title in self.debug.wait_layout().title().lower()
-            for title in TR.translate("recovery__title_dry_run")
+            for title in TR.translate("recovery__title_dry_run", lower=True)
         )
         if self.debug.model == "Safe 3" and not is_dry_run:
             # Normal recovery has extra info (not dry run)

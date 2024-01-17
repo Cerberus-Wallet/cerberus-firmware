@@ -96,6 +96,6 @@ def assert_template(text: str, template_path: str) -> None:
     assert False, f"{text} not found in {templates}"
 
 
-def translate(path: str, template: Iterable[Any] = ()) -> list[str]:
+def translate(path: str, template: Iterable[Any] = (), lower: bool = False) -> list[str]:
     # Do not converting to lowercase, we want the exact value
-    return _resolve_path_to_texts(path, template, lower=False)
+    return _resolve_path_to_texts(path, template, lower=lower)
