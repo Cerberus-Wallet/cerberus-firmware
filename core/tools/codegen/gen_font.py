@@ -25,7 +25,7 @@ CORE_ROOT = HERE.parent.parent
 FONTS_DIR = HERE / "fonts"
 OUT_DIR = HERE / ".." / ".." / "embed" / "lib" / "fonts"
 C_FONTS_DEST = CORE_ROOT / "embed" / "lib" / "fonts"
-JSON_FONTS_DEST = CORE_ROOT / "embed" / "rust" / "src" / "ui" / "translations" / "fonts"
+JSON_FONTS_DEST = CORE_ROOT / "translations" / "fonts"
 
 MIN_GLYPH = ord(" ")
 MAX_GLYPH = ord("~")

@@ -1,5 +1,8 @@
 use crate::{
+    error::Error,
+    micropython::buffer::StrBuffer,
     strutil::StringType,
+    translations::TR,
     trezorhal::usb::usb_configured,
     ui::{
         component::{Child, Component, Event, EventCtx, Label},
@@ -12,7 +15,6 @@ use crate::{
         event::USBEvent,
         geometry::{Alignment2D, Insets, Offset, Point, Rect},
         layout::util::get_user_custom_image,
-        translations::tr,
     },
 };
 
@@ -53,7 +55,7 @@ where
     label: Label<T>,
     notification: Option<(T, u8)>,
     /// Used for HTC functionality to lock device from homescreen
-    invisible_buttons: Child<ButtonController<T>>,
+    invisible_buttons: Child<ButtonController>,
 }
 
 impl<T> Homescreen<T>
@@ -87,11 +89,8 @@ where
         if !usb_configured() {
             self.fill_notification_background();
             // TODO: fill warning icons here as well?
-            display_center(
-                baseline,
-                &tr("homescreen__title_no_usb_connection"),
-                NOTIFICATION_FONT,
-            );
+            TR::homescreen__title_no_usb_connection
+                .map_translated(|t| display_center(baseline, t, NOTIFICATION_FONT));
         } else if let Some((notification, _level)) = &self.notification {
             self.fill_notification_background();
             display_center(baseline, &notification.as_ref(), NOTIFICATION_FONT);
@@ -183,9 +182,9 @@ where
     T: StringType,
 {
     label: Child<Label<T>>,
-    instruction: Child<Label<T>>,
+    instruction: Child<Label<StrBuffer>>,
     /// Used for unlocking the device from lockscreen
-    invisible_buttons: Child<ButtonController<T>>,
+    invisible_buttons: Child<ButtonController>,
     /// Display coinjoin icon?
     coinjoin_icon: Option<Icon>,
     /// Screensaver mode (keep screen black)
@@ -196,22 +195,25 @@ impl<T> Lockscreen<T>
 where
     T: StringType + Clone,
 {
-    pub fn new(label: T, bootscreen: bool, coinjoin_authorized: bool) -> Self {
+    pub fn new(label: T, bootscreen: bool, coinjoin_authorized: bool) -> Result<Self, Error> {
         // Buttons will not be visible, we only need all three of them to be present,
         // so that even middle-click triggers the event.
         let invisible_btn_layout = ButtonLayout::arrow_armed_arrow("".into());
         let instruction_str = if bootscreen {
-            tr("homescreen__click_to_connect")
+            TR::homescreen__click_to_connect
         } else {
-            tr("homescreen__click_to_unlock")
+            TR::homescreen__click_to_unlock
         };
-        Lockscreen {
+        Ok(Lockscreen {
             label: Child::new(Label::centered(label, theme::TEXT_BIG)),
-            instruction: Child::new(Label::centered(instruction_str.into(), theme::TEXT_NORMAL)),
+            instruction: Child::new(Label::centered(
+                instruction_str.try_into()?,
+                theme::TEXT_NORMAL,
+            )),
             invisible_buttons: Child::new(ButtonController::new(invisible_btn_layout)),
             coinjoin_icon: coinjoin_authorized.then_some(theme::ICON_COINJOIN),
             screensaver: !bootscreen,
-        }
+        })
     }
 }
 
@@ -265,7 +267,7 @@ where
 {
     title: Child<Label<T>>,
     buffer_func: F,
-    buttons: Child<ButtonController<T>>,
+    buttons: Child<ButtonController>,
 }
 
 impl<T, F> ConfirmHomescreen<T, F>
@@ -273,7 +275,7 @@ where
     T: StringType + Clone,
 {
     pub fn new(title: T, buffer_func: F) -> Self {
-        let btn_layout = ButtonLayout::cancel_none_text(tr("buttons__change").into());
+        let btn_layout = ButtonLayout::cancel_none_text(TR::buttons__change.into());
         ConfirmHomescreen {
             title: Child::new(Label::centered(title, theme::TEXT_BOLD)),
             buffer_func,
