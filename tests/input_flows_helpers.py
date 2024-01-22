@@ -1,5 +1,5 @@
 from trezorlib import messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client, DebugLink
+from trezorlib.debuglink import TrezorClientDebugLink as Client
 
 from . import translations as TR
 from .common import BRGeneratorType, get_text_possible_pagination
@@ -210,7 +210,6 @@ class RecoveryFlow:
         if self.client.debug.model != "T":
             TR.assert_in(text, "recovery__dry_run_bip39_valid_mismatch")
         self.debug.press_yes()
-
 
     def success_more_shares_needed(
         self, count_needed: int | None = None
