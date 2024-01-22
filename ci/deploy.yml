@@ -251,6 +251,22 @@ ui tests fixtures deploy:
     - legacy device test
     - core device R test
     - core click R test
+    - core click test czech
+    - core device test czech
+    - core device R test czech
+    - core click R test czech
+    - core click test german
+    - core device test german
+    - core device R test german
+    - core click R test german
+    - core click test french
+    - core device test french
+    - core device R test french
+    - core click R test french
+    - core click test spanish
+    - core device test spanish
+    - core device R test spanish
+    - core click R test spanish
   script:
     - echo "Deploying to $DEPLOY_PATH"
     - rsync --delete -va ci/ui_test_records/* "$DEPLOY_PATH"
