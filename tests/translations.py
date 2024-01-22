@@ -44,7 +44,6 @@ def _get_language_data(lang: str) -> dict[str, dict[str, str]]:
     return translations
 
 
-
 all_language_data = _get_all_language_data()
 
 
@@ -74,6 +73,15 @@ def assert_equals(text: str, path: str, template: Iterable[Any] = ()) -> None:
     assert text.lower() in texts, f"{text} not found in {texts}"
 
 
+def assert_equals_multiple(
+    text: str, paths: list[str], template: Iterable[Any] = ()
+) -> None:
+    texts: list[str] = []
+    for path in paths:
+        texts += _resolve_path_to_texts(path, template)
+    assert text.lower() in texts, f"{text} not found in {texts}"
+
+
 def assert_in(text: str, path: str, template: Iterable[Any] = ()) -> None:
     texts = _resolve_path_to_texts(path, template)
     for t in texts:
@@ -100,6 +108,8 @@ def assert_template(text: str, template_path: str) -> None:
     assert False, f"{text} not found in {templates}"
 
 
-def translate(path: str, template: Iterable[Any] = (), lower: bool = False) -> list[str]:
+def translate(
+    path: str, template: Iterable[Any] = (), lower: bool = False
+) -> list[str]:
     # Do not converting to lowercase, we want the exact value
     return _resolve_path_to_texts(path, template, lower=lower)

@@ -302,7 +302,9 @@ def get_text_possible_pagination(debug: "DebugLink", br: messages.ButtonRequest)
     return text
 
 
-def swipe_if_necessary(debug: "DebugLink", br_code: messages.ButtonRequestType | None = None) -> BRGeneratorType:
+def swipe_if_necessary(
+    debug: "DebugLink", br_code: messages.ButtonRequestType | None = None
+) -> BRGeneratorType:
     br = yield
     if br_code is not None:
         assert br.code == br_code

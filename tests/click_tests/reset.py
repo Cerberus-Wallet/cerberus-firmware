@@ -13,7 +13,10 @@ if TYPE_CHECKING:
 
 
 def confirm_new_wallet(debug: "DebugLink") -> None:
-    TR.assert_startswith(debug.read_layout().title(), "reset__title_create_wallet")
+    TR.assert_equals_multiple(
+        debug.read_layout().title(),
+        ["reset__title_create_wallet", "reset__title_create_wallet_shamir"],
+    )
     if debug.model == "T":
         debug.click(buttons.OK, wait=True)
     elif debug.model == "Safe 3":
@@ -112,7 +115,10 @@ def confirm_words(debug: "DebugLink", words: list[str]) -> None:
         for _ in range(3):
             # "SELECT 2ND WORD"
             #         ^
-            word_pos = int(layout.title().split()[1][:-2])
+            word_pos_match = re.search(r"\d+", layout.title())
+            assert word_pos_match is not None
+            word_pos = int(word_pos_match.group(0))
+
             wanted_word = words[word_pos - 1].lower()
 
             while not layout.get_middle_choice() == wanted_word:

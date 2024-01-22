@@ -88,10 +88,8 @@ def enter_share(
 ) -> "LayoutContent":
     TR.assert_in(debug.read_layout().title(), "recovery__title_recover")
     if debug.model == "Safe 3":
-        layout = debug.press_right(wait=True)
-        if is_first:
-            # Word entering info
-            debug.press_right()
+        layout = debug.wait_layout()
+        for _ in range(layout.page_count()):
             layout = debug.press_right(wait=True)
     else:
         layout = debug.click(buttons.OK, wait=True)

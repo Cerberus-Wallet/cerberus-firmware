@@ -26,8 +26,8 @@ from .common import (
     check_pin_backoff_time,
     click_info_button_tt,
     click_through,
-    read_and_confirm_mnemonic,
     get_text_possible_pagination,
+    read_and_confirm_mnemonic,
     swipe_if_necessary,
 )
 from .input_flows_helpers import BackupFlow, EthereumFlow, PinFlow, RecoveryFlow
@@ -709,7 +709,8 @@ def lock_time_input_flow_tt(
 
 
 def lock_time_input_flow_tr(
-    debug: DebugLink, layout_assert_func: Callable[[DebugLink, messages.ButtonRequest], None]
+    debug: DebugLink,
+    layout_assert_func: Callable[[DebugLink, messages.ButtonRequest], None],
 ) -> BRGeneratorType:
     yield  # confirm address
     debug.wait_layout()

@@ -479,7 +479,6 @@ extern "C" fn new_confirm_backup(n_args: usize, args: *const Obj, kwargs: *mut M
                 let ops = OpTextLayout::new(theme::TEXT_NORMAL)
                     .text_normal(tr("backup__new_wallet_created").into())
                     .newline()
-                    .newline()
                     .text_normal(tr("backup__it_should_be_backed_up_now").into());
                 let formatted = FormattedText::new(ops).vertically_centered();
                 Page::new(btn_layout, btn_actions, formatted)
@@ -1114,7 +1113,7 @@ extern "C" fn new_show_warning(n_args: usize, args: *const Obj, kwargs: *mut Map
             let mut ops = OpTextLayout::<StrBuffer>::new(theme::TEXT_NORMAL);
             ops = ops.alignment(geometry::Alignment::Center);
             if !warning.is_empty() {
-                ops = ops.text_bold(warning.clone()).newline().newline();
+                ops = ops.text_bold(warning.clone()).newline();
             }
             if !description.is_empty() {
                 ops = ops.text_normal(description.clone());

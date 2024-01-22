@@ -127,9 +127,11 @@ def _blob_from_data(
 ) -> bytes:
     # TODO: remove this before merge
     translations = {k: v.replace(" (TODO)", "") for k, v in translations.items()}
+    translations = {k: ("" if v.endswith(" (TOO LONG)") else v) for k, v in translations.items()}
 
     # Sanity checks - could move to its own function
-    # TODO: might assert the maximum lengts of some fields - e.g. buttons and titles
+    # TODO: might assert the maximum lengths of some fields - e.g. buttons and titles
+    # TODO: check that all the characters are available as font glyphs
     for key, value in translations.items():
         # Special handling for plural templates - must have exact format
         if key.endswith("template_plural"):
