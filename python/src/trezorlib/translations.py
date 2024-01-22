@@ -127,7 +127,9 @@ def _blob_from_data(
 ) -> bytes:
     # TODO: remove this before merge
     translations = {k: v.replace(" (TODO)", "") for k, v in translations.items()}
-    translations = {k: ("" if v.endswith(" (TOO LONG)") else v) for k, v in translations.items()}
+    translations = {
+        k: ("" if v.endswith(" (TOO LONG)") else v) for k, v in translations.items()
+    }
 
     # Sanity checks - could move to its own function
     # TODO: might assert the maximum lengths of some fields - e.g. buttons and titles
@@ -136,7 +138,9 @@ def _blob_from_data(
         # Special handling for plural templates - must have exact format
         if key.endswith("template_plural"):
             assert "{count}" in value, f"Plural template {key} should contain {{count}}"
-            assert "{plural}" in value, f"Plural template {key} should contain {{plural}}"
+            assert (
+                "{plural}" in value
+            ), f"Plural template {key} should contain {{plural}}"
 
     translations_blob, translations_num = _create_translations_blob(translations, order)
     assert (
