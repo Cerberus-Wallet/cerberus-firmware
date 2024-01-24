@@ -17,6 +17,7 @@ import pytest
 from PIL import Image
 from typing_extensions import Self
 
+from trezorlib import models
 from trezorlib.debuglink import TrezorClientDebugLink as Client
 
 LANGUAGES = ["cs", "de", "en", "es", "fr"]
@@ -38,7 +39,6 @@ FixturesType = t.NewType("FixturesType", "dict[str, dict[str, dict[str, str]]]")
 
 FIXTURES: FixturesType = FixturesType({})
 
-ENGLISH_LANGUAGE_TREZOR = "en-US"
 ENGLISH_LANGUAGE = "en"
 
 
@@ -236,17 +236,18 @@ class TestCase:
 
     @classmethod
     def build(cls, client: Client, request: pytest.FixtureRequest) -> Self:
-        model = client.features.model
         # FIXME
-        if model == "Safe 3":
-            model = "R"
+        if client.model is models.T2B1:
+            model_name = "R"
+        else:
+            model_name = client.model.name
         name, group = _get_test_name_and_group(request.node.nodeid)
-        language = client.features.language or ""
-        if language == ENGLISH_LANGUAGE_TREZOR:
+        if client.features.language:
+            language = client.features.language[:2]
+        else:
             language = ENGLISH_LANGUAGE
-        assert language in LANGUAGES
         return cls(
-            model=f"T{model}",
+            model=f"T{model_name}",
             name=name,
             group=group,
             language=language,
@@ -254,8 +255,9 @@ class TestCase:
 
     @staticmethod
     def get_language_from_fixture_name(fixture_name: str) -> str:
+        # FIXME
         lang = fixture_name.split("_")[1]
-        if lang in LANGUAGES:
+        if len(lang) == 2:
             return lang
         # English (currently) is implicit there
         return ENGLISH_LANGUAGE

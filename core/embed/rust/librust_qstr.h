@@ -10,6 +10,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_CONFIRMED;
   MP_QSTR_INFO;
   MP_QSTR_Layout;
+  MP_QSTR_MAX_HEADER_LEN;
   MP_QSTR_MESSAGE_NAME;
   MP_QSTR_MESSAGE_WIRE_TYPE;
   MP_QSTR_Msg;
@@ -29,7 +30,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_addr_mismatch__support_url;
   MP_QSTR_addr_mismatch__title;
   MP_QSTR_addr_mismatch__title_key_mismatch;
-  MP_QSTR_addr_mismatch__wrong_derication_path;
+  MP_QSTR_addr_mismatch__wrong_derivation_path;
   MP_QSTR_addr_mismatch__xpub_mismatch;
   MP_QSTR_address;
   MP_QSTR_address__address;
@@ -51,6 +52,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_amount_title;
   MP_QSTR_amount_value;
   MP_QSTR_app_name;
+  MP_QSTR_area_bytesize;
   MP_QSTR_attach_timer_fn;
   MP_QSTR_authenticate__confirm_template;
   MP_QSTR_authenticate__header;
@@ -179,6 +181,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_cardano__confirm_signing_stake_pool;
   MP_QSTR_cardano__confirm_transaction;
   MP_QSTR_cardano__confirming_a_multisig_transaction;
+  MP_QSTR_cardano__confirming_a_plutus_transaction;
   MP_QSTR_cardano__confirming_pool_registration;
   MP_QSTR_cardano__confirming_transction;
   MP_QSTR_cardano__cost;
@@ -307,10 +310,12 @@ static void _librust_qstrs(void) {
   MP_QSTR_confirm_with_info;
   MP_QSTR_count;
   MP_QSTR_data;
-  MP_QSTR_data_length;
+  MP_QSTR_data_hash;
+  MP_QSTR_data_len;
   MP_QSTR_debug__loading_seed;
   MP_QSTR_debug__loading_seed_not_recommended;
   MP_QSTR_decode;
+  MP_QSTR_deinit;
   MP_QSTR_description;
   MP_QSTR_details_title;
   MP_QSTR_device_name__change_template;
@@ -366,6 +371,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_eos__vote_for_proxy;
   MP_QSTR_eos__voter;
   MP_QSTR_eos__yes;
+  MP_QSTR_erase;
   MP_QSTR_ethereum__amount_sent;
   MP_QSTR_ethereum__confirm_fee;
   MP_QSTR_ethereum__contract;
@@ -424,7 +430,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_fingerprint;
   MP_QSTR_firmware_update__title;
   MP_QSTR_firmware_update__title_fingerprint;
-  MP_QSTR_header_length;
+  MP_QSTR_get_language;
   MP_QSTR_hold;
   MP_QSTR_hold_danger;
   MP_QSTR_homescreen__click_to_connect;
@@ -443,6 +449,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_image;
   MP_QSTR_indeterminate;
   MP_QSTR_info_button;
+  MP_QSTR_init;
   MP_QSTR_inputs__back;
   MP_QSTR_inputs__cancel;
   MP_QSTR_inputs__delete;
@@ -456,10 +463,10 @@ static void _librust_qstrs(void) {
   MP_QSTR_joint__to_the_total_amount;
   MP_QSTR_joint__you_are_contributing;
   MP_QSTR_label;
+  MP_QSTR_language;
   MP_QSTR_language__change_template;
   MP_QSTR_language__set_default;
   MP_QSTR_language__title_change;
-  MP_QSTR_language_name;
   MP_QSTR_lines;
   MP_QSTR_load_from_flash;
   MP_QSTR_lockscreen__tap_to_connect;
@@ -937,6 +944,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_total_amount;
   MP_QSTR_total_fee_new;
   MP_QSTR_total_label;
+  MP_QSTR_total_len;
   MP_QSTR_touch_event;
   MP_QSTR_trace;
   MP_QSTR_trezorproto;
@@ -964,6 +972,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_value;
   MP_QSTR_verb;
   MP_QSTR_verb_cancel;
+  MP_QSTR_verify;
   MP_QSTR_version;
   MP_QSTR_warning;
   MP_QSTR_wipe__info;
@@ -989,6 +998,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_word_count__title;
   MP_QSTR_words;
   MP_QSTR_words__account;
+  MP_QSTR_words__account_colon;
   MP_QSTR_words__address;
   MP_QSTR_words__amount;
   MP_QSTR_words__are_you_sure;
@@ -1027,6 +1037,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_words__warning;
   MP_QSTR_words__writable;
   MP_QSTR_words__yes;
+  MP_QSTR_write;
   MP_QSTR_wrong_pin;
   MP_QSTR_xpubs;
 }

@@ -5,8 +5,6 @@ from pathlib import Path
 
 from helpers import FOREIGN_LANGUAGES, HERE, TRANSLATIONS_DIR
 
-MISSING_VALUE = "TODO:missing"
-
 
 def get_lang_keys(lang: str) -> set[str]:
     lang_file = TRANSLATIONS_DIR / f"{lang}.json"
