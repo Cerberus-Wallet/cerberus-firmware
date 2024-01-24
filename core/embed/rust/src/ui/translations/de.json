@@ -808,7 +808,7 @@
     "wipe_code__title_settings": "LÖSCHCODE-EINSTELL.",
     "wipe_code__turn_off": "Löschcode-Schutz deaktivieren?",
     "wipe_code__turn_on": "Löschcode-Schutz aktivieren?",
-    "wipe_code__wipe_code_mismatch": "Code -Nichtübereinstimmung löschen (TODO)",
+    "wipe_code__wipe_code_mismatch": "Löschen Code Konflikt (TODO)",
     "word_count__title": "ANZAHL DER WÖRTER",
     "words__account": "Konto (TODO)",
     "words__account_colon": "Konto: (TODO)",
