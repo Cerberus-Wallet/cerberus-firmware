@@ -24,7 +24,9 @@ MAX_GLYPH = ord("~")
 # metrics explanation: https://www.freetype.org/freetype2/docs/glyphs/metrics.png
 
 
-def process_bitmap_buffer(buf: list[int], bpp: int, width: int, height: int) -> list[int]:
+def process_bitmap_buffer(
+    buf: list[int], bpp: int, width: int, height: int
+) -> list[int]:
     res = buf[:]
     if bpp == 1:
         for _ in range(8 - len(res) % 8):
@@ -54,7 +56,7 @@ def process_bitmap_buffer(buf: list[int], bpp: int, width: int, height: int) -> 
     elif bpp == 4:
         res: list[int] = []
         for y in range(0, height):
-            row = buf[y * width: (y + 1) * width]
+            row = buf[y * width : (y + 1) * width]
             for a, b in zip(row[::2], row[1::2]):
                 res.append(((b & 0xF0) | (a >> 4)))
             if width & 1 != 0:
@@ -197,7 +199,9 @@ class Glyph:
                 + ", ".join(
                     [
                         "%d" % self.process_byte(x)
-                        for x in process_bitmap_buffer(self.buf, bpp, self.width, self.rows)
+                        for x in process_bitmap_buffer(
+                            self.buf, bpp, self.width, self.rows
+                        )
                     ]
                 )
             )
@@ -217,7 +221,10 @@ class Glyph:
             self.bearingX,
             self.bearingY,
         ]
-        data = [self.process_byte(x) for x in process_bitmap_buffer(self.buf, bpp, self.width, self.rows)]
+        data = [
+            self.process_byte(x)
+            for x in process_bitmap_buffer(self.buf, bpp, self.width, self.rows)
+        ]
 
         return infos + data
 
@@ -260,6 +267,7 @@ class FaceProcessor:
     def write_files(self) -> None:
         self.write_c_files()
         self.write_foreign_json()
+        self.write_char_widths_files()
 
     def write_c_files(self) -> None:
         self._write_c_file()
@@ -288,6 +296,30 @@ class FaceProcessor:
             with open(filename, "w", encoding="utf-8") as f:
                 json_content = json.dumps(all_objects, indent=2, ensure_ascii=False)
                 f.write(json_content + "\n")
+
+    def write_char_widths_files(self) -> None:
+        chars: set[str] = set()
+        widths: dict[str, int] = {}
+
+        # "normal" ASCII characters
+        for i in range(MIN_GLYPH, MAX_GLYPH + 1):
+            c = chr(i)
+            chars.add(c)
+        # foreign language data
+        for language in all_languages:
+            for item in language["data"]:
+                c = item[0]
+                chars.add(c)
+
+        for c in sorted(chars):
+            self._load_char(c)
+            glyph = Glyph.from_face(self.face, c, self.shaveX)
+            widths[c] = glyph.advance
+
+        filename = f"font_widths_{self.fontname}.json"
+        with open(filename, "w", encoding="utf-8") as f:
+            json_content = json.dumps(widths, indent=2, ensure_ascii=False)
+            f.write(json_content + "\n")
 
     def _write_c_file(self) -> None:
         with open(OUT_DIR / self._c_file_name, "wt") as f:
