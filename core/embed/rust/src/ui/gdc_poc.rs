@@ -141,14 +141,14 @@ fn draw_screen(split: Point) -> time::Duration {
                 ProgressiveRenderer::new(&mut canvas, Some(Color::rgb(0, 0, 48)), bump, 30);
 
             target.set_viewport(vp.with_origin(Offset::new(split.x, split.y)));
-            draw_component3(&mut target);
+            draw_component1(&mut target);
 
             target.set_viewport(vp.with_origin(Offset::new(split.x - 240, split.y)));
             draw_component2(&mut target);
 
             target.set_viewport(vp);
 
-            /*let r = Rect::new(Point::new(60, 60), Point::new(180, 180));
+            let r = Rect::new(Point::new(60, 60), Point::new(180, 180));
             //let r = Rect::new(Point::new(0, 0), Point::new(240, 240));
             //Blurring::new(r, 1).render(&mut target);
             shape::Blurring::new(r, 2).render(&mut target);
@@ -156,7 +156,7 @@ fn draw_screen(split: Point) -> time::Duration {
             //Blurring::new(r, 4).render(&mut target);
             shape::Bar::new(r)
                 .with_fg(Color::white())
-                .render(&mut target);*/
+                .render(&mut target);
 
             target.render(16);
         }
