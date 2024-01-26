@@ -43,15 +43,15 @@ impl<'a> Text<'a> {
 }
 
 impl<'a> Shape for Text<'a> {
-    fn bounds(&self, _context: &mut DrawingContext) -> Rect {
+    fn bounds(&self, _context: &mut dyn DrawingContext) -> Rect {
         // TODO:: returned value could be possibly smaller
         // (according to the text, font, offset and alignment)
         self.area
     }
 
-    fn cleanup(&self, _context: &mut DrawingContext) {}
+    fn cleanup(&self, _context: &mut dyn DrawingContext) {}
 
-    fn draw(&self, canvas: &mut dyn RgbCanvasEx, _context: &mut DrawingContext) {
+    fn draw(&self, canvas: &mut dyn RgbCanvasEx, _context: &mut dyn DrawingContext) {
         let attr = TextAttr::new().with_fg(self.color).with_font(self.font);
         canvas.draw_text(self.area, &self.text, &attr);
     }

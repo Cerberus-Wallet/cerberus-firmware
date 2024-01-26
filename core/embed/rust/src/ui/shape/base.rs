@@ -17,13 +17,13 @@ pub trait Shape {
     /// Returns the smallest bounding rectangle containing whole parts of the
     /// shape This method is used by renderer for optimization if the shape
     /// must be renderer or not
-    fn bounds(&self, context: &mut DrawingContext) -> Rect;
+    fn bounds(&self, context: &mut dyn DrawingContext) -> Rect;
     /// Draws shape on the canvas
-    fn draw(&self, canvas: &mut dyn RgbCanvasEx, context: &mut DrawingContext);
+    fn draw(&self, canvas: &mut dyn RgbCanvasEx, context: &mut dyn DrawingContext);
     /// Releases data allocated in context memory
     /// Is called by renderer if the shape draw() function won't be called
     /// anymore
-    fn cleanup(&self, context: &mut DrawingContext);
+    fn cleanup(&self, context: &mut dyn DrawingContext);
 }
 
 // ==========================================================================

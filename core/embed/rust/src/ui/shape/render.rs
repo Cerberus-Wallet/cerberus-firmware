@@ -6,7 +6,7 @@ use crate::ui::{
     },
     display::{toif::Toif, Color},
     geometry::{Offset, Point, Rect},
-    shape::{context::DrawingContext, Shape, ShapeClone},
+    shape::{DrawingContext, Shape, ShapeClone},
 };
 
 use without_alloc::{alloc::LocalAllocLeakExt, FixedVec};
@@ -45,22 +45,22 @@ pub trait Renderer<'a> {
 // ==========================================================================
 
 /// A simple implementation of a Renderer that draws directly onto the CanvasEx
-pub struct DirectRenderer<'a> {
+pub struct DirectRenderer<'can, 'ctx, 'alloc: 'ctx> {
     /// Target canvas
-    canvas: &'a mut dyn rgb::RgbCanvasEx,
+    canvas: &'can mut dyn rgb::RgbCanvasEx,
     /// Drawing context (decompression context, scratch-pad memory)
-    drawing_context: DrawingContext<'a>,
+    drawing_context: &'ctx mut dyn DrawingContext<'alloc>,
 }
 
-impl<'a> DirectRenderer<'a> {
+impl<'can, 'ctx, 'alloc> DirectRenderer<'can, 'ctx, 'alloc> {
     /// Creates a new DirectRenderer instance with the given canvas
     pub fn new<T>(
-        canvas: &'a mut dyn rgb::RgbCanvasEx,
+        canvas: &'can mut dyn rgb::RgbCanvasEx,
         bg_color: Option<Color>,
-        pool: &'a T,
+        context: &'ctx mut dyn DrawingContext<'alloc>,
     ) -> Self
     where
-        T: LocalAllocLeakExt<'a>,
+        T: LocalAllocLeakExt<'alloc>,
     {
         if let Some(color) = bg_color {
             canvas.fill_background(color);
@@ -71,12 +71,12 @@ impl<'a> DirectRenderer<'a> {
 
         Self {
             canvas,
-            drawing_context: DrawingContext::new(pool),
+            drawing_context: context,
         }
     }
 }
 
-impl<'a> Renderer<'a> for DirectRenderer<'a> {
+impl<'can, 'ctx, 'alloc> Renderer<'alloc> for DirectRenderer<'can, 'ctx, 'alloc> {
     fn viewport(&self) -> Viewport {
         self.canvas.viewport()
     }
@@ -89,11 +89,13 @@ impl<'a> Renderer<'a> for DirectRenderer<'a> {
     where
         S: Shape + ShapeClone,
     {
-        let context = &mut self.drawing_context;
-
-        if self.canvas.viewport().contains(shape.bounds(context)) {
-            shape.draw(self.canvas, context);
-            shape.cleanup(context);
+        if self
+            .canvas
+            .viewport()
+            .contains(shape.bounds(self.drawing_context))
+        {
+            shape.draw(self.canvas, self.drawing_context);
+            shape.cleanup(self.drawing_context);
         }
     }
 }
@@ -108,30 +110,31 @@ struct ShapeHolder<'a> {
 }
 
 /// A more advanced Renderer implementation that supports deferred rendering.
-pub struct ProgressiveRenderer<'a, T: LocalAllocLeakExt<'a>> {
+pub struct ProgressiveRenderer<'can, 'ctx, 'alloc, T: LocalAllocLeakExt<'alloc>> {
     /// Target canvas
-    canvas: &'a mut dyn rgb::RgbCanvas,
+    canvas: &'can mut dyn rgb::RgbCanvas,
     /// Pool for cloning shapes
-    pool: &'a T,
+    pool: &'alloc T,
     /// List of rendered shapes
-    shapes: FixedVec<'a, ShapeHolder<'a>>,
+    shapes: FixedVec<'alloc, ShapeHolder<'alloc>>,
     /// Current viewport
     viewport: Viewport,
     // Default background color
     bg_color: Option<Color>,
     /// Drawing context (decompression context, scratch-pad memory)
-    drawing_context: DrawingContext<'a>,
+    drawing_context: &'ctx mut dyn DrawingContext<'alloc>,
 }
 
-impl<'a, T> ProgressiveRenderer<'a, T>
+impl<'can, 'ctx, 'alloc, T> ProgressiveRenderer<'can, 'ctx, 'alloc, T>
 where
-    T: LocalAllocLeakExt<'a>,
+    T: LocalAllocLeakExt<'alloc>,
 {
     /// Creates a new ProgressiveRenderer instance
     pub fn new(
-        canvas: &'a mut dyn rgb::RgbCanvas,
+        canvas: &'can mut dyn rgb::RgbCanvas,
         bg_color: Option<Color>,
-        pool: &'a T,
+        context: &'ctx mut dyn DrawingContext<'alloc>,
+        pool: &'alloc T,
         max_shapes: usize,
     ) -> Self {
         let viewport = canvas.viewport();
@@ -141,7 +144,7 @@ where
             shapes: pool.fixed_vec(max_shapes).unwrap(),
             viewport,
             bg_color,
-            drawing_context: DrawingContext::new(pool),
+            drawing_context: context,
         }
     }
 
@@ -172,17 +175,16 @@ where
             for holder in self.shapes.iter() {
                 let shape_viewport = holder.viewport.absolute_clip(slice_r);
                 let shape = holder.shape;
-                let context = &mut self.drawing_context;
-                let shape_bounds = shape.bounds(context);
+                let shape_bounds = shape.bounds(self.drawing_context);
 
                 // Is the shape overlapping the current slice?
                 if shape_viewport.contains(shape_bounds) {
                     slice.set_viewport(shape_viewport.translate((-slice_r.top_left()).into()));
-                    shape.draw(&mut slice, context);
+                    shape.draw(&mut slice, self.drawing_context);
 
                     if shape_bounds.y1 + shape_viewport.origin.y <= shape_viewport.clip.y1 {
                         // The shape will never be drawn again
-                        shape.cleanup(context);
+                        shape.cleanup(self.drawing_context);
                     }
                 }
             }
@@ -191,9 +193,9 @@ where
     }
 }
 
-impl<'a, T> Renderer<'a> for ProgressiveRenderer<'a, T>
+impl<'can, 'ctx, 'alloc, T> Renderer<'alloc> for ProgressiveRenderer<'can, 'ctx, 'alloc, T>
 where
-    T: LocalAllocLeakExt<'a>,
+    T: LocalAllocLeakExt<'alloc>,
 {
     fn viewport(&self) -> Viewport {
         self.viewport
@@ -208,10 +210,7 @@ where
         S: Shape + ShapeClone,
     {
         // Is the shape visible?
-        if self
-            .viewport
-            .contains(shape.bounds(&mut self.drawing_context))
-        {
+        if self.viewport.contains(shape.bounds(self.drawing_context)) {
             // Clone the shape & push it to the list
             let holder = ShapeHolder {
                 shape: shape.clone_at_pool(self.pool).unwrap(),

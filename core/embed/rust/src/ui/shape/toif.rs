@@ -50,7 +50,7 @@ impl ToifImage {
         renderer.render_shape(self);
     }
 
-    fn draw_grayscale(&self, canvas: &mut dyn RgbCanvasEx, context: &mut DrawingContext) {
+    fn draw_grayscale(&self, canvas: &mut dyn RgbCanvasEx, context: &mut dyn DrawingContext) {
         // TODO: introduce new viewport/shape function for this calculation
         let viewport = canvas.viewport();
         let mut clip = self
@@ -82,7 +82,7 @@ impl ToifImage {
         }
     }
 
-    fn draw_rgb(&self, canvas: &mut dyn RgbCanvasEx, context: &mut DrawingContext) {
+    fn draw_rgb(&self, canvas: &mut dyn RgbCanvasEx, context: &mut dyn DrawingContext) {
         // TODO: introduce new viewport/shape function for this calculation
         let viewport = canvas.viewport();
         let mut clip = self
@@ -112,16 +112,16 @@ impl ToifImage {
 }
 
 impl Shape for ToifImage {
-    fn bounds(&self, _context: &mut DrawingContext) -> Rect {
+    fn bounds(&self, _context: &mut dyn DrawingContext) -> Rect {
         let toif_size = Offset::new(self.toif.width(), self.toif.height());
         Rect::from_top_left_and_size(self.pos, toif_size)
     }
 
-    fn cleanup(&self, _context: &mut DrawingContext) {
+    fn cleanup(&self, _context: &mut dyn DrawingContext) {
         // TODO: inform the context that we won't use the zlib slot anymore
     }
 
-    fn draw(&self, canvas: &mut dyn RgbCanvasEx, context: &mut DrawingContext) {
+    fn draw(&self, canvas: &mut dyn RgbCanvasEx, context: &mut dyn DrawingContext) {
         if self.toif.is_grayscale() {
             self.draw_grayscale(canvas, context);
         } else {

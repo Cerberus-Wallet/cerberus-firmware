@@ -12,7 +12,10 @@ pub use bar::Bar;
 pub use base::{Shape, ShapeClone};
 pub use blur::Blurring;
 pub use circle::Circle;
-pub use context::DrawingContext;
+pub use context::{
+    context::{DrawingContext, DrawingContextImpl},
+    jpeg_cache::JpegFnOutput,
+};
 pub use jpeg::JpegImage;
 pub use render::{DirectRenderer, ProgressiveRenderer, Renderer};
 pub use text::Text;

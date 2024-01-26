@@ -57,7 +57,7 @@ impl Circle {
 }
 
 impl Shape for Circle {
-    fn bounds(&self, _context: &mut DrawingContext) -> Rect {
+    fn bounds(&self, _context: &mut dyn DrawingContext) -> Rect {
         let c = self.center;
         let r = self.radius;
         Rect::new(
@@ -66,9 +66,9 @@ impl Shape for Circle {
         )
     }
 
-    fn cleanup(&self, _context: &mut DrawingContext) {}
+    fn cleanup(&self, _context: &mut dyn DrawingContext) {}
 
-    fn draw(&self, canvas: &mut dyn RgbCanvasEx, _context: &mut DrawingContext) {
+    fn draw(&self, canvas: &mut dyn RgbCanvasEx, _context: &mut dyn DrawingContext) {
         // NOTE: drawing of circles without a background and with a thickness > 1
         //       is not supported. If we needed it, we would have to
         //       introduce RgbCanvas::draw_ring() function.

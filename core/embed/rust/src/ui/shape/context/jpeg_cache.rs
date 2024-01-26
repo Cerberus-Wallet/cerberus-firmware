@@ -6,6 +6,7 @@ use crate::ui::{
 
 use crate::trezorhal::gdc::{GdcBitmap, GdcBitmapRef};
 use core::cell::UnsafeCell;
+use trezor_tjpgdec::JpegOutput;
 use without_alloc::{alloc::LocalAllocLeakExt, FixedVec};
 
 // JDEC work buffer size
@@ -100,15 +101,12 @@ impl<'a> JpegCacheSlot<'a> {
     }
 
     // left-top origin of output rectangle must be aligned to JPEG MCU size
-    pub fn decompress<'i: 'a, F>(
+    pub fn decompress<'i: 'a>(
         &mut self,
         jpeg: &'i [u8],
         offset: Point,
-        output: F,
-    ) -> Result<(), tjpgd::Error>
-    where
-        F: FnMut(Rect, &BitmapRef) -> bool,
-    {
+        output: &mut dyn JpegOutput,
+    ) -> Result<(), tjpgd::Error> {
         // Reset the slot if the JPEG image is different
         if !self.is_for(jpeg) {
             self.reset(jpeg)?;
@@ -128,15 +126,14 @@ impl<'a> JpegCacheSlot<'a> {
 
         let decoder = unwrap!(self.decoder.as_mut());
         let input = unwrap!(self.input.as_mut());
-        let mut drawer = JpegFnOutput::new(output);
-        match decoder.decomp2(input, &mut drawer) {
+        match decoder.decomp2(input, output) {
             Ok(_) | Err(tjpgd::Error::Interrupted) => Ok(()),
             Err(e) => return Err(e),
         }
     }
 }
 
-struct JpegFnOutput<F>
+pub struct JpegFnOutput<F>
 where
     F: FnMut(Rect, &BitmapRef) -> bool,
 {
@@ -147,7 +144,7 @@ impl<F> JpegFnOutput<F>
 where
     F: FnMut(Rect, &BitmapRef) -> bool,
 {
-    fn new(output: F) -> Self {
+    pub fn new(output: F) -> Self {
         Self { output }
     }
 }
@@ -208,15 +205,12 @@ impl<'a> JpegCache<'a> {
         }
     }
 
-    pub fn decompress<'i: 'a, F>(
+    pub fn decompress<'i: 'a>(
         &mut self,
         jpeg: &'i [u8],
         offset: Point,
-        output: F,
-    ) -> Result<(), tjpgd::Error>
-    where
-        F: FnMut(Rect, &BitmapRef) -> bool,
-    {
+        output: &mut dyn JpegOutput,
+    ) -> Result<(), tjpgd::Error> {
         if self.slots.capacity() > 0 {
             self.slots[0].decompress(jpeg, offset, output)
         } else {

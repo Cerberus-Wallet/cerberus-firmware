@@ -1,6 +1,5 @@
-mod blur_cache;
-mod context;
-mod jpeg_cache;
-mod zlib_cache;
-
-pub use context::DrawingContext;
+pub mod bitmap_cache;
+pub mod blur_cache;
+pub mod context;
+pub mod jpeg_cache;
+pub mod zlib_cache;

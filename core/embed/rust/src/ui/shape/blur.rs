@@ -24,13 +24,13 @@ impl Blurring {
 }
 
 impl Shape for Blurring {
-    fn bounds(&self, _context: &mut DrawingContext) -> Rect {
+    fn bounds(&self, _context: &mut dyn DrawingContext) -> Rect {
         self.area
     }
 
-    fn cleanup(&self, _context: &mut DrawingContext) {}
+    fn cleanup(&self, _context: &mut dyn DrawingContext) {}
 
-    fn draw(&self, canvas: &mut dyn RgbCanvasEx, _context: &mut DrawingContext) {
+    fn draw(&self, canvas: &mut dyn RgbCanvasEx, _context: &mut dyn DrawingContext) {
         canvas.blur_rect(self.area, self.radius);
     }
 }

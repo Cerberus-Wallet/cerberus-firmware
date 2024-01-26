@@ -58,13 +58,13 @@ impl Bar {
 }
 
 impl Shape for Bar {
-    fn bounds(&self, _context: &mut DrawingContext) -> Rect {
+    fn bounds(&self, _context: &mut dyn DrawingContext) -> Rect {
         self.area
     }
 
-    fn cleanup(&self, _context: &mut DrawingContext) {}
+    fn cleanup(&self, _context: &mut dyn DrawingContext) {}
 
-    fn draw(&self, canvas: &mut dyn RgbCanvasEx, _context: &mut DrawingContext) {
+    fn draw(&self, canvas: &mut dyn RgbCanvasEx, _context: &mut dyn DrawingContext) {
         // NOTE: drawing of rounded bars without a background
         //       is not supported. If we needed it, we would have to
         //       introduce a new function in RgbCanvas.

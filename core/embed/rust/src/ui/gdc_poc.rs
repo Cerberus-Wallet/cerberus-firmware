@@ -3,7 +3,7 @@ use crate::ui::{
     display::{toif::Toif, Color, Font},
     geometry::{Insets, Offset, Point, Rect},
     shape,
-    shape::{ProgressiveRenderer, Renderer},
+    shape::{DrawingContextImpl, ProgressiveRenderer, Renderer},
 };
 
 use crate::time;
@@ -125,44 +125,54 @@ fn draw_component3<'a>(target: &mut impl Renderer<'a>) {
 }
 
 #[link_section = ".no_dma_buffers"]
-static mut POOL: Bump<[u8; 32 * 1024]> = Bump::uninit();
+static mut POOL_A: Bump<[u8; 32 * 1024]> = Bump::uninit();
+
+#[link_section = ".buf"]
+static mut POOL_B: Bump<[u8; 32 * 1024]> = Bump::uninit();
 
 fn draw_screen(split: Point) -> time::Duration {
     let start_time = time::Instant::now();
 
-    let bump = unsafe { &mut *core::ptr::addr_of_mut!(POOL) };
+    let bump_a = unsafe { &mut *core::ptr::addr_of_mut!(POOL_A) };
+    let bump_b = unsafe { &mut *core::ptr::addr_of_mut!(POOL_B) };
     {
+        let mut context = DrawingContextImpl::new(bump_a, bump_b);
+
         let mut canvas = display::Canvas::acquire().unwrap();
 
         let vp = canvas.set_window(canvas.bounds().inset(Insets::new(20, 0, 0, 0)));
 
-        for _ in 1..=1 {
-            let mut target =
-                ProgressiveRenderer::new(&mut canvas, Some(Color::rgb(0, 0, 48)), bump, 30);
+        let mut target = ProgressiveRenderer::new(
+            &mut canvas,
+            Some(Color::rgb(0, 0, 48)),
+            &mut context,
+            bump_a,
+            30,
+        );
 
-            target.set_viewport(vp.with_origin(Offset::new(split.x, split.y)));
-            draw_component1(&mut target);
+        target.set_viewport(vp.with_origin(Offset::new(split.x, split.y)));
+        draw_component1(&mut target);
 
-            target.set_viewport(vp.with_origin(Offset::new(split.x - 240, split.y)));
-            draw_component2(&mut target);
+        target.set_viewport(vp.with_origin(Offset::new(split.x - 240, split.y)));
+        draw_component2(&mut target);
 
-            target.set_viewport(vp);
+        target.set_viewport(vp);
 
-            let r = Rect::new(Point::new(60, 60), Point::new(180, 180));
-            //let r = Rect::new(Point::new(0, 0), Point::new(240, 240));
-            //Blurring::new(r, 1).render(&mut target);
-            shape::Blurring::new(r, 2).render(&mut target);
-            //Blurring::new(r, 3).render(&mut target);
-            //Blurring::new(r, 4).render(&mut target);
-            shape::Bar::new(r)
-                .with_fg(Color::white())
-                .render(&mut target);
+        let r = Rect::new(Point::new(60, 60), Point::new(180, 180));
+        //let r = Rect::new(Point::new(0, 0), Point::new(240, 240));
+        //Blurring::new(r, 1).render(&mut target);
+        shape::Blurring::new(r, 2).render(&mut target);
+        //Blurring::new(r, 3).render(&mut target);
+        //Blurring::new(r, 4).render(&mut target);
+        shape::Bar::new(r)
+            .with_fg(Color::white())
+            .render(&mut target);
 
-            target.render(16);
-        }
+        target.render(16);
     }
 
-    bump.reset();
+    bump_a.reset();
+    bump_b.reset();
 
     time::Instant::now()
         .checked_duration_since(start_time)
@@ -170,8 +180,11 @@ fn draw_screen(split: Point) -> time::Duration {
 }
 
 fn draw_info(duration: time::Duration) {
-    let bump = unsafe { &mut *core::ptr::addr_of_mut!(POOL) };
+    let bump_a = unsafe { &mut *core::ptr::addr_of_mut!(POOL_A) };
+    let bump_b = unsafe { &mut *core::ptr::addr_of_mut!(POOL_B) };
     {
+        let mut context = DrawingContextImpl::new(bump_a, bump_b);
+
         let mut canvas = display::Canvas::acquire().unwrap();
 
         canvas.set_viewport(Viewport::from_size(Offset::new(240, 20)));
@@ -179,7 +192,8 @@ fn draw_info(duration: time::Duration) {
         let blue = Color::rgb(0, 0, 255);
         let yellow = Color::rgb(255, 255, 0);
 
-        let mut target = ProgressiveRenderer::new(&mut canvas, Some(blue), bump, 10);
+        let mut target =
+            ProgressiveRenderer::new(&mut canvas, Some(blue), &mut context, bump_a, 10);
 
         let mut info = String::<128>::new();
         write!(info, "time={}ms", duration.to_millis() as f32 / 1.0).unwrap();
@@ -193,7 +207,8 @@ fn draw_info(duration: time::Duration) {
         target.render(20);
     }
 
-    bump.reset();
+    bump_a.reset();
+    bump_b.reset();
 }
 
 #[derive(Copy, Clone)]
