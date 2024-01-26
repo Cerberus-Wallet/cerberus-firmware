@@ -164,10 +164,10 @@ pub struct BlurAlgorithm<'a> {
 }
 
 impl<'a> BlurAlgorithm<'a> {
-    // Constraints:
-    //   width <= MAX_WIDTH
-    //   radius <= MAX_RADIUS
-    //   width >= radius
+    /// Constraints:
+    ///   width <= MAX_WIDTH
+    ///   radius <= MAX_RADIUS
+    ///   width >= radius
     pub fn new(width: usize, radius: usize) -> Option<Self> {
         assert!(width <= MAX_WIDTH);
         assert!(radius <= MAX_RADIUS);
@@ -202,9 +202,9 @@ impl<'a> BlurAlgorithm<'a> {
         1 + self.radius * 2
     }
 
-    // Takes an input row and calculates the same-sized vector
-    // as the floating average of n subsequent elements where n = 2 * radius + 1.
-    // Finally, it stores it into the specifed row in the  sliding window.
+    /// Takes an input row and calculates the same-sized vector
+    /// as the floating average of n subsequent elements where n = 2 * radius + 1.
+    /// Finally, it stores it into the specifed row in the  sliding window.
     fn average_to_row(&mut self, inp: &[PixelColor], row: usize) {
         let radius = self.radius;
         let offset = self.width * row;
@@ -244,7 +244,7 @@ impl<'a> BlurAlgorithm<'a> {
         }
     }
 
-    // Subtracts the specified row of sliding window from totals[]
+    /// Subtracts the specified row of sliding window from totals[]
     fn subtract_row(&mut self, row: usize) {
         let offset = row * self.width;
         let row = &self.window[offset..offset + self.width];
@@ -254,7 +254,7 @@ impl<'a> BlurAlgorithm<'a> {
         }
     }
 
-    // Adds the specified row of sliding window to totals[]
+    /// Adds the specified row of sliding window to totals[]
     fn add_row(&mut self, row: usize) {
         let offset = row * self.width;
         let row = &self.window[offset..offset + self.width];
@@ -264,7 +264,7 @@ impl<'a> BlurAlgorithm<'a> {
         }
     }
 
-    // Takes the source row and pushes it into the sliding window
+    /// Takes the source row and pushes it into the sliding window
     pub fn push(&mut self, input: &[PixelColor]) {
         let row = self.row;
 
@@ -272,14 +272,10 @@ impl<'a> BlurAlgorithm<'a> {
         self.average_to_row(input, row);
         self.add_row(row);
 
-        self.row = if row < self.box_side() - 1 {
-            row + 1
-        } else {
-            0
-        };
+        self.row = (row + 1) % self.box_side();
     }
 
-    // Copies the current content of totals[] to the output buffer
+    /// Copies the current content of totals[] to the output buffer
     pub fn pop(&self, output: &mut [PixelColor]) {
         let divisor = self.box_side() as u16;
         let shift = 10;
