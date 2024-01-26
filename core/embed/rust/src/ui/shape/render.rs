@@ -18,7 +18,7 @@ use without_alloc::{alloc::LocalAllocLeakExt, FixedVec};
 /// All renders must implement Renderer trait
 /// Renderers can immediately use the draw() method of the passed shape or
 /// may store it (using the boxed() method) and draw it later
-pub trait Renderer<'a> {
+pub trait Renderer {
     fn viewport(&self) -> Viewport;
 
     fn set_viewport(&mut self, viewport: Viewport);
@@ -76,7 +76,7 @@ impl<'can, 'ctx, 'alloc> DirectRenderer<'can, 'ctx, 'alloc> {
     }
 }
 
-impl<'can, 'ctx, 'alloc> Renderer<'alloc> for DirectRenderer<'can, 'ctx, 'alloc> {
+impl<'can, 'ctx, 'alloc> Renderer for DirectRenderer<'can, 'ctx, 'alloc> {
     fn viewport(&self) -> Viewport {
         self.canvas.viewport()
     }
@@ -193,7 +193,7 @@ where
     }
 }
 
-impl<'can, 'ctx, 'alloc, T> Renderer<'alloc> for ProgressiveRenderer<'can, 'ctx, 'alloc, T>
+impl<'can, 'ctx, 'alloc, T> Renderer for ProgressiveRenderer<'can, 'ctx, 'alloc, T>
 where
     T: LocalAllocLeakExt<'alloc>,
 {

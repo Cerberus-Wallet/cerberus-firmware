@@ -46,7 +46,7 @@ impl ToifImage {
         }
     }
 
-    pub fn render<'b>(self, renderer: &mut impl Renderer<'b>) {
+    pub fn render<'b>(self, renderer: &mut impl Renderer) {
         renderer.render_shape(self);
     }
 

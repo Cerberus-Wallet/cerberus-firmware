@@ -51,7 +51,7 @@ impl Circle {
         }
     }
 
-    pub fn render<'a>(self, renderer: &mut impl Renderer<'a>) {
+    pub fn render(self, renderer: &mut impl Renderer) {
         renderer.render_shape(self);
     }
 }

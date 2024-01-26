@@ -21,7 +21,7 @@ use crate::{
 
 const ICON_GOOGLE: &[u8] = include_res!("model_tt/res/fido/icon_google.toif");
 
-fn draw_component1<'a>(target: &mut impl Renderer<'a>) {
+fn draw_component1<'a>(target: &mut impl Renderer) {
     let r = Rect::from_top_left_and_size(Point::new(30, 120), Offset::new(180, 60));
     shape::Bar::new(r)
         .with_radius(16)
@@ -97,7 +97,7 @@ fn draw_component1<'a>(target: &mut impl Renderer<'a>) {
         .render(target);
 }
 
-fn draw_component2<'a>(target: &mut impl Renderer<'a>) {
+fn draw_component2(target: &mut impl Renderer) {
     let pt = Point::new(120, 110);
     shape::Circle::new(pt, 60)
         .with_bg(Color::rgb(80, 80, 80))
@@ -120,7 +120,7 @@ fn draw_component2<'a>(target: &mut impl Renderer<'a>) {
 
 const IMAGE_HOMESCREEN: &[u8] = include_res!("minion.jpg");
 
-fn draw_component3<'a>(target: &mut impl Renderer<'a>) {
+fn draw_component3(target: &mut impl Renderer) {
     shape::JpegImage::new(Point::new(0, 0), IMAGE_HOMESCREEN).render(target);
 }
 

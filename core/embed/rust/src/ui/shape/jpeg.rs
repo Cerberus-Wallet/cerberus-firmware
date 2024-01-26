@@ -29,7 +29,7 @@ impl JpegImage {
         }
     }
 
-    pub fn render<'b>(self, renderer: &mut impl Renderer<'b>) {
+    pub fn render(self, renderer: &mut impl Renderer) {
         renderer.render_shape(self);
     }
 }
