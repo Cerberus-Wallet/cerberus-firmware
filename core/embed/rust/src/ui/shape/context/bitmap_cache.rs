@@ -5,7 +5,7 @@ pub struct BitmapCache<'a> {
 }
 
 impl<'a> BitmapCache<'a> {
-    pub fn new<'alloc: 'a, T>(_pool: &'alloc T) -> BitmapCache<'alloc>
+    pub fn new<'alloc: 'a, T>(_pool: &'alloc T) -> Self
     where
         T: LocalAllocLeakExt<'alloc>,
     {

@@ -180,7 +180,7 @@ pub struct JpegCache<'a> {
 }
 
 impl<'a> JpegCache<'a> {
-    pub fn new<'alloc: 'a, T>(pool: &'alloc T, slot_count: usize) -> JpegCache<'a>
+    pub fn new<'alloc: 'a, T>(pool: &'alloc T, slot_count: usize) -> Self
     where
         T: LocalAllocLeakExt<'alloc>,
     {

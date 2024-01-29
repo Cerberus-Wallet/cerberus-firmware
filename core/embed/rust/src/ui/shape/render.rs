@@ -110,9 +110,9 @@ struct ShapeHolder<'a> {
 }
 
 /// A more advanced Renderer implementation that supports deferred rendering.
-pub struct ProgressiveRenderer<'can, 'ctx, 'alloc, T: LocalAllocLeakExt<'alloc>> {
+pub struct ProgressiveRenderer<'a, 'alloc, T: LocalAllocLeakExt<'alloc>> {
     /// Target canvas
-    canvas: &'can mut dyn rgb::RgbCanvas,
+    canvas: &'a mut dyn rgb::RgbCanvas,
     /// Pool for cloning shapes
     pool: &'alloc T,
     /// List of rendered shapes
@@ -122,18 +122,18 @@ pub struct ProgressiveRenderer<'can, 'ctx, 'alloc, T: LocalAllocLeakExt<'alloc>>
     // Default background color
     bg_color: Option<Color>,
     /// Drawing context (decompression context, scratch-pad memory)
-    drawing_context: &'ctx mut dyn DrawingContext<'alloc>,
+    drawing_context: &'a mut dyn DrawingContext<'alloc>,
 }
 
-impl<'can, 'ctx, 'alloc, T> ProgressiveRenderer<'can, 'ctx, 'alloc, T>
+impl<'a, 'alloc, T> ProgressiveRenderer<'a, 'alloc, T>
 where
     T: LocalAllocLeakExt<'alloc>,
 {
     /// Creates a new ProgressiveRenderer instance
     pub fn new(
-        canvas: &'can mut dyn rgb::RgbCanvas,
+        canvas: &'a mut dyn rgb::RgbCanvas,
         bg_color: Option<Color>,
-        context: &'ctx mut dyn DrawingContext<'alloc>,
+        context: &'a mut dyn DrawingContext<'alloc>,
         pool: &'alloc T,
         max_shapes: usize,
     ) -> Self {
@@ -193,7 +193,7 @@ where
     }
 }
 
-impl<'can, 'ctx, 'alloc, T> Renderer for ProgressiveRenderer<'can, 'ctx, 'alloc, T>
+impl<'a, 'alloc, T> Renderer for ProgressiveRenderer<'a, 'alloc, T>
 where
     T: LocalAllocLeakExt<'alloc>,
 {

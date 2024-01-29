@@ -5,7 +5,7 @@ pub struct BlurCache<'a> {
 }
 
 impl<'a> BlurCache<'a> {
-    pub fn new<'alloc: 'a, T>(_pool: &'alloc T) -> BlurCache<'alloc>
+    pub fn new<'alloc: 'a, T>(_pool: &'alloc T) -> Self
     where
         T: LocalAllocLeakExt<'alloc>,
     {

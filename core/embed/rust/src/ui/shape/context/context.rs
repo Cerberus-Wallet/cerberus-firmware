@@ -24,18 +24,17 @@ pub trait DrawingContext<'a> {
     ) -> Result<(), tjpgd::Error>;
 }
 
-pub struct DrawingContextImpl<'a, 'b> {
-    zlib_cache: ZlibCache<'a>,
-    jpeg_cache: JpegCache<'a>,
-    blur_cache: BlurCache<'a>,
-    bitmap_cache: BitmapCache<'b>,
+pub struct DrawingContextImpl<'alloc> {
+    zlib_cache: ZlibCache<'alloc>,
+    jpeg_cache: JpegCache<'alloc>,
+    blur_cache: BlurCache<'alloc>,
+    bitmap_cache: BitmapCache<'alloc>,
 }
 
-impl<'a, 'b> DrawingContextImpl<'a, 'b> {
-    pub fn new<TA, TB>(pool_a: &'a TA, pool_b: &'b TB) -> Self
+impl<'alloc> DrawingContextImpl<'alloc> {
+    pub fn new<TA>(pool_a: &'alloc TA, pool_b: &'alloc TA) -> Self
     where
-        TA: LocalAllocLeakExt<'a>,
-        TB: LocalAllocLeakExt<'b>,
+        TA: LocalAllocLeakExt<'alloc>,
     {
         Self {
             zlib_cache: ZlibCache::new(pool_a, 4),
@@ -46,7 +45,7 @@ impl<'a, 'b> DrawingContextImpl<'a, 'b> {
     }
 }
 
-impl<'a, 'b> DrawingContext<'a> for DrawingContextImpl<'a, 'b> {
+impl<'a> DrawingContext<'a> for DrawingContextImpl<'a> {
     fn deflate_toif(&mut self, toif: Toif<'static>, from_row: i16, dest_buf: &mut [u8]) {
         let from_offset = toif.stride() * from_row as usize;
         self.zlib_cache

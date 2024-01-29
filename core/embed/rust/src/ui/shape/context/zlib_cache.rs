@@ -97,7 +97,7 @@ pub struct ZlibCache<'a> {
 }
 
 impl<'a> ZlibCache<'a> {
-    pub fn new<'alloc: 'a, T>(pool: &'alloc T, slot_count: usize) -> ZlibCache<'alloc>
+    pub fn new<'alloc: 'a, T>(pool: &'alloc T, slot_count: usize) -> Self
     where
         T: LocalAllocLeakExt<'alloc>,
     {

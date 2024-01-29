@@ -136,9 +136,8 @@ fn draw_screen(split: Point) -> time::Duration {
     let bump_a = unsafe { &mut *core::ptr::addr_of_mut!(POOL_A) };
     let bump_b = unsafe { &mut *core::ptr::addr_of_mut!(POOL_B) };
     {
-        let mut context = DrawingContextImpl::new(bump_a, bump_b);
-
         let mut canvas = display::Canvas::acquire().unwrap();
+        let mut context = DrawingContextImpl::new(bump_a, bump_b);
 
         let vp = canvas.set_window(canvas.bounds().inset(Insets::new(20, 0, 0, 0)));
 
