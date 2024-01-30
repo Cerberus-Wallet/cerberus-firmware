@@ -41,7 +41,7 @@ MNEMONIC = " ".join(["all"] * 12)
 PATH = [H_(44), H_(0), H_(0), 0, 0]
 ADDRESS = "1JAd7XCBzGudGpJQSDSfpmJhiygtLQWaGL"
 LABEL = "test"
-LANGUAGE = "en-US"
+LANGUAGE = "enUS"
 STRENGTH = 128
 
 
