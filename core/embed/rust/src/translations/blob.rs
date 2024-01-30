@@ -337,9 +337,18 @@ impl<'a> TranslationsHeader<'a> {
 
         // check that the declared data section length matches the container size
         if container_length - reader.tell() != data_len {
-            println!("container length: ", heapless::String::<10>::from(container_length as u32).as_str());
-            println!("reader pos: ", heapless::String::<10>::from(reader.tell() as u32).as_str());
-            println!("data_len: ", heapless::String::<10>::from(data_len as u32).as_str());
+            println!(
+                "container length: ",
+                heapless::String::<10>::from(container_length as u32).as_str()
+            );
+            println!(
+                "reader pos: ",
+                heapless::String::<10>::from(reader.tell() as u32).as_str()
+            );
+            println!(
+                "data_len: ",
+                heapless::String::<10>::from(data_len as u32).as_str()
+            );
             return Err(value_error!("data length mismatch"));
         }
 

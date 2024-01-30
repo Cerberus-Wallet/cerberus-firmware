@@ -9,9 +9,6 @@ from trezorlib.debuglink import TrezorClientDebugLink as Client
 
 from . import common
 
-from trezorlib import device, translations
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 
@@ -112,25 +109,25 @@ def assert_equals_multiple(
 
 def assert_in(text: str, path: str, template: t.Iterable[t.Any] = ()) -> None:
     texts = _resolve_path_to_texts(path, template)
-    for t in texts:
-        if t in text.lower():
+    for tt in texts:
+        if tt in text.lower():
             return
     assert False, f"{text} not found in {texts}"
 
 
 def assert_startswith(text: str, path: str, template: t.Iterable[t.Any] = ()) -> None:
     texts = _resolve_path_to_texts(path, template)
-    for t in texts:
-        if text.lower().startswith(t):
+    for tt in texts:
+        if text.lower().startswith(tt):
             return
     assert False, f"{text} not found in {texts}"
 
 
 def assert_template(text: str, template_path: str) -> None:
     templates = _resolve_path_to_texts(template_path)
-    for t in templates:
+    for tt in templates:
         # Checking at least the first part
-        first_part = t.split("{")[0]
+        first_part = tt.split("{")[0]
         if text.lower().startswith(first_part):
             return
     assert False, f"{text} not found in {templates}"

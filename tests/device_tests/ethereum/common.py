@@ -6,7 +6,7 @@ from hashlib import sha256
 
 from trezorlib import definitions, messages, protobuf
 
-from ...common import sign_with_privkeys, PRIVATE_KEYS_DEV
+from ...common import PRIVATE_KEYS_DEV, sign_with_privkeys
 
 
 def make_network(

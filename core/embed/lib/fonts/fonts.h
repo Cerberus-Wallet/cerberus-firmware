@@ -120,6 +120,17 @@ int font_height(int font);
 int font_max_height(int font);
 int font_baseline(int font);
 const uint8_t *font_get_glyph(int font, uint16_t c);
+const uint8_t *font_nonprintable_glyph(int font);
+
+typedef struct {
+  const int font;
+  const uint8_t *text;
+  int remaining;
+} font_glyph_iter_t;
+
+font_glyph_iter_t font_glyph_iter_init(const int font, const uint8_t *text,
+                                       const int len);
+bool font_next_glyph(font_glyph_iter_t *iter, const uint8_t **out);
 int font_text_width(int font, const char *text, int textlen);
 int font_text_split(int font, const char *text, int textlen,
                     int requested_width);
