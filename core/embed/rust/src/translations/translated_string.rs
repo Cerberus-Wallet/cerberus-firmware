@@ -15,11 +15,15 @@ impl TranslatedString {
         F: for<'a> FnOnce(&'a str) -> T,
         T: 'static,
     {
+        fun(self.translate_from_source())
+    }
+
+    pub fn translate_from_source<'a>(self) -> &'a str {
         // SAFETY: The bound on F _somehow_ ensures that the reference cannot escape
         // the closure. (I don't understand how, but it does), see soundness test below.
         // For good measure, we limit the return value to 'static.
         let translations = unsafe { super::flash::get() };
-        fun(self.translate(translations))
+        self.translate(translations)
     }
 
     pub const fn as_tstring(self) -> TString<'static> {
