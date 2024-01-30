@@ -10,8 +10,10 @@ pub use blob::MAX_HEADER_LEN;
 pub use translated_string::TranslatedString as TR;
 pub const DEFAULT_LANGUAGE: &str = "enUS";
 
-// SAFETY: Returned pointer will only point to valid font data for as long as
-// the flash content is not invalidated by `erase()` or `write()`.
+/// # Safety
+///
+/// Returned pointer will only point to valid font data for as long as
+/// the flash content is not invalidated by `erase()` or `write()`.
 #[no_mangle]
 pub unsafe extern "C" fn get_utf8_glyph(codepoint: cty::uint16_t, font: cty::c_int) -> *const u8 {
     // C will send a negative number
