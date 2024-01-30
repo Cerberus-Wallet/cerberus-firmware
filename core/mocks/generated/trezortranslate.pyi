@@ -48,7 +48,6 @@ def verify(data: bytes) -> None:
 # rust/src/translations/obj.rs
 class TranslationsHeader:
     """Metadata about the translations blob."""
-
     language: str
     version: tuple[int, int, int, int]
     change_language_title: str
@@ -56,7 +55,6 @@ class TranslationsHeader:
     data_len: int
     data_hash: bytes
     total_len: int
-
     def __init__(self, header_bytes: bytes) -> None:
         """Parse header from bytes.
         The header has variable length.

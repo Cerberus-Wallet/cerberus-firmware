@@ -3,7 +3,8 @@ from typing import Any, Dict
 
 from googletrans import Translator
 from helpers import FOREIGN_LANGUAGES, TRANSLATIONS_DIR
-from validate_same_keys import MISSING_VALUE
+
+MISSING_VALUE = "TODO:missing"
 
 
 def translate_dict(
