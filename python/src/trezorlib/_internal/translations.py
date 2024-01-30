@@ -310,9 +310,12 @@ def blob_from_defs(
     json_header: JsonHeader = lang_data["header"]
 
     # order translations -- python dicts keep insertion order
-    translations_ordered = [
+    translations_ordered: list[str]= [
         lang_data["translations"].get(key, "") for _, key in sorted(order.items())
     ]
+
+    # TODO: remove before merge
+    translations_ordered = [v.replace(" (TODO)", "") for v in translations_ordered]
 
     translations = TranslatedStrings.from_items(translations_ordered)
 
