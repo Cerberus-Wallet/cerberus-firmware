@@ -337,7 +337,7 @@ pub static mp_module_trezortranslate: Module = obj_module! {
 
     /// class TranslationsHeader:
     ///     """Metadata about the translations blob."""
-    /// 
+    ///
     ///     language: str
     ///     version: tuple[int, int, int, int]
     ///     change_language_title: str
@@ -345,7 +345,7 @@ pub static mp_module_trezortranslate: Module = obj_module! {
     ///     data_len: int
     ///     data_hash: bytes
     ///     total_len: int
-    /// 
+    ///
     ///     def __init__(self, header_bytes: bytes) -> None:
     ///         """Parse header from bytes.
     ///         The header has variable length.

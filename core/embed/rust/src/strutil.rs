@@ -1,5 +1,6 @@
 use heapless::String;
 
+#[cfg(feature = "micropython")]
 use crate::error::Error;
 
 #[cfg(feature = "micropython")]
@@ -117,10 +118,12 @@ impl TString<'_> {
 }
 
 impl TString<'static> {
+    #[cfg(feature = "translations")]
     pub const fn from_translation(tr: TR) -> Self {
         Self::Translation(tr)
     }
 
+    #[cfg(feature = "micropython")]
     pub const fn from_strbuffer(buf: StrBuffer) -> Self {
         Self::Allocated(buf)
     }
