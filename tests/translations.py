@@ -3,7 +3,7 @@ import typing as t
 from hashlib import sha256
 from pathlib import Path
 
-from trezorlib import device, models
+from trezorlib import cosi, device, models
 from trezorlib._internal import translations
 from trezorlib.debuglink import TrezorClientDebugLink as Client
 
@@ -33,7 +33,7 @@ def build_and_sign_blob(
 
     # build 0-item Merkle proof
     digest = sha256(b"\x00" + blob.header_bytes).digest()
-    signature = common.sign_with_privkeys(digest, common.PRIVATE_KEYS_DEV)
+    signature = cosi.sign_with_privkeys(digest, common.PRIVATE_KEYS_DEV)
     blob.proof = translations.Proof(
         merkle_proof=[],
         sigmask=0b111,

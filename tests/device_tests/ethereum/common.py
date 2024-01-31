@@ -4,9 +4,9 @@ import io
 import typing as t
 from hashlib import sha256
 
-from trezorlib import definitions, messages, protobuf
+from trezorlib import cosi, definitions, messages, protobuf
 
-from ...common import PRIVATE_KEYS_DEV, sign_with_privkeys
+from ...common import PRIVATE_KEYS_DEV
 
 
 def make_network(
@@ -75,7 +75,7 @@ def sign_payload(
         merkle_proof.append(digest)
 
     merkle_proof = len(merkle_proof).to_bytes(1, "little") + b"".join(merkle_proof)
-    signature = sign_with_privkeys(digest, PRIVATE_KEYS_DEV[:threshold])
+    signature = cosi.sign_with_privkeys(digest, PRIVATE_KEYS_DEV[:threshold])
     sigmask = 0
     for i in range(threshold):
         sigmask |= 1 << i

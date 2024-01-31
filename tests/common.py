@@ -24,7 +24,7 @@ from unittest import mock
 
 import pytest
 
-from trezorlib import btc, cosi, messages, tools
+from trezorlib import btc, messages, tools
 
 if TYPE_CHECKING:
     from _pytest.mark.structures import MarkDecorator
@@ -317,19 +317,3 @@ def swipe_till_the_end(debug: "DebugLink", br: messages.ButtonRequest) -> None:
     if br.pages is not None:
         for _ in range(br.pages - 1):
             debug.swipe_up()
-
-
-def sign_with_privkeys(digest: bytes, privkeys: t.Sequence[bytes]) -> bytes:
-    """Locally produce a CoSi signature."""
-    pubkeys = [cosi.pubkey_from_privkey(sk) for sk in privkeys]
-    nonces = [cosi.get_nonce(sk, digest, i) for i, sk in enumerate(privkeys)]
-
-    global_pk = cosi.combine_keys(pubkeys)
-    global_R = cosi.combine_keys(R for _, R in nonces)
-
-    sigs = [
-        cosi.sign_with_privkey(digest, sk, global_pk, r, global_R)
-        for sk, (r, _) in zip(privkeys, nonces)
-    ]
-
-    return cosi.combine_sig(global_R, sigs)
