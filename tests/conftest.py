@@ -263,7 +263,6 @@ def client(
             pin=setup_params["pin"],  # type: ignore
             passphrase_protection=use_passphrase,
             label="test",
-            language="en-US",
             needs_backup=setup_params["needs_backup"],  # type: ignore
             no_backup=setup_params["no_backup"],  # type: ignore
         )
