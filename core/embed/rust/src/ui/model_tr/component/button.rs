@@ -371,12 +371,12 @@ impl ButtonDetails {
 
     /// Resolves text and finds possible icon names.
     pub fn from_text_possible_icon(text: TString<'static>) -> Self {
-        match text {
-            TString::Str("") => Self::cancel_icon(),
-            TString::Str("<") => Self::left_arrow_icon(),
-            TString::Str("^") => Self::up_arrow_icon(),
+        text.map(|t| match t {
+            "" => Self::cancel_icon(),
+            "<" => Self::left_arrow_icon(),
+            "^" => Self::up_arrow_icon(),
             _ => Self::text(text),
-        }
+        })
     }
 
     /// Text with arms signalling double press.
