@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import TextIO
 import json
+import sys
 
 # pip install freetype-py
 import freetype
@@ -29,6 +30,8 @@ JSON_FONTS_DEST = CORE_ROOT / "translations" / "fonts"
 
 MIN_GLYPH = ord(" ")
 MAX_GLYPH = ord("~")
+
+WRITE_WIDTHS = False
 
 # characters for which bearingX is negative, but we choose to make it zero and modify
 # advance instead
@@ -239,7 +242,10 @@ class Glyph:
             self.bearingY,
         ]
         if self.buf:
-            data = [self.process_byte(x) for x in process_bitmap_buffer(self.buf, bpp)]
+            data = [
+                self.process_byte(x)
+                for x in process_bitmap_buffer(self.buf, bpp, self.width, self.rows)
+            ]
             return bytes(infos + data)
         else:
             return bytes(infos)
@@ -283,7 +289,8 @@ class FaceProcessor:
     def write_files(self) -> None:
         self.write_c_files()
         self.write_foreign_json()
-        self.write_char_widths_files()
+        if WRITE_WIDTHS:
+            self.write_char_widths_files()
 
     def write_c_files(self) -> None:
         self._write_c_file()
@@ -312,9 +319,8 @@ class FaceProcessor:
             c = chr(i)
             chars.add(c)
         # foreign language data
-        for language in all_languages:
-            for item in language["data"]:
-                c = item[0]
+        for _lang, lang_chars in all_languages.items():
+            for c in lang_chars:
                 chars.add(c)
 
         for c in sorted(chars):
@@ -413,6 +419,9 @@ class FaceProcessor:
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1 and "width" in sys.argv[1]:
+        WRITE_WIDTHS = True  # type: ignore
+
     FaceProcessor("Roboto", "Regular", 20).write_files()
     FaceProcessor("Roboto", "Bold", 20).write_files()
 
