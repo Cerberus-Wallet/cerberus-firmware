@@ -361,7 +361,7 @@
     "modify_fee__fee_rate": "Fee rate:",
     "modify_fee__increase_fee": "Increase fee by:",
     "modify_fee__new_transaction_fee": "New transaction fee:",
-    "modify_fee__no_change": "Fee did not change.",
+    "modify_fee__no_change": "Fee did not change.\n",
     "modify_fee__title": "MODIFY FEE",
     "modify_fee__transaction_fee": "Transaction fee:",
     "monero__confirm_export": "Confirm export",
