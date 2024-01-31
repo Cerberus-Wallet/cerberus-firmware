@@ -22,7 +22,7 @@ class TR:
     backup__can_back_up_anytime: str = "You can back up your Trezor once, at any time."
     backup__it_should_be_backed_up: str = "You should back up your new wallet right now."
     backup__it_should_be_backed_up_now: str = "It should be backed up now!"
-    backup__new_wallet_created: str = "New wallet created.\n"
+    backup__new_wallet_created: str = "New wallet created."
     backup__new_wallet_successfully_created: str = "New wallet created successfully."
     backup__recover_anytime: str = "You can use your backup to recover your wallet at any time."
     backup__title_backup_wallet: str = "BACK UP WALLET"
