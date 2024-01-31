@@ -662,7 +662,6 @@
 "T1_test_msg_applysettings.py::test_apply_homescreen": "d85a5591a0a433741fcc897fa6941bf0b8475de957375e3811fe710b3d40a053",
 "T1_test_msg_applysettings.py::test_apply_settings": "fb962820965916d494e44bd5aebd25c4f80095ca3d468d3ed212e04a9e0ef9e0",
 "T1_test_msg_applysettings.py::test_apply_settings_passphrase": "1f948e87ea82a0224190d3e552e506d5d4579503905526160c7a527c5a88b729",
-"T1_test_msg_applysettings.py::test_invalid_language": "510e443e4cecab8b75bbf0d6edb06e2e193b7d05d8e527931a57e8ebbbad7c65",
 "T1_test_msg_applysettings.py::test_label_too_long": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
 "T1_test_msg_applysettings.py::test_safety_checks": "f69025c134e99a8d390d01fd29a8373d8cbd8c47819d97ec351bedf55187441d",
 "T1_test_msg_backup_device.py::test_interrupt_backup_fails": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
