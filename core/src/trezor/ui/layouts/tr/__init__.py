@@ -611,7 +611,17 @@ async def show_warning(
     button: str | None = None,
     br_code: ButtonRequestType = ButtonRequestType.Warning,
 ) -> None:
+    from trezor import translations
+
     button = button or TR.buttons__continue  # def_arg
+
+    # Putting there a delimiter line in case of english, so it looks better
+    # (we know it will fit one page)
+    # TODO: figure out some better and non-intrusive way to do this
+    # (check if the content fits one page with the newline, and if not, do not add it)
+    if content and subheader and translations.get_language() == "enUS":
+        content = content + "\n"
+
     await interact(
         RustLayout(
             trezorui2.show_warning(  # type: ignore [Argument missing for parameter "title"]

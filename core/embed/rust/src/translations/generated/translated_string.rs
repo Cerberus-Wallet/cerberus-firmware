@@ -901,7 +901,7 @@ impl TranslatedString {
             Self::backup__can_back_up_anytime => "You can back up your Trezor once, at any time.",
             Self::backup__it_should_be_backed_up => "You should back up your new wallet right now.",
             Self::backup__it_should_be_backed_up_now => "It should be backed up now!",
-            Self::backup__new_wallet_created => "New wallet created.",
+            Self::backup__new_wallet_created => "New wallet created.\n",
             Self::backup__new_wallet_successfully_created => "New wallet created successfully.",
             Self::backup__recover_anytime => "You can use your backup to recover your wallet at any time.",
             Self::backup__title_backup_wallet => "BACK UP WALLET",

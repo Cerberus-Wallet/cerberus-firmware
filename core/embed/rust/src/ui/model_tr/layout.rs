@@ -468,7 +468,6 @@ extern "C" fn new_confirm_backup(n_args: usize, args: *const Obj, kwargs: *mut M
             0 => {
                 let btn_layout = ButtonLayout::text_none_arrow_wide(TR::buttons__skip.into());
                 let btn_actions = ButtonActions::cancel_none_next();
-                // TODO: add the second newline conditionally when it fits
                 let ops = OpTextLayout::new(theme::TEXT_NORMAL)
                     .text_normal(tr_new_wallet_created)
                     .newline()
@@ -1140,7 +1139,6 @@ extern "C" fn new_show_warning(n_args: usize, args: *const Obj, kwargs: *mut Map
             let mut ops = OpTextLayout::<StrBuffer>::new(theme::TEXT_NORMAL);
             ops = ops.alignment(geometry::Alignment::Center);
             if !warning.is_empty() {
-                // TODO: add the second newline conditionally, when all fits
                 ops = ops.text_bold(warning).newline();
             }
             if !description.is_empty() {
