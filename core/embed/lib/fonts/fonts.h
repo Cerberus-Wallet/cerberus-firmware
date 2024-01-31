@@ -132,7 +132,5 @@ font_glyph_iter_t font_glyph_iter_init(const int font, const uint8_t *text,
                                        const int len);
 bool font_next_glyph(font_glyph_iter_t *iter, const uint8_t **out);
 int font_text_width(int font, const char *text, int textlen);
-int font_text_split(int font, const char *text, int textlen,
-                    int requested_width);
 
 #endif  //_FONTS_H
