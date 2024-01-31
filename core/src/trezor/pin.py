@@ -63,6 +63,7 @@ def show_pin_timeout(seconds: int, progress: int, message: str) -> bool:
         elif seconds == 1:
             remaining = TR.progress__one_second_left
         else:
+            # TODO: make this a plural
             remaining = TR.progress__x_seconds_left_template.format(seconds)
         _previous_remaining = remaining
         _previous_seconds = seconds

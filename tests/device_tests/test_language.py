@@ -22,9 +22,10 @@ import pytest
 from trezorlib import debuglink, device, exceptions, messages, models
 from trezorlib.debuglink import TrezorClientDebugLink as Client
 
+from ..translations import LANGUAGES, build_and_sign_blob, get_lang_json, set_language
+
 # from trezorlib._internal import translations
 
-from ..translations import LANGUAGES, build_and_sign_blob, get_lang_json, set_language
 
 pytestmark = pytest.mark.skip_t1
 

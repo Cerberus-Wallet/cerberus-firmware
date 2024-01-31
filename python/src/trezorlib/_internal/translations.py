@@ -310,7 +310,7 @@ def blob_from_defs(
     json_header: JsonHeader = lang_data["header"]
 
     # order translations -- python dicts keep insertion order
-    translations_ordered: list[str]= [
+    translations_ordered: list[str] = [
         lang_data["translations"].get(key, "") for _, key in sorted(order.items())
     ]
 
