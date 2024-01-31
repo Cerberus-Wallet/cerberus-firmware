@@ -1254,7 +1254,7 @@ impl TranslatedString {
             Self::modify_fee__fee_rate => "Fee rate:",
             Self::modify_fee__increase_fee => "Increase fee by:",
             Self::modify_fee__new_transaction_fee => "New transaction fee:",
-            Self::modify_fee__no_change => "Fee did not change.",
+            Self::modify_fee__no_change => "Fee did not change.\n",
             Self::modify_fee__title => "MODIFY FEE",
             Self::modify_fee__transaction_fee => "Transaction fee:",
             Self::monero__confirm_export => "Confirm export",

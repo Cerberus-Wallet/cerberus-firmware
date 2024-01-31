@@ -359,7 +359,7 @@ class TR:
     modify_fee__fee_rate: str = "Fee rate:"
     modify_fee__increase_fee: str = "Increase fee by:"
     modify_fee__new_transaction_fee: str = "New transaction fee:"
-    modify_fee__no_change: str = "Fee did not change."
+    modify_fee__no_change: str = "Fee did not change.\n"
     modify_fee__title: str = "MODIFY FEE"
     modify_fee__transaction_fee: str = "Transaction fee:"
     monero__confirm_export: str = "Confirm export"
