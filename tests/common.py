@@ -17,7 +17,6 @@
 import json
 import re
 import time
-import typing as t
 from pathlib import Path
 from typing import TYPE_CHECKING, Generator, Optional
 from unittest import mock
