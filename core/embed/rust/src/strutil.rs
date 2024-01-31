@@ -98,16 +98,6 @@ pub enum TString<'a> {
 }
 
 impl TString<'_> {
-    pub fn str_content(&self) -> &str {
-        match self {
-            #[cfg(feature = "micropython")]
-            Self::Allocated(buf) => buf.as_ref(),
-            #[cfg(feature = "translations")]
-            Self::Translation(tr) => tr.translate_from_source(),
-            Self::Str(s) => s,
-        }
-    }
-
     pub fn is_empty(&self) -> bool {
         self.map(|s| s.is_empty())
     }
@@ -117,7 +107,13 @@ impl TString<'_> {
         F: for<'a> FnOnce(&'a str) -> T,
         T: 'static,
     {
-        fun(self.str_content())
+        match self {
+            #[cfg(feature = "micropython")]
+            Self::Allocated(buf) => fun(buf.as_ref()),
+            #[cfg(feature = "translations")]
+            Self::Translation(tr) => tr.map_translated(fun),
+            Self::Str(s) => fun(s),
+        }
     }
 }
 
