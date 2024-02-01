@@ -76,12 +76,18 @@ uint32_t touch_read(void) {
         break;
 
       case SDL_MOUSEMOTION:
-        if (_touch_detected) {
-          if (is_inside_display(event.motion.x, event.motion.y)) {
-            ev_x = event.button.x - sdl_touch_offset_x;
-            ev_y = event.button.y - sdl_touch_offset_y;
+        if (is_inside_display(event.motion.x, event.motion.y)) {
+          ev_x = event.motion.x - sdl_touch_offset_x;
+          ev_y = event.motion.y - sdl_touch_offset_y;
+
+          if (_touch_detected) {
             ev_type = TOUCH_MOVE;
-          } else {
+          } else if (event.motion.state != 0) {  // button pressed ?
+            // simulate TOUCH_START
+            ev_type = TOUCH_START;
+          }
+        } else {
+          if (_touch_detected) {
             // use last valid coordinates and simulate TOUCH_END
             ev_x = _touch_x;
             ev_y = _touch_y;
