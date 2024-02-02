@@ -29,6 +29,7 @@ ALIGN_SUBCON = c.Padding(
 
 JsonFontInfo = t.Dict[str, str]
 Order = t.Dict[int, str]
+VersionTuple = t.Tuple[int, int, int, int]
 
 
 class JsonHeader(TypedDict):
@@ -56,16 +57,10 @@ def offsets_seq(data: t.Iterable[bytes]) -> t.Iterator[int]:
     yield offset
 
 
-def _version_to_tuple(version: str) -> tuple[int, int, int, int]:
-    items = [int(n) for n in version.split(".")]
-    assert len(items) == 3
-    return (*items, 0)
-
-
 class Header(Struct):
     language: str
     model: Model
-    firmware_version: tuple[int, int, int, int]
+    firmware_version: VersionTuple
     data_len: int
     data_hash: bytes
     change_language_title: str
@@ -305,6 +300,7 @@ def blob_from_defs(
     lang_data: JsonDef,
     order: Order,
     model: TrezorModel,
+    version: VersionTuple,
     fonts_dir: Path,
 ) -> TranslationsBlob:
     json_header: JsonHeader = lang_data["header"]
@@ -341,7 +337,7 @@ def blob_from_defs(
     header = Header(
         language=json_header["language"],
         model=Model.from_trezor_model(model),
-        firmware_version=_version_to_tuple(json_header["version"]),
+        firmware_version=version,
         data_len=len(data),
         data_hash=sha256(data).digest(),
         change_language_title=json_header["change_language_title"],
@@ -353,12 +349,3 @@ def blob_from_defs(
         proof_bytes=b"",
         payload=payload,
     )
-
-
-def blob_from_dir(dir: Path, lang: str, model: TrezorModel) -> TranslationsBlob:
-    lang_file = dir / f"{lang}.json"
-    fonts_dir = dir / "fonts"
-    json_order = json.loads((dir / "order.json").read_text())
-    lang_data = json.loads(lang_file.read_text())
-    order = order_from_json(json_order)
-    return blob_from_defs(lang_data, order, model, fonts_dir)
