@@ -69,11 +69,12 @@ class Header(Struct):
     # fmt: off
     SUBCON = c.Struct(
         "magic" / c.Const(b"TR"),
-        "language" / c.PaddedString(4, "ascii"),  # locale specifier without dash, enUS esES geDE etc
         "model" / EnumAdapter(c.Bytes(4), Model),
         "firmware_version" / TupleAdapter(c.Int8ul, c.Int8ul, c.Int8ul, c.Int8ul),
         "data_len" / c.Int16ul,
         "data_hash" / c.Bytes(32),
+        "language" / c.PascalString(c.Int8ul, "ascii"),  # BCP47 language tag
+        c.Check(c.len_(c.this.language) <= 8),
         "change_language_title" / c.PascalString(c.Int8ul, "utf8"),
         "change_language_prompt" / c.PascalString(c.Int8ul, "utf8"),
         ALIGN_SUBCON,

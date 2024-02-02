@@ -72,7 +72,7 @@ def _check_ping_screen_texts(client: Client, title: str, right_button: str) -> N
 
 
 def test_change_language_errors(client: Client):
-    assert client.features.language == "enUS"
+    assert client.features.language == "en-US"
 
     # # Translations too short
     # # Sending less data than the header length
@@ -81,7 +81,7 @@ def test_change_language_errors(client: Client):
     # ), client:
     #     bad_data = (translations.HEADER_LEN - 1) * b"a"
     #     device.change_language(client, language_data=bad_data)
-    # assert client.features.language == "enUS"
+    # assert client.features.language == "en-US"
 
     # Translations too long
     # Sending more than allowed by the flash capacity
@@ -89,7 +89,7 @@ def test_change_language_errors(client: Client):
     with pytest.raises(exceptions.TrezorFailure, match="Translations too long"), client:
         bad_data = (max_length + 1) * b"a"
         device.change_language(client, language_data=bad_data)
-    assert client.features.language == "enUS"
+    assert client.features.language == "en-US"
 
     # Invalid header data length
     # Sending more data than advertised in the header
@@ -99,7 +99,7 @@ def test_change_language_errors(client: Client):
         good_data = build_and_sign_blob("cs", client.model)
         bad_data = good_data + b"abcd"
         device.change_language(client, language_data=bad_data)
-    assert client.features.language == "enUS"
+    assert client.features.language == "en-US"
 
     # Invalid header magic
     # Does not match the expected magic
@@ -107,7 +107,7 @@ def test_change_language_errors(client: Client):
         good_data = build_and_sign_blob("cs", client.model)
         bad_data = 4 * b"a" + good_data[4:]
         device.change_language(client, language_data=bad_data)
-    assert client.features.language == "enUS"
+    assert client.features.language == "en-US"
 
     # # Invalid header data
     # # Putting non-zero bytes where zero is expected
@@ -119,7 +119,7 @@ def test_change_language_errors(client: Client):
     #         client,
     #         language_data=bad_data,
     #     )
-    # assert client.features.language == "enUS"
+    # assert client.features.language == "en-US"
 
     # Invalid data hash
     # Changing the data after their hash has been calculated
@@ -130,7 +130,7 @@ def test_change_language_errors(client: Client):
             client,
             language_data=bad_data,
         )
-    assert client.features.language == "enUS"
+    assert client.features.language == "en-US"
 
     # Invalid translations version
     # Change the version to one not matching the current device
@@ -143,7 +143,7 @@ def test_change_language_errors(client: Client):
             client,
             language_data=build_and_sign_blob(data, client.model),
         )
-    assert client.features.language == "enUS"
+    assert client.features.language == "en-US"
 
     # Invalid header version
     # Version is not a valid semver with integers
@@ -154,7 +154,7 @@ def test_change_language_errors(client: Client):
             client,
             language_data=build_and_sign_blob(data, client.model),
         )
-    assert client.features.language == "enUS"
+    assert client.features.language == "en-US"
 
     # # Invalid translations signature
     # # Modifying the signature part of the header
@@ -173,14 +173,14 @@ def test_change_language_errors(client: Client):
     #         client,
     #         language_data=bad_data,
     #     )
-    # assert client.features.language == "enUS"
+    # assert client.features.language == "en-US"
 
     _check_ping_screen_texts(client, get_confirm("en"), get_confirm("en"))
 
 
 @pytest.mark.parametrize("lang", LANGUAGES)
 def test_full_language_change(client: Client, lang: str):
-    assert client.features.language == "enUS"
+    assert client.features.language == "en-US"
 
     # Setting selected language
     set_language(client, lang)
@@ -189,24 +189,24 @@ def test_full_language_change(client: Client, lang: str):
 
     # Setting the default language via empty data
     set_language(client, "en")
-    assert client.features.language == "enUS"
+    assert client.features.language == "en-US"
     _check_ping_screen_texts(client, get_confirm("en"), get_confirm("en"))
 
 
 def test_language_stays_after_wipe(client: Client):
-    assert client.features.language == "enUS"
+    assert client.features.language == "en-US"
 
     _check_ping_screen_texts(client, get_confirm("en"), get_confirm("en"))
 
     # Setting cs language
     set_language(client, "cs")
-    assert client.features.language == "csCZ"
+    assert client.features.language == "cs-CZ"
 
     _check_ping_screen_texts(client, get_confirm("cs"), get_confirm("cs"))
 
     # Wipe device
     device.wipe(client)
-    assert client.features.language == "csCZ"
+    assert client.features.language == "cs-CZ"
 
     # Load it again
     debuglink.load_device(
@@ -216,7 +216,7 @@ def test_language_stays_after_wipe(client: Client):
         passphrase_protection=False,
         label="test",
     )
-    assert client.features.language == "csCZ"
+    assert client.features.language == "cs-CZ"
 
     _check_ping_screen_texts(client, get_confirm("cs"), get_confirm("cs"))
 
@@ -225,14 +225,14 @@ def test_translations_renders_on_screen(client: Client):
     czech_data = get_lang_json("cs")
 
     # Setting some values of words__confirm key and checking that in ping screen title
-    assert client.features.language == "enUS"
+    assert client.features.language == "en-US"
 
     # Normal english
     _check_ping_screen_texts(client, get_confirm("en"), get_confirm("en"))
 
     # Normal czech
     set_language(client, "cs")
-    assert client.features.language == "csCZ"
+    assert client.features.language == "cs-CZ"
     _check_ping_screen_texts(client, get_confirm("cs"), get_confirm("cs"))
 
     # Modified czech - changed value

@@ -619,7 +619,7 @@ async def show_warning(
     # (we know it will fit one page)
     # TODO: figure out some better and non-intrusive way to do this
     # (check if the content fits one page with the newline, and if not, do not add it)
-    if content and subheader and translations.get_language() == "enUS":
+    if content and subheader and translations.get_language() == "en-US":
         content = content + "\n"
 
     await interact(

@@ -217,7 +217,7 @@ impl<'a> Translations<'a> {
 pub struct TranslationsHeader<'a> {
     /// Raw content of the header, for signature verification
     pub header_bytes: &'a [u8],
-    /// Human readable language identifier (e.g. "cs" of "fr")
+    /// BCP 47 language tag (cs-CZ, en-US, ...)
     pub language: &'a str,
     /// 4 bytes of version (major, minor, patch, build)
     pub version: [u8; 4],
@@ -290,7 +290,6 @@ impl<'a> TranslationsHeader<'a> {
             return Err(value_error!("bad header magic"));
         }
 
-        let language = read_fixedsize_str(&mut header_reader, 4)?;
         let model = read_fixedsize_str(&mut header_reader, 4)?;
 
         if model != crate::trezorhal::model::INTERNAL_NAME {
@@ -304,6 +303,10 @@ impl<'a> TranslationsHeader<'a> {
         let data_hash: sha256::Digest =
             unwrap!(header_reader.read(sha256::DIGEST_SIZE)?.try_into());
 
+        let language = read_pascal_str(&mut header_reader)?;
+        if language.len() > 8 {
+            return Err(value_error!("invalid language"));
+        }
         let change_language_title = read_pascal_str(&mut header_reader)?;
         let change_language_prompt = read_pascal_str(&mut header_reader)?;
 
