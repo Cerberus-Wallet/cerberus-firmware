@@ -37,11 +37,11 @@ fn validate_offset_table(
     mut iter: impl Iterator<Item = u16>,
 ) -> Result<(), Error> {
     // every offset table must have at least the sentinel
-    let mut prev = iter.next().ok_or(value_error!("offset table too short"))?;
+    let mut prev = iter.next().ok_or(INVALID_TRANSLATIONS_BLOB)?;
     for next in iter {
         // offsets must be in ascending order
         if prev > next {
-            return Err(value_error!("offsets not in ascending order"));
+            return Err(INVALID_TRANSLATIONS_BLOB);
         }
         prev = next;
     }
@@ -49,7 +49,7 @@ fn validate_offset_table(
     // data_len
     let sentinel = prev as usize;
     if sentinel < data_len - MAX_TABLE_PADDING || sentinel > data_len {
-        return Err(value_error!("invalid sentinel offset"));
+        return Err(INVALID_TRANSLATIONS_BLOB);
     }
     Ok(())
 }
@@ -63,7 +63,7 @@ impl<'a> Table<'a> {
         // a valid OffsetEntry value.
         let (_prefix, offsets, _suffix) = unsafe { offsets_data.align_to::<OffsetEntry>() };
         if !_prefix.is_empty() || !_suffix.is_empty() {
-            return Err(value_error!("misaligned offsets table"));
+            return Err(INVALID_TRANSLATIONS_BLOB);
         }
 
         Ok(Self {
@@ -78,7 +78,7 @@ impl<'a> Table<'a> {
             self.offsets.iter().last().map(|it| it.id),
             Some(SENTINEL_ID)
         ) {
-            return Err(value_error!("invalid sentinel id"));
+            return Err(INVALID_TRANSLATIONS_BLOB);
         }
         Ok(())
     }
@@ -136,7 +136,7 @@ impl<'a> Translations<'a> {
 
         let payload_digest = sha256::digest(payload_bytes);
         if payload_digest != header.data_hash {
-            return Err(value_error!("hash mismatch"));
+            return Err(INVALID_TRANSLATIONS_BLOB);
         }
 
         let mut payload_reader = InputStream::new(payload_bytes);
@@ -145,7 +145,7 @@ impl<'a> Translations<'a> {
         let fonts_reader = read_u16_prefixed_block(&mut payload_reader)?;
 
         if payload_reader.remaining() > 0 {
-            return Err(value_error!("Trailing data in translations blob"));
+            return Err(INVALID_TRANSLATIONS_BLOB);
         }
 
         // construct translations data
@@ -157,7 +157,7 @@ impl<'a> Translations<'a> {
         let (_prefix, translations_offsets, _suffix) =
             unsafe { translations_offsets_bytes.align_to::<u16>() };
         if !_prefix.is_empty() || !_suffix.is_empty() {
-            return Err(value_error!("Invalid translations table"));
+            return Err(INVALID_TRANSLATIONS_BLOB);
         }
         let translations = translations_reader.rest();
         validate_offset_table(translations.len(), translations_offsets.iter().copied())?;
@@ -239,7 +239,7 @@ pub struct TranslationsHeader<'a> {
 
 fn read_fixedsize_str<'a>(reader: &mut InputStream<'a>, len: usize) -> Result<&'a str, Error> {
     let bytes = reader.read(len)?;
-    core::str::from_utf8(bytes).map_err(|_| value_error!("invalid fixedsize string"))
+    core::str::from_utf8(bytes).map_err(|_| INVALID_TRANSLATIONS_BLOB)
 }
 
 fn read_pascal_str<'a>(reader: &mut InputStream<'a>) -> Result<&'a str, Error> {
@@ -269,7 +269,7 @@ impl<'a> TranslationsHeader<'a> {
         //
         let magic = reader.read(Self::BLOB_MAGIC.len())?;
         if magic != Self::BLOB_MAGIC {
-            return Err(value_error!("invalid header magic"));
+            return Err(INVALID_TRANSLATIONS_BLOB);
         }
 
         // read length of contained data
@@ -287,7 +287,7 @@ impl<'a> TranslationsHeader<'a> {
 
         let magic = header_reader.read(Self::HEADER_MAGIC.len())?;
         if magic != Self::HEADER_MAGIC {
-            return Err(value_error!("bad header magic"));
+            return Err(INVALID_TRANSLATIONS_BLOB);
         }
 
         let model = read_fixedsize_str(&mut header_reader, 4)?;
@@ -305,7 +305,7 @@ impl<'a> TranslationsHeader<'a> {
 
         let language = read_pascal_str(&mut header_reader)?;
         if language.len() > 8 {
-            return Err(value_error!("invalid language"));
+            return Err(INVALID_TRANSLATIONS_BLOB);
         }
         let change_language_title = read_pascal_str(&mut header_reader)?;
         let change_language_prompt = read_pascal_str(&mut header_reader)?;
@@ -326,7 +326,7 @@ impl<'a> TranslationsHeader<'a> {
         // SAFETY: sha256::Digest is a plain array of u8, so any bytes are valid
         let (_prefix, merkle_proof, _suffix) = unsafe { proof_bytes.align_to::<sha256::Digest>() };
         if !_prefix.is_empty() || !_suffix.is_empty() {
-            return Err(value_error!("misaligned proof table"));
+            return Err(INVALID_TRANSLATIONS_BLOB);
         }
         let signature = cosi::Signature::new(
             proof_reader.read_byte()?,
@@ -335,24 +335,12 @@ impl<'a> TranslationsHeader<'a> {
 
         // check that there is no trailing data in the proof section
         if proof_reader.remaining() > 0 {
-            return Err(value_error!("trailing data in proof"));
+            return Err(INVALID_TRANSLATIONS_BLOB);
         }
 
         // check that the declared data section length matches the container size
         if container_length - reader.tell() != data_len {
-            println!(
-                "container length: ",
-                heapless::String::<10>::from(container_length as u32).as_str()
-            );
-            println!(
-                "reader pos: ",
-                heapless::String::<10>::from(reader.tell() as u32).as_str()
-            );
-            println!(
-                "data_len: ",
-                heapless::String::<10>::from(data_len as u32).as_str()
-            );
-            return Err(value_error!("data length mismatch"));
+            return Err(INVALID_TRANSLATIONS_BLOB);
         }
 
         let new = Self {
