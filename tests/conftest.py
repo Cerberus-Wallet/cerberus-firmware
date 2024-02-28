@@ -17,8 +17,9 @@
 from __future__ import annotations
 
 import os
+import typing as t
+from dataclasses import dataclass
 from pathlib import Path
-from typing import TYPE_CHECKING, Generator, Iterator
 
 import pytest
 import xdist
@@ -37,7 +38,7 @@ from . import translations, ui_tests
 from .device_handler import BackgroundDeviceHandler
 from .emulators import EmulatorWrapper
 
-if TYPE_CHECKING:
+if t.TYPE_CHECKING:
     from _pytest.config import Config
     from _pytest.config.argparsing import Parser
     from _pytest.terminal import TerminalReporter
@@ -63,7 +64,7 @@ def _emulator_wrapper_main_args() -> list[str]:
 
 
 @pytest.fixture
-def core_emulator(request: pytest.FixtureRequest) -> Iterator[Emulator]:
+def core_emulator(request: pytest.FixtureRequest) -> t.Iterator[Emulator]:
     """Fixture returning default core emulator with possibility of screen recording."""
     with EmulatorWrapper("core", main_args=_emulator_wrapper_main_args()) as emu:
         # Modifying emu.client to add screen recording (when --ui=test is used)
@@ -72,7 +73,7 @@ def core_emulator(request: pytest.FixtureRequest) -> Iterator[Emulator]:
 
 
 @pytest.fixture(scope="session")
-def emulator(request: pytest.FixtureRequest) -> Generator["Emulator", None, None]:
+def emulator(request: pytest.FixtureRequest) -> t.Generator["Emulator", None, None]:
     """Fixture for getting emulator connection in case tests should operate it on their own.
 
     Is responsible for starting it at the start of the session and stopping
@@ -123,8 +124,28 @@ def emulator(request: pytest.FixtureRequest) -> Generator["Emulator", None, None
         yield emu
 
 
+@dataclass
+class SetupParams:
+    uninitialized: bool = False
+    mnemonic: str = " ".join(["all"] * 12)
+    pin: str | None = None
+    passphrase: bool | str = False
+    needs_backup: bool = False
+    no_backup: bool = False
+    experimental: bool = False
+    lang: str = "en"
+
+
+class ClientConnection:
+    def __init__(self, client: Client):
+        self.client = client
+        self.setup_params = SetupParams()
+        self.language = client.features.language or "en-US"
+        self.storage_hash = b""
+
+
 @pytest.fixture(scope="session")
-def _raw_client(request: pytest.FixtureRequest) -> Client:
+def client_connection(request: pytest.FixtureRequest) -> ClientConnection:
     # In case tests run in parallel, each process has its own emulator/client.
     # Requesting the emulator fixture only if relevant.
     if request.session.config.getoption("control_emulators"):
@@ -138,14 +159,7 @@ def _raw_client(request: pytest.FixtureRequest) -> Client:
         else:
             client = _find_client(request, interact)
 
-    # Setting the appropriate language
-    # Not doing it for T1
-    if client.features.model != "1":
-        lang = request.session.config.getoption("lang") or "en"
-        assert isinstance(lang, str)
-        translations.set_language(client, lang)
-
-    return client
+    return ClientConnection(client)
 
 
 def _client_from_path(
@@ -173,8 +187,8 @@ def _find_client(request: pytest.FixtureRequest, interact: bool) -> Client:
 
 @pytest.fixture(scope="function")
 def client(
-    request: pytest.FixtureRequest, _raw_client: Client
-) -> Generator[Client, None, None]:
+    request: pytest.FixtureRequest, client_connection: ClientConnection
+) -> t.Generator[Client, None, None]:
     """Client fixture.
 
     Every test function that requires a client instance will get it from here.
@@ -198,18 +212,17 @@ def client(
 
     @pytest.mark.experimental
     """
-    if request.node.get_closest_marker("skip_t2") and _raw_client.features.model == "T":
+    client = client_connection.client
+
+    if request.node.get_closest_marker("skip_t2") and client.features.model == "T":
         pytest.skip("Test excluded on Trezor T")
-    if request.node.get_closest_marker("skip_t1") and _raw_client.features.model == "1":
+    if request.node.get_closest_marker("skip_t1") and client.features.model == "1":
         pytest.skip("Test excluded on Trezor 1")
-    if (
-        request.node.get_closest_marker("skip_tr")
-        and _raw_client.features.model == "Safe 3"
-    ):
+    if request.node.get_closest_marker("skip_tr") and client.features.model == "Safe 3":
         pytest.skip("Test excluded on Trezor R")
 
     sd_marker = request.node.get_closest_marker("sd_card")
-    if sd_marker and not _raw_client.features.sd_card_present:
+    if sd_marker and not client.features.sd_card_present:
         raise RuntimeError(
             "This test requires SD card.\n"
             "To skip all such tests, run:\n"
@@ -218,74 +231,74 @@ def client(
 
     test_ui = request.config.getoption("ui")
 
-    _raw_client.reset_debug_features()
-    _raw_client.open()
+    client.reset_debug_features()
+    client.open()
     try:
-        _raw_client.init_device()
+        client.init_device()
     except Exception:
         request.session.shouldstop = "Failed to communicate with Trezor"
         pytest.fail("Failed to communicate with Trezor")
 
     # Resetting all the debug events to not be influenced by previous test
-    _raw_client.debug.reset_debug_events()
+    client.debug.reset_debug_events()
 
     if test_ui:
         # we need to reseed before the wipe
-        _raw_client.debug.reseed(0)
+        client.debug.reseed(0)
 
     if sd_marker:
         should_format = sd_marker.kwargs.get("formatted", True)
-        _raw_client.debug.erase_sd_card(format=should_format)
+        client.debug.erase_sd_card(format=should_format)
 
-    wipe_device(_raw_client)
-
-    # Load language again, as it got erased in wipe
-    if _raw_client.features.model != "1":
-        lang = request.session.config.getoption("lang") or "en"
-        assert isinstance(lang, str)
-        if lang != "en":
-            translations.set_language(_raw_client, lang)
-
-    setup_params = dict(
-        uninitialized=False,
-        mnemonic=" ".join(["all"] * 12),
-        pin=None,
-        passphrase=False,
-        needs_backup=False,
-        no_backup=False,
-    )
+    setup_params = SetupParams()
+    setup_params.experimental = bool(request.node.get_closest_marker("experimental"))
+    setup_params.lang = t.cast(str, request.session.config.getoption("lang") or "en")
 
     marker = request.node.get_closest_marker("setup_client")
     if marker:
-        setup_params.update(marker.kwargs)
+        setup_params.__dict__.update(marker.kwargs)
 
-    use_passphrase = setup_params["passphrase"] is True or isinstance(
-        setup_params["passphrase"], str
-    )
+    storage_hash = client.debug.storage_hash()
+    if (
+        client_connection.storage_hash != storage_hash
+        or client_connection.setup_params != setup_params
+    ):
+        # wipe and reconfigure
+        wipe_device(client)
 
-    if not setup_params["uninitialized"]:
-        debuglink.load_device(
-            _raw_client,
-            mnemonic=setup_params["mnemonic"],  # type: ignore
-            pin=setup_params["pin"],  # type: ignore
-            passphrase_protection=use_passphrase,
-            label="test",
-            needs_backup=setup_params["needs_backup"],  # type: ignore
-            no_backup=setup_params["no_backup"],  # type: ignore
+        use_passphrase = setup_params.passphrase is True or isinstance(
+            setup_params.passphrase, str
         )
 
-        if request.node.get_closest_marker("experimental"):
-            apply_settings(_raw_client, experimental_features=True)
+        if client.features.model != "1" and setup_params.lang != "en":
+            translations.set_language(client, setup_params.lang)
 
-        if use_passphrase and isinstance(setup_params["passphrase"], str):
-            _raw_client.use_passphrase(setup_params["passphrase"])
+        if not setup_params.uninitialized:
+            debuglink.load_device(
+                client,
+                mnemonic=setup_params.mnemonic,
+                pin=setup_params.pin,
+                passphrase_protection=use_passphrase,
+                label="test",
+                needs_backup=setup_params.needs_backup,
+                no_backup=setup_params.no_backup,
+            )
 
-        _raw_client.clear_session()
+            if setup_params.experimental:
+                apply_settings(client, experimental_features=True)
 
-    with ui_tests.screen_recording(_raw_client, request):
-        yield _raw_client
+            if use_passphrase and isinstance(setup_params.passphrase, str):
+                client.use_passphrase(setup_params.passphrase)
 
-    _raw_client.close()
+        client_connection.setup_params = setup_params
+        client_connection.storage_hash = client.debug.storage_hash()
+
+    client.clear_session()
+
+    with ui_tests.screen_recording(client, request):
+        yield client
+
+    client.close()
 
 
 def _is_main_runner(session_or_request: pytest.Session | pytest.FixtureRequest) -> bool:
@@ -423,7 +436,7 @@ def pytest_runtest_setup(item: pytest.Item) -> None:
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport(item: pytest.Item, call) -> Generator:
+def pytest_runtest_makereport(item: pytest.Item, call) -> t.Generator:
     # Make test results available in fixtures.
     # See https://docs.pytest.org/en/latest/example/simple.html#making-test-result-information-available-in-fixtures
     # The device_handler fixture uses this as 'request.node.rep_call.passed' attribute,
@@ -434,7 +447,7 @@ def pytest_runtest_makereport(item: pytest.Item, call) -> Generator:
 
 
 @pytest.fixture
-def device_handler(client: Client, request: pytest.FixtureRequest) -> Generator:
+def device_handler(client: Client, request: pytest.FixtureRequest) -> t.Generator:
     device_handler = BackgroundDeviceHandler(client)
     yield device_handler
 
