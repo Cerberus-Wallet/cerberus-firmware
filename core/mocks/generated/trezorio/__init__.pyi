@@ -66,8 +66,8 @@ class FlashArea:
         def write(self, offset: int, data: bytes) -> None:
             """
             Writes data to flash area.
-            Offset and written data size must be a multiple of quadword (16
-            bytes).
+            Offset and written data size must be a multiple of FLASH_BLOCK_SIZE,
+            that is, 4 bytes on F4 or 16 bytes on U5.
             """
     if __debug__:
         def erase_sector(self, offset: int) -> None:

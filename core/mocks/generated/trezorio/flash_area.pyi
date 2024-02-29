@@ -3,7 +3,7 @@ from . import FlashArea
 BOARDLOADER: FlashArea
 BOOTLOADER: FlashArea
 FIRMWARE: FlashArea
-STORAGE_A: FlashArea
-STORAGE_B: FlashArea
 TRANSLATIONS: FlashArea
-SECRET: FlashArea
+if __debug__:
+    STORAGE_A: FlashArea
+    STORAGE_B: FlashArea

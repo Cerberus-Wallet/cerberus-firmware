@@ -7,5 +7,4 @@ Bootloader = 1
 StorageA = 2
 StorageB = 3
 Firmware = 4
-Secret = 5
-Translations = 6
+Translations = 5

@@ -272,8 +272,6 @@ if __debug__:
             return io.flash_area.STORAGE_B
         if area == FlashArea.Translations:
             return io.flash_area.TRANSLATIONS
-        if area == FlashArea.Secret:
-            return io.flash_area.SECRET
         raise ValueError
 
     async def dispatch_DebugLinkFlashRead(msg: DebugLinkFlashRead) -> DebugLinkMemory:
