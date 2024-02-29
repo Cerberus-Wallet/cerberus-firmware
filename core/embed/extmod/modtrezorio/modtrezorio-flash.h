@@ -135,7 +135,7 @@ typedef struct _mp_obj_FlashArea_t {
 } mp_obj_FlashArea_t;
 
 #define FLASH_READ_CHUNK_SIZE 1024
-#define PROGRESS_CHUNK_SIZE ((1024 / FLASH_READ_CHUNK_SIZE) * 16)
+#define CHUNKS_PER_PROGRESS_STEP ((1024 / FLASH_READ_CHUNK_SIZE) * 16)
 
 static void ui_progress(mp_obj_t ui_wait_callback, uint32_t current) {
   if (mp_obj_is_callable(ui_wait_callback)) {
@@ -214,7 +214,7 @@ STATIC mp_obj_t mod_trezorio_FlashArea_hash(size_t n_args,
       mp_raise_msg(&mp_type_RuntimeError, "Failed to read flash.");
     }
     blake2s_Update(&ctx, data, FLASH_READ_CHUNK_SIZE);
-    if (i % PROGRESS_CHUNK_SIZE == 0) {
+    if (i % CHUNKS_PER_PROGRESS_STEP == 0) {
       ui_progress(ui_wait_callback, i * FLASH_READ_CHUNK_SIZE);
     }
   }
