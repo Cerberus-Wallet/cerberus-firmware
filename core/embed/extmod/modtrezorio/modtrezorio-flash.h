@@ -204,17 +204,19 @@ STATIC mp_obj_t mod_trezorio_FlashArea_hash(size_t n_args,
   if (offset > area_size || area_size - offset < length) {
     mp_raise_ValueError("Read too long.");
   }
-  uint32_t chunks = area_size / FLASH_READ_CHUNK_SIZE;
+  const uint32_t start_chunk = offset / FLASH_READ_CHUNK_SIZE;
+  const uint32_t end_chunk = (offset + length) / FLASH_READ_CHUNK_SIZE;
 
   ui_progress(ui_wait_callback, 0);
-  for (int i = 0; i < chunks; i++) {
+  for (int i = start_chunk; i < end_chunk; i++) {
     const void *data = flash_area_get_address(
         self->area, i * FLASH_READ_CHUNK_SIZE, FLASH_READ_CHUNK_SIZE);
     if (data == NULL) {
       mp_raise_msg(&mp_type_RuntimeError, "Failed to read flash.");
     }
     blake2s_Update(&ctx, data, FLASH_READ_CHUNK_SIZE);
-    if (i % CHUNKS_PER_PROGRESS_STEP == 0) {
+    if (i % CHUNKS_PER_PROGRESS_STEP ==
+        start_chunk % CHUNKS_PER_PROGRESS_STEP) {
       ui_progress(ui_wait_callback, i * FLASH_READ_CHUNK_SIZE);
     }
   }
