@@ -161,7 +161,16 @@ async def _prompt_number(
         ButtonRequestType.ResetDevice,
     )
 
-    return int(result)
+    if __debug__:
+        if not isinstance(result, tuple):
+            # DebugLink currently can't send number of shares and it doesn't
+            # change the counter either so just use the initial value.
+            result = (result, count)
+    status, value = result
+
+    assert status is CONFIRMED
+    assert isinstance(value, int)
+    return value
 
 
 async def slip39_prompt_threshold(
