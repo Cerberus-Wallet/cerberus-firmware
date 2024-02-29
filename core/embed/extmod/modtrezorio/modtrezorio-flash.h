@@ -201,7 +201,7 @@ STATIC mp_obj_t mod_trezorio_FlashArea_hash(size_t n_args,
   }
 
   uint32_t area_size = flash_area_get_size(self->area);
-  if (area_size - offset < length) {
+  if (offset > area_size || area_size - offset < length) {
     mp_raise_ValueError("Read too long.");
   }
   uint32_t chunks = area_size / FLASH_READ_CHUNK_SIZE;
@@ -255,7 +255,7 @@ STATIC mp_obj_t mod_trezorio_FlashArea_read(mp_obj_t obj_self,
   }
 
   uint32_t area_size = flash_area_get_size(self->area);
-  if (area_size - offset < data.len) {
+  if (offset > area_size || area_size - offset < data.len) {
     mp_raise_ValueError("Read too long.");
   }
   uint32_t chunks = data.len / FLASH_READ_CHUNK_SIZE;
@@ -293,7 +293,7 @@ STATIC mp_obj_t mod_trezorio_FlashArea_write(mp_obj_t obj_self,
   }
 
   uint32_t area_size = flash_area_get_size(self->area);
-  if (area_size - offset < data.len) {
+  if (offset > area_size || area_size - offset < data.len) {
     mp_raise_ValueError("Write too long.");
   }
 
