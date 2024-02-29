@@ -690,7 +690,7 @@ async def confirm_output(
     address_label: str | None = None,
     output_index: int | None = None,
     chunkify: bool = False,
-) -> ui.UiResult:
+) -> None:
     title = title or TR.send__confirm_sending  # def_arg
     address_title = TR.words__recipient
     if output_index is not None:
@@ -726,7 +726,7 @@ async def confirm_output(
             br_code,
         )
         if result is CONFIRMED:
-            return result
+            return
 
 
 def tutorial(br_code: ButtonRequestType = BR_TYPE_OTHER) -> Awaitable[None]:
