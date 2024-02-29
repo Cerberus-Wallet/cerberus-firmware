@@ -277,8 +277,8 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_trezorio_FlashArea_read_obj,
 ///     def write(self, offset: int, data: bytes) -> None:
 ///         """
 ///         Writes data to flash area.
-///         Offset and written data size must be a multiple of quadword (16
-///         bytes).
+///         Offset and written data size must be a multiple of FLASH_BLOCK_SIZE,
+///         that is, 4 bytes on F4 or 16 bytes on U5.
 ///         """
 STATIC mp_obj_t mod_trezorio_FlashArea_write(mp_obj_t obj_self,
                                              mp_obj_t obj_offset,
@@ -289,7 +289,7 @@ STATIC mp_obj_t mod_trezorio_FlashArea_write(mp_obj_t obj_self,
   mp_get_buffer_raise(obj_data, &data, MP_BUFFER_READ);
 
   if (data.len % FLASH_BLOCK_SIZE != 0) {
-    mp_raise_ValueError("Write size must be a multiple of 16.");
+    mp_raise_ValueError("Write size must be a multiple of write unit.");
   }
 
   uint32_t area_size = flash_area_get_size(self->area);
@@ -305,6 +305,7 @@ STATIC mp_obj_t mod_trezorio_FlashArea_write(mp_obj_t obj_self,
     if (sectrue != flash_area_write_block(self->area,
                                           offset + i * FLASH_BLOCK_SIZE,
                                           data_as_blocks[i])) {
+      ensure(flash_lock_write(), NULL);
       mp_raise_ValueError("Write failed.");
     }
   }
