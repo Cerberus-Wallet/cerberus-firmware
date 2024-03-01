@@ -3,7 +3,7 @@ use crate::{
     ui::{
         canvas::{Bitmap, BitmapFormat},
         constant,
-        geometry::{Offset, Point, Rect},
+        geometry::{Alignment, Alignment2D, Offset, Point, Rect},
     },
 };
 use core::slice;
@@ -237,6 +237,81 @@ impl Font {
 
     pub fn line_height(self) -> i16 {
         constant::LINE_SPACE + self.text_height()
+    }
+
+    /// Returns th 'real' width of the text, including only the visible parts of
+    /// glyphs.
+    ///
+    /// Returns (first_char_bearing_x, width)
+    ///
+    /// The purpose of this function is for text horizontal centering.
+    /// The difference compared to `text_width()` is that this function
+    /// potentially excludes left side bearing of the first glyph and
+    /// the right side bearing of the last glyph
+    fn real_width(&self, text: &str) -> (i16, i16) {
+        let mut bearing_x = 0;
+        let mut width = 0;
+        let mut last_space = 0;
+
+        let mut it = text.chars();
+
+        if let Some(c) = it.next() {
+            let glyph = self.get_glyph(c);
+            bearing_x = glyph.bearing_x;
+            width += glyph.adv - bearing_x;
+            last_space = glyph.adv - glyph.bearing_x - glyph.width;
+        }
+
+        while let Some(c) = it.next() {
+            let glyph = self.get_glyph(c);
+            width += glyph.adv;
+            last_space = glyph.adv - glyph.bearing_x - glyph.width;
+        }
+
+        width -= last_space;
+
+        (bearing_x, width)
+    }
+
+    /// Returns `real` height of the text above and under the baseline.
+    ///
+    /// Returns a (above_height: i16, under_height: i16) in pixels.
+    ///
+    /// The purpose of this function is for text vertical centering.
+    fn real_height(&self, text: &str) -> (i16, i16) {
+        let (mut above, mut under) = (0, 0);
+        for c in text.chars() {
+            let glyph = self.get_glyph(c);
+            above = above.max(glyph.bearing_y);
+            under = under.max(glyph.height - glyph.bearing_y);
+        }
+        (above, under)
+    }
+
+    // Align text insde the rectangle area
+    pub fn align(
+        &self,
+        area: Rect,
+        text: &str,
+        align: Alignment2D,
+        reftext: Option<&str>,
+    ) -> Point {
+        let rw = self.real_width(text);
+        let rh = self.real_height(reftext.unwrap_or(text));
+
+        let x = match align.0 {
+            Alignment::Start => area.x0 - rw.0,
+            Alignment::Center => (area.x0 + area.x1 - rw.1) / 2 - rw.0,
+            Alignment::End => area.x1 - rw.1 - rw.0,
+        };
+
+        let y = match align.1 {
+            Alignment::Start => area.y0 + rh.0,
+            Alignment::Center => (area.y0 + area.y1 + rh.0 - rh.1) / 2,
+            Alignment::End => area.y0 - rh.1,
+        };
+
+        Point::new(x, y)
     }
 
     pub fn get_glyph(self, ch: char) -> Glyph {

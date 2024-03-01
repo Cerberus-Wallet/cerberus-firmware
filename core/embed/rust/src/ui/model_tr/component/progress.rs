@@ -11,7 +11,8 @@ use crate::{
         },
         constant,
         display::{self, Font, Icon, LOADER_MAX},
-        geometry::Rect,
+        geometry::{Alignment2D, Offset, Rect},
+        shape,
         shape::Renderer,
         util::animation_disabled,
     },
@@ -194,13 +195,46 @@ where
                 None,
             );*/ // !@#
         } else {
-            /*display::loader(
-                self.value,
-                self.loader_y_offset,
-                theme::FG,
-                theme::BG,
-                Some((self.icon, theme::FG)),
-            );*/ // !@#
+            // !@#
+
+            let area = constant::screen();
+            let center = area.center() + Offset::y(self.loader_y_offset);
+
+            static CIRCLE: [(i16, i16); 24] = [
+                (1, -4),
+                (2, -4),
+                (3, -3),
+                (4, -2),
+                (4, -1),
+                (4, 0),
+                (4, 1),
+                (4, 2),
+                (3, 3),
+                (2, 4),
+                (1, 4),
+                (0, 4),
+                (-1, 4),
+                (-2, 4),
+                (-3, 3),
+                (-4, 2),
+                (-4, 1),
+                (-4, 0),
+                (-4, -1),
+                (-4, -2),
+                (-3, -3),
+                (-2, -4),
+                (-1, -4),
+                (0, -4),
+            ];
+
+            let last = ((CIRCLE.len() * self.value as usize) / 1000).min(CIRCLE.len());
+
+            shape::Snake::new(center, &CIRCLE[..last]).render(target);
+
+            shape::ToifImage::new(center, self.icon.toif)
+                .with_align(Alignment2D::CENTER)
+                .with_fg(theme::FG)
+                .render(target);
         }
         self.description_pad.render(target);
         self.description.render(target);

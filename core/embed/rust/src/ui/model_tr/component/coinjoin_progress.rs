@@ -6,7 +6,9 @@ use crate::{
     ui::{
         component::{
             base::Never,
-            text::util::{text_multiline, text_multiline_bottom},
+            text::util::{
+                text_multiline, text_multiline2, text_multiline_bottom, text_multiline_bottom2,
+            },
             Component, Event, EventCtx,
         },
         display::{self, Font},
@@ -133,7 +135,54 @@ where
     }
 
     fn render(&mut self, target: &mut impl Renderer) {
-        // !@# TODO
+        // TOP
+        if self.indeterminate {
+            text_multiline2(
+                target,
+                self.area,
+                TR::coinjoin__title_progress.into(),
+                Font::BOLD,
+                theme::FG,
+                theme::BG,
+                Alignment::Center,
+            );
+            /*display::loader::loader_small_indeterminate(
+                self.value,
+                self.loader_y_offset,
+                theme::FG,
+                theme::BG,
+            ); !@# */
+        } else {
+            /*display::loader(
+                self.value,
+                self.loader_y_offset,
+                theme::FG,
+                theme::BG,
+                Some((theme::ICON_TICK_FAT, theme::FG)),
+            ); !@# */
+        }
+
+        // BOTTOM
+        let top_rest = text_multiline_bottom2(
+            target,
+            self.area,
+            TR::coinjoin__do_not_disconnect.into(),
+            Font::BOLD,
+            theme::FG,
+            theme::BG,
+            Alignment::Center,
+        );
+        if let Some(rest) = top_rest {
+            text_multiline_bottom2(
+                target,
+                rest.inset(Insets::bottom(FOOTER_TEXT_MARGIN)),
+                self.text.as_ref().into(),
+                Font::NORMAL,
+                theme::FG,
+                theme::BG,
+                Alignment::Center,
+            );
+        }
     }
 }
 
