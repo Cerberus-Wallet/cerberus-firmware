@@ -1,5 +1,8 @@
 # Emulator
 
+> :bulb: **Hint**: 
+Using emulator as described here is useful during firmware development. If you intend to use only released versions of firmware, you might be looking for [Trezor User Env](https://github.com/trezor/trezor-user-env/tree/master).
+
 Emulator is a unix version of Core firmware that runs on your computer.
 
 ![emulator](emulator.jpg)
