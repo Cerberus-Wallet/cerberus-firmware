@@ -166,8 +166,8 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorio_FlashArea_size_obj,
 ///     Computes a Blake2s hash of a segment of the flash area.
 ///     Offset and length must be aligned to 1024 bytes.
 ///     An optional challenge can be used as the Blake2s key.
-///     The progress callback will be invoked every 16 kB with the number of bytes
-///     processed so far.
+///     The progress callback will be invoked every 16 kB with the number of
+///     bytes processed so far.
 ///     """
 STATIC mp_obj_t mod_trezorio_FlashArea_hash(size_t n_args,
                                             const mp_obj_t *args) {
@@ -261,8 +261,9 @@ STATIC mp_obj_t mod_trezorio_FlashArea_read(mp_obj_t obj_self,
   }
   uint32_t chunks = data.len / FLASH_READ_CHUNK_SIZE;
   for (int i = 0; i < chunks; i++) {
-    const void *data = flash_area_get_address(
-        &FIRMWARE_AREA, i * FLASH_READ_CHUNK_SIZE, FLASH_READ_CHUNK_SIZE);
+    const uint32_t current_offset = offset + i * FLASH_READ_CHUNK_SIZE;
+    const void *data = flash_area_get_address(&FIRMWARE_AREA, current_offset,
+                                              FLASH_READ_CHUNK_SIZE);
     if (data == NULL) {
       mp_raise_msg(&mp_type_RuntimeError, "Failed to read flash.");
     }
