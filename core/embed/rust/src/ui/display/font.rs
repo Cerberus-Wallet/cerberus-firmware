@@ -201,6 +201,16 @@ impl Font {
         self.text_width(text) - first_char_bearing - last_char_bearing
     }
 
+    pub fn visible_text_height(&self, text: &str) -> i16 {
+        let (mut ascent, mut descent) = (0, 0);
+        for c in text.chars() {
+            let glyph = self.get_glyph(c);
+            ascent = ascent.max(glyph.bearing_y);
+            descent = descent.max(glyph.height - glyph.bearing_y);
+        }
+        ascent + descent
+    }
+
     /// Returning the x-bearing (offset) of the first character.
     /// Useful to enforce that the text is positioned correctly (e.g. centered).
     pub fn start_x_bearing(self, text: &str) -> i16 {
@@ -248,44 +258,44 @@ impl Font {
     /// The difference compared to `text_width()` is that this function
     /// potentially excludes left side bearing of the first glyph and
     /// the right side bearing of the last glyph
-    fn real_width(&self, text: &str) -> (i16, i16) {
-        let mut bearing_x = 0;
+    fn visible_text_width_ex(&self, text: &str) -> (i16, i16) {
+        let mut left_bearing = 0;
         let mut width = 0;
-        let mut last_space = 0;
+        let mut right_bearing = 0;
 
         let mut it = text.chars();
 
         if let Some(c) = it.next() {
             let glyph = self.get_glyph(c);
-            bearing_x = glyph.bearing_x;
-            width += glyph.adv - bearing_x;
-            last_space = glyph.adv - glyph.bearing_x - glyph.width;
+            left_bearing = glyph.bearing_x;
+            width += glyph.adv - left_bearing;
+            right_bearing = glyph.adv - glyph.bearing_x - glyph.width;
         }
 
         while let Some(c) = it.next() {
             let glyph = self.get_glyph(c);
             width += glyph.adv;
-            last_space = glyph.adv - glyph.bearing_x - glyph.width;
+            right_bearing = glyph.adv - glyph.bearing_x - glyph.width;
         }
 
-        width -= last_space;
+        width -= right_bearing;
 
-        (bearing_x, width)
+        (width, left_bearing)
     }
 
     /// Returns `real` height of the text above and under the baseline.
     ///
-    /// Returns a (above_height: i16, under_height: i16) in pixels.
+    /// Returns a (ascent: i16, descent: i16) in pixels.
     ///
     /// The purpose of this function is for text vertical centering.
-    fn real_height(&self, text: &str) -> (i16, i16) {
-        let (mut above, mut under) = (0, 0);
+    fn visible_text_height_ex(&self, text: &str) -> (i16, i16) {
+        let (mut ascent, mut descent) = (0, 0);
         for c in text.chars() {
             let glyph = self.get_glyph(c);
-            above = above.max(glyph.bearing_y);
-            under = under.max(glyph.height - glyph.bearing_y);
+            ascent = ascent.max(glyph.bearing_y);
+            descent = descent.max(glyph.height - glyph.bearing_y);
         }
-        (above, under)
+        (ascent, descent)
     }
 
     // Align text insde the rectangle area
@@ -296,13 +306,13 @@ impl Font {
         align: Alignment2D,
         reftext: Option<&str>,
     ) -> Point {
-        let rw = self.real_width(text);
-        let rh = self.real_height(reftext.unwrap_or(text));
+        let rw = self.visible_text_width_ex(text);
+        let rh = self.visible_text_height_ex(reftext.unwrap_or(text));
 
         let x = match align.0 {
-            Alignment::Start => area.x0 - rw.0,
-            Alignment::Center => (area.x0 + area.x1 - rw.1) / 2 - rw.0,
-            Alignment::End => area.x1 - rw.1 - rw.0,
+            Alignment::Start => area.x0 - rw.1,
+            Alignment::Center => (area.x0 + area.x1 - rw.0) / 2 - rw.1,
+            Alignment::End => area.x1 - rw.0 - rw.1,
         };
 
         let y = match align.1 {
