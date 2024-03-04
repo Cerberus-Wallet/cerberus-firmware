@@ -36,6 +36,10 @@
 #include "optiga.h"
 #endif
 
+#ifdef STM32U5
+#include "secure_aes.h"
+#endif
+
 // The APP namespace which is reserved for storage related values.
 #define APP_STORAGE 0x00
 
@@ -149,7 +153,8 @@ static PIN_UI_WAIT_CALLBACK ui_callback = NULL;
 static uint32_t ui_total = 0;
 static uint32_t ui_rem = 0;
 static const char *ui_message = NULL;
-static uint8_t cached_keys[KEYS_SIZE] = {0};
+static uint8_t cached_keys[KEYS_SIZE]
+    __attribute__((aligned(sizeof(uint32_t)))) = {0};
 static uint8_t *const cached_dek = cached_keys;
 static uint8_t *const cached_sak = cached_keys + DEK_SIZE;
 static uint8_t authentication_sum[SHA256_DIGEST_LENGTH] = {0};
@@ -229,14 +234,33 @@ static secbool is_protected(uint16_t key) {
   return ((app & FLAG_PUBLIC) == 0 && app != APP_STORAGE) ? sectrue : secfalse;
 }
 
+static void get_sak(uint32_t *out) {
+#ifdef STM32U5
+  secure_aes_ecb_decrypt((uint32_t *)cached_sak, SAK_SIZE, out);
+#else
+  memcpy(out, cached_sak, SAK_SIZE);
+#endif
+}
+
+static void get_dek(uint32_t *out) {
+#ifdef STM32U5
+  secure_aes_ecb_decrypt((uint32_t *)cached_dek, DEK_SIZE, out);
+#else
+  memcpy(out, cached_dek, DEK_SIZE);
+#endif
+}
+
 /*
  * Initialize the storage authentication tag for freshly wiped storage.
  */
 static secbool auth_init(void) {
   uint8_t tag[SHA256_DIGEST_LENGTH] = {0};
+  uint8_t sak[SAK_SIZE] __attribute__((aligned(sizeof(uint32_t))));
+  get_sak((uint32_t *)sak);
   memzero(authentication_sum, sizeof(authentication_sum));
-  hmac_sha256(cached_sak, SAK_SIZE, authentication_sum,
-              sizeof(authentication_sum), tag);
+  hmac_sha256(sak, SAK_SIZE, authentication_sum, sizeof(authentication_sum),
+              tag);
+  memzero(sak, sizeof(sak));
   return norcow_set(STORAGE_TAG_KEY, tag, STORAGE_TAG_SIZE);
 }
 
@@ -249,12 +273,16 @@ static secbool auth_update(uint16_t key) {
   }
 
   uint8_t tag[SHA256_DIGEST_LENGTH] = {0};
-  hmac_sha256(cached_sak, SAK_SIZE, (uint8_t *)&key, sizeof(key), tag);
+  uint8_t sak[SAK_SIZE] __attribute__((aligned(sizeof(uint32_t))));
+  get_sak((uint32_t *)sak);
+  hmac_sha256(sak, SAK_SIZE, (uint8_t *)&key, sizeof(key), tag);
   for (uint32_t i = 0; i < SHA256_DIGEST_LENGTH; i++) {
     authentication_sum[i] ^= tag[i];
   }
-  hmac_sha256(cached_sak, SAK_SIZE, authentication_sum,
-              sizeof(authentication_sum), tag);
+  hmac_sha256(sak, SAK_SIZE, authentication_sum, sizeof(authentication_sum),
+              tag);
+
+  memzero(sak, sizeof(sak));
   return norcow_set(STORAGE_TAG_KEY, tag, STORAGE_TAG_SIZE);
 }
 
@@ -283,10 +311,15 @@ static secbool auth_get(uint16_t key, const void **val, uint16_t *len) {
   *len = 0;
   uint32_t sum[SHA256_DIGEST_LENGTH / sizeof(uint32_t)] = {0};
 
+  uint8_t sak[SAK_SIZE] __attribute__((aligned(sizeof(uint32_t))));
+  get_sak((uint32_t *)sak);
+
   // Prepare inner and outer digest.
   uint32_t odig[SHA256_DIGEST_LENGTH / sizeof(uint32_t)] = {0};
   uint32_t idig[SHA256_DIGEST_LENGTH / sizeof(uint32_t)] = {0};
-  hmac_sha256_prepare(cached_sak, SAK_SIZE, odig, idig);
+  hmac_sha256_prepare(sak, SAK_SIZE, odig, idig);
+
+  memzero(sak, sizeof(sak));
 
   // Prepare SHA-256 message padding.
   uint32_t g[SHA256_BLOCK_LENGTH / sizeof(uint32_t)] = {0};
@@ -1000,7 +1033,7 @@ secbool storage_unlock(const uint8_t *pin, size_t pin_len,
 /*
  * Finds the encrypted data stored under key and writes its length to len.
  * If val_dest is not NULL and max_len >= len, then the data is decrypted
- * to val_dest using cached_dek as the decryption key.
+ * to val_dest using dek as the decryption key.
  */
 static secbool storage_get_encrypted(const uint16_t key, void *val_dest,
                                      const uint16_t max_len, uint16_t *len) {
@@ -1024,17 +1057,21 @@ static secbool storage_get_encrypted(const uint16_t key, void *val_dest,
     return secfalse;
   }
 
+  uint8_t dek[DEK_SIZE] __attribute__((aligned(sizeof(uint32_t))));
+  get_dek((uint32_t *)dek);
+
   const uint8_t *iv = (const uint8_t *)val_stored;
   const uint8_t *tag_stored =
       (const uint8_t *)val_stored + CHACHA20_IV_SIZE + *len;
   const uint8_t *ciphertext = (const uint8_t *)val_stored + CHACHA20_IV_SIZE;
   uint8_t tag_computed[POLY1305_TAG_SIZE] = {0};
   chacha20poly1305_ctx ctx = {0};
-  rfc7539_init(&ctx, cached_dek, iv);
+  rfc7539_init(&ctx, dek, iv);
   rfc7539_auth(&ctx, (const uint8_t *)&key, sizeof(key));
   chacha20poly1305_decrypt(&ctx, ciphertext, (uint8_t *)val_dest, *len);
   rfc7539_finish(&ctx, sizeof(key), *len, tag_computed);
   memzero(&ctx, sizeof(ctx));
+  memzero(dek, sizeof(dek));
 
   // Verify authentication tag.
   if (secequal(tag_computed, tag_stored, POLY1305_TAG_SIZE) != sectrue) {
@@ -1089,7 +1126,7 @@ secbool storage_get(const uint16_t key, void *val_dest, const uint16_t max_len,
 }
 
 /*
- * Encrypts the data at val using cached_dek as the encryption key and stores
+ * Encrypts the data at val using dek as the encryption key and stores
  * the ciphertext under key.
  */
 static secbool storage_set_encrypted(const uint16_t key, const void *val,
@@ -1111,9 +1148,13 @@ static secbool storage_set_encrypted(const uint16_t key, const void *val,
   if (sectrue != norcow_update_bytes(key, buffer, CHACHA20_IV_SIZE)) {
     return secfalse;
   }
+
+  uint8_t dek[DEK_SIZE] __attribute__((aligned(sizeof(uint32_t))));
+  get_dek((uint32_t *)dek);
+
   // Encrypt all blocks except for the last one.
   chacha20poly1305_ctx ctx = {0};
-  rfc7539_init(&ctx, cached_dek, buffer);
+  rfc7539_init(&ctx, dek, buffer);
   rfc7539_auth(&ctx, (const uint8_t *)&key, sizeof(key));
   size_t i = 0;
   for (i = 0; i + CHACHA20_BLOCK_SIZE < len; i += CHACHA20_BLOCK_SIZE) {
@@ -1121,6 +1162,7 @@ static secbool storage_set_encrypted(const uint16_t key, const void *val,
                              CHACHA20_BLOCK_SIZE);
     if (sectrue != norcow_update_bytes(key, buffer, CHACHA20_BLOCK_SIZE)) {
       memzero(&ctx, sizeof(ctx));
+      memzero(dek, sizeof(dek));
       memzero(buffer, sizeof(buffer));
       return secfalse;
     }
@@ -1133,6 +1175,7 @@ static secbool storage_set_encrypted(const uint16_t key, const void *val,
     rfc7539_finish(&ctx, sizeof(key), len, buffer);
     ret = norcow_update_bytes(key, buffer, POLY1305_TAG_SIZE);
   }
+  memzero(dek, sizeof(dek));
   memzero(&ctx, sizeof(ctx));
   memzero(buffer, sizeof(buffer));
   return ret;

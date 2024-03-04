@@ -50,40 +50,8 @@ static void secure_aes_load_bhk(void) {
   TAMP->BKP0R;
 }
 
-secbool secure_aes_encrypt(uint32_t* input, size_t size, uint32_t* output) {
-  CRYP_HandleTypeDef hcryp = {0};
-  uint32_t iv[] = {0, 0, 0, 0};
-
-  hcryp.Instance = SAES;
-  hcryp.Init.DataType = CRYP_NO_SWAP;
-  hcryp.Init.KeySelect = CRYP_KEYSEL_HSW;
-  hcryp.Init.KeySize = CRYP_KEYSIZE_256B;
-  hcryp.Init.pKey = NULL;
-  hcryp.Init.pInitVect = iv;
-  hcryp.Init.Algorithm = CRYP_AES_ECB;
-  hcryp.Init.Header = NULL;
-  hcryp.Init.HeaderSize = 0;
-  hcryp.Init.DataWidthUnit = CRYP_DATAWIDTHUNIT_WORD;
-  hcryp.Init.HeaderWidthUnit = CRYP_HEADERWIDTHUNIT_BYTE;
-  hcryp.Init.KeyIVConfigSkip = CRYP_KEYIVCONFIG_ALWAYS;
-  hcryp.Init.KeyMode = CRYP_KEYMODE_NORMAL;
-
-  if (HAL_CRYP_Init(&hcryp) != HAL_OK) {
-    return secfalse;
-  }
-
-  secure_aes_load_bhk();
-
-  if (HAL_CRYP_Encrypt(&hcryp, input, size, output, HAL_MAX_DELAY) != HAL_OK) {
-    return secfalse;
-  }
-
-  HAL_CRYP_DeInit(&hcryp);
-
-  return sectrue;
-}
-
-secbool secure_aes_decrypt(uint32_t* input, size_t size, uint32_t* output) {
+secbool secure_aes_ecb_encrypt(const uint32_t* input, size_t size,
+                               uint32_t* output) {
   CRYP_HandleTypeDef hcryp = {0};
   uint32_t iv[] = {0, 0, 0, 0};
 
@@ -107,7 +75,43 @@ secbool secure_aes_decrypt(uint32_t* input, size_t size, uint32_t* output) {
 
   secure_aes_load_bhk();
 
-  if (HAL_CRYP_Decrypt(&hcryp, input, size, output, HAL_MAX_DELAY) != HAL_OK) {
+  if (HAL_CRYP_Encrypt(&hcryp, (uint32_t*)input, size, output, HAL_MAX_DELAY) !=
+      HAL_OK) {
+    return secfalse;
+  }
+
+  HAL_CRYP_DeInit(&hcryp);
+
+  return sectrue;
+}
+
+secbool secure_aes_ecb_decrypt(const uint32_t* input, size_t size,
+                               uint32_t* output) {
+  CRYP_HandleTypeDef hcryp = {0};
+  uint32_t iv[] = {0, 0, 0, 0};
+
+  hcryp.Instance = SAES;
+  hcryp.Init.DataType = CRYP_NO_SWAP;
+  hcryp.Init.KeySelect = CRYP_KEYSEL_HSW;
+  hcryp.Init.KeySize = CRYP_KEYSIZE_256B;
+  hcryp.Init.pKey = NULL;
+  hcryp.Init.pInitVect = iv;
+  hcryp.Init.Algorithm = CRYP_AES_ECB;
+  hcryp.Init.Header = NULL;
+  hcryp.Init.HeaderSize = 0;
+  hcryp.Init.DataWidthUnit = CRYP_DATAWIDTHUNIT_BYTE;
+  hcryp.Init.HeaderWidthUnit = CRYP_HEADERWIDTHUNIT_BYTE;
+  hcryp.Init.KeyIVConfigSkip = CRYP_KEYIVCONFIG_ALWAYS;
+  hcryp.Init.KeyMode = CRYP_KEYMODE_NORMAL;
+
+  if (HAL_CRYP_Init(&hcryp) != HAL_OK) {
+    return secfalse;
+  }
+
+  secure_aes_load_bhk();
+
+  if (HAL_CRYP_Decrypt(&hcryp, (uint32_t*)input, size, output, HAL_MAX_DELAY) !=
+      HAL_OK) {
     return secfalse;
   }
 
