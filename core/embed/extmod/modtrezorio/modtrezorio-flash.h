@@ -166,8 +166,8 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorio_FlashArea_size_obj,
 ///     Computes a Blake2s hash of a segment of the flash area.
 ///     Offset and length must be aligned to 1024 bytes.
 ///     An optional challenge can be used as the Blake2s key.
-///     The progress callback will be invoked every 16 kB with the current
-///     position.
+///     The progress callback will be invoked every 16 kB with the number of bytes
+///     processed so far.
 ///     """
 STATIC mp_obj_t mod_trezorio_FlashArea_hash(size_t n_args,
                                             const mp_obj_t *args) {
@@ -204,19 +204,18 @@ STATIC mp_obj_t mod_trezorio_FlashArea_hash(size_t n_args,
   if (offset > area_size || area_size - offset < length) {
     mp_raise_ValueError("Read too long.");
   }
-  const uint32_t start_chunk = offset / FLASH_READ_CHUNK_SIZE;
-  const uint32_t end_chunk = (offset + length) / FLASH_READ_CHUNK_SIZE;
+  const uint32_t chunks = length / FLASH_READ_CHUNK_SIZE;
 
   ui_progress(ui_wait_callback, 0);
-  for (int i = start_chunk; i < end_chunk; i++) {
-    const void *data = flash_area_get_address(
-        self->area, i * FLASH_READ_CHUNK_SIZE, FLASH_READ_CHUNK_SIZE);
+  for (int i = 0; i < chunks; i++) {
+    const uint32_t current_offset = offset + i * FLASH_READ_CHUNK_SIZE;
+    const void *data = flash_area_get_address(self->area, current_offset,
+                                              FLASH_READ_CHUNK_SIZE);
     if (data == NULL) {
       mp_raise_msg(&mp_type_RuntimeError, "Failed to read flash.");
     }
     blake2s_Update(&ctx, data, FLASH_READ_CHUNK_SIZE);
-    if (i % CHUNKS_PER_PROGRESS_STEP ==
-        start_chunk % CHUNKS_PER_PROGRESS_STEP) {
+    if (i % CHUNKS_PER_PROGRESS_STEP == 0) {
       ui_progress(ui_wait_callback, i * FLASH_READ_CHUNK_SIZE);
     }
   }
