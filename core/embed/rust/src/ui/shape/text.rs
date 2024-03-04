@@ -1,7 +1,7 @@
 use crate::ui::{
     canvas::{BitmapView, Canvas},
     display::{Color, Font},
-    geometry::{Alignment, Alignment2D, Offset, Point, Rect},
+    geometry::{Alignment, Insets, Offset, Point, Rect},
 };
 
 use super::{DrawingCache, Renderer, Shape, ShapeClone};
@@ -61,18 +61,36 @@ impl<'a> Text<'a> {
 
 impl<'a> Shape for Text<'a> {
     fn bounds(&self, _cache: &DrawingCache) -> Rect {
-        let w = self.font.text_width(self.text);
-        let h = self.font.text_max_height();
-        let ofs = if self.baseline {
-            Offset::y(self.font.text_max_height() - self.font.text_baseline())
-        } else {
-            Offset::zero()
+        let mut area = match self.align {
+            Alignment::Start => {
+                let size =
+                    Offset::new(self.font.text_width(self.text), self.font.text_max_height());
+                let pos = self.pos;
+                Rect::from_top_left_and_size(pos, size)
+            }
+            Alignment::Center => {
+                let size = Offset::new(
+                    self.font.visible_text_width(self.text),
+                    self.font.text_max_height(),
+                );
+                let pos = Point::new((2 * self.pos.x - size.x) / 2, self.pos.y);
+                Rect::from_top_left_and_size(pos, size)
+                    .outset(Insets::left(self.font.start_x_bearing(self.text)))
+            }
+            Alignment::End => {
+                let size =
+                    Offset::new(self.font.text_width(self.text), self.font.text_max_height());
+                let pos = self.pos - Offset::x(size.x);
+                Rect::from_top_left_and_size(pos, size)
+            }
         };
-        let size = Offset::new(w, h);
-        Rect::from_top_left_and_size(
-            size.snap(self.pos, Alignment2D(self.align, Alignment::Start)) - ofs,
-            size,
-        )
+
+        if self.baseline {
+            let ofs = Offset::y(self.font.text_max_height() - self.font.text_baseline());
+            area = area.translate(-ofs);
+        }
+
+        area
     }
 
     fn cleanup(&mut self, _cache: &DrawingCache) {}
