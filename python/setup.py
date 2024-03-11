@@ -49,7 +49,7 @@ setup(
     name="cerberus",
     version=find_version(),
     author="Cerberus",
-    author_email="info@cerberus.io",
+    author_email="info@cerberus.uraanai.com",
     license="LGPLv3",
     description="Python library for communicating with Cerberus Hardware Wallet",
     long_description=(CWD / "README.md").read_text()
