@@ -9,7 +9,7 @@ cd "$(dirname "$0")/.."
 
 make -C vendor/libopencm3 lib/stm32/f2
 
-make libtrezor.a
+make libcerberus.a
 
 make -C intermediate_fw all sign
 

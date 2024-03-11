@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2014 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -24,7 +24,7 @@
 #include "bitmaps.h"
 #include "coins.h"
 #include "layout.h"
-#include "trezor.h"
+#include "cerberus.h"
 
 #include "messages-bitcoin.pb.h"
 #include "messages-crypto.pb.h"

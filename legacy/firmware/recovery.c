@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2014 Pavol Rusnak <stick@satoshilabs.com>
  * Copyright (C) 2016 Jochen Hoenicke <hoenicke@gmail.com>
@@ -53,7 +53,7 @@ static bool dry_run;
  */
 static bool enforce_wordlist;
 
-/* For scrambled recovery Trezor may ask for faked words if
+/* For scrambled recovery Cerberus may ask for faked words if
  * seed is short.  This contains the fake word.
  */
 static char fake_word[12];
@@ -488,7 +488,7 @@ void recovery_init(uint32_t _word_count, bool passphrase_protection,
   if (!dry_run) {
     layoutDialogSwipe(&bmp_icon_question, _("Cancel"), _("Confirm"), NULL,
                       _("Do you really want to"), _("recover the device?"),
-                      NULL, _("By continuing you"), _("agree to trezor.io/tos"),
+                      NULL, _("By continuing you"), _("agree to cerberus.uraanai.com/tos"),
                       NULL);
     if (!protectButton(ButtonRequestType_ButtonRequest_ProtectCall, false)) {
       fsm_sendFailure(FailureType_Failure_ActionCancelled, NULL);

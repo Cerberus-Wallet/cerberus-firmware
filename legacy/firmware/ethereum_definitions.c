@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2022 Martin Novak <martin.novak@satoshilabs.com>
  *
@@ -32,7 +32,7 @@
 #include "messages.h"
 #include "pb.h"
 #include "pb_decode.h"
-#include "trezor.h"  // because of the "VERSTR" macro used in "fsm_sendFailureDebug" function
+#include "cerberus.h"  // because of the "VERSTR" macro used in "fsm_sendFailureDebug" function
 #include "util.h"
 
 typedef pb_byte_t proof_entry[SHA256_DIGEST_LENGTH];

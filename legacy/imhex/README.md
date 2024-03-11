@@ -6,7 +6,7 @@ based on patterns.
 Here are patterns for decoding binary images, there are 3 types:
 
 1. firmware with both headers (TRZR and TRZF) which we distribute - `t1_firmware_v1+v2.hexpat`
-2. firmware built from git (TRZF header) - `t1_firmware_trezor_bin_v2.hexpat`
+2. firmware built from git (TRZF header) - `t1_firmware_cerberus_bin_v2.hexpat`
 3. bootloader - `t1_bootloader_bin.hexpat`
 
 ## Using ImHex with these patterns

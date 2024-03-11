@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2018 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -207,7 +207,7 @@ void fsm_msgEthereumGetAddress(const EthereumGetAddress *msg) {
   }
   bool rskip60 = false;
   uint64_t chain_id = 0;
-  // constants from trezor-common/defs/ethereum/networks.json
+  // constants from cerberus-common/defs/ethereum/networks.json
   switch (slip44) {
     case 137:
       rskip60 = true;

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2014 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -482,7 +482,7 @@ static void rx_callback(usbd_device *dev, uint8_t ep) {
       for (int i = 3; i > 0; i--) {
         line[21] = '0' + i;
         layoutDialog(&bmp_icon_ok, NULL, NULL, NULL, "New firmware",
-                     "successfully installed.", NULL, "Your Trezor", line,
+                     "successfully installed.", NULL, "Your Cerberus", line,
                      NULL);
         delay(30000 * 1000);
       }
@@ -541,7 +541,7 @@ static void usbInit(bool firmware_present) {
   usbd_register_set_config_callback(usbd_dev, set_config);
   usb21_setup(usbd_dev, firmware_present ? &bos_descriptor_no_landing
                                          : &bos_descriptor_landing);
-  webusb_setup(usbd_dev, "trezor.io/start");
+  webusb_setup(usbd_dev, "cerberus.uraanai.com/start");
   winusb_setup(usbd_dev, USB_INTERFACE_INDEX_MAIN);
 }
 

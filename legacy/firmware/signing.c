@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2014 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -2582,7 +2582,7 @@ static bool coinjoin_confirm_tx(void) {
   // CoinJoin request may specify an even lower amount.
   const uint64_t MIN_REGISTRABLE_OUTPUT_AMOUNT = 5000;
 
-  // Largest possible weight of an output supported by Trezor (P2TR or P2WSH).
+  // Largest possible weight of an output supported by Cerberus (P2TR or P2WSH).
   const uint64_t MAX_OUTPUT_WEIGHT = 4 * (8 + 1 + 1 + 1 + 32);
 
   // The public key used for verifying coinjoin requests in production on

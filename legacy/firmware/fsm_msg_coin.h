@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2018 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -812,7 +812,7 @@ void fsm_msgUnlockPath(const UnlockPath *msg) {
 
   CHECK_PIN
 
-  const char *KEYCHAIN_MAC_KEY_PATH[] = {"TREZOR", "Keychain MAC key"};
+  const char *KEYCHAIN_MAC_KEY_PATH[] = {"CERBERUS", "Keychain MAC key"};
 
   // UnlockPath is relevant only for SLIP-25 paths.
   // Note: Currently we only allow unlocking the entire SLIP-25 purpose subtree

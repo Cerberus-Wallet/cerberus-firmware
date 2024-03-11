@@ -4,7 +4,7 @@ OBJS += startup.o
 OBJS += bootloader.o
 OBJS += usb.o
 
-# Overrides from libtrezor.
+# Overrides from libcerberus.
 # Objects ending with 'small.o' are built with -Os to make the bootloader smaller.
 CFLAGS += -DFONT_SKIP_FIXED=1
 OBJS += ../buttons.small.o
@@ -27,22 +27,22 @@ OBJS += ../util.small.o
 OBJS += ../webusb.small.o
 OBJS += ../winusb.small.o
 
-# Overrides from trezor-crypto
+# Overrides from cerberus-crypto
 CFLAGS += -DUSE_PRECOMPUTED_CP=0
 CFLAGS += -DUSE_PRECOMPUTED_IV=0
-OBJS += ../vendor/trezor-crypto/bignum.small.o
-OBJS += ../vendor/trezor-crypto/ecdsa.small.o
-OBJS += ../vendor/trezor-crypto/hmac_drbg.small.o
-OBJS += ../vendor/trezor-crypto/memzero.small.o
-OBJS += ../vendor/trezor-crypto/secp256k1.small.o
-OBJS += ../vendor/trezor-crypto/sha2.small.o
+OBJS += ../vendor/cerberus-crypto/bignum.small.o
+OBJS += ../vendor/cerberus-crypto/ecdsa.small.o
+OBJS += ../vendor/cerberus-crypto/hmac_drbg.small.o
+OBJS += ../vendor/cerberus-crypto/memzero.small.o
+OBJS += ../vendor/cerberus-crypto/secp256k1.small.o
+OBJS += ../vendor/cerberus-crypto/sha2.small.o
 
 OPTFLAGS ?= -Os
 
 include ../Makefile.include
 
-# Remove libtrezor from linking since we specified the small versions
-LDLIBS := $(filter-out -ltrezor,$(LDLIBS))
+# Remove libcerberus from linking since we specified the small versions
+LDLIBS := $(filter-out -lcerberus,$(LDLIBS))
 
 bootloader.bin: $(NAME).bin
 	./firmware_align.py $< $@

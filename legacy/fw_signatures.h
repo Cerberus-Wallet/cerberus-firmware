@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2014 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -87,7 +87,7 @@ void compute_firmware_fingerprint(const image_header *hdr, uint8_t hash[32]);
  * Then it's prefixed using the SignMessage/VerifyMessage method
  * as described here:
  *
- * https://github.com/trezor/trezor-firmware/issues/2513
+ * https://github.com/Cerberus-Wallet/cerberus-firmware/issues/2513
  *
  * @param hdr header
  * @param hash store resulting hash here

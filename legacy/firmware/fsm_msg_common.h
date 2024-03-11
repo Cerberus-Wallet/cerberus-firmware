@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2018 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -32,7 +32,7 @@ bool get_features(Features *resp) {
   }
 #endif
   resp->has_vendor = true;
-  strlcpy(resp->vendor, "trezor.io", sizeof(resp->vendor));
+  strlcpy(resp->vendor, "cerberus.uraanai.com", sizeof(resp->vendor));
   resp->major_version = VERSION_MAJOR;
   resp->minor_version = VERSION_MINOR;
   resp->patch_version = VERSION_PATCH;

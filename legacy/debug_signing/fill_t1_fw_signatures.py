@@ -67,7 +67,7 @@ class Signatures:
 
 
 if __name__ == "__main__":
-    # arg1 - unsigned trezor.bin FW
+    # arg1 - unsigned cerberus.bin FW
     # arg2 - list of 3 signatures and indexes in this format (split by single space):
     # index_num signature
     # e.g.

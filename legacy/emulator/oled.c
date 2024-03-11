@@ -1,7 +1,7 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
- * Copyright (C) 2017 Saleem Rashid <trezor@saleemrashid.com>
+ * Copyright (C) 2017 Saleem Rashid <cerberus@saleemrashid.com>
  *
  * This library is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -25,8 +25,8 @@ static SDL_Renderer *renderer = NULL;
 static SDL_Texture *texture = NULL;
 static SDL_Rect dstrect;
 
-#define ENV_OLED_FULLSCREEN "TREZOR_OLED_FULLSCREEN"
-#define ENV_OLED_SCALE "TREZOR_OLED_SCALE"
+#define ENV_OLED_FULLSCREEN "CERBERUS_OLED_FULLSCREEN"
+#define ENV_OLED_SCALE "CERBERUS_OLED_SCALE"
 
 static int emulatorFullscreen(void) {
   const char *variable = getenv(ENV_OLED_FULLSCREEN);
@@ -59,7 +59,7 @@ void oledInit(void) {
   int fullscreen = emulatorFullscreen();
 
   SDL_Window *window = SDL_CreateWindow(
-      "Trezor^emu", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+      "Cerberus^emu", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
       OLED_WIDTH * scale, OLED_HEIGHT * scale,
       fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
 

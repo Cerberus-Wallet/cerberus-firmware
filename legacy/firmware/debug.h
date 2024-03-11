@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2014 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -21,7 +21,7 @@
 #define __DEBUG_H__
 
 #include <stdint.h>
-#include "trezor.h"
+#include "cerberus.h"
 
 #if DEBUG_LOG
 

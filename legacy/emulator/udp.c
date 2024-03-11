@@ -1,7 +1,7 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
- * Copyright (C) 2017 Saleem Rashid <trezor@saleemrashid.com>
+ * Copyright (C) 2017 Saleem Rashid <cerberus@saleemrashid.com>
  *
  * This library is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -25,7 +25,7 @@
 #include <string.h>
 #include <sys/socket.h>
 
-#define TREZOR_UDP_PORT 21324
+#define CERBERUS_UDP_PORT 21324
 
 struct usb_socket {
   int fd;
@@ -97,12 +97,12 @@ static size_t socket_read(struct usb_socket *sock, void *buffer, size_t size) {
 }
 
 void emulatorSocketInit(void) {
-  usb_main.fd = socket_setup(TREZOR_UDP_PORT);
+  usb_main.fd = socket_setup(CERBERUS_UDP_PORT);
   usb_main.fromlen = 0;
   usb_fds[0].fd = usb_main.fd;
   usb_fds[0].events = POLLIN;
 
-  usb_debug.fd = socket_setup(TREZOR_UDP_PORT + 1);
+  usb_debug.fd = socket_setup(CERBERUS_UDP_PORT + 1);
   usb_debug.fromlen = 0;
   usb_fds[1].fd = usb_debug.fd;
   usb_fds[1].events = POLLIN;

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -63,7 +63,7 @@ __fatal_error(const char *expr, const char *msg, const char *file, int line_num,
   oledDrawString(0, y, line, FONT_STANDARD);
   y += FONT_HEIGHT + 1;
 
-  oledDrawString(0, y, "Contact Trezor support.", FONT_STANDARD);
+  oledDrawString(0, y, "Contact Cerberus support.", FONT_STANDARD);
   oledRefresh();
 
   shutdown();

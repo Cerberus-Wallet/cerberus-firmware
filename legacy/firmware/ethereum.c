@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2016 Alex Beregszaszi <alex@rtfs.hu>
  * Copyright (C) 2016 Pavol Rusnak <stick@satoshilabs.com>
@@ -359,7 +359,7 @@ static void layoutEthereumConfirmTx(const uint8_t *to, uint32_t to_len,
     char to_str[43] = {0};
 
     bool rskip60 = false;
-    // constants from trezor-common/defs/ethereum/networks.json
+    // constants from cerberus-common/defs/ethereum/networks.json
     switch (chain_id) {
       case 30:
         rskip60 = true;
@@ -1075,7 +1075,7 @@ static bool ethereum_path_check_bip44(uint32_t address_n_count,
 
   if (address_n_count == 4) {
     // Also to support "Ledger Live" legacy paths
-    // https://github.com/trezor/trezor-firmware/issues/1749
+    // https://github.com/Cerberus-Wallet/cerberus-firmware/issues/1749
     // m/44'/coin_type'/0'/account
     valid = valid && (address_n[2] == (PATH_HARDENED | 0));
     valid = valid && (address_n[3] <= PATH_MAX_ACCOUNT);

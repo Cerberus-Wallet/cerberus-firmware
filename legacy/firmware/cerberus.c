@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2014 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -17,7 +17,7 @@
  * along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "trezor.h"
+#include "cerberus.h"
 #include "bitmaps.h"
 #include "bl_check.h"
 #include "buttons.h"
@@ -75,7 +75,7 @@ void check_lock_screen(void) {
   if ((layoutLast == layoutHomescreen || layoutLast == layoutBusyscreen) &&
       button.NoDown >= 114000 * 5) {
     layoutDialog(&bmp_icon_question, _("Cancel"), _("Lock Device"), NULL,
-                 _("Do you really want to"), _("lock your Trezor?"), NULL, NULL,
+                 _("Do you really want to"), _("lock your Cerberus?"), NULL, NULL,
                  NULL, NULL);
 
     // wait until NoButton is released

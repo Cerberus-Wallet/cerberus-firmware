@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2014 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -36,7 +36,7 @@ int frame = 0;
 uint8_t seed[128];
 uint8_t *pass = (uint8_t *)"meadow";
 uint32_t passlen = 0;
-uint8_t *salt = (uint8_t *)"TREZOR";
+uint8_t *salt = (uint8_t *)"CERBERUS";
 uint32_t saltlen = 0;
 
 static const struct usb_device_descriptor dev_descr = {
@@ -209,7 +209,7 @@ static const struct usb_config_descriptor config = {
 
 static const char *usb_strings[] = {
     "SatoshiLabs",
-    "TREZOR",
+    "CERBERUS",
     "01234567",
 };
 

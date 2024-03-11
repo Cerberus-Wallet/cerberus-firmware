@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2014 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -26,7 +26,7 @@
 #include "messages.h"
 #include "random_delays.h"
 #include "timer.h"
-#include "trezor.h"
+#include "cerberus.h"
 #if U2F_ENABLED
 #include "u2f.h"
 #endif
@@ -68,11 +68,11 @@
 
 #define USB_STRINGS                                 \
   X(MANUFACTURER, "SatoshiLabs")                    \
-  X(PRODUCT, "TREZOR")                              \
+  X(PRODUCT, "CERBERUS")                              \
   X(SERIAL_NUMBER, config_uuid_str)                 \
-  X(INTERFACE_MAIN, "TREZOR Interface")             \
-  X(INTERFACE_DEBUG, "TREZOR Debug Link Interface") \
-  X(INTERFACE_U2F, "TREZOR U2F Interface")
+  X(INTERFACE_MAIN, "CERBERUS Interface")             \
+  X(INTERFACE_DEBUG, "CERBERUS Debug Link Interface") \
+  X(INTERFACE_U2F, "CERBERUS U2F Interface")
 
 #define X(name, value) USB_STRING_##name,
 enum {
@@ -393,7 +393,7 @@ void usbInit(void) {
                        usbd_control_buffer, sizeof(usbd_control_buffer));
   usbd_register_set_config_callback(usbd_dev, set_config);
   usb21_setup(usbd_dev, &bos_descriptor);
-  static const char *origin_url = "trezor.io/start";
+  static const char *origin_url = "cerberus.uraanai.com/start";
   webusb_setup(usbd_dev, origin_url);
   // Debug link interface does not have WinUSB set;
   // if you really need debug link on windows, edit the descriptor in winusb.c

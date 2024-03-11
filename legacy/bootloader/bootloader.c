@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2014 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -55,13 +55,13 @@ bool get_button_response(void) {
 
 void show_halt(const char *line1, const char *line2) {
   layoutDialog(&bmp_icon_error, NULL, NULL, NULL, line1, line2, NULL,
-               "Unplug your Trezor,", "reinstall firmware.", NULL);
+               "Unplug your Cerberus,", "reinstall firmware.", NULL);
   shutdown();
 }
 
 void show_unplug(const char *line1, const char *line2) {
   layoutDialog(&bmp_icon_ok, NULL, NULL, NULL, line1, line2, NULL,
-               "You may now", "unplug your Trezor.", NULL);
+               "You may now", "unplug your Cerberus.", NULL);
 }
 
 static void show_unofficial_warning(const uint8_t *hash) {
@@ -107,7 +107,7 @@ static void bootloader_loop(void) {
   oledDrawBitmap(0, 0, &bmp_logo64_half);
   oledDrawBitmapFlip(24, 0, &bmp_logo64_half);
   if (firmware_present_new()) {
-    oledDrawStringCenter(90, 10, "Trezor", FONT_STANDARD);
+    oledDrawStringCenter(90, 10, "Cerberus", FONT_STANDARD);
     oledDrawStringCenter(90, 30, "Bootloader", FONT_STANDARD);
     oledDrawStringCenter(90, 50,
                          VERSTR(VERSION_MAJOR) "." VERSTR(
@@ -116,7 +116,7 @@ static void bootloader_loop(void) {
   } else {
     oledDrawStringCenter(90, 10, "Welcome!", FONT_STANDARD);
     oledDrawStringCenter(90, 30, "Please visit", FONT_STANDARD);
-    oledDrawStringCenter(90, 50, "trezor.io/start", FONT_STANDARD);
+    oledDrawStringCenter(90, 50, "cerberus.uraanai.com/start", FONT_STANDARD);
   }
   oledRefresh();
 

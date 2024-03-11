@@ -38,7 +38,7 @@ static void send_msg_features(usbd_device *dev) {
   uint8_t response[64];
   memzero(response, sizeof(response));
   // response: Features message (id 17), payload len 26 / 41
-  //           - vendor = "trezor.io"
+  //           - vendor = "cerberus.uraanai.com"
   //           - major_version = VERSION_MAJOR
   //           - minor_version = VERSION_MINOR
   //           - patch_version = VERSION_PATCH

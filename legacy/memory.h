@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2014 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -44,8 +44,8 @@
  Sector 11 | 0x080E0000 - 0x080FFFFF | 128 KiB | firmware
 
  firmware header (occupies first 1 KB of the firmware)
- - very similar to trezor-core firmware header described in:
-   https://github.com/trezor/trezor-core/blob/master/docs/bootloader.md#firmware-header
+ - very similar to cerberus-core firmware header described in:
+   https://github.com/Cerberus-Wallet/cerberus-core/blob/master/docs/bootloader.md#firmware-header
  - differences:
    * we don't use sigmask or sig field (these are reserved and set to zero)
    * we introduce new fields immediately following the hash16 field:

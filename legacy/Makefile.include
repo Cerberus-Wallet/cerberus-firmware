@@ -83,9 +83,9 @@ CFLAGS   += $(OPTFLAGS) \
             -I$(TOOLCHAIN_DIR)/include \
             -I$(TOP_DIR) \
             -I$(TOP_DIR)gen \
-            -I$(TOP_DIR)vendor/trezor-crypto \
+            -I$(TOP_DIR)vendor/cerberus-crypto \
             -I$(TOP_DIR)vendor/QR-Code-generator/c \
-            -I$(TOP_DIR)vendor/trezor-storage
+            -I$(TOP_DIR)vendor/cerberus-storage
 
 LDFLAGS  += -L$(TOP_DIR) \
             $(DBGFLAGS) \
@@ -113,8 +113,8 @@ CFLAGS   += -include stdio.h
 
 LDFLAGS  += -L$(TOP_DIR)emulator
 
-LDLIBS   += -ltrezor -lemulator
-LIBDEPS  += $(TOP_DIR)/libtrezor.a $(TOP_DIR)emulator/libemulator.a
+LDLIBS   += -lcerberus -lemulator
+LIBDEPS  += $(TOP_DIR)/libcerberus.a $(TOP_DIR)emulator/libemulator.a
 
 CFLAGS   += $(shell pkg-config --cflags sdl2 SDL2_image)
 LDLIBS   += $(shell pkg-config --libs sdl2 SDL2_image)
@@ -140,8 +140,8 @@ LDFLAGS  += --static \
             -nostartfiles \
             -Wl,--gc-sections
 
-LDLIBS   += -ltrezor
-LIBDEPS  += $(TOP_DIR)/libtrezor.a
+LDLIBS   += -lcerberus
+LIBDEPS  += $(TOP_DIR)/libcerberus.a
 
 LDLIBS   += -lopencm3_stm32f2
 LIBDEPS  += $(TOOLCHAIN_DIR)/lib/libopencm3_stm32f2.a
@@ -197,14 +197,14 @@ openocd:
 gdb_bootloader: bootloader/bootloader.elf
 	$(GDB) $<
 
-gdb_firmware: firmware/trezor.elf
+gdb_firmware: firmware/cerberus.elf
 	$(GDB) $<
 
 flash: $(NAME).bin
 	$(OPENOCD) -c "init; reset halt; flash write_image erase $(NAME).bin 0x8000000; exit"
 
 upload: sign
-	trezorctl firmware_update -f $(NAME).bin -s
+	cerberusctl firmware_update -f $(NAME).bin -s
 
 sign: $(NAME).bin
 	$(PYTHON) ../bootloader/firmware_sign.py -f $(NAME).bin

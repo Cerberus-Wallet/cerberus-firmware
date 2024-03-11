@@ -30,7 +30,7 @@ SIG_START = INDEXES_START_OLD + SLOTS + 1 + 52
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Commandline tool for signing Trezor firmware."
+        description="Commandline tool for signing Cerberus firmware."
     )
     parser.add_argument("-f", "--file", dest="path", help="Firmware file to modify")
 

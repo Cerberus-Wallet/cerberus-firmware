@@ -7,8 +7,8 @@ from pathlib import Path
 import click
 import ecdsa
 
-from trezorlib.firmware.legacy import LegacyV2Firmware
-from trezorlib.firmware.models import LEGACY_V3_DEV
+from cerberuslib.firmware.legacy import LegacyV2Firmware
+from cerberuslib.firmware.models import LEGACY_V3_DEV
 
 SECRET_KEYS = [
     ecdsa.SigningKey.from_string(bytes.fromhex(sk), curve=ecdsa.SECP256k1)

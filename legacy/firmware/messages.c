@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2014 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -24,7 +24,7 @@
 #include "gettext.h"
 #include "memzero.h"
 #include "messages.h"
-#include "trezor.h"
+#include "cerberus.h"
 #include "util.h"
 
 #include "messages.pb.h"
@@ -343,7 +343,7 @@ void msg_read_tiny(const uint8_t *buf, int len) {
   if (len != USB_PACKET_SIZE || buf[0] != '?' || buf[1] != '#' ||
       buf[2] != '#') {
     // Ignore unexpected packets. This is helpful when two applications are
-    // attempting to communicate with Trezor at the same time.
+    // attempting to communicate with Cerberus at the same time.
     return;
   }
 

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2018 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -250,7 +250,7 @@ void check_and_replace_bootloader(bool shutdown_on_replace) {
 
   if (!known_bootloader(r, hash)) {
     layoutDialog(&bmp_icon_error, NULL, NULL, NULL, _("Unknown bootloader"),
-                 _("detected."), NULL, _("Unplug your Trezor"),
+                 _("detected."), NULL, _("Unplug your Cerberus"),
                  _("contact our support."), NULL);
     shutdown();
   }
@@ -269,7 +269,7 @@ void check_and_replace_bootloader(bool shutdown_on_replace) {
   // YOUR DEVICE.
 
   layoutDialog(&bmp_icon_warning, NULL, NULL, NULL, _("Updating bootloader"),
-               NULL, NULL, _("DO NOT UNPLUG"), _("YOUR TREZOR!"), NULL);
+               NULL, NULL, _("DO NOT UNPLUG"), _("YOUR CERBERUS!"), NULL);
 
   // unlock sectors
   memory_write_unlock();
@@ -303,7 +303,7 @@ void check_and_replace_bootloader(bool shutdown_on_replace) {
   }
   // show info and halt
   layoutDialog(&bmp_icon_error, NULL, NULL, NULL, _("Bootloader update"),
-               _("broken."), NULL, _("Unplug your Trezor"),
+               _("broken."), NULL, _("Unplug your Cerberus"),
                _("contact our support."), NULL);
   shutdown();
 #endif

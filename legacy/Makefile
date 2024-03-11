@@ -20,13 +20,13 @@ OBJS += usb_standard.o
 OBJS += util.o
 OBJS += webusb.o
 OBJS += winusb.o
-OBJS += vendor/trezor-storage/flash_common.o
+OBJS += vendor/cerberus-storage/flash_common.o
 
-libtrezor.a: $(OBJS)
+libcerberus.a: $(OBJS)
 
 include Makefile.include
 
-libtrezor.a:
+libcerberus.a:
 	@printf "  AR      $@\n"
 	$(Q)$(AR) rcs $@ $^
 

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (C) 2014 Pavol Rusnak <stick@satoshilabs.com>
  *
@@ -581,7 +581,7 @@ bool coin_path_check(const CoinInfo *coin, InputScriptType script_type,
     if (address_n_count == 5) {
       // [OBSOLETE] m/48' Copay Multisig P2SH
       // m / purpose' / coin_type' / account' / change / address_index
-      // NOTE: this pattern is not recognized by trezor-core
+      // NOTE: this pattern is not recognized by cerberus-core
       valid = valid && (address_n[3] <= PATH_MAX_CHANGE);
       valid = valid && (address_n[4] <= PATH_MAX_ADDRESS_INDEX);
       if (full_check) {

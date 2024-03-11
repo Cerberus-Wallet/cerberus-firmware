@@ -25,7 +25,7 @@ secret_keys = [
 public_keys = [sk.get_verifying_key() for sk in secret_keys]
 public_keys_hex = [pk.to_string("compressed").hex() for pk in public_keys]
 
-# arg1 is input trezor.bin filename to be signed
+# arg1 is input cerberus.bin filename to be signed
 # arg2 is output filename, if omitted, will use input file + ".signed"
 in_fw_fname = sys.argv[1]
 try:
@@ -37,8 +37,8 @@ except IndexError:
 # each index can be >= 1 and <= 5
 sig_indices = [1, 2, 3]
 
-print(f"Input trezor.bin file: {in_fw_fname}")
-print(f"Output signed trezor.bin file: {out_fw_fname}")
+print(f"Input cerberus.bin file: {in_fw_fname}")
+print(f"Output signed cerberus.bin file: {out_fw_fname}")
 
 # print("Public keys compressed:")
 # pprint.pprint(public_keys_hex)

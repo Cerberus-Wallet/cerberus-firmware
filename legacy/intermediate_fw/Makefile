@@ -1,22 +1,22 @@
 APPVER = 1.8.0
 
-NAME  = trezor
+NAME  = cerberus
 
-OBJS += trezor.o
+OBJS += cerberus.o
 OBJS += header.o
 OBJS += bl_check.o
 OBJS += startup.o
-OBJS += ../vendor/trezor-crypto/memzero.o
-OBJS += ../vendor/trezor-crypto/sha2.o
+OBJS += ../vendor/cerberus-crypto/memzero.o
+OBJS += ../vendor/cerberus-crypto/sha2.o
 
 OPTFLAGS ?= -Os
 
 
-../vendor/trezor-crypto/bip32.o: OPTFLAGS = -O3
-../vendor/trezor-crypto/bip39.o: OPTFLAGS = -O3
-../vendor/trezor-crypto/ecdsa.o: OPTFLAGS = -O3
-../vendor/trezor-crypto/sha2.o: OPTFLAGS = -O3
-../vendor/trezor-crypto/secp256k1.o: OPTFLAGS = -O3
+../vendor/cerberus-crypto/bip32.o: OPTFLAGS = -O3
+../vendor/cerberus-crypto/bip39.o: OPTFLAGS = -O3
+../vendor/cerberus-crypto/ecdsa.o: OPTFLAGS = -O3
+../vendor/cerberus-crypto/sha2.o: OPTFLAGS = -O3
+../vendor/cerberus-crypto/secp256k1.o: OPTFLAGS = -O3
 
 include ../Makefile.include
 CFLAGS:=$(filter-out -fstack-protector-all,$(CFLAGS))
@@ -42,7 +42,7 @@ endif
 
 %:: %.mako defs
 	@printf "  MAKO    $@\n"
-	$(Q)$(PYTHON) ../vendor/trezor-common/tools/cointool.py render $(MAKO_RENDER_FLAG) $@.mako
+	$(Q)$(PYTHON) ../vendor/cerberus-common/tools/cointool.py render $(MAKO_RENDER_FLAG) $@.mako
 
 ifeq ($(BOOTLOADER_QA), 0)
 bl_data.h: bl_data.py bootloader.dat
@@ -58,7 +58,7 @@ clean::
 	find -maxdepth 1 -name "*.mako" | sed 's/.mako$$//' | xargs rm -f
 
 FIRMWARE_T1_START   = 0x08010000
-flash_intermediate_fw: trezor.bin
+flash_intermediate_fw: cerberus.bin
 	openocd -f interface/stlink-v2.cfg -c "transport select hla_swd" -f target/stm32f2x.cfg -c "init; reset halt; flash write_image erase $< $(FIRMWARE_T1_START); exit"
 
 openocd_reset:
