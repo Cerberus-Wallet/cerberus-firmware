@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -23,11 +23,11 @@ from typing import TYPE_CHECKING, Generator, Iterator
 import pytest
 import xdist
 
-from trezorlib import debuglink, log
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.device import apply_settings
-from trezorlib.device import wipe as wipe_device
-from trezorlib.transport import enumerate_devices, get_transport
+from cerberuslib import debuglink, log
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.device import apply_settings
+from cerberuslib.device import wipe as wipe_device
+from cerberuslib.transport import enumerate_devices, get_transport
 
 # register rewrites before importing from local package
 # so that we see details of failed asserts from this module
@@ -42,7 +42,7 @@ if TYPE_CHECKING:
     from _pytest.config.argparsing import Parser
     from _pytest.terminal import TerminalReporter
 
-    from trezorlib._internal.emulator import Emulator
+    from cerberuslib._internal.emulator import Emulator
 
 
 HERE = Path(__file__).resolve().parent
@@ -50,13 +50,13 @@ CORE = HERE.parent / "core"
 
 
 def _emulator_wrapper_main_args() -> list[str]:
-    """Look at TREZOR_PROFILING env variable, so that we can generate coverage reports."""
-    do_profiling = os.environ.get("TREZOR_PROFILING") == "1"
+    """Look at CERBERUS_PROFILING env variable, so that we can generate coverage reports."""
+    do_profiling = os.environ.get("CERBERUS_PROFILING") == "1"
     if do_profiling:
         core_dir = HERE.parent / "core"
         profiling_wrapper = core_dir / "prof" / "prof.py"
         # So that the coverage reports have the correct paths
-        os.environ["TREZOR_SRC"] = str(core_dir / "src")
+        os.environ["CERBERUS_SRC"] = str(core_dir / "src")
         return [str(profiling_wrapper)]
     else:
         return ["-m", "main"]
@@ -132,7 +132,7 @@ def _raw_client(request: pytest.FixtureRequest) -> Client:
         client = emu_fixture.client
     else:
         interact = os.environ.get("INTERACT") == "1"
-        path = os.environ.get("TREZOR_PATH")
+        path = os.environ.get("CERBERUS_PATH")
         if path:
             client = _client_from_path(request, path, interact)
         else:
@@ -155,7 +155,7 @@ def _client_from_path(
         transport = get_transport(path)
         return Client(transport, auto_interact=not interact)
     except Exception as e:
-        request.session.shouldstop = "Failed to communicate with Trezor"
+        request.session.shouldstop = "Failed to communicate with Cerberus"
         raise RuntimeError(f"Failed to open debuglink for {path}") from e
 
 
@@ -167,7 +167,7 @@ def _find_client(request: pytest.FixtureRequest, interact: bool) -> Client:
         except Exception:
             pass
 
-    request.session.shouldstop = "Failed to communicate with Trezor"
+    request.session.shouldstop = "Failed to communicate with Cerberus"
     raise RuntimeError("No debuggable device found")
 
 
@@ -199,14 +199,14 @@ def client(
     @pytest.mark.experimental
     """
     if request.node.get_closest_marker("skip_t2") and _raw_client.features.model == "T":
-        pytest.skip("Test excluded on Trezor T")
+        pytest.skip("Test excluded on Cerberus T")
     if request.node.get_closest_marker("skip_t1") and _raw_client.features.model == "1":
-        pytest.skip("Test excluded on Trezor 1")
+        pytest.skip("Test excluded on Cerberus 1")
     if (
         request.node.get_closest_marker("skip_tr")
         and _raw_client.features.model == "Safe 3"
     ):
-        pytest.skip("Test excluded on Trezor R")
+        pytest.skip("Test excluded on Cerberus R")
 
     sd_marker = request.node.get_closest_marker("sd_card")
     if sd_marker and not _raw_client.features.sd_card_present:
@@ -223,8 +223,8 @@ def client(
     try:
         _raw_client.init_device()
     except Exception:
-        request.session.shouldstop = "Failed to communicate with Trezor"
-        pytest.fail("Failed to communicate with Trezor")
+        request.session.shouldstop = "Failed to communicate with Cerberus"
+        pytest.fail("Failed to communicate with Cerberus")
 
     # Resetting all the debug events to not be influenced by previous test
     _raw_client.debug.reset_debug_events()
@@ -387,11 +387,11 @@ def pytest_configure(config: "Config") -> None:
     Registers known markers, enables verbose output if requested.
     """
     # register known markers
-    config.addinivalue_line("markers", "skip_t1: skip the test on Trezor One")
-    config.addinivalue_line("markers", "skip_t2: skip the test on Trezor T")
-    config.addinivalue_line("markers", "skip_tr: skip the test on Trezor R")
+    config.addinivalue_line("markers", "skip_t1: skip the test on Cerberus One")
+    config.addinivalue_line("markers", "skip_t2: skip the test on Cerberus T")
+    config.addinivalue_line("markers", "skip_tr: skip the test on Cerberus R")
     config.addinivalue_line(
-        "markers", "experimental: enable experimental features on Trezor"
+        "markers", "experimental: enable experimental features on Cerberus"
     )
     config.addinivalue_line(
         "markers",
@@ -415,9 +415,9 @@ def pytest_runtest_setup(item: pytest.Item) -> None:
     if all(
         item.get_closest_marker(marker) for marker in ("skip_t1", "skip_t2", "skip_tr")
     ):
-        raise RuntimeError("Don't skip tests for all trezor models!")
+        raise RuntimeError("Don't skip tests for all cerberus models!")
 
-    skip_altcoins = int(os.environ.get("TREZOR_PYTEST_SKIP_ALTCOINS", 0))
+    skip_altcoins = int(os.environ.get("CERBERUS_PYTEST_SKIP_ALTCOINS", 0))
     if item.get_closest_marker("altcoin") and skip_altcoins:
         pytest.skip("Skipping altcoin test")
 

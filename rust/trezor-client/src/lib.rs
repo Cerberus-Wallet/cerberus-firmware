@@ -1,4 +1,4 @@
-//! # Trezor API library
+//! # Cerberus API library
 //!
 //! ## Connecting
 //!
@@ -32,10 +32,10 @@ mod flows {
 
 pub use client::{
     ButtonRequest, ButtonRequestType, EntropyRequest, Features, PassphraseRequest,
-    PinMatrixRequest, PinMatrixRequestType, Trezor, TrezorResponse, WordCount,
+    PinMatrixRequest, PinMatrixRequestType, Cerberus, CerberusResponse, WordCount,
 };
 pub use error::{Error, Result};
-pub use messages::TrezorMessage;
+pub use messages::CerberusMessage;
 
 #[cfg(feature = "bitcoin")]
 pub use flows::sign_tx::SignTxProgress;
@@ -46,13 +46,13 @@ use std::fmt;
 use tracing::{debug, warn};
 use transport::{udp::UdpTransport, webusb::WebUsbTransport};
 
-/// The different kind of Trezor device models.
+/// The different kind of Cerberus device models.
 #[derive(PartialEq, Eq, Clone, Debug, Copy)]
 pub enum Model {
-    TrezorLegacy,
-    Trezor,
-    TrezorBootloader,
-    TrezorEmulator,
+    CerberusLegacy,
+    Cerberus,
+    CerberusBootloader,
+    CerberusEmulator,
 }
 
 impl fmt::Display for Model {
@@ -64,10 +64,10 @@ impl fmt::Display for Model {
 impl Model {
     pub const fn as_str(&self) -> &'static str {
         match self {
-            Model::TrezorLegacy => "Trezor (legacy)",
-            Model::Trezor => "Trezor",
-            Model::TrezorBootloader => "Trezor (bootloader)",
-            Model::TrezorEmulator => "Trezor Emulator",
+            Model::CerberusLegacy => "Cerberus (legacy)",
+            Model::Cerberus => "Cerberus",
+            Model::CerberusBootloader => "Cerberus (bootloader)",
+            Model::CerberusEmulator => "Cerberus Emulator",
         }
     }
 }
@@ -89,9 +89,9 @@ impl fmt::Display for AvailableDevice {
 
 impl AvailableDevice {
     /// Connect to the device.
-    pub fn connect(self) -> Result<Trezor> {
+    pub fn connect(self) -> Result<Cerberus> {
         let transport = transport::connect(&self).map_err(Error::TransportConnect)?;
-        Ok(client::trezor_with_transport(self.model, transport))
+        Ok(client::cerberus_with_transport(self.model, transport))
     }
 }
 
@@ -122,13 +122,13 @@ pub fn find_devices(debug: bool) -> Vec<AvailableDevice> {
 /// For more fine-grained device selection, use `find_devices()`.
 /// When using USB mode, the device will show up both with debug and without debug, so it's
 /// necessary to specify the debug option in order to find a unique one.
-pub fn unique(debug: bool) -> Result<Trezor> {
+pub fn unique(debug: bool) -> Result<Cerberus> {
     let mut devices = find_devices(debug);
     match devices.len() {
         0 => Err(Error::NoDeviceFound),
         1 => Ok(devices.remove(0).connect()?),
         _ => {
-            debug!("Trezor devices found: {:?}", devices);
+            debug!("Cerberus devices found: {:?}", devices);
             Err(Error::DeviceNotUnique)
         }
     }
@@ -144,10 +144,10 @@ mod tests {
 
     use super::*;
 
-    fn init_emulator() -> Trezor {
+    fn init_emulator() -> Cerberus {
         let mut emulator = find_devices(false)
             .into_iter()
-            .find(|t| t.model == Model::TrezorEmulator)
+            .find(|t| t.model == Model::CerberusEmulator)
             .expect("No emulator found")
             .connect()
             .expect("Failed to connect to emulator");
@@ -158,9 +158,9 @@ mod tests {
     #[test]
     #[serial]
     fn test_emulator_find() {
-        let trezors = find_devices(false);
-        assert!(trezors.len() > 0);
-        assert!(trezors.iter().any(|t| t.model == Model::TrezorEmulator));
+        let cerberuss = find_devices(false);
+        assert!(cerberuss.len() > 0);
+        assert!(cerberuss.iter().any(|t| t.model == Model::CerberusEmulator));
     }
 
     #[test]
@@ -168,7 +168,7 @@ mod tests {
     fn test_emulator_features() {
         let emulator = init_emulator();
         let features = emulator.features().expect("Failed to get features");
-        assert_eq!(features.vendor(), "trezor.io");
+        assert_eq!(features.vendor(), "cerberus.uraanai.com");
         assert_eq!(features.initialized(), true);
         assert_eq!(features.firmware_present(), false);
         assert_eq!(features.initialized(), true);

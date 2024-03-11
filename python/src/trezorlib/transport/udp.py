@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -24,7 +24,7 @@ from . import TransportException
 from .protocol import ProtocolBasedTransport, ProtocolV1
 
 if TYPE_CHECKING:
-    from ..models import TrezorModel
+    from ..models import CerberusModel
 
 SOCKET_TIMEOUT = 10
 
@@ -67,7 +67,7 @@ class UdpTransport(ProtocolBasedTransport):
                 return d
             else:
                 raise TransportException(
-                    f"No Trezor device found at address {d.get_path()}"
+                    f"No Cerberus device found at address {d.get_path()}"
                 )
         except Exception as e:
             raise TransportException(f"Error opening {d.get_path()}") from e
@@ -77,7 +77,7 @@ class UdpTransport(ProtocolBasedTransport):
 
     @classmethod
     def enumerate(
-        cls, _models: Optional[Iterable["TrezorModel"]] = None
+        cls, _models: Optional[Iterable["CerberusModel"]] = None
     ) -> Iterable["UdpTransport"]:
         default_path = f"{cls.DEFAULT_HOST}:{cls.DEFAULT_PORT}"
         try:

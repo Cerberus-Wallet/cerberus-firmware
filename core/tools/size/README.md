@@ -4,11 +4,11 @@ Shell and python scripts acting as wrappers around `binsize` tool/command.
 
 Adding `--help` to any `<command>.sh` will show the help message for that specific command.
 
-Settings of this specific (`trezor-firmware`) project are forwarded in each command. Specifically, `core/build/firmware/firmware.elf` and `core/build/firmware/firmware.map` (optional) files are used and we are interested in `.flash` and `.flash2` sections.
+Settings of this specific (`cerberus-firmware`) project are forwarded in each command. Specifically, `core/build/firmware/firmware.elf` and `core/build/firmware/firmware.map` (optional) files are used and we are interested in `.flash` and `.flash2` sections.
 
 `bloaty` and `nm` tools are needed.
 
-For more info about `binsize` tool, visit [its repository](github.com/trezor/binsize).
+For more info about `binsize` tool, visit [its repository](github.com/cerberus/binsize).
 
 ## Available scripts/commands
 

@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.trezor.messages.eos;
+package hw.cerberus.messages.eos;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
-option java_outer_classname = "TrezorMessageEos";
+option java_package = "com.satoshilabs.cerberus.lib.protobuf";
+option java_outer_classname = "CerberusMessageEos";
 
 /**
  * Request: Ask device for Eos public key corresponding to address_n path

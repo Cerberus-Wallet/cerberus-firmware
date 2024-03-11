@@ -7,7 +7,7 @@ Generating
 
 Use the [create_monorepo] script to regenerate from current master(s).
 
-[create_monorepo]: https://github.com/trezor/trezor-firmware/blob/master/create_monorepo.py
+[create_monorepo]: https://github.com/Cerberus-Wallet/cerberus-firmware/blob/master/create_monorepo.py
 
 
 Structure
@@ -20,7 +20,7 @@ That means that this is actually all the original repos at the same time. You ca
 check out any historical commit hash, or any historical tag.
 
 All tags from the previous history still exist, and in addition, each has a version
-named by its directory. I.e., for trezor-mcu tag `v1.6.3`, you can also check out
+named by its directory. I.e., for cerberus-mcu tag `v1.6.3`, you can also check out
 `legacy/v1.6.3`.
 
 
@@ -34,7 +34,7 @@ Use the following options: `-s subtree -X subtree=<destdir>`.
 
 Example for your local checkout:
 
-    $ git remote add core-local ~/git/trezor-core
+    $ git remote add core-local ~/git/cerberus-core
     $ git fetch core-local
     $ git merge core-local/wip -s subtree -X subtree=core
 
@@ -46,8 +46,8 @@ Sub-repositories
 
 The monorepo has two subdirectories that can be exported to separate repos:
 
-* **common** exports to https://github.com/trezor/trezor-common
-* **crypto** exports to https://github.com/trezor/trezor-crypto
+* **common** exports to https://github.com/Cerberus-Wallet/cerberus-common
+* **crypto** exports to https://github.com/Cerberus-Wallet/cerberus-crypto
 
 These exports are managed with [git-subrepo] tool. To export all commits that touch
 one of these directories, run the following command:

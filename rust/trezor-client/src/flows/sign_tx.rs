@@ -111,7 +111,7 @@ fn ack_output_request(
         return Err(Error::MalformedTxRequest(req.clone()))
     }
 
-    // For outputs, the Trezor only needs bin_outputs to be set for dependent txs and full outputs
+    // For outputs, the Cerberus only needs bin_outputs to be set for dependent txs and full outputs
     // for the signing tx.
     let mut txdata = TransactionType::new();
     if req.details.has_tx_hash() {
@@ -226,13 +226,13 @@ fn ack_meta_request(req: &protos::TxRequest, psbt: &psbt::Psbt) -> Result<protos
 /// the device.  If you're not yet finished you must call the `ack_psbt()` method to send more
 /// information to the device.
 pub struct SignTxProgress<'a> {
-    client: &'a mut Trezor,
+    client: &'a mut Cerberus,
     req: protos::TxRequest,
 }
 
 impl<'a> SignTxProgress<'a> {
     /// Only intended for internal usage.
-    pub fn new(client: &mut Trezor, req: protos::TxRequest) -> SignTxProgress<'_> {
+    pub fn new(client: &mut Cerberus, req: protos::TxRequest) -> SignTxProgress<'_> {
         SignTxProgress { client, req }
     }
 
@@ -290,7 +290,7 @@ impl<'a> SignTxProgress<'a> {
     pub fn ack_msg(
         self,
         ack: protos::TxAck,
-    ) -> Result<TrezorResponse<'a, SignTxProgress<'a>, protos::TxRequest>> {
+    ) -> Result<CerberusResponse<'a, SignTxProgress<'a>, protos::TxRequest>> {
         assert!(!self.finished());
 
         self.client.call(ack, Box::new(|c, m| Ok(SignTxProgress::new(c, m))))
@@ -304,7 +304,7 @@ impl<'a> SignTxProgress<'a> {
         self,
         psbt: &psbt::Psbt,
         network: Network,
-    ) -> Result<TrezorResponse<'a, SignTxProgress<'a>, protos::TxRequest>> {
+    ) -> Result<CerberusResponse<'a, SignTxProgress<'a>, protos::TxRequest>> {
         assert!(self.req.request_type() != TxRequestType::TXFINISHED);
 
         let ack = match self.req.request_type() {

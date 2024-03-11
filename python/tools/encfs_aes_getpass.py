@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -17,7 +17,7 @@
 # If not, see <https://www.gnu.org/licenses/lgpl-3.0.html>.
 
 """
-Use Trezor as a hardware key for opening EncFS filesystem!
+Use Cerberus as a hardware key for opening EncFS filesystem!
 
 Usage:
 
@@ -30,26 +30,26 @@ import os
 import sys
 from typing import TYPE_CHECKING, Sequence
 
-import trezorlib
-import trezorlib.misc
-from trezorlib.client import TrezorClient
-from trezorlib.tools import Address
-from trezorlib.transport import enumerate_devices
-from trezorlib.ui import ClickUI
+import cerberuslib
+import cerberuslib.misc
+from cerberuslib.client import CerberusClient
+from cerberuslib.tools import Address
+from cerberuslib.transport import enumerate_devices
+from cerberuslib.ui import ClickUI
 
-version_tuple = tuple(map(int, trezorlib.__version__.split(".")))
+version_tuple = tuple(map(int, cerberuslib.__version__.split(".")))
 if not (0, 11) <= version_tuple < (0, 14):
-    raise RuntimeError("trezorlib version mismatch (required: 0.13, 0.12, or 0.11)")
+    raise RuntimeError("cerberuslib version mismatch (required: 0.13, 0.12, or 0.11)")
 
 
 if TYPE_CHECKING:
-    from trezorlib.transport import Transport
+    from cerberuslib.transport import Transport
 
 
 def wait_for_devices() -> Sequence["Transport"]:
     devices = enumerate_devices()
     while not len(devices):
-        sys.stderr.write("Please connect Trezor to computer and press Enter...")
+        sys.stderr.write("Please connect Cerberus to computer and press Enter...")
         input()
         devices = enumerate_devices()
 
@@ -58,7 +58,7 @@ def wait_for_devices() -> Sequence["Transport"]:
 
 def choose_device(devices: Sequence["Transport"]) -> "Transport":
     if not len(devices):
-        raise RuntimeError("No Trezor connected!")
+        raise RuntimeError("No Cerberus connected!")
 
     if len(devices) == 1:
         try:
@@ -71,7 +71,7 @@ def choose_device(devices: Sequence["Transport"]) -> "Transport":
     sys.stderr.write("Available devices:\n")
     for d in devices:
         try:
-            client = TrezorClient(d, ui=ClickUI())
+            client = CerberusClient(d, ui=ClickUI())
         except IOError:
             sys.stderr.write("[-] <device is currently in use>\n")
             continue
@@ -106,7 +106,7 @@ def main() -> None:
 
     devices = wait_for_devices()
     transport = choose_device(devices)
-    client = TrezorClient(transport, ui=ClickUI())
+    client = CerberusClient(transport, ui=ClickUI())
 
     rootdir = os.environ["encfs_root"]  # Read "man encfs" for more
     passw_file = os.path.join(rootdir, "password.dat")
@@ -117,18 +117,18 @@ def main() -> None:
         sys.stderr.write("Please provide label for new drive: ")
         label = input()
 
-        sys.stderr.write("Computer asked Trezor for new strong password.\n")
+        sys.stderr.write("Computer asked Cerberus for new strong password.\n")
 
         # 32 bytes, good for AES
-        trezor_entropy = trezorlib.misc.get_entropy(client, 32)
+        cerberus_entropy = cerberuslib.misc.get_entropy(client, 32)
         urandom_entropy = os.urandom(32)
-        passw = hashlib.sha256(trezor_entropy + urandom_entropy).digest()
+        passw = hashlib.sha256(cerberus_entropy + urandom_entropy).digest()
 
         if len(passw) != 32:
             raise ValueError("32 bytes password expected")
 
         bip32_path = Address([10, 0])
-        passw_encrypted = trezorlib.misc.encrypt_keyvalue(
+        passw_encrypted = cerberuslib.misc.encrypt_keyvalue(
             client, bip32_path, label, passw, False, True
         )
 
@@ -143,7 +143,7 @@ def main() -> None:
     # Let's load password
     data = json.load(open(passw_file, "r"))
 
-    passw = trezorlib.misc.decrypt_keyvalue(
+    passw = cerberuslib.misc.decrypt_keyvalue(
         client,
         data["bip32_path"],
         data["label"],

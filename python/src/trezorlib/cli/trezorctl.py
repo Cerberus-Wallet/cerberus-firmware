@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -25,12 +25,12 @@ from typing import TYPE_CHECKING, Any, Callable, Iterable, Optional, TypeVar, ca
 import click
 
 from .. import __version__, log, messages, protobuf, ui
-from ..client import TrezorClient
+from ..client import CerberusClient
 from ..transport import DeviceIsBusy, enumerate_devices
 from ..transport.udp import UdpTransport
 from . import (
     AliasedGroup,
-    TrezorConnection,
+    CerberusConnection,
     binance,
     btc,
     cardano,
@@ -91,12 +91,12 @@ COMMAND_ALIASES = {
 }
 
 
-class TrezorctlGroup(AliasedGroup):
-    """Command group that handles compatibility for trezorctl.
+class CerberusctlGroup(AliasedGroup):
+    """Command group that handles compatibility for cerberusctl.
 
-    With trezorctl 0.11.5, we started to convert old-style long commands
+    With cerberusctl 0.11.5, we started to convert old-style long commands
     (such as "binance-sign-tx") to command groups ("binance") with subcommands
-    ("sign-tx"). The `TrezorctlGroup` can perform subcommand lookup: if a command
+    ("sign-tx"). The `CerberusctlGroup` can perform subcommand lookup: if a command
     "binance-sign-tx" does not exist in the default group, it tries to find "sign-tx"
     subcommand of "binance" group.
     """
@@ -155,7 +155,7 @@ def configure_logging(verbose: int) -> None:
 
 
 @click.command(
-    cls=TrezorctlGroup,
+    cls=CerberusctlGroup,
     context_settings={"max_content_width": 400},
     aliases=COMMAND_ALIASES,
 )
@@ -163,7 +163,7 @@ def configure_logging(verbose: int) -> None:
     "-p",
     "--path",
     help="Select device by specific path.",
-    default=os.environ.get("TREZOR_PATH"),
+    default=os.environ.get("CERBERUS_PATH"),
 )
 @click.option("-v", "--verbose", count=True, help="Show communication messages.")
 @click.option(
@@ -186,7 +186,7 @@ def configure_logging(verbose: int) -> None:
     "--session-id",
     metavar="HEX",
     help="Resume given session ID.",
-    default=os.environ.get("TREZOR_SESSION_ID"),
+    default=os.environ.get("CERBERUS_SESSION_ID"),
 )
 @click.option(
     "-r",
@@ -214,7 +214,7 @@ def cli_main(
         except ValueError:
             raise click.ClickException(f"Not a valid session id: {session_id}")
 
-    ctx.obj = TrezorConnection(path, bytes_session_id, passphrase_on_host, script)
+    ctx.obj = CerberusConnection(path, bytes_session_id, passphrase_on_host, script)
 
     # Optionally record the screen into a specified directory.
     if record:
@@ -222,7 +222,7 @@ def cli_main(
 
 
 # Creating a cli function that has the right types for future usage
-cli = cast(TrezorctlGroup, cli_main)
+cli = cast(CerberusctlGroup, cli_main)
 
 
 @cli.set_result_callback()
@@ -255,10 +255,10 @@ def print_result(res: Any, is_json: bool, script: bool, **kwargs: Any) -> None:
 
 @cli.set_result_callback()
 @click.pass_obj
-def stop_recording_action(obj: TrezorConnection, *args: Any, **kwargs: Any) -> None:
+def stop_recording_action(obj: CerberusConnection, *args: Any, **kwargs: Any) -> None:
     """Stop recording screen changes when the recording was started by `cli_main`.
 
-    (When user used the `-r / --record` option of `trezorctl` command.)
+    (When user used the `-r / --record` option of `cerberusctl` command.)
 
     It allows for isolating screen directories only for specific actions/commands.
     """
@@ -269,10 +269,10 @@ def stop_recording_action(obj: TrezorConnection, *args: Any, **kwargs: Any) -> N
 def format_device_name(features: messages.Features) -> str:
     model = features.model or "1"
     if features.bootloader_mode:
-        return f"Trezor {model} bootloader"
+        return f"Cerberus {model} bootloader"
 
     label = features.label or "(unnamed)"
-    return f"{label} [Trezor {model}, {features.device_id}]"
+    return f"{label} [Cerberus {model}, {features.device_id}]"
 
 
 #
@@ -281,15 +281,15 @@ def format_device_name(features: messages.Features) -> str:
 
 
 @cli.command(name="list")
-@click.option("-n", "no_resolve", is_flag=True, help="Do not resolve Trezor names")
+@click.option("-n", "no_resolve", is_flag=True, help="Do not resolve Cerberus names")
 def list_devices(no_resolve: bool) -> Optional[Iterable["Transport"]]:
-    """List connected Trezor devices."""
+    """List connected Cerberus devices."""
     if no_resolve:
         return enumerate_devices()
 
     for transport in enumerate_devices():
         try:
-            client = TrezorClient(transport, ui=ui.ClickUI())
+            client = CerberusClient(transport, ui=ui.ClickUI())
             description = format_device_name(client.features)
             client.end_session()
         except DeviceIsBusy:
@@ -302,7 +302,7 @@ def list_devices(no_resolve: bool) -> Optional[Iterable["Transport"]]:
 
 @cli.command()
 def version() -> str:
-    """Show version of trezorctl/trezorlib."""
+    """Show version of cerberusctl/cerberuslib."""
     return __version__
 
 
@@ -315,22 +315,22 @@ def version() -> str:
 @click.argument("message")
 @click.option("-b", "--button-protection", is_flag=True)
 @with_client
-def ping(client: "TrezorClient", message: str, button_protection: bool) -> str:
+def ping(client: "CerberusClient", message: str, button_protection: bool) -> str:
     """Send ping message."""
     return client.ping(message, button_protection=button_protection)
 
 
 @cli.command()
 @click.pass_obj
-def get_session(obj: TrezorConnection) -> str:
+def get_session(obj: CerberusConnection) -> str:
     """Get a session ID for subsequent commands.
 
-    Unlocks Trezor with a passphrase and returns a session ID. Use this session ID with
-    `trezorctl -s SESSION_ID`, or set it to an environment variable `TREZOR_SESSION_ID`,
+    Unlocks Cerberus with a passphrase and returns a session ID. Use this session ID with
+    `cerberusctl -s SESSION_ID`, or set it to an environment variable `CERBERUS_SESSION_ID`,
     to avoid having to enter passphrase for subsequent commands.
 
-    The session ID is valid until another client starts using Trezor, until the next
-    get-session call, or until Trezor is disconnected.
+    The session ID is valid until another client starts using Cerberus, until the next
+    get-session call, or until Cerberus is disconnected.
     """
     # make sure session is not resumed
     obj.session_id = None
@@ -350,14 +350,14 @@ def get_session(obj: TrezorConnection) -> str:
 
 @cli.command()
 @with_client
-def clear_session(client: "TrezorClient") -> None:
+def clear_session(client: "CerberusClient") -> None:
     """Clear session (remove cached PIN, passphrase, etc.)."""
     return client.clear_session()
 
 
 @cli.command()
 @with_client
-def get_features(client: "TrezorClient") -> messages.Features:
+def get_features(client: "CerberusClient") -> messages.Features:
     """Retrieve device features and settings."""
     return client.features
 
@@ -377,8 +377,8 @@ def usb_reset() -> None:
 @cli.command()
 @click.option("-t", "--timeout", type=float, default=10, help="Timeout in seconds")
 @click.pass_obj
-def wait_for_emulator(obj: TrezorConnection, timeout: float) -> None:
-    """Wait until Trezor Emulator comes up.
+def wait_for_emulator(obj: CerberusConnection, timeout: float) -> None:
+    """Wait until Cerberus Emulator comes up.
 
     Tries to connect to emulator and returns when it succeeds.
     """

@@ -1,4 +1,4 @@
-# Trezor Core coding style
+# Cerberus Core coding style
 
 ## Python coding style
 
@@ -39,7 +39,7 @@ at top level. The style for doing that are as follows:
 
   if TYPE_CHECKING:
       from typing import Any, TypeVar, Union
-      from trezor.messages import SomeMessage
+      from cerberus.messages import SomeMessage
 
       TypeAlias = Union[int, str]
       T = TypeVar("T")
@@ -55,7 +55,7 @@ at top level. The style for doing that are as follows:
 Configurations of specific Python style tools (`isort`, `flake8`, `pylint`) can be found
 in root [`setup.cfg`].
 
-[`setup.cfg`]: https://github.com/trezor/trezor-firmware/blob/master/setup.cfg
+[`setup.cfg`]: https://github.com/Cerberus-Wallet/cerberus-firmware/blob/master/setup.cfg
 
 #### Formatting
 

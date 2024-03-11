@@ -25,26 +25,26 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.crypto.CipherKeyValue)
+// @@protoc_insertion_point(message:hw.cerberus.messages.crypto.CipherKeyValue)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CipherKeyValue {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CipherKeyValue.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CipherKeyValue.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CipherKeyValue.key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CipherKeyValue.key)
     pub key: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CipherKeyValue.value)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CipherKeyValue.value)
     pub value: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CipherKeyValue.encrypt)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CipherKeyValue.encrypt)
     pub encrypt: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CipherKeyValue.ask_on_encrypt)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CipherKeyValue.ask_on_encrypt)
     pub ask_on_encrypt: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CipherKeyValue.ask_on_decrypt)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CipherKeyValue.ask_on_decrypt)
     pub ask_on_decrypt: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CipherKeyValue.iv)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CipherKeyValue.iv)
     pub iv: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.crypto.CipherKeyValue.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.crypto.CipherKeyValue.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -429,14 +429,14 @@ impl ::protobuf::reflect::ProtobufValue for CipherKeyValue {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.crypto.CipheredKeyValue)
+// @@protoc_insertion_point(message:hw.cerberus.messages.crypto.CipheredKeyValue)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CipheredKeyValue {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CipheredKeyValue.value)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CipheredKeyValue.value)
     pub value: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.crypto.CipheredKeyValue.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.crypto.CipheredKeyValue.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -590,24 +590,24 @@ impl ::protobuf::reflect::ProtobufValue for CipheredKeyValue {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.crypto.IdentityType)
+// @@protoc_insertion_point(message:hw.cerberus.messages.crypto.IdentityType)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct IdentityType {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.IdentityType.proto)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.IdentityType.proto)
     pub proto: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.IdentityType.user)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.IdentityType.user)
     pub user: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.IdentityType.host)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.IdentityType.host)
     pub host: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.IdentityType.port)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.IdentityType.port)
     pub port: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.IdentityType.path)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.IdentityType.path)
     pub path: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.IdentityType.index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.IdentityType.index)
     pub index: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.crypto.IdentityType.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.crypto.IdentityType.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1001,20 +1001,20 @@ impl ::protobuf::reflect::ProtobufValue for IdentityType {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.crypto.SignIdentity)
+// @@protoc_insertion_point(message:hw.cerberus.messages.crypto.SignIdentity)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SignIdentity {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.SignIdentity.identity)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.SignIdentity.identity)
     pub identity: ::protobuf::MessageField<IdentityType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.SignIdentity.challenge_hidden)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.SignIdentity.challenge_hidden)
     pub challenge_hidden: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.SignIdentity.challenge_visual)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.SignIdentity.challenge_visual)
     pub challenge_visual: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.SignIdentity.ecdsa_curve_name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.SignIdentity.ecdsa_curve_name)
     pub ecdsa_curve_name: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.crypto.SignIdentity.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.crypto.SignIdentity.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1294,18 +1294,18 @@ impl ::protobuf::reflect::ProtobufValue for SignIdentity {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.crypto.SignedIdentity)
+// @@protoc_insertion_point(message:hw.cerberus.messages.crypto.SignedIdentity)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SignedIdentity {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.SignedIdentity.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.SignedIdentity.address)
     pub address: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.SignedIdentity.public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.SignedIdentity.public_key)
     pub public_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.SignedIdentity.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.SignedIdentity.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.crypto.SignedIdentity.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.crypto.SignedIdentity.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1566,18 +1566,18 @@ impl ::protobuf::reflect::ProtobufValue for SignedIdentity {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.crypto.GetECDHSessionKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.crypto.GetECDHSessionKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct GetECDHSessionKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.GetECDHSessionKey.identity)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.GetECDHSessionKey.identity)
     pub identity: ::protobuf::MessageField<IdentityType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.GetECDHSessionKey.peer_public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.GetECDHSessionKey.peer_public_key)
     pub peer_public_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.GetECDHSessionKey.ecdsa_curve_name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.GetECDHSessionKey.ecdsa_curve_name)
     pub ecdsa_curve_name: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.crypto.GetECDHSessionKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.crypto.GetECDHSessionKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1808,16 +1808,16 @@ impl ::protobuf::reflect::ProtobufValue for GetECDHSessionKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.crypto.ECDHSessionKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.crypto.ECDHSessionKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct ECDHSessionKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.ECDHSessionKey.session_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.ECDHSessionKey.session_key)
     pub session_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.ECDHSessionKey.public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.ECDHSessionKey.public_key)
     pub public_key: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.crypto.ECDHSessionKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.crypto.ECDHSessionKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2023,16 +2023,16 @@ impl ::protobuf::reflect::ProtobufValue for ECDHSessionKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.crypto.CosiCommit)
+// @@protoc_insertion_point(message:hw.cerberus.messages.crypto.CosiCommit)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CosiCommit {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CosiCommit.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CosiCommit.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CosiCommit.data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CosiCommit.data)
     pub data: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.crypto.CosiCommit.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.crypto.CosiCommit.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2202,16 +2202,16 @@ impl ::protobuf::reflect::ProtobufValue for CosiCommit {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.crypto.CosiCommitment)
+// @@protoc_insertion_point(message:hw.cerberus.messages.crypto.CosiCommitment)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CosiCommitment {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CosiCommitment.commitment)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CosiCommitment.commitment)
     pub commitment: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CosiCommitment.pubkey)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CosiCommitment.pubkey)
     pub pubkey: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.crypto.CosiCommitment.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.crypto.CosiCommitment.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2420,20 +2420,20 @@ impl ::protobuf::reflect::ProtobufValue for CosiCommitment {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.crypto.CosiSign)
+// @@protoc_insertion_point(message:hw.cerberus.messages.crypto.CosiSign)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CosiSign {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CosiSign.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CosiSign.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CosiSign.data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CosiSign.data)
     pub data: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CosiSign.global_commitment)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CosiSign.global_commitment)
     pub global_commitment: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CosiSign.global_pubkey)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CosiSign.global_pubkey)
     pub global_pubkey: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.crypto.CosiSign.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.crypto.CosiSign.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2716,14 +2716,14 @@ impl ::protobuf::reflect::ProtobufValue for CosiSign {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.crypto.CosiSignature)
+// @@protoc_insertion_point(message:hw.cerberus.messages.crypto.CosiSignature)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CosiSignature {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.crypto.CosiSignature.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.crypto.CosiSignature.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.crypto.CosiSignature.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.crypto.CosiSignature.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2878,7 +2878,7 @@ impl ::protobuf::reflect::ProtobufValue for CosiSignature {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x15messages-crypto.proto\x12\x19hw.trezor.messages.crypto\x1a\x0emess\
+    \n\x15messages-crypto.proto\x12\x19hw.cerberus.messages.crypto\x1a\x0emess\
     ages.proto\"\xcb\x01\n\x0eCipherKeyValue\x12\x1b\n\taddress_n\x18\x01\
     \x20\x03(\rR\x08addressN\x12\x10\n\x03key\x18\x02\x20\x02(\tR\x03key\x12\
     \x14\n\x05value\x18\x03\x20\x02(\x0cR\x05value\x12\x18\n\x07encrypt\x18\
@@ -2891,14 +2891,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     (\tR\x04host\x12\x12\n\x04port\x18\x04\x20\x01(\tR\x04port\x12\x12\n\x04\
     path\x18\x05\x20\x01(\tR\x04path\x12\x17\n\x05index\x18\x06\x20\x01(\r:\
     \x010R\x05index\"\xd7\x01\n\x0cSignIdentity\x12C\n\x08identity\x18\x01\
-    \x20\x02(\x0b2'.hw.trezor.messages.crypto.IdentityTypeR\x08identity\x12+\
+    \x20\x02(\x0b2'.hw.cerberus.messages.crypto.IdentityTypeR\x08identity\x12+\
     \n\x10challenge_hidden\x18\x02\x20\x01(\x0c:\0R\x0fchallengeHidden\x12+\
     \n\x10challenge_visual\x18\x03\x20\x01(\t:\0R\x0fchallengeVisual\x12(\n\
     \x10ecdsa_curve_name\x18\x04\x20\x01(\tR\x0eecdsaCurveName\"g\n\x0eSigne\
     dIdentity\x12\x18\n\x07address\x18\x01\x20\x01(\tR\x07address\x12\x1d\n\
     \npublic_key\x18\x02\x20\x02(\x0cR\tpublicKey\x12\x1c\n\tsignature\x18\
     \x03\x20\x02(\x0cR\tsignature\"\xaa\x01\n\x11GetECDHSessionKey\x12C\n\
-    \x08identity\x18\x01\x20\x02(\x0b2'.hw.trezor.messages.crypto.IdentityTy\
+    \x08identity\x18\x01\x20\x02(\x0b2'.hw.cerberus.messages.crypto.IdentityTy\
     peR\x08identity\x12&\n\x0fpeer_public_key\x18\x02\x20\x02(\x0cR\rpeerPub\
     licKey\x12(\n\x10ecdsa_curve_name\x18\x03\x20\x01(\tR\x0eecdsaCurveName\
     \"P\n\x0eECDHSessionKey\x12\x1f\n\x0bsession_key\x18\x01\x20\x02(\x0cR\n\
@@ -2911,7 +2911,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x02\x20\x02(\x0cR\x04data\x12+\n\x11global_commitment\x18\x03\x20\x02(\
     \x0cR\x10globalCommitment\x12#\n\rglobal_pubkey\x18\x04\x20\x02(\x0cR\
     \x0cglobalPubkey\"-\n\rCosiSignature\x12\x1c\n\tsignature\x18\x01\x20\
-    \x02(\x0cR\tsignatureB>\n#com.satoshilabs.trezor.lib.protobufB\x13Trezor\
+    \x02(\x0cR\tsignatureB>\n#com.satoshilabs.cerberus.lib.protobufB\x13Cerberus\
     MessageCrypto\x80\xa6\x1d\x01\
 ";
 

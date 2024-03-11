@@ -14,9 +14,9 @@ extern crate num_derive;
 
 #[macro_use]
 mod error;
-// use trezorhal for its macros early
+// use cerberushal for its macros early
 #[macro_use]
-mod trezorhal;
+mod cerberushal;
 
 #[cfg(feature = "crypto")]
 mod crypto;
@@ -54,9 +54,9 @@ fn panic_debug(panic_info: &core::panic::PanicInfo) -> ! {
         print!(file);
         print!(":");
         println!(inttostr!(location.line()));
-        trezorhal::fatal_error::__fatal_error("", "rs", file, location.line(), "");
+        cerberushal::fatal_error::__fatal_error("", "rs", file, location.line(), "");
     } else {
-        trezorhal::fatal_error::__fatal_error("", "rs", "", 0, "");
+        cerberushal::fatal_error::__fatal_error("", "rs", "", 0, "");
     }
 }
 
@@ -73,7 +73,7 @@ fn panic(_info: &core::panic::PanicInfo) -> ! {
     // Doing that will compile every panic!() to a single udf instruction which
     // raises a Hard Fault on hardware.
     //
-    // Otherwise, use `unwrap!` macro from trezorhal.
+    // Otherwise, use `unwrap!` macro from cerberushal.
     fatal_error!("", "rs");
 }
 

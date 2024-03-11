@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2020 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import btc, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.tools import parse_path
+from cerberuslib import btc, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.tools import parse_path
 
 from ...tx_cache import TxCache
 from .signtx import (
@@ -858,7 +858,7 @@ def test_attack_steal_change(client: Client):
     prev_txes = {TXHASH_65b768: prev_tx_attack}
 
     with pytest.raises(
-        TrezorFailure, match="Original output is missing change-output parameters"
+        CerberusFailure, match="Original output is missing change-output parameters"
     ):
         btc.sign_tx(
             client,
@@ -912,7 +912,7 @@ def test_attack_false_internal(client: Client):
     )
 
     with pytest.raises(
-        TrezorFailure, match="Original input does not match current input"
+        CerberusFailure, match="Original input does not match current input"
     ):
         btc.sign_tx(
             client,
@@ -966,7 +966,7 @@ def test_attack_fake_int_input_amount(client: Client):
     }
 
     with pytest.raises(
-        TrezorFailure, match="Original input does not match current input"
+        CerberusFailure, match="Original input does not match current input"
     ):
         btc.sign_tx(
             client,
@@ -1042,7 +1042,7 @@ def test_attack_fake_ext_input_amount(client: Client):
     }
 
     with pytest.raises(
-        TrezorFailure, match="Original input does not match current input"
+        CerberusFailure, match="Original input does not match current input"
     ):
         btc.sign_tx(
             client,
@@ -1095,7 +1095,7 @@ def test_p2wpkh_invalid_signature(client: Client):
         TXHASH_43d273: TX_CACHE_TESTNET[TXHASH_43d273],
     }
 
-    with pytest.raises(TrezorFailure, match="Invalid signature"):
+    with pytest.raises(CerberusFailure, match="Invalid signature"):
         btc.sign_tx(
             client,
             "Testnet",
@@ -1151,5 +1151,5 @@ def test_p2tr_invalid_signature(client: Client):
     prev_tx_invalid.inputs[0].witness[10] ^= 1
     prev_txes = {TXHASH_8e4af7: prev_tx_invalid}
 
-    with pytest.raises(TrezorFailure, match="Invalid signature"):
+    with pytest.raises(CerberusFailure, match="Invalid signature"):
         btc.sign_tx(client, "Testnet", [inp1, inp2], [out1, out2], prev_txes=prev_txes)

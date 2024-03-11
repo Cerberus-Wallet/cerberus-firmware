@@ -1,6 +1,6 @@
-# trezorctl Bitcoin transaction JSON format
+# cerberusctl Bitcoin transaction JSON format
 
-Since version 0.11.2, `trezorctl` allows fully offline signing of Bitcoin and
+Since version 0.11.2, `cerberusctl` allows fully offline signing of Bitcoin and
 Bitcoin-like altcoin transactions encoded in a custom JSON structure. Starting with
 version 0.11.6, this is the only supported format for signing.
 
@@ -35,7 +35,7 @@ default value will be used if missing.
 ### Derivation paths
 
 A derivation path in the field `address_n` is encoded as an array of numbers according
-to the BIP-32 specification. Use `trezorlib.tools.parse_path` to convert a string
+to the BIP-32 specification. Use `cerberuslib.tools.parse_path` to convert a string
 derivation path to the corresponding array.
 
 ### Inputs
@@ -166,7 +166,7 @@ message TransactionType {
 Object types are encoded by a variant of [proto3 JSON mapping](https://developers.google.com/protocol-buffers/docs/proto3#json).
 The following notable differences exist:
 
-1. due to the fact that Trezor protocol uses proto2, the logic for omitted fields is
+1. due to the fact that Cerberus protocol uses proto2, the logic for omitted fields is
    different. If a value is missing or null in JSON, it is considered unset for the
    corresponding protobuf.
 2. proto3 JSON mapping encodes `bytes` as Base64. The transaction format encodes them as
@@ -189,11 +189,11 @@ Otherwise the encoding is identical:
 
 The JSON below encodes a transaction with the following inputs:
 
-* [e9cec1644db8fa95fe639a9b503a63ea587d2f4e480d3847703e3ec73adf6b5a](https://btc5.trezor.io/tx/e9cec1644db8fa95fe639a9b503a63ea587d2f4e480d3847703e3ec73adf6b5a)
+* [e9cec1644db8fa95fe639a9b503a63ea587d2f4e480d3847703e3ec73adf6b5a](https://btc5.cerberus.uraanai.com/tx/e9cec1644db8fa95fe639a9b503a63ea587d2f4e480d3847703e3ec73adf6b5a)
   output **0** (P2PKH address 1Jw5FrKhi2aWbbF4h3QRWLog5AjsJYGswv)
   at derivation path **m/44h/0h/0h/0/282**
   amount **85 170** sat
-* [1f545c0ca1f2c055e199c70457025c1e393edd013a274a976187115a5c601155](https://btc5.trezor.io/tx/1f545c0ca1f2c055e199c70457025c1e393edd013a274a976187115a5c601155)
+* [1f545c0ca1f2c055e199c70457025c1e393edd013a274a976187115a5c601155](https://btc5.cerberus.uraanai.com/tx/1f545c0ca1f2c055e199c70457025c1e393edd013a274a976187115a5c601155)
   output **0** (P2SH-SegWit address 3DEAk9KGrgvj2gHQ1hyfCXus9hZr9K8Beh)
   at derivation path **m/49h/0h/0h/0/55**
   amount **500 000** sat
@@ -204,7 +204,7 @@ And the following outputs:
 * **562 825** sat to a P2SH-SegWit change address at derivation path **m/49h/0h/0h/1/99**
 * fee of 10 000 sat
 
-(Note that Trezor does not support change addresses when mixing input types. The example
+(Note that Cerberus does not support change addresses when mixing input types. The example
 is designed purely to showcase the JSON structure. Usually, all inputs should have the
 same `script_type`.)
 

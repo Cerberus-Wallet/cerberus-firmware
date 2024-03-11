@@ -698,7 +698,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "trezor-client"
+name = "cerberus-client"
 version = "0.1.3"
 dependencies = [
  "bitcoin",
@@ -714,7 +714,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "trezor-client-build"
+name = "cerberus-client-build"
 version = "0.0.0"
 dependencies = [
  "protobuf-codegen",

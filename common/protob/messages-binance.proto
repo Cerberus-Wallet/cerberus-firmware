@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.trezor.messages.binance;
+package hw.cerberus.messages.binance;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
-option java_outer_classname = "TrezorMessageBinance";
+option java_package = "com.satoshilabs.cerberus.lib.protobuf";
+option java_outer_classname = "CerberusMessageBinance";
 
 /** XXX
 
@@ -21,7 +21,7 @@ chance that somebody is relying on the behavior.
  */
 message BinanceGetAddress {
     repeated uint32 address_n = 1;  // BIP-32-style path to derive the key from master node
-    optional bool show_display = 2; // optionally prompt for confirmation on trezor display
+    optional bool show_display = 2; // optionally prompt for confirmation on cerberus display
     optional bool chunkify = 3;     // display the address in chunks of 4 characters
 }
 
@@ -54,7 +54,7 @@ message BinancePublicKey {
 /**
  * Request: Starts the Binance transaction protocol flow.
  * A transaction consists of these common fields and a series of Binance<Any>Msg messages.
- * These parts form a JSON structure (a string) in Trezor's memory, which is signed to produce a BinanceSignedTx.
+ * These parts form a JSON structure (a string) in Cerberus's memory, which is signed to produce a BinanceSignedTx.
  * @start
  * @next BinanceTxRequest
  * @next Failure
@@ -71,7 +71,7 @@ message BinanceSignTx {
 }
 
 /**
- * Response: Trezor requests the next message or signals that it is ready to send a BinanceSignedTx.
+ * Response: Cerberus requests the next message or signals that it is ready to send a BinanceSignedTx.
  * @next BinanceTransferMsg
  * @next BinanceOrderMsg
  * @next BinanceCancelMsg

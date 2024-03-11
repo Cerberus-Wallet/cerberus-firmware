@@ -2,15 +2,15 @@
 ignore-paths=
     core/src/all_modules.py,
     core/src/apps/ethereum/tokens.py,
-    core/src/trezor/res/resources.py,
-    core/src/trezor/messages.py,
-    core/src/trezor/enums,
+    core/src/cerberus/res/resources.py,
+    core/src/cerberus/messages.py,
+    core/src/cerberus/enums,
     crypto,
     legacy,
     storage,
 fail-under=10.0
 jobs=0
-load-plugins=trezor_pylint_plugin
+load-plugins=cerberus_pylint_plugin
 
 [MESSAGE CONTROL]
 disable=all

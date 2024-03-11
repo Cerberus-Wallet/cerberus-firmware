@@ -140,7 +140,7 @@ all: tools tests
 %.o: %.c %.h options.h
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-tests: tests/test_check tests/test_openssl tests/test_speed tests/libtrezor-crypto.so tests/aestst
+tests: tests/test_check tests/test_openssl tests/test_speed tests/libcerberus-crypto.so tests/aestst
 
 tests/aestst: aes/aestst.o aes/aescrypt.o aes/aeskey.o aes/aestab.o
 	$(CC) $(CFLAGS) $^ -o $@
@@ -156,8 +156,8 @@ tests/test_speed: tests/test_speed.o $(OBJS)
 tests/test_openssl: tests/test_openssl.o $(OBJS)
 	$(CC) $(CFLAGS) tests/test_openssl.o $(OBJS) $(TESTSSLLIBS) -o tests/test_openssl
 
-tests/libtrezor-crypto.so: $(SRCS) secp256k1-zkp.o precomputed_ecmult.o precomputed_ecmult_gen.o
-	$(CC) $(CFLAGS) -DAES_128 -DAES_192 -fPIC -shared $(SRCS) secp256k1-zkp.o precomputed_ecmult.o precomputed_ecmult_gen.o -o tests/libtrezor-crypto.so
+tests/libcerberus-crypto.so: $(SRCS) secp256k1-zkp.o precomputed_ecmult.o precomputed_ecmult_gen.o
+	$(CC) $(CFLAGS) -DAES_128 -DAES_192 -fPIC -shared $(SRCS) secp256k1-zkp.o precomputed_ecmult.o precomputed_ecmult_gen.o -o tests/libcerberus-crypto.so
 
 tools: tools/xpubaddrgen tools/mktable tools/bip39bruteforce
 
@@ -184,7 +184,7 @@ secp256k1-zkp.o:
 
 clean:
 	rm -f *.o aes/*.o chacha20poly1305/*.o ed25519-donna/*.o monero/*.o
-	rm -f tests/*.o tests/test_check tests/test_speed tests/test_openssl tests/libtrezor-crypto.so tests/aestst
+	rm -f tests/*.o tests/test_check tests/test_speed tests/test_openssl tests/libcerberus-crypto.so tests/aestst
 	rm -f tools/*.o tools/xpubaddrgen tools/mktable tools/bip39bruteforce
 	rm -f fuzzer/*.o fuzzer/fuzzer
 	rm -f secp256k1-zkp.o precomputed_ecmult.o precomputed_ecmult_gen.o

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -18,7 +18,7 @@ from typing import TYPE_CHECKING
 
 import pytest
 
-from trezorlib import device, messages
+from cerberuslib import device, messages
 
 from .. import buttons
 from ..common import EXTERNAL_ENTROPY, WITH_MOCK_URANDOM, generate_entropy

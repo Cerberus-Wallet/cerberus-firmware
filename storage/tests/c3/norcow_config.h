@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -29,12 +29,12 @@
  * The length of the sector header in bytes. The header is preserved between
  * sector erasures.
  */
-#if defined TREZOR_MODEL_T
+#if defined CERBERUS_MODEL_T
 #define NORCOW_HEADER_LEN 0
-#elif defined TREZOR_MODEL_1
+#elif defined CERBERUS_MODEL_1
 #define NORCOW_HEADER_LEN (0x100)
 #else
-#error Unknown Trezor model
+#error Unknown Cerberus model
 #endif
 
 /*

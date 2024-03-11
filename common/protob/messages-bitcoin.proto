@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.trezor.messages.bitcoin;
+package hw.cerberus.messages.bitcoin;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
-option java_outer_classname = "TrezorMessageBitcoin";
+option java_package = "com.satoshilabs.cerberus.lib.protobuf";
+option java_outer_classname = "CerberusMessageBitcoin";
 
 option (include_in_bitcoin_only) = true;
 
@@ -617,7 +617,7 @@ message OwnershipProof {
  */
 message AuthorizeCoinJoin {
     required string coordinator = 1;                                    // coordinator identifier to approve as a prefix in commitment data (max. 36 ASCII characters)
-    required uint64 max_rounds = 2;                                     // maximum number of rounds that Trezor is authorized to take part in
+    required uint64 max_rounds = 2;                                     // maximum number of rounds that Cerberus is authorized to take part in
     required uint32 max_coordinator_fee_rate = 3;                       // maximum coordination fee rate in units of 10^-6 percent
     required uint32 max_fee_per_kvbyte = 4;                             // maximum mining fee rate in units of satoshis per 1000 vbytes
     repeated uint32 address_n = 5;                                      // prefix of the BIP-32 path leading to the account (m / purpose' / coin_type' / account')

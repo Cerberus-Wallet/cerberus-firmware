@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -18,10 +18,10 @@ from datetime import datetime, timezone
 
 import pytest
 
-from trezorlib import btc, device, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import Cancelled, TrezorFailure
-from trezorlib.tools import H_, parse_path
+from cerberuslib import btc, device, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import Cancelled, CerberusFailure
+from cerberuslib.tools import H_, parse_path
 
 from ...input_flows import (
     InputFlowLockTimeBlockHeight,
@@ -666,7 +666,7 @@ def test_fee_high_hardfail(client: Client):
         script_type=messages.OutputScriptType.PAYTOADDRESS,
     )
 
-    with pytest.raises(TrezorFailure, match="fee is unexpectedly large"):
+    with pytest.raises(CerberusFailure, match="fee is unexpectedly large"):
         btc.sign_tx(client, "Testnet", [inp1], [out1], prev_txes=TX_CACHE_TESTNET)
 
     # set SafetyCheckLevel to PromptTemporarily and try again
@@ -716,7 +716,7 @@ def test_not_enough_funds(client: Client):
                 messages.Failure(code=messages.FailureType.NotEnoughFunds),
             ]
         )
-        with pytest.raises(TrezorFailure, match="NotEnoughFunds"):
+        with pytest.raises(CerberusFailure, match="NotEnoughFunds"):
             btc.sign_tx(client, "Bitcoin", [inp1], [out1], prev_txes=TX_CACHE_MAINNET)
 
 
@@ -882,7 +882,7 @@ def test_attack_change_outputs(client: Client):
         return msg
 
     with client, pytest.raises(
-        TrezorFailure, match="Transaction has changed during signing"
+        CerberusFailure, match="Transaction has changed during signing"
     ):
         # Set up attack processors
         client.set_filter(messages.TxAck, attack_processor)
@@ -937,7 +937,7 @@ def test_attack_modify_change_address(client: Client):
         return msg
 
     with client, pytest.raises(
-        TrezorFailure, match="Transaction has changed during signing"
+        CerberusFailure, match="Transaction has changed during signing"
     ):
         # Set up attack processors
         client.set_filter(messages.TxAck, attack_processor)
@@ -1013,7 +1013,7 @@ def test_attack_change_input_address(client: Client):
             ]
         )
         # Now run the attack, must trigger the exception
-        with pytest.raises(TrezorFailure) as exc:
+        with pytest.raises(CerberusFailure) as exc:
             btc.sign_tx(
                 client,
                 "Testnet",
@@ -1233,7 +1233,7 @@ def test_not_enough_vouts(client: Client):
     )
 
     with pytest.raises(
-        TrezorFailure, match="Not enough outputs in previous transaction."
+        CerberusFailure, match="Not enough outputs in previous transaction."
     ):
         btc.sign_tx(
             client,
@@ -1270,7 +1270,7 @@ def test_prevtx_forbidden_fields(client: Client, field, value):
     prev_tx = TX_CACHE_MAINNET[TXHASH_157041]
     setattr(prev_tx, field, value)
     name = field.replace("_", " ")
-    with pytest.raises(TrezorFailure, match=rf"(?i){name} not enabled on this coin"):
+    with pytest.raises(CerberusFailure, match=rf"(?i){name} not enabled on this coin"):
         btc.sign_tx(
             client, "Bitcoin", [inp0], [out1], prev_txes={TXHASH_157041: prev_tx}
         )
@@ -1295,7 +1295,7 @@ def test_signtx_forbidden_fields(client: Client, field: str, value: int):
 
     kwargs = {field: value}
     name = field.replace("_", " ")
-    with pytest.raises(TrezorFailure, match=rf"(?i){name} not enabled on this coin"):
+    with pytest.raises(CerberusFailure, match=rf"(?i){name} not enabled on this coin"):
         btc.sign_tx(
             client, "Bitcoin", [inp0], [out1], prev_txes=TX_CACHE_MAINNET, **kwargs
         )
@@ -1347,7 +1347,7 @@ def test_incorrect_input_script_type(client: Client, script_type):
     )
 
     with pytest.raises(
-        TrezorFailure, match="Multisig field provided but not expected."
+        CerberusFailure, match="Multisig field provided but not expected."
     ):
         btc.sign_tx(client, "Testnet", [inp1], [out1, out2], prev_txes=TX_CACHE_TESTNET)
 
@@ -1402,7 +1402,7 @@ def test_incorrect_output_script_type(
     )
 
     with pytest.raises(
-        TrezorFailure, match="Multisig field provided but not expected."
+        CerberusFailure, match="Multisig field provided but not expected."
     ):
         btc.sign_tx(client, "Testnet", [inp1], [out1, out2], prev_txes=TX_CACHE_TESTNET)
 

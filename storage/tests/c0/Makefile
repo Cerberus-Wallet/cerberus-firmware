@@ -2,7 +2,7 @@ CC=cc
 CFLAGS=-Wall -fPIC
 LIBS=
 OBJ=storage.o norcow.o flash.o
-OUT=libtrezor-storage0.so
+OUT=libcerberus-storage0.so
 
 $(OUT): $(OBJ)
 	$(CC) $(CFLAGS) $(LIBS) $(OBJ) -shared -o $(OUT)

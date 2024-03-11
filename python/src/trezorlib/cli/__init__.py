@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -22,7 +22,7 @@ from typing import TYPE_CHECKING, Any, Callable, Dict, Optional
 import click
 
 from .. import exceptions, transport
-from ..client import TrezorClient
+from ..client import CerberusClient
 from ..ui import ClickUI, ScriptUI
 
 if TYPE_CHECKING:
@@ -33,7 +33,7 @@ if TYPE_CHECKING:
     from typing_extensions import Concatenate, ParamSpec
 
     from ..transport import Transport
-    from ..ui import TrezorClientUI
+    from ..ui import CerberusClientUI
 
     P = ParamSpec("P")
     R = TypeVar("R")
@@ -57,7 +57,7 @@ class ChoiceType(click.Choice):
         return self.typemap[value]
 
 
-class TrezorConnection:
+class CerberusConnection:
     def __init__(
         self,
         path: str,
@@ -82,19 +82,19 @@ class TrezorConnection:
         # if this fails, we want the exception to bubble up to the caller
         return transport.get_transport(self.path, prefix_search=True)
 
-    def get_ui(self) -> "TrezorClientUI":
+    def get_ui(self) -> "CerberusClientUI":
         if self.script:
             # It is alright to return just the class object instead of instance,
-            # as the ScriptUI class object itself is the implementation of TrezorClientUI
+            # as the ScriptUI class object itself is the implementation of CerberusClientUI
             # (ScriptUI is just a set of staticmethods)
             return ScriptUI
         else:
             return ClickUI(passphrase_on_host=self.passphrase_on_host)
 
-    def get_client(self) -> TrezorClient:
+    def get_client(self) -> CerberusClient:
         transport = self.get_transport()
         ui = self.get_ui()
-        return TrezorClient(transport, ui=ui, session_id=self.session_id)
+        return CerberusClient(transport, ui=ui, session_id=self.session_id)
 
     @contextmanager
     def client_context(self):
@@ -111,7 +111,7 @@ class TrezorConnection:
             click.echo("Device is in use by another process.")
             sys.exit(1)
         except Exception:
-            click.echo("Failed to find a Trezor device.")
+            click.echo("Failed to find a Cerberus device.")
             if self.path is not None:
                 click.echo(f"Using path: {self.path}")
             sys.exit(1)
@@ -122,13 +122,13 @@ class TrezorConnection:
             # handle cancel action
             click.echo("Action was cancelled.")
             sys.exit(1)
-        except exceptions.TrezorException as e:
-            # handle any Trezor-sent exceptions as user-readable
+        except exceptions.CerberusException as e:
+            # handle any Cerberus-sent exceptions as user-readable
             raise click.ClickException(str(e)) from e
             # other exceptions may cause a traceback
 
 
-def with_client(func: "Callable[Concatenate[TrezorClient, P], R]") -> "Callable[P, R]":
+def with_client(func: "Callable[Concatenate[CerberusClient, P], R]") -> "Callable[P, R]":
     """Wrap a Click command in `with obj.client_context() as client`.
 
     Sessions are handled transparently. The user is warned when session did not resume
@@ -138,8 +138,8 @@ def with_client(func: "Callable[Concatenate[TrezorClient, P], R]") -> "Callable[
 
     @click.pass_obj
     @functools.wraps(func)
-    def trezorctl_command_with_client(
-        obj: TrezorConnection, *args: "P.args", **kwargs: "P.kwargs"
+    def cerberusctl_command_with_client(
+        obj: CerberusConnection, *args: "P.args", **kwargs: "P.kwargs"
     ) -> "R":
         with obj.client_context() as client:
             session_was_resumed = obj.session_id == client.session_id
@@ -158,7 +158,7 @@ def with_client(func: "Callable[Concatenate[TrezorClient, P], R]") -> "Callable[
 
     # the return type of @click.pass_obj is improperly specified and pyright doesn't
     # understand that it converts f(obj, *args, **kwargs) to f(*args, **kwargs)
-    return trezorctl_command_with_client  # type: ignore [cannot be assigned to return type]
+    return cerberusctl_command_with_client  # type: ignore [cannot be assigned to return type]
 
 
 class AliasedGroup(click.Group):

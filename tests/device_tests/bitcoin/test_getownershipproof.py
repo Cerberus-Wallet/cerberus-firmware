@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import btc, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.tools import parse_path
+from cerberuslib import btc, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.tools import parse_path
 
 
 def test_p2wpkh_ownership_id(client: Client):
@@ -75,7 +75,7 @@ def test_attack_ownership_id(client: Client):
     )
 
     for multisig in (multisig1, multisig2):
-        with pytest.raises(TrezorFailure):
+        with pytest.raises(CerberusFailure):
             btc.get_ownership_id(
                 client,
                 "Bitcoin",
@@ -112,7 +112,7 @@ def test_p2tr_ownership_proof(client: Client):
 
 
 def test_fake_ownership_id(client: Client):
-    with pytest.raises(TrezorFailure, match="Invalid ownership identifier"):
+    with pytest.raises(CerberusFailure, match="Invalid ownership identifier"):
         btc.get_ownership_proof(
             client,
             "Bitcoin",

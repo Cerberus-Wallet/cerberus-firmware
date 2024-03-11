@@ -4,7 +4,7 @@ import io
 import typing as t
 from hashlib import sha256
 
-from trezorlib import cosi, definitions, messages, protobuf
+from cerberuslib import cosi, definitions, messages, protobuf
 
 from ...common import PRIVATE_KEYS_DEV
 

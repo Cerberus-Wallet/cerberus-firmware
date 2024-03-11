@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -22,7 +22,7 @@ from . import _ed25519, messages
 from .tools import expect
 
 if TYPE_CHECKING:
-    from .client import TrezorClient
+    from .client import CerberusClient
     from .protobuf import MessageType
     from .tools import Address
 
@@ -159,7 +159,7 @@ def sign_with_privkeys(digest: bytes, privkeys: Sequence[bytes]) -> bytes:
 
 @expect(messages.CosiCommitment)
 def commit(
-    client: "TrezorClient", n: "Address", data: Optional[bytes] = None
+    client: "CerberusClient", n: "Address", data: Optional[bytes] = None
 ) -> "MessageType":
     if data is not None:
         warnings.warn(
@@ -173,7 +173,7 @@ def commit(
 
 @expect(messages.CosiSignature)
 def sign(
-    client: "TrezorClient",
+    client: "CerberusClient",
     n: "Address",
     data: bytes,
     global_commitment: bytes,

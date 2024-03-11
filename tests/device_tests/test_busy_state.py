@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2022 SatoshiLabs and contributors
 #
@@ -18,9 +18,9 @@ import time
 
 import pytest
 
-from trezorlib import btc, device
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.tools import parse_path
+from cerberuslib import btc, device
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.tools import parse_path
 
 PIN = "1234"
 

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import btc, device, messages
-from trezorlib.client import MAX_PIN_LENGTH, PASSPHRASE_TEST_PATH
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import Cancelled, TrezorFailure
+from cerberuslib import btc, device, messages
+from cerberuslib.client import MAX_PIN_LENGTH, PASSPHRASE_TEST_PATH
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import Cancelled, CerberusFailure
 
 from ..input_flows import (
     InputFlowCodeChangeFail,
@@ -124,7 +124,7 @@ def test_set_failed(client: Client):
     # Check that there's no PIN protection
     _check_no_pin(client)
 
-    with client, pytest.raises(TrezorFailure):
+    with client, pytest.raises(CerberusFailure):
         IF = InputFlowNewCodeMismatch(client, PIN4, PIN60)
         client.set_input_flow(IF.get())
 
@@ -162,7 +162,7 @@ def test_change_invalid_current(client: Client):
     # Check current PIN value
     _check_pin(client, PIN4)
 
-    with client, pytest.raises(TrezorFailure):
+    with client, pytest.raises(CerberusFailure):
         IF = InputFlowWrongPIN(client, PIN60)
         client.set_input_flow(IF.get())
 

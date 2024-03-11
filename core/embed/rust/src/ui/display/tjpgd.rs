@@ -1,8 +1,8 @@
-use trezor_tjpgdec::{BlackHoleOutput, JpegOutput};
-pub use trezor_tjpgdec::{BufferInput, Error, JDEC};
+use cerberus_tjpgdec::{BlackHoleOutput, JpegOutput};
+pub use cerberus_tjpgdec::{BufferInput, Error, JDEC};
 
 use crate::{
-    trezorhal::{
+    cerberushal::{
         buffers::{BufferJpeg, BufferJpegWork},
         display::pixeldata,
     },

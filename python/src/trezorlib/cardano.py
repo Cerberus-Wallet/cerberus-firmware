@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -35,7 +35,7 @@ from . import exceptions, messages, tools
 from .tools import expect
 
 if TYPE_CHECKING:
-    from .client import TrezorClient
+    from .client import CerberusClient
     from .protobuf import MessageType
 
 PROTOCOL_MAGICS = {
@@ -775,7 +775,7 @@ def _get_collateral_inputs_items(
 
 @expect(messages.CardanoAddress, field="address", ret_type=str)
 def get_address(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address_parameters: messages.CardanoAddressParametersType,
     protocol_magic: int = PROTOCOL_MAGICS["mainnet"],
     network_id: int = NETWORK_IDS["mainnet"],
@@ -797,7 +797,7 @@ def get_address(
 
 @expect(messages.CardanoPublicKey)
 def get_public_key(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address_n: List[int],
     derivation_type: messages.CardanoDerivationType = messages.CardanoDerivationType.ICARUS,
     show_display: bool = False,
@@ -813,7 +813,7 @@ def get_public_key(
 
 @expect(messages.CardanoNativeScriptHash)
 def get_native_script_hash(
-    client: "TrezorClient",
+    client: "CerberusClient",
     native_script: messages.CardanoNativeScript,
     display_format: messages.CardanoNativeScriptHashDisplayFormat = messages.CardanoNativeScriptHashDisplayFormat.HIDE,
     derivation_type: messages.CardanoDerivationType = messages.CardanoDerivationType.ICARUS,
@@ -828,7 +828,7 @@ def get_native_script_hash(
 
 
 def sign_tx(
-    client: "TrezorClient",
+    client: "CerberusClient",
     signing_mode: messages.CardanoTxSigningMode,
     inputs: List[InputWithPath],
     outputs: List[OutputWithData],
@@ -852,7 +852,7 @@ def sign_tx(
     include_network_id: bool = False,
     chunkify: bool = False,
 ) -> Dict[str, Any]:
-    UNEXPECTED_RESPONSE_ERROR = exceptions.TrezorException("Unexpected response")
+    UNEXPECTED_RESPONSE_ERROR = exceptions.CerberusException("Unexpected response")
 
     witness_requests = _get_witness_requests(
         inputs,

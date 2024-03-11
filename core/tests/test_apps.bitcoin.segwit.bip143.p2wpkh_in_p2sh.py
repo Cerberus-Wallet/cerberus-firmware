@@ -25,7 +25,7 @@ class TestSegwitBip143(unittest.TestCase):
     )
     inp1 = TxInput(
         address_n=[0],
-        # Trezor expects hash in reversed format
+        # Cerberus expects hash in reversed format
         prev_hash=unhexlify(
             "77541aeb3c4dac9260b68f74f44c973081a9d4cb2ebe8038b2d70faa201b6bdb"
         ),

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,7 +16,7 @@
 
 import pytest
 
-from trezorlib.debuglink import TrezorClientDebugLink as Client
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
 
 from ..common import (
     MNEMONIC_SLIP39_ADVANCED_20,
@@ -29,12 +29,12 @@ from ..common import (
 @pytest.mark.skip_t1
 def test_128bit_passphrase(client: Client):
     """
-    BIP32 Root Key for passphrase TREZOR:
+    BIP32 Root Key for passphrase CERBERUS:
     provided by Andrew, address calculated via https://iancoleman.io/bip39/
     xprv9s21ZrQH143K3dzDLfeY3cMp23u5vDeFYftu5RPYZPucKc99mNEddU4w99GxdgUGcSfMpVDxhnR1XpJzZNXRN1m6xNgnzFS5MwMP6QyBRKV
     """
     assert client.features.passphrase_protection is True
-    client.use_passphrase("TREZOR")
+    client.use_passphrase("CERBERUS")
     address = get_test_address(client)
     assert address == "mkKDUMRR1CcK8eLAzCZAjKnNbCquPoWPxN"
 
@@ -48,12 +48,12 @@ def test_128bit_passphrase(client: Client):
 @pytest.mark.skip_t1
 def test_256bit_passphrase(client: Client):
     """
-    BIP32 Root Key for passphrase TREZOR:
+    BIP32 Root Key for passphrase CERBERUS:
     provided by Andrew, address calculated via https://iancoleman.io/bip39/
     xprv9s21ZrQH143K2UspC9FRPfQC9NcDB4HPkx1XG9UEtuceYtpcCZ6ypNZWdgfxQ9dAFVeD1F4Zg4roY7nZm2LB7THPD6kaCege3M7EuS8v85c
     """
     assert client.features.passphrase_protection is True
-    client.use_passphrase("TREZOR")
+    client.use_passphrase("CERBERUS")
     address = get_test_address(client)
     assert address == "mxVtGxUJ898WLzPMmy6PT1FDHD1GUCWGm7"
 

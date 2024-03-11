@@ -309,11 +309,11 @@ dependencies = [
 ]
 
 [[package]]
-name = "trezor-tjpgdec"
+name = "cerberus-tjpgdec"
 version = "0.1.0"
 
 [[package]]
-name = "trezor_lib"
+name = "cerberus_lib"
 version = "0.1.0"
 dependencies = [
  "bindgen",
@@ -326,7 +326,7 @@ dependencies = [
  "num-traits",
  "qrcodegen",
  "serde_json",
- "trezor-tjpgdec",
+ "cerberus-tjpgdec",
  "zeroize",
 ]
 

@@ -13,9 +13,9 @@ env:
   PULL_COMMENT: |
     |core UI changes|device test|click test|persistence test|
     |---------------|-----------|----------|----------------|
-    |Model T        |[test](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_device_test/index.html)([screens](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_device_test/differing_screens.html)) [main](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_device_test/master_index.html)([screens](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_device_test/master_diff.html)) |[test](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_click_test/index.html)([screens](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_click_test/differing_screens.html)) [main](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_click_test/master_index.html)([screens](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_click_test/master_diff.html)) |[test](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_persistence_test/index.html)([screens](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_persistence_test/differing_screens.html)) [main](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_persistence_test/master_index.html)([screens](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_persistence_test/master_diff.html))||
-    |Model Safe 3   |[test](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_device_test/index.html)([screens](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_device_test/differing_screens.html)) [main](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_device_test/master_index.html)([screens](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_device_test/master_diff.html)) |[test](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_click_test/index.html)([screens](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_click_test/differing_screens.html)) [main](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_click_test/master_index.html)([screens](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_click_test/master_diff.html)) |[test](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_persistence_test/index.html)([screens](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_persistence_test/differing_screens.html)) [main](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_persistence_test/master_index.html)([screens](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_persistence_test/master_diff.html))||
-    |All            |[main](https://data.trezor.io/dev/firmware/master_diff/${{ github.run_id }}/index.html)([screens](https://data.trezor.io/dev/firmware/master_diff/${{ github.run_id }}/master_diff.html)) ||
+    |Model T        |[test](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_device_test/index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_device_test/differing_screens.html)) [main](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_device_test/master_index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_device_test/master_diff.html)) |[test](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_click_test/index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_click_test/differing_screens.html)) [main](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_click_test/master_index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_click_test/master_diff.html)) |[test](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_persistence_test/index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_persistence_test/differing_screens.html)) [main](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_persistence_test/master_index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2T1-core_persistence_test/master_diff.html))||
+    |Model Safe 3   |[test](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_device_test/index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_device_test/differing_screens.html)) [main](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_device_test/master_index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_device_test/master_diff.html)) |[test](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_click_test/index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_click_test/differing_screens.html)) [main](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_click_test/master_index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_click_test/master_diff.html)) |[test](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_persistence_test/index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_persistence_test/differing_screens.html)) [main](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_persistence_test/master_index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T2B1-core_persistence_test/master_diff.html))||
+    |All            |[main](https://data.trezorcheck.io/dev/firmware/master_diff/${{ github.run_id }}/index.html)([screens](https://data.trezorcheck.io/dev/firmware/master_diff/${{ github.run_id }}/master_diff.html)) ||
 
 jobs:
   core_firmware:
@@ -31,7 +31,7 @@ jobs:
             coins: universal
             type: normal
     env:
-      TREZOR_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
+      CERBERUS_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
       BITCOIN_ONLY: ${{ matrix.coins == 'universal' && '0' || '1' }}
       PYOPT: ${{ matrix.type == 'debuglink' && '0' || '1' }}
       PRODUCTION: ${{ matrix.type == 'production' && '1' || '0' }}
@@ -77,7 +77,7 @@ jobs:
           - type: normal
             asan: asan
     env:
-      TREZOR_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
+      CERBERUS_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
       BITCOIN_ONLY: ${{ matrix.coins == 'universal' && '0' || '1' }}
       PYOPT: ${{ matrix.type == 'debuglink' && '0' || '1' }}
       ADDRESS_SANITIZER: ${{ matrix.asan == 'asan' && '1' || '0' }}
@@ -96,7 +96,7 @@ jobs:
         with:
           name: core-emu-${{ matrix.model }}-${{ matrix.coins }}-${{ matrix.type }}-${{ matrix.asan }}
           path: |
-            core/build/unix/trezor-emu-core
+            core/build/unix/cerberus-emu-core
             core/build/bootloader_emu/bootloader.elf
           retention-days: 7
 
@@ -108,7 +108,7 @@ jobs:
         model: [T2T1, T2B1]
         asan: ${{ fromJSON(github.event_name == 'schedule' && '["noasan", "asan"]' || '["noasan"]') }}
     env:
-      TREZOR_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
+      CERBERUS_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
       ADDRESS_SANITIZER: ${{ matrix.asan == 'asan' && '1' || '0' }}
       LSAN_OPTIONS: "suppressions=../../asan_suppressions.txt"
     steps:
@@ -128,13 +128,13 @@ jobs:
         model: [T2T1, T2B1]
         asan: ${{ fromJSON(github.event_name == 'schedule' && '["noasan", "asan"]' || '["noasan"]') }}
         # T2B1 fails due to rust clippy error which is hard to reproduce, see discussion here:
-        # https://github.com/trezor/trezor-firmware/pull/2196
+        # https://github.com/cerberus-firmware/pull/2196
         # The problem might be in conflicting versions of clippy, let's see if this helps:
-        # https://github.com/trezor/trezor-firmware/issues/3337
+        # https://github.com/cerberus-firmware/issues/3337
         exclude:
           - model: T2B1
     env:
-      TREZOR_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
+      CERBERUS_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
       ADDRESS_SANITIZER: ${{ matrix.asan == 'asan' && '1' || '0' }}
       RUSTC_BOOTSTRAP: ${{ matrix.asan == 'asan' && '1' || '0' }}
       RUSTFLAGS: ${{ matrix.asan == 'asan' && '-Z sanitizer=address' || '' }}
@@ -149,7 +149,7 @@ jobs:
       - run: nix-shell --run "poetry run make -C core test_rust"
 
   core_rust_client_test:
-    name: Rust trezor-client tests
+    name: Rust cerberus-client tests
     runs-on: ubuntu-latest
     needs: core_emu
     strategy:
@@ -163,9 +163,9 @@ jobs:
         with:
           name: core-emu-${{ matrix.model }}-universal-debuglink-noasan
           path: core/build
-      - run: chmod +x core/build/unix/trezor-emu-core*
+      - run: chmod +x core/build/unix/cerberus-emu-core*
       - uses: ./.github/actions/environment
-      - run: nix-shell --run "poetry run core/emu.py --headless -q --temporary-profile --slip0014 --command cargo test --manifest-path rust/trezor-client/Cargo.toml"
+      - run: nix-shell --run "poetry run core/emu.py --headless -q --temporary-profile --slip0014 --command cargo test --manifest-path rust/cerberus-client/Cargo.toml"
 
   # Device tests for Core. Running device tests and also comparing screens
   # with the expected UI result.
@@ -181,14 +181,14 @@ jobs:
         model: [T2T1, T2B1]
         coins: [universal, btconly]
         asan: ${{ fromJSON(github.event_name == 'schedule' && '["noasan", "asan"]' || '["noasan"]') }}
-        # T2B1 fails due to https://github.com/trezor/trezor-firmware/issues/3280
+        # T2B1 fails due to https://github.com/cerberus-firmware/issues/3280
         # remove after single global layout is implemented (or bug above fixed):
         exclude:
           - model: T2B1
     env:
-      TREZOR_PROFILING: ${{ matrix.asan == 'noasan' && '1' || '0' }}
-      TREZOR_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
-      TREZOR_PYTEST_SKIP_ALTCOINS: ${{ matrix.coins == 'btconly' && '1' || '0' }}
+      CERBERUS_PROFILING: ${{ matrix.asan == 'noasan' && '1' || '0' }}
+      CERBERUS_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
+      CERBERUS_PYTEST_SKIP_ALTCOINS: ${{ matrix.coins == 'btconly' && '1' || '0' }}
       ADDRESS_SANITIZER: ${{ matrix.asan == 'asan' && '1' || '0' }}
       PYTEST_TIMEOUT: ${{ matrix.asan == 'asan' && 600 || 400 }}
       ACTIONS_DO_UI_TEST: ${{ matrix.coins == 'universal' && matrix.asan == 'noasan' }}
@@ -200,15 +200,15 @@ jobs:
         with:
           name: core-emu-${{ matrix.model }}-${{ matrix.coins }}-debuglink-${{ matrix.asan }}
           path: core/build
-      - run: chmod +x core/build/unix/trezor-emu-core*
+      - run: chmod +x core/build/unix/cerberus-emu-core*
       - uses: ./.github/actions/environment
       - run: nix-shell --run "poetry run make -C core ${{ env.ACTIONS_DO_UI_TEST == 'true' && 'test_emu_ui_multicore' || 'test_emu' }}"
-      - run: tail -n50 tests/trezor.log || true
+      - run: tail -n50 tests/cerberus.log || true
         if: failure()
       - uses: actions/upload-artifact@v4
         with:
           name: core-device-${{ matrix.model }}-${{ matrix.coins }}-${{ matrix.asan }}
-          path: tests/trezor.log
+          path: tests/cerberus.log
           retention-days: 7
         if: always()
       - uses: ./.github/actions/ui-report
@@ -235,7 +235,7 @@ jobs:
         model: [T2T1, T2B1]
         asan: ${{ fromJSON(github.event_name == 'schedule' && '["noasan", "asan"]' || '["noasan"]') }}
     env:
-      TREZOR_PROFILING: ${{ matrix.asan == 'noasan' && '1' || '0' }}
+      CERBERUS_PROFILING: ${{ matrix.asan == 'noasan' && '1' || '0' }}
       # MULTICORE: 4  # more could interfere with other jobs
       PYTEST_TIMEOUT: 400
     steps:
@@ -246,7 +246,7 @@ jobs:
         with:
           name: core-emu-${{ matrix.model }}-universal-debuglink-${{ matrix.asan }}
           path: core/build
-      - run: chmod +x core/build/unix/trezor-emu-core*
+      - run: chmod +x core/build/unix/cerberus-emu-core*
       - uses: ./.github/actions/environment
       - run: nix-shell --run "poetry run make -C core test_emu_click_ui"
         if: ${{ matrix.asan == 'noasan' }}
@@ -255,7 +255,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: core-click-${{ matrix.model }}-${{ matrix.asan }}
-          path: tests/trezor.log
+          path: tests/cerberus.log
           retention-days: 7
         if: always()
       - uses: ./.github/actions/ui-report
@@ -277,10 +277,10 @@ jobs:
     needs: core_emu
     strategy:
       matrix:
-        model: [T2T1]  # FIXME: T2B1 https://github.com/trezor/trezor-firmware/issues/2724
+        model: [T2T1]  # FIXME: T2B1 https://github.com/cerberus-firmware/issues/2724
         asan: ${{ fromJSON(github.event_name == 'schedule' && '["noasan", "asan"]' || '["noasan"]') }}
     env:
-      TREZOR_UPGRADE_TEST: core
+      CERBERUS_UPGRADE_TEST: core
       PYTEST_TIMEOUT: 400
     steps:
       - uses: actions/checkout@v4
@@ -290,7 +290,7 @@ jobs:
         with:
           name: core-emu-${{ matrix.model }}-universal-debuglink-${{ matrix.asan }}
           path: core/build
-      - run: chmod +x core/build/unix/trezor-emu-core*
+      - run: chmod +x core/build/unix/cerberus-emu-core*
       - uses: ./.github/actions/environment
       - run: nix-shell --run "tests/download_emulators.sh"
       - run: nix-shell --run "poetry run pytest tests/upgrade_tests"
@@ -303,10 +303,10 @@ jobs:
     needs: core_emu
     strategy:
       matrix:
-        model: [T2T1]  # TODO T2B1 https://github.com/trezor/trezor-firmware/issues/2724
+        model: [T2T1]  # TODO T2B1 https://github.com/cerberus-firmware/issues/2724
         asan: ${{ fromJSON(github.event_name == 'schedule' && '["noasan", "asan"]' || '["noasan"]') }}
     env:
-      TREZOR_PROFILING: ${{ matrix.asan == 'noasan' && '1' || '0' }}
+      CERBERUS_PROFILING: ${{ matrix.asan == 'noasan' && '1' || '0' }}
       PYTEST_TIMEOUT: 400
     steps:
       - uses: actions/checkout@v4
@@ -316,7 +316,7 @@ jobs:
         with:
           name: core-emu-${{ matrix.model }}-universal-debuglink-${{ matrix.asan }}
           path: core/build
-      - run: chmod +x core/build/unix/trezor-emu-core*
+      - run: chmod +x core/build/unix/cerberus-emu-core*
       - uses: ./.github/actions/environment
       - run: nix-shell --run "poetry run make -C core test_emu_persistence_ui"
         if: ${{ matrix.asan == 'noasan' }}
@@ -350,15 +350,15 @@ jobs:
         with:
           name: core-emu-${{ matrix.model }}-universal-debuglink-noasan
           path: core/build
-      - run: chmod +x core/build/unix/trezor-emu-core*
+      - run: chmod +x core/build/unix/cerberus-emu-core*
       - uses: ./.github/actions/environment  # XXX poetry maybe not needed
       - run: nix-shell --run "git clone --depth=1 https://github.com/bitcoin-core/HWI.git"
       # see python_test for explanation of _PYTHON_SYSCONFIGDATA_NAME
-      - run: nix-shell --arg fullDeps true --run "unset _PYTHON_SYSCONFIGDATA_NAME && cd HWI && poetry install && poetry run ./test/test_trezor.py --model_t ../core/build/unix/trezor-emu-core bitcoind"
+      - run: nix-shell --arg fullDeps true --run "unset _PYTHON_SYSCONFIGDATA_NAME && cd HWI && poetry install && poetry run ./test/test_cerberus.py --model_t ../core/build/unix/cerberus-emu-core bitcoind"
       - uses: actions/upload-artifact@v4
         with:
           name: core-test-hwi-${{ matrix.model }}
-          path: HWI/trezor-t-emulator.stdout
+          path: HWI/cerberus-t-emulator.stdout
           retention-days: 7
 
   core_memory_profile:
@@ -366,8 +366,8 @@ jobs:
     if: false  # NOTE manual job, comment out to run
     runs-on: ubuntu-latest
     env:
-      TREZOR_MODEL: T
-      TREZOR_MEMPERF: 1
+      CERBERUS_MODEL: T
+      CERBERUS_MEMPERF: 1
       PYOPT: 0
       PYTEST_TIMEOUT: 900
     steps:
@@ -383,7 +383,7 @@ jobs:
         with:
           name: core-memperf-${{ matrix.model }}
           path: |
-            tests/trezor.log
+            tests/cerberus.log
             core/prof/memperf-html
           retention-days: 7
         if: always()
@@ -448,7 +448,7 @@ jobs:
         model: [T2T1, T2B1]
         asan: ${{ fromJSON(github.event_name == 'schedule' && '["noasan", "asan"]' || '["noasan"]') }}
     env:
-      TREZOR_PROFILING: ${{ matrix.asan == 'noasan' && '1' || '0' }}
+      CERBERUS_PROFILING: ${{ matrix.asan == 'noasan' && '1' || '0' }}
       PYTEST_TIMEOUT: 400
     steps:
       - uses: actions/checkout@v4
@@ -458,7 +458,7 @@ jobs:
         with:
           name: core-emu-${{ matrix.model }}-universal-debuglink-${{ matrix.asan }}
           path: core/build
-      - run: chmod +x core/build/unix/trezor-emu-core*
+      - run: chmod +x core/build/unix/cerberus-emu-core*
       - uses: cachix/install-nix-action@v23
         with:
           nix_path: nixpkgs=channel:nixos-unstable
@@ -469,8 +469,8 @@ jobs:
         with:
           name: core-test-monero-${{ matrix.model }}-${{ matrix.asan }}
           path: |
-            tests/trezor.log
-            core/tests/trezor_monero_tests.log
+            tests/cerberus.log
+            core/tests/cerberus_monero_tests.log
           retention-days: 7
         if: always()
       - run: mv core/src/.coverage core/.coverage.test_emu_monero || true
@@ -490,7 +490,7 @@ jobs:
         model: [T2T1, T2B1]
         asan: ${{ fromJSON(github.event_name == 'schedule' && '["noasan", "asan"]' || '["noasan"]') }}
     env:
-      TREZOR_PROFILING: ${{ matrix.asan == 'noasan' && '1' || '0' }}
+      CERBERUS_PROFILING: ${{ matrix.asan == 'noasan' && '1' || '0' }}
       PYTEST_TIMEOUT: 400
     steps:
       - uses: actions/checkout@v4
@@ -500,14 +500,14 @@ jobs:
         with:
           name: core-emu-${{ matrix.model }}-universal-debuglink-${{ matrix.asan }}
           path: core/build
-      - run: chmod +x core/build/unix/trezor-emu-core*
+      - run: chmod +x core/build/unix/cerberus-emu-core*
       - uses: ./.github/actions/environment
       - run: nix-shell --run "poetry run make -C tests/fido_tests/u2f-tests-hid"
       - run: nix-shell --run "poetry run make -C core test_emu_u2f"
       - uses: actions/upload-artifact@v4
         with:
           name: core-test-u2f-${{ matrix.model }}-${{ matrix.asan }}
-          path: tests/trezor.log
+          path: tests/cerberus.log
           retention-days: 7
         if: always()
       - run: mv core/src/.coverage core/.coverage.test_emu_u2f || true
@@ -524,10 +524,10 @@ jobs:
     needs: core_emu
     strategy:
       matrix:
-        model: [T2T1]  # XXX T2B1 https://github.com/trezor/trezor-firmware/issues/2724
+        model: [T2T1]  # XXX T2B1 https://github.com/cerberus-firmware/issues/2724
         asan: ${{ fromJSON(github.event_name == 'schedule' && '["noasan", "asan"]' || '["noasan"]') }}
     env:
-      TREZOR_PROFILING: ${{ matrix.asan == 'noasan' && '1' || '0' }}
+      CERBERUS_PROFILING: ${{ matrix.asan == 'noasan' && '1' || '0' }}
       PYTEST_TIMEOUT: 400
     steps:
       - uses: actions/checkout@v4
@@ -537,14 +537,14 @@ jobs:
         with:
           name: core-emu-${{ matrix.model }}-universal-debuglink-${{ matrix.asan }}
           path: core/build
-      - run: chmod +x core/build/unix/trezor-emu-core*
+      - run: chmod +x core/build/unix/cerberus-emu-core*
       - uses: ./.github/actions/environment
       - run: nix-shell --run "poetry run make -C core test_emu_fido2"
       - uses: actions/upload-artifact@v4
         with:
           name: core-test-fido2-${{ matrix.model }}-${{ matrix.asan }}
           path: |
-            tests/trezor.log
+            tests/cerberus.log
           retention-days: 7
         if: always()
       - run: mv core/src/.coverage core/.coverage.test_emu_fido2 || true
@@ -567,7 +567,7 @@ jobs:
     strategy:
       matrix:
         model: [T2T1, T2B1]
-        # T2B1 fails due to https://github.com/trezor/trezor-firmware/issues/3280
+        # T2B1 fails due to https://github.com/cerberus-firmware/issues/3280
         # remove after single global layout is implemented (or bug above fixed):
         exclude:
           - model: T2B1
@@ -614,7 +614,7 @@ jobs:
       - run: mv tests/ui_tests/reports/master_diff .
       - name: Upload diff from main branch
         run: |
-          aws s3 sync master_diff s3://data.trezor.io/dev/firmware/master_diff/${{ github.run_id }}
+          aws s3 sync master_diff s3://data.trezorcheck.io/dev/firmware/master_diff/${{ github.run_id }}
 
   core_ui_comment:
     name: Post comment with UI diff URLs

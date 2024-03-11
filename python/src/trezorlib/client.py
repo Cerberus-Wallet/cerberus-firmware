@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -29,9 +29,9 @@ from .tools import expect, parse_path, session
 if TYPE_CHECKING:
     from .protobuf import MessageType
     from .transport import Transport
-    from .ui import TrezorClientUI
+    from .ui import CerberusClientUI
 
-UI = TypeVar("UI", bound="TrezorClientUI")
+UI = TypeVar("UI", bound="CerberusClientUI")
 
 LOG = logging.getLogger(__name__)
 
@@ -42,45 +42,45 @@ PASSPHRASE_ON_DEVICE = object()
 PASSPHRASE_TEST_PATH = parse_path("44h/1h/0h/0/0")
 
 OUTDATED_FIRMWARE_ERROR = """
-Your Trezor firmware is out of date. Update it with the following command:
-  trezorctl firmware-update
-Or visit https://suite.trezor.io/
+Your Cerberus firmware is out of date. Update it with the following command:
+  cerberusctl firmware-update
+Or visit https://suite.cerberus.io/
 """.strip()
 
 
 def get_default_client(
-    path: Optional[str] = None, ui: Optional["TrezorClientUI"] = None, **kwargs: Any
-) -> "TrezorClient":
-    """Get a client for a connected Trezor device.
+    path: Optional[str] = None, ui: Optional["CerberusClientUI"] = None, **kwargs: Any
+) -> "CerberusClient":
+    """Get a client for a connected Cerberus device.
 
-    Returns a TrezorClient instance with minimum fuss.
+    Returns a CerberusClient instance with minimum fuss.
 
     If path is specified, does a prefix-search for the specified device. Otherwise, uses
-    the value of TREZOR_PATH env variable, or finds first connected Trezor.
+    the value of CERBERUS_PATH env variable, or finds first connected Cerberus.
     If no UI is supplied, instantiates the default CLI UI.
     """
     from .transport import get_transport
     from .ui import ClickUI
 
     if path is None:
-        path = os.getenv("TREZOR_PATH")
+        path = os.getenv("CERBERUS_PATH")
 
     transport = get_transport(path, prefix_search=True)
     if ui is None:
         ui = ClickUI()
 
-    return TrezorClient(transport, ui, **kwargs)
+    return CerberusClient(transport, ui, **kwargs)
 
 
-class TrezorClient(Generic[UI]):
-    """Trezor client, a connection to a Trezor device.
+class CerberusClient(Generic[UI]):
+    """Cerberus client, a connection to a Cerberus device.
 
     This class allows you to manage connection state, send and receive protobuf
     messages, handle user interactions, and perform some generic tasks
     (send a cancel message, initialize or clear a session, ping the device).
     """
 
-    model: models.TrezorModel
+    model: models.CerberusModel
     transport: "Transport"
     session_id: Optional[bytes]
     ui: UI
@@ -92,27 +92,27 @@ class TrezorClient(Generic[UI]):
         ui: UI,
         session_id: Optional[bytes] = None,
         derive_cardano: Optional[bool] = None,
-        model: Optional[models.TrezorModel] = None,
+        model: Optional[models.CerberusModel] = None,
         _init_device: bool = True,
     ) -> None:
-        """Create a TrezorClient instance.
+        """Create a CerberusClient instance.
 
         You have to provide a `transport`, i.e., a raw connection to the device. You can
-        use `trezorlib.transport.get_transport` to find one.
+        use `cerberuslib.transport.get_transport` to find one.
 
         You have to provide an UI implementation for the three kinds of interaction:
         - button request (notify the user that their interaction is needed)
         - PIN request (on T1, ask the user to input numbers for a PIN matrix)
-        - passphrase request (ask the user to enter a passphrase) See `trezorlib.ui` for
+        - passphrase request (ask the user to enter a passphrase) See `cerberuslib.ui` for
           details.
 
         You can supply a `session_id` you might have saved in the previous session. If
         you do, the user might not need to enter their passphrase again.
 
-        You can provide Trezor model information. If not provided, it is detected from
+        You can provide Cerberus model information. If not provided, it is detected from
         the model name reported at initialization time.
 
-        By default, the instance will open a connection to the Trezor device, send an
+        By default, the instance will open a connection to the Cerberus device, send an
         `Initialize` message, set up the `features` field from the response, and connect
         to a session. By specifying `_init_device=False`, this step is skipped. Notably,
         this means that `client.features` is unset. Use `client.init_device()` or
@@ -265,7 +265,7 @@ class TrezorClient(Generic[UI]):
             elif isinstance(resp, messages.Failure):
                 if resp.code == messages.FailureType.ActionCancelled:
                     raise exceptions.Cancelled
-                raise exceptions.TrezorFailure(resp)
+                raise exceptions.CerberusFailure(resp)
             else:
                 return resp
 
@@ -273,12 +273,12 @@ class TrezorClient(Generic[UI]):
         """Update internal fields based on passed-in Features message."""
 
         if not self.model:
-            # Trezor Model One bootloader 1.8.0 or older does not send model name
+            # Cerberus Model One bootloader 1.8.0 or older does not send model name
             model = models.by_internal_name(features.internal_model)
             if model is None:
                 model = models.by_name(features.model or "1")
             if model is None:
-                raise RuntimeError("Unsupported Trezor model")
+                raise RuntimeError("Unsupported Cerberus model")
             self.model = model
 
         if features.vendor not in self.model.vendors:
@@ -304,7 +304,7 @@ class TrezorClient(Generic[UI]):
         """
         resp = self.call_raw(messages.GetFeatures())
         if not isinstance(resp, messages.Features):
-            raise exceptions.TrezorException("Unexpected response to GetFeatures")
+            raise exceptions.CerberusException("Unexpected response to GetFeatures")
         self._refresh_features(resp)
         return resp
 
@@ -332,10 +332,10 @@ class TrezorClient(Generic[UI]):
 
         # Version notes:
 
-        Trezor One older than 1.9.0 does not have session management. Optional arguments
+        Cerberus One older than 1.9.0 does not have session management. Optional arguments
         have no effect and the function returns None
 
-        Trezor T older than 2.3.0 does not have session cache. Requesting a new session
+        Cerberus T older than 2.3.0 does not have session cache. Requesting a new session
         will overwrite the old one. In addition, this function will always return None.
         A valid session_id can be obtained from the `session_id` attribute, but only
         after a passphrase-protected call is performed. You can use the following code:
@@ -357,9 +357,9 @@ class TrezorClient(Generic[UI]):
         )
         if isinstance(resp, messages.Failure):
             # can happen if `derive_cardano` does not match the current session
-            raise exceptions.TrezorFailure(resp)
+            raise exceptions.CerberusFailure(resp)
         if not isinstance(resp, messages.Features):
-            raise exceptions.TrezorException("Unexpected response to Initialize")
+            raise exceptions.CerberusException("Unexpected response to Initialize")
 
         if self.session_id is not None and resp.session_id == self.session_id:
             LOG.info("Successfully resumed session")
@@ -395,7 +395,7 @@ class TrezorClient(Generic[UI]):
         msg: str,
         button_protection: bool = False,
     ) -> "MessageType":
-        # We would like ping to work on any valid TrezorClient instance, but
+        # We would like ping to work on any valid CerberusClient instance, but
         # due to the protection modes, we need to go through self.call, and that will
         # raise an exception if the firmware is too old.
         # So we short-circuit the simplest variant of ping with call_raw.
@@ -435,7 +435,7 @@ class TrezorClient(Generic[UI]):
         """
         # Private argument _refresh_features can be used internally to avoid
         # refreshing in cases where we will refresh soon anyway. This is used
-        # in TrezorClient.clear_session()
+        # in CerberusClient.clear_session()
         self.call(messages.LockDevice())
         if _refresh_features:
             self.refresh_features()
@@ -468,7 +468,7 @@ class TrezorClient(Generic[UI]):
         try:
             if not self.features.bootloader_mode:
                 self.call(messages.EndSession())
-        except exceptions.TrezorFailure:
+        except exceptions.CerberusFailure:
             # A failure most likely means that the FW version does not support
             # the EndSession call. We ignore the failure and clear the local session_id.
             # The client-side end result is identical.

@@ -21,7 +21,7 @@
 """Reference implementation for Bech32/Bech32m and segwit addresses."""
 
 from micropython import const
-from trezorcrypto import bech32
+from cerberuscrypto import bech32
 from typing import TYPE_CHECKING
 
 bech32_decode = bech32.decode  # reexported
@@ -128,7 +128,7 @@ def convertbits(
 
 def decode(hrp: str, addr: str) -> OptionalTuple2[int, bytes]:
     """Decode a segwit address."""
-    from trezorcrypto import bech32
+    from cerberuscrypto import bech32
 
     try:
         hrpgot, data, spec = bech32.decode(addr)

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -38,7 +38,7 @@ if True:
     from .vendor import *  # noqa: F401, F403
 
 if t.TYPE_CHECKING:
-    from ..client import TrezorClient
+    from ..client import CerberusClient
 
     T = t.TypeVar("T", bound="FirmwareType")
 
@@ -77,7 +77,7 @@ def is_onev2(fw: "FirmwareType") -> TypeGuard[LegacyFirmware]:
 
 @session
 def update(
-    client: "TrezorClient",
+    client: "CerberusClient",
     data: bytes,
     progress_update: t.Callable[[int], t.Any] = lambda _: None,
 ):
@@ -86,7 +86,7 @@ def update(
 
     resp = client.call(messages.FirmwareErase(length=len(data)))
 
-    # TREZORv1 method
+    # CERBERUSv1 method
     if isinstance(resp, messages.Success):
         resp = client.call(messages.FirmwareUpload(payload=data))
         progress_update(len(data))
@@ -95,7 +95,7 @@ def update(
         else:
             raise RuntimeError(f"Unexpected result {resp}")
 
-    # TREZORv2 method
+    # CERBERUSv2 method
     while isinstance(resp, messages.FirmwareRequest):
         length = resp.length
         payload = data[resp.offset : resp.offset + length]
@@ -110,5 +110,5 @@ def update(
 
 
 @expect(messages.FirmwareHash, field="hash", ret_type=bytes)
-def get_hash(client: "TrezorClient", challenge: t.Optional[bytes]):
+def get_hash(client: "CerberusClient", challenge: t.Optional[bytes]):
     return client.call(messages.GetFirmwareHash(challenge=challenge))

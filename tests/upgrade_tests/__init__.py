@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -23,7 +23,7 @@ from _pytest.mark.structures import MarkDecorator
 from ..emulators import ALL_TAGS, LOCAL_BUILD_PATHS
 
 SELECTED_GENS = [
-    gen.strip() for gen in os.environ.get("TREZOR_UPGRADE_TEST", "").split(",") if gen
+    gen.strip() for gen in os.environ.get("CERBERUS_UPGRADE_TEST", "").split(",") if gen
 ]
 
 if SELECTED_GENS:

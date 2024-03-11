@@ -1,5 +1,5 @@
 /* Groestl hash from https://github.com/Groestlcoin/vanitygen
- * Trezor adaptation by Yura Pakhuchiy <pakhuchiy@gmail.com>. */
+ * Cerberus adaptation by Yura Pakhuchiy <pakhuchiy@gmail.com>. */
 /**
  * Groestl interface. This code implements Groestl with the recommended
  * parameters for SHA-3, with outputs of 224, 256, 384 and 512 bits.

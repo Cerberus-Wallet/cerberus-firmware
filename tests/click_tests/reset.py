@@ -3,13 +3,13 @@ from typing import TYPE_CHECKING
 
 from shamir_mnemonic import shamir  # type: ignore
 
-from trezorlib import messages
+from cerberuslib import messages
 
 from .. import buttons
 from .. import translations as TR
 
 if TYPE_CHECKING:
-    from trezorlib.debuglink import DebugLink
+    from cerberuslib.debuglink import DebugLink
 
 
 def confirm_new_wallet(debug: "DebugLink") -> None:

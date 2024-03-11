@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -21,7 +21,7 @@ from . import exceptions, messages
 from .tools import expect
 
 if TYPE_CHECKING:
-    from .client import TrezorClient
+    from .client import CerberusClient
     from .protobuf import MessageType
     from .tools import Address
 
@@ -198,7 +198,7 @@ def create_sign_tx(transaction: dict, chunkify: bool = False) -> messages.NEMSig
 
 @expect(messages.NEMAddress, field="address", ret_type=str)
 def get_address(
-    client: "TrezorClient",
+    client: "CerberusClient",
     n: "Address",
     network: int,
     show_display: bool = False,
@@ -213,12 +213,12 @@ def get_address(
 
 @expect(messages.NEMSignedTx)
 def sign_tx(
-    client: "TrezorClient", n: "Address", transaction: dict, chunkify: bool = False
+    client: "CerberusClient", n: "Address", transaction: dict, chunkify: bool = False
 ) -> "MessageType":
     try:
         msg = create_sign_tx(transaction, chunkify=chunkify)
     except ValueError as e:
-        raise exceptions.TrezorException("Failed to encode transaction") from e
+        raise exceptions.CerberusException("Failed to encode transaction") from e
 
     assert msg.transaction is not None
     msg.transaction.address_n = n

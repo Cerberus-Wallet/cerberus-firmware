@@ -2,7 +2,7 @@ from micropython import const
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.utils import BufferReader, Writer
+    from cerberus.utils import BufferReader, Writer
 
 # Maximum length of a DER-encoded secp256k1 or secp256p1 signature.
 _MAX_DER_SIGNATURE_LENGTH = const(72)
@@ -81,7 +81,7 @@ def _read_int(r: BufferReader) -> memoryview:
 
 
 def encode_seq(seq: tuple[bytes, ...]) -> bytes:
-    from trezor.utils import empty_bytearray
+    from cerberus.utils import empty_bytearray
 
     # Preallocate space for a signature, which is all that this function ever encodes.
     buffer = empty_bytearray(_MAX_DER_SIGNATURE_LENGTH)
@@ -93,7 +93,7 @@ def encode_seq(seq: tuple[bytes, ...]) -> bytes:
 
 
 def decode_seq(data: memoryview) -> list[memoryview]:
-    from trezor.utils import BufferReader
+    from cerberus.utils import BufferReader
 
     r = BufferReader(data)
 

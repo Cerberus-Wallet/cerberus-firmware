@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -18,10 +18,10 @@ import time
 
 import pytest
 
-from trezorlib import btc, device
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.messages import SafetyCheckLevel
-from trezorlib.tools import H_
+from cerberuslib import btc, device
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.messages import SafetyCheckLevel
+from cerberuslib.tools import H_
 
 pytestmark = [
     pytest.mark.skip_t2,

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -42,7 +42,7 @@ if TYPE_CHECKING:
 
     from typing_extensions import Concatenate, ParamSpec
 
-    from .client import TrezorClient
+    from .client import CerberusClient
     from .protobuf import MessageType
 
     MT = TypeVar("MT", bound=MessageType)
@@ -285,12 +285,12 @@ def expect(
 
 
 def session(
-    f: "Callable[Concatenate[TrezorClient, P], R]",
-) -> "Callable[Concatenate[TrezorClient, P], R]":
+    f: "Callable[Concatenate[CerberusClient, P], R]",
+) -> "Callable[Concatenate[CerberusClient, P], R]":
     # Decorator wraps a BaseClient method
     # with session activation / deactivation
     @functools.wraps(f)
-    def wrapped_f(client: "TrezorClient", *args: "P.args", **kwargs: "P.kwargs") -> "R":
+    def wrapped_f(client: "CerberusClient", *args: "P.args", **kwargs: "P.kwargs") -> "R":
         __tracebackhide__ = True  # for pytest # pylint: disable=W0612
         client.open()
         try:

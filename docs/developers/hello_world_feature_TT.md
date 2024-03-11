@@ -1,25 +1,25 @@
 # Hello world feature in TT
 
-(How to develop on Trezor)
+(How to develop on Cerberus)
 
 ## Overview
-This document shows the creation of a custom functionality (feature, application) on TT. It explains how to build both the Trezor (device, core) logic, as well as the client (computer, host, trezorlib) logic needed to speak with Trezor. For most new features, also the communication layer between Trezor and computer (protobuf) needs to be modified, to set up the messages they will exchange.
+This document shows the creation of a custom functionality (feature, application) on TT. It explains how to build both the Cerberus (device, core) logic, as well as the client (computer, host, cerberuslib) logic needed to speak with Cerberus. For most new features, also the communication layer between Cerberus and computer (protobuf) needs to be modified, to set up the messages they will exchange.
 
-Intermediate knowledge of `python` and `linux` environment is assumed here to easily follow along. For steps how to set up the Trezor dev environment, refer to other docs - [build](../core/build/index.md) or [emulator](../core/emulator/index.md). The most important part is being in the `poetry shell` of this project, so all dependencies are installed.
+Intermediate knowledge of `python` and `linux` environment is assumed here to easily follow along. For steps how to set up the Cerberus dev environment, refer to other docs - [build](../core/build/index.md) or [emulator](../core/emulator/index.md). The most important part is being in the `poetry shell` of this project, so all dependencies are installed.
 
 ## Feature description
-We will implement a simple hello-world feature where Trezor gets some information from the host, will do something with it (optionally shows something on the screen), and returns some information back to the host, where we want to display them. (Note that there are no cryptographic operations involved in this example, it focuses only on basic communication between Trezor and host.)
+We will implement a simple hello-world feature where Cerberus gets some information from the host, will do something with it (optionally shows something on the screen), and returns some information back to the host, where we want to display them. (Note that there are no cryptographic operations involved in this example, it focuses only on basic communication between Cerberus and host.)
 
 ## Implementation
 
-As already mentioned, to get something useful from Trezor, writing device logic is not enough. We need to have a specific communication channel between the computer and Trezor, and also the computer needs to know how to speak to the device to trigger wanted action.
+As already mentioned, to get something useful from Cerberus, writing device logic is not enough. We need to have a specific communication channel between the computer and Cerberus, and also the computer needs to know how to speak to the device to trigger wanted action.
 
-### TLDR: [implementation in a single commit](https://github.com/trezor/trezor-firmware/commit/e1cbb8a97018ec3ea39e759bbdc9a5311f992dc5)
+### TLDR: [implementation in a single commit](https://github.com/Cerberus-Wallet/cerberus-firmware/commit/e1cbb8a97018ec3ea39e759bbdc9a5311f992dc5)
 
 ### 1. Communication part (protobuf)
-Communication between Trezor and the computer is handled by a protocol called `protobuf`. It allows for the creation of specific messages (containing clearly defined data) that will be exchanged. More details about this can be seen in [docs](../common/communication/index.md).
+Communication between Cerberus and the computer is handled by a protocol called `protobuf`. It allows for the creation of specific messages (containing clearly defined data) that will be exchanged. More details about this can be seen in [docs](../common/communication/index.md).
 
-Trezor on its own cannot send data to the computer, it can only react to a "request" message it recognizes and send a "response" message.
+Cerberus on its own cannot send data to the computer, it can only react to a "request" message it recognizes and send a "response" message.
 Both of these messages will need to be specified, and both parts of communication will need to understand them.
 
 Protobuf messages are defined in `common/protob` directory in `.proto` files. When we are creating a brand-new feature (application), it is worth creating a new `.proto` file dedicated only for this feature. Let's call it `messages-hello.proto` and fill it with the content below.
@@ -27,11 +27,11 @@ Protobuf messages are defined in `common/protob` directory in `.proto` files. Wh
 #### **`common/protob/messages-helloworld.proto`**
 ```protobuf
 syntax = "proto2";
-package hw.trezor.messages.helloworld;
+package hw.cerberus.messages.helloworld;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
-option java_outer_classname = "TrezorMessageHelloWorld";
+option java_package = "com.satoshilabs.cerberus.lib.protobuf";
+option java_outer_classname = "CerberusMessageHelloWorld";
 
 import "messages.proto";
 
@@ -54,9 +54,9 @@ message HelloWorldRequest {
     required string text = 1;
 }
 ```
-There are some officialities at the top, the most important things are the `message` declarations. We are defining a `HelloWorldRequest`, that will be sent from the computer to Trezor, and `HelloWorldResponse`, that will be sent back from Trezor. There are many features and data-types `protobuf` supports - see [Google docs](https://developers.google.com/protocol-buffers) or other `common/protob/messages-*.proto` files.
+There are some officialities at the top, the most important things are the `message` declarations. We are defining a `HelloWorldRequest`, that will be sent from the computer to Cerberus, and `HelloWorldResponse`, that will be sent back from Cerberus. There are many features and data-types `protobuf` supports - see [Google docs](https://developers.google.com/protocol-buffers) or other `common/protob/messages-*.proto` files.
 
-After defining the details of communication messages, we will also need to give these messages their unique IDs and specify the direction in which they are sent (into Trezor or from Trezor). That is done in `common/protob/messages.proto` file. We will append a new block at the end of the file:
+After defining the details of communication messages, we will also need to give these messages their unique IDs and specify the direction in which they are sent (into Cerberus or from Cerberus). That is done in `common/protob/messages.proto` file. We will append a new block at the end of the file:
 #### **`common/protob/messages.proto`**
 ```protobuf
 // Hello world
@@ -64,7 +64,7 @@ MessageType_HelloWorldRequest = 900 [(wire_in) = true];
 MessageType_HelloWorldResponse = 901 [(wire_out) = true];
 ```
 
-After this, we are almost done with `protobuf`! The only thing left is to run `make gen` in the root directory to create all the auto-generated files. By running this, the `protobuf` definitions will be translated into `python` classes in both `core` and `python` sub-repositories, so that they can understand these messages. Files under `core/src/trezor` and `python/src/trezorlib` should be modified by this.
+After this, we are almost done with `protobuf`! The only thing left is to run `make gen` in the root directory to create all the auto-generated files. By running this, the `protobuf` definitions will be translated into `python` classes in both `core` and `python` sub-repositories, so that they can understand these messages. Files under `core/src/cerberus` and `python/src/cerberuslib` should be modified by this.
 
 #### Optional step
 This feature will be implemented only on `TT` and not the older `T1` model. If we want to be compatible with `CI`, we need to define these messages as unused for `T1`. That is done in `legacy/firmware/protob/Makefile`, where we will extend the `SKIPPED_MESSAGES` variable:
@@ -75,10 +75,10 @@ SKIPPED_MESSAGES := ... \
 	HelloWorldRequest HelloWorldResponse
 ```
 
-### 2. Trezor part (core)
-The second part deals with creating the "application code" on Trezor. Surprisingly, this part is probably the easiest one from all three parts here (as this is just hello-world example).
+### 2. Cerberus part (core)
+The second part deals with creating the "application code" on Cerberus. Surprisingly, this part is probably the easiest one from all three parts here (as this is just hello-world example).
 
-All the applications running on Trezor are situated under `core/src/apps` directory. We could create a new application, or reuse the existing one if the feature logically corresponds to it. We will choose to implement this feature under `misc` application, as it is really a miscellaneous one.
+All the applications running on Cerberus are situated under `core/src/apps` directory. We could create a new application, or reuse the existing one if the feature logically corresponds to it. We will choose to implement this feature under `misc` application, as it is really a miscellaneous one.
 
 We can therefore create a file `core/src/apps/misc/hello_world.py` and fill it with the content below:
 
@@ -86,11 +86,11 @@ We can therefore create a file `core/src/apps/misc/hello_world.py` and fill it w
 ```python
 from typing import TYPE_CHECKING
 
-from trezor.messages import HelloWorldResponse
-from trezor.ui.layouts import confirm_text
+from cerberus.messages import HelloWorldResponse
+from cerberus.ui.layouts import confirm_text
 
 if TYPE_CHECKING:
-    from trezor.messages import HelloWorldRequest
+    from cerberus.messages import HelloWorldRequest
 
 
 async def hello_world(msg: HelloWorldRequest) -> HelloWorldResponse:
@@ -133,16 +133,16 @@ Lastly, running `make gen` in the root directory makes sure the new `misc/hello_
 
 These are all the necessary code changes in `core`. For this code to work, we will still need to build it, but that will be done in Part 4. Next, we will focus on the client implementation.
 
-### 3. Host part (trezorlib)
-So far we have defined the messages going to the Trezor and back and the Trezor logic itself. What remains is the code sitting on the computer and sending these messages into Trezor and receiving them.
+### 3. Host part (cerberuslib)
+So far we have defined the messages going to the Cerberus and back and the Cerberus logic itself. What remains is the code sitting on the computer and sending these messages into Cerberus and receiving them.
 
-There are more ways how to achieve this, for example [Connect](https://github.com/trezor/connect) is a way of communicating with Trezor from a web browser. However, we will decide to implement this connection via `trezorlib`, our own python [library](https://pypi.org/project/trezor/), which lives under `python/src/trezorlib` and acts as a `CLI` (Command-line interface) to communicate with Trezor (via `trezorctl` command).
+There are more ways how to achieve this, for example [Connect](https://github.com/Cerberus-Wallet/connect) is a way of communicating with Cerberus from a web browser. However, we will decide to implement this connection via `cerberuslib`, our own python [library](https://pypi.org/project/cerberus/), which lives under `python/src/cerberuslib` and acts as a `CLI` (Command-line interface) to communicate with Cerberus (via `cerberusctl` command).
 
-This implementation will be split into two parts, as we will create the Trezor-communication logic in one file and the `CLI` logic taking arguments and calling this code in the second file. (It would be possible to define everything at once in the `CLI` file, but we want the possibility to call the Trezor-speaking function separately, for example when testing.)
+This implementation will be split into two parts, as we will create the Cerberus-communication logic in one file and the `CLI` logic taking arguments and calling this code in the second file. (It would be possible to define everything at once in the `CLI` file, but we want the possibility to call the Cerberus-speaking function separately, for example when testing.)
 
-We will create the `python/src/trezorlib/hello_world.py` file and fill it with code to speak with Trezor:
+We will create the `python/src/cerberuslib/hello_world.py` file and fill it with code to speak with Cerberus:
 
-#### **`python/src/trezorlib/hello_world.py`**
+#### **`python/src/cerberuslib/hello_world.py`**
 ```python
 from typing import TYPE_CHECKING, Optional
 
@@ -150,13 +150,13 @@ from . import messages
 from .tools import expect
 
 if TYPE_CHECKING:
-    from .client import TrezorClient
+    from .client import CerberusClient
     from .protobuf import MessageType
 
 
 @expect(messages.HelloWorldResponse, field="text", ret_type=str)
 def say_hello(
-    client: "TrezorClient",
+    client: "CerberusClient",
     name: str,
     amount: Optional[int],
     show_display: bool,
@@ -170,11 +170,11 @@ def say_hello(
     )
 ```
 
-Code above is sending `HelloWorldRequest` into Trezor and is expecting to get `HelloWorldResponse` back (from which it extracts the `text` string as a response).
+Code above is sending `HelloWorldRequest` into Cerberus and is expecting to get `HelloWorldResponse` back (from which it extracts the `text` string as a response).
 
-This function is then called from the `CLI` function, which we will define in `python/src/trezorlib/cli/hello_world.py`.
+This function is then called from the `CLI` function, which we will define in `python/src/cerberuslib/cli/hello_world.py`.
 
-#### **`python/src/trezorlib/cli/hello_world.py`**
+#### **`python/src/cerberuslib/cli/hello_world.py`**
 ```python
 from typing import TYPE_CHECKING, Optional
 
@@ -184,7 +184,7 @@ from .. import hello_world
 from . import with_client
 
 if TYPE_CHECKING:
-    from ..client import TrezorClient
+    from ..client import CerberusClient
 
 
 @click.group(name="helloworld")
@@ -200,7 +200,7 @@ def cli() -> None:
 )
 @with_client
 def say_hello(
-    client: "TrezorClient", name: str, amount: Optional[int], show_display: bool
+    client: "CerberusClient", name: str, amount: Optional[int], show_display: bool
 ) -> str:
     """Simply say hello to the supplied name."""
     return hello_world.say_hello(client, name, amount, show_display=show_display)
@@ -208,23 +208,23 @@ def say_hello(
 
 Code above is importing the `hello_world` module defined before and is calling its `say_hello()` function with arguments received from the user. We are using [click](https://click.palletsprojects.com/en/8.0.x/) library to create the `CLI` - first the `helloworld` group and then the `say_hello` command (which is invoked by `say-hello`).
 
-Example of calling the `say_hello` function via command line is `trezorctl helloworld say-hello George -a 3 -d`, which utilizes all the defined arguments and options (only the `name` argument is required here).
+Example of calling the `say_hello` function via command line is `cerberusctl helloworld say-hello George -a 3 -d`, which utilizes all the defined arguments and options (only the `name` argument is required here).
 
-However, the command above will not work yet, as the `helloworld` group is not registered in the main `CLI` file - `python/src/trezorlib/cli/trezorctl.py`. It will therefore need some small modifications - importing the new module and registering it:
+However, the command above will not work yet, as the `helloworld` group is not registered in the main `CLI` file - `python/src/cerberuslib/cli/cerberusctl.py`. It will therefore need some small modifications - importing the new module and registering it:
 
-#### **`python/src/trezorlib/cli/trezorctl.py`**
+#### **`python/src/cerberuslib/cli/cerberusctl.py`**
 ```python
 from . import helloworld
 ...
 cli.add_command(hello_world.cli)
 ```
 
-If we are currently in `poetry shell`, the `trezorctl` command is being evaluated directly from the source code in `python/src/trezorlib`. That means it should be able to understand our example command `trezorctl helloworld say-hello George -a 3 -d`.
+If we are currently in `poetry shell`, the `cerberusctl` command is being evaluated directly from the source code in `python/src/cerberuslib`. That means it should be able to understand our example command `cerberusctl helloworld say-hello George -a 3 -d`.
 
-The example command on its own will however not work without listening Trezor which understands the new messages. In the next and final part, we will build and spawn a Trezor on our computer with all the changes made in Part 1 and 2.
+The example command on its own will however not work without listening Cerberus which understands the new messages. In the next and final part, we will build and spawn a Cerberus on our computer with all the changes made in Part 1 and 2.
 
 ### 4. Putting it together
-Looks like all the code changes have been done, the final part is to build a Trezor image - `emulator` - so that we can actually run and test all the logic we created.
+Looks like all the code changes have been done, the final part is to build a Cerberus image - `emulator` - so that we can actually run and test all the logic we created.
 
 Detailed information about the emulator can be found in its [docs](../core/emulator/index.md), but we only need two most important commands, that will build and spawn the emulator:
 
@@ -237,17 +237,17 @@ make build_unix
 After this, the emulator screen should be visible. Trying our example command should give a nice confirmation screen, and when confirming it with the green button, we should see the output in our terminal.
 
 ```sh
-$ trezorctl helloworld say-hello George -a 3 -d
-Please confirm action on your Trezor device.
+$ cerberusctl helloworld say-hello George -a 3 -d
+Please confirm action on your Cerberus device.
 Hello George!
 Hello George!
 Hello George!
 ```
 
-For building the new feature into a physical Trezor, refer to [embedded](../core/build/embedded.md).
+For building the new feature into a physical Cerberus, refer to [embedded](../core/build/embedded.md).
 
 ## Testing
-It is always good to include some tests exercising the created functionality, so when we break it later, it will be noticed. Trezor model T supports both `unit tests` and `integration tests` (which are called `device tests`).
+It is always good to include some tests exercising the created functionality, so when we break it later, it will be noticed. Cerberus model T supports both `unit tests` and `integration tests` (which are called `device tests`).
 
 ### Unit tests
 [docs](../core/tests/index.md)
@@ -262,7 +262,7 @@ To call a specific test (the one we are about to create), run `make test TESTOPT
 ```python
 from common import *
 
-from trezor.messages import HelloWorldRequest
+from cerberus.messages import HelloWorldRequest
 from apps.misc.hello_world import _get_text_from_msg
 
 
@@ -283,11 +283,11 @@ Current code checks one usage of `_get_text_from_msg`, the only deterministic he
 ### Device tests
 [docs](../tests/device-tests.md)
 
-Device tests (our name for integration tests) should test the whole workflow from sending the first request into Trezor to Trezor sending the final response.
+Device tests (our name for integration tests) should test the whole workflow from sending the first request into Cerberus to Cerberus sending the final response.
 
-`trezorlib` is used extensively in these tests as a way to request something from Trezor and then assert the expected response (it actually uses the code we created in Part 3).
+`cerberuslib` is used extensively in these tests as a way to request something from Cerberus and then assert the expected response (it actually uses the code we created in Part 3).
 
-They are closely connected with [ui tests](../tests/ui-tests.md), which assert Trezor's screens have a known and expected content during the device tests.
+They are closely connected with [ui tests](../tests/ui-tests.md), which assert Cerberus's screens have a known and expected content during the device tests.
 
 Device tests are stored in `tests/device_tests` and they can be run by `make test_emu` in `core`. Running the specific file we will create can be done by `make test_emu TESTOPTS="-k test_hello_world.py"`.
 
@@ -298,8 +298,8 @@ from typing import Optional
 
 import pytest
 
-from trezorlib import hello_world
-from trezorlib.debuglink import TrezorClientDebugLink as Client
+from cerberuslib import hello_world
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
 
 VECTORS = (  # name, amount, show_display
     ("George", 2, True),
@@ -331,12 +331,12 @@ We are also using the `@pytest.mark.parametrize` decorator, which is an efficien
 
 We are not asserting the exact result of the greeting (that is done by unit tests), we just check it has the expected structure - but we can check really anything here.
 
-Note the usage of `trezorlib.hello_world.say_hello`, which we defined earlier, so we see how it can be useful for testing purposes.
+Note the usage of `cerberuslib.hello_world.say_hello`, which we defined earlier, so we see how it can be useful for testing purposes.
 
 #### Optional step
 If we want to be fully compatible with `CI`, we need to create expected `UI-test` results. The most straightforward way to do it is to run `make test_emu_ui_record` in `core` directory.
 
 ## Conclusion
-All changes in one commit can be seen [here](https://github.com/trezor/trezor-firmware/commit/e1cbb8a97018ec3ea39e759bbdc9a5311f992dc5).
+All changes in one commit can be seen [here](https://github.com/Cerberus-Wallet/cerberus-firmware/commit/e1cbb8a97018ec3ea39e759bbdc9a5311f992dc5).
 
-Ideas for potentially useful Trezor features are welcome. Feel free to submit issues and open PRs, even if incomplete.
+Ideas for potentially useful Cerberus features are welcome. Feel free to submit issues and open PRs, even if incomplete.

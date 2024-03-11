@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# script used to generate /embed/extmod/modtrezorui/font_*_*.c
+# script used to generate /embed/extmod/modcerberusui/font_*_*.c
 
 from __future__ import annotations
 
@@ -395,8 +395,8 @@ class FaceProcessor:
     def _write_h_file(self) -> None:
         with open(OUT_DIR / self._h_file_name, "wt") as f:
             f.write("#include <stdint.h>\n\n")
-            f.write("#if TREZOR_FONT_BPP != %d\n" % self.bpp)
-            f.write("#error Wrong TREZOR_FONT_BPP (expected %d)\n" % self.bpp)
+            f.write("#if CERBERUS_FONT_BPP != %d\n" % self.bpp)
+            f.write("#error Wrong CERBERUS_FONT_BPP (expected %d)\n" % self.bpp)
             f.write("#endif\n")
 
             f.write("#define Font_%s_HEIGHT %d\n" % (self._name_style_size, self.size))

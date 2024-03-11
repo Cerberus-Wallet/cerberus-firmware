@@ -25,20 +25,20 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum_definitions.EthereumNetworkInfo)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum_definitions.EthereumNetworkInfo)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumNetworkInfo {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_definitions.EthereumNetworkInfo.chain_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_definitions.EthereumNetworkInfo.chain_id)
     pub chain_id: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_definitions.EthereumNetworkInfo.symbol)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_definitions.EthereumNetworkInfo.symbol)
     pub symbol: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_definitions.EthereumNetworkInfo.slip44)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_definitions.EthereumNetworkInfo.slip44)
     pub slip44: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_definitions.EthereumNetworkInfo.name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_definitions.EthereumNetworkInfo.name)
     pub name: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum_definitions.EthereumNetworkInfo.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum_definitions.EthereumNetworkInfo.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -323,22 +323,22 @@ impl ::protobuf::reflect::ProtobufValue for EthereumNetworkInfo {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum_definitions.EthereumTokenInfo)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum_definitions.EthereumTokenInfo)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumTokenInfo {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_definitions.EthereumTokenInfo.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_definitions.EthereumTokenInfo.address)
     pub address: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_definitions.EthereumTokenInfo.chain_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_definitions.EthereumTokenInfo.chain_id)
     pub chain_id: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_definitions.EthereumTokenInfo.symbol)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_definitions.EthereumTokenInfo.symbol)
     pub symbol: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_definitions.EthereumTokenInfo.decimals)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_definitions.EthereumTokenInfo.decimals)
     pub decimals: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_definitions.EthereumTokenInfo.name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_definitions.EthereumTokenInfo.name)
     pub name: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum_definitions.EthereumTokenInfo.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum_definitions.EthereumTokenInfo.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -678,16 +678,16 @@ impl ::protobuf::reflect::ProtobufValue for EthereumTokenInfo {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum_definitions.EthereumDefinitions)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum_definitions.EthereumDefinitions)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumDefinitions {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_definitions.EthereumDefinitions.encoded_network)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_definitions.EthereumDefinitions.encoded_network)
     pub encoded_network: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_definitions.EthereumDefinitions.encoded_token)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_definitions.EthereumDefinitions.encoded_token)
     pub encoded_token: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum_definitions.EthereumDefinitions.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum_definitions.EthereumDefinitions.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -891,11 +891,11 @@ impl ::protobuf::reflect::ProtobufValue for EthereumDefinitions {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.ethereum_definitions.EthereumDefinitionType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.ethereum_definitions.EthereumDefinitionType)
 pub enum EthereumDefinitionType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.ethereum_definitions.EthereumDefinitionType.NETWORK)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.ethereum_definitions.EthereumDefinitionType.NETWORK)
     NETWORK = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.ethereum_definitions.EthereumDefinitionType.TOKEN)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.ethereum_definitions.EthereumDefinitionType.TOKEN)
     TOKEN = 1,
 }
 
@@ -953,7 +953,7 @@ impl EthereumDefinitionType {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n#messages-ethereum-definitions.proto\x12'hw.trezor.messages.ethereum_d\
+    \n#messages-ethereum-definitions.proto\x12'hw.cerberus.messages.ethereum_d\
     efinitions\"t\n\x13EthereumNetworkInfo\x12\x19\n\x08chain_id\x18\x01\x20\
     \x02(\x04R\x07chainId\x12\x16\n\x06symbol\x18\x02\x20\x02(\tR\x06symbol\
     \x12\x16\n\x06slip44\x18\x03\x20\x02(\rR\x06slip44\x12\x12\n\x04name\x18\
@@ -965,7 +965,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     coded_network\x18\x01\x20\x01(\x0cR\x0eencodedNetwork\x12#\n\rencoded_to\
     ken\x18\x02\x20\x01(\x0cR\x0cencodedToken*0\n\x16EthereumDefinitionType\
     \x12\x0b\n\x07NETWORK\x10\0\x12\t\n\x05TOKEN\x10\x01BG\n#com.satoshilabs\
-    .trezor.lib.protobufB\x20TrezorMessageEthereumDefinitions\
+    .cerberus.lib.protobufB\x20CerberusMessageEthereumDefinitions\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

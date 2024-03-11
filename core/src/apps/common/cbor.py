@@ -5,12 +5,12 @@ Minimalistic CBOR implementation, supports only what we need in cardano.
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor import log
+from cerberus import log
 
 if TYPE_CHECKING:
     from typing import Any, Generic, Iterator, TypeVar
 
-    from trezor.utils import BufferReader
+    from cerberus.utils import BufferReader
 
     K = TypeVar("K")
     V = TypeVar("V")
@@ -276,7 +276,7 @@ def encode_streamed(value: Value) -> Iterator[bytes]:
 
 
 def decode(cbor: bytes, offset: int = 0) -> Value:
-    from trezor.utils import BufferReader
+    from cerberus.utils import BufferReader
 
     r = BufferReader(cbor)
     r.seek(offset)

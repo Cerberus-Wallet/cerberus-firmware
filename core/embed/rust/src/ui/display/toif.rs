@@ -1,6 +1,6 @@
 use crate::{
     error::Error,
-    trezorhal::uzlib::{UzlibContext, UZLIB_WINDOW_SIZE},
+    cerberushal::uzlib::{UzlibContext, UZLIB_WINDOW_SIZE},
     ui::{
         component::image::Image,
         constant,
@@ -11,7 +11,7 @@ use crate::{
 
 #[cfg(feature = "dma2d")]
 use crate::{
-    trezorhal::{
+    cerberushal::{
         buffers::BufferLine16bpp,
         dma2d::{dma2d_setup_16bpp, dma2d_start, dma2d_wait_for_transfer},
     },
@@ -22,7 +22,7 @@ use crate::{
 use crate::ui::display::{get_color_table, pixeldata};
 
 #[cfg(feature = "framebuffer")]
-use crate::trezorhal::{buffers::BufferLine4bpp, dma2d::dma2d_setup_4bpp};
+use crate::cerberushal::{buffers::BufferLine4bpp, dma2d::dma2d_setup_4bpp};
 #[cfg(feature = "framebuffer")]
 use core::cmp::max;
 
@@ -205,7 +205,7 @@ pub fn image(image: &Image, center: Point) {
 }
 
 /// Holding toif data and allowing it to draw itself.
-/// See https://docs.trezor.io/trezor-firmware/misc/toif.html for data format.
+/// See https://docs.cerberus.uraanai.com/cerberus-firmware/misc/toif.html for data format.
 #[derive(PartialEq, Eq, Clone, Copy)]
 pub struct Toif<'i> {
     data: &'i [u8],

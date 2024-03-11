@@ -3,7 +3,7 @@ from common import *  # isort:skip
 from trezor import io, utils
 
 
-class TestTrezorIoSdcard(unittest.TestCase):
+class TestCerberusIoSdcard(unittest.TestCase):
     def test_start(self):
         self.assertTrue(io.sdcard.is_present())
 

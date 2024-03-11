@@ -3,7 +3,7 @@ use heapless::String;
 
 use crate::{
     time::Duration,
-    trezorhal::random,
+    cerberushal::random,
     ui::{
         component::{
             base::ComponentExt, text::TextStyle, Child, Component, Event, EventCtx, Label, Maybe,

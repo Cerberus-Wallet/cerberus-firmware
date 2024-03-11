@@ -2,8 +2,8 @@ from micropython import const
 from typing import TYPE_CHECKING
 
 import storage.device
-from trezor import io, utils
-from trezor.sdcard import with_filesystem
+from cerberus import io, utils
+from cerberus.sdcard import with_filesystem
 
 if TYPE_CHECKING:
     from typing import Callable, TypeVar
@@ -27,14 +27,14 @@ def is_enabled() -> bool:
 
 
 def compute_auth_tag(salt: bytes, auth_key: bytes) -> bytes:
-    from trezor.crypto import hmac
+    from cerberus.crypto import hmac
 
     digest = hmac(hmac.SHA256, auth_key, salt).digest()
     return digest[:_SD_SALT_AUTH_TAG_LEN_BYTES]
 
 
 def _get_device_dir() -> str:
-    return f"/trezor/device_{storage.device.get_device_id().lower()}"
+    return f"/cerberus/device_{storage.device.get_device_id().lower()}"
 
 
 def _get_salt_path(new: bool = False) -> str:
@@ -44,7 +44,7 @@ def _get_salt_path(new: bool = False) -> str:
 
 @with_filesystem
 def _load_salt(auth_key: bytes, path: str) -> bytearray | None:
-    from trezor.utils import consteq
+    from cerberus.utils import consteq
 
     # Load the salt file if it exists.
     try:
@@ -100,7 +100,7 @@ def load_sd_salt() -> bytearray | None:
 @with_filesystem
 def set_sd_salt(salt: bytes, salt_tag: bytes, stage: bool = False) -> None:
     salt_path = _get_salt_path(stage)
-    fatfs.mkdir("/trezor", True)
+    fatfs.mkdir("/cerberus", True)
     fatfs.mkdir(_get_device_dir(), True)
     with fatfs.open(salt_path, "w") as f:
         f.write(salt)

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -62,7 +62,7 @@ WIPE_CODE_CONFIRM = PinMatrixRequestType.WipeCodeSecond
 CAN_HANDLE_HIDDEN_INPUT = sys.stdin and sys.stdin.isatty()
 
 
-class TrezorClientUI(Protocol):
+class CerberusClientUI(Protocol):
     def button_request(self, br: messages.ButtonRequest) -> None:
         ...
 
@@ -96,11 +96,11 @@ class ClickUI:
 
     def _prompt_for_button(self, br: messages.ButtonRequest) -> str:
         if br.code == messages.ButtonRequestType.PassphraseEntry:
-            return "Please enter passphrase on your Trezor device."
+            return "Please enter passphrase on your Cerberus device."
         if br.code == messages.ButtonRequestType.PinEntry:
-            return "Please enter PIN on your Trezor device."
+            return "Please enter PIN on your Cerberus device."
 
-        return "Please confirm action on your Trezor device."
+        return "Please confirm action on your Cerberus device."
 
     def button_request(self, br: messages.ButtonRequest) -> None:
         prompt = self._prompt_for_button(br)
@@ -189,7 +189,7 @@ class ScriptUI:
     Lot of `ClickUI` logic is outsourced to the client application, which
     is responsible for supplying the PIN and passphrase.
 
-    Reference client implementation can be found under `tools/trezorctl_script_client.py`.
+    Reference client implementation can be found under `tools/cerberusctl_script_client.py`.
     """
 
     @staticmethod

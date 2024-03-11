@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -21,7 +21,7 @@ from . import definitions, exceptions, messages
 from .tools import expect, prepare_message_bytes, session, unharden
 
 if TYPE_CHECKING:
-    from .client import TrezorClient
+    from .client import CerberusClient
     from .protobuf import MessageType
     from .tools import Address
 
@@ -163,7 +163,7 @@ def network_from_address_n(
 
 @expect(messages.EthereumAddress, field="address", ret_type=str)
 def get_address(
-    client: "TrezorClient",
+    client: "CerberusClient",
     n: "Address",
     show_display: bool = False,
     encoded_network: Optional[bytes] = None,
@@ -181,7 +181,7 @@ def get_address(
 
 @expect(messages.EthereumPublicKey)
 def get_public_node(
-    client: "TrezorClient", n: "Address", show_display: bool = False
+    client: "CerberusClient", n: "Address", show_display: bool = False
 ) -> "MessageType":
     return client.call(
         messages.EthereumGetPublicKey(address_n=n, show_display=show_display)
@@ -190,7 +190,7 @@ def get_public_node(
 
 @session
 def sign_tx(
-    client: "TrezorClient",
+    client: "CerberusClient",
     n: "Address",
     nonce: int,
     gas_price: int,
@@ -204,7 +204,7 @@ def sign_tx(
     chunkify: bool = False,
 ) -> Tuple[int, bytes, bytes]:
     if chain_id is None:
-        raise exceptions.TrezorException("Chain ID cannot be undefined")
+        raise exceptions.CerberusException("Chain ID cannot be undefined")
 
     msg = messages.EthereumSignTx(
         address_n=n,
@@ -239,7 +239,7 @@ def sign_tx(
     assert response.signature_r is not None
     assert response.signature_s is not None
 
-    # https://github.com/trezor/trezor-core/pull/311
+    # https://github.com/Cerberus-Wallet/cerberus-core/pull/311
     # only signature bit returned. recalculate signature_v
     if response.signature_v <= 1:
         response.signature_v += 2 * chain_id + 35
@@ -249,7 +249,7 @@ def sign_tx(
 
 @session
 def sign_tx_eip1559(
-    client: "TrezorClient",
+    client: "CerberusClient",
     n: "Address",
     *,
     nonce: int,
@@ -299,7 +299,7 @@ def sign_tx_eip1559(
 
 @expect(messages.EthereumMessageSignature)
 def sign_message(
-    client: "TrezorClient",
+    client: "CerberusClient",
     n: "Address",
     message: AnyStr,
     encoded_network: Optional[bytes] = None,
@@ -317,7 +317,7 @@ def sign_message(
 
 @expect(messages.EthereumTypedDataSignature)
 def sign_typed_data(
-    client: "TrezorClient",
+    client: "CerberusClient",
     n: "Address",
     data: Dict[str, Any],
     *,
@@ -363,7 +363,7 @@ def sign_typed_data(
             member_data = data["message"]
         else:
             client.cancel()
-            raise exceptions.TrezorException("Root index can only be 0 or 1")
+            raise exceptions.CerberusException("Root index can only be 0 or 1")
 
         # It can be asking for a nested structure (the member path being [X, Y, Z, ...])
         # TODO: what to do when the value is missing (for example in recursive types)?
@@ -391,7 +391,7 @@ def sign_typed_data(
 
 
 def verify_message(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address: str,
     signature: bytes,
     message: AnyStr,
@@ -406,14 +406,14 @@ def verify_message(
                 chunkify=chunkify,
             )
         )
-    except exceptions.TrezorFailure:
+    except exceptions.CerberusFailure:
         return False
     return isinstance(resp, messages.Success)
 
 
 @expect(messages.EthereumTypedDataSignature)
 def sign_typed_data_hash(
-    client: "TrezorClient",
+    client: "CerberusClient",
     n: "Address",
     domain_hash: bytes,
     message_hash: Optional[bytes],

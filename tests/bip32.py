@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -25,7 +25,7 @@ from ecdsa.curves import SECP256k1
 from ecdsa.ellipticcurve import INFINITY, Point
 from ecdsa.util import number_to_string, string_to_number
 
-from trezorlib import messages, tools
+from cerberuslib import messages, tools
 
 
 def point_to_pubkey(point: Point) -> bytes:

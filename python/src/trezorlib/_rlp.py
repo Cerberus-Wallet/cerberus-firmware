@@ -1,4 +1,4 @@
-# inspired by core/src/trezor/crypto/rlp.py
+# inspired by core/src/cerberus/crypto/rlp.py
 
 import typing as t
 from collections.abc import Sequence

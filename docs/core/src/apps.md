@@ -14,7 +14,7 @@ For a user facing application you would assign the message to the module in `_fi
 # ...
 
 def _find_message_handler_module(msg_type: int) -> str:
-    from trezor.enums import MessageType
+    from cerberus.enums import MessageType
 
     # ...
 

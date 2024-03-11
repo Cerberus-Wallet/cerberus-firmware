@@ -1,5 +1,5 @@
-python-trezor is free software, created in 2012 and maintained by SatoshiLabs
-as part of the Trezor project.
+python-cerberus is free software, created in 2012 and maintained by SatoshiLabs
+as part of the Cerberus project.
 
 Over the years, many people have contributed to the project. Here is an incomplete
 list of credits:
@@ -16,6 +16,6 @@ mruddy <https://github.com/mruddy>
 Pavol Rusnak <stick@satoshilabs.com>
 Peter van Mourik <https://github.com/tyrion70>
 Roman Zeyde <https://github.com/romanz>
-Saleem Rashid <trezor@saleemrashid.com>
+Saleem Rashid <cerberus@saleemrashid.com>
 Tomáš Sušánka <tomas.susanka@satoshilabs.com>
 ZuluCrypto <https://github.com/zulucrypto>

@@ -1,6 +1,6 @@
 from micropython import const
 
-from trezor import config
+from cerberus import config
 
 # Namespaces:
 # fmt: off

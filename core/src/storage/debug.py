@@ -1,4 +1,4 @@
-from trezorutils import halt
+from cerberusutils import halt
 
 if not __debug__:
     halt("Debugging is disabled")

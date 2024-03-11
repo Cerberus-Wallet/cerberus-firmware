@@ -38,7 +38,7 @@ by the same code. `a` is an account number, `y` is change address indicator (mus
 [slip-44 id]: https://github.com/satoshilabs/slips/blob/master/slip-0044.md
 
 Paths that do not conform to this table are allowed, but user needs to confirm a warning
-on Trezor.
+on Cerberus.
 
 ### Public nodes
 
@@ -48,7 +48,7 @@ hardened prefix.
 
 I.e., for Bitcoin's path `44'/c'/a'/y/i`, the allowed public node path is `44'/c'/a'`.
 
-Trezor does not check if the path is followed by other non-hardened items (anyone can
+Cerberus does not check if the path is followed by other non-hardened items (anyone can
 derive those anyway). This is beneficial for Ethereum and its MEW compatibility, which
 sends `44'/60'/0'/0` for getPublicKey.
 
@@ -83,7 +83,7 @@ sends `44'/60'/0'/0` for getPublicKey.
 5. <a name="NEM"></a> NEM's path should be `44'/43'/a'` as per SEP-0005, but we allow
    `44'/43'/a'/0'/0'` as well for compatibility reasons with NanoWallet.
 
-6. <a name="Tezos"></a> Tezos supports multiple curves, but Trezor currently supports
+6. <a name="Tezos"></a> Tezos supports multiple curves, but Cerberus currently supports
    ed25519 only.
 
 Sign message paths are validated in the same way as the sign tx paths are.

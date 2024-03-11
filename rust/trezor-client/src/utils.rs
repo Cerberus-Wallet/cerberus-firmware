@@ -58,7 +58,7 @@ pub fn parse_recoverable_signature(
     RecoverableSignature::from_compact(&sig[1..], rec_id)
 }
 
-/// Convert a bitcoin network constant to the Trezor-compatible coin_name string.
+/// Convert a bitcoin network constant to the Cerberus-compatible coin_name string.
 pub fn coin_name(network: Network) -> Result<String> {
     match network {
         Network::Bitcoin => Ok("Bitcoin".to_owned()),

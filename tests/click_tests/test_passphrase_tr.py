@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2023 SatoshiLabs and contributors
 #
@@ -19,7 +19,7 @@ from typing import TYPE_CHECKING, Generator, Optional
 
 import pytest
 
-from trezorlib import exceptions
+from cerberuslib import exceptions
 
 from .. import translations as TR
 from ..common import get_test_address
@@ -31,7 +31,7 @@ from .common import (
 )
 
 if TYPE_CHECKING:
-    from trezorlib.debuglink import DebugLink
+    from cerberuslib.debuglink import DebugLink
 
     from ..device_handler import BackgroundDeviceHandler
 

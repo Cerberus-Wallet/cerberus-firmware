@@ -1,4 +1,4 @@
-use super::{handle_interaction, Trezor};
+use super::{handle_interaction, Cerberus};
 use crate::{
     error::Result,
     protos::{self, ethereum_sign_tx_eip1559::EthereumAccessList, EthereumTxRequest},
@@ -25,7 +25,7 @@ pub struct Signature {
     pub v: u64,
 }
 
-impl Trezor {
+impl Cerberus {
     // ETHEREUM
     pub fn ethereum_get_address(&mut self, path: Vec<u32>) -> Result<String> {
         let mut req = protos::EthereumGetAddress::new();

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -33,7 +33,7 @@ if TYPE_CHECKING:
     from eth_typing import ChecksumAddress  # noqa: I900
     from web3.types import Wei
 
-    from ..client import TrezorClient
+    from ..client import CerberusClient
 
 PATH_HELP = "BIP-32 path, e.g. m/44h/60h/0h/0/0"
 
@@ -69,7 +69,7 @@ def _print_eth_dependencies_and_die() -> NoReturn:
     click.echo("Ethereum requirements not installed.")
     click.echo("Please run:")
     click.echo()
-    click.echo("  pip install trezor[ethereum]")
+    click.echo("  pip install cerberus[ethereum]")
     sys.exit(1)
 
 
@@ -212,7 +212,7 @@ DEFINITIONS_SOURCE = CliSource()
     "-a",
     "--auto-definitions",
     is_flag=True,
-    help="Automatically download required definitions from trezor.io",
+    help="Automatically download required definitions from cerberus.io",
 )
 @click.option("--network", help="Network definition blob.")
 @click.option("--token", help="Token definition blob.")
@@ -270,7 +270,7 @@ def cli(
 @click.option("-C", "--chunkify", is_flag=True)
 @with_client
 def get_address(
-    client: "TrezorClient", address: str, show_display: bool, chunkify: bool
+    client: "CerberusClient", address: str, show_display: bool, chunkify: bool
 ) -> str:
     """Get Ethereum address in hex encoding."""
     address_n = tools.parse_path(address)
@@ -282,7 +282,7 @@ def get_address(
 @click.option("-n", "--address", required=True, help=PATH_HELP)
 @click.option("-d", "--show-display", is_flag=True)
 @with_client
-def get_public_node(client: "TrezorClient", address: str, show_display: bool) -> dict:
+def get_public_node(client: "CerberusClient", address: str, show_display: bool) -> dict:
     """Get Ethereum public node of given path."""
     address_n = tools.parse_path(address)
     result = ethereum.get_public_node(client, address_n, show_display=show_display)
@@ -346,7 +346,7 @@ def get_public_node(client: "TrezorClient", address: str, show_display: bool) ->
 @click.argument("amount", callback=_amount_to_int)
 @with_client
 def sign_tx(
-    client: "TrezorClient",
+    client: "CerberusClient",
     chain_id: int,
     address: str,
     amount: int,
@@ -528,7 +528,7 @@ def sign_tx(
 @click.argument("message")
 @with_client
 def sign_message(
-    client: "TrezorClient", address: str, message: str, chunkify: bool
+    client: "CerberusClient", address: str, message: str, chunkify: bool
 ) -> Dict[str, str]:
     """Sign message with Ethereum address."""
     address_n = tools.parse_path(address)
@@ -552,7 +552,7 @@ def sign_message(
 @click.argument("file", type=click.File("r"))
 @with_client
 def sign_typed_data(
-    client: "TrezorClient", address: str, metamask_v4_compat: bool, file: TextIO
+    client: "CerberusClient", address: str, metamask_v4_compat: bool, file: TextIO
 ) -> Dict[str, str]:
     """Sign typed data (EIP-712) with Ethereum address.
 
@@ -585,7 +585,7 @@ def sign_typed_data(
 @click.argument("message")
 @with_client
 def verify_message(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address: str,
     signature: str,
     message: str,
@@ -604,7 +604,7 @@ def verify_message(
 @click.argument("message_hash_hex")
 @with_client
 def sign_typed_data_hash(
-    client: "TrezorClient", address: str, domain_hash_hex: str, message_hash_hex: str
+    client: "CerberusClient", address: str, domain_hash_hex: str, message_hash_hex: str
 ) -> Dict[str, str]:
     """
     Sign hash of typed data (EIP-712) with Ethereum address.

@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.trezor.messages.ethereum_eip712;
+package hw.cerberus.messages.ethereum_eip712;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
-option java_outer_classname = "TrezorMessageEthereumEIP712";
+option java_package = "com.satoshilabs.cerberus.lib.protobuf";
+option java_outer_classname = "CerberusMessageEthereumEIP712";
 
 import "messages-ethereum-definitions.proto";
 
@@ -88,5 +88,5 @@ message EthereumTypedDataValueAck {
     // * atomic types: value of the member.
     //   Length must match the `size` of the corresponding field type, unless the size is dynamic.
     // * array types: number of elements, encoded as uint16.
-    // * struct types: undefined, Trezor will not query a struct field.
+    // * struct types: undefined, Cerberus will not query a struct field.
 }

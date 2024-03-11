@@ -27,15 +27,15 @@ def _categories_func(row: DataRow) -> str | None:
     CATEGORIES: dict[str, Callable[[DataRow], bool]] = {
         "UI": lambda row: (
             row.source_definition.startswith(
-                ("src/trezor/ui/", "embed/extmod/modtrezorui/")
+                ("src/cerberus/ui/", "embed/extmod/modcerberusui/")
             )
         ),
         "Crypto": lambda row: (
             row.source_definition.startswith(
                 (
-                    "vendor/trezor-crypto/",
-                    "src/trezor/crypto/",
-                    "embed/extmod/modtrezorcrypto/",
+                    "vendor/cerberus-crypto/",
+                    "src/cerberus/crypto/",
+                    "embed/extmod/modcerberuscrypto/",
                 )
             )
         ),
@@ -43,7 +43,7 @@ def _categories_func(row: DataRow) -> str | None:
             row.source_definition.startswith("vendor/secp256k1-zkp/")
         ),
         "Storage": lambda row: (
-            row.source_definition.startswith(("src/storage/", "vendor/trezor-storage/"))
+            row.source_definition.startswith(("src/storage/", "vendor/cerberus-storage/"))
         ),
         "Micropython": lambda row: row.source_definition.startswith(
             "vendor/micropython/"
@@ -84,22 +84,22 @@ def _categories_func(row: DataRow) -> str | None:
         "Embed firmware": lambda row: row.source_definition.startswith(
             "embed/firmware/"
         ),
-        "Trezorhal": lambda row: row.source_definition.startswith("embed/trezorhal/"),
-        "Trezorio": lambda row: row.source_definition.startswith(
-            "embed/extmod/modtrezorio/"
+        "Cerberushal": lambda row: row.source_definition.startswith("embed/cerberushal/"),
+        "Cerberusio": lambda row: row.source_definition.startswith(
+            "embed/extmod/modcerberusio/"
         ),
-        "Trezorconfig": lambda row: row.source_definition.startswith(
-            "embed/extmod/modtrezorconfig/"
+        "Cerberusconfig": lambda row: row.source_definition.startswith(
+            "embed/extmod/modcerberusconfig/"
         ),
-        "Trezorutils": lambda row: row.source_definition.startswith(
-            "embed/extmod/modtrezorutils/"
+        "Cerberusutils": lambda row: row.source_definition.startswith(
+            "embed/extmod/modcerberusutils/"
         ),
         "Embed extmod": lambda row: row.source_definition.startswith("embed/extmod/"),
         "Embed lib": lambda row: row.source_definition.startswith("embed/lib/"),
         "Rust": lambda row: (
             row.language == "Rust"
             or row.source_definition.startswith(("embed/rust/", "/cargo/registry"))
-            or row.symbol_name.startswith(("trezor_tjpgdec", "qrcodegen"))
+            or row.symbol_name.startswith(("cerberus_tjpgdec", "qrcodegen"))
             or ".cargo/registry" in row.symbol_name
         ),
         "Frozen modules": lambda row: row.symbol_name.startswith("frozen_module"),

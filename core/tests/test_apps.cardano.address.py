@@ -189,7 +189,7 @@ class TestCardanoAddress(unittest.TestCase):
             "extra extend academic arcade born dive legal hush gross briefing "
             "talent drug much home firefly toxic analysis idea umbrella slice",
         ]
-        passphrase = b"TREZOR"
+        passphrase = b"CERBERUS"
         identifier, exponent, ems = slip39.recover_ems(mnemonics)
         master_secret = slip39.decrypt(ems, passphrase, exponent, identifier)
 
@@ -263,7 +263,7 @@ class TestCardanoAddress(unittest.TestCase):
             "profile numb paid headset airport daisy flame express scene usual welcome "
             "quick silent downtown oral critical step remove says rhythm venture aunt",
         ]
-        passphrase = b"TREZOR"
+        passphrase = b"CERBERUS"
         identifier, exponent, ems = slip39.recover_ems(mnemonics)
         master_secret = slip39.decrypt(ems, passphrase, exponent, identifier)
 

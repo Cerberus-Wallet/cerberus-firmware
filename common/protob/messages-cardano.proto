@@ -1,16 +1,16 @@
 syntax = "proto2";
-package hw.trezor.messages.cardano;
+package hw.cerberus.messages.cardano;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
-option java_outer_classname = "TrezorMessageCardano";
+option java_package = "com.satoshilabs.cerberus.lib.protobuf";
+option java_outer_classname = "CerberusMessageCardano";
 
 import "messages-common.proto";
 
 enum CardanoDerivationType {
     LEDGER = 0;
     ICARUS = 1;
-    ICARUS_TREZOR = 2;
+    ICARUS_CERBERUS = 2;
 }
 
 /**
@@ -159,7 +159,7 @@ message CardanoAddressParametersType {
  */
 message CardanoGetAddress {
     // repeated uint32 address_n = 1;                               // moved to address_parameters
-    optional bool show_display = 2 [default=false];                 // optionally prompt for confirmation on trezor display
+    optional bool show_display = 2 [default=false];                 // optionally prompt for confirmation on cerberus display
     required uint32 protocol_magic = 3;                             // network's protocol magic - needed for Byron addresses on testnets
     required uint32 network_id = 4;                                 // network id - mainnet or testnet
     required CardanoAddressParametersType address_parameters = 5;   // parameters used to derive the address
@@ -193,7 +193,7 @@ message CardanoGetPublicKey {
  */
 message CardanoPublicKey {
     required string xpub = 1;                               // Xpub key
-    required hw.trezor.messages.common.HDNodeType node = 2; // BIP-32 public node
+    required hw.cerberus.messages.common.HDNodeType node = 2; // BIP-32 public node
 }
 
 /**

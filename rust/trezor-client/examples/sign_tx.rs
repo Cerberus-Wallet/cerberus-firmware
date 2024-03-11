@@ -5,15 +5,15 @@ use bitcoin::{
     transaction::Version, Address, Amount, Sequence, Transaction, TxIn, TxOut,
 };
 
-use trezor_client::{Error, SignTxProgress, TrezorMessage, TrezorResponse};
+use cerberus_client::{Error, SignTxProgress, CerberusMessage, CerberusResponse};
 
-fn handle_interaction<T, R: TrezorMessage>(resp: TrezorResponse<T, R>) -> T {
+fn handle_interaction<T, R: CerberusMessage>(resp: CerberusResponse<T, R>) -> T {
     match resp {
-        TrezorResponse::Ok(res) => res,
+        CerberusResponse::Ok(res) => res,
         // assering ok() returns the failure error
-        TrezorResponse::Failure(_) => resp.ok().unwrap(),
-        TrezorResponse::ButtonRequest(req) => handle_interaction(req.ack().unwrap()),
-        TrezorResponse::PinMatrixRequest(req) => {
+        CerberusResponse::Failure(_) => resp.ok().unwrap(),
+        CerberusResponse::ButtonRequest(req) => handle_interaction(req.ack().unwrap()),
+        CerberusResponse::PinMatrixRequest(req) => {
             println!("Enter PIN");
             let mut pin = String::new();
             if io::stdin().read_line(&mut pin).unwrap() != 5 {
@@ -22,7 +22,7 @@ fn handle_interaction<T, R: TrezorMessage>(resp: TrezorResponse<T, R>) -> T {
             // trim newline
             handle_interaction(req.ack_pin(pin[..4].to_owned()).unwrap())
         }
-        TrezorResponse::PassphraseRequest(req) => {
+        CerberusResponse::PassphraseRequest(req) => {
             println!("Enter passphrase");
             let mut pass = String::new();
             io::stdin().read_line(&mut pass).unwrap();
@@ -53,11 +53,11 @@ fn main() {
     tracing_subscriber::fmt().with_max_level(tracing::Level::TRACE).init();
 
     // init with debugging
-    let mut trezor = trezor_client::unique(false).unwrap();
-    trezor.init_device(None).unwrap();
+    let mut cerberus = cerberus_client::unique(false).unwrap();
+    cerberus.init_device(None).unwrap();
 
     let pubkey = handle_interaction(
-        trezor
+        cerberus
             .get_public_key(
                 &vec![
                     bip32::ChildNumber::from_hardened_idx(0).unwrap(),
@@ -65,7 +65,7 @@ fn main() {
                     bip32::ChildNumber::from_hardened_idx(1).unwrap(),
                 ]
                 .into(),
-                trezor_client::protos::InputScriptType::SPENDADDRESS,
+                cerberus_client::protos::InputScriptType::SPENDADDRESS,
                 Network::Testnet,
                 true,
             )
@@ -112,7 +112,7 @@ fn main() {
     );
 
     let mut raw_tx = Vec::new();
-    let progress = handle_interaction(trezor.sign_tx(&psbt, Network::Testnet).unwrap());
+    let progress = handle_interaction(cerberus.sign_tx(&psbt, Network::Testnet).unwrap());
     tx_progress(&mut psbt, progress, &mut raw_tx).unwrap();
 
     println!("signed tx: {}", hex::encode(raw_tx));

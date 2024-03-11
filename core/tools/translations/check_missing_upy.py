@@ -264,10 +264,10 @@ if __name__ == "__main__":
     ]
 
     # folder = CORE_SRC / "apps"
-    # folder = CORE_SRC / "trezor"
+    # folder = CORE_SRC / "cerberus"
     folder = CORE_SRC
     check_folder_resursive_report(folder, ignore_files=ignore_files)
 
-    # file = CORE_SRC / "trezor/ui/layouts/tt_v2/reset.py"
+    # file = CORE_SRC / "cerberus/ui/layouts/tt_v2/reset.py"
     # KEY_PREFIX = "TR.reset"  # type: ignore
     # check_file_report(file)

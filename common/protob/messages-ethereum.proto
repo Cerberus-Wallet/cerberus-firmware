@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.trezor.messages.ethereum;
+package hw.cerberus.messages.ethereum;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
-option java_outer_classname = "TrezorMessageEthereum";
+option java_package = "com.satoshilabs.cerberus.lib.protobuf";
+option java_outer_classname = "CerberusMessageEthereum";
 
 import "messages-common.proto";
 import "messages-ethereum-definitions.proto";
@@ -25,7 +25,7 @@ message EthereumGetPublicKey {
  * @end
  */
 message EthereumPublicKey {
-    required hw.trezor.messages.common.HDNodeType node = 1;        // BIP32 public node
+    required hw.cerberus.messages.common.HDNodeType node = 1;        // BIP32 public node
     required string xpub = 2;        // serialized form of public node
 }
 
@@ -47,7 +47,7 @@ message EthereumGetAddress {
  * @end
  */
 message EthereumAddress {
-    optional bytes _old_address = 1 [deprecated=true];  // trezor <1.8.0, <2.1.0 - raw bytes of Ethereum address
+    optional bytes _old_address = 1 [deprecated=true];  // cerberus <1.8.0, <2.1.0 - raw bytes of Ethereum address
     optional string address = 2;                       // Ethereum address as hex-encoded string
 }
 

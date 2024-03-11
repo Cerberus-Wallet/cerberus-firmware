@@ -10,7 +10,7 @@
 
 /core/src/storage @andrewkozlik
 
-/core/src/trezor @matejcik
+/core/src/cerberus @matejcik
 
 /core/tests @matejcik
 

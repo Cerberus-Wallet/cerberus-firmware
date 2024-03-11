@@ -1,4 +1,4 @@
-use crate::{error::Error, trezorhal::translations};
+use crate::{error::Error, cerberushal::translations};
 
 use super::blob::Translations;
 

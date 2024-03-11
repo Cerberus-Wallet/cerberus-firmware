@@ -26,7 +26,7 @@ jobs:
           name: crypto-build
           path: |
             crypto/tests/aestst
-            crypto/tests/libtrezor-crypto.so
+            crypto/tests/libcerberus-crypto.so
             crypto/tests/test_check
             crypto/tests/test_check_noasan
             crypto/tests/test_openssl

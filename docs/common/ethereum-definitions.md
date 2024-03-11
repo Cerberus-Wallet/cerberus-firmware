@@ -1,56 +1,56 @@
 # Ethereum definitions
 
-For support of the huge number of EVM chains (networks) and ERC-20 tokens, Trezor needs
+For support of the huge number of EVM chains (networks) and ERC-20 tokens, Cerberus needs
 to know parameters of those networks and tokens, namely:
 
 * currency symbol and number of decimal places, to correctly display amounts,
 * SLIP44 identifier to unlock the appropriate BIP-32 subtrees.
 
 A subset of Ethereum definitions is built into the firmware image. The rest is generated
-externally and must be sent to Trezor as a signed blob.
+externally and must be sent to Cerberus as a signed blob.
 
 ## Built-in definitions
 
 The set of built-in definitions is declared in the following files:
-* networks - [`networks.json`](https://github.com/trezor/trezor-firmware/blob/master/common/defs/ethereum/networks.json)
-* tokens - [`tokens.json`](https://github.com/trezor/trezor-firmware/blob/master/common/defs/ethereum/tokens.json)
+* networks - [`networks.json`](https://github.com/Cerberus-Wallet/cerberus-firmware/blob/master/common/defs/ethereum/networks.json)
+* tokens - [`tokens.json`](https://github.com/Cerberus-Wallet/cerberus-firmware/blob/master/common/defs/ethereum/tokens.json)
 
 These definitions need to be modified manually.
 
 ## External definitions
 
 A full list of Ethereum definitions is compiled from multiple sources and is available
-[in a separate repository](https://github.com/trezor/definitions).
+[in a separate repository](https://github.com/Cerberus-Wallet/definitions).
 
 From this list, a collection of binary blobs is generated, signed, and made available
 online.
 
-A given Trezor firmware will only accept signed definitions newer than a certain date,
+A given Cerberus firmware will only accept signed definitions newer than a certain date,
 typically one month before firmware release. This means that a client application should
 either always fetch fresh definitions from the official URLs, or refresh its local copy
 frequently.
 
 ### Retrieving the definitions
 
-The base URL for the definitions is `https://data.trezor.io/firmware/eth-definitions/`.
+The base URL for the definitions is `https://data.cerberus.uraanai.com/firmware/eth-definitions/`.
 
 #### Known chain ID
 
 To look up a network definition by its chain ID, use the following URL:
 
-`https://data.trezor.io/firmware/eth-definitions/chain-id/<CHAIN_ID>/network.dat`
+`https://data.cerberus.uraanai.com/firmware/eth-definitions/chain-id/<CHAIN_ID>/network.dat`
 
 `<CHAIN_ID>` is a decimal number, e.g., `1` for Ethereum mainnet.
 
 To look up a token definition for a given chain ID and token address, use the following URL:
 
-`https://data.trezor.io/firmware/eth-definitions/chain-id/<CHAIN_ID>/token-<TOKEN_ADDRESS>.dat`
+`https://data.cerberus.uraanai.com/firmware/eth-definitions/chain-id/<CHAIN_ID>/token-<TOKEN_ADDRESS>.dat`
 
 `<CHAIN_ID>` is again a decimal number.<br>
 `<TOKEN_ADDRESS>` is all lowercase (no checksum) token address hex without the `0x` prefix.
 
 E.g., this is the URL for Görli TST token:
-[https://data.trezor.io/firmware/eth-definitions/chain-id/5/token-7af963cf6d228e564e2a0aa0ddbf06210b38615d.dat]
+[https://data.cerberus.uraanai.com/firmware/eth-definitions/chain-id/5/token-7af963cf6d228e564e2a0aa0ddbf06210b38615d.dat]
 
 
 #### Unknown chain ID
@@ -61,7 +61,7 @@ require the caller to know the chain ID, because their results do not depend on 
 For this situation, it is possible to look up a network definition by a SLIP-44
 identifier on the following URL:
 
-`https://data.trezor.io/firmware/eth-definitions/slip44/<SLIP44_ID>/network.dat`
+`https://data.cerberus.uraanai.com/firmware/eth-definitions/slip44/<SLIP44_ID>/network.dat`
 
 `<SLIP44_ID>` is a decimal number, e.g., `60` for Ethereum mainnet.
 
@@ -79,7 +79,7 @@ to provide the network definition, because Ethereum network is always built-in.
 It is possible to download the full set of signed definitions in a single tar archive
 from the following URL:
 
-[`https://data.trezor.io/firmware/eth-definitions/definitions.tar.xz`](https://data.trezor.io/firmware/eth-definitions/definitions.tar.xz).
+[`https://data.cerberus.uraanai.com/firmware/eth-definitions/definitions.tar.xz`](https://data.cerberus.uraanai.com/firmware/eth-definitions/definitions.tar.xz).
 
 ## Definition format
 
@@ -124,7 +124,7 @@ For each leaf, its proof is a sequence of neighbor hashes going up the tree. One
 keep track of the proof is, whenever constructing an internal node, add the right hash
 to the left child's proof list and vice versa.
 
-A [reference implementation](https://github.com/trezor/trezor-firmware/blob/master/python/src/trezorlib/merkle_tree.py) is provided.
+A [reference implementation](https://github.com/Cerberus-Wallet/cerberus-firmware/blob/master/python/src/cerberuslib/merkle_tree.py) is provided.
 
 ## Data sources
 

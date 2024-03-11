@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -21,7 +21,7 @@ from . import exceptions, messages
 from .tools import expect
 
 if TYPE_CHECKING:
-    from .client import TrezorClient
+    from .client import CerberusClient
     from .protobuf import MessageType
     from .tools import Address
 
@@ -283,7 +283,7 @@ def _read_operation(op: "Operation") -> "StellarMessageType":
 
 
 def _raise_if_account_muxed_id_exists(account: "MuxedAccount"):
-    # Currently Trezor firmware does not support MuxedAccount,
+    # Currently Cerberus firmware does not support MuxedAccount,
     # so we throw an exception here.
     if account.account_muxed_id is not None:
         raise ValueError("MuxedAccount is not supported")
@@ -325,7 +325,7 @@ def _read_asset(asset: "Asset") -> messages.StellarAsset:
 
 @expect(messages.StellarAddress, field="address", ret_type=str)
 def get_address(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address_n: "Address",
     show_display: bool = False,
     chunkify: bool = False,
@@ -338,7 +338,7 @@ def get_address(
 
 
 def sign_tx(
-    client: "TrezorClient",
+    client: "CerberusClient",
     tx: messages.StellarSignTx,
     operations: List["StellarMessageType"],
     address_n: "Address",
@@ -360,17 +360,17 @@ def sign_tx(
             resp = client.call(operations.pop(0))
     except IndexError:
         # pop from empty list
-        raise exceptions.TrezorException(
+        raise exceptions.CerberusException(
             "Reached end of operations without a signature."
         ) from None
 
     if not isinstance(resp, messages.StellarSignedTx):
-        raise exceptions.TrezorException(
+        raise exceptions.CerberusException(
             f"Unexpected message: {resp.__class__.__name__}"
         )
 
     if operations:
-        raise exceptions.TrezorException(
+        raise exceptions.CerberusException(
             "Received a signature before processing all operations."
         )
 

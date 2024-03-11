@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,9 +16,9 @@
 
 import pytest
 
-from trezorlib import messages, nem
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.tools import parse_path
+from cerberuslib import messages, nem
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.tools import parse_path
 
 from ...common import MNEMONIC12
 
@@ -158,7 +158,7 @@ def test_nem_signtx_xem_as_mosaic(client: Client):
         },
     )
 
-    # trezor should display 45 XEM (multiplied by amount)
+    # cerberus should display 45 XEM (multiplied by amount)
     assert (
         tx.data.hex()
         == "0101000002000098ff03940420000000edfd32f6e760648c032f9acb4b30d514265f6a5b5f8a7154f2618922b406208440420f00000000007f5595042800000054414c49434532474d4133344358484437584c4a513533364e4d35554e4b5148544f524e4e54324a404b4c000000000000000000010000001a0000000e000000030000006e656d0300000078656d4054890000000000"
@@ -192,7 +192,7 @@ def test_nem_signtx_unknown_mosaic(client: Client):
         },
     )
 
-    # trezor should display warning about unknown mosaic and then dialog for 7000000 raw units of xxx.aa and 0 XEM
+    # cerberus should display warning about unknown mosaic and then dialog for 7000000 raw units of xxx.aa and 0 XEM
     assert (
         tx.data.hex()
         == "0101000002000098ff03940420000000edfd32f6e760648c032f9acb4b30d514265f6a5b5f8a7154f2618922b406208440420f00000000007f5595042800000054414c49434532474d4133344358484437584c4a513533364e4d35554e4b5148544f524e4e54324a80841e00000000000000000001000000190000000d00000003000000787878020000006161e067350000000000"
@@ -226,7 +226,7 @@ def test_nem_signtx_known_mosaic(client: Client):
         },
     )
 
-    # trezor should display 0 XEM and 0.333 DIMTOK
+    # cerberus should display 0 XEM and 0.333 DIMTOK
     assert (
         tx.data.hex()
         == "0101000002000068ff03940420000000edfd32f6e760648c032f9acb4b30d514265f6a5b5f8a7154f2618922b406208440420f00000000007f559504280000004e444d59534c5849344c3346595551574f344d4a4f564c364253544a4a584b44535a524d54344c54c0c62d000000000000000000010000001c000000100000000300000064696d05000000746f6b656e98b1010000000000"
@@ -260,7 +260,7 @@ def test_nem_signtx_known_mosaic_with_levy(client: Client):
         },
     )
 
-    # trezor should display 0 XEM and 0.444 DIM and levy of 0.000444 DIM
+    # cerberus should display 0 XEM and 0.444 DIM and levy of 0.000444 DIM
     assert (
         tx.data.hex()
         == "0101000002000068ff03940420000000edfd32f6e760648c032f9acb4b30d514265f6a5b5f8a7154f2618922b406208440420f00000000007f559504280000004e444d59534c5849344c3346595551574f344d4a4f564c364253544a4a584b44535a524d54344c5480841e000000000000000000010000001b0000000f0000000300000064696d04000000636f696e3063030000000000"
@@ -310,7 +310,7 @@ def test_nem_signtx_multiple_mosaics(client: Client):
         },
     )
 
-    # trezor should display warning, 6.06 XEM, 4000400 raw units of abc.mosaic (mosaics are merged)
+    # cerberus should display warning, 6.06 XEM, 4000400 raw units of abc.mosaic (mosaics are merged)
     # and 222000 BREEZE
     assert (
         tx.data.hex()

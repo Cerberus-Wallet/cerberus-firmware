@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -17,9 +17,9 @@
 import json
 from decimal import Decimal
 
-from trezorlib import btc
+from cerberuslib import btc
 
-# https://btc1.trezor.io/api/tx-specific/f5e735549daeb480d4348f2574b8967a4f149715edb220a742d8bb654d668348
+# https://btc1.cerberus.io/api/tx-specific/f5e735549daeb480d4348f2574b8967a4f149715edb220a742d8bb654d668348
 TX_JSON_BIG = """
 {
   "txid": "f5e735549daeb480d4348f2574b8967a4f149715edb220a742d8bb654d668348",
@@ -132,7 +132,7 @@ TX_JSON_BIG = """
 }
 """
 
-# https://btc1.trezor.io/api/tx-specific/317f8a6e343384bd7d1a06ca25407d991ad3fc956e4ebedc66e1ec3b2ed9ccc6
+# https://btc1.cerberus.io/api/tx-specific/317f8a6e343384bd7d1a06ca25407d991ad3fc956e4ebedc66e1ec3b2ed9ccc6
 TX_JSON_COINBASE = """
 {
   "txid": "317f8a6e343384bd7d1a06ca25407d991ad3fc956e4ebedc66e1ec3b2ed9ccc6",

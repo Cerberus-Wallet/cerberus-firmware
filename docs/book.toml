@@ -1,6 +1,6 @@
 [book]
-title = "Trezor Firmware"
-description = "Documentation of Trezor Firmware."
+title = "Cerberus Firmware"
+description = "Documentation of Cerberus Firmware."
 src = "."
 
 [build]

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -23,15 +23,15 @@ from typing import Any, Dict, List, Optional, Tuple
 import click
 import requests
 
-from trezorlib import btc, messages, tools
-from trezorlib.cli import ChoiceType
-from trezorlib.cli.btc import INPUT_SCRIPTS, OUTPUT_SCRIPTS
-from trezorlib.protobuf import to_dict
+from cerberuslib import btc, messages, tools
+from cerberuslib.cli import ChoiceType
+from cerberuslib.cli.btc import INPUT_SCRIPTS, OUTPUT_SCRIPTS
+from cerberuslib.protobuf import to_dict
 
 SESSION = requests.Session()
-SESSION.headers.update({"User-Agent": "trezorlib"})
+SESSION.headers.update({"User-Agent": "cerberuslib"})
 
-# the following script type mapping is only valid for single-sig Trezor-generated utxos
+# the following script type mapping is only valid for single-sig Cerberus-generated utxos
 BITCOIN_CORE_INPUT_TYPES = {
     "pubkeyhash": messages.InputScriptType.SPENDADDRESS,
     "scripthash": messages.InputScriptType.SPENDP2SHWITNESS,

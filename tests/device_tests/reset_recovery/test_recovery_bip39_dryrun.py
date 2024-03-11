@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -18,8 +18,8 @@ from typing import Any
 
 import pytest
 
-from trezorlib import device, exceptions, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
+from cerberuslib import device, exceptions, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
 
 from ...common import MNEMONIC12
 from ...input_flows import (
@@ -75,7 +75,7 @@ def test_dry_run(client: Client):
 @pytest.mark.setup_client(mnemonic=MNEMONIC12)
 def test_seed_mismatch(client: Client):
     with pytest.raises(
-        exceptions.TrezorFailure, match="does not match the one in the device"
+        exceptions.CerberusFailure, match="does not match the one in the device"
     ):
         do_recover(client, ["all"] * 12, mismatch=True)
 
@@ -83,7 +83,7 @@ def test_seed_mismatch(client: Client):
 @pytest.mark.skip_t2
 @pytest.mark.skip_tr
 def test_invalid_seed_t1(client: Client):
-    with pytest.raises(exceptions.TrezorFailure, match="Invalid seed"):
+    with pytest.raises(exceptions.CerberusFailure, match="Invalid seed"):
         do_recover(client, ["stick"] * 12)
 
 
@@ -99,7 +99,7 @@ def test_invalid_seed_core(client: Client):
 
 @pytest.mark.setup_client(uninitialized=True)
 def test_uninitialized(client: Client):
-    with pytest.raises(exceptions.TrezorFailure, match="not initialized"):
+    with pytest.raises(exceptions.CerberusFailure, match="not initialized"):
         do_recover(client, ["all"] * 12)
 
 
@@ -146,6 +146,6 @@ def test_bad_parameters(client: Client, field_name: str, field_value: Any):
     )
     setattr(msg, field_name, field_value)
     with pytest.raises(
-        exceptions.TrezorFailure, match="Forbidden field set in dry-run"
+        exceptions.CerberusFailure, match="Forbidden field set in dry-run"
     ):
         client.call(msg)

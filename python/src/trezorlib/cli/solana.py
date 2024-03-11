@@ -7,7 +7,7 @@ from .. import messages, solana, tools
 from . import with_client
 
 if TYPE_CHECKING:
-    from ..client import TrezorClient
+    from ..client import CerberusClient
 
 PATH_HELP = "BIP-32 path to key, e.g. m/44h/501h/0h/0h"
 DEFAULT_PATH = "m/44h/501h/0h/0h"
@@ -23,7 +23,7 @@ def cli() -> None:
 @click.option("-d", "--show-display", is_flag=True)
 @with_client
 def get_public_key(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address: str,
     show_display: bool,
 ) -> messages.SolanaPublicKey:
@@ -38,7 +38,7 @@ def get_public_key(
 @click.option("-C", "--chunkify", is_flag=True)
 @with_client
 def get_address(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address: str,
     show_display: bool,
     chunkify: bool,
@@ -54,7 +54,7 @@ def get_address(
 @click.option("-a", "--additional-information-file", type=click.File("r"))
 @with_client
 def sign_tx(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address: str,
     serialized_tx: str,
     additional_information_file: Optional[TextIO],

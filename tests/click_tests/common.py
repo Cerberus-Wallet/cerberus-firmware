@@ -7,7 +7,7 @@ from .. import buttons
 from .. import translations as TR
 
 if TYPE_CHECKING:
-    from trezorlib.debuglink import DebugLink, LayoutContent
+    from cerberuslib.debuglink import DebugLink, LayoutContent
 
 
 # Passphrases and addresses for both models

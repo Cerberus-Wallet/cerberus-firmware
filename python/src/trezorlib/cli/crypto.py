@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -22,7 +22,7 @@ from .. import misc, tools
 from . import ChoiceType, with_client
 
 if TYPE_CHECKING:
-    from ..client import TrezorClient
+    from ..client import CerberusClient
 
 
 PROMPT_TYPE = ChoiceType(
@@ -43,7 +43,7 @@ def cli() -> None:
 @cli.command()
 @click.argument("size", type=int)
 @with_client
-def get_entropy(client: "TrezorClient", size: int) -> str:
+def get_entropy(client: "CerberusClient", size: int) -> str:
     """Get random bytes from device."""
     return misc.get_entropy(client, size).hex()
 
@@ -57,7 +57,7 @@ def get_entropy(client: "TrezorClient", size: int) -> str:
 @click.argument("value")
 @with_client
 def encrypt_keyvalue(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address: str,
     key: str,
     value: str,
@@ -93,7 +93,7 @@ def encrypt_keyvalue(
 @click.argument("value")
 @with_client
 def decrypt_keyvalue(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address: str,
     key: str,
     value: str,

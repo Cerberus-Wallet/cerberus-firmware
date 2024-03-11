@@ -1,8 +1,8 @@
 from typing import Iterable
 
 import storage.cache as storage_cache
-from trezor import protobuf
-from trezor.enums import MessageType
+from cerberus import protobuf
+from cerberus.enums import MessageType
 
 WIRE_TYPES: dict[int, tuple[int, ...]] = {
     MessageType.AuthorizeCoinJoin: (MessageType.SignTx, MessageType.GetOwnershipProof),
@@ -21,7 +21,7 @@ def is_set() -> bool:
 
 
 def set(auth_message: protobuf.MessageType) -> None:
-    from trezor.utils import ensure
+    from cerberus.utils import ensure
 
     buffer = protobuf.dump_message_buffer(auth_message)
 

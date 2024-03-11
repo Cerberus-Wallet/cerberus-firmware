@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import device, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.messages import SdProtectOperationType as Op
+from cerberuslib import device, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.messages import SdProtectOperationType as Op
 
 from .. import translations as TR
 
@@ -41,7 +41,7 @@ def test_sd_no_format(client: Client):
         yield  # format SD card
         client.debug.press_no()
 
-    with pytest.raises(TrezorFailure) as e, client:
+    with pytest.raises(CerberusFailure) as e, client:
         client.set_input_flow(input_flow)
         device.sd_protect(client, Op.ENABLE)
 
@@ -116,7 +116,7 @@ def test_sd_protect_unlock(client: Client):
         TR.assert_in(layout().text_content(), "sd_card__unplug_and_insert_correct")
         client.debug.press_no()  # close
 
-    with client, pytest.raises(TrezorFailure) as e:
+    with client, pytest.raises(CerberusFailure) as e:
         client.watch_layout()
         client.set_input_flow(input_flow_change_pin_format)
         device.change_pin(client)

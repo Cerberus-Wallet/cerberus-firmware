@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -19,8 +19,8 @@ from typing import Iterator
 
 import pytest
 
-from trezorlib import debuglink, device, exceptions, messages, models
-from trezorlib.debuglink import TrezorClientDebugLink as Client
+from cerberuslib import debuglink, device, exceptions, messages, models
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
 
 from ..translations import LANGUAGES, build_and_sign_blob, get_lang_json, set_language
 
@@ -74,7 +74,7 @@ def test_error_too_long(client: Client):
     # Translations too long
     # Sending more than allowed by the flash capacity
     max_length = MAX_DATA_LENGTH[client.model]
-    with pytest.raises(exceptions.TrezorFailure, match="Translations too long"), client:
+    with pytest.raises(exceptions.CerberusFailure, match="Translations too long"), client:
         bad_data = (max_length + 1) * b"a"
         device.change_language(client, language_data=bad_data)
     assert client.features.language == "en-US"
@@ -85,7 +85,7 @@ def test_error_invalid_data_length(client: Client):
     assert client.features.language == "en-US"
     # Invalid data length
     # Sending more data than advertised in the header
-    with pytest.raises(exceptions.TrezorFailure, match="Invalid data length"), client:
+    with pytest.raises(exceptions.CerberusFailure, match="Invalid data length"), client:
         good_data = build_and_sign_blob("cs", client.model)
         bad_data = good_data + b"abcd"
         device.change_language(client, language_data=bad_data)
@@ -98,7 +98,7 @@ def test_error_invalid_header_magic(client: Client):
     # Invalid header magic
     # Does not match the expected magic
     with pytest.raises(
-        exceptions.TrezorFailure, match="Invalid translations data"
+        exceptions.CerberusFailure, match="Invalid translations data"
     ), client:
         good_data = build_and_sign_blob("cs", client.model)
         bad_data = 4 * b"a" + good_data[4:]
@@ -112,7 +112,7 @@ def test_error_invalid_data_hash(client: Client):
     # Invalid data hash
     # Changing the data after their hash has been calculated
     with pytest.raises(
-        exceptions.TrezorFailure, match="Translation data verification failed"
+        exceptions.CerberusFailure, match="Translation data verification failed"
     ), client:
         good_data = build_and_sign_blob("cs", client.model)
         bad_data = good_data[:-8] + 8 * b"a"
@@ -129,7 +129,7 @@ def test_error_version_mismatch(client: Client):
     # Translations version mismatch
     # Change the version to one not matching the current device
     with pytest.raises(
-        exceptions.TrezorFailure, match="Translations version mismatch"
+        exceptions.CerberusFailure, match="Translations version mismatch"
     ), client:
         data = get_lang_json("cs")
         data["header"]["version"] = "3.5.4"
@@ -161,7 +161,7 @@ def test_error_invalid_signature(client: Client):
     # Invalid signature
     # Changing the data in the signature section
     with pytest.raises(
-        exceptions.TrezorFailure, match="Invalid translations data"
+        exceptions.CerberusFailure, match="Invalid translations data"
     ), client:
         good_data = bytearray(build_and_sign_blob("cs", client.model))
         bad_data = bytearray(good_data)

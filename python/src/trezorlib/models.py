@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -21,11 +21,11 @@ from . import mapping
 
 UsbId = Tuple[int, int]
 
-VENDORS = ("bitcointrezor.com", "trezor.io")
+VENDORS = ("bitcoincerberus.com", "cerberus.io")
 
 
 @dataclass(eq=True, frozen=True)
-class TrezorModel:
+class CerberusModel:
     name: str
     internal_name: str
     minimum_version: Tuple[int, int, int]
@@ -36,7 +36,7 @@ class TrezorModel:
 
 # ==== internal names ====
 
-T1B1 = TrezorModel(
+T1B1 = CerberusModel(
     name="1",
     internal_name="T1B1",
     minimum_version=(1, 8, 0),
@@ -45,7 +45,7 @@ T1B1 = TrezorModel(
     default_mapping=mapping.DEFAULT_MAPPING,
 )
 
-T2T1 = TrezorModel(
+T2T1 = CerberusModel(
     name="T",
     internal_name="T2T1",
     minimum_version=(2, 1, 0),
@@ -54,7 +54,7 @@ T2T1 = TrezorModel(
     default_mapping=mapping.DEFAULT_MAPPING,
 )
 
-T2B1 = TrezorModel(
+T2B1 = CerberusModel(
     name="Safe 3",
     internal_name="T2B1",
     minimum_version=(2, 1, 0),
@@ -63,7 +63,7 @@ T2B1 = TrezorModel(
     default_mapping=mapping.DEFAULT_MAPPING,
 )
 
-DISC1 = TrezorModel(
+DISC1 = CerberusModel(
     name="DISC1",
     internal_name="D001",
     minimum_version=(2, 1, 0),
@@ -74,28 +74,28 @@ DISC1 = TrezorModel(
 
 # ==== model based names ====
 
-TREZOR_ONE = T1B1
-TREZOR_T = T2T1
-TREZOR_R = T2B1
-TREZOR_SAFE3 = T2B1
-TREZOR_DISC1 = DISC1
+CERBERUS_ONE = T1B1
+CERBERUS_T = T2T1
+CERBERUS_R = T2B1
+CERBERUS_SAFE3 = T2B1
+CERBERUS_DISC1 = DISC1
 
-TREZORS = {T1B1, T2T1, T2B1, DISC1}
+CERBERUSS = {T1B1, T2T1, T2B1, DISC1}
 
 
-def by_name(name: Optional[str]) -> Optional[TrezorModel]:
+def by_name(name: Optional[str]) -> Optional[CerberusModel]:
     if name is None:
         return T1B1
-    for model in TREZORS:
+    for model in CERBERUSS:
         if model.name == name:
             return model
     return None
 
 
-def by_internal_name(name: Optional[str]) -> Optional[TrezorModel]:
+def by_internal_name(name: Optional[str]) -> Optional[CerberusModel]:
     if name is None:
         return None
-    for model in TREZORS:
+    for model in CERBERUSS:
         if model.internal_name == name:
             return model
     return None

@@ -22,7 +22,7 @@ DEFINITIONS_TIMESTAMP_PATH = (
     coin_info.DEFS_DIR / "ethereum" / "released-definitions-timestamp.txt"
 )
 DEFINITIONS_LATEST_URL = (
-    "https://raw.githubusercontent.com/trezor/definitions/main/definitions-latest.json"
+    "https://raw.githubusercontent.com/cerberus/definitions/main/definitions-latest.json"
 )
 
 HERE = Path(__file__).parent.resolve()
@@ -754,7 +754,7 @@ def dump(
     so '-f name=bit*' finds all coins whose names start with "bit" or "Bit".
 
     Also devices can be used as filters. For example to find out which coins are
-    supported in Suite and connect but not on Trezor 1, it is possible to say
+    supported in Suite and connect but not on Cerberus 1, it is possible to say
     '-d suite -d connect -D T1B1'.
 
     Includes even the wallet data, unless turned off by '-W'.

@@ -25,22 +25,22 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.MultisigRedeemScriptType)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.MultisigRedeemScriptType)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MultisigRedeemScriptType {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.MultisigRedeemScriptType.pubkeys)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.MultisigRedeemScriptType.pubkeys)
     pub pubkeys: ::std::vec::Vec<multisig_redeem_script_type::HDNodePathType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.MultisigRedeemScriptType.signatures)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.MultisigRedeemScriptType.signatures)
     pub signatures: ::std::vec::Vec<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.MultisigRedeemScriptType.m)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.MultisigRedeemScriptType.m)
     pub m: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.MultisigRedeemScriptType.nodes)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.MultisigRedeemScriptType.nodes)
     pub nodes: ::std::vec::Vec<super::messages_common::HDNodeType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.MultisigRedeemScriptType.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.MultisigRedeemScriptType.address_n)
     pub address_n: ::std::vec::Vec<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.MultisigRedeemScriptType.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.MultisigRedeemScriptType.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -258,16 +258,16 @@ impl ::protobuf::reflect::ProtobufValue for MultisigRedeemScriptType {
 
 /// Nested message and enums of message `MultisigRedeemScriptType`
 pub mod multisig_redeem_script_type {
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct HDNodePathType {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType.node)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType.node)
         pub node: ::protobuf::MessageField<super::super::messages_common::HDNodeType>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType.address_n)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType.address_n)
         pub address_n: ::std::vec::Vec<u32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.MultisigRedeemScriptType.HDNodePathType.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -411,24 +411,24 @@ pub mod multisig_redeem_script_type {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.GetPublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.GetPublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct GetPublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetPublicKey.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetPublicKey.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetPublicKey.ecdsa_curve_name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetPublicKey.ecdsa_curve_name)
     pub ecdsa_curve_name: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetPublicKey.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetPublicKey.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetPublicKey.coin_name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetPublicKey.coin_name)
     pub coin_name: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetPublicKey.script_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetPublicKey.script_type)
     pub script_type: ::std::option::Option<::protobuf::EnumOrUnknown<InputScriptType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetPublicKey.ignore_xpub_magic)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetPublicKey.ignore_xpub_magic)
     pub ignore_xpub_magic: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.GetPublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.GetPublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -534,7 +534,7 @@ impl GetPublicKey {
         self.coin_name.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional .hw.trezor.messages.bitcoin.InputScriptType script_type = 5;
+    // optional .hw.cerberus.messages.bitcoin.InputScriptType script_type = 5;
 
     pub fn script_type(&self) -> InputScriptType {
         match self.script_type {
@@ -758,20 +758,20 @@ impl ::protobuf::reflect::ProtobufValue for GetPublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.PublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.PublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct PublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PublicKey.node)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PublicKey.node)
     pub node: ::protobuf::MessageField<super::messages_common::HDNodeType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PublicKey.xpub)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PublicKey.xpub)
     pub xpub: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PublicKey.root_fingerprint)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PublicKey.root_fingerprint)
     pub root_fingerprint: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PublicKey.descriptor)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PublicKey.descriptor)
     pub descriptor: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.PublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.PublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1037,26 +1037,26 @@ impl ::protobuf::reflect::ProtobufValue for PublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.GetAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.GetAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct GetAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetAddress.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetAddress.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetAddress.coin_name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetAddress.coin_name)
     pub coin_name: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetAddress.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetAddress.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetAddress.multisig)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetAddress.multisig)
     pub multisig: ::protobuf::MessageField<MultisigRedeemScriptType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetAddress.script_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetAddress.script_type)
     pub script_type: ::std::option::Option<::protobuf::EnumOrUnknown<InputScriptType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetAddress.ignore_xpub_magic)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetAddress.ignore_xpub_magic)
     pub ignore_xpub_magic: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetAddress.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetAddress.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.GetAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.GetAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1126,7 +1126,7 @@ impl GetAddress {
         self.show_display = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.bitcoin.InputScriptType script_type = 5;
+    // optional .hw.cerberus.messages.bitcoin.InputScriptType script_type = 5;
 
     pub fn script_type(&self) -> InputScriptType {
         match self.script_type {
@@ -1391,16 +1391,16 @@ impl ::protobuf::reflect::ProtobufValue for GetAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.Address)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.Address)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct Address {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.Address.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.Address.address)
     pub address: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.Address.mac)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.Address.mac)
     pub mac: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.Address.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.Address.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1606,20 +1606,20 @@ impl ::protobuf::reflect::ProtobufValue for Address {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.GetOwnershipId)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.GetOwnershipId)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct GetOwnershipId {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetOwnershipId.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetOwnershipId.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetOwnershipId.coin_name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetOwnershipId.coin_name)
     pub coin_name: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetOwnershipId.multisig)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetOwnershipId.multisig)
     pub multisig: ::protobuf::MessageField<MultisigRedeemScriptType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetOwnershipId.script_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetOwnershipId.script_type)
     pub script_type: ::std::option::Option<::protobuf::EnumOrUnknown<InputScriptType>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.GetOwnershipId.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.GetOwnershipId.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1670,7 +1670,7 @@ impl GetOwnershipId {
         self.coin_name.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional .hw.trezor.messages.bitcoin.InputScriptType script_type = 4;
+    // optional .hw.cerberus.messages.bitcoin.InputScriptType script_type = 4;
 
     pub fn script_type(&self) -> InputScriptType {
         match self.script_type {
@@ -1849,14 +1849,14 @@ impl ::protobuf::reflect::ProtobufValue for GetOwnershipId {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.OwnershipId)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.OwnershipId)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct OwnershipId {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.OwnershipId.ownership_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.OwnershipId.ownership_id)
     pub ownership_id: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.OwnershipId.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.OwnershipId.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2010,24 +2010,24 @@ impl ::protobuf::reflect::ProtobufValue for OwnershipId {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.SignMessage)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.SignMessage)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SignMessage {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignMessage.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignMessage.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignMessage.message)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignMessage.message)
     pub message: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignMessage.coin_name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignMessage.coin_name)
     pub coin_name: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignMessage.script_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignMessage.script_type)
     pub script_type: ::std::option::Option<::protobuf::EnumOrUnknown<InputScriptType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignMessage.no_script_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignMessage.no_script_type)
     pub no_script_type: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignMessage.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignMessage.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.SignMessage.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.SignMessage.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2114,7 +2114,7 @@ impl SignMessage {
         self.coin_name.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional .hw.trezor.messages.bitcoin.InputScriptType script_type = 4;
+    // optional .hw.cerberus.messages.bitcoin.InputScriptType script_type = 4;
 
     pub fn script_type(&self) -> InputScriptType {
         match self.script_type {
@@ -2360,16 +2360,16 @@ impl ::protobuf::reflect::ProtobufValue for SignMessage {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.MessageSignature)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.MessageSignature)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MessageSignature {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.MessageSignature.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.MessageSignature.address)
     pub address: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.MessageSignature.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.MessageSignature.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.MessageSignature.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.MessageSignature.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2578,22 +2578,22 @@ impl ::protobuf::reflect::ProtobufValue for MessageSignature {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.VerifyMessage)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.VerifyMessage)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct VerifyMessage {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.VerifyMessage.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.VerifyMessage.address)
     pub address: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.VerifyMessage.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.VerifyMessage.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.VerifyMessage.message)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.VerifyMessage.message)
     pub message: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.VerifyMessage.coin_name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.VerifyMessage.coin_name)
     pub coin_name: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.VerifyMessage.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.VerifyMessage.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.VerifyMessage.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.VerifyMessage.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2944,42 +2944,42 @@ impl ::protobuf::reflect::ProtobufValue for VerifyMessage {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.SignTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.SignTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SignTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.outputs_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.outputs_count)
     pub outputs_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.inputs_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.inputs_count)
     pub inputs_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.coin_name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.coin_name)
     pub coin_name: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.version)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.version)
     pub version: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.lock_time)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.lock_time)
     pub lock_time: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.expiry)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.expiry)
     pub expiry: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.overwintered)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.overwintered)
     pub overwintered: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.version_group_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.version_group_id)
     pub version_group_id: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.timestamp)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.timestamp)
     pub timestamp: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.branch_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.branch_id)
     pub branch_id: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.amount_unit)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.amount_unit)
     pub amount_unit: ::std::option::Option<::protobuf::EnumOrUnknown<AmountUnit>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.decred_staking_ticket)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.decred_staking_ticket)
     pub decred_staking_ticket: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.serialize)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.serialize)
     pub serialize: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.coinjoin_request)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.coinjoin_request)
     pub coinjoin_request: ::protobuf::MessageField<sign_tx::CoinJoinRequest>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.SignTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.SignTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3201,7 +3201,7 @@ impl SignTx {
         self.branch_id = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.bitcoin.AmountUnit amount_unit = 11;
+    // optional .hw.cerberus.messages.bitcoin.AmountUnit amount_unit = 11;
 
     pub fn amount_unit(&self) -> AmountUnit {
         match self.amount_unit {
@@ -3618,22 +3618,22 @@ impl ::protobuf::reflect::ProtobufValue for SignTx {
 
 /// Nested message and enums of message `SignTx`
 pub mod sign_tx {
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.SignTx.CoinJoinRequest)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.SignTx.CoinJoinRequest)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct CoinJoinRequest {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.CoinJoinRequest.fee_rate)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.CoinJoinRequest.fee_rate)
         pub fee_rate: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.CoinJoinRequest.no_fee_threshold)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.CoinJoinRequest.no_fee_threshold)
         pub no_fee_threshold: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.CoinJoinRequest.min_registrable_amount)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.CoinJoinRequest.min_registrable_amount)
         pub min_registrable_amount: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.CoinJoinRequest.mask_public_key)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.CoinJoinRequest.mask_public_key)
         pub mask_public_key: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.SignTx.CoinJoinRequest.signature)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.SignTx.CoinJoinRequest.signature)
         pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.SignTx.CoinJoinRequest.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.SignTx.CoinJoinRequest.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -3957,18 +3957,18 @@ pub mod sign_tx {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TxRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxRequest.request_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxRequest.request_type)
     pub request_type: ::std::option::Option<::protobuf::EnumOrUnknown<tx_request::RequestType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxRequest.details)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxRequest.details)
     pub details: ::protobuf::MessageField<tx_request::TxRequestDetailsType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxRequest.serialized)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxRequest.serialized)
     pub serialized: ::protobuf::MessageField<tx_request::TxRequestSerializedType>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3983,7 +3983,7 @@ impl TxRequest {
         ::std::default::Default::default()
     }
 
-    // optional .hw.trezor.messages.bitcoin.TxRequest.RequestType request_type = 1;
+    // optional .hw.cerberus.messages.bitcoin.TxRequest.RequestType request_type = 1;
 
     pub fn request_type(&self) -> tx_request::RequestType {
         match self.request_type {
@@ -4141,20 +4141,20 @@ impl ::protobuf::reflect::ProtobufValue for TxRequest {
 
 /// Nested message and enums of message `TxRequest`
 pub mod tx_request {
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxRequest.TxRequestDetailsType)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxRequest.TxRequestDetailsType)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TxRequestDetailsType {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxRequest.TxRequestDetailsType.request_index)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxRequest.TxRequestDetailsType.request_index)
         pub request_index: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxRequest.TxRequestDetailsType.tx_hash)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxRequest.TxRequestDetailsType.tx_hash)
         pub tx_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxRequest.TxRequestDetailsType.extra_data_len)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxRequest.TxRequestDetailsType.extra_data_len)
         pub extra_data_len: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxRequest.TxRequestDetailsType.extra_data_offset)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxRequest.TxRequestDetailsType.extra_data_offset)
         pub extra_data_offset: ::std::option::Option<u32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxRequest.TxRequestDetailsType.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxRequest.TxRequestDetailsType.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -4410,18 +4410,18 @@ pub mod tx_request {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxRequest.TxRequestSerializedType)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxRequest.TxRequestSerializedType)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TxRequestSerializedType {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxRequest.TxRequestSerializedType.signature_index)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxRequest.TxRequestSerializedType.signature_index)
         pub signature_index: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxRequest.TxRequestSerializedType.signature)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxRequest.TxRequestSerializedType.signature)
         pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxRequest.TxRequestSerializedType.serialized_tx)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxRequest.TxRequestSerializedType.serialized_tx)
         pub serialized_tx: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxRequest.TxRequestSerializedType.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxRequest.TxRequestSerializedType.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -4660,23 +4660,23 @@ pub mod tx_request {
     }
 
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.bitcoin.TxRequest.RequestType)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.bitcoin.TxRequest.RequestType)
     pub enum RequestType {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.TxRequest.RequestType.TXINPUT)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.TxRequest.RequestType.TXINPUT)
         TXINPUT = 0,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.TxRequest.RequestType.TXOUTPUT)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.TxRequest.RequestType.TXOUTPUT)
         TXOUTPUT = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.TxRequest.RequestType.TXMETA)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.TxRequest.RequestType.TXMETA)
         TXMETA = 2,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.TxRequest.RequestType.TXFINISHED)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.TxRequest.RequestType.TXFINISHED)
         TXFINISHED = 3,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.TxRequest.RequestType.TXEXTRADATA)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.TxRequest.RequestType.TXEXTRADATA)
         TXEXTRADATA = 4,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.TxRequest.RequestType.TXORIGINPUT)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.TxRequest.RequestType.TXORIGINPUT)
         TXORIGINPUT = 5,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.TxRequest.RequestType.TXORIGOUTPUT)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.TxRequest.RequestType.TXORIGOUTPUT)
         TXORIGOUTPUT = 6,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.TxRequest.RequestType.TXPAYMENTREQ)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.TxRequest.RequestType.TXPAYMENTREQ)
         TXPAYMENTREQ = 7,
     }
 
@@ -4752,14 +4752,14 @@ pub mod tx_request {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TxAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.tx)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.tx)
     pub tx: ::protobuf::MessageField<tx_ack::TransactionType>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4882,40 +4882,40 @@ impl ::protobuf::reflect::ProtobufValue for TxAck {
 
 /// Nested message and enums of message `TxAck`
 pub mod tx_ack {
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAck.TransactionType)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAck.TransactionType)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TransactionType {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.version)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.version)
         pub version: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.inputs)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.inputs)
         pub inputs: ::std::vec::Vec<transaction_type::TxInputType>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.bin_outputs)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.bin_outputs)
         pub bin_outputs: ::std::vec::Vec<transaction_type::TxOutputBinType>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.lock_time)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.lock_time)
         pub lock_time: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.outputs)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.outputs)
         pub outputs: ::std::vec::Vec<transaction_type::TxOutputType>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.inputs_cnt)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.inputs_cnt)
         pub inputs_cnt: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.outputs_cnt)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.outputs_cnt)
         pub outputs_cnt: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.extra_data)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.extra_data)
         pub extra_data: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.extra_data_len)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.extra_data_len)
         pub extra_data_len: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.expiry)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.expiry)
         pub expiry: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.overwintered)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.overwintered)
         pub overwintered: ::std::option::Option<bool>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.version_group_id)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.version_group_id)
         pub version_group_id: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.timestamp)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.timestamp)
         pub timestamp: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.branch_id)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.branch_id)
         pub branch_id: ::std::option::Option<u32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAck.TransactionType.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -5484,46 +5484,46 @@ pub mod tx_ack {
 
     /// Nested message and enums of message `TransactionType`
     pub mod transaction_type {
-        // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType)
+        // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType)
         #[derive(PartialEq,Clone,Default,Debug)]
         pub struct TxInputType {
             // message fields
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.address_n)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.address_n)
             pub address_n: ::std::vec::Vec<u32>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.prev_hash)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.prev_hash)
             pub prev_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.prev_index)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.prev_index)
             pub prev_index: ::std::option::Option<u32>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.script_sig)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.script_sig)
             pub script_sig: ::std::option::Option<::std::vec::Vec<u8>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.sequence)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.sequence)
             pub sequence: ::std::option::Option<u32>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.script_type)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.script_type)
             pub script_type: ::std::option::Option<::protobuf::EnumOrUnknown<super::super::InputScriptType>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.multisig)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.multisig)
             pub multisig: ::protobuf::MessageField<super::super::MultisigRedeemScriptType>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.amount)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.amount)
             pub amount: ::std::option::Option<u64>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.decred_tree)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.decred_tree)
             pub decred_tree: ::std::option::Option<u32>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.witness)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.witness)
             pub witness: ::std::option::Option<::std::vec::Vec<u8>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.ownership_proof)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.ownership_proof)
             pub ownership_proof: ::std::option::Option<::std::vec::Vec<u8>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.commitment_data)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.commitment_data)
             pub commitment_data: ::std::option::Option<::std::vec::Vec<u8>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.orig_hash)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.orig_hash)
             pub orig_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.orig_index)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.orig_index)
             pub orig_index: ::std::option::Option<u32>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.decred_staking_spend)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.decred_staking_spend)
             pub decred_staking_spend: ::std::option::Option<::protobuf::EnumOrUnknown<super::super::DecredStakingSpendType>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.script_pubkey)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.script_pubkey)
             pub script_pubkey: ::std::option::Option<::std::vec::Vec<u8>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.coinjoin_flags)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.coinjoin_flags)
             pub coinjoin_flags: ::std::option::Option<u32>,
             // special fields
-            // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType.special_fields)
+            // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType.special_fields)
             pub special_fields: ::protobuf::SpecialFields,
         }
 
@@ -5648,7 +5648,7 @@ pub mod tx_ack {
                 self.sequence = ::std::option::Option::Some(v);
             }
 
-            // optional .hw.trezor.messages.bitcoin.InputScriptType script_type = 6;
+            // optional .hw.cerberus.messages.bitcoin.InputScriptType script_type = 6;
 
             pub fn script_type(&self) -> super::super::InputScriptType {
                 match self.script_type {
@@ -5871,7 +5871,7 @@ pub mod tx_ack {
                 self.orig_index = ::std::option::Option::Some(v);
             }
 
-            // optional .hw.trezor.messages.bitcoin.DecredStakingSpendType decred_staking_spend = 18;
+            // optional .hw.cerberus.messages.bitcoin.DecredStakingSpendType decred_staking_spend = 18;
 
             pub fn decred_staking_spend(&self) -> super::super::DecredStakingSpendType {
                 match self.decred_staking_spend {
@@ -6319,18 +6319,18 @@ pub mod tx_ack {
             type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
         }
 
-        // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputBinType)
+        // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputBinType)
         #[derive(PartialEq,Clone,Default,Debug)]
         pub struct TxOutputBinType {
             // message fields
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputBinType.amount)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputBinType.amount)
             pub amount: ::std::option::Option<u64>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputBinType.script_pubkey)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputBinType.script_pubkey)
             pub script_pubkey: ::std::option::Option<::std::vec::Vec<u8>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputBinType.decred_script_version)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputBinType.decred_script_version)
             pub decred_script_version: ::std::option::Option<u32>,
             // special fields
-            // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputBinType.special_fields)
+            // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputBinType.special_fields)
             pub special_fields: ::protobuf::SpecialFields,
         }
 
@@ -6557,30 +6557,30 @@ pub mod tx_ack {
             type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
         }
 
-        // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputType)
+        // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputType)
         #[derive(PartialEq,Clone,Default,Debug)]
         pub struct TxOutputType {
             // message fields
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputType.address)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputType.address)
             pub address: ::std::option::Option<::std::string::String>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputType.address_n)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputType.address_n)
             pub address_n: ::std::vec::Vec<u32>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputType.amount)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputType.amount)
             pub amount: ::std::option::Option<u64>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputType.script_type)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputType.script_type)
             pub script_type: ::std::option::Option<::protobuf::EnumOrUnknown<super::super::OutputScriptType>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputType.multisig)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputType.multisig)
             pub multisig: ::protobuf::MessageField<super::super::MultisigRedeemScriptType>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputType.op_return_data)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputType.op_return_data)
             pub op_return_data: ::std::option::Option<::std::vec::Vec<u8>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputType.orig_hash)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputType.orig_hash)
             pub orig_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputType.orig_index)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputType.orig_index)
             pub orig_index: ::std::option::Option<u32>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputType.payment_req_index)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputType.payment_req_index)
             pub payment_req_index: ::std::option::Option<u32>,
             // special fields
-            // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutputType.special_fields)
+            // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutputType.special_fields)
             pub special_fields: ::protobuf::SpecialFields,
         }
 
@@ -6650,7 +6650,7 @@ pub mod tx_ack {
                 self.amount = ::std::option::Option::Some(v);
             }
 
-            // optional .hw.trezor.messages.bitcoin.OutputScriptType script_type = 4;
+            // optional .hw.cerberus.messages.bitcoin.OutputScriptType script_type = 4;
 
             pub fn script_type(&self) -> super::super::OutputScriptType {
                 match self.script_type {
@@ -7024,46 +7024,46 @@ pub mod tx_ack {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxInput)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxInput)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TxInput {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.prev_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.prev_hash)
     pub prev_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.prev_index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.prev_index)
     pub prev_index: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.script_sig)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.script_sig)
     pub script_sig: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.sequence)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.sequence)
     pub sequence: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.script_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.script_type)
     pub script_type: ::std::option::Option<::protobuf::EnumOrUnknown<InputScriptType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.multisig)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.multisig)
     pub multisig: ::protobuf::MessageField<MultisigRedeemScriptType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.amount)
     pub amount: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.decred_tree)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.decred_tree)
     pub decred_tree: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.witness)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.witness)
     pub witness: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.ownership_proof)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.ownership_proof)
     pub ownership_proof: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.commitment_data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.commitment_data)
     pub commitment_data: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.orig_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.orig_hash)
     pub orig_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.orig_index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.orig_index)
     pub orig_index: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.decred_staking_spend)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.decred_staking_spend)
     pub decred_staking_spend: ::std::option::Option<::protobuf::EnumOrUnknown<DecredStakingSpendType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.script_pubkey)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.script_pubkey)
     pub script_pubkey: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxInput.coinjoin_flags)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxInput.coinjoin_flags)
     pub coinjoin_flags: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxInput.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxInput.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7188,7 +7188,7 @@ impl TxInput {
         self.sequence = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.bitcoin.InputScriptType script_type = 6;
+    // optional .hw.cerberus.messages.bitcoin.InputScriptType script_type = 6;
 
     pub fn script_type(&self) -> InputScriptType {
         match self.script_type {
@@ -7411,7 +7411,7 @@ impl TxInput {
         self.orig_index = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.bitcoin.DecredStakingSpendType decred_staking_spend = 18;
+    // optional .hw.cerberus.messages.bitcoin.DecredStakingSpendType decred_staking_spend = 18;
 
     pub fn decred_staking_spend(&self) -> DecredStakingSpendType {
         match self.decred_staking_spend {
@@ -7862,30 +7862,30 @@ impl ::protobuf::reflect::ProtobufValue for TxInput {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxOutput)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxOutput)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TxOutput {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxOutput.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxOutput.address)
     pub address: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxOutput.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxOutput.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxOutput.amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxOutput.amount)
     pub amount: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxOutput.script_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxOutput.script_type)
     pub script_type: ::std::option::Option<::protobuf::EnumOrUnknown<OutputScriptType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxOutput.multisig)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxOutput.multisig)
     pub multisig: ::protobuf::MessageField<MultisigRedeemScriptType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxOutput.op_return_data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxOutput.op_return_data)
     pub op_return_data: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxOutput.orig_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxOutput.orig_hash)
     pub orig_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxOutput.orig_index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxOutput.orig_index)
     pub orig_index: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxOutput.payment_req_index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxOutput.payment_req_index)
     pub payment_req_index: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxOutput.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxOutput.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7955,7 +7955,7 @@ impl TxOutput {
         self.amount = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.bitcoin.OutputScriptType script_type = 4;
+    // optional .hw.cerberus.messages.bitcoin.OutputScriptType script_type = 4;
 
     pub fn script_type(&self) -> OutputScriptType {
         match self.script_type {
@@ -8327,30 +8327,30 @@ impl ::protobuf::reflect::ProtobufValue for TxOutput {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.PrevTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.PrevTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct PrevTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevTx.version)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevTx.version)
     pub version: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevTx.lock_time)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevTx.lock_time)
     pub lock_time: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevTx.inputs_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevTx.inputs_count)
     pub inputs_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevTx.outputs_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevTx.outputs_count)
     pub outputs_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevTx.extra_data_len)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevTx.extra_data_len)
     pub extra_data_len: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevTx.expiry)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevTx.expiry)
     pub expiry: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevTx.version_group_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevTx.version_group_id)
     pub version_group_id: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevTx.timestamp)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevTx.timestamp)
     pub timestamp: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevTx.branch_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevTx.branch_id)
     pub branch_id: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.PrevTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.PrevTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8776,22 +8776,22 @@ impl ::protobuf::reflect::ProtobufValue for PrevTx {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.PrevInput)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.PrevInput)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct PrevInput {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevInput.prev_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevInput.prev_hash)
     pub prev_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevInput.prev_index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevInput.prev_index)
     pub prev_index: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevInput.script_sig)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevInput.script_sig)
     pub script_sig: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevInput.sequence)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevInput.sequence)
     pub sequence: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevInput.decred_tree)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevInput.decred_tree)
     pub decred_tree: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.PrevInput.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.PrevInput.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9111,18 +9111,18 @@ impl ::protobuf::reflect::ProtobufValue for PrevInput {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.PrevOutput)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.PrevOutput)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct PrevOutput {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevOutput.amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevOutput.amount)
     pub amount: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevOutput.script_pubkey)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevOutput.script_pubkey)
     pub script_pubkey: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.PrevOutput.decred_script_version)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.PrevOutput.decred_script_version)
     pub decred_script_version: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.PrevOutput.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.PrevOutput.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9349,22 +9349,22 @@ impl ::protobuf::reflect::ProtobufValue for PrevOutput {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckPaymentRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckPaymentRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TxAckPaymentRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.nonce)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.nonce)
     pub nonce: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.recipient_name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.recipient_name)
     pub recipient_name: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.memos)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.memos)
     pub memos: ::std::vec::Vec<tx_ack_payment_request::PaymentRequestMemo>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.amount)
     pub amount: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9684,18 +9684,18 @@ impl ::protobuf::reflect::ProtobufValue for TxAckPaymentRequest {
 
 /// Nested message and enums of message `TxAckPaymentRequest`
 pub mod tx_ack_payment_request {
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct PaymentRequestMemo {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo.text_memo)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo.text_memo)
         pub text_memo: ::protobuf::MessageField<TextMemo>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo.refund_memo)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo.refund_memo)
         pub refund_memo: ::protobuf::MessageField<RefundMemo>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo.coin_purchase_memo)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo.coin_purchase_memo)
         pub coin_purchase_memo: ::protobuf::MessageField<CoinPurchaseMemo>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.PaymentRequestMemo.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -9860,14 +9860,14 @@ pub mod tx_ack_payment_request {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.TextMemo)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TextMemo {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo.text)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.TextMemo.text)
         pub text: ::std::option::Option<::std::string::String>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.TextMemo.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.TextMemo.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -10021,16 +10021,16 @@ pub mod tx_ack_payment_request {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.RefundMemo)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct RefundMemo {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo.address)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.RefundMemo.address)
         pub address: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo.mac)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.RefundMemo.mac)
         pub mac: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemo.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.RefundMemo.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -10239,20 +10239,20 @@ pub mod tx_ack_payment_request {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct CoinPurchaseMemo {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo.coin_type)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo.coin_type)
         pub coin_type: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo.amount)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo.amount)
         pub amount: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo.address)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo.address)
         pub address: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo.mac)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo.mac)
         pub mac: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckPaymentRequest.CoinPurchaseMemo.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -10555,14 +10555,14 @@ pub mod tx_ack_payment_request {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckInput)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckInput)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TxAckInput {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckInput.tx)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckInput.tx)
     pub tx: ::protobuf::MessageField<tx_ack_input::TxAckInputWrapper>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckInput.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckInput.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -10688,14 +10688,14 @@ impl ::protobuf::reflect::ProtobufValue for TxAckInput {
 
 /// Nested message and enums of message `TxAckInput`
 pub mod tx_ack_input {
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckInput.TxAckInputWrapper)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckInput.TxAckInputWrapper)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TxAckInputWrapper {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckInput.TxAckInputWrapper.input)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckInput.TxAckInputWrapper.input)
         pub input: ::protobuf::MessageField<super::TxInput>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckInput.TxAckInputWrapper.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckInput.TxAckInputWrapper.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -10820,14 +10820,14 @@ pub mod tx_ack_input {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckOutput)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckOutput)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TxAckOutput {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckOutput.tx)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckOutput.tx)
     pub tx: ::protobuf::MessageField<tx_ack_output::TxAckOutputWrapper>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckOutput.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckOutput.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -10953,14 +10953,14 @@ impl ::protobuf::reflect::ProtobufValue for TxAckOutput {
 
 /// Nested message and enums of message `TxAckOutput`
 pub mod tx_ack_output {
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckOutput.TxAckOutputWrapper)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckOutput.TxAckOutputWrapper)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TxAckOutputWrapper {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckOutput.TxAckOutputWrapper.output)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckOutput.TxAckOutputWrapper.output)
         pub output: ::protobuf::MessageField<super::TxOutput>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckOutput.TxAckOutputWrapper.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckOutput.TxAckOutputWrapper.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -11085,14 +11085,14 @@ pub mod tx_ack_output {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckPrevMeta)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckPrevMeta)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TxAckPrevMeta {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPrevMeta.tx)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPrevMeta.tx)
     pub tx: ::protobuf::MessageField<PrevTx>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckPrevMeta.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckPrevMeta.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -11216,14 +11216,14 @@ impl ::protobuf::reflect::ProtobufValue for TxAckPrevMeta {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckPrevInput)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckPrevInput)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TxAckPrevInput {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPrevInput.tx)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPrevInput.tx)
     pub tx: ::protobuf::MessageField<tx_ack_prev_input::TxAckPrevInputWrapper>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckPrevInput.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckPrevInput.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -11349,14 +11349,14 @@ impl ::protobuf::reflect::ProtobufValue for TxAckPrevInput {
 
 /// Nested message and enums of message `TxAckPrevInput`
 pub mod tx_ack_prev_input {
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckPrevInput.TxAckPrevInputWrapper)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckPrevInput.TxAckPrevInputWrapper)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TxAckPrevInputWrapper {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPrevInput.TxAckPrevInputWrapper.input)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPrevInput.TxAckPrevInputWrapper.input)
         pub input: ::protobuf::MessageField<super::PrevInput>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckPrevInput.TxAckPrevInputWrapper.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckPrevInput.TxAckPrevInputWrapper.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -11481,14 +11481,14 @@ pub mod tx_ack_prev_input {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckPrevOutput)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckPrevOutput)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TxAckPrevOutput {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPrevOutput.tx)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPrevOutput.tx)
     pub tx: ::protobuf::MessageField<tx_ack_prev_output::TxAckPrevOutputWrapper>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckPrevOutput.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckPrevOutput.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -11614,14 +11614,14 @@ impl ::protobuf::reflect::ProtobufValue for TxAckPrevOutput {
 
 /// Nested message and enums of message `TxAckPrevOutput`
 pub mod tx_ack_prev_output {
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckPrevOutput.TxAckPrevOutputWrapper)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckPrevOutput.TxAckPrevOutputWrapper)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TxAckPrevOutputWrapper {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPrevOutput.TxAckPrevOutputWrapper.output)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPrevOutput.TxAckPrevOutputWrapper.output)
         pub output: ::protobuf::MessageField<super::PrevOutput>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckPrevOutput.TxAckPrevOutputWrapper.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckPrevOutput.TxAckPrevOutputWrapper.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -11746,14 +11746,14 @@ pub mod tx_ack_prev_output {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckPrevExtraData)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckPrevExtraData)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TxAckPrevExtraData {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPrevExtraData.tx)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPrevExtraData.tx)
     pub tx: ::protobuf::MessageField<tx_ack_prev_extra_data::TxAckPrevExtraDataWrapper>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckPrevExtraData.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckPrevExtraData.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -11879,14 +11879,14 @@ impl ::protobuf::reflect::ProtobufValue for TxAckPrevExtraData {
 
 /// Nested message and enums of message `TxAckPrevExtraData`
 pub mod tx_ack_prev_extra_data {
-    // @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.TxAckPrevExtraData.TxAckPrevExtraDataWrapper)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.TxAckPrevExtraData.TxAckPrevExtraDataWrapper)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TxAckPrevExtraDataWrapper {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.TxAckPrevExtraData.TxAckPrevExtraDataWrapper.extra_data_chunk)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.TxAckPrevExtraData.TxAckPrevExtraDataWrapper.extra_data_chunk)
         pub extra_data_chunk: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.TxAckPrevExtraData.TxAckPrevExtraDataWrapper.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.TxAckPrevExtraData.TxAckPrevExtraDataWrapper.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -12041,26 +12041,26 @@ pub mod tx_ack_prev_extra_data {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.GetOwnershipProof)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.GetOwnershipProof)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct GetOwnershipProof {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetOwnershipProof.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetOwnershipProof.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetOwnershipProof.coin_name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetOwnershipProof.coin_name)
     pub coin_name: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetOwnershipProof.script_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetOwnershipProof.script_type)
     pub script_type: ::std::option::Option<::protobuf::EnumOrUnknown<InputScriptType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetOwnershipProof.multisig)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetOwnershipProof.multisig)
     pub multisig: ::protobuf::MessageField<MultisigRedeemScriptType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetOwnershipProof.user_confirmation)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetOwnershipProof.user_confirmation)
     pub user_confirmation: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetOwnershipProof.ownership_ids)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetOwnershipProof.ownership_ids)
     pub ownership_ids: ::std::vec::Vec<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.GetOwnershipProof.commitment_data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.GetOwnershipProof.commitment_data)
     pub commitment_data: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.GetOwnershipProof.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.GetOwnershipProof.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -12111,7 +12111,7 @@ impl GetOwnershipProof {
         self.coin_name.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional .hw.trezor.messages.bitcoin.InputScriptType script_type = 3;
+    // optional .hw.cerberus.messages.bitcoin.InputScriptType script_type = 3;
 
     pub fn script_type(&self) -> InputScriptType {
         match self.script_type {
@@ -12393,16 +12393,16 @@ impl ::protobuf::reflect::ProtobufValue for GetOwnershipProof {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.OwnershipProof)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.OwnershipProof)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct OwnershipProof {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.OwnershipProof.ownership_proof)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.OwnershipProof.ownership_proof)
     pub ownership_proof: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.OwnershipProof.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.OwnershipProof.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.OwnershipProof.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.OwnershipProof.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -12611,28 +12611,28 @@ impl ::protobuf::reflect::ProtobufValue for OwnershipProof {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bitcoin.AuthorizeCoinJoin)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bitcoin.AuthorizeCoinJoin)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct AuthorizeCoinJoin {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.AuthorizeCoinJoin.coordinator)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.AuthorizeCoinJoin.coordinator)
     pub coordinator: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.AuthorizeCoinJoin.max_rounds)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.AuthorizeCoinJoin.max_rounds)
     pub max_rounds: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.AuthorizeCoinJoin.max_coordinator_fee_rate)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.AuthorizeCoinJoin.max_coordinator_fee_rate)
     pub max_coordinator_fee_rate: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.AuthorizeCoinJoin.max_fee_per_kvbyte)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.AuthorizeCoinJoin.max_fee_per_kvbyte)
     pub max_fee_per_kvbyte: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.AuthorizeCoinJoin.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.AuthorizeCoinJoin.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.AuthorizeCoinJoin.coin_name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.AuthorizeCoinJoin.coin_name)
     pub coin_name: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.AuthorizeCoinJoin.script_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.AuthorizeCoinJoin.script_type)
     pub script_type: ::std::option::Option<::protobuf::EnumOrUnknown<InputScriptType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bitcoin.AuthorizeCoinJoin.amount_unit)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bitcoin.AuthorizeCoinJoin.amount_unit)
     pub amount_unit: ::std::option::Option<::protobuf::EnumOrUnknown<AmountUnit>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bitcoin.AuthorizeCoinJoin.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bitcoin.AuthorizeCoinJoin.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -12776,7 +12776,7 @@ impl AuthorizeCoinJoin {
         self.coin_name.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional .hw.trezor.messages.bitcoin.InputScriptType script_type = 7;
+    // optional .hw.cerberus.messages.bitcoin.InputScriptType script_type = 7;
 
     pub fn script_type(&self) -> InputScriptType {
         match self.script_type {
@@ -12798,7 +12798,7 @@ impl AuthorizeCoinJoin {
         self.script_type = ::std::option::Option::Some(::protobuf::EnumOrUnknown::new(v));
     }
 
-    // optional .hw.trezor.messages.bitcoin.AmountUnit amount_unit = 8;
+    // optional .hw.cerberus.messages.bitcoin.AmountUnit amount_unit = 8;
 
     pub fn amount_unit(&self) -> AmountUnit {
         match self.amount_unit {
@@ -13048,19 +13048,19 @@ impl ::protobuf::reflect::ProtobufValue for AuthorizeCoinJoin {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.bitcoin.InputScriptType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.bitcoin.InputScriptType)
 pub enum InputScriptType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.InputScriptType.SPENDADDRESS)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.InputScriptType.SPENDADDRESS)
     SPENDADDRESS = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.InputScriptType.SPENDMULTISIG)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.InputScriptType.SPENDMULTISIG)
     SPENDMULTISIG = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.InputScriptType.EXTERNAL)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.InputScriptType.EXTERNAL)
     EXTERNAL = 2,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.InputScriptType.SPENDWITNESS)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.InputScriptType.SPENDWITNESS)
     SPENDWITNESS = 3,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.InputScriptType.SPENDP2SHWITNESS)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.InputScriptType.SPENDP2SHWITNESS)
     SPENDP2SHWITNESS = 4,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.InputScriptType.SPENDTAPROOT)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.InputScriptType.SPENDTAPROOT)
     SPENDTAPROOT = 5,
 }
 
@@ -13130,21 +13130,21 @@ impl InputScriptType {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.bitcoin.OutputScriptType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.bitcoin.OutputScriptType)
 pub enum OutputScriptType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.OutputScriptType.PAYTOADDRESS)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.OutputScriptType.PAYTOADDRESS)
     PAYTOADDRESS = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.OutputScriptType.PAYTOSCRIPTHASH)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.OutputScriptType.PAYTOSCRIPTHASH)
     PAYTOSCRIPTHASH = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.OutputScriptType.PAYTOMULTISIG)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.OutputScriptType.PAYTOMULTISIG)
     PAYTOMULTISIG = 2,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.OutputScriptType.PAYTOOPRETURN)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.OutputScriptType.PAYTOOPRETURN)
     PAYTOOPRETURN = 3,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.OutputScriptType.PAYTOWITNESS)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.OutputScriptType.PAYTOWITNESS)
     PAYTOWITNESS = 4,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.OutputScriptType.PAYTOP2SHWITNESS)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.OutputScriptType.PAYTOP2SHWITNESS)
     PAYTOP2SHWITNESS = 5,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.OutputScriptType.PAYTOTAPROOT)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.OutputScriptType.PAYTOTAPROOT)
     PAYTOTAPROOT = 6,
 }
 
@@ -13217,11 +13217,11 @@ impl OutputScriptType {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.bitcoin.DecredStakingSpendType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.bitcoin.DecredStakingSpendType)
 pub enum DecredStakingSpendType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.DecredStakingSpendType.SSGen)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.DecredStakingSpendType.SSGen)
     SSGen = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.DecredStakingSpendType.SSRTX)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.DecredStakingSpendType.SSRTX)
     SSRTX = 1,
 }
 
@@ -13279,15 +13279,15 @@ impl DecredStakingSpendType {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.bitcoin.AmountUnit)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.bitcoin.AmountUnit)
 pub enum AmountUnit {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.AmountUnit.BITCOIN)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.AmountUnit.BITCOIN)
     BITCOIN = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.AmountUnit.MILLIBITCOIN)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.AmountUnit.MILLIBITCOIN)
     MILLIBITCOIN = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.AmountUnit.MICROBITCOIN)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.AmountUnit.MICROBITCOIN)
     MICROBITCOIN = 2,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.bitcoin.AmountUnit.SATOSHI)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.bitcoin.AmountUnit.SATOSHI)
     SATOSHI = 3,
 }
 
@@ -13351,12 +13351,12 @@ impl AmountUnit {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x16messages-bitcoin.proto\x12\x1ahw.trezor.messages.bitcoin\x1a\x0eme\
+    \n\x16messages-bitcoin.proto\x12\x1ahw.cerberus.messages.bitcoin\x1a\x0eme\
     ssages.proto\x1a\x15messages-common.proto\"\xeb\x02\n\x18MultisigRedeemS\
-    criptType\x12]\n\x07pubkeys\x18\x01\x20\x03(\x0b2C.hw.trezor.messages.bi\
+    criptType\x12]\n\x07pubkeys\x18\x01\x20\x03(\x0b2C.hw.cerberus.messages.bi\
     tcoin.MultisigRedeemScriptType.HDNodePathTypeR\x07pubkeys\x12\x1e\n\nsig\
     natures\x18\x02\x20\x03(\x0cR\nsignatures\x12\x0c\n\x01m\x18\x03\x20\x02\
-    (\rR\x01m\x12;\n\x05nodes\x18\x04\x20\x03(\x0b2%.hw.trezor.messages.comm\
+    (\rR\x01m\x12;\n\x05nodes\x18\x04\x20\x03(\x0b2%.hw.cerberus.messages.comm\
     on.HDNodeTypeR\x05nodes\x12\x1b\n\taddress_n\x18\x05\x20\x03(\rR\x08addr\
     essN\x1ah\n\x0eHDNodePathType\x129\n\x04node\x18\x01\x20\x02(\x0b2%.hw.t\
     rezor.messages.common.HDNodeTypeR\x04node\x12\x1b\n\taddress_n\x18\x02\
@@ -13364,32 +13364,32 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     n\x18\x01\x20\x03(\rR\x08addressN\x12(\n\x10ecdsa_curve_name\x18\x02\x20\
     \x01(\tR\x0eecdsaCurveName\x12!\n\x0cshow_display\x18\x03\x20\x01(\x08R\
     \x0bshowDisplay\x12$\n\tcoin_name\x18\x04\x20\x01(\t:\x07BitcoinR\x08coi\
-    nName\x12Z\n\x0bscript_type\x18\x05\x20\x01(\x0e2+.hw.trezor.messages.bi\
+    nName\x12Z\n\x0bscript_type\x18\x05\x20\x01(\x0e2+.hw.cerberus.messages.bi\
     tcoin.InputScriptType:\x0cSPENDADDRESSR\nscriptType\x12*\n\x11ignore_xpu\
     b_magic\x18\x06\x20\x01(\x08R\x0fignoreXpubMagic\"\xa5\x01\n\tPublicKey\
-    \x129\n\x04node\x18\x01\x20\x02(\x0b2%.hw.trezor.messages.common.HDNodeT\
+    \x129\n\x04node\x18\x01\x20\x02(\x0b2%.hw.cerberus.messages.common.HDNodeT\
     ypeR\x04node\x12\x12\n\x04xpub\x18\x02\x20\x02(\tR\x04xpub\x12)\n\x10roo\
     t_fingerprint\x18\x03\x20\x01(\rR\x0frootFingerprint\x12\x1e\n\ndescript\
     or\x18\x04\x20\x01(\tR\ndescriptor\"\xe8\x02\n\nGetAddress\x12\x1b\n\tad\
     dress_n\x18\x01\x20\x03(\rR\x08addressN\x12$\n\tcoin_name\x18\x02\x20\
     \x01(\t:\x07BitcoinR\x08coinName\x12!\n\x0cshow_display\x18\x03\x20\x01(\
-    \x08R\x0bshowDisplay\x12P\n\x08multisig\x18\x04\x20\x01(\x0b24.hw.trezor\
+    \x08R\x0bshowDisplay\x12P\n\x08multisig\x18\x04\x20\x01(\x0b24.hw.cerberus\
     .messages.bitcoin.MultisigRedeemScriptTypeR\x08multisig\x12Z\n\x0bscript\
-    _type\x18\x05\x20\x01(\x0e2+.hw.trezor.messages.bitcoin.InputScriptType:\
+    _type\x18\x05\x20\x01(\x0e2+.hw.cerberus.messages.bitcoin.InputScriptType:\
     \x0cSPENDADDRESSR\nscriptType\x12*\n\x11ignore_xpub_magic\x18\x06\x20\
     \x01(\x08R\x0fignoreXpubMagic\x12\x1a\n\x08chunkify\x18\x07\x20\x01(\x08\
     R\x08chunkify\"5\n\x07Address\x12\x18\n\x07address\x18\x01\x20\x02(\tR\
     \x07address\x12\x10\n\x03mac\x18\x02\x20\x01(\x0cR\x03mac\"\x81\x02\n\
     \x0eGetOwnershipId\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\
     \x12$\n\tcoin_name\x18\x02\x20\x01(\t:\x07BitcoinR\x08coinName\x12P\n\
-    \x08multisig\x18\x03\x20\x01(\x0b24.hw.trezor.messages.bitcoin.MultisigR\
+    \x08multisig\x18\x03\x20\x01(\x0b24.hw.cerberus.messages.bitcoin.MultisigR\
     edeemScriptTypeR\x08multisig\x12Z\n\x0bscript_type\x18\x04\x20\x01(\x0e2\
-    +.hw.trezor.messages.bitcoin.InputScriptType:\x0cSPENDADDRESSR\nscriptTy\
+    +.hw.cerberus.messages.bitcoin.InputScriptType:\x0cSPENDADDRESSR\nscriptTy\
     pe\"0\n\x0bOwnershipId\x12!\n\x0cownership_id\x18\x01\x20\x02(\x0cR\x0bo\
     wnershipId\"\x88\x02\n\x0bSignMessage\x12\x1b\n\taddress_n\x18\x01\x20\
     \x03(\rR\x08addressN\x12\x18\n\x07message\x18\x02\x20\x02(\x0cR\x07messa\
     ge\x12$\n\tcoin_name\x18\x03\x20\x01(\t:\x07BitcoinR\x08coinName\x12Z\n\
-    \x0bscript_type\x18\x04\x20\x01(\x0e2+.hw.trezor.messages.bitcoin.InputS\
+    \x0bscript_type\x18\x04\x20\x01(\x0e2+.hw.cerberus.messages.bitcoin.InputS\
     criptType:\x0cSPENDADDRESSR\nscriptType\x12$\n\x0eno_script_type\x18\x05\
     \x20\x01(\x08R\x0cnoScriptType\x12\x1a\n\x08chunkify\x18\x06\x20\x01(\
     \x08R\x08chunkify\"J\n\x10MessageSignature\x12\x18\n\x07address\x18\x01\
@@ -13407,11 +13407,11 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x20\x01(\x08R\x0coverwinteredB\x02\x18\x01\x12(\n\x10version_group_id\
     \x18\x08\x20\x01(\rR\x0eversionGroupId\x12\x1c\n\ttimestamp\x18\t\x20\
     \x01(\rR\ttimestamp\x12\x1b\n\tbranch_id\x18\n\x20\x01(\rR\x08branchId\
-    \x12P\n\x0bamount_unit\x18\x0b\x20\x01(\x0e2&.hw.trezor.messages.bitcoin\
+    \x12P\n\x0bamount_unit\x18\x0b\x20\x01(\x0e2&.hw.cerberus.messages.bitcoin\
     .AmountUnit:\x07BITCOINR\namountUnit\x129\n\x15decred_staking_ticket\x18\
     \x0c\x20\x01(\x08:\x05falseR\x13decredStakingTicket\x12\"\n\tserialize\
     \x18\r\x20\x01(\x08:\x04trueR\tserialize\x12]\n\x10coinjoin_request\x18\
-    \x0e\x20\x01(\x0b22.hw.trezor.messages.bitcoin.SignTx.CoinJoinRequestR\
+    \x0e\x20\x01(\x0b22.hw.cerberus.messages.bitcoin.SignTx.CoinJoinRequestR\
     \x0fcoinjoinRequest\x12\x1a\n\x08chunkify\x18\x0f\x20\x01(\x08R\x08chunk\
     ify\x1a\xd2\x01\n\x0fCoinJoinRequest\x12\x19\n\x08fee_rate\x18\x01\x20\
     \x02(\rR\x07feeRate\x12(\n\x10no_fee_threshold\x18\x02\x20\x02(\x04R\x0e\
@@ -13420,9 +13420,9 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \rmaskPublicKey\x12\x1c\n\tsignature\x18\x05\x20\x02(\x0cR\tsignature\"\
     \xd4\x05\n\tTxRequest\x12T\n\x0crequest_type\x18\x01\x20\x01(\x0e21.hw.t\
     rezor.messages.bitcoin.TxRequest.RequestTypeR\x0brequestType\x12T\n\x07d\
-    etails\x18\x02\x20\x01(\x0b2:.hw.trezor.messages.bitcoin.TxRequest.TxReq\
+    etails\x18\x02\x20\x01(\x0b2:.hw.cerberus.messages.bitcoin.TxRequest.TxReq\
     uestDetailsTypeR\x07details\x12]\n\nserialized\x18\x03\x20\x01(\x0b2=.hw\
-    .trezor.messages.bitcoin.TxRequest.TxRequestSerializedTypeR\nserialized\
+    .cerberus.messages.bitcoin.TxRequest.TxRequestSerializedTypeR\nserialized\
     \x1a\xa6\x01\n\x14TxRequestDetailsType\x12#\n\rrequest_index\x18\x01\x20\
     \x01(\rR\x0crequestIndex\x12\x17\n\x07tx_hash\x18\x02\x20\x01(\x0cR\x06t\
     xHash\x12$\n\x0eextra_data_len\x18\x03\x20\x01(\rR\x0cextraDataLen\x12*\
@@ -13434,14 +13434,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     UT\x10\x01\x12\n\n\x06TXMETA\x10\x02\x12\x0e\n\nTXFINISHED\x10\x03\x12\
     \x0f\n\x0bTXEXTRADATA\x10\x04\x12\x0f\n\x0bTXORIGINPUT\x10\x05\x12\x10\n\
     \x0cTXORIGOUTPUT\x10\x06\x12\x10\n\x0cTXPAYMENTREQ\x10\x07\"\xf4\x0f\n\
-    \x05TxAck\x12A\n\x02tx\x18\x01\x20\x01(\x0b21.hw.trezor.messages.bitcoin\
+    \x05TxAck\x12A\n\x02tx\x18\x01\x20\x01(\x0b21.hw.cerberus.messages.bitcoin\
     .TxAck.TransactionTypeR\x02tx\x1a\xa3\x0f\n\x0fTransactionType\x12\x18\n\
     \x07version\x18\x01\x20\x01(\rR\x07version\x12U\n\x06inputs\x18\x02\x20\
-    \x03(\x0b2=.hw.trezor.messages.bitcoin.TxAck.TransactionType.TxInputType\
-    R\x06inputs\x12b\n\x0bbin_outputs\x18\x03\x20\x03(\x0b2A.hw.trezor.messa\
+    \x03(\x0b2=.hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxInputType\
+    R\x06inputs\x12b\n\x0bbin_outputs\x18\x03\x20\x03(\x0b2A.hw.cerberus.messa\
     ges.bitcoin.TxAck.TransactionType.TxOutputBinTypeR\nbinOutputs\x12\x1b\n\
     \tlock_time\x18\x04\x20\x01(\rR\x08lockTime\x12X\n\x07outputs\x18\x05\
-    \x20\x03(\x0b2>.hw.trezor.messages.bitcoin.TxAck.TransactionType.TxOutpu\
+    \x20\x03(\x0b2>.hw.cerberus.messages.bitcoin.TxAck.TransactionType.TxOutpu\
     tTypeR\x07outputs\x12\x1d\n\ninputs_cnt\x18\x06\x20\x01(\rR\tinputsCnt\
     \x12\x1f\n\x0boutputs_cnt\x18\x07\x20\x01(\rR\noutputsCnt\x12\x1d\n\next\
     ra_data\x18\x08\x20\x01(\x0cR\textraData\x12$\n\x0eextra_data_len\x18\t\
@@ -13454,16 +13454,16 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x20\x02(\x0cR\x08prevHash\x12\x1d\n\nprev_index\x18\x03\x20\x02(\rR\tpr\
     evIndex\x12\x1d\n\nscript_sig\x18\x04\x20\x01(\x0cR\tscriptSig\x12&\n\
     \x08sequence\x18\x05\x20\x01(\r:\n4294967295R\x08sequence\x12Z\n\x0bscri\
-    pt_type\x18\x06\x20\x01(\x0e2+.hw.trezor.messages.bitcoin.InputScriptTyp\
+    pt_type\x18\x06\x20\x01(\x0e2+.hw.cerberus.messages.bitcoin.InputScriptTyp\
     e:\x0cSPENDADDRESSR\nscriptType\x12P\n\x08multisig\x18\x07\x20\x01(\x0b2\
-    4.hw.trezor.messages.bitcoin.MultisigRedeemScriptTypeR\x08multisig\x12\
+    4.hw.cerberus.messages.bitcoin.MultisigRedeemScriptTypeR\x08multisig\x12\
     \x16\n\x06amount\x18\x08\x20\x01(\x04R\x06amount\x12\x1f\n\x0bdecred_tre\
     e\x18\t\x20\x01(\rR\ndecredTree\x12\x18\n\x07witness\x18\r\x20\x01(\x0cR\
     \x07witness\x12'\n\x0fownership_proof\x18\x0e\x20\x01(\x0cR\x0eownership\
     Proof\x12'\n\x0fcommitment_data\x18\x0f\x20\x01(\x0cR\x0ecommitmentData\
     \x12\x1b\n\torig_hash\x18\x10\x20\x01(\x0cR\x08origHash\x12\x1d\n\norig_\
     index\x18\x11\x20\x01(\rR\torigIndex\x12d\n\x14decred_staking_spend\x18\
-    \x12\x20\x01(\x0e22.hw.trezor.messages.bitcoin.DecredStakingSpendTypeR\
+    \x12\x20\x01(\x0e22.hw.cerberus.messages.bitcoin.DecredStakingSpendTypeR\
     \x12decredStakingSpend\x12#\n\rscript_pubkey\x18\x13\x20\x01(\x0cR\x0csc\
     riptPubkey\x12(\n\x0ecoinjoin_flags\x18\x14\x20\x01(\r:\x010R\rcoinjoinF\
     lags\x1a\x82\x01\n\x0fTxOutputBinType\x12\x16\n\x06amount\x18\x01\x20\
@@ -13472,9 +13472,9 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     riptVersion\x1a\xa0\x03\n\x0cTxOutputType\x12\x18\n\x07address\x18\x01\
     \x20\x01(\tR\x07address\x12\x1b\n\taddress_n\x18\x02\x20\x03(\rR\x08addr\
     essN\x12\x16\n\x06amount\x18\x03\x20\x02(\x04R\x06amount\x12[\n\x0bscrip\
-    t_type\x18\x04\x20\x01(\x0e2,.hw.trezor.messages.bitcoin.OutputScriptTyp\
+    t_type\x18\x04\x20\x01(\x0e2,.hw.cerberus.messages.bitcoin.OutputScriptTyp\
     e:\x0cPAYTOADDRESSR\nscriptType\x12P\n\x08multisig\x18\x05\x20\x01(\x0b2\
-    4.hw.trezor.messages.bitcoin.MultisigRedeemScriptTypeR\x08multisig\x12$\
+    4.hw.cerberus.messages.bitcoin.MultisigRedeemScriptTypeR\x08multisig\x12$\
     \n\x0eop_return_data\x18\x06\x20\x01(\x0cR\x0copReturnData\x12\x1b\n\tor\
     ig_hash\x18\n\x20\x01(\x0cR\x08origHash\x12\x1d\n\norig_index\x18\x0b\
     \x20\x01(\rR\torigIndex\x120\n\x11payment_req_index\x18\x0c\x20\x01(\rR\
@@ -13483,23 +13483,23 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     v_hash\x18\x02\x20\x02(\x0cR\x08prevHash\x12\x1d\n\nprev_index\x18\x03\
     \x20\x02(\rR\tprevIndex\x12\x1d\n\nscript_sig\x18\x04\x20\x01(\x0cR\tscr\
     iptSig\x12&\n\x08sequence\x18\x05\x20\x01(\r:\n4294967295R\x08sequence\
-    \x12Z\n\x0bscript_type\x18\x06\x20\x01(\x0e2+.hw.trezor.messages.bitcoin\
+    \x12Z\n\x0bscript_type\x18\x06\x20\x01(\x0e2+.hw.cerberus.messages.bitcoin\
     .InputScriptType:\x0cSPENDADDRESSR\nscriptType\x12P\n\x08multisig\x18\
-    \x07\x20\x01(\x0b24.hw.trezor.messages.bitcoin.MultisigRedeemScriptTypeR\
+    \x07\x20\x01(\x0b24.hw.cerberus.messages.bitcoin.MultisigRedeemScriptTypeR\
     \x08multisig\x12\x16\n\x06amount\x18\x08\x20\x02(\x04R\x06amount\x12\x1f\
     \n\x0bdecred_tree\x18\t\x20\x01(\rR\ndecredTree\x12\x18\n\x07witness\x18\
     \r\x20\x01(\x0cR\x07witness\x12'\n\x0fownership_proof\x18\x0e\x20\x01(\
     \x0cR\x0eownershipProof\x12'\n\x0fcommitment_data\x18\x0f\x20\x01(\x0cR\
     \x0ecommitmentData\x12\x1b\n\torig_hash\x18\x10\x20\x01(\x0cR\x08origHas\
     h\x12\x1d\n\norig_index\x18\x11\x20\x01(\rR\torigIndex\x12d\n\x14decred_\
-    staking_spend\x18\x12\x20\x01(\x0e22.hw.trezor.messages.bitcoin.DecredSt\
+    staking_spend\x18\x12\x20\x01(\x0e22.hw.cerberus.messages.bitcoin.DecredSt\
     akingSpendTypeR\x12decredStakingSpend\x12#\n\rscript_pubkey\x18\x13\x20\
     \x01(\x0cR\x0cscriptPubkey\x12(\n\x0ecoinjoin_flags\x18\x14\x20\x01(\r:\
     \x010R\rcoinjoinFlagsJ\x04\x08\n\x10\x0bJ\x04\x08\x0b\x10\x0cJ\x04\x08\
     \x0c\x10\r\"\xae\x03\n\x08TxOutput\x12\x18\n\x07address\x18\x01\x20\x01(\
     \tR\x07address\x12\x1b\n\taddress_n\x18\x02\x20\x03(\rR\x08addressN\x12\
     \x16\n\x06amount\x18\x03\x20\x02(\x04R\x06amount\x12[\n\x0bscript_type\
-    \x18\x04\x20\x01(\x0e2,.hw.trezor.messages.bitcoin.OutputScriptType:\x0c\
+    \x18\x04\x20\x01(\x0e2,.hw.cerberus.messages.bitcoin.OutputScriptType:\x0c\
     PAYTOADDRESSR\nscriptType\x12P\n\x08multisig\x18\x05\x20\x01(\x0b24.hw.t\
     rezor.messages.bitcoin.MultisigRedeemScriptTypeR\x08multisig\x12$\n\x0eo\
     p_return_data\x18\x06\x20\x01(\x0cR\x0copReturnData\x12\x1b\n\torig_hash\
@@ -13528,14 +13528,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     ptPubkey\x122\n\x15decred_script_version\x18\x03\x20\x01(\rR\x13decredSc\
     riptVersion\"\xf2\x05\n\x13TxAckPaymentRequest\x12\x14\n\x05nonce\x18\
     \x01\x20\x01(\x0cR\x05nonce\x12%\n\x0erecipient_name\x18\x02\x20\x02(\tR\
-    \rrecipientName\x12X\n\x05memos\x18\x03\x20\x03(\x0b2B.hw.trezor.message\
+    \rrecipientName\x12X\n\x05memos\x18\x03\x20\x03(\x0b2B.hw.cerberus.message\
     s.bitcoin.TxAckPaymentRequest.PaymentRequestMemoR\x05memos\x12\x16\n\x06\
     amount\x18\x04\x20\x01(\x04R\x06amount\x12\x1c\n\tsignature\x18\x05\x20\
     \x02(\x0cR\tsignature\x1a\xb8\x02\n\x12PaymentRequestMemo\x12U\n\ttext_m\
-    emo\x18\x01\x20\x01(\x0b28.hw.trezor.messages.bitcoin.TxAckPaymentReques\
+    emo\x18\x01\x20\x01(\x0b28.hw.cerberus.messages.bitcoin.TxAckPaymentReques\
     t.TextMemoR\x08textMemo\x12[\n\x0brefund_memo\x18\x02\x20\x01(\x0b2:.hw.\
-    trezor.messages.bitcoin.TxAckPaymentRequest.RefundMemoR\nrefundMemo\x12n\
-    \n\x12coin_purchase_memo\x18\x03\x20\x01(\x0b2@.hw.trezor.messages.bitco\
+    cerberus.messages.bitcoin.TxAckPaymentRequest.RefundMemoR\nrefundMemo\x12n\
+    \n\x12coin_purchase_memo\x18\x03\x20\x01(\x0b2@.hw.cerberus.messages.bitco\
     in.TxAckPaymentRequest.CoinPurchaseMemoR\x10coinPurchaseMemo\x1a\x1e\n\
     \x08TextMemo\x12\x12\n\x04text\x18\x01\x20\x02(\tR\x04text\x1a8\n\nRefun\
     dMemo\x12\x18\n\x07address\x18\x01\x20\x02(\tR\x07address\x12\x10\n\x03m\
@@ -13543,31 +13543,31 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     in_type\x18\x01\x20\x02(\rR\x08coinType\x12\x16\n\x06amount\x18\x02\x20\
     \x02(\tR\x06amount\x12\x18\n\x07address\x18\x03\x20\x02(\tR\x07address\
     \x12\x10\n\x03mac\x18\x04\x20\x02(\x0cR\x03mac:\x04\x88\xb2\x19\x01\"\
-    \xac\x01\n\nTxAckInput\x12H\n\x02tx\x18\x01\x20\x02(\x0b28.hw.trezor.mes\
+    \xac\x01\n\nTxAckInput\x12H\n\x02tx\x18\x01\x20\x02(\x0b28.hw.cerberus.mes\
     sages.bitcoin.TxAckInput.TxAckInputWrapperR\x02tx\x1aN\n\x11TxAckInputWr\
-    apper\x129\n\x05input\x18\x02\x20\x02(\x0b2#.hw.trezor.messages.bitcoin.\
+    apper\x129\n\x05input\x18\x02\x20\x02(\x0b2#.hw.cerberus.messages.bitcoin.\
     TxInputR\x05input:\x04\x90\xb2\x19\x16\"\xb3\x01\n\x0bTxAckOutput\x12J\n\
-    \x02tx\x18\x01\x20\x02(\x0b2:.hw.trezor.messages.bitcoin.TxAckOutput.TxA\
+    \x02tx\x18\x01\x20\x02(\x0b2:.hw.cerberus.messages.bitcoin.TxAckOutput.TxA\
     ckOutputWrapperR\x02tx\x1aR\n\x12TxAckOutputWrapper\x12<\n\x06output\x18\
-    \x05\x20\x02(\x0b2$.hw.trezor.messages.bitcoin.TxOutputR\x06output:\x04\
+    \x05\x20\x02(\x0b2$.hw.cerberus.messages.bitcoin.TxOutputR\x06output:\x04\
     \x90\xb2\x19\x16\"I\n\rTxAckPrevMeta\x122\n\x02tx\x18\x01\x20\x02(\x0b2\
-    \".hw.trezor.messages.bitcoin.PrevTxR\x02tx:\x04\x90\xb2\x19\x16\"\xbe\
-    \x01\n\x0eTxAckPrevInput\x12P\n\x02tx\x18\x01\x20\x02(\x0b2@.hw.trezor.m\
+    \".hw.cerberus.messages.bitcoin.PrevTxR\x02tx:\x04\x90\xb2\x19\x16\"\xbe\
+    \x01\n\x0eTxAckPrevInput\x12P\n\x02tx\x18\x01\x20\x02(\x0b2@.hw.cerberus.m\
     essages.bitcoin.TxAckPrevInput.TxAckPrevInputWrapperR\x02tx\x1aT\n\x15Tx\
-    AckPrevInputWrapper\x12;\n\x05input\x18\x02\x20\x02(\x0b2%.hw.trezor.mes\
+    AckPrevInputWrapper\x12;\n\x05input\x18\x02\x20\x02(\x0b2%.hw.cerberus.mes\
     sages.bitcoin.PrevInputR\x05input:\x04\x90\xb2\x19\x16\"\xc5\x01\n\x0fTx\
-    AckPrevOutput\x12R\n\x02tx\x18\x01\x20\x02(\x0b2B.hw.trezor.messages.bit\
+    AckPrevOutput\x12R\n\x02tx\x18\x01\x20\x02(\x0b2B.hw.cerberus.messages.bit\
     coin.TxAckPrevOutput.TxAckPrevOutputWrapperR\x02tx\x1aX\n\x16TxAckPrevOu\
-    tputWrapper\x12>\n\x06output\x18\x03\x20\x02(\x0b2&.hw.trezor.messages.b\
+    tputWrapper\x12>\n\x06output\x18\x03\x20\x02(\x0b2&.hw.cerberus.messages.b\
     itcoin.PrevOutputR\x06output:\x04\x90\xb2\x19\x16\"\xbb\x01\n\x12TxAckPr\
-    evExtraData\x12X\n\x02tx\x18\x01\x20\x02(\x0b2H.hw.trezor.messages.bitco\
+    evExtraData\x12X\n\x02tx\x18\x01\x20\x02(\x0b2H.hw.cerberus.messages.bitco\
     in.TxAckPrevExtraData.TxAckPrevExtraDataWrapperR\x02tx\x1aE\n\x19TxAckPr\
     evExtraDataWrapper\x12(\n\x10extra_data_chunk\x18\x08\x20\x02(\x0cR\x0ee\
     xtraDataChunk:\x04\x90\xb2\x19\x16\"\x88\x03\n\x11GetOwnershipProof\x12\
     \x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\x12$\n\tcoin_name\x18\
     \x02\x20\x01(\t:\x07BitcoinR\x08coinName\x12Z\n\x0bscript_type\x18\x03\
-    \x20\x01(\x0e2+.hw.trezor.messages.bitcoin.InputScriptType:\x0cSPENDWITN\
-    ESSR\nscriptType\x12P\n\x08multisig\x18\x04\x20\x01(\x0b24.hw.trezor.mes\
+    \x20\x01(\x0e2+.hw.cerberus.messages.bitcoin.InputScriptType:\x0cSPENDWITN\
+    ESSR\nscriptType\x12P\n\x08multisig\x18\x04\x20\x01(\x0b24.hw.cerberus.mes\
     sages.bitcoin.MultisigRedeemScriptTypeR\x08multisig\x122\n\x11user_confi\
     rmation\x18\x05\x20\x01(\x08:\x05falseR\x10userConfirmation\x12#\n\rowne\
     rship_ids\x18\x06\x20\x03(\x0cR\x0cownershipIds\x12)\n\x0fcommitment_dat\
@@ -13580,8 +13580,8 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     x_fee_per_kvbyte\x18\x04\x20\x02(\rR\x0fmaxFeePerKvbyte\x12\x1b\n\taddre\
     ss_n\x18\x05\x20\x03(\rR\x08addressN\x12$\n\tcoin_name\x18\x06\x20\x01(\
     \t:\x07BitcoinR\x08coinName\x12Z\n\x0bscript_type\x18\x07\x20\x01(\x0e2+\
-    .hw.trezor.messages.bitcoin.InputScriptType:\x0cSPENDADDRESSR\nscriptTyp\
-    e\x12P\n\x0bamount_unit\x18\x08\x20\x01(\x0e2&.hw.trezor.messages.bitcoi\
+    .hw.cerberus.messages.bitcoin.InputScriptType:\x0cSPENDADDRESSR\nscriptTyp\
+    e\x12P\n\x0bamount_unit\x18\x08\x20\x01(\x0e2&.hw.cerberus.messages.bitcoi\
     n.AmountUnit:\x07BITCOINR\namountUnit*~\n\x0fInputScriptType\x12\x10\n\
     \x0cSPENDADDRESS\x10\0\x12\x11\n\rSPENDMULTISIG\x10\x01\x12\x0c\n\x08EXT\
     ERNAL\x10\x02\x12\x10\n\x0cSPENDWITNESS\x10\x03\x12\x14\n\x10SPENDP2SHWI\
@@ -13592,8 +13592,8 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x12\x10\n\x0cPAYTOTAPROOT\x10\x06*.\n\x16DecredStakingSpendType\x12\t\n\
     \x05SSGen\x10\0\x12\t\n\x05SSRTX\x10\x01*J\n\nAmountUnit\x12\x0b\n\x07BI\
     TCOIN\x10\0\x12\x10\n\x0cMILLIBITCOIN\x10\x01\x12\x10\n\x0cMICROBITCOIN\
-    \x10\x02\x12\x0b\n\x07SATOSHI\x10\x03B?\n#com.satoshilabs.trezor.lib.pro\
-    tobufB\x14TrezorMessageBitcoin\x80\xa6\x1d\x01\
+    \x10\x02\x12\x0b\n\x07SATOSHI\x10\x03B?\n#com.satoshilabs.cerberus.lib.pro\
+    tobufB\x14CerberusMessageBitcoin\x80\xa6\x1d\x01\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

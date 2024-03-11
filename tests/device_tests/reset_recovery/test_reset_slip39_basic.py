@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -19,10 +19,10 @@ from itertools import combinations
 import pytest
 from shamir_mnemonic import MnemonicError, shamir
 
-from trezorlib import device
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.messages import BackupType
+from cerberuslib import device
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.messages import BackupType
 
 from ...common import EXTERNAL_ENTROPY, WITH_MOCK_URANDOM, generate_entropy
 from ...input_flows import InputFlowSlip39BasicResetRecovery
@@ -63,7 +63,7 @@ def reset_device(client: Client, strength: int):
     assert client.features.backup_type is BackupType.Slip39_Basic
 
     # backup attempt fails because backup was done in reset
-    with pytest.raises(TrezorFailure, match="ProcessError: Seed already backed up"):
+    with pytest.raises(CerberusFailure, match="ProcessError: Seed already backed up"):
         device.backup(client)
 
 

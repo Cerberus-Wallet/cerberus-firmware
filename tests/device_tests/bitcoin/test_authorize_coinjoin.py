@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2020 SatoshiLabs and contributors
 #
@@ -18,10 +18,10 @@ import time
 
 import pytest
 
-from trezorlib import btc, device, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.tools import parse_path
+from cerberuslib import btc, device, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.tools import parse_path
 
 from ...tx_cache import TxCache
 from .payment_req import make_coinjoin_request
@@ -253,7 +253,7 @@ def test_sign_tx(client: Client, chunkify: bool):
     )
 
     # Test for a third time, number of rounds should be exceeded.
-    with pytest.raises(TrezorFailure, match="No preauthorized operation"):
+    with pytest.raises(CerberusFailure, match="No preauthorized operation"):
         btc.sign_tx(
             client,
             "Testnet",
@@ -442,8 +442,8 @@ def test_sign_tx_spend(client: Client):
         ),
     ]
 
-    # Ensure that Trezor refuses to spend from CoinJoin without user authorization.
-    with pytest.raises(TrezorFailure, match="Forbidden key path"):
+    # Ensure that Cerberus refuses to spend from CoinJoin without user authorization.
+    with pytest.raises(CerberusFailure, match="Forbidden key path"):
         _, serialized_tx = btc.sign_tx(
             client,
             "Testnet",
@@ -517,8 +517,8 @@ def test_sign_tx_migration(client: Client):
         ),
     ]
 
-    # Ensure that Trezor refuses to receive to CoinJoin path without the user first authorizing access to CoinJoin paths.
-    with pytest.raises(TrezorFailure, match="Forbidden key path"):
+    # Ensure that Cerberus refuses to receive to CoinJoin path without the user first authorizing access to CoinJoin paths.
+    with pytest.raises(CerberusFailure, match="Forbidden key path"):
         _, serialized_tx = btc.sign_tx(
             client,
             "Testnet",
@@ -588,7 +588,7 @@ def test_wrong_coordinator(client: Client):
         script_type=messages.InputScriptType.SPENDTAPROOT,
     )
 
-    with pytest.raises(TrezorFailure, match="Unauthorized operation"):
+    with pytest.raises(CerberusFailure, match="Unauthorized operation"):
         btc.get_ownership_proof(
             client,
             "Testnet",
@@ -610,8 +610,8 @@ def test_wrong_account_type(client: Client):
         "coin_name": "Testnet",
     }
 
-    # Ensure that Trezor accepts CoinJoin authorizations only for SLIP-0025 paths.
-    with pytest.raises(TrezorFailure, match="Forbidden key path"):
+    # Ensure that Cerberus accepts CoinJoin authorizations only for SLIP-0025 paths.
+    with pytest.raises(CerberusFailure, match="Forbidden key path"):
         btc.authorize_coinjoin(
             **params,
             n=parse_path("m/86h/1h/0h"),
@@ -642,7 +642,7 @@ def test_cancel_authorization(client: Client):
 
     device.cancel_authorization(client)
 
-    with pytest.raises(TrezorFailure, match="No preauthorized operation"):
+    with pytest.raises(CerberusFailure, match="No preauthorized operation"):
         btc.get_ownership_proof(
             client,
             "Testnet",
@@ -659,7 +659,7 @@ def test_get_public_key(client: Client):
     EXPECTED_XPUB = "tpubDEMKm4M3S2Grx5DHTfbX9et5HQb9KhdjDCkUYdH9gvVofvPTE6yb2MH52P9uc4mx6eFohUmfN1f4hhHNK28GaZnWRXr3b8KkfFcySo1SmXU"
 
     # Ensure that user cannot access SLIP-25 path without UnlockPath.
-    with pytest.raises(TrezorFailure, match="Forbidden key path"):
+    with pytest.raises(CerberusFailure, match="Forbidden key path"):
         resp = btc.get_public_node(
             client,
             ACCOUNT_PATH,
@@ -680,7 +680,7 @@ def test_get_public_key(client: Client):
 
     # Ensure that UnlockPath fails with invalid MAC.
     invalid_unlock_path_mac = bytes([unlock_path_mac[0] ^ 1]) + unlock_path_mac[1:]
-    with pytest.raises(TrezorFailure, match="Invalid MAC"):
+    with pytest.raises(CerberusFailure, match="Invalid MAC"):
         resp = btc.get_public_node(
             client,
             ACCOUNT_PATH,
@@ -711,7 +711,7 @@ def test_get_public_key(client: Client):
 
 def test_get_address(client: Client):
     # Ensure that the SLIP-0025 external chain is inaccessible without user confirmation.
-    with pytest.raises(TrezorFailure, match="Forbidden key path"):
+    with pytest.raises(CerberusFailure, match="Forbidden key path"):
         btc.get_address(
             client,
             "Testnet",
@@ -757,7 +757,7 @@ def test_get_address(client: Client):
     assert resp == "tb1p64rqq64rtt7eq6p0htegalcjl2nkjz64ur8xsclc59s5845jty7skp2843"
 
     # Ensure that the SLIP-0025 internal chain is inaccessible even with user authorization.
-    with pytest.raises(TrezorFailure, match="Forbidden key path"):
+    with pytest.raises(CerberusFailure, match="Forbidden key path"):
         btc.get_address(
             client,
             "Testnet",
@@ -768,7 +768,7 @@ def test_get_address(client: Client):
             unlock_path_mac=unlock_path_mac,
         )
 
-    with pytest.raises(TrezorFailure, match="Forbidden key path"):
+    with pytest.raises(CerberusFailure, match="Forbidden key path"):
         btc.get_address(
             client,
             "Testnet",
@@ -780,7 +780,7 @@ def test_get_address(client: Client):
         )
 
     # Ensure that another SLIP-0025 account is inaccessible with the same MAC.
-    with pytest.raises(TrezorFailure, match="Forbidden key path"):
+    with pytest.raises(CerberusFailure, match="Forbidden key path"):
         btc.get_address(
             client,
             "Testnet",
@@ -822,7 +822,7 @@ def test_multisession_authorization(client: Client):
     )
 
     # Requesting a preauthorized ownership proof for www.example1.com should fail in session 2.
-    with pytest.raises(TrezorFailure, match="Unauthorized operation"):
+    with pytest.raises(CerberusFailure, match="Unauthorized operation"):
         ownership_proof, _ = btc.get_ownership_proof(
             client,
             "Testnet",
@@ -870,7 +870,7 @@ def test_multisession_authorization(client: Client):
     )
 
     # Requesting a preauthorized ownership proof for www.example2.com should fail in session 1.
-    with pytest.raises(TrezorFailure, match="Unauthorized operation"):
+    with pytest.raises(CerberusFailure, match="Unauthorized operation"):
         ownership_proof, _ = btc.get_ownership_proof(
             client,
             "Testnet",
@@ -885,7 +885,7 @@ def test_multisession_authorization(client: Client):
     device.cancel_authorization(client)
 
     # Requesting a preauthorized ownership proof should fail now.
-    with pytest.raises(TrezorFailure, match="No preauthorized operation"):
+    with pytest.raises(CerberusFailure, match="No preauthorized operation"):
         ownership_proof, _ = btc.get_ownership_proof(
             client,
             "Testnet",

@@ -1,6 +1,6 @@
-# Trezor Core Boot Stages
+# Cerberus Core Boot Stages
 
-Trezor T initialization is split into two stages. See [Memory Layout](memory.md) for info about in which sectors each stage is stored.
+Cerberus T initialization is split into two stages. See [Memory Layout](memory.md) for info about in which sectors each stage is stored.
 
 First stage (boardloader) is stored in write-protected area, which means it is non-upgradable.
 Only second stage (bootloader) update is allowed.
@@ -54,12 +54,12 @@ allowing a firmware update via USB.
 * Signature system is Ed25519 (allows combining signatures by multiple keys
   into one).
 * All multibyte integer values are little endian.
-* There is a tool called [headertool.py](https://github.com/trezor/trezor-firmware/blob/master/core/tools/headertool.py) which checks validity
+* There is a tool called [headertool.py](https://github.com/Cerberus-Wallet/cerberus-firmware/blob/master/core/tools/headertool.py) which checks validity
   of the bootloader/firmware images including their headers.
 
 ## Bootloader Format
 
-Trezor Core (second stage) bootloader consists of 2 parts:
+Cerberus Core (second stage) bootloader consists of 2 parts:
 
 1. bootloader header
 2. bootloader code
@@ -93,7 +93,7 @@ Total length of bootloader header is always 1024 bytes.
 
 ## Firmware Format
 
-Trezor Core firmware consists of 3 parts:
+Cerberus Core firmware consists of 3 parts:
 
 1. vendor header
 2. firmware header

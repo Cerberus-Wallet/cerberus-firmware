@@ -3,9 +3,9 @@ import typing as t
 from hashlib import sha256
 from pathlib import Path
 
-from trezorlib import cosi, device, models
-from trezorlib._internal import translations
-from trezorlib.debuglink import TrezorClientDebugLink as Client
+from cerberuslib import cosi, device, models
+from cerberuslib._internal import translations
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
 
 from . import common
 
@@ -21,7 +21,7 @@ LANGUAGES = [file.stem for file in TRANSLATIONS.glob("??.json")]
 
 def build_and_sign_blob(
     lang_or_def: translations.JsonDef | Path | str,
-    model: models.TrezorModel,
+    model: models.CerberusModel,
 ) -> bytes:
     order = translations.order_from_json(json.loads(ORDER_FILE.read_text()))
     if isinstance(lang_or_def, str):

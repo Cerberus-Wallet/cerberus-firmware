@@ -54,7 +54,7 @@ def test_upgrade():
     for _ in range(10):
         assert not sc0.unlock("3")
 
-    sc1 = StorageC("libtrezor-storage.so")
+    sc1 = StorageC("libcerberus-storage.so")
     sc1._set_flash_buffer(sc0._get_flash_buffer())
     sc1.init(common.test_uid)
     assert sc1.get_pin_rem() == 6
@@ -62,14 +62,14 @@ def test_upgrade():
 
 
 def test_upgrade_from_3():
-    sc3 = StorageC3("libtrezor-storage3.so")
+    sc3 = StorageC3("libcerberus-storage3.so")
     sc3.init(common.test_uid)
     assert sc3.unlock("")
     set_values(sc3)
     for _ in range(10):
         assert not sc3.unlock("3")
 
-    sc = StorageC("libtrezor-storage.so")
+    sc = StorageC("libcerberus-storage.so")
     sc._set_flash_buffer(sc3._get_flash_buffer())
     sc.init(common.test_uid)
     assert sc.get_pin_rem() == 6

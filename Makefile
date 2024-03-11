@@ -86,13 +86,13 @@ defs_check: ## check validity of coin definitions and protobuf files
 ruststyle:
 	@echo [RUSTFMT]
 	@cd core/embed/rust ; cargo fmt
-	@cd rust/trezor-client ; cargo fmt
+	@cd rust/cerberus-client ; cargo fmt
 
 ruststyle_check:
 	rustfmt --version
 	@echo [RUSTFMT]
 	@cd core/embed/rust ; cargo fmt -- --check
-	@cd rust/trezor-client ; cargo fmt -- --check
+	@cd rust/cerberus-client ; cargo fmt -- --check
 
 python_support_check:
 	./tests/test_python_support.py
@@ -126,11 +126,11 @@ icons_check: ## generate FIDO service icons
 
 protobuf: ## generate python and rust protobuf headers
 	./tools/build_protobuf
-	./rust/trezor-client/scripts/build_protos
+	./rust/cerberus-client/scripts/build_protos
 
 protobuf_check: ## check that generated protobuf headers are up to date
 	./tools/build_protobuf --check
-	./rust/trezor-client/scripts/build_protos --check
+	./rust/cerberus-client/scripts/build_protos --check
 
 ci_docs: ## generate CI documentation
 	./tools/generate_ci_docs.py

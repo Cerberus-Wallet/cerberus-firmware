@@ -25,11 +25,11 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.webauthn.WebAuthnListResidentCredentials)
+// @@protoc_insertion_point(message:hw.cerberus.messages.webauthn.WebAuthnListResidentCredentials)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct WebAuthnListResidentCredentials {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.webauthn.WebAuthnListResidentCredentials.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.webauthn.WebAuthnListResidentCredentials.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -128,14 +128,14 @@ impl ::protobuf::reflect::ProtobufValue for WebAuthnListResidentCredentials {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.webauthn.WebAuthnAddResidentCredential)
+// @@protoc_insertion_point(message:hw.cerberus.messages.webauthn.WebAuthnAddResidentCredential)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct WebAuthnAddResidentCredential {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnAddResidentCredential.credential_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnAddResidentCredential.credential_id)
     pub credential_id: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.webauthn.WebAuthnAddResidentCredential.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.webauthn.WebAuthnAddResidentCredential.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -286,14 +286,14 @@ impl ::protobuf::reflect::ProtobufValue for WebAuthnAddResidentCredential {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.webauthn.WebAuthnRemoveResidentCredential)
+// @@protoc_insertion_point(message:hw.cerberus.messages.webauthn.WebAuthnRemoveResidentCredential)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct WebAuthnRemoveResidentCredential {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnRemoveResidentCredential.index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnRemoveResidentCredential.index)
     pub index: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.webauthn.WebAuthnRemoveResidentCredential.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.webauthn.WebAuthnRemoveResidentCredential.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -427,14 +427,14 @@ impl ::protobuf::reflect::ProtobufValue for WebAuthnRemoveResidentCredential {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.webauthn.WebAuthnCredentials)
+// @@protoc_insertion_point(message:hw.cerberus.messages.webauthn.WebAuthnCredentials)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct WebAuthnCredentials {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnCredentials.credentials)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnCredentials.credentials)
     pub credentials: ::std::vec::Vec<web_authn_credentials::WebAuthnCredential>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.webauthn.WebAuthnCredentials.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.webauthn.WebAuthnCredentials.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -552,36 +552,36 @@ impl ::protobuf::reflect::ProtobufValue for WebAuthnCredentials {
 
 /// Nested message and enums of message `WebAuthnCredentials`
 pub mod web_authn_credentials {
-    // @@protoc_insertion_point(message:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct WebAuthnCredential {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.index)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.index)
         pub index: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.id)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.id)
         pub id: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.rp_id)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.rp_id)
         pub rp_id: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.rp_name)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.rp_name)
         pub rp_name: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.user_id)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.user_id)
         pub user_id: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.user_name)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.user_name)
         pub user_name: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.user_display_name)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.user_display_name)
         pub user_display_name: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.creation_time)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.creation_time)
         pub creation_time: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.hmac_secret)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.hmac_secret)
         pub hmac_secret: ::std::option::Option<bool>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.use_sign_count)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.use_sign_count)
         pub use_sign_count: ::std::option::Option<bool>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.algorithm)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.algorithm)
         pub algorithm: ::std::option::Option<i32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.curve)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.curve)
         pub curve: ::std::option::Option<i32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.webauthn.WebAuthnCredentials.WebAuthnCredential.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -1204,12 +1204,12 @@ pub mod web_authn_credentials {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x17messages-webauthn.proto\x12\x1bhw.trezor.messages.webauthn\"!\n\
+    \n\x17messages-webauthn.proto\x12\x1bhw.cerberus.messages.webauthn\"!\n\
     \x1fWebAuthnListResidentCredentials\"D\n\x1dWebAuthnAddResidentCredentia\
     l\x12#\n\rcredential_id\x18\x01\x20\x01(\x0cR\x0ccredentialId\"8\n\x20We\
     bAuthnRemoveResidentCredential\x12\x14\n\x05index\x18\x01\x20\x01(\rR\
     \x05index\"\xe9\x03\n\x13WebAuthnCredentials\x12e\n\x0bcredentials\x18\
-    \x01\x20\x03(\x0b2C.hw.trezor.messages.webauthn.WebAuthnCredentials.WebA\
+    \x01\x20\x03(\x0b2C.hw.cerberus.messages.webauthn.WebAuthnCredentials.WebA\
     uthnCredentialR\x0bcredentials\x1a\xea\x02\n\x12WebAuthnCredential\x12\
     \x14\n\x05index\x18\x01\x20\x01(\rR\x05index\x12\x0e\n\x02id\x18\x02\x20\
     \x01(\x0cR\x02id\x12\x13\n\x05rp_id\x18\x03\x20\x01(\tR\x04rpId\x12\x17\
@@ -1220,7 +1220,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     hmac_secret\x18\t\x20\x01(\x08R\nhmacSecret\x12$\n\x0euse_sign_count\x18\
     \n\x20\x01(\x08R\x0cuseSignCount\x12\x1c\n\talgorithm\x18\x0b\x20\x01(\
     \x11R\talgorithm\x12\x14\n\x05curve\x18\x0c\x20\x01(\x11R\x05curveB<\n#c\
-    om.satoshilabs.trezor.lib.protobufB\x15TrezorMessageWebAuthn\
+    om.satoshilabs.cerberus.lib.protobufB\x15CerberusMessageWebAuthn\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

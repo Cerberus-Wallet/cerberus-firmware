@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -23,7 +23,7 @@ from datetime import date
 from typing import List, TextIO
 
 LICENSE_NOTICE = """\
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-{year} SatoshiLabs and contributors
 #
@@ -49,9 +49,9 @@ SHEBANG_HEADER = """\
 """
 
 EXCLUDE_FILES = [
-    "src/trezorlib/__init__.py",
-    "src/trezorlib/_ed25519.py",
-    "src/trezorlib/messages.py",
+    "src/cerberuslib/__init__.py",
+    "src/cerberuslib/_ed25519.py",
+    "src/cerberuslib/messages.py",
 ]
 EXCLUDE_DIRS = []
 

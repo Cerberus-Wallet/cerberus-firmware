@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experimental program is designed to extract a subset of interesting test
-case snippets from the trezor-crypto test directory and output them as a
+case snippets from the cerberus-crypto test directory and output them as a
 standard fuzzer dictionary file.
 
 The program is built on quick-and-dirty regex matching that is known to be

@@ -3,7 +3,7 @@ with import <nixpkgs> {};
 let
   python = let
     packageOverrides = self: super: {
-      trezor = super.trezor.overridePythonAttrs(old: rec {
+      cerberus = super.cerberus.overridePythonAttrs(old: rec {
         version = "master";
         src =  ./.;
         doCheck = true; # set to false if you want to skip tests
@@ -16,5 +16,5 @@ let
     };
   in pkgs.python3.override {inherit packageOverrides; self = python;};
 
-in python.withPackages(ps:[ps.trezor])
+in python.withPackages(ps:[ps.cerberus])
 

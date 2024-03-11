@@ -18,10 +18,10 @@ AnyDict = dict[Any, Any]
 
 HERE = Path(__file__).parent
 
-BRANCHES_API_TEMPLATE = "https://gitlab.com/satoshilabs/trezor/trezor-firmware/-/pipelines.json?scope=branches&page={}"
+BRANCHES_API_TEMPLATE = "https://gitlab.com/satoshilabs/cerberus/cerberus-firmware/-/pipelines.json?scope=branches&page={}"
 GRAPHQL_API = "https://gitlab.com/api/graphql"
 RAW_REPORT_URL_TEMPLATE = (
-    "https://gitlab.com/satoshilabs/trezor/trezor-firmware/-/jobs/{}/raw"
+    "https://gitlab.com/satoshilabs/cerberus/cerberus-firmware/-/jobs/{}/raw"
 )
 
 UI_JOBS_ENGLISH = [
@@ -121,7 +121,7 @@ query getJobsFromPipeline($projectPath: ID!, $iid: ID!) {
     query = {
         "query": graphql_query,
         "variables": {
-            "projectPath": "satoshilabs/trezor/trezor-firmware",
+            "projectPath": "satoshilabs/cerberus/cerberus-firmware",
             "iid": pipeline_iid,
         },
     }
@@ -151,7 +151,7 @@ def _get_job_ui_fixtures_results(job: AnyDict) -> AnyDict:
         print(f"ERROR: Job {job['name']} failed - {job_results}")
         return {}
 
-    url = f"https://satoshilabs.gitlab.io/-/trezor/trezor-firmware/-/jobs/{job_id}/artifacts/tests/ui_tests/fixtures.results.json"
+    url = f"https://satoshilabs.gitlab.io/-/cerberus/cerberus-firmware/-/jobs/{job_id}/artifacts/tests/ui_tests/fixtures.results.json"
     response = requests.get(url)
     if response.status_code != 200:
         print("No UI results found")

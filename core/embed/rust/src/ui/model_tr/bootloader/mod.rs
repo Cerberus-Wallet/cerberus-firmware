@@ -2,7 +2,7 @@ use heapless::String;
 
 use crate::{
     strutil::hexlify,
-    trezorhal::{io::io_button_read, secbool::secbool},
+    cerberushal::{io::io_button_read, secbool::secbool},
     ui::{
         component::{
             connect::Connect, Component, Event, EventCtx, Label, LineBreaking::BreakWordsNoHyphen,
@@ -287,7 +287,7 @@ extern "C" fn screen_install_progress(progress: u16, initialize: bool, _initial_
 extern "C" fn screen_wipe_progress(progress: u16, initialize: bool) {
     screen_progress(
         "Resetting",
-        "Trezor",
+        "Cerberus",
         progress,
         initialize,
         BLD_FG,
@@ -304,7 +304,7 @@ extern "C" fn screen_connect(_initial_setup: bool) {
 
 #[no_mangle]
 extern "C" fn screen_wipe_success() {
-    let title = Label::centered("Trezor Reset", TEXT_BOLD).vertically_centered();
+    let title = Label::centered("Cerberus Reset", TEXT_BOLD).vertically_centered();
 
     let content =
         Label::centered("Please reconnect\nthe device", TEXT_NORMAL).vertically_centered();

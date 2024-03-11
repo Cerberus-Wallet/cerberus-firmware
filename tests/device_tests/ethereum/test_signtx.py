@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,11 +16,11 @@
 
 import pytest
 
-from trezorlib import ethereum, exceptions, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.debuglink import message_filters
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.tools import parse_path, unharden
+from cerberuslib import ethereum, exceptions, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.debuglink import message_filters
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.tools import parse_path, unharden
 
 from ...common import parametrize_using_common_fixtures
 from ...input_flows import (
@@ -164,7 +164,7 @@ def test_sanity_checks(client: Client):
     need to be exposed to the public.
     """
     # contract creation without data should fail.
-    with pytest.raises(TrezorFailure, match=r"DataError"):
+    with pytest.raises(CerberusFailure, match=r"DataError"):
         ethereum.sign_tx(
             client,
             n=parse_path("m/44h/60h/0h/0/0"),
@@ -177,7 +177,7 @@ def test_sanity_checks(client: Client):
         )
 
     # gas overflow
-    with pytest.raises(TrezorFailure, match=r"DataError"):
+    with pytest.raises(CerberusFailure, match=r"DataError"):
         ethereum.sign_tx(
             client,
             n=parse_path("m/44h/60h/0h/0/0"),
@@ -190,7 +190,7 @@ def test_sanity_checks(client: Client):
         )
 
     # bad chain ID
-    with pytest.raises(TrezorFailure, match=r"Chain ID out of bounds"):
+    with pytest.raises(CerberusFailure, match=r"Chain ID out of bounds"):
         ethereum.sign_tx(
             client,
             n=parse_path("m/44h/60h/0h/0/0"),
@@ -356,7 +356,7 @@ def test_sanity_checks_eip1559(client: Client):
     need to be exposed to the public.
     """
     # contract creation without data should fail.
-    with pytest.raises(TrezorFailure, match=r"DataError"):
+    with pytest.raises(CerberusFailure, match=r"DataError"):
         ethereum.sign_tx_eip1559(
             client,
             n=parse_path("m/44h/60h/0h/0/100"),
@@ -370,7 +370,7 @@ def test_sanity_checks_eip1559(client: Client):
         )
 
     # max fee overflow
-    with pytest.raises(TrezorFailure, match=r"DataError"):
+    with pytest.raises(CerberusFailure, match=r"DataError"):
         ethereum.sign_tx_eip1559(
             client,
             n=parse_path("m/44h/60h/0h/0/100"),
@@ -384,7 +384,7 @@ def test_sanity_checks_eip1559(client: Client):
         )
 
     # priority fee overflow
-    with pytest.raises(TrezorFailure, match=r"DataError"):
+    with pytest.raises(CerberusFailure, match=r"DataError"):
         ethereum.sign_tx_eip1559(
             client,
             n=parse_path("m/44h/60h/0h/0/100"),
@@ -398,7 +398,7 @@ def test_sanity_checks_eip1559(client: Client):
         )
 
     # bad chain ID
-    with pytest.raises(TrezorFailure, match=r"Chain ID out of bounds"):
+    with pytest.raises(CerberusFailure, match=r"Chain ID out of bounds"):
         ethereum.sign_tx_eip1559(
             client,
             n=parse_path("m/44h/60h/0h/0/100"),
@@ -471,7 +471,7 @@ def test_signtx_staking(client: Client, chunkify: bool, parameters: dict, result
 @parametrize_using_common_fixtures("ethereum/sign_tx_staking_data_error.json")
 def test_signtx_staking_bad_inputs(client: Client, parameters: dict, result: dict):
     # result not needed
-    with pytest.raises(TrezorFailure, match=r"DataError"):
+    with pytest.raises(CerberusFailure, match=r"DataError"):
         ethereum.sign_tx(
             client,
             n=parse_path(parameters["path"]),

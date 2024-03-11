@@ -112,7 +112,7 @@ def create_reports(models: list[str] | None = None) -> None:
 
     @contextmanager
     def tmpdir():
-        with tempfile.TemporaryDirectory(prefix="trezor-records-") as temp_dir:
+        with tempfile.TemporaryDirectory(prefix="cerberus-records-") as temp_dir:
             yield Path(temp_dir)
 
     for test_name, test_hash in removed_tests.items():

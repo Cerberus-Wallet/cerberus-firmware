@@ -306,8 +306,8 @@ impl<'a> TranslationsHeader<'a> {
         }
 
         let model = read_fixedsize_str(&mut header_reader, 4)?;
-        if model != crate::trezorhal::model::INTERNAL_NAME {
-            return Err(value_error!("Wrong Trezor model"));
+        if model != crate::cerberushal::model::INTERNAL_NAME {
+            return Err(value_error!("Wrong Cerberus model"));
         }
 
         let version_bytes = header_reader.read(4)?;

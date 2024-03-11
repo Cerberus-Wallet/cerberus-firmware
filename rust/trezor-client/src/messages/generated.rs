@@ -1,4 +1,4 @@
-trezor_message_impl! {
+cerberus_message_impl! {
     Initialize => MessageType_Initialize,
     Ping => MessageType_Ping,
     Success => MessageType_Success,
@@ -85,7 +85,7 @@ trezor_message_impl! {
 }
 
 #[cfg(feature = "binance")]
-trezor_message_impl! {
+cerberus_message_impl! {
     BinanceGetAddress => MessageType_BinanceGetAddress,
     BinanceAddress => MessageType_BinanceAddress,
     BinanceGetPublicKey => MessageType_BinanceGetPublicKey,
@@ -99,7 +99,7 @@ trezor_message_impl! {
 }
 
 #[cfg(feature = "bitcoin")]
-trezor_message_impl! {
+cerberus_message_impl! {
     GetPublicKey => MessageType_GetPublicKey,
     PublicKey => MessageType_PublicKey,
     SignTx => MessageType_SignTx,
@@ -119,7 +119,7 @@ trezor_message_impl! {
 }
 
 #[cfg(feature = "cardano")]
-trezor_message_impl! {
+cerberus_message_impl! {
     CardanoGetPublicKey => MessageType_CardanoGetPublicKey,
     CardanoPublicKey => MessageType_CardanoPublicKey,
     CardanoGetAddress => MessageType_CardanoGetAddress,
@@ -152,7 +152,7 @@ trezor_message_impl! {
 }
 
 #[cfg(feature = "eos")]
-trezor_message_impl! {
+cerberus_message_impl! {
     EosGetPublicKey => MessageType_EosGetPublicKey,
     EosPublicKey => MessageType_EosPublicKey,
     EosSignTx => MessageType_EosSignTx,
@@ -162,7 +162,7 @@ trezor_message_impl! {
 }
 
 #[cfg(feature = "ethereum")]
-trezor_message_impl! {
+cerberus_message_impl! {
     EthereumGetPublicKey => MessageType_EthereumGetPublicKey,
     EthereumPublicKey => MessageType_EthereumPublicKey,
     EthereumGetAddress => MessageType_EthereumGetAddress,
@@ -184,7 +184,7 @@ trezor_message_impl! {
 }
 
 #[cfg(feature = "monero")]
-trezor_message_impl! {
+cerberus_message_impl! {
     MoneroTransactionInitRequest => MessageType_MoneroTransactionInitRequest,
     MoneroTransactionInitAck => MessageType_MoneroTransactionInitAck,
     MoneroTransactionSetInputRequest => MessageType_MoneroTransactionSetInputRequest,
@@ -224,7 +224,7 @@ trezor_message_impl! {
 }
 
 #[cfg(feature = "nem")]
-trezor_message_impl! {
+cerberus_message_impl! {
     NEMGetAddress => MessageType_NEMGetAddress,
     NEMAddress => MessageType_NEMAddress,
     NEMSignTx => MessageType_NEMSignTx,
@@ -234,7 +234,7 @@ trezor_message_impl! {
 }
 
 #[cfg(feature = "ripple")]
-trezor_message_impl! {
+cerberus_message_impl! {
     RippleGetAddress => MessageType_RippleGetAddress,
     RippleAddress => MessageType_RippleAddress,
     RippleSignTx => MessageType_RippleSignTx,
@@ -242,7 +242,7 @@ trezor_message_impl! {
 }
 
 #[cfg(feature = "solana")]
-trezor_message_impl! {
+cerberus_message_impl! {
     SolanaGetPublicKey => MessageType_SolanaGetPublicKey,
     SolanaPublicKey => MessageType_SolanaPublicKey,
     SolanaGetAddress => MessageType_SolanaGetAddress,
@@ -252,7 +252,7 @@ trezor_message_impl! {
 }
 
 #[cfg(feature = "stellar")]
-trezor_message_impl! {
+cerberus_message_impl! {
     StellarSignTx => MessageType_StellarSignTx,
     StellarTxOpRequest => MessageType_StellarTxOpRequest,
     StellarGetAddress => MessageType_StellarGetAddress,
@@ -275,7 +275,7 @@ trezor_message_impl! {
 }
 
 #[cfg(feature = "tezos")]
-trezor_message_impl! {
+cerberus_message_impl! {
     TezosGetAddress => MessageType_TezosGetAddress,
     TezosAddress => MessageType_TezosAddress,
     TezosSignTx => MessageType_TezosSignTx,
@@ -285,7 +285,7 @@ trezor_message_impl! {
 }
 
 #[cfg(feature = "webauthn")]
-trezor_message_impl! {
+cerberus_message_impl! {
     WebAuthnListResidentCredentials => MessageType_WebAuthnListResidentCredentials,
     WebAuthnCredentials => MessageType_WebAuthnCredentials,
     WebAuthnAddResidentCredential => MessageType_WebAuthnAddResidentCredential,

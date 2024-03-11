@@ -78,7 +78,7 @@ points = [
 random_iters = int(os.environ.get("ITERS", 1))
 
 DIR = os.path.abspath(os.path.dirname(__file__))
-lib = c.cdll.LoadLibrary(os.path.join(DIR, "libtrezor-crypto.so"))
+lib = c.cdll.LoadLibrary(os.path.join(DIR, "libcerberus-crypto.so"))
 if not lib.zkp_context_is_initialized():
     assert lib.zkp_context_init() == 0
 

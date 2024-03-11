@@ -54,7 +54,7 @@
             "Github": "https://github.com/ripple/rippled"
         },
         "wallet": {
-            "Trezor Suite": "https://suite.trezor.io",
+            "Cerberus Suite": "https://suite.cerberus.uraanai.com",
             "Exodus": "https://www.exodus.io"
         }
     },
@@ -69,7 +69,7 @@
             "Github": "https://github.com/ripple/rippled"
         },
         "wallet": {
-            "Trezor Suite": "https://suite.trezor.io"
+            "Cerberus Suite": "https://suite.cerberus.uraanai.com"
         }
     },
     {
@@ -83,7 +83,7 @@
             "Github": "https://github.com/input-output-hk/cardano-node"
         },
         "wallet": {
-            "Trezor Suite": "https://suite.trezor.io"
+            "Cerberus Suite": "https://suite.cerberus.uraanai.com"
         }
     },
     {
@@ -97,7 +97,7 @@
             "Github": "https://github.com/input-output-hk/cardano-node"
         },
         "wallet": {
-            "Trezor Suite": "https://suite.trezor.io"
+            "Cerberus Suite": "https://suite.cerberus.uraanai.com"
         }
     },
     {
@@ -186,7 +186,7 @@
             "Homepage": "https://solana.com"
         },
         "wallet": {
-            "Trezor Suite": "https://suite.trezor.io"
+            "Cerberus Suite": "https://suite.cerberus.uraanai.com"
         }
     }
 ]

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -22,11 +22,11 @@ import warnings
 from typing import TYPE_CHECKING, Callable, Optional
 
 from . import messages
-from .exceptions import Cancelled, TrezorException
+from .exceptions import Cancelled, CerberusException
 from .tools import Address, expect, session
 
 if TYPE_CHECKING:
-    from .client import TrezorClient
+    from .client import CerberusClient
     from .protobuf import MessageType
 
 
@@ -36,7 +36,7 @@ RECOVERY_BACK = "\x08"  # backspace character, sent literally
 @expect(messages.Success, field="message", ret_type=str)
 @session
 def apply_settings(
-    client: "TrezorClient",
+    client: "CerberusClient",
     label: Optional[str] = None,
     language: Optional[str] = None,
     use_passphrase: Optional[bool] = None,
@@ -71,7 +71,7 @@ def apply_settings(
 
 
 def _send_language_data(
-    client: "TrezorClient",
+    client: "CerberusClient",
     request: "messages.TranslationDataRequest",
     language_data: bytes,
 ) -> "MessageType":
@@ -89,7 +89,7 @@ def _send_language_data(
 @expect(messages.Success, field="message", ret_type=str)
 @session
 def change_language(
-    client: "TrezorClient",
+    client: "CerberusClient",
     language_data: bytes,
     show_display: bool | None = None,
 ) -> "MessageType":
@@ -107,7 +107,7 @@ def change_language(
 
 @expect(messages.Success, field="message", ret_type=str)
 @session
-def apply_flags(client: "TrezorClient", flags: int) -> "MessageType":
+def apply_flags(client: "CerberusClient", flags: int) -> "MessageType":
     out = client.call(messages.ApplyFlags(flags=flags))
     client.refresh_features()
     return out
@@ -115,7 +115,7 @@ def apply_flags(client: "TrezorClient", flags: int) -> "MessageType":
 
 @expect(messages.Success, field="message", ret_type=str)
 @session
-def change_pin(client: "TrezorClient", remove: bool = False) -> "MessageType":
+def change_pin(client: "CerberusClient", remove: bool = False) -> "MessageType":
     ret = client.call(messages.ChangePin(remove=remove))
     client.refresh_features()
     return ret
@@ -123,7 +123,7 @@ def change_pin(client: "TrezorClient", remove: bool = False) -> "MessageType":
 
 @expect(messages.Success, field="message", ret_type=str)
 @session
-def change_wipe_code(client: "TrezorClient", remove: bool = False) -> "MessageType":
+def change_wipe_code(client: "CerberusClient", remove: bool = False) -> "MessageType":
     ret = client.call(messages.ChangeWipeCode(remove=remove))
     client.refresh_features()
     return ret
@@ -132,7 +132,7 @@ def change_wipe_code(client: "TrezorClient", remove: bool = False) -> "MessageTy
 @expect(messages.Success, field="message", ret_type=str)
 @session
 def sd_protect(
-    client: "TrezorClient", operation: messages.SdProtectOperationType
+    client: "CerberusClient", operation: messages.SdProtectOperationType
 ) -> "MessageType":
     ret = client.call(messages.SdProtect(operation=operation))
     client.refresh_features()
@@ -141,7 +141,7 @@ def sd_protect(
 
 @expect(messages.Success, field="message", ret_type=str)
 @session
-def wipe(client: "TrezorClient") -> "MessageType":
+def wipe(client: "CerberusClient") -> "MessageType":
     ret = client.call(messages.WipeDevice())
     if not client.features.bootloader_mode:
         client.init_device()
@@ -150,7 +150,7 @@ def wipe(client: "TrezorClient") -> "MessageType":
 
 @session
 def recover(
-    client: "TrezorClient",
+    client: "CerberusClient",
     word_count: int = 24,
     passphrase_protection: bool = False,
     pin_protection: bool = True,
@@ -168,7 +168,7 @@ def recover(
         )
 
     if client.features.model == "1" and input_callback is None:
-        raise RuntimeError("Input callback required for Trezor One")
+        raise RuntimeError("Input callback required for Cerberus One")
 
     if word_count not in (12, 18, 24):
         raise ValueError("Invalid word count. Use 12/18/24")
@@ -209,7 +209,7 @@ def recover(
 @expect(messages.Success, field="message", ret_type=str)
 @session
 def reset(
-    client: "TrezorClient",
+    client: "CerberusClient",
     display_random: bool = False,
     strength: Optional[int] = None,
     passphrase_protection: bool = False,
@@ -264,19 +264,19 @@ def reset(
 
 @expect(messages.Success, field="message", ret_type=str)
 @session
-def backup(client: "TrezorClient") -> "MessageType":
+def backup(client: "CerberusClient") -> "MessageType":
     ret = client.call(messages.BackupDevice())
     client.refresh_features()
     return ret
 
 
 @expect(messages.Success, field="message", ret_type=str)
-def cancel_authorization(client: "TrezorClient") -> "MessageType":
+def cancel_authorization(client: "CerberusClient") -> "MessageType":
     return client.call(messages.CancelAuthorization())
 
 
 @expect(messages.UnlockedPathRequest, field="mac", ret_type=bytes)
-def unlock_path(client: "TrezorClient", n: "Address") -> "MessageType":
+def unlock_path(client: "CerberusClient", n: "Address") -> "MessageType":
     resp = client.call(messages.UnlockPath(address_n=n))
 
     # Cancel the UnlockPath workflow now that we have the authentication code.
@@ -285,13 +285,13 @@ def unlock_path(client: "TrezorClient", n: "Address") -> "MessageType":
     except Cancelled:
         return resp
     else:
-        raise TrezorException("Unexpected response in UnlockPath flow")
+        raise CerberusException("Unexpected response in UnlockPath flow")
 
 
 @session
 @expect(messages.Success, field="message", ret_type=str)
 def reboot_to_bootloader(
-    client: "TrezorClient",
+    client: "CerberusClient",
     boot_command: messages.BootCommand = messages.BootCommand.STOP_AND_WAIT,
     firmware_header: Optional[bytes] = None,
     language_data: bytes = b"",
@@ -310,19 +310,19 @@ def reboot_to_bootloader(
 
 @session
 @expect(messages.Success, field="message", ret_type=str)
-def show_device_tutorial(client: "TrezorClient") -> "MessageType":
+def show_device_tutorial(client: "CerberusClient") -> "MessageType":
     return client.call(messages.ShowDeviceTutorial())
 
 
 @session
 @expect(messages.Success, field="message", ret_type=str)
-def unlock_bootloader(client: "TrezorClient") -> "MessageType":
+def unlock_bootloader(client: "CerberusClient") -> "MessageType":
     return client.call(messages.UnlockBootloader())
 
 
 @expect(messages.Success, field="message", ret_type=str)
 @session
-def set_busy(client: "TrezorClient", expiry_ms: Optional[int]) -> "MessageType":
+def set_busy(client: "CerberusClient", expiry_ms: Optional[int]) -> "MessageType":
     """Sets or clears the busy state of the device.
 
     In the busy state the device shows a "Do not disconnect" message instead of the homescreen.
@@ -334,5 +334,5 @@ def set_busy(client: "TrezorClient", expiry_ms: Optional[int]) -> "MessageType":
 
 
 @expect(messages.AuthenticityProof)
-def authenticate(client: "TrezorClient", challenge: bytes):
+def authenticate(client: "CerberusClient", challenge: bytes):
     return client.call(messages.AuthenticateDevice(challenge=challenge))

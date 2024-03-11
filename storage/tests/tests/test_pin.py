@@ -23,8 +23,8 @@ def test_change_pin(nc_class):
         assert not s.change_pin("9999", "")  # invalid PIN
         assert s.unlock("222")
         assert s.change_pin("222", "99999")
-        assert s.change_pin("99999", "Trezor")
-        assert s.unlock("Trezor")
+        assert s.change_pin("99999", "Cerberus")
+        assert s.unlock("Cerberus")
         assert not s.unlock("9999")  # invalid PIN
         assert not s.unlock("99999")  # invalid old PIN
 

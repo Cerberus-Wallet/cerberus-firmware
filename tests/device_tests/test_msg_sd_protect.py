@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import debuglink, device
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.messages import SdProtectOperationType as Op
+from cerberuslib import debuglink, device
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.messages import SdProtectOperationType as Op
 
 from ..common import MNEMONIC12
 
@@ -29,7 +29,7 @@ pytestmark = [pytest.mark.skip_t1, pytest.mark.skip_tr, pytest.mark.sd_card]
 def test_enable_disable(client: Client):
     assert client.features.sd_protection is False
     # Disabling SD protection should fail
-    with pytest.raises(TrezorFailure):
+    with pytest.raises(CerberusFailure):
         device.sd_protect(client, Op.DISABLE)
 
     # Enable SD protection
@@ -37,7 +37,7 @@ def test_enable_disable(client: Client):
     assert client.features.sd_protection is True
 
     # Enabling SD protection should fail
-    with pytest.raises(TrezorFailure):
+    with pytest.raises(CerberusFailure):
         device.sd_protect(client, Op.ENABLE)
     assert client.features.sd_protection is True
 
@@ -61,7 +61,7 @@ def test_refresh(client: Client):
     assert client.features.sd_protection is False
 
     # Refreshing SD protection should fail
-    with pytest.raises(TrezorFailure):
+    with pytest.raises(CerberusFailure):
         device.sd_protect(client, Op.REFRESH)
     assert client.features.sd_protection is False
 

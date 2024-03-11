@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -21,7 +21,7 @@ import time
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Sequence, TextIO, Union, cast
 
-from ..debuglink import TrezorClientDebugLink
+from ..debuglink import CerberusClientDebugLink
 from ..transport.udp import UdpTransport
 
 LOG = logging.getLogger(__name__)
@@ -70,10 +70,10 @@ class Emulator:
         if logfile:
             self.logfile = logfile
         else:
-            self.logfile = self.profile_dir / "trezor.log"
+            self.logfile = self.profile_dir / "cerberus.log"
 
         # Using `client` property instead to assert `not None`
-        self._client: Optional[TrezorClientDebugLink] = None
+        self._client: Optional[CerberusClientDebugLink] = None
         self.process: Optional[subprocess.Popen] = None
 
         self.port = 21324
@@ -86,7 +86,7 @@ class Emulator:
         self.restart_amount = 0
 
     @property
-    def client(self) -> TrezorClientDebugLink:
+    def client(self) -> CerberusClientDebugLink:
         """So that type-checkers do not see `client` as `Optional`.
 
         (it is not None between `start()` and `stop()` calls)
@@ -172,11 +172,11 @@ class Emulator:
             self.process.kill()
             raise
 
-        (self.profile_dir / "trezor.pid").write_text(str(self.process.pid) + "\n")
-        (self.profile_dir / "trezor.port").write_text(str(self.port) + "\n")
+        (self.profile_dir / "cerberus.pid").write_text(str(self.process.pid) + "\n")
+        (self.profile_dir / "cerberus.port").write_text(str(self.port) + "\n")
 
         transport = self._get_transport()
-        self._client = TrezorClientDebugLink(
+        self._client = CerberusClientDebugLink(
             transport, auto_interact=self.auto_interact
         )
         self._client.open()
@@ -198,8 +198,8 @@ class Emulator:
                 LOG.info("Emulator seems stuck. Sending kill signal.")
                 self.process.kill()
 
-        _rm_f(self.profile_dir / "trezor.pid")
-        _rm_f(self.profile_dir / "trezor.port")
+        _rm_f(self.profile_dir / "cerberus.pid")
+        _rm_f(self.profile_dir / "cerberus.port")
         self.process = None
 
     def restart(self) -> None:
@@ -224,7 +224,7 @@ class Emulator:
 
 
 class CoreEmulator(Emulator):
-    STORAGE_FILENAME = "trezor.flash"
+    STORAGE_FILENAME = "cerberus.flash"
 
     def __init__(
         self,
@@ -241,7 +241,7 @@ class CoreEmulator(Emulator):
         if workdir is not None:
             self.workdir = Path(workdir).resolve()
 
-        self.sdcard = self.profile_dir / "trezor.sdcard"
+        self.sdcard = self.profile_dir / "cerberus.sdcard"
         if sdcard is not None:
             self.sdcard.write_bytes(sdcard)
 
@@ -254,15 +254,15 @@ class CoreEmulator(Emulator):
     def make_env(self) -> Dict[str, str]:
         env = super().make_env()
         env.update(
-            TREZOR_PROFILE_DIR=str(self.profile_dir),
-            TREZOR_PROFILE=str(self.profile_dir),
-            TREZOR_UDP_PORT=str(self.port),
+            CERBERUS_PROFILE_DIR=str(self.profile_dir),
+            CERBERUS_PROFILE=str(self.profile_dir),
+            CERBERUS_UDP_PORT=str(self.port),
         )
         if self.headless:
             env["SDL_VIDEODRIVER"] = "dummy"
         if self.headless or self.disable_animation:
-            env["TREZOR_DISABLE_FADE"] = "1"
-            env["TREZOR_DISABLE_ANIMATION"] = "1"
+            env["CERBERUS_DISABLE_FADE"] = "1"
+            env["CERBERUS_DISABLE_ANIMATION"] = "1"
 
         return env
 

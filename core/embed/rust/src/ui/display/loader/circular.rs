@@ -7,7 +7,7 @@ use crate::ui::{
 };
 
 #[cfg(feature = "dma2d")]
-use crate::trezorhal::{
+use crate::cerberushal::{
     buffers,
     dma2d::{dma2d_setup_4bpp_over_4bpp, dma2d_start_blend, dma2d_wait_for_transfer},
 };

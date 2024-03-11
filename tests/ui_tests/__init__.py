@@ -7,7 +7,7 @@ from typing import Callable, Generator
 import pytest
 from _pytest.outcomes import Failed
 
-from trezorlib.debuglink import TrezorClientDebugLink as Client
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
 
 from . import common
 from .common import SCREENS_DIR, UI_TESTS_DIR, TestCase, TestResult

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -18,10 +18,10 @@ from hashlib import sha256
 
 import pytest
 
-from trezorlib import cosi
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.tools import H_, Address, parse_path
+from cerberuslib import cosi
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.tools import H_, Address, parse_path
 
 DIGEST = sha256(b"this is not a pipe").digest()
 
@@ -111,7 +111,7 @@ def test_cosi_sign3(client: Client):
 
 @pytest.mark.skip_t1
 def test_cosi_different_key(client: Client):
-    with pytest.raises(TrezorFailure):
+    with pytest.raises(CerberusFailure):
         commit = cosi.commit(client, parse_path("m/10018h/0h"))
         cosi.sign(
             client, parse_path("m/10018h/1h"), DIGEST, commit.commitment, commit.pubkey
@@ -155,5 +155,5 @@ def test_slip26_paths(client: Client, model: bytes, image_type: int):
     ),
 )
 def test_invalid_path(client: Client, path: str) -> None:
-    with pytest.raises(TrezorFailure, match="DataError"):
+    with pytest.raises(CerberusFailure, match="DataError"):
         cosi.commit(client, parse_path(path))

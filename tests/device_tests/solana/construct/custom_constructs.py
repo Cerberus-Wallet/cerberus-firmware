@@ -17,7 +17,7 @@ from construct import (
     this,
 )
 
-from trezorlib.tools import b58decode, b58encode
+from cerberuslib.tools import b58decode, b58encode
 
 
 def _find_in_context(context, key: str):

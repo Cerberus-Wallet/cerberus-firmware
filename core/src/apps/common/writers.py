@@ -1,9 +1,9 @@
 from typing import TYPE_CHECKING
 
-from trezor.utils import ensure
+from cerberus.utils import ensure
 
 if TYPE_CHECKING:
-    from trezor.utils import Writer
+    from cerberus.utils import Writer
 
 
 def _write_uint(w: Writer, n: int, bits: int, bigendian: bool) -> int:

@@ -25,14 +25,14 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.common.Success)
+// @@protoc_insertion_point(message:hw.cerberus.messages.common.Success)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct Success {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.Success.message)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.Success.message)
     pub message: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.common.Success.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.common.Success.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -183,16 +183,16 @@ impl ::protobuf::reflect::ProtobufValue for Success {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.common.Failure)
+// @@protoc_insertion_point(message:hw.cerberus.messages.common.Failure)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct Failure {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.Failure.code)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.Failure.code)
     pub code: ::std::option::Option<::protobuf::EnumOrUnknown<failure::FailureType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.Failure.message)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.Failure.message)
     pub message: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.common.Failure.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.common.Failure.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -207,7 +207,7 @@ impl Failure {
         ::std::default::Default::default()
     }
 
-    // optional .hw.trezor.messages.common.Failure.FailureType code = 1;
+    // optional .hw.cerberus.messages.common.Failure.FailureType code = 1;
 
     pub fn code(&self) -> failure::FailureType {
         match self.code {
@@ -384,37 +384,37 @@ impl ::protobuf::reflect::ProtobufValue for Failure {
 /// Nested message and enums of message `Failure`
 pub mod failure {
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.common.Failure.FailureType)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.common.Failure.FailureType)
     pub enum FailureType {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_UnexpectedMessage)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_UnexpectedMessage)
         Failure_UnexpectedMessage = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_ButtonExpected)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_ButtonExpected)
         Failure_ButtonExpected = 2,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_DataError)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_DataError)
         Failure_DataError = 3,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_ActionCancelled)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_ActionCancelled)
         Failure_ActionCancelled = 4,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_PinExpected)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_PinExpected)
         Failure_PinExpected = 5,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_PinCancelled)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_PinCancelled)
         Failure_PinCancelled = 6,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_PinInvalid)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_PinInvalid)
         Failure_PinInvalid = 7,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_InvalidSignature)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_InvalidSignature)
         Failure_InvalidSignature = 8,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_ProcessError)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_ProcessError)
         Failure_ProcessError = 9,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_NotEnoughFunds)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_NotEnoughFunds)
         Failure_NotEnoughFunds = 10,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_NotInitialized)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_NotInitialized)
         Failure_NotInitialized = 11,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_PinMismatch)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_PinMismatch)
         Failure_PinMismatch = 12,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_WipeCodeMismatch)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_WipeCodeMismatch)
         Failure_WipeCodeMismatch = 13,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_InvalidSession)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_InvalidSession)
         Failure_InvalidSession = 14,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.Failure.FailureType.Failure_FirmwareError)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.Failure.FailureType.Failure_FirmwareError)
         Failure_FirmwareError = 99,
     }
 
@@ -528,16 +528,16 @@ pub mod failure {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.common.ButtonRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.common.ButtonRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct ButtonRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.ButtonRequest.code)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.ButtonRequest.code)
     pub code: ::std::option::Option<::protobuf::EnumOrUnknown<button_request::ButtonRequestType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.ButtonRequest.pages)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.ButtonRequest.pages)
     pub pages: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.common.ButtonRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.common.ButtonRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -552,7 +552,7 @@ impl ButtonRequest {
         ::std::default::Default::default()
     }
 
-    // optional .hw.trezor.messages.common.ButtonRequest.ButtonRequestType code = 1;
+    // optional .hw.cerberus.messages.common.ButtonRequest.ButtonRequestType code = 1;
 
     pub fn code(&self) -> button_request::ButtonRequestType {
         match self.code {
@@ -712,47 +712,47 @@ impl ::protobuf::reflect::ProtobufValue for ButtonRequest {
 /// Nested message and enums of message `ButtonRequest`
 pub mod button_request {
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.common.ButtonRequest.ButtonRequestType)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType)
     pub enum ButtonRequestType {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_Other)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_Other)
         ButtonRequest_Other = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_FeeOverThreshold)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_FeeOverThreshold)
         ButtonRequest_FeeOverThreshold = 2,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_ConfirmOutput)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_ConfirmOutput)
         ButtonRequest_ConfirmOutput = 3,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_ResetDevice)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_ResetDevice)
         ButtonRequest_ResetDevice = 4,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_ConfirmWord)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_ConfirmWord)
         ButtonRequest_ConfirmWord = 5,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_WipeDevice)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_WipeDevice)
         ButtonRequest_WipeDevice = 6,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_ProtectCall)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_ProtectCall)
         ButtonRequest_ProtectCall = 7,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_SignTx)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_SignTx)
         ButtonRequest_SignTx = 8,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_FirmwareCheck)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_FirmwareCheck)
         ButtonRequest_FirmwareCheck = 9,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_Address)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_Address)
         ButtonRequest_Address = 10,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_PublicKey)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_PublicKey)
         ButtonRequest_PublicKey = 11,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_MnemonicWordCount)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_MnemonicWordCount)
         ButtonRequest_MnemonicWordCount = 12,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_MnemonicInput)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_MnemonicInput)
         ButtonRequest_MnemonicInput = 13,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType._Deprecated_ButtonRequest_PassphraseType)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType._Deprecated_ButtonRequest_PassphraseType)
         _Deprecated_ButtonRequest_PassphraseType = 14,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_UnknownDerivationPath)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_UnknownDerivationPath)
         ButtonRequest_UnknownDerivationPath = 15,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_RecoveryHomepage)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_RecoveryHomepage)
         ButtonRequest_RecoveryHomepage = 16,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_Success)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_Success)
         ButtonRequest_Success = 17,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_Warning)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_Warning)
         ButtonRequest_Warning = 18,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_PassphraseEntry)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_PassphraseEntry)
         ButtonRequest_PassphraseEntry = 19,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_PinEntry)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.ButtonRequest.ButtonRequestType.ButtonRequest_PinEntry)
         ButtonRequest_PinEntry = 20,
     }
 
@@ -886,11 +886,11 @@ pub mod button_request {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.common.ButtonAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.common.ButtonAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct ButtonAck {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.common.ButtonAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.common.ButtonAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -989,14 +989,14 @@ impl ::protobuf::reflect::ProtobufValue for ButtonAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.common.PinMatrixRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.common.PinMatrixRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct PinMatrixRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.PinMatrixRequest.type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.PinMatrixRequest.type)
     pub type_: ::std::option::Option<::protobuf::EnumOrUnknown<pin_matrix_request::PinMatrixRequestType>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.common.PinMatrixRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.common.PinMatrixRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1011,7 +1011,7 @@ impl PinMatrixRequest {
         ::std::default::Default::default()
     }
 
-    // optional .hw.trezor.messages.common.PinMatrixRequest.PinMatrixRequestType type = 1;
+    // optional .hw.cerberus.messages.common.PinMatrixRequest.PinMatrixRequestType type = 1;
 
     pub fn type_(&self) -> pin_matrix_request::PinMatrixRequestType {
         match self.type_ {
@@ -1136,17 +1136,17 @@ impl ::protobuf::reflect::ProtobufValue for PinMatrixRequest {
 /// Nested message and enums of message `PinMatrixRequest`
 pub mod pin_matrix_request {
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.common.PinMatrixRequest.PinMatrixRequestType)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.common.PinMatrixRequest.PinMatrixRequestType)
     pub enum PinMatrixRequestType {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.PinMatrixRequest.PinMatrixRequestType.PinMatrixRequestType_Current)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.PinMatrixRequest.PinMatrixRequestType.PinMatrixRequestType_Current)
         PinMatrixRequestType_Current = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.PinMatrixRequest.PinMatrixRequestType.PinMatrixRequestType_NewFirst)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.PinMatrixRequest.PinMatrixRequestType.PinMatrixRequestType_NewFirst)
         PinMatrixRequestType_NewFirst = 2,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.PinMatrixRequest.PinMatrixRequestType.PinMatrixRequestType_NewSecond)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.PinMatrixRequest.PinMatrixRequestType.PinMatrixRequestType_NewSecond)
         PinMatrixRequestType_NewSecond = 3,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.PinMatrixRequest.PinMatrixRequestType.PinMatrixRequestType_WipeCodeFirst)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.PinMatrixRequest.PinMatrixRequestType.PinMatrixRequestType_WipeCodeFirst)
         PinMatrixRequestType_WipeCodeFirst = 4,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.common.PinMatrixRequest.PinMatrixRequestType.PinMatrixRequestType_WipeCodeSecond)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.common.PinMatrixRequest.PinMatrixRequestType.PinMatrixRequestType_WipeCodeSecond)
         PinMatrixRequestType_WipeCodeSecond = 5,
     }
 
@@ -1220,14 +1220,14 @@ pub mod pin_matrix_request {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.common.PinMatrixAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.common.PinMatrixAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct PinMatrixAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.PinMatrixAck.pin)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.PinMatrixAck.pin)
     pub pin: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.common.PinMatrixAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.common.PinMatrixAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1381,14 +1381,14 @@ impl ::protobuf::reflect::ProtobufValue for PinMatrixAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.common.PassphraseRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.common.PassphraseRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct PassphraseRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.PassphraseRequest._on_device)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.PassphraseRequest._on_device)
     pub _on_device: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.common.PassphraseRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.common.PassphraseRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1522,18 +1522,18 @@ impl ::protobuf::reflect::ProtobufValue for PassphraseRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.common.PassphraseAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.common.PassphraseAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct PassphraseAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.PassphraseAck.passphrase)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.PassphraseAck.passphrase)
     pub passphrase: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.PassphraseAck._state)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.PassphraseAck._state)
     pub _state: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.PassphraseAck.on_device)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.PassphraseAck.on_device)
     pub on_device: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.common.PassphraseAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.common.PassphraseAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1771,14 +1771,14 @@ impl ::protobuf::reflect::ProtobufValue for PassphraseAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.common.Deprecated_PassphraseStateRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.common.Deprecated_PassphraseStateRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct Deprecated_PassphraseStateRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.Deprecated_PassphraseStateRequest.state)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.Deprecated_PassphraseStateRequest.state)
     pub state: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.common.Deprecated_PassphraseStateRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.common.Deprecated_PassphraseStateRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1929,11 +1929,11 @@ impl ::protobuf::reflect::ProtobufValue for Deprecated_PassphraseStateRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.common.Deprecated_PassphraseStateAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.common.Deprecated_PassphraseStateAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct Deprecated_PassphraseStateAck {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.common.Deprecated_PassphraseStateAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.common.Deprecated_PassphraseStateAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2032,24 +2032,24 @@ impl ::protobuf::reflect::ProtobufValue for Deprecated_PassphraseStateAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.common.HDNodeType)
+// @@protoc_insertion_point(message:hw.cerberus.messages.common.HDNodeType)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct HDNodeType {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.HDNodeType.depth)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.HDNodeType.depth)
     pub depth: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.HDNodeType.fingerprint)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.HDNodeType.fingerprint)
     pub fingerprint: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.HDNodeType.child_num)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.HDNodeType.child_num)
     pub child_num: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.HDNodeType.chain_code)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.HDNodeType.chain_code)
     pub chain_code: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.HDNodeType.private_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.HDNodeType.private_key)
     pub private_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.common.HDNodeType.public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.common.HDNodeType.public_key)
     pub public_key: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.common.HDNodeType.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.common.HDNodeType.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2425,10 +2425,10 @@ impl ::protobuf::reflect::ProtobufValue for HDNodeType {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x15messages-common.proto\x12\x19hw.trezor.messages.common\x1a\x0emess\
+    \n\x15messages-common.proto\x12\x19hw.cerberus.messages.common\x1a\x0emess\
     ages.proto\"%\n\x07Success\x12\x1a\n\x07message\x18\x01\x20\x01(\t:\0R\
     \x07message\"\x8f\x04\n\x07Failure\x12B\n\x04code\x18\x01\x20\x01(\x0e2.\
-    .hw.trezor.messages.common.Failure.FailureTypeR\x04code\x12\x18\n\x07mes\
+    .hw.cerberus.messages.common.Failure.FailureTypeR\x04code\x12\x18\n\x07mes\
     sage\x18\x02\x20\x01(\tR\x07message\"\xa5\x03\n\x0bFailureType\x12\x1d\n\
     \x19Failure_UnexpectedMessage\x10\x01\x12\x1a\n\x16Failure_ButtonExpecte\
     d\x10\x02\x12\x15\n\x11Failure_DataError\x10\x03\x12\x1b\n\x17Failure_Ac\
@@ -2439,7 +2439,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     ilure_NotInitialized\x10\x0b\x12\x17\n\x13Failure_PinMismatch\x10\x0c\
     \x12\x1c\n\x18Failure_WipeCodeMismatch\x10\r\x12\x1a\n\x16Failure_Invali\
     dSession\x10\x0e\x12\x19\n\x15Failure_FirmwareError\x10c\"\x91\x06\n\rBu\
-    ttonRequest\x12N\n\x04code\x18\x01\x20\x01(\x0e2:.hw.trezor.messages.com\
+    ttonRequest\x12N\n\x04code\x18\x01\x20\x01(\x0e2:.hw.cerberus.messages.com\
     mon.ButtonRequest.ButtonRequestTypeR\x04code\x12\x14\n\x05pages\x18\x02\
     \x20\x01(\rR\x05pages\"\x99\x05\n\x11ButtonRequestType\x12\x17\n\x13Butt\
     onRequest_Other\x10\x01\x12\"\n\x1eButtonRequest_FeeOverThreshold\x10\
@@ -2456,7 +2456,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     ccess\x10\x11\x12\x19\n\x15ButtonRequest_Warning\x10\x12\x12!\n\x1dButto\
     nRequest_PassphraseEntry\x10\x13\x12\x1a\n\x16ButtonRequest_PinEntry\x10\
     \x14\"\x0b\n\tButtonAck\"\xbb\x02\n\x10PinMatrixRequest\x12T\n\x04type\
-    \x18\x01\x20\x01(\x0e2@.hw.trezor.messages.common.PinMatrixRequest.PinMa\
+    \x18\x01\x20\x01(\x0e2@.hw.cerberus.messages.common.PinMatrixRequest.PinMa\
     trixRequestTypeR\x04type\"\xd0\x01\n\x14PinMatrixRequestType\x12\x20\n\
     \x1cPinMatrixRequestType_Current\x10\x01\x12!\n\x1dPinMatrixRequestType_\
     NewFirst\x10\x02\x12\"\n\x1ePinMatrixRequestType_NewSecond\x10\x03\x12&\
@@ -2473,8 +2473,8 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x18\x02\x20\x02(\rR\x0bfingerprint\x12\x1b\n\tchild_num\x18\x03\x20\x02\
     (\rR\x08childNum\x12\x1d\n\nchain_code\x18\x04\x20\x02(\x0cR\tchainCode\
     \x12\x1f\n\x0bprivate_key\x18\x05\x20\x01(\x0cR\nprivateKey\x12\x1d\n\np\
-    ublic_key\x18\x06\x20\x02(\x0cR\tpublicKeyB>\n#com.satoshilabs.trezor.li\
-    b.protobufB\x13TrezorMessageCommon\x80\xa6\x1d\x01\
+    ublic_key\x18\x06\x20\x02(\x0cR\tpublicKeyB>\n#com.satoshilabs.cerberus.li\
+    b.protobufB\x13CerberusMessageCommon\x80\xa6\x1d\x01\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

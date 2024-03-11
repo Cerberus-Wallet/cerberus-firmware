@@ -25,20 +25,20 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMGetAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMGetAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct NEMGetAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMGetAddress.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMGetAddress.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMGetAddress.network)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMGetAddress.network)
     pub network: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMGetAddress.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMGetAddress.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMGetAddress.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMGetAddress.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMGetAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMGetAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -261,14 +261,14 @@ impl ::protobuf::reflect::ProtobufValue for NEMGetAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct NEMAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMAddress.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMAddress.address)
     pub address: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -422,32 +422,32 @@ impl ::protobuf::reflect::ProtobufValue for NEMAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMSignTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMSignTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct NEMSignTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.transaction)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.transaction)
     pub transaction: ::protobuf::MessageField<nemsign_tx::NEMTransactionCommon>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.multisig)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.multisig)
     pub multisig: ::protobuf::MessageField<nemsign_tx::NEMTransactionCommon>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.transfer)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.transfer)
     pub transfer: ::protobuf::MessageField<nemsign_tx::NEMTransfer>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.cosigning)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.cosigning)
     pub cosigning: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.provision_namespace)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.provision_namespace)
     pub provision_namespace: ::protobuf::MessageField<nemsign_tx::NEMProvisionNamespace>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.mosaic_creation)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.mosaic_creation)
     pub mosaic_creation: ::protobuf::MessageField<nemsign_tx::NEMMosaicCreation>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.supply_change)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.supply_change)
     pub supply_change: ::protobuf::MessageField<nemsign_tx::NEMMosaicSupplyChange>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.aggregate_modification)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.aggregate_modification)
     pub aggregate_modification: ::protobuf::MessageField<nemsign_tx::NEMAggregateModification>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.importance_transfer)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.importance_transfer)
     pub importance_transfer: ::protobuf::MessageField<nemsign_tx::NEMImportanceTransfer>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMSignTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMSignTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -797,24 +797,24 @@ impl ::protobuf::reflect::ProtobufValue for NEMSignTx {
 
 /// Nested message and enums of message `NEMSignTx`
 pub mod nemsign_tx {
-    // @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMSignTx.NEMTransactionCommon)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMSignTx.NEMTransactionCommon)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct NEMTransactionCommon {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransactionCommon.address_n)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransactionCommon.address_n)
         pub address_n: ::std::vec::Vec<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransactionCommon.network)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransactionCommon.network)
         pub network: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransactionCommon.timestamp)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransactionCommon.timestamp)
         pub timestamp: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransactionCommon.fee)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransactionCommon.fee)
         pub fee: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransactionCommon.deadline)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransactionCommon.deadline)
         pub deadline: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransactionCommon.signer)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransactionCommon.signer)
         pub signer: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMSignTx.NEMTransactionCommon.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMSignTx.NEMTransactionCommon.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -1133,22 +1133,22 @@ pub mod nemsign_tx {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMSignTx.NEMTransfer)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMSignTx.NEMTransfer)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct NEMTransfer {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransfer.recipient)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransfer.recipient)
         pub recipient: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransfer.amount)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransfer.amount)
         pub amount: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransfer.payload)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransfer.payload)
         pub payload: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransfer.public_key)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransfer.public_key)
         pub public_key: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransfer.mosaics)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransfer.mosaics)
         pub mosaics: ::std::vec::Vec<nemtransfer::NEMMosaic>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMSignTx.NEMTransfer.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMSignTx.NEMTransfer.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -1468,18 +1468,18 @@ pub mod nemsign_tx {
 
     /// Nested message and enums of message `NEMTransfer`
     pub mod nemtransfer {
-        // @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMSignTx.NEMTransfer.NEMMosaic)
+        // @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMSignTx.NEMTransfer.NEMMosaic)
         #[derive(PartialEq,Clone,Default,Debug)]
         pub struct NEMMosaic {
             // message fields
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransfer.NEMMosaic.namespace)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransfer.NEMMosaic.namespace)
             pub namespace: ::std::option::Option<::std::string::String>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransfer.NEMMosaic.mosaic)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransfer.NEMMosaic.mosaic)
             pub mosaic: ::std::option::Option<::std::string::String>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMTransfer.NEMMosaic.quantity)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMTransfer.NEMMosaic.quantity)
             pub quantity: ::std::option::Option<u64>,
             // special fields
-            // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMSignTx.NEMTransfer.NEMMosaic.special_fields)
+            // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMSignTx.NEMTransfer.NEMMosaic.special_fields)
             pub special_fields: ::protobuf::SpecialFields,
         }
 
@@ -1727,20 +1727,20 @@ pub mod nemsign_tx {
         }
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMSignTx.NEMProvisionNamespace)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMSignTx.NEMProvisionNamespace)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct NEMProvisionNamespace {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMProvisionNamespace.namespace)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMProvisionNamespace.namespace)
         pub namespace: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMProvisionNamespace.parent)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMProvisionNamespace.parent)
         pub parent: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMProvisionNamespace.sink)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMProvisionNamespace.sink)
         pub sink: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMProvisionNamespace.fee)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMProvisionNamespace.fee)
         pub fee: ::std::option::Option<u64>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMSignTx.NEMProvisionNamespace.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMSignTx.NEMProvisionNamespace.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -2039,18 +2039,18 @@ pub mod nemsign_tx {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct NEMMosaicCreation {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.definition)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.definition)
         pub definition: ::protobuf::MessageField<nemmosaic_creation::NEMMosaicDefinition>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.sink)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.sink)
         pub sink: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.fee)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.fee)
         pub fee: ::std::option::Option<u64>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -2269,42 +2269,42 @@ pub mod nemsign_tx {
 
     /// Nested message and enums of message `NEMMosaicCreation`
     pub mod nemmosaic_creation {
-        // @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition)
+        // @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition)
         #[derive(PartialEq,Clone,Default,Debug)]
         pub struct NEMMosaicDefinition {
             // message fields
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.name)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.name)
             pub name: ::std::option::Option<::std::string::String>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.ticker)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.ticker)
             pub ticker: ::std::option::Option<::std::string::String>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.namespace)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.namespace)
             pub namespace: ::std::option::Option<::std::string::String>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.mosaic)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.mosaic)
             pub mosaic: ::std::option::Option<::std::string::String>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.divisibility)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.divisibility)
             pub divisibility: ::std::option::Option<u32>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.levy)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.levy)
             pub levy: ::std::option::Option<::protobuf::EnumOrUnknown<nemmosaic_definition::NEMMosaicLevy>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.fee)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.fee)
             pub fee: ::std::option::Option<u64>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.levy_address)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.levy_address)
             pub levy_address: ::std::option::Option<::std::string::String>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.levy_namespace)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.levy_namespace)
             pub levy_namespace: ::std::option::Option<::std::string::String>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.levy_mosaic)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.levy_mosaic)
             pub levy_mosaic: ::std::option::Option<::std::string::String>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.supply)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.supply)
             pub supply: ::std::option::Option<u64>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.mutable_supply)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.mutable_supply)
             pub mutable_supply: ::std::option::Option<bool>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.transferable)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.transferable)
             pub transferable: ::std::option::Option<bool>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.description)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.description)
             pub description: ::std::option::Option<::std::string::String>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.networks)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.networks)
             pub networks: ::std::vec::Vec<u32>,
             // special fields
-            // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.special_fields)
+            // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.special_fields)
             pub special_fields: ::protobuf::SpecialFields,
         }
 
@@ -2482,7 +2482,7 @@ pub mod nemsign_tx {
                 self.divisibility = ::std::option::Option::Some(v);
             }
 
-            // optional .hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.NEMMosaicLevy levy = 6;
+            // optional .hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.NEMMosaicLevy levy = 6;
 
             pub fn levy(&self) -> nemmosaic_definition::NEMMosaicLevy {
                 match self.levy {
@@ -3063,11 +3063,11 @@ pub mod nemsign_tx {
         /// Nested message and enums of message `NEMMosaicDefinition`
         pub mod nemmosaic_definition {
             #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-            // @@protoc_insertion_point(enum:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.NEMMosaicLevy)
+            // @@protoc_insertion_point(enum:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.NEMMosaicLevy)
             pub enum NEMMosaicLevy {
-                // @@protoc_insertion_point(enum_value:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.NEMMosaicLevy.MosaicLevy_Absolute)
+                // @@protoc_insertion_point(enum_value:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.NEMMosaicLevy.MosaicLevy_Absolute)
                 MosaicLevy_Absolute = 1,
-                // @@protoc_insertion_point(enum_value:hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.NEMMosaicLevy.MosaicLevy_Percentile)
+                // @@protoc_insertion_point(enum_value:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.NEMMosaicDefinition.NEMMosaicLevy.MosaicLevy_Percentile)
                 MosaicLevy_Percentile = 2,
             }
 
@@ -3130,20 +3130,20 @@ pub mod nemsign_tx {
         }
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMSignTx.NEMMosaicSupplyChange)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicSupplyChange)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct NEMMosaicSupplyChange {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicSupplyChange.namespace)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicSupplyChange.namespace)
         pub namespace: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicSupplyChange.mosaic)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicSupplyChange.mosaic)
         pub mosaic: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicSupplyChange.type)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicSupplyChange.type)
         pub type_: ::std::option::Option<::protobuf::EnumOrUnknown<nemmosaic_supply_change::NEMSupplyChangeType>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicSupplyChange.delta)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicSupplyChange.delta)
         pub delta: ::std::option::Option<u64>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMSignTx.NEMMosaicSupplyChange.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicSupplyChange.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -3230,7 +3230,7 @@ pub mod nemsign_tx {
             self.mosaic.take().unwrap_or_else(|| ::std::string::String::new())
         }
 
-        // required .hw.trezor.messages.nem.NEMSignTx.NEMMosaicSupplyChange.NEMSupplyChangeType type = 3;
+        // required .hw.cerberus.messages.nem.NEMSignTx.NEMMosaicSupplyChange.NEMSupplyChangeType type = 3;
 
         pub fn type_(&self) -> nemmosaic_supply_change::NEMSupplyChangeType {
             match self.type_ {
@@ -3434,11 +3434,11 @@ pub mod nemsign_tx {
     /// Nested message and enums of message `NEMMosaicSupplyChange`
     pub mod nemmosaic_supply_change {
         #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-        // @@protoc_insertion_point(enum:hw.trezor.messages.nem.NEMSignTx.NEMMosaicSupplyChange.NEMSupplyChangeType)
+        // @@protoc_insertion_point(enum:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicSupplyChange.NEMSupplyChangeType)
         pub enum NEMSupplyChangeType {
-            // @@protoc_insertion_point(enum_value:hw.trezor.messages.nem.NEMSignTx.NEMMosaicSupplyChange.NEMSupplyChangeType.SupplyChange_Increase)
+            // @@protoc_insertion_point(enum_value:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicSupplyChange.NEMSupplyChangeType.SupplyChange_Increase)
             SupplyChange_Increase = 1,
-            // @@protoc_insertion_point(enum_value:hw.trezor.messages.nem.NEMSignTx.NEMMosaicSupplyChange.NEMSupplyChangeType.SupplyChange_Decrease)
+            // @@protoc_insertion_point(enum_value:hw.cerberus.messages.nem.NEMSignTx.NEMMosaicSupplyChange.NEMSupplyChangeType.SupplyChange_Decrease)
             SupplyChange_Decrease = 2,
         }
 
@@ -3500,16 +3500,16 @@ pub mod nemsign_tx {
         }
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMSignTx.NEMAggregateModification)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMSignTx.NEMAggregateModification)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct NEMAggregateModification {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMAggregateModification.modifications)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMAggregateModification.modifications)
         pub modifications: ::std::vec::Vec<nemaggregate_modification::NEMCosignatoryModification>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMAggregateModification.relative_change)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMAggregateModification.relative_change)
         pub relative_change: ::std::option::Option<i32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMSignTx.NEMAggregateModification.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMSignTx.NEMAggregateModification.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -3667,16 +3667,16 @@ pub mod nemsign_tx {
 
     /// Nested message and enums of message `NEMAggregateModification`
     pub mod nemaggregate_modification {
-        // @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification)
+        // @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification)
         #[derive(PartialEq,Clone,Default,Debug)]
         pub struct NEMCosignatoryModification {
             // message fields
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.type)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.type)
             pub type_: ::std::option::Option<::protobuf::EnumOrUnknown<nemcosignatory_modification::NEMModificationType>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.public_key)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.public_key)
             pub public_key: ::std::option::Option<::std::vec::Vec<u8>>,
             // special fields
-            // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.special_fields)
+            // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.special_fields)
             pub special_fields: ::protobuf::SpecialFields,
         }
 
@@ -3691,7 +3691,7 @@ pub mod nemsign_tx {
                 ::std::default::Default::default()
             }
 
-            // required .hw.trezor.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.NEMModificationType type = 1;
+            // required .hw.cerberus.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.NEMModificationType type = 1;
 
             pub fn type_(&self) -> nemcosignatory_modification::NEMModificationType {
                 match self.type_ {
@@ -3874,11 +3874,11 @@ pub mod nemsign_tx {
         /// Nested message and enums of message `NEMCosignatoryModification`
         pub mod nemcosignatory_modification {
             #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-            // @@protoc_insertion_point(enum:hw.trezor.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.NEMModificationType)
+            // @@protoc_insertion_point(enum:hw.cerberus.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.NEMModificationType)
             pub enum NEMModificationType {
-                // @@protoc_insertion_point(enum_value:hw.trezor.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.NEMModificationType.CosignatoryModification_Add)
+                // @@protoc_insertion_point(enum_value:hw.cerberus.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.NEMModificationType.CosignatoryModification_Add)
                 CosignatoryModification_Add = 1,
-                // @@protoc_insertion_point(enum_value:hw.trezor.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.NEMModificationType.CosignatoryModification_Delete)
+                // @@protoc_insertion_point(enum_value:hw.cerberus.messages.nem.NEMSignTx.NEMAggregateModification.NEMCosignatoryModification.NEMModificationType.CosignatoryModification_Delete)
                 CosignatoryModification_Delete = 2,
             }
 
@@ -3941,16 +3941,16 @@ pub mod nemsign_tx {
         }
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMSignTx.NEMImportanceTransfer)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMSignTx.NEMImportanceTransfer)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct NEMImportanceTransfer {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMImportanceTransfer.mode)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMImportanceTransfer.mode)
         pub mode: ::std::option::Option<::protobuf::EnumOrUnknown<nemimportance_transfer::NEMImportanceTransferMode>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignTx.NEMImportanceTransfer.public_key)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignTx.NEMImportanceTransfer.public_key)
         pub public_key: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMSignTx.NEMImportanceTransfer.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMSignTx.NEMImportanceTransfer.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -3965,7 +3965,7 @@ pub mod nemsign_tx {
             ::std::default::Default::default()
         }
 
-        // required .hw.trezor.messages.nem.NEMSignTx.NEMImportanceTransfer.NEMImportanceTransferMode mode = 1;
+        // required .hw.cerberus.messages.nem.NEMSignTx.NEMImportanceTransfer.NEMImportanceTransferMode mode = 1;
 
         pub fn mode(&self) -> nemimportance_transfer::NEMImportanceTransferMode {
             match self.mode {
@@ -4148,11 +4148,11 @@ pub mod nemsign_tx {
     /// Nested message and enums of message `NEMImportanceTransfer`
     pub mod nemimportance_transfer {
         #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-        // @@protoc_insertion_point(enum:hw.trezor.messages.nem.NEMSignTx.NEMImportanceTransfer.NEMImportanceTransferMode)
+        // @@protoc_insertion_point(enum:hw.cerberus.messages.nem.NEMSignTx.NEMImportanceTransfer.NEMImportanceTransferMode)
         pub enum NEMImportanceTransferMode {
-            // @@protoc_insertion_point(enum_value:hw.trezor.messages.nem.NEMSignTx.NEMImportanceTransfer.NEMImportanceTransferMode.ImportanceTransfer_Activate)
+            // @@protoc_insertion_point(enum_value:hw.cerberus.messages.nem.NEMSignTx.NEMImportanceTransfer.NEMImportanceTransferMode.ImportanceTransfer_Activate)
             ImportanceTransfer_Activate = 1,
-            // @@protoc_insertion_point(enum_value:hw.trezor.messages.nem.NEMSignTx.NEMImportanceTransfer.NEMImportanceTransferMode.ImportanceTransfer_Deactivate)
+            // @@protoc_insertion_point(enum_value:hw.cerberus.messages.nem.NEMSignTx.NEMImportanceTransfer.NEMImportanceTransferMode.ImportanceTransfer_Deactivate)
             ImportanceTransfer_Deactivate = 2,
         }
 
@@ -4215,16 +4215,16 @@ pub mod nemsign_tx {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMSignedTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMSignedTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct NEMSignedTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignedTx.data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignedTx.data)
     pub data: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMSignedTx.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMSignedTx.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMSignedTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMSignedTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4433,20 +4433,20 @@ impl ::protobuf::reflect::ProtobufValue for NEMSignedTx {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMDecryptMessage)
+// @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMDecryptMessage)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct NEMDecryptMessage {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMDecryptMessage.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMDecryptMessage.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMDecryptMessage.network)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMDecryptMessage.network)
     pub network: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMDecryptMessage.public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMDecryptMessage.public_key)
     pub public_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMDecryptMessage.payload)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMDecryptMessage.payload)
     pub payload: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMDecryptMessage.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMDecryptMessage.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4703,14 +4703,14 @@ impl ::protobuf::reflect::ProtobufValue for NEMDecryptMessage {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.nem.NEMDecryptedMessage)
+// @@protoc_insertion_point(message:hw.cerberus.messages.nem.NEMDecryptedMessage)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct NEMDecryptedMessage {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.nem.NEMDecryptedMessage.payload)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.nem.NEMDecryptedMessage.payload)
     pub payload: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.nem.NEMDecryptedMessage.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.nem.NEMDecryptedMessage.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4865,25 +4865,25 @@ impl ::protobuf::reflect::ProtobufValue for NEMDecryptedMessage {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x12messages-nem.proto\x12\x16hw.trezor.messages.nem\"\x8a\x01\n\rNEMG\
+    \n\x12messages-nem.proto\x12\x16hw.cerberus.messages.nem\"\x8a\x01\n\rNEMG\
     etAddress\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\x12\x1d\n\
     \x07network\x18\x02\x20\x01(\r:\x03104R\x07network\x12!\n\x0cshow_displa\
     y\x18\x03\x20\x01(\x08R\x0bshowDisplay\x12\x1a\n\x08chunkify\x18\x04\x20\
     \x01(\x08R\x08chunkify\"&\n\nNEMAddress\x12\x18\n\x07address\x18\x01\x20\
     \x02(\tR\x07address\"\xa2\x19\n\tNEMSignTx\x12X\n\x0btransaction\x18\x01\
-    \x20\x02(\x0b26.hw.trezor.messages.nem.NEMSignTx.NEMTransactionCommonR\
-    \x0btransaction\x12R\n\x08multisig\x18\x02\x20\x01(\x0b26.hw.trezor.mess\
+    \x20\x02(\x0b26.hw.cerberus.messages.nem.NEMSignTx.NEMTransactionCommonR\
+    \x0btransaction\x12R\n\x08multisig\x18\x02\x20\x01(\x0b26.hw.cerberus.mess\
     ages.nem.NEMSignTx.NEMTransactionCommonR\x08multisig\x12I\n\x08transfer\
-    \x18\x03\x20\x01(\x0b2-.hw.trezor.messages.nem.NEMSignTx.NEMTransferR\
+    \x18\x03\x20\x01(\x0b2-.hw.cerberus.messages.nem.NEMSignTx.NEMTransferR\
     \x08transfer\x12\x1c\n\tcosigning\x18\x04\x20\x01(\x08R\tcosigning\x12h\
-    \n\x13provision_namespace\x18\x05\x20\x01(\x0b27.hw.trezor.messages.nem.\
+    \n\x13provision_namespace\x18\x05\x20\x01(\x0b27.hw.cerberus.messages.nem.\
     NEMSignTx.NEMProvisionNamespaceR\x12provisionNamespace\x12\\\n\x0fmosaic\
-    _creation\x18\x06\x20\x01(\x0b23.hw.trezor.messages.nem.NEMSignTx.NEMMos\
+    _creation\x18\x06\x20\x01(\x0b23.hw.cerberus.messages.nem.NEMSignTx.NEMMos\
     aicCreationR\x0emosaicCreation\x12\\\n\rsupply_change\x18\x07\x20\x01(\
-    \x0b27.hw.trezor.messages.nem.NEMSignTx.NEMMosaicSupplyChangeR\x0csupply\
-    Change\x12q\n\x16aggregate_modification\x18\x08\x20\x01(\x0b2:.hw.trezor\
+    \x0b27.hw.cerberus.messages.nem.NEMSignTx.NEMMosaicSupplyChangeR\x0csupply\
+    Change\x12q\n\x16aggregate_modification\x18\x08\x20\x01(\x0b2:.hw.cerberus\
     .messages.nem.NEMSignTx.NEMAggregateModificationR\x15aggregateModificati\
-    on\x12h\n\x13importance_transfer\x18\t\x20\x01(\x0b27.hw.trezor.messages\
+    on\x12h\n\x13importance_transfer\x18\t\x20\x01(\x0b27.hw.cerberus.messages\
     .nem.NEMSignTx.NEMImportanceTransferR\x12importanceTransfer\x12\x1a\n\
     \x08chunkify\x18\n\x20\x01(\x08R\x08chunkify\x1a\xb6\x01\n\x14NEMTransac\
     tionCommon\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\x12\x1d\
@@ -4894,7 +4894,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x12\x1c\n\trecipient\x18\x01\x20\x02(\tR\trecipient\x12\x16\n\x06amount\
     \x18\x02\x20\x02(\x04R\x06amount\x12\x18\n\x07payload\x18\x03\x20\x01(\
     \x0cR\x07payload\x12\x1d\n\npublic_key\x18\x04\x20\x01(\x0cR\tpublicKey\
-    \x12Q\n\x07mosaics\x18\x05\x20\x03(\x0b27.hw.trezor.messages.nem.NEMSign\
+    \x12Q\n\x07mosaics\x18\x05\x20\x03(\x0b27.hw.cerberus.messages.nem.NEMSign\
     Tx.NEMTransfer.NEMMosaicR\x07mosaics\x1a]\n\tNEMMosaic\x12\x1c\n\tnamesp\
     ace\x18\x01\x20\x02(\tR\tnamespace\x12\x16\n\x06mosaic\x18\x02\x20\x02(\
     \tR\x06mosaic\x12\x1a\n\x08quantity\x18\x03\x20\x02(\x04R\x08quantity\
@@ -4902,14 +4902,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     R\tnamespace\x12\x16\n\x06parent\x18\x02\x20\x01(\tR\x06parent\x12\x12\n\
     \x04sink\x18\x03\x20\x02(\tR\x04sink\x12\x10\n\x03fee\x18\x04\x20\x02(\
     \x04R\x03fee\x1a\x8e\x06\n\x11NEMMosaicCreation\x12g\n\ndefinition\x18\
-    \x01\x20\x02(\x0b2G.hw.trezor.messages.nem.NEMSignTx.NEMMosaicCreation.N\
+    \x01\x20\x02(\x0b2G.hw.cerberus.messages.nem.NEMSignTx.NEMMosaicCreation.N\
     EMMosaicDefinitionR\ndefinition\x12\x12\n\x04sink\x18\x02\x20\x02(\tR\
     \x04sink\x12\x10\n\x03fee\x18\x03\x20\x02(\x04R\x03fee\x1a\xe9\x04\n\x13\
     NEMMosaicDefinition\x12\x12\n\x04name\x18\x01\x20\x01(\tR\x04name\x12\
     \x16\n\x06ticker\x18\x02\x20\x01(\tR\x06ticker\x12\x1c\n\tnamespace\x18\
     \x03\x20\x02(\tR\tnamespace\x12\x16\n\x06mosaic\x18\x04\x20\x02(\tR\x06m\
     osaic\x12\"\n\x0cdivisibility\x18\x05\x20\x01(\rR\x0cdivisibility\x12i\n\
-    \x04levy\x18\x06\x20\x01(\x0e2U.hw.trezor.messages.nem.NEMSignTx.NEMMosa\
+    \x04levy\x18\x06\x20\x01(\x0e2U.hw.cerberus.messages.nem.NEMSignTx.NEMMosa\
     icCreation.NEMMosaicDefinition.NEMMosaicLevyR\x04levy\x12\x10\n\x03fee\
     \x18\x07\x20\x01(\x04R\x03fee\x12!\n\x0clevy_address\x18\x08\x20\x01(\tR\
     \x0blevyAddress\x12%\n\x0elevy_namespace\x18\t\x20\x01(\tR\rlevyNamespac\
@@ -4921,12 +4921,12 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     aicLevy\x12\x17\n\x13MosaicLevy_Absolute\x10\x01\x12\x19\n\x15MosaicLevy\
     _Percentile\x10\x02\x1a\x91\x02\n\x15NEMMosaicSupplyChange\x12\x1c\n\tna\
     mespace\x18\x01\x20\x02(\tR\tnamespace\x12\x16\n\x06mosaic\x18\x02\x20\
-    \x02(\tR\x06mosaic\x12_\n\x04type\x18\x03\x20\x02(\x0e2K.hw.trezor.messa\
+    \x02(\tR\x06mosaic\x12_\n\x04type\x18\x03\x20\x02(\x0e2K.hw.cerberus.messa\
     ges.nem.NEMSignTx.NEMMosaicSupplyChange.NEMSupplyChangeTypeR\x04type\x12\
     \x14\n\x05delta\x18\x04\x20\x02(\x04R\x05delta\"K\n\x13NEMSupplyChangeTy\
     pe\x12\x19\n\x15SupplyChange_Increase\x10\x01\x12\x19\n\x15SupplyChange_\
     Decrease\x10\x02\x1a\xd9\x03\n\x18NEMAggregateModification\x12{\n\rmodif\
-    ications\x18\x01\x20\x03(\x0b2U.hw.trezor.messages.nem.NEMSignTx.NEMAggr\
+    ications\x18\x01\x20\x03(\x0b2U.hw.cerberus.messages.nem.NEMSignTx.NEMAggr\
     egateModification.NEMCosignatoryModificationR\rmodifications\x12'\n\x0fr\
     elative_change\x18\x02\x20\x01(\x11R\x0erelativeChange\x1a\x96\x02\n\x1a\
     NEMCosignatoryModification\x12}\n\x04type\x18\x01\x20\x02(\x0e2i.hw.trez\
@@ -4935,7 +4935,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     (\x0cR\tpublicKey\"Z\n\x13NEMModificationType\x12\x1f\n\x1bCosignatoryMo\
     dification_Add\x10\x01\x12\"\n\x1eCosignatoryModification_Delete\x10\x02\
     \x1a\xfe\x01\n\x15NEMImportanceTransfer\x12e\n\x04mode\x18\x01\x20\x02(\
-    \x0e2Q.hw.trezor.messages.nem.NEMSignTx.NEMImportanceTransfer.NEMImporta\
+    \x0e2Q.hw.cerberus.messages.nem.NEMSignTx.NEMImportanceTransfer.NEMImporta\
     nceTransferModeR\x04mode\x12\x1d\n\npublic_key\x18\x02\x20\x02(\x0cR\tpu\
     blicKey\"_\n\x19NEMImportanceTransferMode\x12\x1f\n\x1bImportanceTransfe\
     r_Activate\x10\x01\x12!\n\x1dImportanceTransfer_Deactivate\x10\x02\"?\n\
@@ -4945,7 +4945,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x07network\x18\x02\x20\x01(\rR\x07network\x12\x1d\n\npublic_key\x18\x03\
     \x20\x01(\x0cR\tpublicKey\x12\x18\n\x07payload\x18\x04\x20\x01(\x0cR\x07\
     payload\"/\n\x13NEMDecryptedMessage\x12\x18\n\x07payload\x18\x01\x20\x02\
-    (\x0cR\x07payloadB7\n#com.satoshilabs.trezor.lib.protobufB\x10TrezorMess\
+    (\x0cR\x07payloadB7\n#com.satoshilabs.cerberus.lib.protobufB\x10CerberusMess\
     ageNem\
 ";
 

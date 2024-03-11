@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import btc, device, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.tools import H_, parse_path
+from cerberuslib import btc, device, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.tools import H_, parse_path
 
 from .signtx import forge_prevtx, request_input
 
@@ -49,7 +49,7 @@ def test_invalid_path_fail(client: Client):
         script_type=messages.OutputScriptType.PAYTOADDRESS,
     )
 
-    with pytest.raises(TrezorFailure) as exc:
+    with pytest.raises(CerberusFailure) as exc:
         btc.sign_tx(client, "Litecoin", [inp1], [out1], prev_txes=PREV_TXES)
 
     assert exc.value.code == messages.FailureType.DataError
@@ -168,7 +168,7 @@ def test_attack_path_segwit(client: Client):
 
     with client:
         client.set_filter(messages.TxAck, attack_processor)
-        with pytest.raises(TrezorFailure):
+        with pytest.raises(CerberusFailure):
             btc.sign_tx(
                 client, "Testnet", [inp1, inp2], [out1], prev_txes={prev_hash: prev_tx}
             )
@@ -199,5 +199,5 @@ def test_invalid_path_fail_asap(client: Client):
         )
         try:
             btc.sign_tx(client, "Testnet", [inp1], [out1])
-        except TrezorFailure:
+        except CerberusFailure:
             pass

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -26,10 +26,10 @@ from typing import (
     TypeVar,
 )
 
-from ..exceptions import TrezorException
+from ..exceptions import CerberusException
 
 if TYPE_CHECKING:
-    from ..models import TrezorModel
+    from ..models import CerberusModel
 
     T = TypeVar("T", bound="Transport")
 
@@ -37,14 +37,14 @@ LOG = logging.getLogger(__name__)
 
 UDEV_RULES_STR = """
 Do you have udev rules installed?
-https://github.com/trezor/trezor-common/blob/master/udev/51-trezor.rules
+https://github.com/Cerberus-Wallet/cerberus-common/blob/master/udev/51-cerberus.rules
 """.strip()
 
 
 MessagePayload = Tuple[int, bytes]
 
 
-class TransportException(TrezorException):
+class TransportException(CerberusException):
     pass
 
 
@@ -53,9 +53,9 @@ class DeviceIsBusy(TransportException):
 
 
 class Transport:
-    """Raw connection to a Trezor device.
+    """Raw connection to a Cerberus device.
 
-    Transport subclass represents a kind of communication link: Trezor Bridge, WebUSB
+    Transport subclass represents a kind of communication link: Cerberus Bridge, WebUSB
     or USB-HID connection, or UDP socket of listening emulator(s).
     It can also enumerate devices available over this communication link, and return
     them as instances.
@@ -66,7 +66,7 @@ class Transport:
     - can read and write protobuf messages
 
     You need to implement a new Transport subclass if you invent a new way to connect
-    a Trezor device to a computer.
+    a Cerberus device to a computer.
     """
 
     PATH_PREFIX: str
@@ -95,7 +95,7 @@ class Transport:
 
     @classmethod
     def enumerate(
-        cls: Type["T"], models: Optional[Iterable["TrezorModel"]] = None
+        cls: Type["T"], models: Optional[Iterable["CerberusModel"]] = None
     ) -> Iterable["T"]:
         raise NotImplementedError
 
@@ -128,7 +128,7 @@ def all_transports() -> Iterable[Type["Transport"]]:
 
 
 def enumerate_devices(
-    models: Optional[Iterable["TrezorModel"]] = None,
+    models: Optional[Iterable["CerberusModel"]] = None,
 ) -> Sequence["Transport"]:
     devices: List["Transport"] = []
     for transport in all_transports():
@@ -152,7 +152,7 @@ def get_transport(
         try:
             return next(iter(enumerate_devices()))
         except StopIteration:
-            raise TransportException("No Trezor device found") from None
+            raise TransportException("No Cerberus device found") from None
 
     # Find whether B is prefix of A (transport name is part of the path)
     # or A is prefix of B (path is a prefix, or a name, of transport).

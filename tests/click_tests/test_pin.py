@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2023 SatoshiLabs and contributors
 #
@@ -20,7 +20,7 @@ from typing import TYPE_CHECKING, Generator
 
 import pytest
 
-from trezorlib import device, exceptions
+from cerberuslib import device, exceptions
 
 from .. import buttons
 from .. import translations as TR
@@ -32,15 +32,15 @@ from .common import (
 )
 
 if TYPE_CHECKING:
-    from trezorlib.debuglink import DebugLink
+    from cerberuslib.debuglink import DebugLink
 
     from ..device_handler import BackgroundDeviceHandler
 
 
 pytestmark = pytest.mark.skip_t1
 
-PIN_CANCELLED = pytest.raises(exceptions.TrezorFailure, match="PIN entry cancelled")
-PIN_INVALID = pytest.raises(exceptions.TrezorFailure, match="PIN invalid")
+PIN_CANCELLED = pytest.raises(exceptions.CerberusFailure, match="PIN entry cancelled")
+PIN_INVALID = pytest.raises(exceptions.CerberusFailure, match="PIN invalid")
 
 PIN4 = "1234"
 PIN24 = "875163065288639289952973"

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TREZORHAL_SECBOOL_H
-#define TREZORHAL_SECBOOL_H
+#ifndef CERBERUSHAL_SECBOOL_H
+#define CERBERUSHAL_SECBOOL_H
 
 #include <stdint.h>
 

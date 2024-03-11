@@ -110,7 +110,7 @@ impl UdpTransport {
         let link = UdpLink::open(&dest)?;
         if link.ping()? {
             devices.push(AvailableDevice {
-                model: Model::TrezorEmulator,
+                model: Model::CerberusEmulator,
                 debug,
                 transport: AvailableDeviceTransport::Udp(AvailableUdpTransport {
                     host: link.device.0,

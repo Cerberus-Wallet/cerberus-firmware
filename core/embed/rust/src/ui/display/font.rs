@@ -1,5 +1,5 @@
 use crate::{
-    trezorhal::display,
+    cerberushal::display,
     ui::{
         constant,
         geometry::{Offset, Point, Rect},
@@ -122,7 +122,7 @@ impl Glyph {
 }
 
 /// Font constants. Keep in sync with FONT_ definitions in
-/// `extmod/modtrezorui/fonts/fonts.h`.
+/// `extmod/modcerberusui/fonts/fonts.h`.
 #[derive(Copy, Clone, PartialEq, Eq, FromPrimitive)]
 #[repr(u8)]
 pub enum Font {

@@ -25,16 +25,16 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumGetPublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumGetPublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumGetPublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumGetPublicKey.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumGetPublicKey.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumGetPublicKey.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumGetPublicKey.show_display)
     pub show_display: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumGetPublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumGetPublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -187,16 +187,16 @@ impl ::protobuf::reflect::ProtobufValue for EthereumGetPublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumPublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumPublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumPublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumPublicKey.node)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumPublicKey.node)
     pub node: ::protobuf::MessageField<super::messages_common::HDNodeType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumPublicKey.xpub)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumPublicKey.xpub)
     pub xpub: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumPublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumPublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -375,20 +375,20 @@ impl ::protobuf::reflect::ProtobufValue for EthereumPublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumGetAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumGetAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumGetAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumGetAddress.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumGetAddress.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumGetAddress.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumGetAddress.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumGetAddress.encoded_network)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumGetAddress.encoded_network)
     pub encoded_network: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumGetAddress.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumGetAddress.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumGetAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumGetAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -628,16 +628,16 @@ impl ::protobuf::reflect::ProtobufValue for EthereumGetAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumAddress._old_address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumAddress._old_address)
     pub _old_address: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumAddress.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumAddress.address)
     pub address: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -840,36 +840,36 @@ impl ::protobuf::reflect::ProtobufValue for EthereumAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumSignTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumSignTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumSignTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTx.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTx.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTx.nonce)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTx.nonce)
     pub nonce: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTx.gas_price)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTx.gas_price)
     pub gas_price: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTx.gas_limit)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTx.gas_limit)
     pub gas_limit: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTx.to)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTx.to)
     pub to: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTx.value)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTx.value)
     pub value: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTx.data_initial_chunk)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTx.data_initial_chunk)
     pub data_initial_chunk: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTx.data_length)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTx.data_length)
     pub data_length: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTx.chain_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTx.chain_id)
     pub chain_id: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTx.tx_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTx.tx_type)
     pub tx_type: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTx.definitions)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTx.definitions)
     pub definitions: ::protobuf::MessageField<super::messages_ethereum_definitions::EthereumDefinitions>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTx.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTx.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumSignTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumSignTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1470,38 +1470,38 @@ impl ::protobuf::reflect::ProtobufValue for EthereumSignTx {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumSignTxEIP1559)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumSignTxEIP1559 {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.nonce)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.nonce)
     pub nonce: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.max_gas_fee)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.max_gas_fee)
     pub max_gas_fee: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.max_priority_fee)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.max_priority_fee)
     pub max_priority_fee: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.gas_limit)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.gas_limit)
     pub gas_limit: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.to)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.to)
     pub to: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.value)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.value)
     pub value: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.data_initial_chunk)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.data_initial_chunk)
     pub data_initial_chunk: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.data_length)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.data_length)
     pub data_length: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.chain_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.chain_id)
     pub chain_id: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.access_list)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.access_list)
     pub access_list: ::std::vec::Vec<ethereum_sign_tx_eip1559::EthereumAccessList>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.definitions)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.definitions)
     pub definitions: ::protobuf::MessageField<super::messages_ethereum_definitions::EthereumDefinitions>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2155,16 +2155,16 @@ impl ::protobuf::reflect::ProtobufValue for EthereumSignTxEIP1559 {
 
 /// Nested message and enums of message `EthereumSignTxEIP1559`
 pub mod ethereum_sign_tx_eip1559 {
-    // @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.EthereumAccessList)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.EthereumAccessList)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EthereumAccessList {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.EthereumAccessList.address)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.EthereumAccessList.address)
         pub address: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.EthereumAccessList.storage_keys)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.EthereumAccessList.storage_keys)
         pub storage_keys: ::std::vec::Vec<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumSignTxEIP1559.EthereumAccessList.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumSignTxEIP1559.EthereumAccessList.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -2335,20 +2335,20 @@ pub mod ethereum_sign_tx_eip1559 {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumTxRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumTxRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumTxRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumTxRequest.data_length)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumTxRequest.data_length)
     pub data_length: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumTxRequest.signature_v)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumTxRequest.signature_v)
     pub signature_v: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumTxRequest.signature_r)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumTxRequest.signature_r)
     pub signature_r: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumTxRequest.signature_s)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumTxRequest.signature_s)
     pub signature_s: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumTxRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumTxRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2621,14 +2621,14 @@ impl ::protobuf::reflect::ProtobufValue for EthereumTxRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumTxAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumTxAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumTxAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumTxAck.data_chunk)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumTxAck.data_chunk)
     pub data_chunk: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumTxAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumTxAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2782,20 +2782,20 @@ impl ::protobuf::reflect::ProtobufValue for EthereumTxAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumSignMessage)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumSignMessage)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumSignMessage {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignMessage.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignMessage.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignMessage.message)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignMessage.message)
     pub message: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignMessage.encoded_network)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignMessage.encoded_network)
     pub encoded_network: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignMessage.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignMessage.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumSignMessage.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumSignMessage.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3055,16 +3055,16 @@ impl ::protobuf::reflect::ProtobufValue for EthereumSignMessage {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumMessageSignature)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumMessageSignature)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumMessageSignature {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumMessageSignature.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumMessageSignature.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumMessageSignature.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumMessageSignature.address)
     pub address: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumMessageSignature.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumMessageSignature.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3273,20 +3273,20 @@ impl ::protobuf::reflect::ProtobufValue for EthereumMessageSignature {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumVerifyMessage)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumVerifyMessage)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumVerifyMessage {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumVerifyMessage.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumVerifyMessage.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumVerifyMessage.message)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumVerifyMessage.message)
     pub message: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumVerifyMessage.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumVerifyMessage.address)
     pub address: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumVerifyMessage.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumVerifyMessage.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumVerifyMessage.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumVerifyMessage.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3585,20 +3585,20 @@ impl ::protobuf::reflect::ProtobufValue for EthereumVerifyMessage {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumSignTypedHash)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumSignTypedHash)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumSignTypedHash {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTypedHash.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTypedHash.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTypedHash.domain_separator_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTypedHash.domain_separator_hash)
     pub domain_separator_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTypedHash.message_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTypedHash.message_hash)
     pub message_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumSignTypedHash.encoded_network)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumSignTypedHash.encoded_network)
     pub encoded_network: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumSignTypedHash.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumSignTypedHash.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3875,16 +3875,16 @@ impl ::protobuf::reflect::ProtobufValue for EthereumSignTypedHash {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum.EthereumTypedDataSignature)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum.EthereumTypedDataSignature)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumTypedDataSignature {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumTypedDataSignature.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumTypedDataSignature.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum.EthereumTypedDataSignature.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum.EthereumTypedDataSignature.address)
     pub address: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum.EthereumTypedDataSignature.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum.EthereumTypedDataSignature.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4094,11 +4094,11 @@ impl ::protobuf::reflect::ProtobufValue for EthereumTypedDataSignature {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x17messages-ethereum.proto\x12\x1bhw.trezor.messages.ethereum\x1a\x15\
+    \n\x17messages-ethereum.proto\x12\x1bhw.cerberus.messages.ethereum\x1a\x15\
     messages-common.proto\x1a#messages-ethereum-definitions.proto\"V\n\x14Et\
     hereumGetPublicKey\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\
     \x12!\n\x0cshow_display\x18\x02\x20\x01(\x08R\x0bshowDisplay\"b\n\x11Eth\
-    ereumPublicKey\x129\n\x04node\x18\x01\x20\x02(\x0b2%.hw.trezor.messages.\
+    ereumPublicKey\x129\n\x04node\x18\x01\x20\x02(\x0b2%.hw.cerberus.messages.\
     common.HDNodeTypeR\x04node\x12\x12\n\x04xpub\x18\x02\x20\x02(\tR\x04xpub\
     \"\x99\x01\n\x12EthereumGetAddress\x12\x1b\n\taddress_n\x18\x01\x20\x03(\
     \rR\x08addressN\x12!\n\x0cshow_display\x18\x02\x20\x01(\x08R\x0bshowDisp\
@@ -4114,7 +4114,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     _chunk\x18\x07\x20\x01(\x0c:\0R\x10dataInitialChunk\x12\"\n\x0bdata_leng\
     th\x18\x08\x20\x01(\r:\x010R\ndataLength\x12\x19\n\x08chain_id\x18\t\x20\
     \x02(\x04R\x07chainId\x12\x17\n\x07tx_type\x18\n\x20\x01(\rR\x06txType\
-    \x12^\n\x0bdefinitions\x18\x0c\x20\x01(\x0b2<.hw.trezor.messages.ethereu\
+    \x12^\n\x0bdefinitions\x18\x0c\x20\x01(\x0b2<.hw.cerberus.messages.ethereu\
     m_definitions.EthereumDefinitionsR\x0bdefinitions\x12\x1a\n\x08chunkify\
     \x18\r\x20\x01(\x08R\x08chunkify\"\xfc\x04\n\x15EthereumSignTxEIP1559\
     \x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\x12\x14\n\x05nonce\
@@ -4125,9 +4125,9 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x02(\x0cR\x05value\x12.\n\x12data_initial_chunk\x18\x08\x20\x01(\x0c:\0\
     R\x10dataInitialChunk\x12\x1f\n\x0bdata_length\x18\t\x20\x02(\rR\ndataLe\
     ngth\x12\x19\n\x08chain_id\x18\n\x20\x02(\x04R\x07chainId\x12f\n\x0bacce\
-    ss_list\x18\x0b\x20\x03(\x0b2E.hw.trezor.messages.ethereum.EthereumSignT\
+    ss_list\x18\x0b\x20\x03(\x0b2E.hw.cerberus.messages.ethereum.EthereumSignT\
     xEIP1559.EthereumAccessListR\naccessList\x12^\n\x0bdefinitions\x18\x0c\
-    \x20\x01(\x0b2<.hw.trezor.messages.ethereum_definitions.EthereumDefiniti\
+    \x20\x01(\x0b2<.hw.cerberus.messages.ethereum_definitions.EthereumDefiniti\
     onsR\x0bdefinitions\x12\x1a\n\x08chunkify\x18\r\x20\x01(\x08R\x08chunkif\
     y\x1aQ\n\x12EthereumAccessList\x12\x18\n\x07address\x18\x01\x20\x02(\tR\
     \x07address\x12!\n\x0cstorage_keys\x18\x02\x20\x03(\x0cR\x0bstorageKeys\
@@ -4151,7 +4151,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     messageHash\x12'\n\x0fencoded_network\x18\x04\x20\x01(\x0cR\x0eencodedNe\
     twork\"T\n\x1aEthereumTypedDataSignature\x12\x1c\n\tsignature\x18\x01\
     \x20\x02(\x0cR\tsignature\x12\x18\n\x07address\x18\x02\x20\x02(\tR\x07ad\
-    dressB<\n#com.satoshilabs.trezor.lib.protobufB\x15TrezorMessageEthereum\
+    dressB<\n#com.satoshilabs.cerberus.lib.protobufB\x15CerberusMessageEthereum\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

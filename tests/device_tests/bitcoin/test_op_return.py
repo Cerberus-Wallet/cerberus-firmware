@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import btc, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.tools import parse_path
+from cerberuslib import btc, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.tools import parse_path
 
 from ...tx_cache import TxCache
 from .signtx import (
@@ -116,7 +116,7 @@ def test_nonzero_opreturn(client: Client):
         )
 
         with pytest.raises(
-            TrezorFailure, match="OP_RETURN output with non-zero amount"
+            CerberusFailure, match="OP_RETURN output with non-zero amount"
         ):
             btc.sign_tx(client, "Bitcoin", [inp1], [out1], prev_txes=TX_API)
 
@@ -141,6 +141,6 @@ def test_opreturn_address(client: Client):
             [request_input(0), request_output(0), messages.Failure()]
         )
         with pytest.raises(
-            TrezorFailure, match="Output's address_n provided but not expected."
+            CerberusFailure, match="Output's address_n provided but not expected."
         ):
             btc.sign_tx(client, "Bitcoin", [inp1], [out1], prev_txes=TX_API)

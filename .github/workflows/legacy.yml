@@ -11,7 +11,7 @@ permissions:
 
 env:
   PULL_COMMENT: |
-    |legacy UI changes|[device test](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T1B1-legacy_device_test/index.html)([screens](https://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}/T1B1-legacy_device_test/differing_screens.html)) [main](https://data.trezor.io/dev/firmware/master_diff/${{ github.run_id }}/)([screens](https://data.trezor.io/dev/firmware/master_diff/${{ github.run_id }}/master_diff.html))|
+    |legacy UI changes|[device test](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T1B1-legacy_device_test/index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T1B1-legacy_device_test/differing_screens.html)) [main](https://data.trezorcheck.io/dev/firmware/master_diff/${{ github.run_id }}/)([screens](https://data.trezorcheck.io/dev/firmware/master_diff/${{ github.run_id }}/master_diff.html))|
     |-----------------|-----|
 
 jobs:
@@ -79,7 +79,7 @@ jobs:
         asan: ${{ fromJSON(github.event_name == 'schedule' && '["noasan", "asan"]' || '["noasan"]') }}
     env:
       EMULATOR: 1
-      TREZOR_PYTEST_SKIP_ALTCOINS: ${{ matrix.coins == 'universal' && '0' || '1' }}
+      CERBERUS_PYTEST_SKIP_ALTCOINS: ${{ matrix.coins == 'universal' && '0' || '1' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -109,7 +109,7 @@ jobs:
       matrix:
         asan: ${{ fromJSON(github.event_name == 'schedule' && '["noasan", "asan"]' || '["noasan"]') }}
     env:
-      TREZOR_UPGRADE_TEST: legacy
+      CERBERUS_UPGRADE_TEST: legacy
     steps:
       - uses: actions/checkout@v4
         with:
@@ -143,7 +143,7 @@ jobs:
       - uses: ./.github/actions/environment
       - run: nix-shell --run "git clone --depth=1 https://github.com/bitcoin-core/HWI.git"
       # see python_test for explanation of _PYTHON_SYSCONFIGDATA_NAME
-      - run: nix-shell --arg fullDeps true --run "unset _PYTHON_SYSCONFIGDATA_NAME && cd HWI && poetry install && poetry run ./test/test_trezor.py --model_1 ../legacy/firmware/trezor.elf bitcoind"
+      - run: nix-shell --arg fullDeps true --run "unset _PYTHON_SYSCONFIGDATA_NAME && cd HWI && poetry install && poetry run ./test/test_cerberus.py --model_1 ../legacy/firmware/cerberus.elf bitcoind"
 
   legacy_ui_main:
     name: UI diff from main branch
@@ -167,7 +167,7 @@ jobs:
       - run: mv tests/ui_tests/reports/master_diff .
       - name: Upload main branch diff
         run: |
-          aws s3 sync master_diff s3://data.trezor.io/dev/firmware/master_diff/${{ github.run_id }}
+          aws s3 sync master_diff s3://data.trezorcheck.io/dev/firmware/master_diff/${{ github.run_id }}
 
   legacy_ui_comment:
     name: Post comment with UI diff URLs

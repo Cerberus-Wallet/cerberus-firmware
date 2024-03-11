@@ -2,8 +2,8 @@ import utime
 from typing import Any, NoReturn
 
 import storage.cache as storage_cache
-from trezor import TR, config, utils, wire
-from trezor.ui.layouts import show_error_and_raise
+from cerberus import TR, config, utils, wire
+from cerberus.ui.layouts import show_error_and_raise
 
 
 async def _request_sd_salt(
@@ -44,13 +44,13 @@ async def request_pin(
     attempts_remaining: int | None = None,
     allow_cancel: bool = True,
 ) -> str:
-    from trezor.ui.layouts import request_pin_on_device
+    from cerberus.ui.layouts import request_pin_on_device
 
     return await request_pin_on_device(prompt, attempts_remaining, allow_cancel)
 
 
 async def request_pin_confirm(*args: Any, **kwargs: Any) -> str:
-    from trezor.ui.layouts import confirm_reenter_pin, pin_mismatch_popup
+    from cerberus.ui.layouts import confirm_reenter_pin, pin_mismatch_popup
 
     while True:
         pin1 = await request_pin(TR.pin__enter_new, *args, **kwargs)
@@ -103,7 +103,7 @@ async def verify_user_pin(
         return
 
     if config.has_pin():
-        from trezor.ui.layouts import request_pin_on_device
+        from cerberus.ui.layouts import request_pin_on_device
 
         pin = await request_pin_on_device(prompt, config.get_pin_rem(), allow_cancel)
         config.ensure_not_wipe_code(pin)

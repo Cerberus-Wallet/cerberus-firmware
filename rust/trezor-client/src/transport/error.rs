@@ -1,6 +1,6 @@
 //! # Error Handling
 
-/// Trezor error.
+/// Cerberus error.
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
     /// [rusb] error.

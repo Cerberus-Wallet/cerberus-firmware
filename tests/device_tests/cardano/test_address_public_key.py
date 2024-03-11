@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,15 +16,15 @@
 
 import pytest
 
-from trezorlib.cardano import (
+from cerberuslib.cardano import (
     create_address_parameters,
     get_address,
     get_public_key,
     parse_optional_bytes,
 )
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.messages import CardanoAddressType, CardanoDerivationType
-from trezorlib.tools import parse_path
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.messages import CardanoAddressType, CardanoDerivationType
+from cerberuslib.tools import parse_path
 
 from ...common import parametrize_using_common_fixtures
 from ...input_flows import InputFlowShowXpubQRCode
@@ -52,7 +52,7 @@ def test_cardano_get_address(client: Client, chunkify: bool, parameters, result)
     client.init_device(new_session=True, derive_cardano=True)
 
     derivation_type = CardanoDerivationType.__members__[
-        parameters.get("derivation_type", "ICARUS_TREZOR")
+        parameters.get("derivation_type", "ICARUS_CERBERUS")
     ]
 
     address = get_address(
@@ -99,7 +99,7 @@ def test_cardano_get_public_key(client: Client, parameters, result):
         client.init_device(new_session=True, derive_cardano=True)
 
         derivation_type = CardanoDerivationType.__members__[
-            parameters.get("derivation_type", "ICARUS_TREZOR")
+            parameters.get("derivation_type", "ICARUS_CERBERUS")
         ]
         key = get_public_key(
             client, parse_path(parameters["path"]), derivation_type, show_display=True

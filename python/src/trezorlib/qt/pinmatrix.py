@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -70,7 +70,7 @@ class PinMatrixWidget(QWidget):
     """
     Displays widget with nine blank buttons and password box.
     Encodes button clicks into sequence of numbers for passing
-    into PinAck messages of Trezor.
+    into PinAck messages of Cerberus.
 
     show_strength=True may be useful for entering new PIN
     """

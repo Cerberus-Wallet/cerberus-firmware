@@ -1,6 +1,6 @@
 """
-Reference client implementation consuming trezorctl's script interface
-(ScriptUI class) available by using `--script` flag in any trezorctl command.
+Reference client implementation consuming cerberusctl's script interface
+(ScriptUI class) available by using `--script` flag in any cerberusctl command.
 
 Function `get_address()` is showing the communication with ScriptUI
 on a specific example
@@ -52,7 +52,7 @@ def show_button_request(
     # ?BUTTON code=Other
     # ?BUTTON code=SignTx pages=2
     # ?BUTTON code=ProtectCall name=confirm_set_pin
-    print(f"Please confirm action on Trezor (code={code} name={name} pages={pages})")
+    print(f"Please confirm action on Cerberus (code={code} name={name} pages={pages})")
 
 
 def get_passphrase_from_user(available_on_device: bool = False) -> str:
@@ -84,7 +84,7 @@ def get_passphrase_from_user(available_on_device: bool = False) -> str:
 
 def get_address() -> str:
     args = """
-        trezorctl --script get-address -n "m/49h/0h/0h/0/0"
+        cerberusctl --script get-address -n "m/49h/0h/0h/0/0"
     """.strip()
     p = subprocess.Popen(
         args,
@@ -126,7 +126,7 @@ def get_address() -> str:
 
 
 def clear_session_to_enable_pin():
-    os.system("trezorctl clear-session")
+    os.system("cerberusctl clear-session")
 
 
 if __name__ == "__main__":

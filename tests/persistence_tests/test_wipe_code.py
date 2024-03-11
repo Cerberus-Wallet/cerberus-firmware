@@ -1,5 +1,5 @@
-from trezorlib import debuglink, device, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
+from cerberuslib import debuglink, device, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
 
 from ..common import MNEMONIC12
 from ..emulators import Emulator, EmulatorWrapper

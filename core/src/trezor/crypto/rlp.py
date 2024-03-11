@@ -2,7 +2,7 @@ from micropython import const
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.utils import Writer
+    from cerberus.utils import Writer
 
     # The intention below is basically:
     # RLPItem = int | bytes | list[RLPItem]

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -21,7 +21,7 @@ import time
 from typing import Iterable, List, Optional
 
 from ..log import DUMP_PACKETS
-from ..models import TREZORS, TrezorModel
+from ..models import CERBERUSS, CerberusModel
 from . import UDEV_RULES_STR, DeviceIsBusy, TransportException
 from .protocol import ProtocolBasedTransport, ProtocolV1
 
@@ -119,7 +119,7 @@ class WebUsbTransport(ProtocolBasedTransport):
 
     @classmethod
     def enumerate(
-        cls, models: Optional[Iterable["TrezorModel"]] = None, usb_reset: bool = False
+        cls, models: Optional[Iterable["CerberusModel"]] = None, usb_reset: bool = False
     ) -> Iterable["WebUsbTransport"]:
         if cls.context is None:
             cls.context = usb1.USBContext()
@@ -127,7 +127,7 @@ class WebUsbTransport(ProtocolBasedTransport):
             atexit.register(cls.context.close)  # type: ignore [Param spec "_P@register" has no bound value]
 
         if models is None:
-            models = TREZORS
+            models = CERBERUSS
         usb_ids = [id for model in models for id in model.usb_ids]
         devices: List["WebUsbTransport"] = []
         for dev in cls.context.getDeviceIterator(skip_on_error=True):
@@ -139,7 +139,7 @@ class WebUsbTransport(ProtocolBasedTransport):
             try:
                 # workaround for issue #223:
                 # on certain combinations of Windows USB drivers and libusb versions,
-                # Trezor is returned twice (possibly because Windows know it as both
+                # Cerberus is returned twice (possibly because Windows know it as both
                 # a HID and a WebUSB device), and one of the returned devices is
                 # non-functional.
                 dev.getProduct()

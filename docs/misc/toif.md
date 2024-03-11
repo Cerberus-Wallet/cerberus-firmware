@@ -1,4 +1,4 @@
-# Trezor Optimized Image Format (TOIF)
+# Cerberus Optimized Image Format (TOIF)
 
 All multibyte integer values are little endian!
 
@@ -68,5 +68,5 @@ zdata = z.compress(pixeldata) + z.flush()
 
 Tool for converting PNGs into TOI format and back, see the following links for more:
 
-* [README](https://github.com/trezor/trezor-firmware/blob/main/python/tools/toiftool/README.md)
-* [Code](https://github.com/trezor/trezor-firmware/blob/main/python/tools/toiftool/toiftool.py)
+* [README](https://github.com/Cerberus-Wallet/cerberus-firmware/blob/main/python/tools/toiftool/README.md)
+* [Code](https://github.com/Cerberus-Wallet/cerberus-firmware/blob/main/python/tools/toiftool/toiftool.py)

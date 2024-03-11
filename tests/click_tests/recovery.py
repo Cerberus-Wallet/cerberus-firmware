@@ -5,7 +5,7 @@ from .. import translations as TR
 from .common import get_possible_btn_texts, go_next
 
 if TYPE_CHECKING:
-    from trezorlib.debuglink import DebugLink, LayoutContent
+    from cerberuslib.debuglink import DebugLink, LayoutContent
 
 
 DELETE_BTN_TEXTS = get_possible_btn_texts("inputs__delete") + get_possible_btn_texts(

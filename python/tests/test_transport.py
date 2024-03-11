@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -17,8 +17,8 @@
 import importlib
 from unittest import mock
 
-from trezorlib.transport import all_transports
-from trezorlib.transport.bridge import BridgeTransport
+from cerberuslib.transport import all_transports
+from cerberuslib.transport.bridge import BridgeTransport
 
 
 def test_disabled_transport():
@@ -32,10 +32,10 @@ def test_disabled_transport():
 
 
 def test_import_all_transports():
-    from trezorlib.transport.bridge import BridgeTransport
-    from trezorlib.transport.hid import HidTransport
-    from trezorlib.transport.udp import UdpTransport
-    from trezorlib.transport.webusb import WebUsbTransport
+    from cerberuslib.transport.bridge import BridgeTransport
+    from cerberuslib.transport.hid import HidTransport
+    from cerberuslib.transport.udp import UdpTransport
+    from cerberuslib.transport.webusb import WebUsbTransport
 
     assert BridgeTransport
     assert HidTransport
@@ -44,7 +44,7 @@ def test_import_all_transports():
 
 
 def test_transport_dependencies():
-    import trezorlib.transport.hid as hid_transport
+    import cerberuslib.transport.hid as hid_transport
 
     with mock.patch.dict("sys.modules", {"hid": None}):
         importlib.reload(hid_transport)

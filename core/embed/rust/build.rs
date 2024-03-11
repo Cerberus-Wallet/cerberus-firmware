@@ -7,7 +7,7 @@ fn main() {
     generate_qstr_bindings();
     #[cfg(feature = "micropython")]
     generate_micropython_bindings();
-    generate_trezorhal_bindings();
+    generate_cerberushal_bindings();
     #[cfg(feature = "crypto")]
     generate_crypto_bindings();
     #[cfg(feature = "test")]
@@ -22,7 +22,7 @@ fn mcu_type() -> String {
 }
 
 fn model() -> String {
-    match env::var("TREZOR_MODEL") {
+    match env::var("CERBERUS_MODEL") {
         Ok(model) => model,
         Err(_) => String::from("T"),
     }
@@ -40,11 +40,11 @@ fn board() -> String {
         return String::from("boards/board-unix.h");
     }
 
-    match env::var("TREZOR_BOARD") {
+    match env::var("CERBERUS_BOARD") {
         Ok(board) => {
             format!("boards/{}", board)
         }
-        Err(_) => String::from("boards/trezor_t.h"),
+        Err(_) => String::from("boards/cerberus_t.h"),
     }
 }
 
@@ -103,11 +103,11 @@ fn prepare_bindings() -> bindgen::Builder {
         "-I../../vendor/micropython",
         "-I../../vendor/micropython/lib/uzlib",
         "-I../lib",
-        "-I../trezorhal",
+        "-I../cerberushal",
         "-I../models",
         format!("-D{}", mcu_type()).as_str(),
-        format!("-DTREZOR_MODEL_{}", model()).as_str(),
-        format!("-DTREZOR_BOARD=\"{}\"", board()).as_str(),
+        format!("-DCERBERUS_MODEL_{}", model()).as_str(),
+        format!("-DCERBERUS_BOARD=\"{}\"", board()).as_str(),
     ]);
 
     // Pass in correct include paths and defines.
@@ -150,10 +150,10 @@ fn prepare_bindings() -> bindgen::Builder {
     } else {
         bindings = bindings.clang_args(&[
             "-I../unix",
-            "-I../trezorhal/unix",
+            "-I../cerberushal/unix",
             "-I../../build/unix",
             "-I../../vendor/micropython/ports/unix",
-            "-DTREZOR_EMULATOR",
+            "-DCERBERUS_EMULATOR",
             "-DFLASH_BIT_ACCESS=1",
             "-DFLASH_BLOCK_WORDS=1",
         ]);
@@ -196,8 +196,8 @@ fn generate_micropython_bindings() {
         .allowlist_function("mp_obj_get_int_maybe")
         .allowlist_function("mp_obj_is_true")
         .allowlist_function("mp_call_function_n_kw")
-        .allowlist_function("trezor_obj_get_ll_checked")
-        .allowlist_function("trezor_obj_str_from_rom_text")
+        .allowlist_function("cerberus_obj_get_ll_checked")
+        .allowlist_function("cerberus_obj_str_from_rom_text")
         // buffer
         .allowlist_function("mp_get_buffer")
         .allowlist_var("MP_BUFFER_READ")
@@ -240,7 +240,7 @@ fn generate_micropython_bindings() {
         .allowlist_function("nlr_jump")
         .allowlist_function("mp_obj_new_exception")
         .allowlist_function("mp_obj_new_exception_args")
-        .allowlist_function("trezor_obj_call_protected")
+        .allowlist_function("cerberus_obj_call_protected")
         .allowlist_var("mp_type_AttributeError")
         .allowlist_var("mp_type_EOFError")
         .allowlist_var("mp_type_IndexError")
@@ -278,14 +278,14 @@ fn generate_micropython_bindings() {
         .unwrap();
 }
 
-fn generate_trezorhal_bindings() {
+fn generate_cerberushal_bindings() {
     let out_path = env::var("OUT_DIR").unwrap();
 
     // Tell cargo to invalidate the built crate whenever the header changes.
-    println!("cargo:rerun-if-changed=trezorhal.h");
+    println!("cargo:rerun-if-changed=cerberushal.h");
 
     let bindings = prepare_bindings()
-        .header("trezorhal.h")
+        .header("cerberushal.h")
         // model
         .allowlist_var("MODEL_INTERNAL_NAME")
         .allowlist_var("MODEL_FULL_NAME")
@@ -411,7 +411,7 @@ fn generate_trezorhal_bindings() {
     bindings
         .generate()
         .expect("Unable to generate bindings")
-        .write_to_file(PathBuf::from(out_path).join("trezorhal.rs"))
+        .write_to_file(PathBuf::from(out_path).join("cerberushal.rs"))
         .unwrap();
 }
 

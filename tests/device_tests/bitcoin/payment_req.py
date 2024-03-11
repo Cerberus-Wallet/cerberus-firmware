@@ -3,7 +3,7 @@ from hashlib import sha256
 
 from ecdsa import ECDH, SECP256k1, SigningKey
 
-from trezorlib import btc, messages
+from cerberuslib import btc, messages
 
 from ...common import compact_size
 

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -18,9 +18,9 @@ import time
 
 import pytest
 
-from trezorlib import messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import PinException
+from cerberuslib import messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import PinException
 
 from ..common import check_pin_backoff_time, get_test_address
 from ..input_flows import InputFlowPINBackoff

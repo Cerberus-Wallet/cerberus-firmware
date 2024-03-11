@@ -1,7 +1,7 @@
-# Fuzz Testing trezor-crypto
+# Fuzz Testing cerberus-crypto
 Selected functions can be fuzzed via specific libFuzzer harnesses for increased test coverage and issue detection.
 
-Note: the following commands are relative to the trezor-crypto main directory.
+Note: the following commands are relative to the cerberus-crypto main directory.
 
 ## Build
 

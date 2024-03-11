@@ -25,18 +25,18 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosGetAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosGetAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TezosGetAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosGetAddress.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosGetAddress.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosGetAddress.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosGetAddress.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosGetAddress.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosGetAddress.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosGetAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosGetAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -224,14 +224,14 @@ impl ::protobuf::reflect::ProtobufValue for TezosGetAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TezosAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosAddress.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosAddress.address)
     pub address: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -385,18 +385,18 @@ impl ::protobuf::reflect::ProtobufValue for TezosAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosGetPublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosGetPublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TezosGetPublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosGetPublicKey.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosGetPublicKey.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosGetPublicKey.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosGetPublicKey.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosGetPublicKey.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosGetPublicKey.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosGetPublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosGetPublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -584,14 +584,14 @@ impl ::protobuf::reflect::ProtobufValue for TezosGetPublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosPublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosPublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TezosPublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosPublicKey.public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosPublicKey.public_key)
     pub public_key: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosPublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosPublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -745,30 +745,30 @@ impl ::protobuf::reflect::ProtobufValue for TezosPublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosSignTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosSignTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TezosSignTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.branch)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.branch)
     pub branch: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.reveal)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.reveal)
     pub reveal: ::protobuf::MessageField<tezos_sign_tx::TezosRevealOp>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.transaction)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.transaction)
     pub transaction: ::protobuf::MessageField<tezos_sign_tx::TezosTransactionOp>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.origination)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.origination)
     pub origination: ::protobuf::MessageField<tezos_sign_tx::TezosOriginationOp>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.delegation)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.delegation)
     pub delegation: ::protobuf::MessageField<tezos_sign_tx::TezosDelegationOp>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.proposal)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.proposal)
     pub proposal: ::protobuf::MessageField<tezos_sign_tx::TezosProposalOp>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.ballot)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.ballot)
     pub ballot: ::protobuf::MessageField<tezos_sign_tx::TezosBallotOp>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosSignTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosSignTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1110,16 +1110,16 @@ impl ::protobuf::reflect::ProtobufValue for TezosSignTx {
 
 /// Nested message and enums of message `TezosSignTx`
 pub mod tezos_sign_tx {
-    // @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosSignTx.TezosContractID)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosSignTx.TezosContractID)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TezosContractID {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosContractID.tag)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosContractID.tag)
         pub tag: ::std::option::Option<::protobuf::EnumOrUnknown<tezos_contract_id::TezosContractType>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosContractID.hash)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosContractID.hash)
         pub hash: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosSignTx.TezosContractID.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosSignTx.TezosContractID.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -1134,7 +1134,7 @@ pub mod tezos_sign_tx {
             ::std::default::Default::default()
         }
 
-        // required .hw.trezor.messages.tezos.TezosSignTx.TezosContractID.TezosContractType tag = 1;
+        // required .hw.cerberus.messages.tezos.TezosSignTx.TezosContractID.TezosContractType tag = 1;
 
         pub fn tag(&self) -> tezos_contract_id::TezosContractType {
             match self.tag {
@@ -1317,11 +1317,11 @@ pub mod tezos_sign_tx {
     /// Nested message and enums of message `TezosContractID`
     pub mod tezos_contract_id {
         #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-        // @@protoc_insertion_point(enum:hw.trezor.messages.tezos.TezosSignTx.TezosContractID.TezosContractType)
+        // @@protoc_insertion_point(enum:hw.cerberus.messages.tezos.TezosSignTx.TezosContractID.TezosContractType)
         pub enum TezosContractType {
-            // @@protoc_insertion_point(enum_value:hw.trezor.messages.tezos.TezosSignTx.TezosContractID.TezosContractType.Implicit)
+            // @@protoc_insertion_point(enum_value:hw.cerberus.messages.tezos.TezosSignTx.TezosContractID.TezosContractType.Implicit)
             Implicit = 0,
-            // @@protoc_insertion_point(enum_value:hw.trezor.messages.tezos.TezosSignTx.TezosContractID.TezosContractType.Originated)
+            // @@protoc_insertion_point(enum_value:hw.cerberus.messages.tezos.TezosSignTx.TezosContractID.TezosContractType.Originated)
             Originated = 1,
         }
 
@@ -1379,24 +1379,24 @@ pub mod tezos_sign_tx {
         }
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosSignTx.TezosRevealOp)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosSignTx.TezosRevealOp)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TezosRevealOp {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosRevealOp.source)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosRevealOp.source)
         pub source: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosRevealOp.fee)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosRevealOp.fee)
         pub fee: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosRevealOp.counter)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosRevealOp.counter)
         pub counter: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosRevealOp.gas_limit)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosRevealOp.gas_limit)
         pub gas_limit: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosRevealOp.storage_limit)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosRevealOp.storage_limit)
         pub storage_limit: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosRevealOp.public_key)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosRevealOp.public_key)
         pub public_key: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosSignTx.TezosRevealOp.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosSignTx.TezosRevealOp.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -1757,30 +1757,30 @@ pub mod tezos_sign_tx {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TezosTransactionOp {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.source)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.source)
         pub source: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.fee)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.fee)
         pub fee: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.counter)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.counter)
         pub counter: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.gas_limit)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.gas_limit)
         pub gas_limit: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.storage_limit)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.storage_limit)
         pub storage_limit: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.amount)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.amount)
         pub amount: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.destination)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.destination)
         pub destination: ::protobuf::MessageField<TezosContractID>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.parameters)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.parameters)
         pub parameters: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.parameters_manager)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.parameters_manager)
         pub parameters_manager: ::protobuf::MessageField<tezos_transaction_op::TezosParametersManager>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -2225,18 +2225,18 @@ pub mod tezos_sign_tx {
 
     /// Nested message and enums of message `TezosTransactionOp`
     pub mod tezos_transaction_op {
-        // @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager)
+        // @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager)
         #[derive(PartialEq,Clone,Default,Debug)]
         pub struct TezosParametersManager {
             // message fields
-            // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.set_delegate)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.set_delegate)
             pub set_delegate: ::std::option::Option<::std::vec::Vec<u8>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.cancel_delegate)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.cancel_delegate)
             pub cancel_delegate: ::std::option::Option<bool>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.transfer)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.transfer)
             pub transfer: ::protobuf::MessageField<tezos_parameters_manager::TezosManagerTransfer>,
             // special fields
-            // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.special_fields)
+            // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.special_fields)
             pub special_fields: ::protobuf::SpecialFields,
         }
 
@@ -2446,16 +2446,16 @@ pub mod tezos_sign_tx {
 
         /// Nested message and enums of message `TezosParametersManager`
         pub mod tezos_parameters_manager {
-            // @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.TezosManagerTransfer)
+            // @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.TezosManagerTransfer)
             #[derive(PartialEq,Clone,Default,Debug)]
             pub struct TezosManagerTransfer {
                 // message fields
-                // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.TezosManagerTransfer.destination)
+                // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.TezosManagerTransfer.destination)
                 pub destination: ::protobuf::MessageField<super::super::TezosContractID>,
-                // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.TezosManagerTransfer.amount)
+                // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.TezosManagerTransfer.amount)
                 pub amount: ::std::option::Option<u64>,
                 // special fields
-                // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.TezosManagerTransfer.special_fields)
+                // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.TezosParametersManager.TezosManagerTransfer.special_fields)
                 pub special_fields: ::protobuf::SpecialFields,
             }
 
@@ -2619,34 +2619,34 @@ pub mod tezos_sign_tx {
         }
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosSignTx.TezosOriginationOp)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosSignTx.TezosOriginationOp)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TezosOriginationOp {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosOriginationOp.source)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosOriginationOp.source)
         pub source: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosOriginationOp.fee)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosOriginationOp.fee)
         pub fee: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosOriginationOp.counter)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosOriginationOp.counter)
         pub counter: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosOriginationOp.gas_limit)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosOriginationOp.gas_limit)
         pub gas_limit: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosOriginationOp.storage_limit)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosOriginationOp.storage_limit)
         pub storage_limit: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosOriginationOp.manager_pubkey)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosOriginationOp.manager_pubkey)
         pub manager_pubkey: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosOriginationOp.balance)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosOriginationOp.balance)
         pub balance: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosOriginationOp.spendable)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosOriginationOp.spendable)
         pub spendable: ::std::option::Option<bool>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosOriginationOp.delegatable)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosOriginationOp.delegatable)
         pub delegatable: ::std::option::Option<bool>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosOriginationOp.delegate)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosOriginationOp.delegate)
         pub delegate: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosOriginationOp.script)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosOriginationOp.script)
         pub script: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosSignTx.TezosOriginationOp.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosSignTx.TezosOriginationOp.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -3219,24 +3219,24 @@ pub mod tezos_sign_tx {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosSignTx.TezosDelegationOp)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosSignTx.TezosDelegationOp)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TezosDelegationOp {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosDelegationOp.source)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosDelegationOp.source)
         pub source: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosDelegationOp.fee)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosDelegationOp.fee)
         pub fee: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosDelegationOp.counter)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosDelegationOp.counter)
         pub counter: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosDelegationOp.gas_limit)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosDelegationOp.gas_limit)
         pub gas_limit: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosDelegationOp.storage_limit)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosDelegationOp.storage_limit)
         pub storage_limit: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosDelegationOp.delegate)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosDelegationOp.delegate)
         pub delegate: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosSignTx.TezosDelegationOp.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosSignTx.TezosDelegationOp.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -3597,18 +3597,18 @@ pub mod tezos_sign_tx {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosSignTx.TezosProposalOp)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosSignTx.TezosProposalOp)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TezosProposalOp {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosProposalOp.source)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosProposalOp.source)
         pub source: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosProposalOp.period)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosProposalOp.period)
         pub period: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosProposalOp.proposals)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosProposalOp.proposals)
         pub proposals: ::std::vec::Vec<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosSignTx.TezosProposalOp.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosSignTx.TezosProposalOp.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -3816,20 +3816,20 @@ pub mod tezos_sign_tx {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosSignTx.TezosBallotOp)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosSignTx.TezosBallotOp)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct TezosBallotOp {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosBallotOp.source)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosBallotOp.source)
         pub source: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosBallotOp.period)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosBallotOp.period)
         pub period: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosBallotOp.proposal)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosBallotOp.proposal)
         pub proposal: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignTx.TezosBallotOp.ballot)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignTx.TezosBallotOp.ballot)
         pub ballot: ::std::option::Option<::protobuf::EnumOrUnknown<tezos_ballot_op::TezosBallotType>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosSignTx.TezosBallotOp.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosSignTx.TezosBallotOp.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -3935,7 +3935,7 @@ pub mod tezos_sign_tx {
             self.proposal.take().unwrap_or_else(|| ::std::vec::Vec::new())
         }
 
-        // required .hw.trezor.messages.tezos.TezosSignTx.TezosBallotOp.TezosBallotType ballot = 4;
+        // required .hw.cerberus.messages.tezos.TezosSignTx.TezosBallotOp.TezosBallotType ballot = 4;
 
         pub fn ballot(&self) -> tezos_ballot_op::TezosBallotType {
             match self.ballot {
@@ -4120,13 +4120,13 @@ pub mod tezos_sign_tx {
     /// Nested message and enums of message `TezosBallotOp`
     pub mod tezos_ballot_op {
         #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-        // @@protoc_insertion_point(enum:hw.trezor.messages.tezos.TezosSignTx.TezosBallotOp.TezosBallotType)
+        // @@protoc_insertion_point(enum:hw.cerberus.messages.tezos.TezosSignTx.TezosBallotOp.TezosBallotType)
         pub enum TezosBallotType {
-            // @@protoc_insertion_point(enum_value:hw.trezor.messages.tezos.TezosSignTx.TezosBallotOp.TezosBallotType.Yay)
+            // @@protoc_insertion_point(enum_value:hw.cerberus.messages.tezos.TezosSignTx.TezosBallotOp.TezosBallotType.Yay)
             Yay = 0,
-            // @@protoc_insertion_point(enum_value:hw.trezor.messages.tezos.TezosSignTx.TezosBallotOp.TezosBallotType.Nay)
+            // @@protoc_insertion_point(enum_value:hw.cerberus.messages.tezos.TezosSignTx.TezosBallotOp.TezosBallotType.Nay)
             Nay = 1,
-            // @@protoc_insertion_point(enum_value:hw.trezor.messages.tezos.TezosSignTx.TezosBallotOp.TezosBallotType.Pass)
+            // @@protoc_insertion_point(enum_value:hw.cerberus.messages.tezos.TezosSignTx.TezosBallotOp.TezosBallotType.Pass)
             Pass = 2,
         }
 
@@ -4188,18 +4188,18 @@ pub mod tezos_sign_tx {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.tezos.TezosSignedTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.tezos.TezosSignedTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TezosSignedTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignedTx.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignedTx.signature)
     pub signature: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignedTx.sig_op_contents)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignedTx.sig_op_contents)
     pub sig_op_contents: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.tezos.TezosSignedTx.operation_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.tezos.TezosSignedTx.operation_hash)
     pub operation_hash: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.tezos.TezosSignedTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.tezos.TezosSignedTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4464,7 +4464,7 @@ impl ::protobuf::reflect::ProtobufValue for TezosSignedTx {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x14messages-tezos.proto\x12\x18hw.trezor.messages.tezos\"m\n\x0fTezos\
+    \n\x14messages-tezos.proto\x12\x18hw.cerberus.messages.tezos\"m\n\x0fTezos\
     GetAddress\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\x12!\n\
     \x0cshow_display\x18\x02\x20\x01(\x08R\x0bshowDisplay\x12\x1a\n\x08chunk\
     ify\x18\x03\x20\x01(\x08R\x08chunkify\"(\n\x0cTezosAddress\x12\x18\n\x07\
@@ -4474,18 +4474,18 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x08R\x08chunkify\"/\n\x0eTezosPublicKey\x12\x1d\n\npublic_key\x18\x01\
     \x20\x02(\tR\tpublicKey\"\xc0\x14\n\x0bTezosSignTx\x12\x1b\n\taddress_n\
     \x18\x01\x20\x03(\rR\x08addressN\x12\x16\n\x06branch\x18\x02\x20\x02(\
-    \x0cR\x06branch\x12K\n\x06reveal\x18\x03\x20\x01(\x0b23.hw.trezor.messag\
+    \x0cR\x06branch\x12K\n\x06reveal\x18\x03\x20\x01(\x0b23.hw.cerberus.messag\
     es.tezos.TezosSignTx.TezosRevealOpR\x06reveal\x12Z\n\x0btransaction\x18\
-    \x04\x20\x01(\x0b28.hw.trezor.messages.tezos.TezosSignTx.TezosTransactio\
+    \x04\x20\x01(\x0b28.hw.cerberus.messages.tezos.TezosSignTx.TezosTransactio\
     nOpR\x0btransaction\x12Z\n\x0borigination\x18\x05\x20\x01(\x0b28.hw.trez\
     or.messages.tezos.TezosSignTx.TezosOriginationOpR\x0borigination\x12W\n\
-    \ndelegation\x18\x06\x20\x01(\x0b27.hw.trezor.messages.tezos.TezosSignTx\
+    \ndelegation\x18\x06\x20\x01(\x0b27.hw.cerberus.messages.tezos.TezosSignTx\
     .TezosDelegationOpR\ndelegation\x12Q\n\x08proposal\x18\x07\x20\x01(\x0b2\
-    5.hw.trezor.messages.tezos.TezosSignTx.TezosProposalOpR\x08proposal\x12K\
-    \n\x06ballot\x18\x08\x20\x01(\x0b23.hw.trezor.messages.tezos.TezosSignTx\
+    5.hw.cerberus.messages.tezos.TezosSignTx.TezosProposalOpR\x08proposal\x12K\
+    \n\x06ballot\x18\x08\x20\x01(\x0b23.hw.cerberus.messages.tezos.TezosSignTx\
     .TezosBallotOpR\x06ballot\x12\x1a\n\x08chunkify\x18\t\x20\x01(\x08R\x08c\
     hunkify\x1a\xb3\x01\n\x0fTezosContractID\x12Y\n\x03tag\x18\x01\x20\x02(\
-    \x0e2G.hw.trezor.messages.tezos.TezosSignTx.TezosContractID.TezosContrac\
+    \x0e2G.hw.cerberus.messages.tezos.TezosSignTx.TezosContractID.TezosContrac\
     tTypeR\x03tag\x12\x12\n\x04hash\x18\x02\x20\x02(\x0cR\x04hash\"1\n\x11Te\
     zosContractType\x12\x0c\n\x08Implicit\x10\0\x12\x0e\n\nOriginated\x10\
     \x01\x1a\xb4\x01\n\rTezosRevealOp\x12\x16\n\x06source\x18\x07\x20\x02(\
@@ -4498,17 +4498,17 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x18\n\x07counter\x18\x03\x20\x02(\x04R\x07counter\x12\x1b\n\tgas_limit\
     \x18\x04\x20\x02(\x04R\x08gasLimit\x12#\n\rstorage_limit\x18\x05\x20\x02\
     (\x04R\x0cstorageLimit\x12\x16\n\x06amount\x18\x06\x20\x02(\x04R\x06amou\
-    nt\x12W\n\x0bdestination\x18\x07\x20\x02(\x0b25.hw.trezor.messages.tezos\
+    nt\x12W\n\x0bdestination\x18\x07\x20\x02(\x0b25.hw.cerberus.messages.tezos\
     .TezosSignTx.TezosContractIDR\x0bdestination\x12\x1e\n\nparameters\x18\
     \x08\x20\x01(\x0cR\nparameters\x12~\n\x12parameters_manager\x18\n\x20\
-    \x01(\x0b2O.hw.trezor.messages.tezos.TezosSignTx.TezosTransactionOp.Tezo\
+    \x01(\x0b2O.hw.cerberus.messages.tezos.TezosSignTx.TezosTransactionOp.Tezo\
     sParametersManagerR\x11parametersManager\x1a\xf1\x02\n\x16TezosParameter\
     sManager\x12!\n\x0cset_delegate\x18\x01\x20\x01(\x0cR\x0bsetDelegate\x12\
     '\n\x0fcancel_delegate\x18\x02\x20\x01(\x08R\x0ecancelDelegate\x12\x80\
-    \x01\n\x08transfer\x18\x03\x20\x01(\x0b2d.hw.trezor.messages.tezos.Tezos\
+    \x01\n\x08transfer\x18\x03\x20\x01(\x0b2d.hw.cerberus.messages.tezos.Tezos\
     SignTx.TezosTransactionOp.TezosParametersManager.TezosManagerTransferR\
     \x08transfer\x1a\x87\x01\n\x14TezosManagerTransfer\x12W\n\x0bdestination\
-    \x18\x01\x20\x02(\x0b25.hw.trezor.messages.tezos.TezosSignTx.TezosContra\
+    \x18\x01\x20\x02(\x0b25.hw.cerberus.messages.tezos.TezosSignTx.TezosContra\
     ctIDR\x0bdestination\x12\x16\n\x06amount\x18\x02\x20\x02(\x04R\x06amount\
     \x1a\xcf\x02\n\x12TezosOriginationOp\x12\x16\n\x06source\x18\x0c\x20\x02\
     (\x0cR\x06source\x12\x10\n\x03fee\x18\x02\x20\x02(\x04R\x03fee\x12\x18\n\
@@ -4535,7 +4535,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x12\x08\n\x04Pass\x10\x02\"|\n\rTezosSignedTx\x12\x1c\n\tsignature\x18\
     \x01\x20\x02(\tR\tsignature\x12&\n\x0fsig_op_contents\x18\x02\x20\x02(\
     \x0cR\rsigOpContents\x12%\n\x0eoperation_hash\x18\x03\x20\x02(\tR\ropera\
-    tionHashB9\n#com.satoshilabs.trezor.lib.protobufB\x12TrezorMessageTezos\
+    tionHashB9\n#com.satoshilabs.cerberus.lib.protobufB\x12CerberusMessageTezos\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

@@ -1,6 +1,6 @@
-# Trezor Common
+# Cerberus Common
 
-Common contains files shared among Trezor projects.
+Common contains files shared among Cerberus projects.
 
 ## Coin Definitions
 
@@ -12,7 +12,7 @@ Description of Ethereum definitions and the process of their generation. See [Et
 
 ## Protobuf Definitions
 
-Common Protobuf definitions for the Trezor protocol. Also see [Communication](communication/index.md).
+Common Protobuf definitions for the Cerberus protocol. Also see [Communication](communication/index.md).
 
 ## Tools
 

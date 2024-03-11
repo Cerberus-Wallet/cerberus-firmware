@@ -10,7 +10,7 @@ let
     sha256 = "0gk6kag09w8lyn9was8dpjgslxw5p81bx04379m9v6ky09kw482d";
   });
   # define this variable and devTools if you want nrf{util,connect}
-  acceptJlink = builtins.getEnv "TREZOR_FIRMWARE_ACCEPT_JLINK_LICENSE" == "yes";
+  acceptJlink = builtins.getEnv "cerberus_FIRMWARE_ACCEPT_JLINK_LICENSE" == "yes";
   # the last successful build of nixpkgs-unstable as of 2023-04-14
   nixpkgs = import (builtins.fetchTarball {
     url = "https://github.com/NixOS/nixpkgs/archive/c58e6fbf258df1572b535ac1868ec42faf7675dd.tar.gz";
@@ -28,10 +28,10 @@ let
     sha256 = "02s3qkb6kz3ndyx7rfndjbvp4vlwiqc42fxypn3g6jnc0v5jyz95";
   }) { };
   moneroTests = nixpkgs.fetchurl {
-    url = "https://github.com/ph4r05/monero/releases/download/v0.18.1.1-dev-tests-u18.04-02/trezor_tests";
+    url = "https://github.com/ph4r05/monero/releases/download/v0.18.1.1-dev-tests-u18.04-02/cerberus_tests";
     sha256 = "81424cfc3965abdc24de573274bf631337b52fd25cefc895513214c613fe05c9";
   };
-  moneroTestsPatched = nixpkgs.runCommandCC "monero_trezor_tests" {} ''
+  moneroTestsPatched = nixpkgs.runCommandCC "monero_cerberus_tests" {} ''
     cp ${moneroTests} $out
     chmod +wx $out
     ${nixpkgs.patchelf}/bin/patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" "$out"
@@ -79,7 +79,7 @@ let
 in
 with nixpkgs;
 stdenvNoCC.mkDerivation ({
-  name = "trezor-firmware-env";
+  name = "cerberus-firmware-env";
   buildInputs = lib.optionals fullDeps [
     bitcoind
     # install other python versions for tox testing
@@ -167,5 +167,5 @@ stdenvNoCC.mkDerivation ({
   RUST_SRC_PATH = "${rustProfiles.rust-src}/lib/rustlib/src/rust/library";
 
 } // (lib.optionalAttrs fullDeps) {
-  TREZOR_MONERO_TESTS_PATH = moneroTestsPatched;
+  cerberus_MONERO_TESTS_PATH = moneroTestsPatched;
 })

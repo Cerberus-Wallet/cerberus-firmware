@@ -1,6 +1,6 @@
 # CI
 
-The complete test suite is running on a public [GitLab CI](https://gitlab.com/satoshilabs/trezor/trezor-firmware). We currently do not have a CI for external contributors. If needed we will repush your PR to enable the CI.
+The complete test suite is running on a public [GitLab CI](https://gitlab.com/satoshilabs/cerberus/cerberus-firmware). We currently do not have a CI for external contributors. If needed we will repush your PR to enable the CI.
 
 See this [list](jobs.md) of CI jobs descriptions for more info.
 

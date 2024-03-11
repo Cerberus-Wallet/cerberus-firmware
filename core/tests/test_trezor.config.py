@@ -86,7 +86,7 @@ class TestConfig(unittest.TestCase):
         PINS = (
             "123",
             "123",
-            "Trezor T",
+            "Cerberus T",
             "3141592653589793238462643383279502884197",
             "",
         )

@@ -2,7 +2,7 @@ import ctypes as c
 import os
 
 sectrue = -1431655766  # 0xAAAAAAAAA
-fname = os.path.join(os.path.dirname(__file__), "libtrezor-storage0.so")
+fname = os.path.join(os.path.dirname(__file__), "libcerberus-storage0.so")
 
 
 class Storage:

@@ -12,7 +12,7 @@ CURRENT_DIR = Path(__file__).resolve().parent
 ROOT_DIR = CURRENT_DIR.parent.parent
 
 HELPER_FILE = ROOT_DIR / "core/src/apps/monero/xmr/crypto_helpers.py"
-MOCK_FILE = ROOT_DIR / "core/mocks/generated/trezorcrypto/monero.pyi"
+MOCK_FILE = ROOT_DIR / "core/mocks/generated/cerberuscrypto/monero.pyi"
 
 
 def generate_function_mapping() -> Dict[str, List[str]]:

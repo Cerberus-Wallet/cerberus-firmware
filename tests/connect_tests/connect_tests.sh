@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
-# Cloning trezor-suite repository and running connect tests from there
+# Cloning cerberus-suite repository and running connect tests from there
 
 FILE_DIR="$(dirname "${0}")"
 cd ${FILE_DIR}
 
-TREZOR_SUITE_DIR="trezor-suite"
+CERBERUS_SUITE_DIR="cerberus-suite"
 
 # For quicker local usage, do not cloning connect repo if it already exists
-if [[ ! -d "${TREZOR_SUITE_DIR}" ]]
+if [[ ! -d "${CERBERUS_SUITE_DIR}" ]]
 then
-    git clone https://github.com/trezor/trezor-suite.git
-    cd ${TREZOR_SUITE_DIR}
+    git clone https://github.com/Cerberus-Wallet/cerberus-suite.git
+    cd ${CERBERUS_SUITE_DIR}
     git submodule update --init --recursive
 else
-    cd ${TREZOR_SUITE_DIR}
+    cd ${CERBERUS_SUITE_DIR}
 fi
 
 echo "Changing 'localhost' to '127.0.0.1' in websocket client as a workaround for CI servers"

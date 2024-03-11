@@ -26,7 +26,7 @@ For example:
     ...
     - import pytest
         ->
-    - from trezorlib.debuglink import TrezorClientDebugLink as Client
+    - from cerberuslib.debuglink import CerberusClientDebugLink as Client
     - import pytest
 
 The implementation here relies a lot on regexes, it could be better
@@ -150,7 +150,7 @@ class FileUnifier:
         # If so, not continuing
         # (And when it is there imported some other way, isort will take care of it)
         import_statement = (
-            "from trezorlib.debuglink import TrezorClientDebugLink as Client"
+            "from cerberuslib.debuglink import CerberusClientDebugLink as Client"
         )
         for line in self.new_lines:
             if line.startswith(import_statement):

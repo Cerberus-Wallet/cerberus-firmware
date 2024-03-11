@@ -4,8 +4,8 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.x509 import extensions as ext
 
-from trezorlib import device
-from trezorlib.debuglink import TrezorClientDebugLink as Client
+from cerberuslib import device
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
 
 from ..common import compact_size
 
@@ -30,7 +30,7 @@ ROOT_PUBLIC_KEY = bytes.fromhex(
 def test_authenticate_device(client: Client, challenge: bytes) -> None:
     # NOTE Applications must generate a random challenge for each request.
 
-    # Issue an AuthenticateDevice challenge to Trezor.
+    # Issue an AuthenticateDevice challenge to Cerberus.
     proof = device.authenticate(client, challenge)
     certs = [x509.load_der_x509_certificate(cert) for cert in proof.certificates]
 
@@ -68,7 +68,7 @@ def test_authenticate_device(client: Client, challenge: bytes) -> None:
             cert.signature_algorithm_parameters,
         )
 
-    # Verify that the common name matches the Trezor model.
+    # Verify that the common name matches the Cerberus model.
     common_name = cert.subject.get_attributes_for_oid(x509.oid.NameOID.COMMON_NAME)[0]
     assert common_name.value.startswith(client.features.internal_model)
 

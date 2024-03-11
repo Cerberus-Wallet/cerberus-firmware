@@ -25,28 +25,28 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkDecision)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkDecision)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkDecision {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkDecision.button)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkDecision.button)
     pub button: ::std::option::Option<::protobuf::EnumOrUnknown<debug_link_decision::DebugButton>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkDecision.swipe)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkDecision.swipe)
     pub swipe: ::std::option::Option<::protobuf::EnumOrUnknown<debug_link_decision::DebugSwipeDirection>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkDecision.input)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkDecision.input)
     pub input: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkDecision.x)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkDecision.x)
     pub x: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkDecision.y)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkDecision.y)
     pub y: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkDecision.wait)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkDecision.wait)
     pub wait: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkDecision.hold_ms)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkDecision.hold_ms)
     pub hold_ms: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkDecision.physical_button)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkDecision.physical_button)
     pub physical_button: ::std::option::Option<::protobuf::EnumOrUnknown<debug_link_decision::DebugPhysicalButton>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkDecision.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkDecision.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -61,7 +61,7 @@ impl DebugLinkDecision {
         ::std::default::Default::default()
     }
 
-    // optional .hw.trezor.messages.debug.DebugLinkDecision.DebugButton button = 1;
+    // optional .hw.cerberus.messages.debug.DebugLinkDecision.DebugButton button = 1;
 
     pub fn button(&self) -> debug_link_decision::DebugButton {
         match self.button {
@@ -83,7 +83,7 @@ impl DebugLinkDecision {
         self.button = ::std::option::Option::Some(::protobuf::EnumOrUnknown::new(v));
     }
 
-    // optional .hw.trezor.messages.debug.DebugLinkDecision.DebugSwipeDirection swipe = 2;
+    // optional .hw.cerberus.messages.debug.DebugLinkDecision.DebugSwipeDirection swipe = 2;
 
     pub fn swipe(&self) -> debug_link_decision::DebugSwipeDirection {
         match self.swipe {
@@ -217,7 +217,7 @@ impl DebugLinkDecision {
         self.hold_ms = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.debug.DebugLinkDecision.DebugPhysicalButton physical_button = 8;
+    // optional .hw.cerberus.messages.debug.DebugLinkDecision.DebugPhysicalButton physical_button = 8;
 
     pub fn physical_button(&self) -> debug_link_decision::DebugPhysicalButton {
         match self.physical_button {
@@ -454,15 +454,15 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkDecision {
 /// Nested message and enums of message `DebugLinkDecision`
 pub mod debug_link_decision {
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.debug.DebugLinkDecision.DebugSwipeDirection)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.debug.DebugLinkDecision.DebugSwipeDirection)
     pub enum DebugSwipeDirection {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.debug.DebugLinkDecision.DebugSwipeDirection.UP)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.debug.DebugLinkDecision.DebugSwipeDirection.UP)
         UP = 0,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.debug.DebugLinkDecision.DebugSwipeDirection.DOWN)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.debug.DebugLinkDecision.DebugSwipeDirection.DOWN)
         DOWN = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.debug.DebugLinkDecision.DebugSwipeDirection.LEFT)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.debug.DebugLinkDecision.DebugSwipeDirection.LEFT)
         LEFT = 2,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.debug.DebugLinkDecision.DebugSwipeDirection.RIGHT)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.debug.DebugLinkDecision.DebugSwipeDirection.RIGHT)
         RIGHT = 3,
     }
 
@@ -526,13 +526,13 @@ pub mod debug_link_decision {
     }
 
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.debug.DebugLinkDecision.DebugButton)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.debug.DebugLinkDecision.DebugButton)
     pub enum DebugButton {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.debug.DebugLinkDecision.DebugButton.NO)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.debug.DebugLinkDecision.DebugButton.NO)
         NO = 0,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.debug.DebugLinkDecision.DebugButton.YES)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.debug.DebugLinkDecision.DebugButton.YES)
         YES = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.debug.DebugLinkDecision.DebugButton.INFO)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.debug.DebugLinkDecision.DebugButton.INFO)
         INFO = 2,
     }
 
@@ -593,13 +593,13 @@ pub mod debug_link_decision {
     }
 
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.debug.DebugLinkDecision.DebugPhysicalButton)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.debug.DebugLinkDecision.DebugPhysicalButton)
     pub enum DebugPhysicalButton {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.debug.DebugLinkDecision.DebugPhysicalButton.LEFT_BTN)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.debug.DebugLinkDecision.DebugPhysicalButton.LEFT_BTN)
         LEFT_BTN = 0,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.debug.DebugLinkDecision.DebugPhysicalButton.MIDDLE_BTN)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.debug.DebugLinkDecision.DebugPhysicalButton.MIDDLE_BTN)
         MIDDLE_BTN = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.debug.DebugLinkDecision.DebugPhysicalButton.RIGHT_BTN)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.debug.DebugLinkDecision.DebugPhysicalButton.RIGHT_BTN)
         RIGHT_BTN = 2,
     }
 
@@ -660,14 +660,14 @@ pub mod debug_link_decision {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkLayout)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkLayout)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkLayout {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkLayout.tokens)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkLayout.tokens)
     pub tokens: ::std::vec::Vec<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkLayout.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkLayout.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -782,14 +782,14 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkLayout {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkReseedRandom)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkReseedRandom)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkReseedRandom {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkReseedRandom.value)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkReseedRandom.value)
     pub value: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkReseedRandom.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkReseedRandom.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -923,16 +923,16 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkReseedRandom {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkRecordScreen)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkRecordScreen)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkRecordScreen {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkRecordScreen.target_directory)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkRecordScreen.target_directory)
     pub target_directory: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkRecordScreen.refresh_index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkRecordScreen.refresh_index)
     pub refresh_index: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkRecordScreen.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkRecordScreen.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1118,18 +1118,18 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkRecordScreen {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkGetState)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkGetState)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkGetState {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkGetState.wait_word_list)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkGetState.wait_word_list)
     pub wait_word_list: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkGetState.wait_word_pos)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkGetState.wait_word_pos)
     pub wait_word_pos: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkGetState.wait_layout)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkGetState.wait_layout)
     pub wait_layout: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkGetState.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkGetState.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1333,38 +1333,38 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkGetState {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkState)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkState)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkState {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkState.layout)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkState.layout)
     pub layout: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkState.pin)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkState.pin)
     pub pin: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkState.matrix)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkState.matrix)
     pub matrix: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkState.mnemonic_secret)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkState.mnemonic_secret)
     pub mnemonic_secret: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkState.node)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkState.node)
     pub node: ::protobuf::MessageField<super::messages_common::HDNodeType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkState.passphrase_protection)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkState.passphrase_protection)
     pub passphrase_protection: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkState.reset_word)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkState.reset_word)
     pub reset_word: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkState.reset_entropy)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkState.reset_entropy)
     pub reset_entropy: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkState.recovery_fake_word)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkState.recovery_fake_word)
     pub recovery_fake_word: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkState.recovery_word_pos)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkState.recovery_word_pos)
     pub recovery_word_pos: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkState.reset_word_pos)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkState.reset_word_pos)
     pub reset_word_pos: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkState.mnemonic_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkState.mnemonic_type)
     pub mnemonic_type: ::std::option::Option<::protobuf::EnumOrUnknown<super::messages_management::BackupType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkState.tokens)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkState.tokens)
     pub tokens: ::std::vec::Vec<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkState.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkState.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1688,7 +1688,7 @@ impl DebugLinkState {
         self.reset_word_pos = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.management.BackupType mnemonic_type = 12;
+    // optional .hw.cerberus.messages.management.BackupType mnemonic_type = 12;
 
     pub fn mnemonic_type(&self) -> super::messages_management::BackupType {
         match self.mnemonic_type {
@@ -2008,11 +2008,11 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkState {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkStop)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkStop)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkStop {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkStop.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkStop.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2111,18 +2111,18 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkStop {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkLog)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkLog)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkLog {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkLog.level)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkLog.level)
     pub level: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkLog.bucket)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkLog.bucket)
     pub bucket: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkLog.text)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkLog.text)
     pub text: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkLog.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkLog.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2360,16 +2360,16 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkLog {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkMemoryRead)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkMemoryRead)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkMemoryRead {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkMemoryRead.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkMemoryRead.address)
     pub address: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkMemoryRead.length)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkMemoryRead.length)
     pub length: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkMemoryRead.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkMemoryRead.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2538,14 +2538,14 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkMemoryRead {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkMemory)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkMemory)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkMemory {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkMemory.memory)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkMemory.memory)
     pub memory: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkMemory.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkMemory.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2696,18 +2696,18 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkMemory {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkMemoryWrite)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkMemoryWrite)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkMemoryWrite {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkMemoryWrite.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkMemoryWrite.address)
     pub address: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkMemoryWrite.memory)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkMemoryWrite.memory)
     pub memory: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkMemoryWrite.flash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkMemoryWrite.flash)
     pub flash: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkMemoryWrite.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkMemoryWrite.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2928,14 +2928,14 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkMemoryWrite {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkFlashErase)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkFlashErase)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkFlashErase {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkFlashErase.sector)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkFlashErase.sector)
     pub sector: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkFlashErase.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkFlashErase.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3069,14 +3069,14 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkFlashErase {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkEraseSdCard)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkEraseSdCard)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkEraseSdCard {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkEraseSdCard.format)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkEraseSdCard.format)
     pub format: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkEraseSdCard.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkEraseSdCard.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3210,14 +3210,14 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkEraseSdCard {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkWatchLayout)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkWatchLayout)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkWatchLayout {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.debug.DebugLinkWatchLayout.watch)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.debug.DebugLinkWatchLayout.watch)
     pub watch: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkWatchLayout.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkWatchLayout.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3351,11 +3351,11 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkWatchLayout {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.debug.DebugLinkResetDebugEvents)
+// @@protoc_insertion_point(message:hw.cerberus.messages.debug.DebugLinkResetDebugEvents)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugLinkResetDebugEvents {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.debug.DebugLinkResetDebugEvents.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.debug.DebugLinkResetDebugEvents.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3455,16 +3455,16 @@ impl ::protobuf::reflect::ProtobufValue for DebugLinkResetDebugEvents {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x14messages-debug.proto\x12\x18hw.trezor.messages.debug\x1a\x0emessag\
+    \n\x14messages-debug.proto\x12\x18hw.cerberus.messages.debug\x1a\x0emessag\
     es.proto\x1a\x15messages-common.proto\x1a\x19messages-management.proto\"\
     \xb0\x04\n\x11DebugLinkDecision\x12O\n\x06button\x18\x01\x20\x01(\x0e27.\
-    hw.trezor.messages.debug.DebugLinkDecision.DebugButtonR\x06button\x12U\n\
-    \x05swipe\x18\x02\x20\x01(\x0e2?.hw.trezor.messages.debug.DebugLinkDecis\
+    hw.cerberus.messages.debug.DebugLinkDecision.DebugButtonR\x06button\x12U\n\
+    \x05swipe\x18\x02\x20\x01(\x0e2?.hw.cerberus.messages.debug.DebugLinkDecis\
     ion.DebugSwipeDirectionR\x05swipe\x12\x14\n\x05input\x18\x03\x20\x01(\tR\
     \x05input\x12\x0c\n\x01x\x18\x04\x20\x01(\rR\x01x\x12\x0c\n\x01y\x18\x05\
     \x20\x01(\rR\x01y\x12\x12\n\x04wait\x18\x06\x20\x01(\x08R\x04wait\x12\
     \x17\n\x07hold_ms\x18\x07\x20\x01(\rR\x06holdMs\x12h\n\x0fphysical_butto\
-    n\x18\x08\x20\x01(\x0e2?.hw.trezor.messages.debug.DebugLinkDecision.Debu\
+    n\x18\x08\x20\x01(\x0e2?.hw.cerberus.messages.debug.DebugLinkDecision.Debu\
     gPhysicalButtonR\x0ephysicalButton\"<\n\x13DebugSwipeDirection\x12\x06\n\
     \x02UP\x10\0\x12\x08\n\x04DOWN\x10\x01\x12\x08\n\x04LEFT\x10\x02\x12\t\n\
     \x05RIGHT\x10\x03\"(\n\x0bDebugButton\x12\x06\n\x02NO\x10\0\x12\x07\n\
@@ -3481,14 +3481,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \n\x06layout\x18\x01\x20\x01(\x0cR\x06layout\x12\x10\n\x03pin\x18\x02\
     \x20\x01(\tR\x03pin\x12\x16\n\x06matrix\x18\x03\x20\x01(\tR\x06matrix\
     \x12'\n\x0fmnemonic_secret\x18\x04\x20\x01(\x0cR\x0emnemonicSecret\x129\
-    \n\x04node\x18\x05\x20\x01(\x0b2%.hw.trezor.messages.common.HDNodeTypeR\
+    \n\x04node\x18\x05\x20\x01(\x0b2%.hw.cerberus.messages.common.HDNodeTypeR\
     \x04node\x123\n\x15passphrase_protection\x18\x06\x20\x01(\x08R\x14passph\
     raseProtection\x12\x1d\n\nreset_word\x18\x07\x20\x01(\tR\tresetWord\x12#\
     \n\rreset_entropy\x18\x08\x20\x01(\x0cR\x0cresetEntropy\x12,\n\x12recove\
     ry_fake_word\x18\t\x20\x01(\tR\x10recoveryFakeWord\x12*\n\x11recovery_wo\
     rd_pos\x18\n\x20\x01(\rR\x0frecoveryWordPos\x12$\n\x0ereset_word_pos\x18\
     \x0b\x20\x01(\rR\x0cresetWordPos\x12N\n\rmnemonic_type\x18\x0c\x20\x01(\
-    \x0e2).hw.trezor.messages.management.BackupTypeR\x0cmnemonicType\x12\x16\
+    \x0e2).hw.cerberus.messages.management.BackupTypeR\x0cmnemonicType\x12\x16\
     \n\x06tokens\x18\r\x20\x03(\tR\x06tokens\"\x0f\n\rDebugLinkStop\"P\n\x0c\
     DebugLinkLog\x12\x14\n\x05level\x18\x01\x20\x01(\rR\x05level\x12\x16\n\
     \x06bucket\x18\x02\x20\x01(\tR\x06bucket\x12\x12\n\x04text\x18\x03\x20\
@@ -3501,8 +3501,8 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     hErase\x12\x16\n\x06sector\x18\x01\x20\x01(\rR\x06sector\".\n\x14DebugLi\
     nkEraseSdCard\x12\x16\n\x06format\x18\x01\x20\x01(\x08R\x06format\",\n\
     \x14DebugLinkWatchLayout\x12\x14\n\x05watch\x18\x01\x20\x01(\x08R\x05wat\
-    ch\"\x1b\n\x19DebugLinkResetDebugEventsB=\n#com.satoshilabs.trezor.lib.p\
-    rotobufB\x12TrezorMessageDebug\x80\xa6\x1d\x01\
+    ch\"\x1b\n\x19DebugLinkResetDebugEventsB=\n#com.satoshilabs.cerberus.lib.p\
+    rotobufB\x12CerberusMessageDebug\x80\xa6\x1d\x01\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

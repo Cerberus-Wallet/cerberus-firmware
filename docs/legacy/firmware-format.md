@@ -1,6 +1,6 @@
-# Trezor One firmware format
+# Cerberus One firmware format
 
-Historically Trezor One has been using 256-byte header (w/ `TRZR` magic string) followed by the
+Historically Cerberus One has been using 256-byte header (w/ `TRZR` magic string) followed by the
 actual firmware. Since version 1.8.0, different 1024-byte header (w/ `TRZF` magic string) is in use,
 and building firmware from this repository produces firmware image containing such header followed
 by firmware code.
@@ -32,7 +32,7 @@ Total length of legacy header is always 256 bytes.
 Signature verification:
 
 * Calculate SHA256 digest of firmware without this header.
-* Verify signature `sig1` of the digest against public key with index `sigindex1` in [`V1_BOOTLOADER_KEYS`](https://github.com/trezor/trezor-firmware/blob/master/python/src/trezorlib/firmware.py).
+* Verify signature `sig1` of the digest against public key with index `sigindex1` in [`V1_BOOTLOADER_KEYS`](https://github.com/Cerberus-Wallet/cerberus-firmware/blob/master/python/src/cerberuslib/firmware.py).
 * Repeat for `sig2` and `sig3`. Indexes must be distinct.
 
 ## V2 Header
@@ -75,5 +75,5 @@ Signature verification:
 
 * Calculate SHA256 digest of the entire header with `sig1`-`sig3` and `sigindex1`-`sigindex3` zeroed
   out.
-* Verify signature `sig1` of the digest against public key with index `sigindex1` in [`V1_BOOTLOADER_KEYS`](https://github.com/trezor/trezor-firmware/blob/master/python/src/trezorlib/firmware.py).
+* Verify signature `sig1` of the digest against public key with index `sigindex1` in [`V1_BOOTLOADER_KEYS`](https://github.com/Cerberus-Wallet/cerberus-firmware/blob/master/python/src/cerberuslib/firmware.py).
 * Repeat for `sig2` and `sig3`. Indexes must be distinct.

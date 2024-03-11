@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -20,11 +20,11 @@ if TYPE_CHECKING:
     from .messages import Failure
 
 
-class TrezorException(Exception):
+class CerberusException(Exception):
     pass
 
 
-class TrezorFailure(TrezorException):
+class CerberusFailure(CerberusException):
     def __init__(self, failure: "Failure") -> None:
         self.failure = failure
         self.code = failure.code
@@ -45,13 +45,13 @@ class TrezorFailure(TrezorException):
             return types[self.failure.code]
 
 
-class PinException(TrezorException):
+class PinException(CerberusException):
     pass
 
 
-class Cancelled(TrezorException):
+class Cancelled(CerberusException):
     pass
 
 
-class OutdatedFirmwareError(TrezorException):
+class OutdatedFirmwareError(CerberusException):
     pass

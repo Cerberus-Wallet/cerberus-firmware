@@ -25,14 +25,14 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bootloader.FirmwareErase)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bootloader.FirmwareErase)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct FirmwareErase {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bootloader.FirmwareErase.length)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bootloader.FirmwareErase.length)
     pub length: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bootloader.FirmwareErase.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bootloader.FirmwareErase.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -166,16 +166,16 @@ impl ::protobuf::reflect::ProtobufValue for FirmwareErase {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bootloader.FirmwareRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bootloader.FirmwareRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct FirmwareRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bootloader.FirmwareRequest.offset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bootloader.FirmwareRequest.offset)
     pub offset: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bootloader.FirmwareRequest.length)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bootloader.FirmwareRequest.length)
     pub length: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bootloader.FirmwareRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bootloader.FirmwareRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -350,16 +350,16 @@ impl ::protobuf::reflect::ProtobufValue for FirmwareRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bootloader.FirmwareUpload)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bootloader.FirmwareUpload)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct FirmwareUpload {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bootloader.FirmwareUpload.payload)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bootloader.FirmwareUpload.payload)
     pub payload: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.bootloader.FirmwareUpload.hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bootloader.FirmwareUpload.hash)
     pub hash: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bootloader.FirmwareUpload.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bootloader.FirmwareUpload.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -565,14 +565,14 @@ impl ::protobuf::reflect::ProtobufValue for FirmwareUpload {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.bootloader.ProdTestT1)
+// @@protoc_insertion_point(message:hw.cerberus.messages.bootloader.ProdTestT1)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct ProdTestT1 {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.bootloader.ProdTestT1.payload)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.bootloader.ProdTestT1.payload)
     pub payload: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.bootloader.ProdTestT1.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.bootloader.ProdTestT1.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -724,14 +724,14 @@ impl ::protobuf::reflect::ProtobufValue for ProdTestT1 {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x19messages-bootloader.proto\x12\x1dhw.trezor.messages.bootloader\"'\
+    \n\x19messages-bootloader.proto\x12\x1dhw.cerberus.messages.bootloader\"'\
     \n\rFirmwareErase\x12\x16\n\x06length\x18\x01\x20\x01(\rR\x06length\"A\n\
     \x0fFirmwareRequest\x12\x16\n\x06offset\x18\x01\x20\x02(\rR\x06offset\
     \x12\x16\n\x06length\x18\x02\x20\x02(\rR\x06length\">\n\x0eFirmwareUploa\
     d\x12\x18\n\x07payload\x18\x01\x20\x02(\x0cR\x07payload\x12\x12\n\x04has\
     h\x18\x02\x20\x01(\x0cR\x04hash\"&\n\nProdTestT1\x12\x18\n\x07payload\
-    \x18\x01\x20\x01(\x0cR\x07payloadB>\n#com.satoshilabs.trezor.lib.protobu\
-    fB\x17TrezorMessageBootloader\
+    \x18\x01\x20\x01(\x0cR\x07payloadB>\n#com.satoshilabs.cerberus.lib.protobu\
+    fB\x17CerberusMessageBootloader\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

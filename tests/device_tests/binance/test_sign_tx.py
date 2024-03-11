@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,9 +16,9 @@
 
 import pytest
 
-from trezorlib import binance
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.tools import parse_path
+from cerberuslib import binance
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.tools import parse_path
 
 BINANCE_TEST_VECTORS = [
     (  # CANCEL

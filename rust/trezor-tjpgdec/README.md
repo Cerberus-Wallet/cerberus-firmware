@@ -1,4 +1,4 @@
-# trezor-tjpgdec
+# cerberus-tjpgdec
 
 Rust version of [Tiny JPEG Decompressor](http://elm-chan.org/fsw/tjpgd/00index.html).
 

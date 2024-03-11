@@ -25,16 +25,16 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.solana.SolanaGetPublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.solana.SolanaGetPublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SolanaGetPublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaGetPublicKey.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaGetPublicKey.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaGetPublicKey.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaGetPublicKey.show_display)
     pub show_display: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.solana.SolanaGetPublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.solana.SolanaGetPublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -187,14 +187,14 @@ impl ::protobuf::reflect::ProtobufValue for SolanaGetPublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.solana.SolanaPublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.solana.SolanaPublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SolanaPublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaPublicKey.public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaPublicKey.public_key)
     pub public_key: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.solana.SolanaPublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.solana.SolanaPublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -348,18 +348,18 @@ impl ::protobuf::reflect::ProtobufValue for SolanaPublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.solana.SolanaGetAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.solana.SolanaGetAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SolanaGetAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaGetAddress.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaGetAddress.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaGetAddress.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaGetAddress.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaGetAddress.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaGetAddress.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.solana.SolanaGetAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.solana.SolanaGetAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -547,14 +547,14 @@ impl ::protobuf::reflect::ProtobufValue for SolanaGetAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.solana.SolanaAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.solana.SolanaAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SolanaAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaAddress.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaAddress.address)
     pub address: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.solana.SolanaAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.solana.SolanaAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -708,20 +708,20 @@ impl ::protobuf::reflect::ProtobufValue for SolanaAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.solana.SolanaTxTokenAccountInfo)
+// @@protoc_insertion_point(message:hw.cerberus.messages.solana.SolanaTxTokenAccountInfo)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SolanaTxTokenAccountInfo {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaTxTokenAccountInfo.base_address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaTxTokenAccountInfo.base_address)
     pub base_address: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaTxTokenAccountInfo.token_program)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaTxTokenAccountInfo.token_program)
     pub token_program: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaTxTokenAccountInfo.token_mint)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaTxTokenAccountInfo.token_mint)
     pub token_mint: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaTxTokenAccountInfo.token_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaTxTokenAccountInfo.token_account)
     pub token_account: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.solana.SolanaTxTokenAccountInfo.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.solana.SolanaTxTokenAccountInfo.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1040,14 +1040,14 @@ impl ::protobuf::reflect::ProtobufValue for SolanaTxTokenAccountInfo {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.solana.SolanaTxAdditionalInfo)
+// @@protoc_insertion_point(message:hw.cerberus.messages.solana.SolanaTxAdditionalInfo)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SolanaTxAdditionalInfo {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaTxAdditionalInfo.token_accounts_infos)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaTxAdditionalInfo.token_accounts_infos)
     pub token_accounts_infos: ::std::vec::Vec<SolanaTxTokenAccountInfo>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.solana.SolanaTxAdditionalInfo.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.solana.SolanaTxAdditionalInfo.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1168,18 +1168,18 @@ impl ::protobuf::reflect::ProtobufValue for SolanaTxAdditionalInfo {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.solana.SolanaSignTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.solana.SolanaSignTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SolanaSignTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaSignTx.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaSignTx.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaSignTx.serialized_tx)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaSignTx.serialized_tx)
     pub serialized_tx: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaSignTx.additional_info)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaSignTx.additional_info)
     pub additional_info: ::protobuf::MessageField<SolanaTxAdditionalInfo>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.solana.SolanaSignTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.solana.SolanaSignTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1374,14 +1374,14 @@ impl ::protobuf::reflect::ProtobufValue for SolanaSignTx {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.solana.SolanaTxSignature)
+// @@protoc_insertion_point(message:hw.cerberus.messages.solana.SolanaTxSignature)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SolanaTxSignature {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.solana.SolanaTxSignature.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.solana.SolanaTxSignature.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.solana.SolanaTxSignature.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.solana.SolanaTxSignature.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1536,7 +1536,7 @@ impl ::protobuf::reflect::ProtobufValue for SolanaTxSignature {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x15messages-solana.proto\x12\x19hw.trezor.messages.solana\"T\n\x12Sol\
+    \n\x15messages-solana.proto\x12\x19hw.cerberus.messages.solana\"T\n\x12Sol\
     anaGetPublicKey\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\x12\
     !\n\x0cshow_display\x18\x02\x20\x01(\x08R\x0bshowDisplay\"0\n\x0fSolanaP\
     ublicKey\x12\x1d\n\npublic_key\x18\x01\x20\x02(\x0cR\tpublicKey\"n\n\x10\
@@ -1548,11 +1548,11 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     ss\x12#\n\rtoken_program\x18\x02\x20\x02(\tR\x0ctokenProgram\x12\x1d\n\n\
     token_mint\x18\x03\x20\x02(\tR\ttokenMint\x12#\n\rtoken_account\x18\x04\
     \x20\x02(\tR\x0ctokenAccount\"\x7f\n\x16SolanaTxAdditionalInfo\x12e\n\
-    \x14token_accounts_infos\x18\x01\x20\x03(\x0b23.hw.trezor.messages.solan\
+    \x14token_accounts_infos\x18\x01\x20\x03(\x0b23.hw.cerberus.messages.solan\
     a.SolanaTxTokenAccountInfoR\x12tokenAccountsInfos\"\xac\x01\n\x0cSolanaS\
     ignTx\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\x12#\n\rseria\
     lized_tx\x18\x02\x20\x02(\x0cR\x0cserializedTx\x12Z\n\x0fadditional_info\
-    \x18\x03\x20\x01(\x0b21.hw.trezor.messages.solana.SolanaTxAdditionalInfo\
+    \x18\x03\x20\x01(\x0b21.hw.cerberus.messages.solana.SolanaTxAdditionalInfo\
     R\x0eadditionalInfo\"1\n\x11SolanaTxSignature\x12\x1c\n\tsignature\x18\
     \x01\x20\x02(\x0cR\tsignature\
 ";

@@ -17,7 +17,7 @@ the following commands:
 
 * **`render`**: generate code based on a [Mako](http://docs.makotemplates.org/en/latest/index.html)
   template. By default, `cointool.py render foo.bar.mako` will put its result into
-  file `foo.bar` in the same directory. See [usage in `trezor-core`](https://github.com/trezor/trezor-core/commit/348b99b8dc5bcfc4ab85e1e7faad3fb4ef3e8763).
+  file `foo.bar` in the same directory. See [usage in `cerberus-core`](https://github.com/Cerberus-Wallet/cerberus-core/commit/348b99b8dc5bcfc4ab85e1e7faad3fb4ef3e8763).
 * **`check`**: check validity of json definitions and associated data. Used in CI.
 * **`dump`**: dump coin information, including support status, in JSON format. Various
   filtering options are available, check help for details.
@@ -65,7 +65,7 @@ for key, support in support_info.values():
 
 See docstrings for the most important functions: `coin_info()` and `support_info()`.
 
-The file `coindef.py` is a protobuf definition for passing coin data to Trezor
+The file `coindef.py` is a protobuf definition for passing coin data to Cerberus
 from the outside.
 
 ### `marketcap.py`
@@ -106,7 +106,7 @@ misc:ONT - Ontology (ONT)
  * suite : NO
 ```
 
-Afterwards, review and commit changes to `defs/support.json`, and update the `trezor-common`
+Afterwards, review and commit changes to `defs/support.json`, and update the `cerberus-common`
 submodule in your target firmware.
 
 ## Releasing a new firmware

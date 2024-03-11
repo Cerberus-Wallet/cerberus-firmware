@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -17,9 +17,9 @@
 import pytest
 from mnemonic import Mnemonic
 
-from trezorlib import device, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.tools import parse_path
+from cerberuslib import device, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.tools import parse_path
 
 from ...common import EXTERNAL_ENTROPY, generate_entropy
 

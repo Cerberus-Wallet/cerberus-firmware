@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import btc, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.tools import parse_path
+from cerberuslib import btc, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.tools import parse_path
 
 
 def test_show_segwit(client: Client):
@@ -188,7 +188,7 @@ def test_multisig_missing(client: Client, show_display):
     )
 
     for multisig in (multisig1, multisig2):
-        with pytest.raises(TrezorFailure):
+        with pytest.raises(CerberusFailure):
             btc.get_address(
                 client,
                 "Bitcoin",

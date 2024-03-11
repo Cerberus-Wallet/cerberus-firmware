@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 from typing import BinaryIO, TextIO
 
-from trezorlib import toif
+from cerberuslib import toif
 
 HERE = Path(__file__).parent
 CORE_DIR = HERE.parent.parent
@@ -150,8 +150,8 @@ def change_icon_format():
     reformat_toif_icons(CORE_DIR / "embed/rust/src/ui/model_tt/res")
 
     # python icons
-    reformat_toif_icons(CORE_DIR / "src/trezor/res")
-    reformat_toif_icons(CORE_DIR / "src/trezor/res/header_icons")
+    reformat_toif_icons(CORE_DIR / "src/cerberus/res")
+    reformat_toif_icons(CORE_DIR / "src/cerberus/res/header_icons")
 
     # vendor header icons
     reformat_toif_icon(CORE_DIR / "embed/vendorheader/vendor_satoshilabs.toif")

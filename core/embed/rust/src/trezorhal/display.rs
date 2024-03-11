@@ -2,7 +2,7 @@ use super::ffi;
 use core::{ops::DerefMut, ptr};
 use cty::c_int;
 
-use crate::trezorhal::buffers::BufferText;
+use crate::cerberushal::buffers::BufferText;
 
 pub use ffi::{DISPLAY_RESX, DISPLAY_RESY};
 

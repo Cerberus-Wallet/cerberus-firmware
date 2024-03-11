@@ -4,7 +4,7 @@
 ; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
 ;
 [subrepo]
-	remote = git+ssh://git@github.com/trezor/trezor-crypto
+	remote = git+ssh://git@github.com/Cerberus-Wallet/cerberus-crypto
 	branch = master
 	commit = 915b3dbbbf58c262865647728a3463b8785fc965
 	parent = 6ad3294f31a1e7484b43c104ff2880b965198cad

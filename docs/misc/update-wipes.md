@@ -3,7 +3,7 @@
 This document describes under which circumstances the device gets wiped during a firmware
 update.
 
-## Trezor 1
+## Cerberus 1
 
 The device gets **wiped**:
 - If the firmware to be installed is unsigned.
@@ -14,12 +14,12 @@ _fix_version_ [1].
 The device gets **wiped on every reboot**:
 - If the firmware's debug mode is turned on.
 
-## Trezor T
+## Cerberus T
 
-In Trezor T this works a bit differently, we have introduced so-called vendors headers.
+In Cerberus T this works a bit differently, we have introduced so-called vendors headers.
 Each firmware has its vendor header and this vendor header is signed by SatoshiLabs. The
 actual firmware is signed by the vendor header's key. That means that all firmwares are
-signed by _someone_ to be able to run on Trezor T.
+signed by _someone_ to be able to run on Cerberus T.
 
 We currently have two vendors:
 

@@ -3,20 +3,20 @@ import glob
 import os
 import subprocess
 
-TREZOR_REPO = "https://github.com/trezor"
+CERBERUS_REPO = "https://github.com/cerberus"
 
 NAME="monorepo"
-MAIN_REPO = "trezor-core"
+MAIN_REPO = "cerberus-core"
 SUBREPOS = {
-    "trezor-common": "common",
-    "trezor-crypto": "crypto",
-    "trezor-mcu": "legacy",
-    "trezor-storage": "storage",
-    "python-trezor": "python",
+    "cerberus-common": "common",
+    "cerberus-crypto": "crypto",
+    "cerberus-mcu": "legacy",
+    "cerberus-storage": "storage",
+    "python-cerberus": "python",
 }
-PUBLISHED_SUBREPOS = ["trezor-common", "trezor-crypto"]
+PUBLISHED_SUBREPOS = ["cerberus-common", "cerberus-crypto"]
 
-KEEP_TAGS = ["trezor-core", "trezor-mcu", "python-trezor"]
+KEEP_TAGS = ["cerberus-core", "cerberus-mcu", "python-cerberus"]
 
 GITSUBREPO_TEMPLATE = """\
 ; DO NOT EDIT (unless you know what you are doing)
@@ -25,7 +25,7 @@ GITSUBREPO_TEMPLATE = """\
 ; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
 ;
 [subrepo]
-	remote = git+ssh://git@github.com/trezor/{remote}
+	remote = git+ssh://git@github.com/cerberus/{remote}
 	branch = main
 	commit = {remote_head}
 	parent = {current_head}
@@ -65,7 +65,7 @@ def rewrite_gitmodules(remote, dst):
 
 
 def merge_remote(remote, dst):
-    git(f"remote add {remote} {TREZOR_REPO}/{remote}")
+    git(f"remote add {remote} {CERBERUS_REPO}/{remote}")
     git(f"fetch {remote}")
     try:
         git(f"merge --no-commit --allow-unrelated-histories {remote}/main")
@@ -95,7 +95,7 @@ def generate_subrepo_file(remote):
 
 
 def main():
-    git(f"clone {TREZOR_REPO}/{MAIN_REPO} {NAME}")
+    git(f"clone {CERBERUS_REPO}/{MAIN_REPO} {NAME}")
     os.chdir(NAME)
     move_to_subtree("origin", "core")
     git(f"commit -m 'MONOREPO CREATE FROM {MAIN_REPO}'")

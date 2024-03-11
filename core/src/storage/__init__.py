@@ -3,7 +3,7 @@ from storage import common, device
 
 def wipe() -> None:
     from storage import cache
-    from trezor import config
+    from cerberus import config
 
     config.wipe()
     cache.clear_all()

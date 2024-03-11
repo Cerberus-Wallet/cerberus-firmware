@@ -1,7 +1,7 @@
 from micropython import const
 
 import storage.device as storage_device
-from trezor.wire import DataError
+from cerberus.wire import DataError
 
 _MAX_PASSPHRASE_LEN = const(50)
 
@@ -11,14 +11,14 @@ def is_enabled() -> bool:
 
 
 async def get() -> str:
-    from trezor import workflow
+    from cerberus import workflow
 
     if not is_enabled():
         return ""
     else:
         workflow.close_others()  # request exclusive UI access
         if storage_device.get_passphrase_always_on_device():
-            from trezor.ui.layouts import request_passphrase_on_device
+            from cerberus.ui.layouts import request_passphrase_on_device
 
             passphrase = await request_passphrase_on_device(_MAX_PASSPHRASE_LEN)
         else:
@@ -30,10 +30,10 @@ async def get() -> str:
 
 
 async def _request_on_host() -> str:
-    from trezor import TR
-    from trezor.messages import PassphraseAck, PassphraseRequest
-    from trezor.ui.layouts import request_passphrase_on_host
-    from trezor.wire.context import call
+    from cerberus import TR
+    from cerberus.messages import PassphraseAck, PassphraseRequest
+    from cerberus.ui.layouts import request_passphrase_on_host
+    from cerberus.wire.context import call
 
     request_passphrase_on_host()
 
@@ -42,7 +42,7 @@ async def _request_on_host() -> str:
     passphrase = ack.passphrase  # local_cache_attribute
 
     if ack.on_device:
-        from trezor.ui.layouts import request_passphrase_on_device
+        from cerberus.ui.layouts import request_passphrase_on_device
 
         if passphrase is not None:
             raise DataError("Passphrase provided when it should not be")
@@ -55,7 +55,7 @@ async def _request_on_host() -> str:
 
     # non-empty passphrase
     if passphrase:
-        from trezor.ui.layouts import confirm_action, confirm_blob
+        from cerberus.ui.layouts import confirm_action, confirm_blob
 
         # We want to hide the passphrase, or show it, according to settings.
         if storage_device.get_hide_passphrase_from_host():

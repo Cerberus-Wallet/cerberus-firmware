@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -521,7 +521,7 @@ static void stretch_pin_optiga(const uint8_t *pin, size_t pin_len,
   // remains protected against an attacker who is not able to read the contents
   // of the MCU storage. Stretching the PIN with PBKDF2 ensures that even if
   // Optiga itself is completely compromised, it will not reduce the security
-  // of the device below that of earlier Trezor models which also use PBKDF2
+  // of the device below that of earlier Cerberus models which also use PBKDF2
   // with the same number of iterations.
 
   uint8_t salt[HARDWARE_SALT_SIZE + STORAGE_SALT_SIZE + EXTERNAL_SALT_SIZE] = {

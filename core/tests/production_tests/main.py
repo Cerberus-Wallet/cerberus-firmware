@@ -15,7 +15,7 @@ usb = io.USB(
     product_id=0x53C1,
     release_num=0x0200,
     manufacturer="SatoshiLabs",
-    product="TREZOR",
+    product="CERBERUS",
     serial_number="000000000000000000000000",
     usb21_landing=False,
 )

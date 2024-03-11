@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -19,14 +19,14 @@ from typing import TYPE_CHECKING, Union
 import click
 
 from .. import mapping, messages, protobuf
-from ..client import TrezorClient
-from ..debuglink import TrezorClientDebugLink
+from ..client import CerberusClient
+from ..debuglink import CerberusClientDebugLink
 from ..debuglink import prodtest_t1 as debuglink_prodtest_t1
 from ..debuglink import record_screen
 from . import with_client
 
 if TYPE_CHECKING:
-    from . import TrezorConnection
+    from . import CerberusConnection
 
 
 @click.group(name="debug")
@@ -39,9 +39,9 @@ def cli() -> None:
 @click.argument("hex_data")
 @click.pass_obj
 def send_bytes(
-    obj: "TrezorConnection", message_name_or_type: str, hex_data: str
+    obj: "CerberusConnection", message_name_or_type: str, hex_data: str
 ) -> None:
-    """Send raw bytes to Trezor.
+    """Send raw bytes to Cerberus.
 
     Message type and message data must be specified separately, due to how message
     chunking works on the transport level. Message length is calculated and sent
@@ -85,7 +85,7 @@ def send_bytes(
 @click.argument("directory", required=False)
 @click.option("-s", "--stop", is_flag=True, help="Stop the recording")
 @click.pass_obj
-def record(obj: "TrezorConnection", directory: Union[str, None], stop: bool) -> None:
+def record(obj: "CerberusConnection", directory: Union[str, None], stop: bool) -> None:
     """Record screen changes into a specified directory.
 
     Recording can be stopped with `-s / --stop` option.
@@ -94,11 +94,11 @@ def record(obj: "TrezorConnection", directory: Union[str, None], stop: bool) -> 
 
 
 def record_screen_from_connection(
-    obj: "TrezorConnection", directory: Union[str, None]
+    obj: "CerberusConnection", directory: Union[str, None]
 ) -> None:
-    """Record screen helper to transform TrezorConnection into TrezorClientDebugLink."""
+    """Record screen helper to transform CerberusConnection into CerberusClientDebugLink."""
     transport = obj.get_transport()
-    debug_client = TrezorClientDebugLink(transport, auto_interact=False)
+    debug_client = CerberusClientDebugLink(transport, auto_interact=False)
     debug_client.open()
     record_screen(debug_client, directory, report_func=click.echo)
     debug_client.close()
@@ -106,7 +106,7 @@ def record_screen_from_connection(
 
 @cli.command()
 @with_client
-def prodtest_t1(client: "TrezorClient") -> str:
+def prodtest_t1(client: "CerberusClient") -> str:
     """Perform a prodtest on Model One.
 
     Only available on PRODTEST firmware and on T1B1. Formerly named self-test.

@@ -16,7 +16,7 @@ jobs:
         uses: actions/add-to-project@main
         if: github.event_name == 'pull_request' && github.event.action == 'opened'
         with:
-          project-url: https://github.com/orgs/trezor/projects/60
+          project-url: https://github.com/orgs/cerberus/projects/60
           github-token: ${{ secrets.GH_BOT_TOKEN }}
 
   project-add-issue:
@@ -26,5 +26,5 @@ jobs:
       - uses: actions/add-to-project@main
         if: github.event_name == 'issues' && github.event.action == 'opened'
         with:
-          project-url: https://github.com/orgs/trezor/projects/60
+          project-url: https://github.com/orgs/cerberus/projects/60
           github-token: ${{ secrets.GH_BOT_TOKEN }}

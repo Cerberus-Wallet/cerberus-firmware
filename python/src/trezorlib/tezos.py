@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -20,14 +20,14 @@ from . import messages
 from .tools import expect
 
 if TYPE_CHECKING:
-    from .client import TrezorClient
+    from .client import CerberusClient
     from .protobuf import MessageType
     from .tools import Address
 
 
 @expect(messages.TezosAddress, field="address", ret_type=str)
 def get_address(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address_n: "Address",
     show_display: bool = False,
     chunkify: bool = False,
@@ -41,7 +41,7 @@ def get_address(
 
 @expect(messages.TezosPublicKey, field="public_key", ret_type=str)
 def get_public_key(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address_n: "Address",
     show_display: bool = False,
     chunkify: bool = False,
@@ -55,7 +55,7 @@ def get_public_key(
 
 @expect(messages.TezosSignedTx)
 def sign_tx(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address_n: "Address",
     sign_tx_msg: messages.TezosSignTx,
     chunkify: bool = False,

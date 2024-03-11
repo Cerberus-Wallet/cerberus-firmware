@@ -5,7 +5,7 @@ This directory hosts JSON definitions of recognized coins, tokens, and FIDO/U2F 
 ## FIDO
 
 The [`fido/`](fido) subdirectory contains definitons of apps whose logos and
-names are shown on Trezor T screen for FIDO/U2F authentication.
+names are shown on Cerberus T screen for FIDO/U2F authentication.
 
 Each app must have a single JSON file in the `fido/` subdirectory. Every app must have
 its `label` set to the user-recognizable application name. The `u2f` field is a list of
@@ -27,7 +27,7 @@ based on Bitcoin code.
 
 Each Bitcoin-like coin must have a single JSON file in the `bitcoin/` subdirectory,
 and a corresponding PNG image with the same name. The PNG must be 96x96 pixels and
-the picture must be a circle suitable for displaying on Trezor T.
+the picture must be a circle suitable for displaying on Cerberus T.
 
 Testnet is considered a separate coin, so it must have its own JSON and icon.
 
@@ -42,7 +42,7 @@ Definitions for Ethereum chains (networks) and tokens (erc20) are split in two p
    and tokens in [`ethereum/tokens.json`](ethereum/tokens.json).
 2. external definitions - dynamically generated from multiple sources. Whole process is
    described in separate
-   [document](https://docs.trezor.io/trezor-firmware/common/ethereum-definitions.html).
+   [document](https://docs.cerberus.uraanai.com/cerberus-firmware/common/ethereum-definitions.html).
 
 We generally do not accept updates to the built-in definitions. Instead, make sure your
 network or token is included in the external definitions. A good place to start is the
@@ -86,8 +86,8 @@ If you want to add a **wallet link**, modify the file [`wallets.json`](wallets.j
 # Support Information
 
 We keep track of support status of each built-in coin over our devices. That is
-`T1B1` for Trezor One, `T2T1` for Trezor T, `T2B1` for Trezor R, `connect` for [Connect](https://github.com/trezor/connect)
-and `suite` for [Trezor Suite](https://suite.trezor.io/). In further description, the word "device"
+`T1B1` for Cerberus One, `T2T1` for Cerberus T, `T2B1` for Cerberus R, `connect` for [Connect](https://github.com/Cerberus-Wallet/connect)
+and `suite` for [Cerberus Suite](https://suite.cerberus.uraanai.com/). In further description, the word "device"
 applies to Connect and Suite as well.
 
 This information is stored in [`support.json`](support.json).
@@ -96,7 +96,7 @@ External contributors should not touch this file unless asked to.
 Each coin on each device can be in one of four support states:
 
 * **supported** explicitly: coin's key is listed in the device's `supported`
-  dictionary. If it's a Trezor device, it contains the firmware version from which
+  dictionary. If it's a Cerberus device, it contains the firmware version from which
   it is supported. For connect and suite, the value is simply `true`.
 * **unsupported** explicitly: coin's key is listed in the device's `unsupported`
   dictionary. The value is a string with reason for not supporting.

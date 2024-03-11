@@ -1,5 +1,5 @@
 syntax = "proto2";
-package hw.trezor.messages.solana;
+package hw.cerberus.messages.solana;
 
 /**
  * Request: Ask device for public key corresponding to address_n path

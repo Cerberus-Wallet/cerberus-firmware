@@ -25,20 +25,20 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum_eip712.EthereumSignTypedData)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum_eip712.EthereumSignTypedData)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumSignTypedData {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumSignTypedData.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumSignTypedData.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumSignTypedData.primary_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumSignTypedData.primary_type)
     pub primary_type: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumSignTypedData.metamask_v4_compat)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumSignTypedData.metamask_v4_compat)
     pub metamask_v4_compat: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumSignTypedData.definitions)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumSignTypedData.definitions)
     pub definitions: ::protobuf::MessageField<super::messages_ethereum_definitions::EthereumDefinitions>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum_eip712.EthereumSignTypedData.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum_eip712.EthereumSignTypedData.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -268,14 +268,14 @@ impl ::protobuf::reflect::ProtobufValue for EthereumSignTypedData {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumTypedDataStructRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructRequest.name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructRequest.name)
     pub name: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -429,14 +429,14 @@ impl ::protobuf::reflect::ProtobufValue for EthereumTypedDataStructRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumTypedDataStructAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.members)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.members)
     pub members: ::std::vec::Vec<ethereum_typed_data_struct_ack::EthereumStructMember>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -559,16 +559,16 @@ impl ::protobuf::reflect::ProtobufValue for EthereumTypedDataStructAck {
 
 /// Nested message and enums of message `EthereumTypedDataStructAck`
 pub mod ethereum_typed_data_struct_ack {
-    // @@protoc_insertion_point(message:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumStructMember)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumStructMember)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EthereumStructMember {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumStructMember.type)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumStructMember.type)
         pub type_: ::protobuf::MessageField<EthereumFieldType>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumStructMember.name)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumStructMember.name)
         pub name: ::std::option::Option<::std::string::String>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumStructMember.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumStructMember.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -747,20 +747,20 @@ pub mod ethereum_typed_data_struct_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumFieldType)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumFieldType)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EthereumFieldType {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumFieldType.data_type)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumFieldType.data_type)
         pub data_type: ::std::option::Option<::protobuf::EnumOrUnknown<EthereumDataType>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumFieldType.size)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumFieldType.size)
         pub size: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumFieldType.entry_type)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumFieldType.entry_type)
         pub entry_type: ::protobuf::MessageField<EthereumFieldType>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumFieldType.struct_name)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumFieldType.struct_name)
         pub struct_name: ::std::option::Option<::std::string::String>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumFieldType.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumFieldType.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -775,7 +775,7 @@ pub mod ethereum_typed_data_struct_ack {
             ::std::default::Default::default()
         }
 
-        // required .hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType data_type = 1;
+        // required .hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType data_type = 1;
 
         pub fn data_type(&self) -> EthereumDataType {
             match self.data_type {
@@ -1010,23 +1010,23 @@ pub mod ethereum_typed_data_struct_ack {
     }
 
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType)
     pub enum EthereumDataType {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.UINT)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.UINT)
         UINT = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.INT)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.INT)
         INT = 2,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.BYTES)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.BYTES)
         BYTES = 3,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.STRING)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.STRING)
         STRING = 4,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.BOOL)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.BOOL)
         BOOL = 5,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.ADDRESS)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.ADDRESS)
         ADDRESS = 6,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.ARRAY)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.ARRAY)
         ARRAY = 7,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.STRUCT)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStructAck.EthereumDataType.STRUCT)
         STRUCT = 8,
     }
 
@@ -1112,14 +1112,14 @@ pub mod ethereum_typed_data_struct_ack {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum_eip712.EthereumTypedDataValueRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataValueRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumTypedDataValueRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataValueRequest.member_path)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataValueRequest.member_path)
     pub member_path: ::std::vec::Vec<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataValueRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataValueRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1237,14 +1237,14 @@ impl ::protobuf::reflect::ProtobufValue for EthereumTypedDataValueRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ethereum_eip712.EthereumTypedDataValueAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataValueAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EthereumTypedDataValueAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataValueAck.value)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataValueAck.value)
     pub value: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ethereum_eip712.EthereumTypedDataValueAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ethereum_eip712.EthereumTypedDataValueAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1399,23 +1399,23 @@ impl ::protobuf::reflect::ProtobufValue for EthereumTypedDataValueAck {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x1emessages-ethereum-eip712.proto\x12\"hw.trezor.messages.ethereum_ei\
+    \n\x1emessages-ethereum-eip712.proto\x12\"hw.cerberus.messages.ethereum_ei\
     p712\x1a#messages-ethereum-definitions.proto\"\xeb\x01\n\x15EthereumSign\
     TypedData\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\x12!\n\
     \x0cprimary_type\x18\x02\x20\x02(\tR\x0bprimaryType\x122\n\x12metamask_v\
     4_compat\x18\x03\x20\x01(\x08:\x04trueR\x10metamaskV4Compat\x12^\n\x0bde\
-    finitions\x18\x04\x20\x01(\x0b2<.hw.trezor.messages.ethereum_definitions\
+    finitions\x18\x04\x20\x01(\x0b2<.hw.cerberus.messages.ethereum_definitions\
     .EthereumDefinitionsR\x0bdefinitions\"4\n\x1eEthereumTypedDataStructRequ\
     est\x12\x12\n\x04name\x18\x01\x20\x02(\tR\x04name\"\xb4\x05\n\x1aEthereu\
-    mTypedDataStructAck\x12m\n\x07members\x18\x01\x20\x03(\x0b2S.hw.trezor.m\
+    mTypedDataStructAck\x12m\n\x07members\x18\x01\x20\x03(\x0b2S.hw.cerberus.m\
     essages.ethereum_eip712.EthereumTypedDataStructAck.EthereumStructMemberR\
     \x07members\x1a\x90\x01\n\x14EthereumStructMember\x12d\n\x04type\x18\x01\
-    \x20\x02(\x0b2P.hw.trezor.messages.ethereum_eip712.EthereumTypedDataStru\
+    \x20\x02(\x0b2P.hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStru\
     ctAck.EthereumFieldTypeR\x04type\x12\x12\n\x04name\x18\x02\x20\x02(\tR\
     \x04name\x1a\xa7\x02\n\x11EthereumFieldType\x12l\n\tdata_type\x18\x01\
-    \x20\x02(\x0e2O.hw.trezor.messages.ethereum_eip712.EthereumTypedDataStru\
+    \x20\x02(\x0e2O.hw.cerberus.messages.ethereum_eip712.EthereumTypedDataStru\
     ctAck.EthereumDataTypeR\x08dataType\x12\x12\n\x04size\x18\x02\x20\x01(\r\
-    R\x04size\x12o\n\nentry_type\x18\x03\x20\x01(\x0b2P.hw.trezor.messages.e\
+    R\x04size\x12o\n\nentry_type\x18\x03\x20\x01(\x0b2P.hw.cerberus.messages.e\
     thereum_eip712.EthereumTypedDataStructAck.EthereumFieldTypeR\tentryType\
     \x12\x1f\n\x0bstruct_name\x18\x04\x20\x01(\tR\nstructName\"j\n\x10Ethere\
     umDataType\x12\x08\n\x04UINT\x10\x01\x12\x07\n\x03INT\x10\x02\x12\t\n\
@@ -1424,7 +1424,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x10\x08\"@\n\x1dEthereumTypedDataValueRequest\x12\x1f\n\x0bmember_path\
     \x18\x01\x20\x03(\rR\nmemberPath\"1\n\x19EthereumTypedDataValueAck\x12\
     \x14\n\x05value\x18\x01\x20\x02(\x0cR\x05valueBB\n#com.satoshilabs.trezo\
-    r.lib.protobufB\x1bTrezorMessageEthereumEIP712\
+    r.lib.protobufB\x1bCerberusMessageEthereumEIP712\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

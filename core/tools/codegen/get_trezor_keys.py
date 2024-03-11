@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
 import binascii
-from trezorlib.client import TrezorClient
-from trezorlib.transport_hid import HidTransport
+from cerberuslib.client import CerberusClient
+from cerberuslib.transport_hid import HidTransport
 
 devices = HidTransport.enumerate()
 if len(devices) > 0:
-    t = TrezorClient(devices[0])
+    t = CerberusClient(devices[0])
 else:
-    raise Exception("No Trezor found")
+    raise Exception("No Cerberus found")
 
 for i in [0, 1, 2]:
     path = "m/10018'/%d'" % i

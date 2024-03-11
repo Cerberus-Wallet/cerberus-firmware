@@ -1,6 +1,6 @@
 use crate::{
     translations::TR,
-    trezorhal::{random, wordlist::Wordlist},
+    cerberushal::{random, wordlist::Wordlist},
     ui::{
         component::{text::common::TextBox, Child, Component, ComponentExt, Event, EventCtx},
         geometry::Rect,

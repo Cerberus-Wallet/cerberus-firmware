@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wshadow -Wextra -Wpedantic -Werror -Wno-missing-braces
 CFLAGS += -fPIC
 CFALGS += -fsanitize=address,undefined
-CFLAGS += -DTREZOR_MODEL_T
+CFLAGS += -DCERBERUS_MODEL_T
 CFLAGS += -DUSE_INSECURE_PRNG
 
 LIBS =
@@ -29,7 +29,7 @@ SRC += crypto/memzero.c
 
 OBJ = $(SRC:%.c=build/%.o)
 
-OUT = libtrezor-storage3.so
+OUT = libcerberus-storage3.so
 
 $(OUT): $(OBJ)
 	$(CC) $(CFLAGS) $(LIBS) $(OBJ) -shared -o $(OUT)

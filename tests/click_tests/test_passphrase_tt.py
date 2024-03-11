@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2023 SatoshiLabs and contributors
 #
@@ -25,7 +25,7 @@ from ..common import get_test_address
 from .common import CommonPass, PassphraseCategory, get_char_category
 
 if TYPE_CHECKING:
-    from trezorlib.debuglink import DebugLink
+    from cerberuslib.debuglink import DebugLink
 
     from ..device_handler import BackgroundDeviceHandler
 
@@ -196,7 +196,7 @@ def test_passphrase_delete_all(
     device_handler: "BackgroundDeviceHandler",
 ):
     with prepare_passphrase_dialogue(device_handler, CommonPass.EMPTY_ADDRESS) as debug:
-        passphrase = "trezor"
+        passphrase = "cerberus"
         input_passphrase(debug, passphrase)
 
         for _ in range(len(passphrase)):

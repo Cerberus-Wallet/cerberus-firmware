@@ -4,13 +4,13 @@ from . import messages
 from .tools import expect
 
 if TYPE_CHECKING:
-    from .client import TrezorClient
+    from .client import CerberusClient
     from .protobuf import MessageType
 
 
 @expect(messages.SolanaPublicKey)
 def get_public_key(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address_n: List[int],
     show_display: bool,
 ) -> "MessageType":
@@ -21,7 +21,7 @@ def get_public_key(
 
 @expect(messages.SolanaAddress)
 def get_address(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address_n: List[int],
     show_display: bool,
     chunkify: bool = False,
@@ -37,7 +37,7 @@ def get_address(
 
 @expect(messages.SolanaTxSignature)
 def sign_tx(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address_n: List[int],
     serialized_tx: bytes,
     additional_info: Optional[messages.SolanaTxAdditionalInfo],

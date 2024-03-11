@@ -25,32 +25,32 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionSourceEntry)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionSourceEntry)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionSourceEntry {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.outputs)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.outputs)
     pub outputs: ::std::vec::Vec<monero_transaction_source_entry::MoneroOutputEntry>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.real_output)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.real_output)
     pub real_output: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.real_out_tx_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.real_out_tx_key)
     pub real_out_tx_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.real_out_additional_tx_keys)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.real_out_additional_tx_keys)
     pub real_out_additional_tx_keys: ::std::vec::Vec<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.real_output_in_tx_index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.real_output_in_tx_index)
     pub real_output_in_tx_index: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.amount)
     pub amount: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.rct)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.rct)
     pub rct: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.mask)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.mask)
     pub mask: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.multisig_kLRki)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.multisig_kLRki)
     pub multisig_kLRki: ::protobuf::MessageField<monero_transaction_source_entry::MoneroMultisigKLRki>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.subaddr_minor)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.subaddr_minor)
     pub subaddr_minor: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -490,16 +490,16 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionSourceEntry {
 
 /// Nested message and enums of message `MoneroTransactionSourceEntry`
 pub mod monero_transaction_source_entry {
-    // @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct MoneroOutputEntry {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.idx)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.idx)
         pub idx: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.key)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.key)
         pub key: ::protobuf::MessageField<monero_output_entry::MoneroRctKeyPublic>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -657,16 +657,16 @@ pub mod monero_transaction_source_entry {
 
     /// Nested message and enums of message `MoneroOutputEntry`
     pub mod monero_output_entry {
-        // @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.MoneroRctKeyPublic)
+        // @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.MoneroRctKeyPublic)
         #[derive(PartialEq,Clone,Default,Debug)]
         pub struct MoneroRctKeyPublic {
             // message fields
-            // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.MoneroRctKeyPublic.dest)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.MoneroRctKeyPublic.dest)
             pub dest: ::std::option::Option<::std::vec::Vec<u8>>,
-            // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.MoneroRctKeyPublic.commitment)
+            // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.MoneroRctKeyPublic.commitment)
             pub commitment: ::std::option::Option<::std::vec::Vec<u8>>,
             // special fields
-            // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.MoneroRctKeyPublic.special_fields)
+            // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEntry.MoneroRctKeyPublic.special_fields)
             pub special_fields: ::protobuf::SpecialFields,
         }
 
@@ -876,20 +876,20 @@ pub mod monero_transaction_source_entry {
         }
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroMultisigKLRki)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroMultisigKLRki)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct MoneroMultisigKLRki {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroMultisigKLRki.K)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroMultisigKLRki.K)
         pub K: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroMultisigKLRki.L)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroMultisigKLRki.L)
         pub L: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroMultisigKLRki.R)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroMultisigKLRki.R)
         pub R: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroMultisigKLRki.ki)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroMultisigKLRki.ki)
         pub ki: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroMultisigKLRki.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroMultisigKLRki.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -1197,22 +1197,22 @@ pub mod monero_transaction_source_entry {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionDestinationEntry)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionDestinationEntry)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionDestinationEntry {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionDestinationEntry.amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionDestinationEntry.amount)
     pub amount: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionDestinationEntry.addr)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionDestinationEntry.addr)
     pub addr: ::protobuf::MessageField<monero_transaction_destination_entry::MoneroAccountPublicAddress>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionDestinationEntry.is_subaddress)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionDestinationEntry.is_subaddress)
     pub is_subaddress: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionDestinationEntry.original)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionDestinationEntry.original)
     pub original: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionDestinationEntry.is_integrated)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionDestinationEntry.is_integrated)
     pub is_integrated: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionDestinationEntry.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionDestinationEntry.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1487,16 +1487,16 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionDestinationEntry {
 
 /// Nested message and enums of message `MoneroTransactionDestinationEntry`
 pub mod monero_transaction_destination_entry {
-    // @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionDestinationEntry.MoneroAccountPublicAddress)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionDestinationEntry.MoneroAccountPublicAddress)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct MoneroAccountPublicAddress {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionDestinationEntry.MoneroAccountPublicAddress.spend_public_key)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionDestinationEntry.MoneroAccountPublicAddress.spend_public_key)
         pub spend_public_key: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionDestinationEntry.MoneroAccountPublicAddress.view_public_key)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionDestinationEntry.MoneroAccountPublicAddress.view_public_key)
         pub view_public_key: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionDestinationEntry.MoneroAccountPublicAddress.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionDestinationEntry.MoneroAccountPublicAddress.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -1700,26 +1700,26 @@ pub mod monero_transaction_destination_entry {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionRsigData)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionRsigData)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionRsigData {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionRsigData.rsig_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionRsigData.rsig_type)
     pub rsig_type: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionRsigData.offload_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionRsigData.offload_type)
     pub offload_type: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionRsigData.grouping)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionRsigData.grouping)
     pub grouping: ::std::vec::Vec<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionRsigData.mask)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionRsigData.mask)
     pub mask: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionRsigData.rsig)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionRsigData.rsig)
     pub rsig: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionRsigData.rsig_parts)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionRsigData.rsig_parts)
     pub rsig_parts: ::std::vec::Vec<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionRsigData.bp_version)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionRsigData.bp_version)
     pub bp_version: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionRsigData.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionRsigData.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2062,26 +2062,26 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionRsigData {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroGetAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroGetAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroGetAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetAddress.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetAddress.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetAddress.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetAddress.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetAddress.network_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetAddress.network_type)
     pub network_type: ::std::option::Option<::protobuf::EnumOrUnknown<MoneroNetworkType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetAddress.account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetAddress.account)
     pub account: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetAddress.minor)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetAddress.minor)
     pub minor: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetAddress.payment_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetAddress.payment_id)
     pub payment_id: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetAddress.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetAddress.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroGetAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroGetAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2115,7 +2115,7 @@ impl MoneroGetAddress {
         self.show_display = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.monero.MoneroNetworkType network_type = 3;
+    // optional .hw.cerberus.messages.monero.MoneroNetworkType network_type = 3;
 
     pub fn network_type(&self) -> MoneroNetworkType {
         match self.network_type {
@@ -2429,14 +2429,14 @@ impl ::protobuf::reflect::ProtobufValue for MoneroGetAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroAddress.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroAddress.address)
     pub address: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2587,16 +2587,16 @@ impl ::protobuf::reflect::ProtobufValue for MoneroAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroGetWatchKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroGetWatchKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroGetWatchKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetWatchKey.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetWatchKey.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetWatchKey.network_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetWatchKey.network_type)
     pub network_type: ::std::option::Option<::protobuf::EnumOrUnknown<MoneroNetworkType>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroGetWatchKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroGetWatchKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2611,7 +2611,7 @@ impl MoneroGetWatchKey {
         ::std::default::Default::default()
     }
 
-    // optional .hw.trezor.messages.monero.MoneroNetworkType network_type = 2;
+    // optional .hw.cerberus.messages.monero.MoneroNetworkType network_type = 2;
 
     pub fn network_type(&self) -> MoneroNetworkType {
         match self.network_type {
@@ -2752,16 +2752,16 @@ impl ::protobuf::reflect::ProtobufValue for MoneroGetWatchKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroWatchKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroWatchKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroWatchKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroWatchKey.watch_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroWatchKey.watch_key)
     pub watch_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroWatchKey.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroWatchKey.address)
     pub address: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroWatchKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroWatchKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2964,20 +2964,20 @@ impl ::protobuf::reflect::ProtobufValue for MoneroWatchKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionInitRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionInitRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionInitRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.version)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.version)
     pub version: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.network_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.network_type)
     pub network_type: ::std::option::Option<::protobuf::EnumOrUnknown<MoneroNetworkType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.tsx_data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.tsx_data)
     pub tsx_data: ::protobuf::MessageField<monero_transaction_init_request::MoneroTransactionData>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionInitRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3011,7 +3011,7 @@ impl MoneroTransactionInitRequest {
         self.version = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.monero.MoneroNetworkType network_type = 3;
+    // optional .hw.cerberus.messages.monero.MoneroNetworkType network_type = 3;
 
     pub fn network_type(&self) -> MoneroNetworkType {
         match self.network_type {
@@ -3187,44 +3187,44 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionInitRequest {
 
 /// Nested message and enums of message `MoneroTransactionInitRequest`
 pub mod monero_transaction_init_request {
-    // @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct MoneroTransactionData {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.version)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.version)
         pub version: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.payment_id)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.payment_id)
         pub payment_id: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.unlock_time)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.unlock_time)
         pub unlock_time: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.outputs)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.outputs)
         pub outputs: ::std::vec::Vec<super::MoneroTransactionDestinationEntry>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.change_dts)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.change_dts)
         pub change_dts: ::protobuf::MessageField<super::MoneroTransactionDestinationEntry>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.num_inputs)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.num_inputs)
         pub num_inputs: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.mixin)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.mixin)
         pub mixin: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.fee)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.fee)
         pub fee: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.account)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.account)
         pub account: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.minor_indices)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.minor_indices)
         pub minor_indices: ::std::vec::Vec<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.rsig_data)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.rsig_data)
         pub rsig_data: ::protobuf::MessageField<super::MoneroTransactionRsigData>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.integrated_indices)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.integrated_indices)
         pub integrated_indices: ::std::vec::Vec<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.client_version)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.client_version)
         pub client_version: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.hard_fork)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.hard_fork)
         pub hard_fork: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.monero_version)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.monero_version)
         pub monero_version: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.chunkify)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.chunkify)
         pub chunkify: ::std::option::Option<bool>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionInitRequest.MoneroTransactionData.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -3832,16 +3832,16 @@ pub mod monero_transaction_init_request {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionInitAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionInitAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionInitAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitAck.hmacs)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitAck.hmacs)
     pub hmacs: ::std::vec::Vec<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInitAck.rsig_data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInitAck.rsig_data)
     pub rsig_data: ::protobuf::MessageField<MoneroTransactionRsigData>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionInitAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionInitAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3973,14 +3973,14 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionInitAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionSetInputRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionSetInputRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionSetInputRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetInputRequest.src_entr)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetInputRequest.src_entr)
     pub src_entr: ::protobuf::MessageField<MoneroTransactionSourceEntry>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionSetInputRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionSetInputRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4101,24 +4101,24 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionSetInputRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionSetInputAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionSetInputAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionSetInputAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetInputAck.vini)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetInputAck.vini)
     pub vini: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetInputAck.vini_hmac)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetInputAck.vini_hmac)
     pub vini_hmac: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetInputAck.pseudo_out)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetInputAck.pseudo_out)
     pub pseudo_out: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetInputAck.pseudo_out_hmac)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetInputAck.pseudo_out_hmac)
     pub pseudo_out_hmac: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetInputAck.pseudo_out_alpha)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetInputAck.pseudo_out_alpha)
     pub pseudo_out_alpha: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetInputAck.spend_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetInputAck.spend_key)
     pub spend_key: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionSetInputAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionSetInputAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4529,24 +4529,24 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionSetInputAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionInputViniRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionInputViniRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionInputViniRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInputViniRequest.src_entr)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInputViniRequest.src_entr)
     pub src_entr: ::protobuf::MessageField<MoneroTransactionSourceEntry>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInputViniRequest.vini)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInputViniRequest.vini)
     pub vini: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInputViniRequest.vini_hmac)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInputViniRequest.vini_hmac)
     pub vini_hmac: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInputViniRequest.pseudo_out)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInputViniRequest.pseudo_out)
     pub pseudo_out: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInputViniRequest.pseudo_out_hmac)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInputViniRequest.pseudo_out_hmac)
     pub pseudo_out_hmac: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionInputViniRequest.orig_idx)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionInputViniRequest.orig_idx)
     pub orig_idx: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionInputViniRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionInputViniRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4910,11 +4910,11 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionInputViniRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionInputViniAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionInputViniAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionInputViniAck {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionInputViniAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionInputViniAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5013,11 +5013,11 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionInputViniAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionAllInputsSetRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionAllInputsSetRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionAllInputsSetRequest {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionAllInputsSetRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionAllInputsSetRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5116,14 +5116,14 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionAllInputsSetRequest
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionAllInputsSetAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionAllInputsSetAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionAllInputsSetAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionAllInputsSetAck.rsig_data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionAllInputsSetAck.rsig_data)
     pub rsig_data: ::protobuf::MessageField<MoneroTransactionRsigData>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionAllInputsSetAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionAllInputsSetAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5239,20 +5239,20 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionAllInputsSetAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionSetOutputRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionSetOutputRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionSetOutputRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetOutputRequest.dst_entr)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetOutputRequest.dst_entr)
     pub dst_entr: ::protobuf::MessageField<MoneroTransactionDestinationEntry>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetOutputRequest.dst_entr_hmac)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetOutputRequest.dst_entr_hmac)
     pub dst_entr_hmac: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetOutputRequest.rsig_data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetOutputRequest.rsig_data)
     pub rsig_data: ::protobuf::MessageField<MoneroTransactionRsigData>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetOutputRequest.is_offloaded_bp)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetOutputRequest.is_offloaded_bp)
     pub is_offloaded_bp: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionSetOutputRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionSetOutputRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5472,22 +5472,22 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionSetOutputRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionSetOutputAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionSetOutputAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionSetOutputAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetOutputAck.tx_out)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetOutputAck.tx_out)
     pub tx_out: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetOutputAck.vouti_hmac)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetOutputAck.vouti_hmac)
     pub vouti_hmac: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetOutputAck.rsig_data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetOutputAck.rsig_data)
     pub rsig_data: ::protobuf::MessageField<MoneroTransactionRsigData>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetOutputAck.out_pk)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetOutputAck.out_pk)
     pub out_pk: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSetOutputAck.ecdh_info)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSetOutputAck.ecdh_info)
     pub ecdh_info: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionSetOutputAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionSetOutputAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5811,14 +5811,14 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionSetOutputAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionAllOutSetRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionAllOutSetRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionAllOutSetRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionAllOutSetRequest.rsig_data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionAllOutSetRequest.rsig_data)
     pub rsig_data: ::protobuf::MessageField<MoneroTransactionRsigData>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionAllOutSetRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionAllOutSetRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5934,20 +5934,20 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionAllOutSetRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionAllOutSetAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionAllOutSetAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionAllOutSetAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionAllOutSetAck.extra)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionAllOutSetAck.extra)
     pub extra: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionAllOutSetAck.tx_prefix_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionAllOutSetAck.tx_prefix_hash)
     pub tx_prefix_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionAllOutSetAck.rv)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionAllOutSetAck.rv)
     pub rv: ::protobuf::MessageField<monero_transaction_all_out_set_ack::MoneroRingCtSig>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionAllOutSetAck.full_message_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionAllOutSetAck.full_message_hash)
     pub full_message_hash: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionAllOutSetAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionAllOutSetAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -6221,18 +6221,18 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionAllOutSetAck {
 
 /// Nested message and enums of message `MoneroTransactionAllOutSetAck`
 pub mod monero_transaction_all_out_set_ack {
-    // @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionAllOutSetAck.MoneroRingCtSig)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionAllOutSetAck.MoneroRingCtSig)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct MoneroRingCtSig {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionAllOutSetAck.MoneroRingCtSig.txn_fee)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionAllOutSetAck.MoneroRingCtSig.txn_fee)
         pub txn_fee: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionAllOutSetAck.MoneroRingCtSig.message)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionAllOutSetAck.MoneroRingCtSig.message)
         pub message: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionAllOutSetAck.MoneroRingCtSig.rv_type)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionAllOutSetAck.MoneroRingCtSig.rv_type)
         pub rv_type: ::std::option::Option<u32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionAllOutSetAck.MoneroRingCtSig.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionAllOutSetAck.MoneroRingCtSig.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -6454,28 +6454,28 @@ pub mod monero_transaction_all_out_set_ack {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionSignInputRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionSignInputRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionSignInputRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSignInputRequest.src_entr)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSignInputRequest.src_entr)
     pub src_entr: ::protobuf::MessageField<MoneroTransactionSourceEntry>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSignInputRequest.vini)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSignInputRequest.vini)
     pub vini: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSignInputRequest.vini_hmac)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSignInputRequest.vini_hmac)
     pub vini_hmac: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSignInputRequest.pseudo_out)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSignInputRequest.pseudo_out)
     pub pseudo_out: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSignInputRequest.pseudo_out_hmac)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSignInputRequest.pseudo_out_hmac)
     pub pseudo_out_hmac: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSignInputRequest.pseudo_out_alpha)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSignInputRequest.pseudo_out_alpha)
     pub pseudo_out_alpha: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSignInputRequest.spend_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSignInputRequest.spend_key)
     pub spend_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSignInputRequest.orig_idx)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSignInputRequest.orig_idx)
     pub orig_idx: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionSignInputRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionSignInputRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -6943,16 +6943,16 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionSignInputRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionSignInputAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionSignInputAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionSignInputAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSignInputAck.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSignInputAck.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionSignInputAck.pseudo_out)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionSignInputAck.pseudo_out)
     pub pseudo_out: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionSignInputAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionSignInputAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7155,11 +7155,11 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionSignInputAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionFinalRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionFinalRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionFinalRequest {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionFinalRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionFinalRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7258,22 +7258,22 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionFinalRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroTransactionFinalAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroTransactionFinalAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroTransactionFinalAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionFinalAck.cout_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionFinalAck.cout_key)
     pub cout_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionFinalAck.salt)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionFinalAck.salt)
     pub salt: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionFinalAck.rand_mult)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionFinalAck.rand_mult)
     pub rand_mult: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionFinalAck.tx_enc_keys)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionFinalAck.tx_enc_keys)
     pub tx_enc_keys: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroTransactionFinalAck.opening_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroTransactionFinalAck.opening_key)
     pub opening_key: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroTransactionFinalAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroTransactionFinalAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7632,22 +7632,22 @@ impl ::protobuf::reflect::ProtobufValue for MoneroTransactionFinalAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroKeyImageExportInitRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroKeyImageExportInitRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroKeyImageExportInitRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageExportInitRequest.num)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageExportInitRequest.num)
     pub num: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageExportInitRequest.hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageExportInitRequest.hash)
     pub hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageExportInitRequest.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageExportInitRequest.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageExportInitRequest.network_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageExportInitRequest.network_type)
     pub network_type: ::std::option::Option<::protobuf::EnumOrUnknown<MoneroNetworkType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageExportInitRequest.subs)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageExportInitRequest.subs)
     pub subs: ::std::vec::Vec<monero_key_image_export_init_request::MoneroSubAddressIndicesList>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroKeyImageExportInitRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroKeyImageExportInitRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7717,7 +7717,7 @@ impl MoneroKeyImageExportInitRequest {
         self.hash.take().unwrap_or_else(|| ::std::vec::Vec::new())
     }
 
-    // optional .hw.trezor.messages.monero.MoneroNetworkType network_type = 4;
+    // optional .hw.cerberus.messages.monero.MoneroNetworkType network_type = 4;
 
     pub fn network_type(&self) -> MoneroNetworkType {
         match self.network_type {
@@ -7920,16 +7920,16 @@ impl ::protobuf::reflect::ProtobufValue for MoneroKeyImageExportInitRequest {
 
 /// Nested message and enums of message `MoneroKeyImageExportInitRequest`
 pub mod monero_key_image_export_init_request {
-    // @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroKeyImageExportInitRequest.MoneroSubAddressIndicesList)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroKeyImageExportInitRequest.MoneroSubAddressIndicesList)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct MoneroSubAddressIndicesList {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageExportInitRequest.MoneroSubAddressIndicesList.account)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageExportInitRequest.MoneroSubAddressIndicesList.account)
         pub account: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageExportInitRequest.MoneroSubAddressIndicesList.minor_indices)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageExportInitRequest.MoneroSubAddressIndicesList.minor_indices)
         pub minor_indices: ::std::vec::Vec<u32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroKeyImageExportInitRequest.MoneroSubAddressIndicesList.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroKeyImageExportInitRequest.MoneroSubAddressIndicesList.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -8086,11 +8086,11 @@ pub mod monero_key_image_export_init_request {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroKeyImageExportInitAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroKeyImageExportInitAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroKeyImageExportInitAck {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroKeyImageExportInitAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroKeyImageExportInitAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8189,14 +8189,14 @@ impl ::protobuf::reflect::ProtobufValue for MoneroKeyImageExportInitAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroKeyImageSyncStepRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroKeyImageSyncStepRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroKeyImageSyncStepRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageSyncStepRequest.tdis)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepRequest.tdis)
     pub tdis: ::std::vec::Vec<monero_key_image_sync_step_request::MoneroTransferDetails>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroKeyImageSyncStepRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8319,24 +8319,24 @@ impl ::protobuf::reflect::ProtobufValue for MoneroKeyImageSyncStepRequest {
 
 /// Nested message and enums of message `MoneroKeyImageSyncStepRequest`
 pub mod monero_key_image_sync_step_request {
-    // @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct MoneroTransferDetails {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.out_key)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.out_key)
         pub out_key: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.tx_pub_key)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.tx_pub_key)
         pub tx_pub_key: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.additional_tx_pub_keys)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.additional_tx_pub_keys)
         pub additional_tx_pub_keys: ::std::vec::Vec<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.internal_output_index)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.internal_output_index)
         pub internal_output_index: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.sub_addr_major)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.sub_addr_major)
         pub sub_addr_major: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.sub_addr_minor)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.sub_addr_minor)
         pub sub_addr_minor: ::std::option::Option<u32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetails.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -8670,14 +8670,14 @@ pub mod monero_key_image_sync_step_request {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroKeyImageSyncStepAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroKeyImageSyncStepAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroKeyImageSyncStepAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageSyncStepAck.kis)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepAck.kis)
     pub kis: ::std::vec::Vec<monero_key_image_sync_step_ack::MoneroExportedKeyImage>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroKeyImageSyncStepAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8795,16 +8795,16 @@ impl ::protobuf::reflect::ProtobufValue for MoneroKeyImageSyncStepAck {
 
 /// Nested message and enums of message `MoneroKeyImageSyncStepAck`
 pub mod monero_key_image_sync_step_ack {
-    // @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroKeyImageSyncStepAck.MoneroExportedKeyImage)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroKeyImageSyncStepAck.MoneroExportedKeyImage)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct MoneroExportedKeyImage {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageSyncStepAck.MoneroExportedKeyImage.iv)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepAck.MoneroExportedKeyImage.iv)
         pub iv: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageSyncStepAck.MoneroExportedKeyImage.blob)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepAck.MoneroExportedKeyImage.blob)
         pub blob: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroKeyImageSyncStepAck.MoneroExportedKeyImage.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroKeyImageSyncStepAck.MoneroExportedKeyImage.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -9008,11 +9008,11 @@ pub mod monero_key_image_sync_step_ack {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroKeyImageSyncFinalRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroKeyImageSyncFinalRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroKeyImageSyncFinalRequest {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroKeyImageSyncFinalRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroKeyImageSyncFinalRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9111,14 +9111,14 @@ impl ::protobuf::reflect::ProtobufValue for MoneroKeyImageSyncFinalRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroKeyImageSyncFinalAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroKeyImageSyncFinalAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroKeyImageSyncFinalAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroKeyImageSyncFinalAck.enc_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroKeyImageSyncFinalAck.enc_key)
     pub enc_key: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroKeyImageSyncFinalAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroKeyImageSyncFinalAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9269,28 +9269,28 @@ impl ::protobuf::reflect::ProtobufValue for MoneroKeyImageSyncFinalAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroGetTxKeyRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroGetTxKeyRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroGetTxKeyRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetTxKeyRequest.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetTxKeyRequest.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetTxKeyRequest.network_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetTxKeyRequest.network_type)
     pub network_type: ::std::option::Option<::protobuf::EnumOrUnknown<MoneroNetworkType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetTxKeyRequest.salt1)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetTxKeyRequest.salt1)
     pub salt1: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetTxKeyRequest.salt2)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetTxKeyRequest.salt2)
     pub salt2: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetTxKeyRequest.tx_enc_keys)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetTxKeyRequest.tx_enc_keys)
     pub tx_enc_keys: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetTxKeyRequest.tx_prefix_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetTxKeyRequest.tx_prefix_hash)
     pub tx_prefix_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetTxKeyRequest.reason)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetTxKeyRequest.reason)
     pub reason: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetTxKeyRequest.view_public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetTxKeyRequest.view_public_key)
     pub view_public_key: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroGetTxKeyRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroGetTxKeyRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9305,7 +9305,7 @@ impl MoneroGetTxKeyRequest {
         ::std::default::Default::default()
     }
 
-    // optional .hw.trezor.messages.monero.MoneroNetworkType network_type = 2;
+    // optional .hw.cerberus.messages.monero.MoneroNetworkType network_type = 2;
 
     pub fn network_type(&self) -> MoneroNetworkType {
         match self.network_type {
@@ -9753,18 +9753,18 @@ impl ::protobuf::reflect::ProtobufValue for MoneroGetTxKeyRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroGetTxKeyAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroGetTxKeyAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroGetTxKeyAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetTxKeyAck.salt)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetTxKeyAck.salt)
     pub salt: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetTxKeyAck.tx_keys)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetTxKeyAck.tx_keys)
     pub tx_keys: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroGetTxKeyAck.tx_derivations)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroGetTxKeyAck.tx_derivations)
     pub tx_derivations: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroGetTxKeyAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroGetTxKeyAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -10019,16 +10019,16 @@ impl ::protobuf::reflect::ProtobufValue for MoneroGetTxKeyAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroLiveRefreshStartRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroLiveRefreshStartRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroLiveRefreshStartRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroLiveRefreshStartRequest.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroLiveRefreshStartRequest.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroLiveRefreshStartRequest.network_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroLiveRefreshStartRequest.network_type)
     pub network_type: ::std::option::Option<::protobuf::EnumOrUnknown<MoneroNetworkType>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroLiveRefreshStartRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroLiveRefreshStartRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -10043,7 +10043,7 @@ impl MoneroLiveRefreshStartRequest {
         ::std::default::Default::default()
     }
 
-    // optional .hw.trezor.messages.monero.MoneroNetworkType network_type = 2;
+    // optional .hw.cerberus.messages.monero.MoneroNetworkType network_type = 2;
 
     pub fn network_type(&self) -> MoneroNetworkType {
         match self.network_type {
@@ -10184,11 +10184,11 @@ impl ::protobuf::reflect::ProtobufValue for MoneroLiveRefreshStartRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroLiveRefreshStartAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroLiveRefreshStartAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroLiveRefreshStartAck {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroLiveRefreshStartAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroLiveRefreshStartAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -10287,22 +10287,22 @@ impl ::protobuf::reflect::ProtobufValue for MoneroLiveRefreshStartAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroLiveRefreshStepRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroLiveRefreshStepRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroLiveRefreshStepRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroLiveRefreshStepRequest.out_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroLiveRefreshStepRequest.out_key)
     pub out_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroLiveRefreshStepRequest.recv_deriv)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroLiveRefreshStepRequest.recv_deriv)
     pub recv_deriv: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroLiveRefreshStepRequest.real_out_idx)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroLiveRefreshStepRequest.real_out_idx)
     pub real_out_idx: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroLiveRefreshStepRequest.sub_addr_major)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroLiveRefreshStepRequest.sub_addr_major)
     pub sub_addr_major: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroLiveRefreshStepRequest.sub_addr_minor)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroLiveRefreshStepRequest.sub_addr_minor)
     pub sub_addr_minor: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroLiveRefreshStepRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroLiveRefreshStepRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -10625,16 +10625,16 @@ impl ::protobuf::reflect::ProtobufValue for MoneroLiveRefreshStepRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroLiveRefreshStepAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroLiveRefreshStepAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroLiveRefreshStepAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroLiveRefreshStepAck.salt)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroLiveRefreshStepAck.salt)
     pub salt: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.MoneroLiveRefreshStepAck.key_image)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.MoneroLiveRefreshStepAck.key_image)
     pub key_image: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroLiveRefreshStepAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroLiveRefreshStepAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -10837,11 +10837,11 @@ impl ::protobuf::reflect::ProtobufValue for MoneroLiveRefreshStepAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroLiveRefreshFinalRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroLiveRefreshFinalRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroLiveRefreshFinalRequest {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroLiveRefreshFinalRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroLiveRefreshFinalRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -10940,11 +10940,11 @@ impl ::protobuf::reflect::ProtobufValue for MoneroLiveRefreshFinalRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.MoneroLiveRefreshFinalAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.MoneroLiveRefreshFinalAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct MoneroLiveRefreshFinalAck {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.MoneroLiveRefreshFinalAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.MoneroLiveRefreshFinalAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -11043,24 +11043,24 @@ impl ::protobuf::reflect::ProtobufValue for MoneroLiveRefreshFinalAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.DebugMoneroDiagRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.DebugMoneroDiagRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugMoneroDiagRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.DebugMoneroDiagRequest.ins)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.DebugMoneroDiagRequest.ins)
     pub ins: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.DebugMoneroDiagRequest.p1)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.DebugMoneroDiagRequest.p1)
     pub p1: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.DebugMoneroDiagRequest.p2)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.DebugMoneroDiagRequest.p2)
     pub p2: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.DebugMoneroDiagRequest.pd)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.DebugMoneroDiagRequest.pd)
     pub pd: ::std::vec::Vec<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.DebugMoneroDiagRequest.data1)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.DebugMoneroDiagRequest.data1)
     pub data1: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.DebugMoneroDiagRequest.data2)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.DebugMoneroDiagRequest.data2)
     pub data2: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.DebugMoneroDiagRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.DebugMoneroDiagRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -11387,24 +11387,24 @@ impl ::protobuf::reflect::ProtobufValue for DebugMoneroDiagRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.monero.DebugMoneroDiagAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.monero.DebugMoneroDiagAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DebugMoneroDiagAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.DebugMoneroDiagAck.ins)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.DebugMoneroDiagAck.ins)
     pub ins: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.DebugMoneroDiagAck.p1)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.DebugMoneroDiagAck.p1)
     pub p1: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.DebugMoneroDiagAck.p2)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.DebugMoneroDiagAck.p2)
     pub p2: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.DebugMoneroDiagAck.pd)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.DebugMoneroDiagAck.pd)
     pub pd: ::std::vec::Vec<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.DebugMoneroDiagAck.data1)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.DebugMoneroDiagAck.data1)
     pub data1: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.monero.DebugMoneroDiagAck.data2)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.monero.DebugMoneroDiagAck.data2)
     pub data2: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.monero.DebugMoneroDiagAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.monero.DebugMoneroDiagAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -11732,15 +11732,15 @@ impl ::protobuf::reflect::ProtobufValue for DebugMoneroDiagAck {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.monero.MoneroNetworkType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.monero.MoneroNetworkType)
 pub enum MoneroNetworkType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.monero.MoneroNetworkType.MAINNET)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.monero.MoneroNetworkType.MAINNET)
     MAINNET = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.monero.MoneroNetworkType.TESTNET)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.monero.MoneroNetworkType.TESTNET)
     TESTNET = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.monero.MoneroNetworkType.STAGENET)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.monero.MoneroNetworkType.STAGENET)
     STAGENET = 2,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.monero.MoneroNetworkType.FAKECHAIN)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.monero.MoneroNetworkType.FAKECHAIN)
     FAKECHAIN = 3,
 }
 
@@ -11804,9 +11804,9 @@ impl MoneroNetworkType {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x15messages-monero.proto\x12\x19hw.trezor.messages.monero\"\xc9\x06\n\
+    \n\x15messages-monero.proto\x12\x19hw.cerberus.messages.monero\"\xc9\x06\n\
     \x1cMoneroTransactionSourceEntry\x12c\n\x07outputs\x18\x01\x20\x03(\x0b2\
-    I.hw.trezor.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEnt\
+    I.hw.cerberus.messages.monero.MoneroTransactionSourceEntry.MoneroOutputEnt\
     ryR\x07outputs\x12\x1f\n\x0breal_output\x18\x02\x20\x01(\x04R\nrealOutpu\
     t\x12%\n\x0freal_out_tx_key\x18\x03\x20\x01(\x0cR\x0crealOutTxKey\x12<\n\
     \x1breal_out_additional_tx_keys\x18\x04\x20\x03(\x0cR\x17realOutAddition\
@@ -11817,7 +11817,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     or.messages.monero.MoneroTransactionSourceEntry.MoneroMultisigKLRkiR\rmu\
     ltisigKLRki\x12#\n\rsubaddr_minor\x18\n\x20\x01(\rR\x0csubaddrMinor\x1a\
     \xdf\x01\n\x11MoneroOutputEntry\x12\x10\n\x03idx\x18\x01\x20\x01(\x04R\
-    \x03idx\x12n\n\x03key\x18\x02\x20\x01(\x0b2\\.hw.trezor.messages.monero.\
+    \x03idx\x12n\n\x03key\x18\x02\x20\x01(\x0b2\\.hw.cerberus.messages.monero.\
     MoneroTransactionSourceEntry.MoneroOutputEntry.MoneroRctKeyPublicR\x03ke\
     y\x1aH\n\x12MoneroRctKeyPublic\x12\x12\n\x04dest\x18\x01\x20\x02(\x0cR\
     \x04dest\x12\x1e\n\ncommitment\x18\x02\x20\x02(\x0cR\ncommitment\x1aO\n\
@@ -11825,7 +11825,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x0c\n\x01L\x18\x02\x20\x01(\x0cR\x01L\x12\x0c\n\x01R\x18\x03\x20\x01(\
     \x0cR\x01R\x12\x0e\n\x02ki\x18\x04\x20\x01(\x0cR\x02ki\"\xfe\x02\n!Moner\
     oTransactionDestinationEntry\x12\x16\n\x06amount\x18\x01\x20\x01(\x04R\
-    \x06amount\x12k\n\x04addr\x18\x02\x20\x01(\x0b2W.hw.trezor.messages.mone\
+    \x06amount\x12k\n\x04addr\x18\x02\x20\x01(\x0b2W.hw.cerberus.messages.mone\
     ro.MoneroTransactionDestinationEntry.MoneroAccountPublicAddressR\x04addr\
     \x12#\n\ris_subaddress\x18\x03\x20\x01(\x08R\x0cisSubaddress\x12\x1a\n\
     \x08original\x18\x04\x20\x01(\x0cR\x08original\x12#\n\ris_integrated\x18\
@@ -11840,41 +11840,41 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \n\nbp_version\x18\x07\x20\x01(\rR\tbpVersion\"\x97\x02\n\x10MoneroGetAd\
     dress\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\x12!\n\x0csho\
     w_display\x18\x02\x20\x01(\x08R\x0bshowDisplay\x12X\n\x0cnetwork_type\
-    \x18\x03\x20\x01(\x0e2,.hw.trezor.messages.monero.MoneroNetworkType:\x07\
+    \x18\x03\x20\x01(\x0e2,.hw.cerberus.messages.monero.MoneroNetworkType:\x07\
     MAINNETR\x0bnetworkType\x12\x18\n\x07account\x18\x04\x20\x01(\rR\x07acco\
     unt\x12\x14\n\x05minor\x18\x05\x20\x01(\rR\x05minor\x12\x1d\n\npayment_i\
     d\x18\x06\x20\x01(\x0cR\tpaymentId\x12\x1a\n\x08chunkify\x18\x07\x20\x01\
     (\x08R\x08chunkify\")\n\rMoneroAddress\x12\x18\n\x07address\x18\x01\x20\
     \x01(\x0cR\x07address\"\x8a\x01\n\x11MoneroGetWatchKey\x12\x1b\n\taddres\
     s_n\x18\x01\x20\x03(\rR\x08addressN\x12X\n\x0cnetwork_type\x18\x02\x20\
-    \x01(\x0e2,.hw.trezor.messages.monero.MoneroNetworkType:\x07MAINNETR\x0b\
+    \x01(\x0e2,.hw.cerberus.messages.monero.MoneroNetworkType:\x07MAINNETR\x0b\
     networkType\"G\n\x0eMoneroWatchKey\x12\x1b\n\twatch_key\x18\x01\x20\x01(\
     \x0cR\x08watchKey\x12\x18\n\x07address\x18\x02\x20\x01(\x0cR\x07address\
     \"\xd1\x07\n\x1cMoneroTransactionInitRequest\x12\x18\n\x07version\x18\
     \x01\x20\x01(\rR\x07version\x12\x1b\n\taddress_n\x18\x02\x20\x03(\rR\x08\
-    addressN\x12X\n\x0cnetwork_type\x18\x03\x20\x01(\x0e2,.hw.trezor.message\
+    addressN\x12X\n\x0cnetwork_type\x18\x03\x20\x01(\x0e2,.hw.cerberus.message\
     s.monero.MoneroNetworkType:\x07MAINNETR\x0bnetworkType\x12h\n\x08tsx_dat\
-    a\x18\x04\x20\x01(\x0b2M.hw.trezor.messages.monero.MoneroTransactionInit\
+    a\x18\x04\x20\x01(\x0b2M.hw.cerberus.messages.monero.MoneroTransactionInit\
     Request.MoneroTransactionDataR\x07tsxData\x1a\xb5\x05\n\x15MoneroTransac\
     tionData\x12\x18\n\x07version\x18\x01\x20\x01(\rR\x07version\x12\x1d\n\n\
     payment_id\x18\x02\x20\x01(\x0cR\tpaymentId\x12\x1f\n\x0bunlock_time\x18\
     \x03\x20\x01(\x04R\nunlockTime\x12V\n\x07outputs\x18\x04\x20\x03(\x0b2<.\
-    hw.trezor.messages.monero.MoneroTransactionDestinationEntryR\x07outputs\
-    \x12[\n\nchange_dts\x18\x05\x20\x01(\x0b2<.hw.trezor.messages.monero.Mon\
+    hw.cerberus.messages.monero.MoneroTransactionDestinationEntryR\x07outputs\
+    \x12[\n\nchange_dts\x18\x05\x20\x01(\x0b2<.hw.cerberus.messages.monero.Mon\
     eroTransactionDestinationEntryR\tchangeDts\x12\x1d\n\nnum_inputs\x18\x06\
     \x20\x01(\rR\tnumInputs\x12\x14\n\x05mixin\x18\x07\x20\x01(\rR\x05mixin\
     \x12\x10\n\x03fee\x18\x08\x20\x01(\x04R\x03fee\x12\x18\n\x07account\x18\
     \t\x20\x01(\rR\x07account\x12#\n\rminor_indices\x18\n\x20\x03(\rR\x0cmin\
-    orIndices\x12Q\n\trsig_data\x18\x0b\x20\x01(\x0b24.hw.trezor.messages.mo\
+    orIndices\x12Q\n\trsig_data\x18\x0b\x20\x01(\x0b24.hw.cerberus.messages.mo\
     nero.MoneroTransactionRsigDataR\x08rsigData\x12-\n\x12integrated_indices\
     \x18\x0c\x20\x03(\rR\x11integratedIndices\x12%\n\x0eclient_version\x18\r\
     \x20\x01(\rR\rclientVersion\x12\x1b\n\thard_fork\x18\x0e\x20\x01(\rR\x08\
     hardFork\x12%\n\x0emonero_version\x18\x0f\x20\x01(\x0cR\rmoneroVersion\
     \x12\x1a\n\x08chunkify\x18\x10\x20\x01(\x08R\x08chunkify\"\x83\x01\n\x18\
     MoneroTransactionInitAck\x12\x14\n\x05hmacs\x18\x01\x20\x03(\x0cR\x05hma\
-    cs\x12Q\n\trsig_data\x18\x02\x20\x01(\x0b24.hw.trezor.messages.monero.Mo\
+    cs\x12Q\n\trsig_data\x18\x02\x20\x01(\x0b24.hw.cerberus.messages.monero.Mo\
     neroTransactionRsigDataR\x08rsigData\"v\n\x20MoneroTransactionSetInputRe\
-    quest\x12R\n\x08src_entr\x18\x01\x20\x01(\x0b27.hw.trezor.messages.moner\
+    quest\x12R\n\x08src_entr\x18\x01\x20\x01(\x0b27.hw.cerberus.messages.moner\
     o.MoneroTransactionSourceEntryR\x07srcEntr\"\xdd\x01\n\x1cMoneroTransact\
     ionSetInputAck\x12\x12\n\x04vini\x18\x01\x20\x01(\x0cR\x04vini\x12\x1b\n\
     \tvini_hmac\x18\x02\x20\x01(\x0cR\x08viniHmac\x12\x1d\n\npseudo_out\x18\
@@ -11882,36 +11882,36 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x0cR\rpseudoOutHmac\x12(\n\x10pseudo_out_alpha\x18\x05\x20\x01(\x0cR\
     \x0epseudoOutAlpha\x12\x1b\n\tspend_key\x18\x06\x20\x01(\x0cR\x08spendKe\
     y\"\x8a\x02\n!MoneroTransactionInputViniRequest\x12R\n\x08src_entr\x18\
-    \x01\x20\x01(\x0b27.hw.trezor.messages.monero.MoneroTransactionSourceEnt\
+    \x01\x20\x01(\x0b27.hw.cerberus.messages.monero.MoneroTransactionSourceEnt\
     ryR\x07srcEntr\x12\x12\n\x04vini\x18\x02\x20\x01(\x0cR\x04vini\x12\x1b\n\
     \tvini_hmac\x18\x03\x20\x01(\x0cR\x08viniHmac\x12\x1d\n\npseudo_out\x18\
     \x04\x20\x01(\x0cR\tpseudoOut\x12&\n\x0fpseudo_out_hmac\x18\x05\x20\x01(\
     \x0cR\rpseudoOutHmac\x12\x19\n\x08orig_idx\x18\x06\x20\x01(\rR\x07origId\
     x\"\x1f\n\x1dMoneroTransactionInputViniAck\"&\n$MoneroTransactionAllInpu\
     tsSetRequest\"u\n\x20MoneroTransactionAllInputsSetAck\x12Q\n\trsig_data\
-    \x18\x01\x20\x01(\x0b24.hw.trezor.messages.monero.MoneroTransactionRsigD\
+    \x18\x01\x20\x01(\x0b24.hw.cerberus.messages.monero.MoneroTransactionRsigD\
     ataR\x08rsigData\"\x9b\x02\n!MoneroTransactionSetOutputRequest\x12W\n\
-    \x08dst_entr\x18\x01\x20\x01(\x0b2<.hw.trezor.messages.monero.MoneroTran\
+    \x08dst_entr\x18\x01\x20\x01(\x0b2<.hw.cerberus.messages.monero.MoneroTran\
     sactionDestinationEntryR\x07dstEntr\x12\"\n\rdst_entr_hmac\x18\x02\x20\
     \x01(\x0cR\x0bdstEntrHmac\x12Q\n\trsig_data\x18\x03\x20\x01(\x0b24.hw.tr\
     ezor.messages.monero.MoneroTransactionRsigDataR\x08rsigData\x12&\n\x0fis\
     _offloaded_bp\x18\x04\x20\x01(\x08R\risOffloadedBp\"\xdc\x01\n\x1dMonero\
     TransactionSetOutputAck\x12\x15\n\x06tx_out\x18\x01\x20\x01(\x0cR\x05txO\
     ut\x12\x1d\n\nvouti_hmac\x18\x02\x20\x01(\x0cR\tvoutiHmac\x12Q\n\trsig_d\
-    ata\x18\x03\x20\x01(\x0b24.hw.trezor.messages.monero.MoneroTransactionRs\
+    ata\x18\x03\x20\x01(\x0b24.hw.cerberus.messages.monero.MoneroTransactionRs\
     igDataR\x08rsigData\x12\x15\n\x06out_pk\x18\x04\x20\x01(\x0cR\x05outPk\
     \x12\x1b\n\tecdh_info\x18\x05\x20\x01(\x0cR\x08ecdhInfo\"v\n!MoneroTrans\
     actionAllOutSetRequest\x12Q\n\trsig_data\x18\x01\x20\x01(\x0b24.hw.trezo\
     r.messages.monero.MoneroTransactionRsigDataR\x08rsigData\"\xc0\x02\n\x1d\
     MoneroTransactionAllOutSetAck\x12\x14\n\x05extra\x18\x01\x20\x01(\x0cR\
     \x05extra\x12$\n\x0etx_prefix_hash\x18\x02\x20\x01(\x0cR\x0ctxPrefixHash\
-    \x12X\n\x02rv\x18\x04\x20\x01(\x0b2H.hw.trezor.messages.monero.MoneroTra\
+    \x12X\n\x02rv\x18\x04\x20\x01(\x0b2H.hw.cerberus.messages.monero.MoneroTra\
     nsactionAllOutSetAck.MoneroRingCtSigR\x02rv\x12*\n\x11full_message_hash\
     \x18\x05\x20\x01(\x0cR\x0ffullMessageHash\x1a]\n\x0fMoneroRingCtSig\x12\
     \x17\n\x07txn_fee\x18\x01\x20\x01(\x04R\x06txnFee\x12\x18\n\x07message\
     \x18\x02\x20\x01(\x0cR\x07message\x12\x17\n\x07rv_type\x18\x03\x20\x01(\
     \rR\x06rvType\"\xd1\x02\n!MoneroTransactionSignInputRequest\x12R\n\x08sr\
-    c_entr\x18\x01\x20\x01(\x0b27.hw.trezor.messages.monero.MoneroTransactio\
+    c_entr\x18\x01\x20\x01(\x0b27.hw.cerberus.messages.monero.MoneroTransactio\
     nSourceEntryR\x07srcEntr\x12\x12\n\x04vini\x18\x02\x20\x01(\x0cR\x04vini\
     \x12\x1b\n\tvini_hmac\x18\x03\x20\x01(\x0cR\x08viniHmac\x12\x1d\n\npseud\
     o_out\x18\x04\x20\x01(\x0cR\tpseudoOut\x12&\n\x0fpseudo_out_hmac\x18\x05\
@@ -11928,13 +11928,13 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \n\x1fMoneroKeyImageExportInitRequest\x12\x10\n\x03num\x18\x01\x20\x02(\
     \x04R\x03num\x12\x12\n\x04hash\x18\x02\x20\x02(\x0cR\x04hash\x12\x1b\n\t\
     address_n\x18\x03\x20\x03(\rR\x08addressN\x12X\n\x0cnetwork_type\x18\x04\
-    \x20\x01(\x0e2,.hw.trezor.messages.monero.MoneroNetworkType:\x07MAINNETR\
-    \x0bnetworkType\x12j\n\x04subs\x18\x05\x20\x03(\x0b2V.hw.trezor.messages\
+    \x20\x01(\x0e2,.hw.cerberus.messages.monero.MoneroNetworkType:\x07MAINNETR\
+    \x0bnetworkType\x12j\n\x04subs\x18\x05\x20\x03(\x0b2V.hw.cerberus.messages\
     .monero.MoneroKeyImageExportInitRequest.MoneroSubAddressIndicesListR\x04\
     subs\x1a\\\n\x1bMoneroSubAddressIndicesList\x12\x18\n\x07account\x18\x01\
     \x20\x02(\rR\x07account\x12#\n\rminor_indices\x18\x02\x20\x03(\rR\x0cmin\
     orIndices\"\x1d\n\x1bMoneroKeyImageExportInitAck\"\x89\x03\n\x1dMoneroKe\
-    yImageSyncStepRequest\x12b\n\x04tdis\x18\x01\x20\x03(\x0b2N.hw.trezor.me\
+    yImageSyncStepRequest\x12b\n\x04tdis\x18\x01\x20\x03(\x0b2N.hw.cerberus.me\
     ssages.monero.MoneroKeyImageSyncStepRequest.MoneroTransferDetailsR\x04td\
     is\x1a\x83\x02\n\x15MoneroTransferDetails\x12\x17\n\x07out_key\x18\x01\
     \x20\x02(\x0cR\x06outKey\x12\x1c\n\ntx_pub_key\x18\x02\x20\x02(\x0cR\x08\
@@ -11943,13 +11943,13 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     internalOutputIndex\x12$\n\x0esub_addr_major\x18\x05\x20\x01(\rR\x0csubA\
     ddrMajor\x12$\n\x0esub_addr_minor\x18\x06\x20\x01(\rR\x0csubAddrMinor\"\
     \xb8\x01\n\x19MoneroKeyImageSyncStepAck\x12]\n\x03kis\x18\x01\x20\x03(\
-    \x0b2K.hw.trezor.messages.monero.MoneroKeyImageSyncStepAck.MoneroExporte\
+    \x0b2K.hw.cerberus.messages.monero.MoneroKeyImageSyncStepAck.MoneroExporte\
     dKeyImageR\x03kis\x1a<\n\x16MoneroExportedKeyImage\x12\x0e\n\x02iv\x18\
     \x01\x20\x01(\x0cR\x02iv\x12\x12\n\x04blob\x18\x03\x20\x01(\x0cR\x04blob\
     \"\x20\n\x1eMoneroKeyImageSyncFinalRequest\"5\n\x1aMoneroKeyImageSyncFin\
     alAck\x12\x17\n\x07enc_key\x18\x01\x20\x01(\x0cR\x06encKey\"\xc0\x02\n\
     \x15MoneroGetTxKeyRequest\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08ad\
-    dressN\x12X\n\x0cnetwork_type\x18\x02\x20\x01(\x0e2,.hw.trezor.messages.\
+    dressN\x12X\n\x0cnetwork_type\x18\x02\x20\x01(\x0e2,.hw.cerberus.messages.\
     monero.MoneroNetworkType:\x07MAINNETR\x0bnetworkType\x12\x14\n\x05salt1\
     \x18\x03\x20\x02(\x0cR\x05salt1\x12\x14\n\x05salt2\x18\x04\x20\x02(\x0cR\
     \x05salt2\x12\x1e\n\x0btx_enc_keys\x18\x05\x20\x02(\x0cR\ttxEncKeys\x12$\
@@ -11960,7 +11960,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x0cR\x06txKeys\x12%\n\x0etx_derivations\x18\x03\x20\x01(\x0cR\rtxDeriva\
     tions\"\x96\x01\n\x1dMoneroLiveRefreshStartRequest\x12\x1b\n\taddress_n\
     \x18\x01\x20\x03(\rR\x08addressN\x12X\n\x0cnetwork_type\x18\x02\x20\x01(\
-    \x0e2,.hw.trezor.messages.monero.MoneroNetworkType:\x07MAINNETR\x0bnetwo\
+    \x0e2,.hw.cerberus.messages.monero.MoneroNetworkType:\x07MAINNETR\x0bnetwo\
     rkType\"\x1b\n\x19MoneroLiveRefreshStartAck\"\xc4\x01\n\x1cMoneroLiveRef\
     reshStepRequest\x12\x17\n\x07out_key\x18\x01\x20\x02(\x0cR\x06outKey\x12\
     \x1d\n\nrecv_deriv\x18\x02\x20\x02(\x0cR\trecvDeriv\x12\x20\n\x0creal_ou\
@@ -11980,7 +11980,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x05\x20\x01(\x0cR\x05data1\x12\x14\n\x05data2\x18\x06\x20\x01(\x0cR\x05\
     data2*J\n\x11MoneroNetworkType\x12\x0b\n\x07MAINNET\x10\0\x12\x0b\n\x07T\
     ESTNET\x10\x01\x12\x0c\n\x08STAGENET\x10\x02\x12\r\n\tFAKECHAIN\x10\x03B\
-    :\n#com.satoshilabs.trezor.lib.protobufB\x13TrezorMessageMonero\
+    :\n#com.satoshilabs.cerberus.lib.protobufB\x13CerberusMessageMonero\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

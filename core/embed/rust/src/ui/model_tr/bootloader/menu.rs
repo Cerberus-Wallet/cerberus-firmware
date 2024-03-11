@@ -1,7 +1,7 @@
 #[cfg(feature = "ui_debug")]
 use crate::trace::{Trace, Tracer};
 use crate::{
-    trezorhal::secbool::{secbool, sectrue},
+    cerberushal::secbool::{secbool, sectrue},
     ui::{
         component::{Child, Component, Event, EventCtx, Pad},
         constant::screen,
@@ -91,7 +91,7 @@ impl MenuChoiceFactory {
     const CHOICES: [(&'static str, &'static str, Icon); CHOICE_LENGTH] = [
         ("Factory", "reset", ICON_TRASH),
         ("Exit", "menu", ICON_EXIT),
-        ("Reboot", "Trezor", ICON_REDO),
+        ("Reboot", "Cerberus", ICON_REDO),
     ];
 
     pub fn new(firmware_present: secbool) -> Self {

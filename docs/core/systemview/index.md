@@ -1,4 +1,4 @@
-# Debugging events with SystemView and Real-time Terminal (Trezor T only)
+# Debugging events with SystemView and Real-time Terminal (Cerberus T only)
 
 Systemview is an utility to debug interrupts or other events, counters, logs
 which does not require any extra pin (except the SWD pins attached to CPU).
@@ -45,7 +45,7 @@ Then enable the SYSTEM_VIEW feature in `FEATURE_FLAGS`:
     }
 
 
-Then in `core/src/trezor/log.py` change color to False, SystemView does not support
+Then in `core/src/cerberus/log.py` change color to False, SystemView does not support
 colorful messages (lines will be garbled), but if you want colors you can also use
 Real-time terminal (RTT, see below)
 

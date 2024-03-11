@@ -19,17 +19,17 @@ runs:
         nix-shell --run "poetry run python ci/prepare_ui_artifacts.py || true"
         mv tests/ui_tests/reports/test/* $OUTDIR || true
         mv tests/ui_tests/fixtures.*.json $OUTDIR || true
-        mv tests/trezor.log $OUTDIR || true
+        mv tests/cerberus.log $OUTDIR || true
         diff -u tests/ui_tests/fixtures.json tests/ui_tests/fixtures.suggestion.json || true
         tar -cf screens_$MODELJOB.tar tests/ui_tests/screens || true
       shell: sh
     - name: Upload report
       run: |
-        aws s3 sync ${{ github.run_id }} s3://data.trezor.io/dev/firmware/ui_report/${{ github.run_id }}
+        aws s3 sync ${{ github.run_id }} s3://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}
       shell: sh
     - name: Upload test screen recording
       run: |
-        aws s3 sync ci/ui_test_records s3://data.trezor.io/dev/firmware/ui_tests
+        aws s3 sync ci/ui_test_records s3://data.trezorcheck.io/dev/firmware/ui_tests
         # TODO: generate directory listing / autoindex
       shell: sh
     - uses: actions/upload-artifact@v4

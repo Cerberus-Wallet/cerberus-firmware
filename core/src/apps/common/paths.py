@@ -52,9 +52,9 @@ class PathSchema:
 
     The following substitutions are available:
     - `coin_type` is substituted with the coin's SLIP-44 identifier
-    - `account` is substituted with `[0-100]`, Trezor's default range of accounts
+    - `account` is substituted with `[0-100]`, Cerberus's default range of accounts
     - `change` is substituted with `[0,1]`
-    - `address_index` is substituted with `[0-1000000]`, Trezor's default range of
+    - `address_index` is substituted with `[0-1000000]`, Cerberus's default range of
       addresses
 
     Hardened flag is indicated by an apostrophe and applies to the whole path component.
@@ -327,7 +327,7 @@ PATTERN_BIP44_PUBKEY = "m/44'/coin_type'/account'/*"
 # https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md
 PATTERN_SEP5 = "m/44'/coin_type'/account'"
 # SEP-0005 Ledger Live legacy path
-# https://github.com/trezor/trezor-firmware/issues/1749
+# https://github.com/Cerberus-Wallet/cerberus-firmware/issues/1749
 PATTERN_SEP5_LEDGER_LIVE_LEGACY = "m/44'/coin_type'/0'/account"
 
 PATTERN_CASA = "m/45'/coin_type/account/change/address_index"
@@ -344,7 +344,7 @@ async def validate_path(
 
 
 async def show_path_warning(path: Bip32Path) -> None:
-    from trezor.ui.layouts import confirm_path_warning
+    from cerberus.ui.layouts import confirm_path_warning
 
     await confirm_path_warning(address_n_to_str(path))
 

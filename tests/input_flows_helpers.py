@@ -1,5 +1,5 @@
-from trezorlib import messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
+from cerberuslib import messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
 
 from . import translations as TR
 from .common import BRGeneratorType, get_text_possible_pagination

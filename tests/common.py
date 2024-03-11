@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -23,14 +23,14 @@ from unittest import mock
 
 import pytest
 
-from trezorlib import btc, messages, tools
+from cerberuslib import btc, messages, tools
 
 if TYPE_CHECKING:
     from _pytest.mark.structures import MarkDecorator
 
-    from trezorlib.debuglink import DebugLink
-    from trezorlib.debuglink import TrezorClientDebugLink as Client
-    from trezorlib.messages import ButtonRequest
+    from cerberuslib.debuglink import DebugLink
+    from cerberuslib.debuglink import CerberusClientDebugLink as Client
+    from cerberuslib.messages import ButtonRequest
 
 PRIVATE_KEYS_DEV = [byte * 32 for byte in (b"\xdd", b"\xde", b"\xdf")]
 
@@ -58,7 +58,7 @@ MNEMONIC_SLIP39_ADVANCED_33 = [
     "wildlife deal beard romp alcohol space mild usual clothes union nuclear testify course research heat listen task location thank hospital slice smell failure fawn helpful priest ambition average recover lecture process dough stadium",
     "wildlife deal acrobat romp anxiety axis starting require metric flexible geology game drove editor edge screw helpful have huge holy making pitch unknown carve holiday numb glasses survive already tenant adapt goat fangs",
 ]
-# External entropy mocked as received from trezorlib.
+# External entropy mocked as received from cerberuslib.
 EXTERNAL_ENTROPY = b"zlutoucky kun upel divoke ody" * 2
 # fmt: on
 
@@ -186,7 +186,7 @@ def read_and_confirm_mnemonic(
 def read_and_confirm_mnemonic_tt(
     debug: "DebugLink", choose_wrong: bool = False
 ) -> Generator[None, "ButtonRequest", Optional[str]]:
-    """Read a given number of mnemonic words from Trezor T screen and correctly
+    """Read a given number of mnemonic words from Cerberus T screen and correctly
     answer confirmation questions. Return the full mnemonic.
 
     For use in an input flow function.

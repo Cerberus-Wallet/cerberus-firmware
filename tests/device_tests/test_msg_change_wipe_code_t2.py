@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import btc, device, messages
-from trezorlib.client import MAX_PIN_LENGTH, PASSPHRASE_TEST_PATH
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
+from cerberuslib import btc, device, messages
+from cerberuslib.client import MAX_PIN_LENGTH, PASSPHRASE_TEST_PATH
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
 
 from ..input_flows import InputFlowNewCodeMismatch
 
@@ -36,7 +36,7 @@ def _check_wipe_code(client: Client, pin: str, wipe_code: str):
     assert client.features.wipe_code_protection is True
 
     # Try to change the PIN to the current wipe code value. The operation should fail.
-    with client, pytest.raises(TrezorFailure):
+    with client, pytest.raises(CerberusFailure):
         client.use_pin_sequence([pin, wipe_code, wipe_code])
         br_amount = 5 if client.debug.model == "T" else 6
         client.set_expected_responses(
@@ -102,7 +102,7 @@ def test_set_remove_wipe_code(client: Client):
 
 
 def test_set_wipe_code_mismatch(client: Client):
-    with client, pytest.raises(TrezorFailure):
+    with client, pytest.raises(CerberusFailure):
         IF = InputFlowNewCodeMismatch(client, WIPE_CODE4, WIPE_CODE6)
         client.set_input_flow(IF.get())
 
@@ -143,7 +143,7 @@ def test_set_pin_to_wipe_code(client: Client):
         device.change_wipe_code(client)
 
     # Try to set the PIN to the current wipe code value.
-    with client, pytest.raises(TrezorFailure):
+    with client, pytest.raises(CerberusFailure):
         br_amount = 4 if client.debug.model == "T" else 6
         client.set_expected_responses(
             [messages.ButtonRequest()] * br_amount

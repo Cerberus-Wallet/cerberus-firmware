@@ -10,7 +10,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 CORE_DIR = HERE.parent
-MOCK_FILE = CORE_DIR / "mocks/generated/trezorui2.pyi"
+MOCK_FILE = CORE_DIR / "mocks/generated/cerberusui2.pyi"
 
 
 def _get_all_functions_with_definitions() -> dict[str, dict[str, str]]:

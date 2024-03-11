@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -18,7 +18,7 @@ import typing as t
 
 import pytest
 
-from trezorlib.merkle_tree import (
+from cerberuslib.merkle_tree import (
     Leaf,
     MerkleTree,
     Node,

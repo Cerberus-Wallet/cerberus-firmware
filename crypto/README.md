@@ -1,6 +1,6 @@
-# trezor-crypto
+# cerberus-crypto
 
-[![Build Status](https://travis-ci.org/trezor/trezor-crypto.svg?branch=master)](https://travis-ci.org/trezor/trezor-crypto) [![gitter](https://badges.gitter.im/trezor/community.svg)](https://gitter.im/trezor/community)
+[![Build Status](https://travis-ci.org/Cerberus-Wallet/cerberus-crypto.svg?branch=master)](https://travis-ci.org/Cerberus-Wallet/cerberus-crypto) [![gitter](https://badges.gitter.im/Cerberus-Wallet/community.svg)](https://gitter.im/Cerberus-Wallet/community)
 
 Heavily optimized cryptography algorithms for embedded devices.
 

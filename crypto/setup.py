@@ -21,19 +21,19 @@ srcs = [
 
 extensions = [
     Extension(
-        "TrezorCrypto",
-        sources=["TrezorCrypto.pyx", "c.pxd"] + [x + ".c" for x in srcs],
+        "CerberusCrypto",
+        sources=["CerberusCrypto.pyx", "c.pxd"] + [x + ".c" for x in srcs],
         extra_compile_args=[],
     )
 ]
 
 setup(
-    name="TrezorCrypto",
+    name="CerberusCrypto",
     version="0.0.0",
-    description="Cython wrapper around trezor-crypto library",
+    description="Cython wrapper around cerberus-crypto library",
     author="Pavol Rusnak",
     author_email="stick@satoshilabs.com",
-    url="https://github.com/trezor/trezor-crypto",
+    url="https://github.com/Cerberus-Wallet/cerberus-crypto",
     cmdclass={"build_ext": build_ext},
     ext_modules=cythonize(extensions),
 )

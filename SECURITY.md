@@ -13,4 +13,4 @@ The following keys may be used to communicate sensitive information to developer
 
 You can import a key by running the following command with that individual’s fingerprint: `gpg --recv-keys <fingerprint>`.
 
-More info about our Responsible Disclosure program is available from https://trezor.io/security/
+More info about our Responsible Disclosure program is available from https://cerberus.uraanai.com/security/

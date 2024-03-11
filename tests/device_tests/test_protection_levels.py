@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import btc, device, messages, misc
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.tools import parse_path
+from cerberuslib import btc, device, messages, misc
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.tools import parse_path
 
 from ..common import MNEMONIC12, WITH_MOCK_URANDOM, get_test_address
 from ..tx_cache import TxCache
@@ -106,7 +106,7 @@ def test_apply_settings(client: Client):
                 messages.Success,
                 messages.Features,
             ]
-        )  # TrezorClient reinitializes device
+        )  # CerberusClient reinitializes device
         device.apply_settings(client, label="nazdar")
 
 
@@ -224,7 +224,7 @@ def test_reset_device(client: Client):
         )
         device.reset(client, False, 128, True, False, "label")
 
-    with pytest.raises(TrezorFailure):
+    with pytest.raises(CerberusFailure):
         # This must fail, because device is already initialized
         # Using direct call because `device.reset` has its own check
         client.call(
@@ -261,7 +261,7 @@ def test_recovery_device(client: Client):
             input_callback=client.mnemonic_callback,
         )
 
-    with pytest.raises(TrezorFailure):
+    with pytest.raises(CerberusFailure):
         # This must fail, because device is already initialized
         # Using direct call because `device.recover` has its own check
         client.call(

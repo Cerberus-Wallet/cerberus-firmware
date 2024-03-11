@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -18,11 +18,11 @@ from typing import Any
 
 import pytest
 
-from trezorlib import btc, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.debuglink import message_filters
-from trezorlib.exceptions import Cancelled
-from trezorlib.tools import parse_path
+from cerberuslib import btc, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.debuglink import message_filters
+from cerberuslib.exceptions import Cancelled
+from cerberuslib.tools import parse_path
 
 from ...input_flows import InputFlowSignMessageInfo, InputFlowSignMessagePagination
 
@@ -361,7 +361,7 @@ def test_signmessage_pagination(client: Client, message: str):
             message=message,
         )
 
-    # We cannot differentiate between a newline and space in the message read from Trezor.
+    # We cannot differentiate between a newline and space in the message read from Cerberus.
     # TODO: do the check also for model R
     if client.features.model == "T":
         message_read = IF.message_read.replace(" ", "").replace("...", "")

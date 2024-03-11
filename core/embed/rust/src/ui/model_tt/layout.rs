@@ -15,7 +15,7 @@ use crate::{
     },
     strutil::{StringType, TString},
     translations::TR,
-    trezorhal::model,
+    cerberushal::model,
     ui::{
         component::{
             base::ComponentExt,
@@ -1683,8 +1683,8 @@ extern "C" fn new_show_wait_text(message: Obj) -> Obj {
 }
 
 #[no_mangle]
-pub static mp_module_trezorui2: Module = obj_module! {
-    Qstr::MP_QSTR___name__ => Qstr::MP_QSTR_trezorui2.to_obj(),
+pub static mp_module_cerberusui2: Module = obj_module! {
+    Qstr::MP_QSTR___name__ => Qstr::MP_QSTR_cerberusui2.to_obj(),
 
     /// CONFIRMED: object
     Qstr::MP_QSTR_CONFIRMED => CONFIRMED.as_obj(),

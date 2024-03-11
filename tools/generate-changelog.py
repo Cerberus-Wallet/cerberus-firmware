@@ -8,10 +8,10 @@ import subprocess
 import click
 
 LINK_RE = re.compile(r"\[#(\d+)\]")
-ISSUE_URL = "https://github.com/trezor/trezor-firmware/pull/{issue}"
+ISSUE_URL = "https://github.com/cerberus/cerberus-firmware/pull/{issue}"
 
 VERSION_HEADER_RE = re.compile(r"## \[([.0-9]+)\]")
-DIFF_LINK = "[{new}]: https://github.com/trezor/trezor-firmware/compare/{tag_prefix}{old}...{tag_prefix}{new}\n"
+DIFF_LINK = "[{new}]: https://github.com/cerberus/cerberus-firmware/compare/{tag_prefix}{old}...{tag_prefix}{new}\n"
 
 MODELS_RE = re.compile(r"\[([A-Z0-9]{4})(,[A-Z0-9]{4})*\][ ]?")
 INTERNAL_MODELS = ("T2T1", "T2B1", "D001")

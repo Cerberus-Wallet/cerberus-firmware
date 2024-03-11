@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.trezor.messages.bootloader;
+package hw.cerberus.messages.bootloader;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
-option java_outer_classname = "TrezorMessageBootloader";
+option java_package = "com.satoshilabs.cerberus.lib.protobuf";
+option java_outer_classname = "CerberusMessageBootloader";
 
 /**
  * Request: Ask device to erase its firmware (so it can be replaced via FirmwareUpload)

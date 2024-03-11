@@ -14,7 +14,7 @@ from .tools import EnumAdapter
 LOG = logging.getLogger(__name__)
 
 FORMAT_MAGIC = b"trzd1"
-DEFS_BASE_URL = "https://data.trezor.io/firmware/eth-definitions/"
+DEFS_BASE_URL = "https://data.cerberus.io/firmware/eth-definitions/"
 
 DEFINITIONS_DEV_SIGS_REQUIRED = 1
 DEFINITIONS_DEV_PUBLIC_KEYS = [

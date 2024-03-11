@@ -12,7 +12,7 @@ use crate::{
         typ::Type,
         util,
     },
-    trezorhal::translations,
+    cerberushal::translations,
 };
 
 use super::translated_string::TranslatedString;
@@ -180,8 +180,8 @@ extern "C" fn verify(data: Obj) -> Obj {
 
 #[no_mangle]
 #[rustfmt::skip]
-pub static mp_module_trezortranslate: Module = obj_module! {
-    /// from trezortranslate_keys import TR as TR  # noqa: F401
+pub static mp_module_cerberustranslate: Module = obj_module! {
+    /// from cerberustranslate_keys import TR as TR  # noqa: F401
     /// """Translation object with attributes."""
     Qstr::MP_QSTR_TR => TR_OBJ.as_obj(),
 
@@ -197,7 +197,7 @@ pub static mp_module_trezortranslate: Module = obj_module! {
     ///     """Initialize the translations system.
     ///
     ///     Loads and verifies translation data from flash. If the verification passes,
-    ///     Trezor UI is translated from that point forward.
+    ///     Cerberus UI is translated from that point forward.
     ///     """
     Qstr::MP_QSTR_init => obj_fn_0!(init).as_obj(),
 

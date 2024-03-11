@@ -106,7 +106,7 @@
         "Electrum-XRC": "https://electrum.xrhodium.org"
     },
     "bitcoin:XSN": {
-        "Stakenet": "https://xsnexplorer.io/trezor"
+        "Stakenet": "https://xsnexplorer.io/cerberus"
     },
     "bitcoin:XVG": {
       "Electrum": "https://github.com/vergecurrency/electrum/releases"

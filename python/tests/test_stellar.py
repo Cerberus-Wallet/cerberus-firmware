@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -32,7 +32,7 @@ try:
 except ImportError:
     pytest.skip("stellar_sdk not installed", allow_module_level=True)
 
-from trezorlib import messages, stellar
+from cerberuslib import messages, stellar
 
 TX_SOURCE = "GCSJ7MFIIGIRMAS4R3VT5FIFIAOXNMGDI5HPYTWS5X7HH74FSJ6STSGF"
 SEQUENCE = 123456
@@ -53,7 +53,7 @@ def make_default_tx(default_op: bool = False, **kwargs) -> TransactionBuilder:
     builder.add_time_bounds(TIMEBOUNDS_START, TIMEBOUNDS_END)
 
     if default_op:
-        builder.append_manage_data_op(data_name="Trezor", data_value=b"Hello, Stellar")
+        builder.append_manage_data_op(data_name="Cerberus", data_value=b"Hello, Stellar")
 
     return builder
 
@@ -140,7 +140,7 @@ def test_time_bounds_missing():
 
 def test_multiple_operations():
     tx = make_default_tx()
-    data_name = "Trezor"
+    data_name = "Cerberus"
     data_value = b"Hello, Stellar"
     operation1_source = "GAEB4MRKRCONK4J7MVQXAHTNDPAECUCCCNE7YC5CKM34U3OJ673A4D6V"
     destination = "GDNSSYSCSSJ76FER5WEEXME5G4MTCUBKDRQSKOYP36KUKVDB2VCMERS6"
@@ -573,7 +573,7 @@ def test_allow_trust():
 
     with warnings.catch_warnings():
         # ignore warnings about append_trust_line_flags being a deprecated op,
-        # Trezor doesn't currently support the alternative
+        # Cerberus doesn't currently support the alternative
         warnings.filterwarnings("ignore", message=r".*append_set_trust_line_flags_op.*")
         warnings.filterwarnings("ignore", message=r".*SetTrustLineFlags.*")
         envelope = tx.append_allow_trust_op(
@@ -611,7 +611,7 @@ def test_account_merge():
 
 def test_manage_data():
     tx = make_default_tx()
-    data_name = "Trezor"
+    data_name = "Cerberus"
     data_value = b"Hello, Stellar"
     operation_source = "GAEB4MRKRCONK4J7MVQXAHTNDPAECUCCCNE7YC5CKM34U3OJ673A4D6V"
 
@@ -629,7 +629,7 @@ def test_manage_data():
 
 def test_manage_data_remove_data_entity():
     tx = make_default_tx()
-    data_name = "Trezor"
+    data_name = "Cerberus"
     data_value = None  # remove data entity
     operation_source = "GAEB4MRKRCONK4J7MVQXAHTNDPAECUCCCNE7YC5CKM34U3OJ673A4D6V"
 

@@ -90,7 +90,7 @@ impl WebUsbTransport {
                 None => continue,
             };
 
-            // Check something with interface class code like python-trezor does.
+            // Check something with interface class code like python-cerberus does.
             let class_code = dev
                 .config_descriptor(constants::CONFIG_ID)?
                 .interfaces()

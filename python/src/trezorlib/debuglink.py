@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -45,8 +45,8 @@ from mnemonic import Mnemonic
 from typing_extensions import Literal
 
 from . import mapping, messages, protobuf
-from .client import TrezorClient
-from .exceptions import TrezorFailure
+from .client import CerberusClient
+from .exceptions import CerberusFailure
 from .log import DUMP_BYTES
 from .tools import expect
 
@@ -367,7 +367,7 @@ class DebugLink:
         self.allow_interactions = auto_interact
         self.mapping = mapping.DEFAULT_MAPPING
 
-        # To be set by TrezorClientDebugLink (is not known during creation time)
+        # To be set by CerberusClientDebugLink (is not known during creation time)
         self.model: Optional[str] = None
         self.version: Tuple[int, int, int] = (0, 0, 0)
 
@@ -447,7 +447,7 @@ class DebugLink:
 
         obj = self._call(messages.DebugLinkGetState(wait_layout=True))
         if isinstance(obj, messages.Failure):
-            raise TrezorFailure(obj)
+            raise CerberusFailure(obj)
         return LayoutContent(obj.tokens)
 
     def reset_debug_events(self) -> None:
@@ -470,7 +470,7 @@ class DebugLink:
         """Enable or disable watching layouts.
         If disabled, wait_layout will not work.
 
-        The message is missing on T1. Use `TrezorClientDebugLink.watch_layout` for
+        The message is missing on T1. Use `CerberusClientDebugLink.watch_layout` for
         cross-version compatibility.
         """
         self._call(messages.DebugLinkWatchLayout(watch=watch))
@@ -480,7 +480,7 @@ class DebugLink:
         if matrix is None:
             matrix = self.state().matrix
             if matrix is None:
-                # we are on trezor-core
+                # we are on cerberus-core
                 return pin
 
         return "".join([str(matrix.index(p) + 1) for p in pin])
@@ -944,7 +944,7 @@ class MessageFilterGenerator:
 message_filters = MessageFilterGenerator()
 
 
-class TrezorClientDebugLink(TrezorClient):
+class CerberusClientDebugLink(CerberusClient):
     # This class implements automatic responses
     # and other functionality for unit tests
     # for various callbacks, created in order
@@ -1073,7 +1073,7 @@ class TrezorClientDebugLink(TrezorClient):
     def watch_layout(self, watch: bool = True) -> None:
         """Enable or disable watching layout changes.
 
-        Since trezor-core v2.3.2, it is necessary to call `watch_layout()` before
+        Since cerberus-core v2.3.2, it is necessary to call `watch_layout()` before
         using `debug.wait_layout()`, otherwise layout changes are not reported.
         """
         if self.version >= (2, 3, 2):
@@ -1083,7 +1083,7 @@ class TrezorClientDebugLink(TrezorClient):
             # - TT < 2.3.0 does not reply to unknown debuglink messages due to a bug
             self.debug.watch_layout(watch)
 
-    def __enter__(self) -> "TrezorClientDebugLink":
+    def __enter__(self) -> "CerberusClientDebugLink":
         # For usage in with/expected_responses
         if self.in_with_statement:
             raise RuntimeError("Do not nest!")
@@ -1118,12 +1118,12 @@ class TrezorClientDebugLink(TrezorClient):
 
         Each expected response can also be a tuple (bool, message). In that case, the
         expected response is only evaluated if the first field is True.
-        This is useful for differentiating sequences between Trezor models:
+        This is useful for differentiating sequences between Cerberus models:
 
-        >>> trezor_one = client.features.model == "1"
+        >>> cerberus_one = client.features.model == "1"
         >>> client.set_expected_responses([
         >>>     messages.ButtonRequest(code=ConfirmOutput),
-        >>>     (trezor_one, messages.ButtonRequest(code=ConfirmOutput)),
+        >>>     (cerberus_one, messages.ButtonRequest(code=ConfirmOutput)),
         >>>     messages.Success(),
         >>> ])
         """
@@ -1236,7 +1236,7 @@ class TrezorClientDebugLink(TrezorClient):
 
 @expect(messages.Success, field="message", ret_type=str)
 def load_device(
-    client: "TrezorClient",
+    client: "CerberusClient",
     mnemonic: Union[str, Iterable[str]],
     pin: Optional[str],
     passphrase_protection: bool,
@@ -1275,7 +1275,7 @@ load_device_by_mnemonic = load_device
 
 
 @expect(messages.Success, field="message", ret_type=str)
-def prodtest_t1(client: "TrezorClient") -> protobuf.MessageType:
+def prodtest_t1(client: "CerberusClient") -> protobuf.MessageType:
     if client.features.bootloader_mode is not True:
         raise RuntimeError("Device must be in bootloader mode")
 
@@ -1287,7 +1287,7 @@ def prodtest_t1(client: "TrezorClient") -> protobuf.MessageType:
 
 
 def record_screen(
-    debug_client: "TrezorClientDebugLink",
+    debug_client: "CerberusClientDebugLink",
     directory: Union[str, None],
     report_func: Union[Callable[[str], None], None] = None,
 ) -> None:
@@ -1329,6 +1329,6 @@ def record_screen(
             report_func(f"Recording started into {current_session_dir}.")
 
 
-def _is_emulator(debug_client: "TrezorClientDebugLink") -> bool:
+def _is_emulator(debug_client: "CerberusClientDebugLink") -> bool:
     """Check if we are connected to emulator, in contrast to hardware device."""
     return debug_client.features.fw_vendor == "EMULATOR"

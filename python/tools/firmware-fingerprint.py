@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -21,7 +21,7 @@ from typing import BinaryIO, TextIO
 
 import click
 
-from trezorlib._internal import firmware_headers
+from cerberuslib._internal import firmware_headers
 
 
 @click.command()

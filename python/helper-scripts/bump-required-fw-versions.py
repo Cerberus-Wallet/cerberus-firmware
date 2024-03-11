@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -21,11 +21,11 @@ from typing import Iterable, List
 
 import requests
 
-RELEASES_URL = "https://data.trezor.io/firmware/{}/releases.json"
+RELEASES_URL = "https://data.cerberus.io/firmware/{}/releases.json"
 MODELS = ("1", "T")
 
 FILENAME = os.path.join(
-    os.path.dirname(__file__), "..", "src", "trezorlib", "__init__.py"
+    os.path.dirname(__file__), "..", "src", "cerberuslib", "__init__.py"
 )
 START_LINE = "MINIMUM_FIRMWARE_VERSION = {\n"
 END_LINE = "}\n"

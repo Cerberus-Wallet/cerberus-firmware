@@ -19,7 +19,7 @@ from math import floor, log, sqrt
 import pytest
 
 dir = os.path.abspath(os.path.dirname(__file__))
-lib = ctypes.cdll.LoadLibrary(os.path.join(dir, "libtrezor-crypto.so"))
+lib = ctypes.cdll.LoadLibrary(os.path.join(dir, "libcerberus-crypto.so"))
 
 limbs_number = 9
 bits_per_limb = 29

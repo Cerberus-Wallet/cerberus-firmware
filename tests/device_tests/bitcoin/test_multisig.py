@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import btc, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.tools import parse_path
+from cerberuslib import btc, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.tools import parse_path
 
 from ...common import MNEMONIC12
 from ...tx_cache import TxCache
@@ -236,7 +236,7 @@ def test_missing_pubkey(client: Client):
         script_type=messages.OutputScriptType.PAYTOADDRESS,
     )
 
-    with pytest.raises(TrezorFailure) as exc:
+    with pytest.raises(CerberusFailure) as exc:
         btc.sign_tx(client, "Bitcoin", [inp1], [out1], prev_txes=TX_API)
 
     if client.features.model == "1":
@@ -325,7 +325,7 @@ def test_attack_change_input(client: Client):
 
     with client:
         client.set_filter(messages.TxAck, attack_processor)
-        with pytest.raises(TrezorFailure):
+        with pytest.raises(CerberusFailure):
             btc.sign_tx(
                 client,
                 "Testnet",

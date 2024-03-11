@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,9 +16,9 @@
 
 import pytest
 
-from trezorlib import cardano, device, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
+from cerberuslib import cardano, device, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
 
 from ...common import parametrize_using_common_fixtures
 
@@ -68,7 +68,7 @@ def test_cardano_sign_tx_show_details(client: Client, parameters, result):
     "cardano/sign_tx.plutus.failed.json",
 )
 def test_cardano_sign_tx_failed(client: Client, parameters, result):
-    with pytest.raises(TrezorFailure, match=result["error_message"]):
+    with pytest.raises(CerberusFailure, match=result["error_message"]):
         call_sign_tx(client, parameters, None)
 
 
@@ -141,7 +141,7 @@ def call_sign_tx(client: Client, parameters, input_flow=None, chunkify: bool = F
 
 
 def _transform_expected_result(result):
-    """Transform the JSON representation of the expected result into the format which is returned by trezorlib.
+    """Transform the JSON representation of the expected result into the format which is returned by cerberuslib.
 
     This involves converting the hex strings into real binary values."""
     transformed_result = {

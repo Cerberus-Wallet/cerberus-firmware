@@ -87,7 +87,7 @@ def cli(project, version):
         )
     elif parts[-1] == "python":
         bump_python(
-            project / "src" / "trezorlib" / "__init__.py", f"{major}.{minor}.{patch}"
+            project / "src" / "cerberuslib" / "__init__.py", f"{major}.{minor}.{patch}"
         )
     else:
         raise click.ClickException(f"Unknown project {project}.")

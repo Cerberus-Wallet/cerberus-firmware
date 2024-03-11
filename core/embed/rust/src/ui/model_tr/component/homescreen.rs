@@ -3,7 +3,7 @@ use crate::{
     micropython::buffer::StrBuffer,
     strutil::StringType,
     translations::TR,
-    trezorhal::usb::usb_configured,
+    cerberushal::usb::usb_configured,
     ui::{
         component::{Child, Component, Event, EventCtx, Label},
         constant::{HEIGHT, WIDTH},

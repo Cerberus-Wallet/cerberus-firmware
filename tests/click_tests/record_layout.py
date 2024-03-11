@@ -14,7 +14,7 @@ from pathlib import Path
 
 import click
 
-from trezorlib import (
+from cerberuslib import (
     binance,
     btc,
     cardano,
@@ -31,9 +31,9 @@ from trezorlib import (
     stellar,
     tezos,
 )
-from trezorlib.cli.trezorctl import cli as main
+from cerberuslib.cli.cerberusctl import cli as main
 
-from trezorlib import cli, debuglink, protobuf  # isort:skip
+from cerberuslib import cli, debuglink, protobuf  # isort:skip
 
 
 # make /tests part of sys.path so that we can import buttons.py as a module
@@ -63,7 +63,7 @@ MODULES = (
 CALLS_DONE = []
 DEBUGLINK = None
 
-get_client_orig = cli.TrezorConnection.get_client
+get_client_orig = cli.CerberusConnection.get_client
 
 
 def get_client(conn):
@@ -75,7 +75,7 @@ def get_client(conn):
     return client
 
 
-cli.TrezorConnection.get_client = get_client
+cli.CerberusConnection.get_client = get_client
 
 
 def scan_layouts(dest):
@@ -276,7 +276,7 @@ if __name__ == "__main__":
         """\
 Quick&Dirty Test Case Recorder.
 
-Use as you would use trezorctl, input clicking commands via host keyboard
+Use as you would use cerberusctl, input clicking commands via host keyboard
 for best results.
 """
     )

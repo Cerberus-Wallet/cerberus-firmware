@@ -10,4 +10,4 @@ __pycache__/
 /build
 proto.gv*
 .DS_Store
-crypto/tests/libtrezor-crypto.so.dSYM/
+crypto/tests/libcerberus-crypto.so.dSYM/

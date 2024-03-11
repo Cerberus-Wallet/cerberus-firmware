@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -19,14 +19,14 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional, Sequence, Tuple
 
-from trezorlib._internal.emulator import CoreEmulator, Emulator, LegacyEmulator
+from cerberuslib._internal.emulator import CoreEmulator, Emulator, LegacyEmulator
 
 ROOT = Path(__file__).resolve().parent.parent
 BINDIR = ROOT / "tests" / "emulators"
 
 LOCAL_BUILD_PATHS = {
-    "core": ROOT / "core" / "build" / "unix" / "trezor-emu-core",
-    "legacy": ROOT / "legacy" / "firmware" / "trezor.elf",
+    "core": ROOT / "core" / "build" / "unix" / "cerberus-emu-core",
+    "legacy": ROOT / "legacy" / "firmware" / "cerberus.elf",
 }
 
 CORE_SRC_DIR = ROOT / "core" / "src"
@@ -42,7 +42,7 @@ def check_version(tag: str, version_tuple: Tuple[int, int, int]) -> None:
 
 
 def filename_from_tag(gen: str, tag: str) -> Path:
-    return BINDIR / f"trezor-emu-{gen}-{tag}"
+    return BINDIR / f"cerberus-emu-{gen}-{tag}"
 
 
 def get_tags() -> Dict[str, List[str]]:
@@ -55,7 +55,7 @@ def get_tags() -> Dict[str, List[str]]:
     result = defaultdict(list)
     for f in sorted(files):
         try:
-            # example: "trezor-emu-core-v2.1.1" or "trezor-emu-core-v2.1.1-46ab42fw"
+            # example: "cerberus-emu-core-v2.1.1" or "cerberus-emu-core-v2.1.1-46ab42fw"
             _, _, gen, tag = f.name.split("-", maxsplit=3)
             result[gen].append(tag)
         except ValueError:

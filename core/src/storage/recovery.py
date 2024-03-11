@@ -85,7 +85,7 @@ def set_slip39_remaining_shares(shares_remaining: int, group_index: int) -> None
     0x10 (16) was chosen as the default value because it's the max
     share count for a group.
     """
-    from trezor.crypto.slip39 import MAX_SHARE_COUNT
+    from cerberus.crypto.slip39 import MAX_SHARE_COUNT
 
     _require_progress()
     remaining = common.get(_NAMESPACE, _REMAINING)
@@ -100,7 +100,7 @@ def set_slip39_remaining_shares(shares_remaining: int, group_index: int) -> None
 
 
 def get_slip39_remaining_shares(group_index: int) -> int | None:
-    from trezor.crypto.slip39 import MAX_SHARE_COUNT
+    from cerberus.crypto.slip39 import MAX_SHARE_COUNT
 
     _require_progress()
     remaining = common.get(_NAMESPACE, _REMAINING)

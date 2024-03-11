@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,9 +16,9 @@
 
 import pytest
 
-from trezorlib import fido
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import Cancelled, TrezorFailure
+from cerberuslib import fido
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import Cancelled, CerberusFailure
 
 from ...common import MNEMONIC12
 from .data_webauthn import CRED1, CRED2, CRED3, CREDS
@@ -31,7 +31,7 @@ RK_CAPACITY = 100
 @pytest.mark.setup_client(mnemonic=MNEMONIC12)
 def test_add_remove(client: Client):
     # Remove index 0 should fail.
-    with pytest.raises(TrezorFailure):
+    with pytest.raises(CerberusFailure):
         fido.remove_credential(client, 0)
 
     # List should be empty.
@@ -89,11 +89,11 @@ def test_add_remove(client: Client):
         fido.add_credential(client, cred)
 
     # Adding one more valid credential to full storage should fail.
-    with pytest.raises(TrezorFailure):
+    with pytest.raises(CerberusFailure):
         fido.add_credential(client, CREDS[-1])
 
     # Removing the index, which is one past the end, should fail.
-    with pytest.raises(TrezorFailure):
+    with pytest.raises(CerberusFailure):
         fido.remove_credential(client, RK_CAPACITY)
 
     # Remove index 2.

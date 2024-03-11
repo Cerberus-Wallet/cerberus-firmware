@@ -25,18 +25,18 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.Initialize)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.Initialize)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct Initialize {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Initialize.session_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Initialize.session_id)
     pub session_id: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Initialize._skip_passphrase)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Initialize._skip_passphrase)
     pub _skip_passphrase: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Initialize.derive_cardano)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Initialize.derive_cardano)
     pub derive_cardano: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.Initialize.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.Initialize.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -257,11 +257,11 @@ impl ::protobuf::reflect::ProtobufValue for Initialize {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.GetFeatures)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.GetFeatures)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct GetFeatures {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.GetFeatures.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.GetFeatures.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -360,108 +360,108 @@ impl ::protobuf::reflect::ProtobufValue for GetFeatures {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.Features)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.Features)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct Features {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.vendor)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.vendor)
     pub vendor: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.major_version)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.major_version)
     pub major_version: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.minor_version)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.minor_version)
     pub minor_version: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.patch_version)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.patch_version)
     pub patch_version: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.bootloader_mode)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.bootloader_mode)
     pub bootloader_mode: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.device_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.device_id)
     pub device_id: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.pin_protection)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.pin_protection)
     pub pin_protection: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.passphrase_protection)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.passphrase_protection)
     pub passphrase_protection: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.language)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.language)
     pub language: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.label)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.label)
     pub label: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.initialized)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.initialized)
     pub initialized: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.revision)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.revision)
     pub revision: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.bootloader_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.bootloader_hash)
     pub bootloader_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.imported)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.imported)
     pub imported: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.unlocked)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.unlocked)
     pub unlocked: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features._passphrase_cached)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features._passphrase_cached)
     pub _passphrase_cached: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.firmware_present)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.firmware_present)
     pub firmware_present: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.needs_backup)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.needs_backup)
     pub needs_backup: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.flags)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.flags)
     pub flags: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.model)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.model)
     pub model: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.fw_major)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.fw_major)
     pub fw_major: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.fw_minor)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.fw_minor)
     pub fw_minor: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.fw_patch)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.fw_patch)
     pub fw_patch: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.fw_vendor)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.fw_vendor)
     pub fw_vendor: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.unfinished_backup)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.unfinished_backup)
     pub unfinished_backup: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.no_backup)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.no_backup)
     pub no_backup: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.recovery_mode)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.recovery_mode)
     pub recovery_mode: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.capabilities)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.capabilities)
     pub capabilities: ::std::vec::Vec<::protobuf::EnumOrUnknown<features::Capability>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.backup_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.backup_type)
     pub backup_type: ::std::option::Option<::protobuf::EnumOrUnknown<BackupType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.sd_card_present)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.sd_card_present)
     pub sd_card_present: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.sd_protection)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.sd_protection)
     pub sd_protection: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.wipe_code_protection)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.wipe_code_protection)
     pub wipe_code_protection: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.session_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.session_id)
     pub session_id: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.passphrase_always_on_device)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.passphrase_always_on_device)
     pub passphrase_always_on_device: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.safety_checks)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.safety_checks)
     pub safety_checks: ::std::option::Option<::protobuf::EnumOrUnknown<SafetyCheckLevel>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.auto_lock_delay_ms)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.auto_lock_delay_ms)
     pub auto_lock_delay_ms: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.display_rotation)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.display_rotation)
     pub display_rotation: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.experimental_features)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.experimental_features)
     pub experimental_features: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.busy)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.busy)
     pub busy: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.homescreen_format)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.homescreen_format)
     pub homescreen_format: ::std::option::Option<::protobuf::EnumOrUnknown<HomescreenFormat>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.hide_passphrase_from_host)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.hide_passphrase_from_host)
     pub hide_passphrase_from_host: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.internal_model)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.internal_model)
     pub internal_model: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.unit_color)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.unit_color)
     pub unit_color: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.unit_btconly)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.unit_btconly)
     pub unit_btconly: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.homescreen_width)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.homescreen_width)
     pub homescreen_width: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.homescreen_height)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.homescreen_height)
     pub homescreen_height: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.bootloader_locked)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.bootloader_locked)
     pub bootloader_locked: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Features.language_version_matches)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Features.language_version_matches)
     pub language_version_matches: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.Features.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.Features.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1125,7 +1125,7 @@ impl Features {
         self.recovery_mode = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.management.BackupType backup_type = 31;
+    // optional .hw.cerberus.messages.management.BackupType backup_type = 31;
 
     pub fn backup_type(&self) -> BackupType {
         match self.backup_type {
@@ -1259,7 +1259,7 @@ impl Features {
         self.passphrase_always_on_device = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.management.SafetyCheckLevel safety_checks = 37;
+    // optional .hw.cerberus.messages.management.SafetyCheckLevel safety_checks = 37;
 
     pub fn safety_checks(&self) -> SafetyCheckLevel {
         match self.safety_checks {
@@ -1357,7 +1357,7 @@ impl Features {
         self.busy = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.management.HomescreenFormat homescreen_format = 42;
+    // optional .hw.cerberus.messages.management.HomescreenFormat homescreen_format = 42;
 
     pub fn homescreen_format(&self) -> HomescreenFormat {
         match self.homescreen_format {
@@ -2415,45 +2415,45 @@ impl ::protobuf::reflect::ProtobufValue for Features {
 /// Nested message and enums of message `Features`
 pub mod features {
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.management.Features.Capability)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.management.Features.Capability)
     pub enum Capability {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Bitcoin)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Bitcoin)
         Capability_Bitcoin = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Bitcoin_like)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Bitcoin_like)
         Capability_Bitcoin_like = 2,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Binance)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Binance)
         Capability_Binance = 3,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Cardano)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Cardano)
         Capability_Cardano = 4,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Crypto)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Crypto)
         Capability_Crypto = 5,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_EOS)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_EOS)
         Capability_EOS = 6,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Ethereum)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Ethereum)
         Capability_Ethereum = 7,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Lisk)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Lisk)
         Capability_Lisk = 8,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Monero)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Monero)
         Capability_Monero = 9,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_NEM)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_NEM)
         Capability_NEM = 10,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Ripple)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Ripple)
         Capability_Ripple = 11,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Stellar)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Stellar)
         Capability_Stellar = 12,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Tezos)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Tezos)
         Capability_Tezos = 13,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_U2F)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_U2F)
         Capability_U2F = 14,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Shamir)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Shamir)
         Capability_Shamir = 15,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_ShamirGroups)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_ShamirGroups)
         Capability_ShamirGroups = 16,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_PassphraseEntry)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_PassphraseEntry)
         Capability_PassphraseEntry = 17,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Solana)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Solana)
         Capability_Solana = 18,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.Features.Capability.Capability_Translations)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.Features.Capability.Capability_Translations)
         Capability_Translations = 19,
     }
 
@@ -2583,11 +2583,11 @@ pub mod features {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.LockDevice)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.LockDevice)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct LockDevice {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.LockDevice.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.LockDevice.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2686,14 +2686,14 @@ impl ::protobuf::reflect::ProtobufValue for LockDevice {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.SetBusy)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.SetBusy)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SetBusy {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.SetBusy.expiry_ms)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.SetBusy.expiry_ms)
     pub expiry_ms: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.SetBusy.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.SetBusy.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2827,11 +2827,11 @@ impl ::protobuf::reflect::ProtobufValue for SetBusy {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.EndSession)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.EndSession)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EndSession {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.EndSession.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.EndSession.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2930,34 +2930,34 @@ impl ::protobuf::reflect::ProtobufValue for EndSession {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.ApplySettings)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.ApplySettings)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct ApplySettings {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ApplySettings.language)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ApplySettings.language)
     pub language: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ApplySettings.label)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ApplySettings.label)
     pub label: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ApplySettings.use_passphrase)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ApplySettings.use_passphrase)
     pub use_passphrase: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ApplySettings.homescreen)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ApplySettings.homescreen)
     pub homescreen: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ApplySettings._passphrase_source)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ApplySettings._passphrase_source)
     pub _passphrase_source: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ApplySettings.auto_lock_delay_ms)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ApplySettings.auto_lock_delay_ms)
     pub auto_lock_delay_ms: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ApplySettings.display_rotation)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ApplySettings.display_rotation)
     pub display_rotation: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ApplySettings.passphrase_always_on_device)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ApplySettings.passphrase_always_on_device)
     pub passphrase_always_on_device: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ApplySettings.safety_checks)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ApplySettings.safety_checks)
     pub safety_checks: ::std::option::Option<::protobuf::EnumOrUnknown<SafetyCheckLevel>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ApplySettings.experimental_features)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ApplySettings.experimental_features)
     pub experimental_features: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ApplySettings.hide_passphrase_from_host)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ApplySettings.hide_passphrase_from_host)
     pub hide_passphrase_from_host: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.ApplySettings.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.ApplySettings.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3175,7 +3175,7 @@ impl ApplySettings {
         self.passphrase_always_on_device = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.management.SafetyCheckLevel safety_checks = 9;
+    // optional .hw.cerberus.messages.management.SafetyCheckLevel safety_checks = 9;
 
     pub fn safety_checks(&self) -> SafetyCheckLevel {
         match self.safety_checks {
@@ -3495,16 +3495,16 @@ impl ::protobuf::reflect::ProtobufValue for ApplySettings {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.ChangeLanguage)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.ChangeLanguage)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct ChangeLanguage {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ChangeLanguage.data_length)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ChangeLanguage.data_length)
     pub data_length: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ChangeLanguage.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ChangeLanguage.show_display)
     pub show_display: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.ChangeLanguage.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.ChangeLanguage.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3676,16 +3676,16 @@ impl ::protobuf::reflect::ProtobufValue for ChangeLanguage {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.TranslationDataRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.TranslationDataRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TranslationDataRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.TranslationDataRequest.data_length)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.TranslationDataRequest.data_length)
     pub data_length: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.TranslationDataRequest.data_offset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.TranslationDataRequest.data_offset)
     pub data_offset: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.TranslationDataRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.TranslationDataRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3860,14 +3860,14 @@ impl ::protobuf::reflect::ProtobufValue for TranslationDataRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.TranslationDataAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.TranslationDataAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct TranslationDataAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.TranslationDataAck.data_chunk)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.TranslationDataAck.data_chunk)
     pub data_chunk: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.TranslationDataAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.TranslationDataAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4021,14 +4021,14 @@ impl ::protobuf::reflect::ProtobufValue for TranslationDataAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.ApplyFlags)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.ApplyFlags)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct ApplyFlags {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ApplyFlags.flags)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ApplyFlags.flags)
     pub flags: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.ApplyFlags.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.ApplyFlags.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4165,14 +4165,14 @@ impl ::protobuf::reflect::ProtobufValue for ApplyFlags {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.ChangePin)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.ChangePin)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct ChangePin {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ChangePin.remove)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ChangePin.remove)
     pub remove: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.ChangePin.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.ChangePin.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4306,14 +4306,14 @@ impl ::protobuf::reflect::ProtobufValue for ChangePin {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.ChangeWipeCode)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.ChangeWipeCode)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct ChangeWipeCode {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ChangeWipeCode.remove)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ChangeWipeCode.remove)
     pub remove: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.ChangeWipeCode.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.ChangeWipeCode.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4447,14 +4447,14 @@ impl ::protobuf::reflect::ProtobufValue for ChangeWipeCode {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.SdProtect)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.SdProtect)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SdProtect {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.SdProtect.operation)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.SdProtect.operation)
     pub operation: ::std::option::Option<::protobuf::EnumOrUnknown<sd_protect::SdProtectOperationType>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.SdProtect.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.SdProtect.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4469,7 +4469,7 @@ impl SdProtect {
         ::std::default::Default::default()
     }
 
-    // required .hw.trezor.messages.management.SdProtect.SdProtectOperationType operation = 1;
+    // required .hw.cerberus.messages.management.SdProtect.SdProtectOperationType operation = 1;
 
     pub fn operation(&self) -> sd_protect::SdProtectOperationType {
         match self.operation {
@@ -4597,13 +4597,13 @@ impl ::protobuf::reflect::ProtobufValue for SdProtect {
 /// Nested message and enums of message `SdProtect`
 pub mod sd_protect {
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.management.SdProtect.SdProtectOperationType)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.management.SdProtect.SdProtectOperationType)
     pub enum SdProtectOperationType {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.SdProtect.SdProtectOperationType.DISABLE)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.SdProtect.SdProtectOperationType.DISABLE)
         DISABLE = 0,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.SdProtect.SdProtectOperationType.ENABLE)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.SdProtect.SdProtectOperationType.ENABLE)
         ENABLE = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.SdProtect.SdProtectOperationType.REFRESH)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.SdProtect.SdProtectOperationType.REFRESH)
         REFRESH = 2,
     }
 
@@ -4664,16 +4664,16 @@ pub mod sd_protect {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.Ping)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.Ping)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct Ping {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Ping.message)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Ping.message)
     pub message: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Ping.button_protection)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Ping.button_protection)
     pub button_protection: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.Ping.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.Ping.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4859,11 +4859,11 @@ impl ::protobuf::reflect::ProtobufValue for Ping {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.Cancel)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.Cancel)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct Cancel {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.Cancel.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.Cancel.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4962,14 +4962,14 @@ impl ::protobuf::reflect::ProtobufValue for Cancel {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.GetEntropy)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.GetEntropy)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct GetEntropy {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.GetEntropy.size)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.GetEntropy.size)
     pub size: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.GetEntropy.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.GetEntropy.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5106,14 +5106,14 @@ impl ::protobuf::reflect::ProtobufValue for GetEntropy {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.Entropy)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.Entropy)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct Entropy {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Entropy.entropy)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Entropy.entropy)
     pub entropy: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.Entropy.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.Entropy.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5267,14 +5267,14 @@ impl ::protobuf::reflect::ProtobufValue for Entropy {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.GetFirmwareHash)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.GetFirmwareHash)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct GetFirmwareHash {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.GetFirmwareHash.challenge)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.GetFirmwareHash.challenge)
     pub challenge: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.GetFirmwareHash.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.GetFirmwareHash.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5425,14 +5425,14 @@ impl ::protobuf::reflect::ProtobufValue for GetFirmwareHash {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.FirmwareHash)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.FirmwareHash)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct FirmwareHash {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.FirmwareHash.hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.FirmwareHash.hash)
     pub hash: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.FirmwareHash.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.FirmwareHash.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5586,14 +5586,14 @@ impl ::protobuf::reflect::ProtobufValue for FirmwareHash {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.AuthenticateDevice)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.AuthenticateDevice)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct AuthenticateDevice {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.AuthenticateDevice.challenge)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.AuthenticateDevice.challenge)
     pub challenge: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.AuthenticateDevice.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.AuthenticateDevice.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5747,16 +5747,16 @@ impl ::protobuf::reflect::ProtobufValue for AuthenticateDevice {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.AuthenticityProof)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.AuthenticityProof)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct AuthenticityProof {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.AuthenticityProof.certificates)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.AuthenticityProof.certificates)
     pub certificates: ::std::vec::Vec<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.AuthenticityProof.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.AuthenticityProof.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.AuthenticityProof.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.AuthenticityProof.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5926,11 +5926,11 @@ impl ::protobuf::reflect::ProtobufValue for AuthenticityProof {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.WipeDevice)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.WipeDevice)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct WipeDevice {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.WipeDevice.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.WipeDevice.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -6029,30 +6029,30 @@ impl ::protobuf::reflect::ProtobufValue for WipeDevice {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.LoadDevice)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.LoadDevice)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct LoadDevice {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.LoadDevice.mnemonics)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.LoadDevice.mnemonics)
     pub mnemonics: ::std::vec::Vec<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.LoadDevice.pin)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.LoadDevice.pin)
     pub pin: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.LoadDevice.passphrase_protection)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.LoadDevice.passphrase_protection)
     pub passphrase_protection: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.LoadDevice.language)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.LoadDevice.language)
     pub language: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.LoadDevice.label)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.LoadDevice.label)
     pub label: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.LoadDevice.skip_checksum)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.LoadDevice.skip_checksum)
     pub skip_checksum: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.LoadDevice.u2f_counter)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.LoadDevice.u2f_counter)
     pub u2f_counter: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.LoadDevice.needs_backup)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.LoadDevice.needs_backup)
     pub needs_backup: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.LoadDevice.no_backup)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.LoadDevice.no_backup)
     pub no_backup: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.LoadDevice.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.LoadDevice.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -6498,32 +6498,32 @@ impl ::protobuf::reflect::ProtobufValue for LoadDevice {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.ResetDevice)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.ResetDevice)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct ResetDevice {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ResetDevice.display_random)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ResetDevice.display_random)
     pub display_random: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ResetDevice.strength)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ResetDevice.strength)
     pub strength: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ResetDevice.passphrase_protection)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ResetDevice.passphrase_protection)
     pub passphrase_protection: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ResetDevice.pin_protection)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ResetDevice.pin_protection)
     pub pin_protection: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ResetDevice.language)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ResetDevice.language)
     pub language: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ResetDevice.label)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ResetDevice.label)
     pub label: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ResetDevice.u2f_counter)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ResetDevice.u2f_counter)
     pub u2f_counter: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ResetDevice.skip_backup)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ResetDevice.skip_backup)
     pub skip_backup: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ResetDevice.no_backup)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ResetDevice.no_backup)
     pub no_backup: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.ResetDevice.backup_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.ResetDevice.backup_type)
     pub backup_type: ::std::option::Option<::protobuf::EnumOrUnknown<BackupType>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.ResetDevice.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.ResetDevice.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -6743,7 +6743,7 @@ impl ResetDevice {
         self.no_backup = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.management.BackupType backup_type = 10;
+    // optional .hw.cerberus.messages.management.BackupType backup_type = 10;
 
     pub fn backup_type(&self) -> BackupType {
         match self.backup_type {
@@ -7009,11 +7009,11 @@ impl ::protobuf::reflect::ProtobufValue for ResetDevice {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.BackupDevice)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.BackupDevice)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct BackupDevice {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.BackupDevice.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.BackupDevice.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7112,11 +7112,11 @@ impl ::protobuf::reflect::ProtobufValue for BackupDevice {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.EntropyRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.EntropyRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EntropyRequest {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.EntropyRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.EntropyRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7215,14 +7215,14 @@ impl ::protobuf::reflect::ProtobufValue for EntropyRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.EntropyAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.EntropyAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EntropyAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.EntropyAck.entropy)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.EntropyAck.entropy)
     pub entropy: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.EntropyAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.EntropyAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7376,30 +7376,30 @@ impl ::protobuf::reflect::ProtobufValue for EntropyAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.RecoveryDevice)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.RecoveryDevice)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct RecoveryDevice {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.RecoveryDevice.word_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.RecoveryDevice.word_count)
     pub word_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.RecoveryDevice.passphrase_protection)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.RecoveryDevice.passphrase_protection)
     pub passphrase_protection: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.RecoveryDevice.pin_protection)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.RecoveryDevice.pin_protection)
     pub pin_protection: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.RecoveryDevice.language)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.RecoveryDevice.language)
     pub language: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.RecoveryDevice.label)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.RecoveryDevice.label)
     pub label: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.RecoveryDevice.enforce_wordlist)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.RecoveryDevice.enforce_wordlist)
     pub enforce_wordlist: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.RecoveryDevice.type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.RecoveryDevice.type)
     pub type_: ::std::option::Option<::protobuf::EnumOrUnknown<recovery_device::RecoveryDeviceType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.RecoveryDevice.u2f_counter)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.RecoveryDevice.u2f_counter)
     pub u2f_counter: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.RecoveryDevice.dry_run)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.RecoveryDevice.dry_run)
     pub dry_run: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.RecoveryDevice.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.RecoveryDevice.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7562,7 +7562,7 @@ impl RecoveryDevice {
         self.enforce_wordlist = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.management.RecoveryDevice.RecoveryDeviceType type = 8;
+    // optional .hw.cerberus.messages.management.RecoveryDevice.RecoveryDeviceType type = 8;
 
     pub fn type_(&self) -> recovery_device::RecoveryDeviceType {
         match self.type_ {
@@ -7853,11 +7853,11 @@ impl ::protobuf::reflect::ProtobufValue for RecoveryDevice {
 /// Nested message and enums of message `RecoveryDevice`
 pub mod recovery_device {
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.management.RecoveryDevice.RecoveryDeviceType)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.management.RecoveryDevice.RecoveryDeviceType)
     pub enum RecoveryDeviceType {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.RecoveryDevice.RecoveryDeviceType.RecoveryDeviceType_ScrambledWords)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.RecoveryDevice.RecoveryDeviceType.RecoveryDeviceType_ScrambledWords)
         RecoveryDeviceType_ScrambledWords = 0,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.RecoveryDevice.RecoveryDeviceType.RecoveryDeviceType_Matrix)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.RecoveryDevice.RecoveryDeviceType.RecoveryDeviceType_Matrix)
         RecoveryDeviceType_Matrix = 1,
     }
 
@@ -7915,14 +7915,14 @@ pub mod recovery_device {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.WordRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.WordRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct WordRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.WordRequest.type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.WordRequest.type)
     pub type_: ::std::option::Option<::protobuf::EnumOrUnknown<word_request::WordRequestType>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.WordRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.WordRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7937,7 +7937,7 @@ impl WordRequest {
         ::std::default::Default::default()
     }
 
-    // required .hw.trezor.messages.management.WordRequest.WordRequestType type = 1;
+    // required .hw.cerberus.messages.management.WordRequest.WordRequestType type = 1;
 
     pub fn type_(&self) -> word_request::WordRequestType {
         match self.type_ {
@@ -8065,13 +8065,13 @@ impl ::protobuf::reflect::ProtobufValue for WordRequest {
 /// Nested message and enums of message `WordRequest`
 pub mod word_request {
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.management.WordRequest.WordRequestType)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.management.WordRequest.WordRequestType)
     pub enum WordRequestType {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.WordRequest.WordRequestType.WordRequestType_Plain)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.WordRequest.WordRequestType.WordRequestType_Plain)
         WordRequestType_Plain = 0,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.WordRequest.WordRequestType.WordRequestType_Matrix9)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.WordRequest.WordRequestType.WordRequestType_Matrix9)
         WordRequestType_Matrix9 = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.WordRequest.WordRequestType.WordRequestType_Matrix6)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.WordRequest.WordRequestType.WordRequestType_Matrix6)
         WordRequestType_Matrix6 = 2,
     }
 
@@ -8132,14 +8132,14 @@ pub mod word_request {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.WordAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.WordAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct WordAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.WordAck.word)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.WordAck.word)
     pub word: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.WordAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.WordAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8293,14 +8293,14 @@ impl ::protobuf::reflect::ProtobufValue for WordAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.SetU2FCounter)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.SetU2FCounter)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct SetU2FCounter {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.SetU2FCounter.u2f_counter)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.SetU2FCounter.u2f_counter)
     pub u2f_counter: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.SetU2FCounter.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.SetU2FCounter.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8437,11 +8437,11 @@ impl ::protobuf::reflect::ProtobufValue for SetU2FCounter {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.GetNextU2FCounter)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.GetNextU2FCounter)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct GetNextU2FCounter {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.GetNextU2FCounter.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.GetNextU2FCounter.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8540,14 +8540,14 @@ impl ::protobuf::reflect::ProtobufValue for GetNextU2FCounter {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.NextU2FCounter)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.NextU2FCounter)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct NextU2FCounter {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.NextU2FCounter.u2f_counter)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.NextU2FCounter.u2f_counter)
     pub u2f_counter: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.NextU2FCounter.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.NextU2FCounter.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8684,11 +8684,11 @@ impl ::protobuf::reflect::ProtobufValue for NextU2FCounter {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.DoPreauthorized)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.DoPreauthorized)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct DoPreauthorized {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.DoPreauthorized.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.DoPreauthorized.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8787,11 +8787,11 @@ impl ::protobuf::reflect::ProtobufValue for DoPreauthorized {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.PreauthorizedRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.PreauthorizedRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct PreauthorizedRequest {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.PreauthorizedRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.PreauthorizedRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8890,11 +8890,11 @@ impl ::protobuf::reflect::ProtobufValue for PreauthorizedRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.CancelAuthorization)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.CancelAuthorization)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CancelAuthorization {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.CancelAuthorization.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.CancelAuthorization.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8993,18 +8993,18 @@ impl ::protobuf::reflect::ProtobufValue for CancelAuthorization {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.RebootToBootloader)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.RebootToBootloader)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct RebootToBootloader {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.RebootToBootloader.boot_command)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.RebootToBootloader.boot_command)
     pub boot_command: ::std::option::Option<::protobuf::EnumOrUnknown<reboot_to_bootloader::BootCommand>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.RebootToBootloader.firmware_header)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.RebootToBootloader.firmware_header)
     pub firmware_header: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.RebootToBootloader.language_data_length)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.RebootToBootloader.language_data_length)
     pub language_data_length: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.RebootToBootloader.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.RebootToBootloader.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9019,7 +9019,7 @@ impl RebootToBootloader {
         ::std::default::Default::default()
     }
 
-    // optional .hw.trezor.messages.management.RebootToBootloader.BootCommand boot_command = 1;
+    // optional .hw.cerberus.messages.management.RebootToBootloader.BootCommand boot_command = 1;
 
     pub fn boot_command(&self) -> reboot_to_bootloader::BootCommand {
         match self.boot_command {
@@ -9231,11 +9231,11 @@ impl ::protobuf::reflect::ProtobufValue for RebootToBootloader {
 /// Nested message and enums of message `RebootToBootloader`
 pub mod reboot_to_bootloader {
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.management.RebootToBootloader.BootCommand)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.management.RebootToBootloader.BootCommand)
     pub enum BootCommand {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.RebootToBootloader.BootCommand.STOP_AND_WAIT)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.RebootToBootloader.BootCommand.STOP_AND_WAIT)
         STOP_AND_WAIT = 0,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.RebootToBootloader.BootCommand.INSTALL_UPGRADE)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.RebootToBootloader.BootCommand.INSTALL_UPGRADE)
         INSTALL_UPGRADE = 1,
     }
 
@@ -9293,11 +9293,11 @@ pub mod reboot_to_bootloader {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.GetNonce)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.GetNonce)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct GetNonce {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.GetNonce.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.GetNonce.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9396,14 +9396,14 @@ impl ::protobuf::reflect::ProtobufValue for GetNonce {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.Nonce)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.Nonce)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct Nonce {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.Nonce.nonce)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.Nonce.nonce)
     pub nonce: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.Nonce.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.Nonce.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9557,16 +9557,16 @@ impl ::protobuf::reflect::ProtobufValue for Nonce {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.UnlockPath)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.UnlockPath)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct UnlockPath {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.UnlockPath.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.UnlockPath.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.UnlockPath.mac)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.UnlockPath.mac)
     pub mac: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.UnlockPath.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.UnlockPath.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9736,14 +9736,14 @@ impl ::protobuf::reflect::ProtobufValue for UnlockPath {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.UnlockedPathRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.UnlockedPathRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct UnlockedPathRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.management.UnlockedPathRequest.mac)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.management.UnlockedPathRequest.mac)
     pub mac: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.UnlockedPathRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.UnlockedPathRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9894,11 +9894,11 @@ impl ::protobuf::reflect::ProtobufValue for UnlockedPathRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.ShowDeviceTutorial)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.ShowDeviceTutorial)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct ShowDeviceTutorial {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.ShowDeviceTutorial.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.ShowDeviceTutorial.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9997,11 +9997,11 @@ impl ::protobuf::reflect::ProtobufValue for ShowDeviceTutorial {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.management.UnlockBootloader)
+// @@protoc_insertion_point(message:hw.cerberus.messages.management.UnlockBootloader)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct UnlockBootloader {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.management.UnlockBootloader.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.management.UnlockBootloader.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -10101,13 +10101,13 @@ impl ::protobuf::reflect::ProtobufValue for UnlockBootloader {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.management.BackupType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.management.BackupType)
 pub enum BackupType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.BackupType.Bip39)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.BackupType.Bip39)
     Bip39 = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.BackupType.Slip39_Basic)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.BackupType.Slip39_Basic)
     Slip39_Basic = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.BackupType.Slip39_Advanced)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.BackupType.Slip39_Advanced)
     Slip39_Advanced = 2,
 }
 
@@ -10168,13 +10168,13 @@ impl BackupType {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.management.SafetyCheckLevel)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.management.SafetyCheckLevel)
 pub enum SafetyCheckLevel {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.SafetyCheckLevel.Strict)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.SafetyCheckLevel.Strict)
     Strict = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.SafetyCheckLevel.PromptAlways)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.SafetyCheckLevel.PromptAlways)
     PromptAlways = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.SafetyCheckLevel.PromptTemporarily)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.SafetyCheckLevel.PromptTemporarily)
     PromptTemporarily = 2,
 }
 
@@ -10235,13 +10235,13 @@ impl SafetyCheckLevel {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.management.HomescreenFormat)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.management.HomescreenFormat)
 pub enum HomescreenFormat {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.HomescreenFormat.Toif)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.HomescreenFormat.Toif)
     Toif = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.HomescreenFormat.Jpeg)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.HomescreenFormat.Jpeg)
     Jpeg = 2,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.management.HomescreenFormat.ToiG)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.management.HomescreenFormat.ToiG)
     ToiG = 3,
 }
 
@@ -10307,7 +10307,7 @@ impl HomescreenFormat {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x19messages-management.proto\x12\x1dhw.trezor.messages.management\x1a\
+    \n\x19messages-management.proto\x12\x1dhw.cerberus.messages.management\x1a\
     \x0emessages.proto\"\x80\x01\n\nInitialize\x12\x1d\n\nsession_id\x18\x01\
     \x20\x01(\x0cR\tsessionId\x12,\n\x10_skip_passphrase\x18\x02\x20\x01(\
     \x08R\x0eSkipPassphraseB\x02\x18\x01\x12%\n\x0ederive_cardano\x18\x03\
@@ -10334,20 +10334,20 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \n\tfw_vendor\x18\x19\x20\x01(\tR\x08fwVendor\x12+\n\x11unfinished_backu\
     p\x18\x1b\x20\x01(\x08R\x10unfinishedBackup\x12\x1b\n\tno_backup\x18\x1c\
     \x20\x01(\x08R\x08noBackup\x12#\n\rrecovery_mode\x18\x1d\x20\x01(\x08R\
-    \x0crecoveryMode\x12V\n\x0ccapabilities\x18\x1e\x20\x03(\x0e22.hw.trezor\
+    \x0crecoveryMode\x12V\n\x0ccapabilities\x18\x1e\x20\x03(\x0e22.hw.cerberus\
     .messages.management.Features.CapabilityR\x0ccapabilities\x12J\n\x0bback\
-    up_type\x18\x1f\x20\x01(\x0e2).hw.trezor.messages.management.BackupTypeR\
+    up_type\x18\x1f\x20\x01(\x0e2).hw.cerberus.messages.management.BackupTypeR\
     \nbackupType\x12&\n\x0fsd_card_present\x18\x20\x20\x01(\x08R\rsdCardPres\
     ent\x12#\n\rsd_protection\x18!\x20\x01(\x08R\x0csdProtection\x120\n\x14w\
     ipe_code_protection\x18\"\x20\x01(\x08R\x12wipeCodeProtection\x12\x1d\n\
     \nsession_id\x18#\x20\x01(\x0cR\tsessionId\x12=\n\x1bpassphrase_always_o\
     n_device\x18$\x20\x01(\x08R\x18passphraseAlwaysOnDevice\x12T\n\rsafety_c\
-    hecks\x18%\x20\x01(\x0e2/.hw.trezor.messages.management.SafetyCheckLevel\
+    hecks\x18%\x20\x01(\x0e2/.hw.cerberus.messages.management.SafetyCheckLevel\
     R\x0csafetyChecks\x12+\n\x12auto_lock_delay_ms\x18&\x20\x01(\rR\x0fautoL\
     ockDelayMs\x12)\n\x10display_rotation\x18'\x20\x01(\rR\x0fdisplayRotatio\
     n\x123\n\x15experimental_features\x18(\x20\x01(\x08R\x14experimentalFeat\
     ures\x12\x12\n\x04busy\x18)\x20\x01(\x08R\x04busy\x12\\\n\x11homescreen_\
-    format\x18*\x20\x01(\x0e2/.hw.trezor.messages.management.HomescreenForma\
+    format\x18*\x20\x01(\x0e2/.hw.cerberus.messages.management.HomescreenForma\
     tR\x10homescreenFormat\x129\n\x19hide_passphrase_from_host\x18+\x20\x01(\
     \x08R\x16hidePassphraseFromHost\x12%\n\x0einternal_model\x18,\x20\x01(\t\
     R\rinternalModel\x12\x1d\n\nunit_color\x18-\x20\x01(\rR\tunitColor\x12!\
@@ -10379,7 +10379,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x06\x20\x01(\rR\x0fautoLockDelayMs\x12)\n\x10display_rotation\x18\x07\
     \x20\x01(\rR\x0fdisplayRotation\x12=\n\x1bpassphrase_always_on_device\
     \x18\x08\x20\x01(\x08R\x18passphraseAlwaysOnDevice\x12T\n\rsafety_checks\
-    \x18\t\x20\x01(\x0e2/.hw.trezor.messages.management.SafetyCheckLevelR\
+    \x18\t\x20\x01(\x0e2/.hw.cerberus.messages.management.SafetyCheckLevelR\
     \x0csafetyChecks\x123\n\x15experimental_features\x18\n\x20\x01(\x08R\x14\
     experimentalFeatures\x129\n\x19hide_passphrase_from_host\x18\x0b\x20\x01\
     (\x08R\x16hidePassphraseFromHost\"T\n\x0eChangeLanguage\x12\x1f\n\x0bdat\
@@ -10391,7 +10391,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x05flags\x18\x01\x20\x02(\rR\x05flags\"#\n\tChangePin\x12\x16\n\x06remo\
     ve\x18\x01\x20\x01(\x08R\x06remove\"(\n\x0eChangeWipeCode\x12\x16\n\x06r\
     emove\x18\x01\x20\x01(\x08R\x06remove\"\xaa\x01\n\tSdProtect\x12]\n\tope\
-    ration\x18\x01\x20\x02(\x0e2?.hw.trezor.messages.management.SdProtect.Sd\
+    ration\x18\x01\x20\x02(\x0e2?.hw.cerberus.messages.management.SdProtect.Sd\
     ProtectOperationTypeR\toperation\">\n\x16SdProtectOperationType\x12\x0b\
     \n\x07DISABLE\x10\0\x12\n\n\x06ENABLE\x10\x01\x12\x0b\n\x07REFRESH\x10\
     \x02\"O\n\x04Ping\x12\x1a\n\x07message\x18\x01\x20\x01(\t:\0R\x07message\
@@ -10420,7 +10420,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     l\x12\x1f\n\x0bu2f_counter\x18\x07\x20\x01(\rR\nu2fCounter\x12\x1f\n\x0b\
     skip_backup\x18\x08\x20\x01(\x08R\nskipBackup\x12\x1b\n\tno_backup\x18\t\
     \x20\x01(\x08R\x08noBackup\x12Q\n\x0bbackup_type\x18\n\x20\x01(\x0e2).hw\
-    .trezor.messages.management.BackupType:\x05Bip39R\nbackupType\"\x0e\n\
+    .cerberus.messages.management.BackupType:\x05Bip39R\nbackupType\"\x0e\n\
     \x0cBackupDevice\"\x10\n\x0eEntropyRequest\"&\n\nEntropyAck\x12\x18\n\
     \x07entropy\x18\x01\x20\x02(\x0cR\x07entropy\"\xd8\x03\n\x0eRecoveryDevi\
     ce\x12\x1d\n\nword_count\x18\x01\x20\x01(\rR\twordCount\x123\n\x15passph\
@@ -10428,13 +10428,13 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     pin_protection\x18\x03\x20\x01(\x08R\rpinProtection\x12\x1e\n\x08languag\
     e\x18\x04\x20\x01(\tR\x08languageB\x02\x18\x01\x12\x14\n\x05label\x18\
     \x05\x20\x01(\tR\x05label\x12)\n\x10enforce_wordlist\x18\x06\x20\x01(\
-    \x08R\x0fenforceWordlist\x12T\n\x04type\x18\x08\x20\x01(\x0e2@.hw.trezor\
+    \x08R\x0fenforceWordlist\x12T\n\x04type\x18\x08\x20\x01(\x0e2@.hw.cerberus\
     .messages.management.RecoveryDevice.RecoveryDeviceTypeR\x04type\x12\x1f\
     \n\x0bu2f_counter\x18\t\x20\x01(\rR\nu2fCounter\x12\x17\n\x07dry_run\x18\
     \n\x20\x01(\x08R\x06dryRun\"Z\n\x12RecoveryDeviceType\x12%\n!RecoveryDev\
     iceType_ScrambledWords\x10\0\x12\x1d\n\x19RecoveryDeviceType_Matrix\x10\
     \x01\"\xc5\x01\n\x0bWordRequest\x12N\n\x04type\x18\x01\x20\x02(\x0e2:.hw\
-    .trezor.messages.management.WordRequest.WordRequestTypeR\x04type\"f\n\
+    .cerberus.messages.management.WordRequest.WordRequestTypeR\x04type\"f\n\
     \x0fWordRequestType\x12\x19\n\x15WordRequestType_Plain\x10\0\x12\x1b\n\
     \x17WordRequestType_Matrix9\x10\x01\x12\x1b\n\x17WordRequestType_Matrix6\
     \x10\x02\"\x1d\n\x07WordAck\x12\x12\n\x04word\x18\x01\x20\x02(\tR\x04wor\
@@ -10443,7 +10443,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     u2f_counter\x18\x01\x20\x02(\rR\nu2fCounter\"\x11\n\x0fDoPreauthorized\"\
     \x16\n\x14PreauthorizedRequest\"\x15\n\x13CancelAuthorization\"\x9a\x02\
     \n\x12RebootToBootloader\x12o\n\x0cboot_command\x18\x01\x20\x01(\x0e2=.h\
-    w.trezor.messages.management.RebootToBootloader.BootCommand:\rSTOP_AND_W\
+    w.cerberus.messages.management.RebootToBootloader.BootCommand:\rSTOP_AND_W\
     AITR\x0bbootCommand\x12'\n\x0ffirmware_header\x18\x02\x20\x01(\x0cR\x0ef\
     irmwareHeader\x123\n\x14language_data_length\x18\x03\x20\x01(\r:\x010R\
     \x12languageDataLength\"5\n\x0bBootCommand\x12\x11\n\rSTOP_AND_WAIT\x10\
@@ -10457,8 +10457,8 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     lip39_Advanced\x10\x02*G\n\x10SafetyCheckLevel\x12\n\n\x06Strict\x10\0\
     \x12\x10\n\x0cPromptAlways\x10\x01\x12\x15\n\x11PromptTemporarily\x10\
     \x02*0\n\x10HomescreenFormat\x12\x08\n\x04Toif\x10\x01\x12\x08\n\x04Jpeg\
-    \x10\x02\x12\x08\n\x04ToiG\x10\x03BB\n#com.satoshilabs.trezor.lib.protob\
-    ufB\x17TrezorMessageManagement\x80\xa6\x1d\x01\
+    \x10\x02\x12\x08\n\x04ToiG\x10\x03BB\n#com.satoshilabs.cerberus.lib.protob\
+    ufB\x17CerberusMessageManagement\x80\xa6\x1d\x01\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

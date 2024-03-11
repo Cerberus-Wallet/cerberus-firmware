@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -21,7 +21,7 @@ from . import exceptions, messages
 from .tools import b58decode, expect, session
 
 if TYPE_CHECKING:
-    from .client import TrezorClient
+    from .client import CerberusClient
     from .protobuf import MessageType
     from .tools import Address
 
@@ -321,7 +321,7 @@ def parse_transaction_json(
 
 @expect(messages.EosPublicKey)
 def get_public_key(
-    client: "TrezorClient", n: "Address", show_display: bool = False
+    client: "CerberusClient", n: "Address", show_display: bool = False
 ) -> "MessageType":
     response = client.call(
         messages.EosGetPublicKey(address_n=n, show_display=show_display)
@@ -331,7 +331,7 @@ def get_public_key(
 
 @session
 def sign_tx(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address: "Address",
     transaction: dict,
     chain_id: str,
@@ -354,12 +354,12 @@ def sign_tx(
             response = client.call(actions.pop(0))
     except IndexError:
         # pop from empty list
-        raise exceptions.TrezorException(
+        raise exceptions.CerberusException(
             "Reached end of operations without a signature."
         ) from None
 
     if not isinstance(response, messages.EosSignedTx):
-        raise exceptions.TrezorException(
+        raise exceptions.CerberusException(
             f"Unexpected message: {response.__class__.__name__}"
         )
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -26,19 +26,19 @@ from urllib.parse import urlparse
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
-from trezorlib import misc, ui
-from trezorlib.client import TrezorClient
-from trezorlib.tools import parse_path
-from trezorlib.transport import get_transport
+from cerberuslib import misc, ui
+from cerberuslib.client import CerberusClient
+from cerberuslib.tools import parse_path
+from cerberuslib.transport import get_transport
 
 # Return path by BIP-32
 BIP32_PATH = parse_path("10016h/0")
 
 
 # Deriving master key
-def getMasterKey(client: TrezorClient) -> str:
+def getMasterKey(client: CerberusClient) -> str:
     bip32_path = BIP32_PATH
-    ENC_KEY = "Activate TREZOR Password Manager?"
+    ENC_KEY = "Activate CERBERUS Password Manager?"
     ENC_VALUE = bytes.fromhex(
         "2d650551248d792eabf628f451200d7f51cb63e46aadcbb1038aacb05e8c8aee2d650551248d792eabf628f451200d7f51cb63e46aadcbb1038aacb05e8c8aee"
     )
@@ -101,9 +101,9 @@ def decryptEntryValue(nonce: str, val: bytes) -> dict:
 
 
 # Decrypt give entry nonce
-def getDecryptedNonce(client: TrezorClient, entry: dict) -> str:
+def getDecryptedNonce(client: CerberusClient, entry: dict) -> str:
     print()
-    print("Waiting for Trezor input ...")
+    print("Waiting for Cerberus input ...")
     print()
     if "item" in entry:
         item = entry["item"]
@@ -144,10 +144,10 @@ def main() -> None:
         print(e)
         return
 
-    client = TrezorClient(transport=transport, ui=ui.ClickUI())
+    client = CerberusClient(transport=transport, ui=ui.ClickUI())
 
     print()
-    print("Confirm operation on Trezor")
+    print("Confirm operation on Cerberus")
     print()
 
     masterKey = getMasterKey(client)
@@ -157,7 +157,7 @@ def main() -> None:
     # print('file name:', fileName)
 
     home = os.path.expanduser("~")
-    path = os.path.join(home, "Dropbox", "Apps", "TREZOR Password Manager")
+    path = os.path.join(home, "Dropbox", "Apps", "CERBERUS Password Manager")
     # print('path to file:', path)
 
     encKey = getFileEncKey(masterKey)[2]

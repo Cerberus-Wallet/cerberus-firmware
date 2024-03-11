@@ -6,9 +6,9 @@ cd $(dirname $0)
 
 VERSION="2"
 
-install -D -m 0644 ./trezor.rules    ./lib/udev/rules.d/52-trezor-extension.rules
+install -D -m 0644 ./cerberus.rules    ./lib/udev/rules.d/52-cerberus-extension.rules
 
-NAME=trezor-udev
+NAME=cerberus-udev
 
 tar cfj $NAME-$VERSION.tar.bz2 ./lib
 
@@ -21,9 +21,9 @@ for TYPE in "deb" "rpm"; do
 		-v $VERSION \
 		--license "LGPL-3.0" \
 		--vendor "SatoshiLabs" \
-		--description "Udev rules for Trezor" \
+		--description "Udev rules for Cerberus" \
 		--maintainer "SatoshiLabs <stick@satoshilabs.com>" \
-		--url "https://trezor.io/" \
+		--url "https://cerberus.uraanai.com/" \
 		--category "Productivity/Security" \
 		$NAME-$VERSION.tar.bz2
 done

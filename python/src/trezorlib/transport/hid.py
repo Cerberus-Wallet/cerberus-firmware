@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -20,7 +20,7 @@ import time
 from typing import Any, Dict, Iterable, List, Optional
 
 from ..log import DUMP_PACKETS
-from ..models import TREZOR_ONE, TrezorModel
+from ..models import CERBERUS_ONE, CerberusModel
 from . import UDEV_RULES_STR, TransportException
 from .protocol import ProtocolBasedTransport, ProtocolV1
 
@@ -58,7 +58,7 @@ class HidHandle:
             raise e
 
         # On some platforms, HID path stays the same over device reconnects.
-        # That means that someone could unplug a Trezor, plug a different one
+        # That means that someone could unplug a Cerberus, plug a different one
         # and we wouldn't even know.
         # So we check that the serial matches what we expect.
         serial = self.handle.get_serial_number_string()
@@ -134,10 +134,10 @@ class HidTransport(ProtocolBasedTransport):
 
     @classmethod
     def enumerate(
-        cls, models: Optional[Iterable["TrezorModel"]] = None, debug: bool = False
+        cls, models: Optional[Iterable["CerberusModel"]] = None, debug: bool = False
     ) -> Iterable["HidTransport"]:
         if models is None:
-            models = {TREZOR_ONE}
+            models = {CERBERUS_ONE}
         usb_ids = [id for model in models for id in model.usb_ids]
 
         devices: List["HidTransport"] = []

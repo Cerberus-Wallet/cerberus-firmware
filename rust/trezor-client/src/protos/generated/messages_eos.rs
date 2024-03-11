@@ -25,18 +25,18 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.eos.EosGetPublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosGetPublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EosGetPublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosGetPublicKey.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosGetPublicKey.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosGetPublicKey.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosGetPublicKey.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosGetPublicKey.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosGetPublicKey.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosGetPublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosGetPublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -224,16 +224,16 @@ impl ::protobuf::reflect::ProtobufValue for EosGetPublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.eos.EosPublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosPublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EosPublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosPublicKey.wif_public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosPublicKey.wif_public_key)
     pub wif_public_key: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosPublicKey.raw_public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosPublicKey.raw_public_key)
     pub raw_public_key: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosPublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosPublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -442,22 +442,22 @@ impl ::protobuf::reflect::ProtobufValue for EosPublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.eos.EosSignTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosSignTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EosSignTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosSignTx.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosSignTx.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosSignTx.chain_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosSignTx.chain_id)
     pub chain_id: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosSignTx.header)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosSignTx.header)
     pub header: ::protobuf::MessageField<eos_sign_tx::EosTxHeader>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosSignTx.num_actions)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosSignTx.num_actions)
     pub num_actions: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosSignTx.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosSignTx.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosSignTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosSignTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -730,24 +730,24 @@ impl ::protobuf::reflect::ProtobufValue for EosSignTx {
 
 /// Nested message and enums of message `EosSignTx`
 pub mod eos_sign_tx {
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosSignTx.EosTxHeader)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosSignTx.EosTxHeader)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosTxHeader {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosSignTx.EosTxHeader.expiration)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosSignTx.EosTxHeader.expiration)
         pub expiration: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosSignTx.EosTxHeader.ref_block_num)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosSignTx.EosTxHeader.ref_block_num)
         pub ref_block_num: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosSignTx.EosTxHeader.ref_block_prefix)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosSignTx.EosTxHeader.ref_block_prefix)
         pub ref_block_prefix: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosSignTx.EosTxHeader.max_net_usage_words)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosSignTx.EosTxHeader.max_net_usage_words)
         pub max_net_usage_words: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosSignTx.EosTxHeader.max_cpu_usage_ms)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosSignTx.EosTxHeader.max_cpu_usage_ms)
         pub max_cpu_usage_ms: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosSignTx.EosTxHeader.delay_sec)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosSignTx.EosTxHeader.delay_sec)
         pub delay_sec: ::std::option::Option<u32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosSignTx.EosTxHeader.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosSignTx.EosTxHeader.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -1075,14 +1075,14 @@ pub mod eos_sign_tx {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EosTxActionRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionRequest.data_size)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionRequest.data_size)
     pub data_size: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1216,42 +1216,42 @@ impl ::protobuf::reflect::ProtobufValue for EosTxActionRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EosTxActionAck {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.common)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.common)
     pub common: ::protobuf::MessageField<eos_tx_action_ack::EosActionCommon>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.transfer)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.transfer)
     pub transfer: ::protobuf::MessageField<eos_tx_action_ack::EosActionTransfer>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.delegate)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.delegate)
     pub delegate: ::protobuf::MessageField<eos_tx_action_ack::EosActionDelegate>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.undelegate)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.undelegate)
     pub undelegate: ::protobuf::MessageField<eos_tx_action_ack::EosActionUndelegate>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.refund)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.refund)
     pub refund: ::protobuf::MessageField<eos_tx_action_ack::EosActionRefund>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.buy_ram)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.buy_ram)
     pub buy_ram: ::protobuf::MessageField<eos_tx_action_ack::EosActionBuyRam>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.buy_ram_bytes)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.buy_ram_bytes)
     pub buy_ram_bytes: ::protobuf::MessageField<eos_tx_action_ack::EosActionBuyRamBytes>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.sell_ram)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.sell_ram)
     pub sell_ram: ::protobuf::MessageField<eos_tx_action_ack::EosActionSellRam>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.vote_producer)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.vote_producer)
     pub vote_producer: ::protobuf::MessageField<eos_tx_action_ack::EosActionVoteProducer>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.update_auth)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.update_auth)
     pub update_auth: ::protobuf::MessageField<eos_tx_action_ack::EosActionUpdateAuth>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.delete_auth)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.delete_auth)
     pub delete_auth: ::protobuf::MessageField<eos_tx_action_ack::EosActionDeleteAuth>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.link_auth)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.link_auth)
     pub link_auth: ::protobuf::MessageField<eos_tx_action_ack::EosActionLinkAuth>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.unlink_auth)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.unlink_auth)
     pub unlink_auth: ::protobuf::MessageField<eos_tx_action_ack::EosActionUnlinkAuth>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.new_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.new_account)
     pub new_account: ::protobuf::MessageField<eos_tx_action_ack::EosActionNewAccount>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.unknown)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.unknown)
     pub unknown: ::protobuf::MessageField<eos_tx_action_ack::EosActionUnknown>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1685,16 +1685,16 @@ impl ::protobuf::reflect::ProtobufValue for EosTxActionAck {
 
 /// Nested message and enums of message `EosTxActionAck`
 pub mod eos_tx_action_ack {
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosAsset)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosAsset)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosAsset {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAsset.amount)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAsset.amount)
         pub amount: ::std::option::Option<i64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAsset.symbol)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAsset.symbol)
         pub symbol: ::std::option::Option<u64>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosAsset.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosAsset.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -1869,16 +1869,16 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosPermissionLevel)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosPermissionLevel)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosPermissionLevel {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosPermissionLevel.actor)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosPermissionLevel.actor)
         pub actor: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosPermissionLevel.permission)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosPermissionLevel.permission)
         pub permission: ::std::option::Option<u64>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosPermissionLevel.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosPermissionLevel.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -2053,20 +2053,20 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationKey)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationKey)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosAuthorizationKey {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationKey.type)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationKey.type)
         pub type_: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationKey.key)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationKey.key)
         pub key: ::std::option::Option<::std::vec::Vec<u8>>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationKey.address_n)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationKey.address_n)
         pub address_n: ::std::vec::Vec<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationKey.weight)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationKey.weight)
         pub weight: ::std::option::Option<u32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationKey.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationKey.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -2312,16 +2312,16 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationAccount)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationAccount)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosAuthorizationAccount {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationAccount.account)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationAccount.account)
         pub account: ::protobuf::MessageField<EosPermissionLevel>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationAccount.weight)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationAccount.weight)
         pub weight: ::std::option::Option<u32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationAccount.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationAccount.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -2483,16 +2483,16 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationWait)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationWait)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosAuthorizationWait {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationWait.wait_sec)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationWait.wait_sec)
         pub wait_sec: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationWait.weight)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationWait.weight)
         pub weight: ::std::option::Option<u32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationWait.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationWait.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -2667,20 +2667,20 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosAuthorization)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorization)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosAuthorization {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorization.threshold)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorization.threshold)
         pub threshold: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorization.keys)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorization.keys)
         pub keys: ::std::vec::Vec<EosAuthorizationKey>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorization.accounts)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorization.accounts)
         pub accounts: ::std::vec::Vec<EosAuthorizationAccount>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorization.waits)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorization.waits)
         pub waits: ::std::vec::Vec<EosAuthorizationWait>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosAuthorization.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosAuthorization.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -2883,18 +2883,18 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionCommon)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionCommon)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionCommon {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionCommon.account)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionCommon.account)
         pub account: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionCommon.name)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionCommon.name)
         pub name: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionCommon.authorization)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionCommon.authorization)
         pub authorization: ::std::vec::Vec<EosPermissionLevel>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionCommon.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionCommon.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -3091,20 +3091,20 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionTransfer)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionTransfer)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionTransfer {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionTransfer.sender)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionTransfer.sender)
         pub sender: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionTransfer.receiver)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionTransfer.receiver)
         pub receiver: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionTransfer.quantity)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionTransfer.quantity)
         pub quantity: ::protobuf::MessageField<EosAsset>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionTransfer.memo)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionTransfer.memo)
         pub memo: ::std::option::Option<::std::string::String>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionTransfer.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionTransfer.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -3359,22 +3359,22 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionDelegate)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionDelegate)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionDelegate {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionDelegate.sender)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionDelegate.sender)
         pub sender: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionDelegate.receiver)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionDelegate.receiver)
         pub receiver: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionDelegate.net_quantity)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionDelegate.net_quantity)
         pub net_quantity: ::protobuf::MessageField<EosAsset>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionDelegate.cpu_quantity)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionDelegate.cpu_quantity)
         pub cpu_quantity: ::protobuf::MessageField<EosAsset>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionDelegate.transfer)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionDelegate.transfer)
         pub transfer: ::std::option::Option<bool>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionDelegate.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionDelegate.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -3637,20 +3637,20 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionUndelegate)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionUndelegate)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionUndelegate {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionUndelegate.sender)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUndelegate.sender)
         pub sender: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionUndelegate.receiver)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUndelegate.receiver)
         pub receiver: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionUndelegate.net_quantity)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUndelegate.net_quantity)
         pub net_quantity: ::protobuf::MessageField<EosAsset>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionUndelegate.cpu_quantity)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUndelegate.cpu_quantity)
         pub cpu_quantity: ::protobuf::MessageField<EosAsset>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionUndelegate.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUndelegate.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -3875,14 +3875,14 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionRefund)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionRefund)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionRefund {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionRefund.owner)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionRefund.owner)
         pub owner: ::std::option::Option<u64>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionRefund.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionRefund.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -4019,18 +4019,18 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionBuyRam)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionBuyRam)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionBuyRam {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionBuyRam.payer)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionBuyRam.payer)
         pub payer: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionBuyRam.receiver)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionBuyRam.receiver)
         pub receiver: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionBuyRam.quantity)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionBuyRam.quantity)
         pub quantity: ::protobuf::MessageField<EosAsset>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionBuyRam.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionBuyRam.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -4230,18 +4230,18 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionBuyRamBytes)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionBuyRamBytes)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionBuyRamBytes {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionBuyRamBytes.payer)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionBuyRamBytes.payer)
         pub payer: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionBuyRamBytes.receiver)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionBuyRamBytes.receiver)
         pub receiver: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionBuyRamBytes.bytes)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionBuyRamBytes.bytes)
         pub bytes: ::std::option::Option<u32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionBuyRamBytes.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionBuyRamBytes.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -4454,16 +4454,16 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionSellRam)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionSellRam)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionSellRam {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionSellRam.account)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionSellRam.account)
         pub account: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionSellRam.bytes)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionSellRam.bytes)
         pub bytes: ::std::option::Option<u64>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionSellRam.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionSellRam.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -4638,18 +4638,18 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionVoteProducer)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionVoteProducer)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionVoteProducer {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionVoteProducer.voter)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionVoteProducer.voter)
         pub voter: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionVoteProducer.proxy)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionVoteProducer.proxy)
         pub proxy: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionVoteProducer.producers)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionVoteProducer.producers)
         pub producers: ::std::vec::Vec<u64>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionVoteProducer.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionVoteProducer.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -4843,20 +4843,20 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionUpdateAuth)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionUpdateAuth)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionUpdateAuth {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionUpdateAuth.account)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUpdateAuth.account)
         pub account: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionUpdateAuth.permission)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUpdateAuth.permission)
         pub permission: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionUpdateAuth.parent)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUpdateAuth.parent)
         pub parent: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionUpdateAuth.auth)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUpdateAuth.auth)
         pub auth: ::protobuf::MessageField<EosAuthorization>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionUpdateAuth.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUpdateAuth.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -5094,16 +5094,16 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionDeleteAuth)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionDeleteAuth)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionDeleteAuth {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionDeleteAuth.account)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionDeleteAuth.account)
         pub account: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionDeleteAuth.permission)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionDeleteAuth.permission)
         pub permission: ::std::option::Option<u64>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionDeleteAuth.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionDeleteAuth.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -5278,20 +5278,20 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionLinkAuth)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionLinkAuth)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionLinkAuth {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionLinkAuth.account)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionLinkAuth.account)
         pub account: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionLinkAuth.code)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionLinkAuth.code)
         pub code: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionLinkAuth.type)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionLinkAuth.type)
         pub type_: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionLinkAuth.requirement)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionLinkAuth.requirement)
         pub requirement: ::std::option::Option<u64>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionLinkAuth.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionLinkAuth.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -5542,18 +5542,18 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionUnlinkAuth)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionUnlinkAuth)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionUnlinkAuth {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionUnlinkAuth.account)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUnlinkAuth.account)
         pub account: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionUnlinkAuth.code)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUnlinkAuth.code)
         pub code: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionUnlinkAuth.type)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUnlinkAuth.type)
         pub type_: ::std::option::Option<u64>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionUnlinkAuth.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUnlinkAuth.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -5766,20 +5766,20 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionNewAccount)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionNewAccount)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionNewAccount {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionNewAccount.creator)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionNewAccount.creator)
         pub creator: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionNewAccount.name)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionNewAccount.name)
         pub name: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionNewAccount.owner)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionNewAccount.owner)
         pub owner: ::protobuf::MessageField<EosAuthorization>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionNewAccount.active)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionNewAccount.active)
         pub active: ::protobuf::MessageField<EosAuthorization>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionNewAccount.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionNewAccount.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -6004,16 +6004,16 @@ pub mod eos_tx_action_ack {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.eos.EosTxActionAck.EosActionUnknown)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosTxActionAck.EosActionUnknown)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct EosActionUnknown {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionUnknown.data_size)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUnknown.data_size)
         pub data_size: ::std::option::Option<u32>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosTxActionAck.EosActionUnknown.data_chunk)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUnknown.data_chunk)
         pub data_chunk: ::std::option::Option<::std::vec::Vec<u8>>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosTxActionAck.EosActionUnknown.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosTxActionAck.EosActionUnknown.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -6206,14 +6206,14 @@ pub mod eos_tx_action_ack {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.eos.EosSignedTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.eos.EosSignedTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct EosSignedTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.eos.EosSignedTx.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.eos.EosSignedTx.signature)
     pub signature: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.eos.EosSignedTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.eos.EosSignedTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -6368,7 +6368,7 @@ impl ::protobuf::reflect::ProtobufValue for EosSignedTx {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x12messages-eos.proto\x12\x16hw.trezor.messages.eos\"m\n\x0fEosGetPub\
+    \n\x12messages-eos.proto\x12\x16hw.cerberus.messages.eos\"m\n\x0fEosGetPub\
     licKey\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\x12!\n\x0csh\
     ow_display\x18\x02\x20\x01(\x08R\x0bshowDisplay\x12\x1a\n\x08chunkify\
     \x18\x03\x20\x01(\x08R\x08chunkify\"Z\n\x0cEosPublicKey\x12$\n\x0ewif_pu\
@@ -6376,7 +6376,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x18\x02\x20\x02(\x0cR\x0crawPublicKey\"\xba\x03\n\tEosSignTx\x12\x1b\n\
     \taddress_n\x18\x01\x20\x03(\rR\x08addressN\x12\x19\n\x08chain_id\x18\
     \x02\x20\x02(\x0cR\x07chainId\x12E\n\x06header\x18\x03\x20\x02(\x0b2-.hw\
-    .trezor.messages.eos.EosSignTx.EosTxHeaderR\x06header\x12\x1f\n\x0bnum_a\
+    .cerberus.messages.eos.EosSignTx.EosTxHeaderR\x06header\x12\x1f\n\x0bnum_a\
     ctions\x18\x04\x20\x02(\rR\nnumActions\x12\x1a\n\x08chunkify\x18\x05\x20\
     \x01(\x08R\x08chunkify\x1a\xf0\x01\n\x0bEosTxHeader\x12\x1e\n\nexpiratio\
     n\x18\x01\x20\x02(\rR\nexpiration\x12\"\n\rref_block_num\x18\x02\x20\x02\
@@ -6385,29 +6385,29 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     UsageWords\x12'\n\x10max_cpu_usage_ms\x18\x05\x20\x02(\rR\rmaxCpuUsageMs\
     \x12\x1b\n\tdelay_sec\x18\x06\x20\x02(\rR\x08delaySec\"1\n\x12EosTxActio\
     nRequest\x12\x1b\n\tdata_size\x18\x01\x20\x01(\rR\x08dataSize\"\xe2\x20\
-    \n\x0eEosTxActionAck\x12N\n\x06common\x18\x01\x20\x02(\x0b26.hw.trezor.m\
+    \n\x0eEosTxActionAck\x12N\n\x06common\x18\x01\x20\x02(\x0b26.hw.cerberus.m\
     essages.eos.EosTxActionAck.EosActionCommonR\x06common\x12T\n\x08transfer\
-    \x18\x02\x20\x01(\x0b28.hw.trezor.messages.eos.EosTxActionAck.EosActionT\
-    ransferR\x08transfer\x12T\n\x08delegate\x18\x03\x20\x01(\x0b28.hw.trezor\
+    \x18\x02\x20\x01(\x0b28.hw.cerberus.messages.eos.EosTxActionAck.EosActionT\
+    ransferR\x08transfer\x12T\n\x08delegate\x18\x03\x20\x01(\x0b28.hw.cerberus\
     .messages.eos.EosTxActionAck.EosActionDelegateR\x08delegate\x12Z\n\nunde\
-    legate\x18\x04\x20\x01(\x0b2:.hw.trezor.messages.eos.EosTxActionAck.EosA\
+    legate\x18\x04\x20\x01(\x0b2:.hw.cerberus.messages.eos.EosTxActionAck.EosA\
     ctionUndelegateR\nundelegate\x12N\n\x06refund\x18\x05\x20\x01(\x0b26.hw.\
-    trezor.messages.eos.EosTxActionAck.EosActionRefundR\x06refund\x12O\n\x07\
-    buy_ram\x18\x06\x20\x01(\x0b26.hw.trezor.messages.eos.EosTxActionAck.Eos\
+    cerberus.messages.eos.EosTxActionAck.EosActionRefundR\x06refund\x12O\n\x07\
+    buy_ram\x18\x06\x20\x01(\x0b26.hw.cerberus.messages.eos.EosTxActionAck.Eos\
     ActionBuyRamR\x06buyRam\x12_\n\rbuy_ram_bytes\x18\x07\x20\x01(\x0b2;.hw.\
-    trezor.messages.eos.EosTxActionAck.EosActionBuyRamBytesR\x0bbuyRamBytes\
-    \x12R\n\x08sell_ram\x18\x08\x20\x01(\x0b27.hw.trezor.messages.eos.EosTxA\
+    cerberus.messages.eos.EosTxActionAck.EosActionBuyRamBytesR\x0bbuyRamBytes\
+    \x12R\n\x08sell_ram\x18\x08\x20\x01(\x0b27.hw.cerberus.messages.eos.EosTxA\
     ctionAck.EosActionSellRamR\x07sellRam\x12a\n\rvote_producer\x18\t\x20\
-    \x01(\x0b2<.hw.trezor.messages.eos.EosTxActionAck.EosActionVoteProducerR\
-    \x0cvoteProducer\x12[\n\x0bupdate_auth\x18\n\x20\x01(\x0b2:.hw.trezor.me\
+    \x01(\x0b2<.hw.cerberus.messages.eos.EosTxActionAck.EosActionVoteProducerR\
+    \x0cvoteProducer\x12[\n\x0bupdate_auth\x18\n\x20\x01(\x0b2:.hw.cerberus.me\
     ssages.eos.EosTxActionAck.EosActionUpdateAuthR\nupdateAuth\x12[\n\x0bdel\
-    ete_auth\x18\x0b\x20\x01(\x0b2:.hw.trezor.messages.eos.EosTxActionAck.Eo\
+    ete_auth\x18\x0b\x20\x01(\x0b2:.hw.cerberus.messages.eos.EosTxActionAck.Eo\
     sActionDeleteAuthR\ndeleteAuth\x12U\n\tlink_auth\x18\x0c\x20\x01(\x0b28.\
-    hw.trezor.messages.eos.EosTxActionAck.EosActionLinkAuthR\x08linkAuth\x12\
-    [\n\x0bunlink_auth\x18\r\x20\x01(\x0b2:.hw.trezor.messages.eos.EosTxActi\
+    hw.cerberus.messages.eos.EosTxActionAck.EosActionLinkAuthR\x08linkAuth\x12\
+    [\n\x0bunlink_auth\x18\r\x20\x01(\x0b2:.hw.cerberus.messages.eos.EosTxActi\
     onAck.EosActionUnlinkAuthR\nunlinkAuth\x12[\n\x0bnew_account\x18\x0e\x20\
-    \x01(\x0b2:.hw.trezor.messages.eos.EosTxActionAck.EosActionNewAccountR\n\
-    newAccount\x12Q\n\x07unknown\x18\x0f\x20\x01(\x0b27.hw.trezor.messages.e\
+    \x01(\x0b2:.hw.cerberus.messages.eos.EosTxActionAck.EosActionNewAccountR\n\
+    newAccount\x12Q\n\x07unknown\x18\x0f\x20\x01(\x0b27.hw.cerberus.messages.e\
     os.EosTxActionAck.EosActionUnknownR\x07unknown\x1a:\n\x08EosAsset\x12\
     \x16\n\x06amount\x18\x01\x20\x02(\x12R\x06amount\x12\x16\n\x06symbol\x18\
     \x02\x20\x02(\x04R\x06symbol\x1aJ\n\x12EosPermissionLevel\x12\x14\n\x05a\
@@ -6416,39 +6416,39 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x18\x01\x20\x02(\rR\x04type\x12\x10\n\x03key\x18\x02\x20\x01(\x0cR\x03k\
     ey\x12\x1b\n\taddress_n\x18\x03\x20\x03(\rR\x08addressN\x12\x16\n\x06wei\
     ght\x18\x04\x20\x02(\rR\x06weight\x1a\x86\x01\n\x17EosAuthorizationAccou\
-    nt\x12S\n\x07account\x18\x01\x20\x02(\x0b29.hw.trezor.messages.eos.EosTx\
+    nt\x12S\n\x07account\x18\x01\x20\x02(\x0b29.hw.cerberus.messages.eos.EosTx\
     ActionAck.EosPermissionLevelR\x07account\x12\x16\n\x06weight\x18\x02\x20\
     \x02(\rR\x06weight\x1aI\n\x14EosAuthorizationWait\x12\x19\n\x08wait_sec\
     \x18\x01\x20\x02(\rR\x07waitSec\x12\x16\n\x06weight\x18\x02\x20\x02(\rR\
     \x06weight\x1a\xaf\x02\n\x10EosAuthorization\x12\x1c\n\tthreshold\x18\
     \x01\x20\x02(\rR\tthreshold\x12N\n\x04keys\x18\x02\x20\x03(\x0b2:.hw.tre\
     zor.messages.eos.EosTxActionAck.EosAuthorizationKeyR\x04keys\x12Z\n\x08a\
-    ccounts\x18\x03\x20\x03(\x0b2>.hw.trezor.messages.eos.EosTxActionAck.Eos\
+    ccounts\x18\x03\x20\x03(\x0b2>.hw.cerberus.messages.eos.EosTxActionAck.Eos\
     AuthorizationAccountR\x08accounts\x12Q\n\x05waits\x18\x04\x20\x03(\x0b2;\
-    .hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationWaitR\x05waits\
+    .hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationWaitR\x05waits\
     \x1a\xa0\x01\n\x0fEosActionCommon\x12\x18\n\x07account\x18\x01\x20\x02(\
     \x04R\x07account\x12\x12\n\x04name\x18\x02\x20\x02(\x04R\x04name\x12_\n\
-    \rauthorization\x18\x03\x20\x03(\x0b29.hw.trezor.messages.eos.EosTxActio\
+    \rauthorization\x18\x03\x20\x03(\x0b29.hw.cerberus.messages.eos.EosTxActio\
     nAck.EosPermissionLevelR\rauthorization\x1a\xa8\x01\n\x11EosActionTransf\
     er\x12\x16\n\x06sender\x18\x01\x20\x02(\x04R\x06sender\x12\x1a\n\x08rece\
     iver\x18\x02\x20\x02(\x04R\x08receiver\x12K\n\x08quantity\x18\x03\x20\
-    \x02(\x0b2/.hw.trezor.messages.eos.EosTxActionAck.EosAssetR\x08quantity\
+    \x02(\x0b2/.hw.cerberus.messages.eos.EosTxActionAck.EosAssetR\x08quantity\
     \x12\x12\n\x04memo\x18\x04\x20\x02(\tR\x04memo\x1a\x8b\x02\n\x11EosActio\
     nDelegate\x12\x16\n\x06sender\x18\x01\x20\x02(\x04R\x06sender\x12\x1a\n\
     \x08receiver\x18\x02\x20\x02(\x04R\x08receiver\x12R\n\x0cnet_quantity\
-    \x18\x03\x20\x02(\x0b2/.hw.trezor.messages.eos.EosTxActionAck.EosAssetR\
-    \x0bnetQuantity\x12R\n\x0ccpu_quantity\x18\x04\x20\x02(\x0b2/.hw.trezor.\
+    \x18\x03\x20\x02(\x0b2/.hw.cerberus.messages.eos.EosTxActionAck.EosAssetR\
+    \x0bnetQuantity\x12R\n\x0ccpu_quantity\x18\x04\x20\x02(\x0b2/.hw.cerberus.\
     messages.eos.EosTxActionAck.EosAssetR\x0bcpuQuantity\x12\x1a\n\x08transf\
     er\x18\x05\x20\x02(\x08R\x08transfer\x1a\xf1\x01\n\x13EosActionUndelegat\
     e\x12\x16\n\x06sender\x18\x01\x20\x02(\x04R\x06sender\x12\x1a\n\x08recei\
     ver\x18\x02\x20\x02(\x04R\x08receiver\x12R\n\x0cnet_quantity\x18\x03\x20\
-    \x02(\x0b2/.hw.trezor.messages.eos.EosTxActionAck.EosAssetR\x0bnetQuanti\
-    ty\x12R\n\x0ccpu_quantity\x18\x04\x20\x02(\x0b2/.hw.trezor.messages.eos.\
+    \x02(\x0b2/.hw.cerberus.messages.eos.EosTxActionAck.EosAssetR\x0bnetQuanti\
+    ty\x12R\n\x0ccpu_quantity\x18\x04\x20\x02(\x0b2/.hw.cerberus.messages.eos.\
     EosTxActionAck.EosAssetR\x0bcpuQuantity\x1a'\n\x0fEosActionRefund\x12\
     \x14\n\x05owner\x18\x01\x20\x02(\x04R\x05owner\x1a\x90\x01\n\x0fEosActio\
     nBuyRam\x12\x14\n\x05payer\x18\x01\x20\x02(\x04R\x05payer\x12\x1a\n\x08r\
     eceiver\x18\x02\x20\x02(\x04R\x08receiver\x12K\n\x08quantity\x18\x03\x20\
-    \x02(\x0b2/.hw.trezor.messages.eos.EosTxActionAck.EosAssetR\x08quantity\
+    \x02(\x0b2/.hw.cerberus.messages.eos.EosTxActionAck.EosAssetR\x08quantity\
     \x1a^\n\x14EosActionBuyRamBytes\x12\x14\n\x05payer\x18\x01\x20\x02(\x04R\
     \x05payer\x12\x1a\n\x08receiver\x18\x02\x20\x02(\x04R\x08receiver\x12\
     \x14\n\x05bytes\x18\x03\x20\x02(\rR\x05bytes\x1aB\n\x10EosActionSellRam\
@@ -6459,7 +6459,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     ucers\x1a\xb4\x01\n\x13EosActionUpdateAuth\x12\x18\n\x07account\x18\x01\
     \x20\x02(\x04R\x07account\x12\x1e\n\npermission\x18\x02\x20\x02(\x04R\np\
     ermission\x12\x16\n\x06parent\x18\x03\x20\x02(\x04R\x06parent\x12K\n\x04\
-    auth\x18\x04\x20\x02(\x0b27.hw.trezor.messages.eos.EosTxActionAck.EosAut\
+    auth\x18\x04\x20\x02(\x0b27.hw.cerberus.messages.eos.EosTxActionAck.EosAut\
     horizationR\x04auth\x1aO\n\x13EosActionDeleteAuth\x12\x18\n\x07account\
     \x18\x01\x20\x02(\x04R\x07account\x12\x1e\n\npermission\x18\x02\x20\x02(\
     \x04R\npermission\x1aw\n\x11EosActionLinkAuth\x12\x18\n\x07account\x18\
@@ -6470,13 +6470,13 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     code\x18\x02\x20\x02(\x04R\x04code\x12\x12\n\x04type\x18\x03\x20\x02(\
     \x04R\x04type\x1a\xe3\x01\n\x13EosActionNewAccount\x12\x18\n\x07creator\
     \x18\x01\x20\x02(\x04R\x07creator\x12\x12\n\x04name\x18\x02\x20\x02(\x04\
-    R\x04name\x12M\n\x05owner\x18\x03\x20\x02(\x0b27.hw.trezor.messages.eos.\
+    R\x04name\x12M\n\x05owner\x18\x03\x20\x02(\x0b27.hw.cerberus.messages.eos.\
     EosTxActionAck.EosAuthorizationR\x05owner\x12O\n\x06active\x18\x04\x20\
-    \x02(\x0b27.hw.trezor.messages.eos.EosTxActionAck.EosAuthorizationR\x06a\
+    \x02(\x0b27.hw.cerberus.messages.eos.EosTxActionAck.EosAuthorizationR\x06a\
     ctive\x1aN\n\x10EosActionUnknown\x12\x1b\n\tdata_size\x18\x01\x20\x02(\r\
     R\x08dataSize\x12\x1d\n\ndata_chunk\x18\x02\x20\x02(\x0cR\tdataChunk\"+\
     \n\x0bEosSignedTx\x12\x1c\n\tsignature\x18\x01\x20\x02(\tR\tsignatureB7\
-    \n#com.satoshilabs.trezor.lib.protobufB\x10TrezorMessageEos\
+    \n#com.satoshilabs.cerberus.lib.protobufB\x10CerberusMessageEos\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

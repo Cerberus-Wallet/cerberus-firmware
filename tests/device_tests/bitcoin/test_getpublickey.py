@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import btc, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.tools import parse_path
+from cerberuslib import btc, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.tools import parse_path
 
 from ... import bip32
 from ...input_flows import InputFlowShowXpubQRCode
@@ -130,13 +130,13 @@ def test_get_public_node_show(client: Client, coin_name, xpub_magic, path, xpub)
 @pytest.mark.xfail(reason="Currently path validation on get_public_node is disabled.")
 @pytest.mark.parametrize("coin_name, path", VECTORS_INVALID)
 def test_invalid_path(client: Client, coin_name, path):
-    with pytest.raises(TrezorFailure, match="Forbidden key path"):
+    with pytest.raises(CerberusFailure, match="Forbidden key path"):
         btc.get_public_node(client, path, coin_name=coin_name)
 
 
 def test_slip25_path(client: Client):
     # Ensure that CoinJoin XPUBs are inaccessible without user authorization.
-    with pytest.raises(TrezorFailure, match="Forbidden key path"):
+    with pytest.raises(CerberusFailure, match="Forbidden key path"):
         btc.get_public_node(
             client,
             parse_path("m/10025h/0h/0h/1h"),

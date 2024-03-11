@@ -4,4 +4,4 @@
 #![allow(non_snake_case)]
 #![allow(dead_code)]
 
-include!(concat!(env!("OUT_DIR"), "/trezorhal.rs"));
+include!(concat!(env!("OUT_DIR"), "/cerberushal.rs"));

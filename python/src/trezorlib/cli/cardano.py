@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -23,7 +23,7 @@ from .. import cardano, messages, tools
 from . import ChoiceType, with_client
 
 if TYPE_CHECKING:
-    from ..client import TrezorClient
+    from ..client import CerberusClient
 
 PATH_HELP = "BIP-32 path to key, e.g. m/44h/1815h/0h/0/0"
 
@@ -63,7 +63,7 @@ def cli() -> None:
 @click.option("-C", "chunkify", is_flag=True)
 @with_client
 def sign_tx(
-    client: "TrezorClient",
+    client: "CerberusClient",
     file: TextIO,
     signing_mode: messages.CardanoTxSigningMode,
     protocol_magic: int,
@@ -206,7 +206,7 @@ def sign_tx(
 @click.option("-C", "--chunkify", is_flag=True)
 @with_client
 def get_address(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address: str,
     address_type: messages.CardanoAddressType,
     staking_address: str,
@@ -280,7 +280,7 @@ def get_address(
 @click.option("-d", "--show-display", is_flag=True)
 @with_client
 def get_public_key(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address: str,
     derivation_type: messages.CardanoDerivationType,
     show_display: bool,
@@ -309,7 +309,7 @@ def get_public_key(
 )
 @with_client
 def get_native_script_hash(
-    client: "TrezorClient",
+    client: "CerberusClient",
     file: TextIO,
     display_format: messages.CardanoNativeScriptHashDisplayFormat,
     derivation_type: messages.CardanoDerivationType,

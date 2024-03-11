@@ -1,6 +1,6 @@
 {
     "include": [
-        "src/trezorlib",
+        "src/cerberuslib",
         "tools",
         "helper-scripts"
     ],

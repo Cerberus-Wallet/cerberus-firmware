@@ -2,8 +2,8 @@
 // Created by Dusan Klinec on 10/05/2018.
 //
 
-#ifndef TREZOR_CRYPTO_MONERO_H
-#define TREZOR_CRYPTO_MONERO_H
+#ifndef CERBERUS_CRYPTO_MONERO_H
+#define CERBERUS_CRYPTO_MONERO_H
 
 #if !USE_MONERO
 #error "Compile with -DUSE_MONERO=1"
@@ -17,4 +17,4 @@
 #include "serialize.h"
 #include "xmr.h"
 
-#endif  // TREZOR_CRYPTO_MONERO_H
+#endif  // CERBERUS_CRYPTO_MONERO_H

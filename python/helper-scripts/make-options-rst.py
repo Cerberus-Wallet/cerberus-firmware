@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -21,7 +21,7 @@ from typing import List
 
 import click
 
-from trezorlib.cli import trezorctl
+from cerberuslib.cli import cerberusctl
 
 DELIMITER_STR = "### ALL CONTENT BELOW IS GENERATED"
 
@@ -53,11 +53,11 @@ def rst_code_block(help_str: str) -> None:
     _print()
 
 
-ctx = click.Context(trezorctl.cli, info_name="trezorctl", terminal_width=99)
-rst_code_block(trezorctl.cli.get_help(ctx))
+ctx = click.Context(cerberusctl.cli, info_name="cerberusctl", terminal_width=99)
+rst_code_block(cerberusctl.cli.get_help(ctx))
 
-for subcommand in sorted(trezorctl.cli.commands):
-    cmd = trezorctl.cli.commands[subcommand]
+for subcommand in sorted(cerberusctl.cli.commands):
+    cmd = cerberusctl.cli.commands[subcommand]
     if not isinstance(cmd, click.Group):
         continue
 
@@ -65,6 +65,6 @@ for subcommand in sorted(trezorctl.cli.commands):
     _print(heading)
     _print("~" * len(heading))
     _print()
-    rst_code_block(f"trezorctl {subcommand} --help")
-    ctx = click.Context(cmd, info_name=f"trezorctl {subcommand}", terminal_width=99)
+    rst_code_block(f"cerberusctl {subcommand} --help")
+    ctx = click.Context(cmd, info_name=f"cerberusctl {subcommand}", terminal_width=99)
     rst_code_block(cmd.get_help(ctx))

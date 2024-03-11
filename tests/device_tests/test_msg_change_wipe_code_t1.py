@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import device, exceptions, messages
-from trezorlib.client import MAX_PIN_LENGTH
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.tools import parse_path
+from cerberuslib import device, exceptions, messages
+from cerberuslib.client import MAX_PIN_LENGTH
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.tools import parse_path
 
 PinType = messages.PinMatrixRequestType
 
@@ -64,7 +64,7 @@ def _change_pin(client: Client, old_pin, new_pin):
         client.use_pin_sequence([old_pin, new_pin, new_pin])
         try:
             return device.change_pin(client)
-        except exceptions.TrezorFailure as f:
+        except exceptions.CerberusFailure as f:
             return f.failure
 
 
@@ -125,7 +125,7 @@ def test_set_wipe_code_mismatch(client: Client):
                 messages.Failure(code=messages.FailureType.WipeCodeMismatch),
             ]
         )
-        with pytest.raises(exceptions.TrezorFailure):
+        with pytest.raises(exceptions.CerberusFailure):
             device.change_wipe_code(client)
 
     # Check that there is no wipe code protection.
@@ -149,7 +149,7 @@ def test_set_wipe_code_to_pin(client: Client):
                 messages.Failure(code=messages.FailureType.ProcessError),
             ]
         )
-        with pytest.raises(exceptions.TrezorFailure):
+        with pytest.raises(exceptions.CerberusFailure):
             device.change_wipe_code(client)
 
     # Check that there is no wipe code protection.
@@ -172,7 +172,7 @@ def test_set_pin_to_wipe_code(client: Client):
                 messages.Failure(code=messages.FailureType.ProcessError),
             ]
         )
-        with pytest.raises(exceptions.TrezorFailure):
+        with pytest.raises(exceptions.CerberusFailure):
             device.change_pin(client)
 
     # Check that there is no PIN protection.

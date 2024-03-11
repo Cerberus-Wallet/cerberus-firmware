@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -21,8 +21,8 @@ import hashlib
 import mnemonic
 
 __doc__ = """
-    Use this script to cross-check that Trezor generated valid
-    mnemonic sentence for given internal (Trezor-generated)
+    Use this script to cross-check that Cerberus generated valid
+    mnemonic sentence for given internal (Cerberus-generated)
     and external (computer-generated) entropy.
 
     Keep in mind that you're entering secret information to this script.
@@ -71,7 +71,7 @@ def main() -> None:
         input("Please enter computer-generated entropy (in hex): ").strip()
     )
     trzr = bytes.fromhex(
-        input("Please enter Trezor-generated entropy (in hex): ").strip()
+        input("Please enter Cerberus-generated entropy (in hex): ").strip()
     )
     word_count = int(input("How many words your mnemonic has? "))
 

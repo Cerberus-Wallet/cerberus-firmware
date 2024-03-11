@@ -4,11 +4,11 @@ from hashlib import sha256
 
 import pytest
 
-from trezorlib import ethereum
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.messages import EthereumDefinitionType
-from trezorlib.tools import parse_path
+from cerberuslib import ethereum
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.messages import EthereumDefinitionType
+from cerberuslib.tools import parse_path
 
 from .common import make_defs, make_network, make_payload, make_token, sign_payload
 from .test_definitions import DEFAULT_ERC20_PARAMS, ERC20_FAKE_ADDRESS
@@ -17,7 +17,7 @@ pytestmark = [pytest.mark.altcoin, pytest.mark.ethereum]
 
 
 def fails(client: Client, network: bytes, match: str) -> None:
-    with pytest.raises(TrezorFailure, match=match):
+    with pytest.raises(CerberusFailure, match=match):
         ethereum.get_address(
             client,
             parse_path("m/44h/666666h/0h"),
@@ -115,7 +115,7 @@ def test_protobuf_mismatch(client: Client) -> None:
     )
     proof, signature = sign_payload(payload, [])
     # have to do this manually to invoke a method that eats token definitions
-    with pytest.raises(TrezorFailure, match="Invalid Ethereum definition"):
+    with pytest.raises(CerberusFailure, match="Invalid Ethereum definition"):
         params = DEFAULT_ERC20_PARAMS.copy()
         params.update(to=ERC20_FAKE_ADDRESS)
         ethereum.sign_tx(

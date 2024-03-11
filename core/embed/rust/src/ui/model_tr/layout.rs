@@ -18,7 +18,7 @@ use crate::{
     },
     strutil::{StringType, TString},
     translations::TR,
-    trezorhal::model,
+    cerberushal::model,
     ui::{
         component::{
             base::Component,
@@ -874,7 +874,7 @@ extern "C" fn tutorial(n_args: usize, args: *const Obj, kwargs: *mut Map) -> Obj
         // cached allocated translated strings that get_page can reuse
         let tr_title_hello: StrBuffer = TR::tutorial__title_hello.try_into()?;
         let tr_welcome_press_right: StrBuffer = TR::tutorial__welcome_press_right.try_into()?;
-        let tr_use_trezor: StrBuffer = TR::tutorial__use_trezor.try_into()?;
+        let tr_use_cerberus: StrBuffer = TR::tutorial__use_cerberus.try_into()?;
         let tr_hold_to_confirm: StrBuffer = TR::buttons__hold_to_confirm.try_into()?;
         let tr_press_and_hold: StrBuffer = TR::tutorial__press_and_hold.try_into()?;
         let tr_title_screen_scroll: StrBuffer = TR::tutorial__title_screen_scroll.try_into()?;
@@ -903,7 +903,7 @@ extern "C" fn tutorial(n_args: usize, args: *const Obj, kwargs: *mut Map) -> Obj
                 ),
                 1 => tutorial_screen(
                     "".into(),
-                    tr_use_trezor,
+                    tr_use_cerberus,
                     ButtonLayout::arrow_none_arrow(),
                     ButtonActions::prev_none_next(),
                 ),
@@ -1705,8 +1705,8 @@ extern "C" fn new_show_wait_text(message: Obj) -> Obj {
 }
 
 #[no_mangle]
-pub static mp_module_trezorui2: Module = obj_module! {
-    Qstr::MP_QSTR___name__ => Qstr::MP_QSTR_trezorui2.to_obj(),
+pub static mp_module_cerberusui2: Module = obj_module! {
+    Qstr::MP_QSTR___name__ => Qstr::MP_QSTR_cerberusui2.to_obj(),
 
     /// CONFIRMED: object
     Qstr::MP_QSTR_CONFIRMED => CONFIRMED.as_obj(),

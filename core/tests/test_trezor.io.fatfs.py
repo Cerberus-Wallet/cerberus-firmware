@@ -6,7 +6,7 @@ if utils.USE_SD_CARD:
     from trezorio import fatfs, sdcard
 
 
-class TestTrezorIoFatfs(unittest.TestCase):
+class TestCerberusIoFatfs(unittest.TestCase):
     def setUp(self):
         sdcard.power_on()
         fatfs.mkfs()
@@ -20,7 +20,7 @@ class TestTrezorIoFatfs(unittest.TestCase):
         return f"FILE{suffix}.TXT"
 
     def _dirname(self, suffix=""):
-        return f"TREZOR{suffix}"
+        return f"CERBERUS{suffix}"
 
     def test_basic(self):
         # test just the stuff in setup and teardown
@@ -120,7 +120,7 @@ class TestTrezorIoFatfs(unittest.TestCase):
         self.assertEqual(s, (111, "----a", self._filename()))
 
 
-class TestTrezorIoFatfsLfn(TestTrezorIoFatfs):
+class TestCerberusIoFatfsLfn(TestCerberusIoFatfs):
     def _filename(self, suffix=""):
         return f"reallylongfilename{suffix}.textfile"
 
@@ -128,7 +128,7 @@ class TestTrezorIoFatfsLfn(TestTrezorIoFatfs):
         return f"reallylongdirname{suffix}"
 
 
-class TestTrezorIoFatfsMounting(unittest.TestCase):
+class TestCerberusIoFatfsMounting(unittest.TestCase):
     MOUNTED_METHODS = [
         ("open", ("hello.txt", "w")),
         ("listdir", ("",)),
@@ -211,7 +211,7 @@ class TestTrezorIoFatfsMounting(unittest.TestCase):
                 self.assertEqual(e.args[0], fatfs.FR_NOT_READY)
 
 
-class TestTrezorIoFatfsAndSdcard(unittest.TestCase):
+class TestCerberusIoFatfsAndSdcard(unittest.TestCase):
     def test_sd_power(self):
         sdcard.power_off()
         self.assertFalse(fatfs.is_mounted())

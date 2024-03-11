@@ -4,7 +4,7 @@ from typing import BinaryIO
 import click
 from PIL import Image
 
-from trezorlib import toif
+from cerberuslib import toif
 
 
 @click.group()

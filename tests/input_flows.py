@@ -14,10 +14,10 @@ from __future__ import annotations
 import time
 from typing import Callable, Generator
 
-from trezorlib import messages
-from trezorlib.debuglink import DebugLink, LayoutContent
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.debuglink import multipage_content
+from cerberuslib import messages
+from cerberuslib.debuglink import DebugLink, LayoutContent
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.debuglink import multipage_content
 
 from . import buttons
 from . import translations as TR

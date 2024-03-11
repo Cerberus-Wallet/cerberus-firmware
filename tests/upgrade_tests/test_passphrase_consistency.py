@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -18,9 +18,9 @@ from typing import Iterator
 
 import pytest
 
-from trezorlib import btc, device, mapping, messages, models, protobuf
-from trezorlib._internal.emulator import Emulator
-from trezorlib.tools import parse_path
+from cerberuslib import btc, device, mapping, messages, models, protobuf
+from cerberuslib._internal.emulator import Emulator
+from cerberuslib.tools import parse_path
 
 from ..emulators import EmulatorWrapper
 from . import for_all
@@ -60,11 +60,11 @@ def emulator(gen: str, tag: str) -> Iterator[Emulator]:
 
 
 @for_all(
-    core_minimum_version=models.TREZOR_T.minimum_version,
-    legacy_minimum_version=models.TREZOR_ONE.minimum_version,
+    core_minimum_version=models.CERBERUS_T.minimum_version,
+    legacy_minimum_version=models.CERBERUS_ONE.minimum_version,
 )
 def test_passphrase_works(emulator: Emulator):
-    """Check that passphrase handling in trezorlib works correctly in all versions."""
+    """Check that passphrase handling in cerberuslib works correctly in all versions."""
     if emulator.client.features.model == "T" and emulator.client.version < (2, 3, 0):
         expected_responses = [
             messages.PassphraseRequest,
@@ -89,13 +89,13 @@ def test_passphrase_works(emulator: Emulator):
         ]
 
     with emulator.client:
-        emulator.client.use_passphrase("TREZOR")
+        emulator.client.use_passphrase("CERBERUS")
         emulator.client.set_expected_responses(expected_responses)
         btc.get_address(emulator.client, "Testnet", parse_path("44h/1h/0h/0/0"))
 
 
 @for_all(
-    core_minimum_version=models.TREZOR_T.minimum_version,
+    core_minimum_version=models.CERBERUS_T.minimum_version,
     legacy_minimum_version=(1, 9, 0),
 )
 def test_init_device(emulator: Emulator):
@@ -132,7 +132,7 @@ def test_init_device(emulator: Emulator):
         ]
 
     with emulator.client:
-        emulator.client.use_passphrase("TREZOR")
+        emulator.client.use_passphrase("CERBERUS")
         emulator.client.set_expected_responses(expected_responses)
 
         btc.get_address(emulator.client, "Testnet", parse_path("44h/1h/0h/0/0"))

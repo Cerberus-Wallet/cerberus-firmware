@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2020 SatoshiLabs and contributors
 #
@@ -16,11 +16,11 @@
 
 import pytest
 
-from trezorlib import btc, device, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.messages import SafetyCheckLevel
-from trezorlib.tools import parse_path
+from cerberuslib import btc, device, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.messages import SafetyCheckLevel
+from cerberuslib.tools import parse_path
 
 from ...tx_cache import TxCache
 from .signtx import (
@@ -167,7 +167,7 @@ def test_p2pkh_presigned(client: Client):
 
     # Test corrupted signature in scriptsig.
     inp2ext.script_sig[10] ^= 1
-    with pytest.raises(TrezorFailure, match="Invalid signature"):
+    with pytest.raises(CerberusFailure, match="Invalid signature"):
         _, serialized_tx = btc.sign_tx(
             client,
             "Testnet",
@@ -292,7 +292,7 @@ def test_p2wpkh_in_p2sh_presigned(client: Client):
             ]
         )
 
-        with pytest.raises(TrezorFailure, match="Invalid public key hash"):
+        with pytest.raises(CerberusFailure, match="Invalid public key hash"):
             btc.sign_tx(
                 client,
                 "Testnet",
@@ -357,7 +357,7 @@ def test_p2wpkh_presigned(client: Client):
 
     # Test corrupted signature in witness.
     inp2.witness[10] ^= 1
-    with pytest.raises(TrezorFailure, match="Invalid signature"):
+    with pytest.raises(CerberusFailure, match="Invalid signature"):
         btc.sign_tx(
             client,
             "Testnet",
@@ -471,7 +471,7 @@ def test_p2wsh_external_presigned(client: Client):
             ]
         )
 
-        with pytest.raises(TrezorFailure, match="Invalid signature"):
+        with pytest.raises(CerberusFailure, match="Invalid signature"):
             btc.sign_tx(
                 client, "Testnet", [inp1, inp2], [out1], prev_txes=TX_CACHE_TESTNET
             )
@@ -561,7 +561,7 @@ def test_p2tr_external_presigned(client: Client):
             ]
         )
 
-        with pytest.raises(TrezorFailure, match="Invalid signature"):
+        with pytest.raises(CerberusFailure, match="Invalid signature"):
             btc.sign_tx(
                 client,
                 "Testnet",
@@ -664,7 +664,7 @@ def test_p2wpkh_with_proof(client: Client):
 
     # Test corrupted ownership proof.
     inp1.ownership_proof[10] ^= 1
-    with pytest.raises(TrezorFailure, match="Invalid signature|Invalid external input"):
+    with pytest.raises(CerberusFailure, match="Invalid signature|Invalid external input"):
         btc.sign_tx(
             client,
             "Testnet",
@@ -742,7 +742,7 @@ def test_p2tr_with_proof(client: Client):
 
     # Test corrupted ownership proof.
     inp1.ownership_proof[10] ^= 1
-    with pytest.raises(TrezorFailure, match="Invalid signature|Invalid external input"):
+    with pytest.raises(CerberusFailure, match="Invalid signature|Invalid external input"):
         btc.sign_tx(client, "Testnet", [inp1, inp2], [out1], prev_txes=TX_CACHE_TESTNET)
 
 
@@ -784,7 +784,7 @@ def test_p2wpkh_with_false_proof(client: Client):
             ]
         )
 
-        with pytest.raises(TrezorFailure, match="Invalid external input"):
+        with pytest.raises(CerberusFailure, match="Invalid external input"):
             btc.sign_tx(
                 client,
                 "Testnet",
@@ -828,7 +828,7 @@ def test_p2tr_external_unverified(client: Client):
     )
 
     # Unverified external inputs should be rejected when safety checks are enabled.
-    with pytest.raises(TrezorFailure, match="[Ee]xternal input"):
+    with pytest.raises(CerberusFailure, match="[Ee]xternal input"):
         btc.sign_tx(
             client, "Testnet", [inp1, inp2], [out1, out2], prev_txes=TX_CACHE_TESTNET
         )
@@ -880,7 +880,7 @@ def test_p2wpkh_external_unverified(client: Client):
     )
 
     # Unverified external inputs should be rejected when safety checks are enabled.
-    with pytest.raises(TrezorFailure, match="[Ee]xternal input"):
+    with pytest.raises(CerberusFailure, match="[Ee]xternal input"):
         btc.sign_tx(
             client, "Testnet", [inp1, inp2], [out1, out2], prev_txes=TX_CACHE_TESTNET
         )

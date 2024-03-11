@@ -163,7 +163,7 @@ Latest CI pipeline of master branch can be seen at [${latest_master}](${latest_m
     header_3 = "###"
 %>
 % for file, file_info in all_jobs_items:
-${header_2} ${file.stem.upper()} stage - [${file.name}](https://github.com/trezor/trezor-firmware/blob/master/${file})
+${header_2} ${file.stem.upper()} stage - [${file.name}](https://github.com/cerberus/cerberus-firmware/blob/master/${file})
     % if file_info["overall_description"]:
         % for stage_overall_description_line in file_info["overall_description"]:
 ${stage_overall_description_line}
@@ -175,7 +175,7 @@ ${stage_overall_description_line}
 Consists of **${job_amount}** below:
     % for job_name, job_info in file_info["jobs"].items():
         <%
-            github_job_link = f"https://github.com/trezor/trezor-firmware/blob/master/{file}#L{job_info['line_no']}"
+            github_job_link = f"https://github.com/cerberus/cerberus-firmware/blob/master/{file}#L{job_info['line_no']}"
         %>
 ${header_3} [${job_name}](${github_job_link})
         % if job_info["description"]:
@@ -191,7 +191,7 @@ ${job_description_line}
 
         with open(self.DOC_FILE, "w") as doc_file:
             doc_text: str = Template(template_text).render(
-                latest_master="https://gitlab.com/satoshilabs/trezor/trezor-firmware/-/pipelines/master/latest",
+                latest_master="https://gitlab.com/satoshilabs/cerberus/cerberus-firmware/-/pipelines/master/latest",
                 all_jobs_items=self.ALL_JOBS.items(),
             )
             # Remove trailing whitespace coming from the template and include final newline

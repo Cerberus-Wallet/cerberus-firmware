@@ -3,9 +3,9 @@
 # While we could safely generate these keys per-wipe and save them in sessionless cache,
 # this drags down the performance of our test suite.
 
-# We want to avoid importing `trezor.crypto.curve` because that would needlessly pollute
-# our RAM space, while in the end importing the symbol from `trezorcrypto` directly anyway
-from trezorcrypto import nist256p1
+# We want to avoid importing `cerberus.crypto.curve` because that would needlessly pollute
+# our RAM space, while in the end importing the symbol from `cerberuscrypto` directly anyway
+from cerberuscrypto import nist256p1
 
 # the authenticatorKeyAgreementKey used for ECDH in authenticatorClientPIN getKeyAgreement.
 KEY_AGREEMENT_PRIVKEY = nist256p1.generate_secret()

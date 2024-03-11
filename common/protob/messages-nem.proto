@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.trezor.messages.nem;
+package hw.cerberus.messages.nem;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
-option java_outer_classname = "TrezorMessageNem";
+option java_package = "com.satoshilabs.cerberus.lib.protobuf";
+option java_outer_classname = "CerberusMessageNem";
 
 /**
  * Request: Ask device for NEM address corresponding to address_n path

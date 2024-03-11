@@ -1,14 +1,14 @@
 # Build
 
-_Building for Trezor Model One? See the [legacy](../../legacy/index.md) documentation._
+_Building for Cerberus Model One? See the [legacy](../../legacy/index.md) documentation._
 
 ## New Project
 
 Run the following to checkout the project:
 
 ```sh
-git clone --recurse-submodules https://github.com/trezor/trezor-firmware.git
-cd trezor-firmware
+git clone --recurse-submodules https://github.com/Cerberus-Wallet/cerberus-firmware.git
+cd cerberus-firmware
 poetry install
 cd core
 ```

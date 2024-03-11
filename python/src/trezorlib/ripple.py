@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -21,7 +21,7 @@ from .protobuf import dict_to_proto
 from .tools import dict_from_camelcase, expect
 
 if TYPE_CHECKING:
-    from .client import TrezorClient
+    from .client import CerberusClient
     from .protobuf import MessageType
     from .tools import Address
 
@@ -31,7 +31,7 @@ REQUIRED_PAYMENT_FIELDS = ("Amount", "Destination")
 
 @expect(messages.RippleAddress, field="address", ret_type=str)
 def get_address(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address_n: "Address",
     show_display: bool = False,
     chunkify: bool = False,
@@ -45,7 +45,7 @@ def get_address(
 
 @expect(messages.RippleSignedTx)
 def sign_tx(
-    client: "TrezorClient",
+    client: "CerberusClient",
     address_n: "Address",
     msg: messages.RippleSignTx,
     chunkify: bool = False,

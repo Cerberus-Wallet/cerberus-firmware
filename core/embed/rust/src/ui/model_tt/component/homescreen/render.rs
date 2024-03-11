@@ -1,6 +1,6 @@
 use crate::{
     strutil::TString,
-    trezorhal::{
+    cerberushal::{
         buffers::{
             BufferBlurring, BufferBlurringTotals, BufferJpeg, BufferLine16bpp, BufferLine4bpp,
             BufferText,

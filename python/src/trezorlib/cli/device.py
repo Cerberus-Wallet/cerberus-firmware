@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -24,9 +24,9 @@ from .. import debuglink, device, exceptions, messages, ui
 from . import ChoiceType, with_client
 
 if TYPE_CHECKING:
-    from ..client import TrezorClient
+    from ..client import CerberusClient
     from ..protobuf import MessageType
-    from . import TrezorConnection
+    from . import CerberusConnection
 
 RECOVERY_TYPE = {
     "scrambled": messages.RecoveryDeviceType.ScrambledWords,
@@ -59,7 +59,7 @@ def cli() -> None:
     is_flag=True,
 )
 @with_client
-def wipe(client: "TrezorClient", bootloader: bool) -> str:
+def wipe(client: "CerberusClient", bootloader: bool) -> str:
     """Reset device to factory defaults and remove all private data."""
     if bootloader:
         if not client.features.bootloader_mode:
@@ -82,7 +82,7 @@ def wipe(client: "TrezorClient", bootloader: bool) -> str:
 
     try:
         return device.wipe(client)
-    except exceptions.TrezorFailure as e:
+    except exceptions.CerberusFailure as e:
         click.echo("Action failed: {} {}".format(*e.args))
         sys.exit(3)
 
@@ -98,7 +98,7 @@ def wipe(client: "TrezorClient", bootloader: bool) -> str:
 @click.option("-n", "--no-backup", is_flag=True)
 @with_client
 def load(
-    client: "TrezorClient",
+    client: "CerberusClient",
     mnemonic: Sequence[str],
     pin: str,
     passphrase_protection: bool,
@@ -131,10 +131,10 @@ def load(
             needs_backup=needs_backup,
             no_backup=no_backup,
         )
-    except exceptions.TrezorFailure as e:
+    except exceptions.CerberusFailure as e:
         if e.code == messages.FailureType.UnexpectedMessage:
             raise click.ClickException(
-                "Unrecognized message. Make sure your Trezor is using debug firmware."
+                "Unrecognized message. Make sure your Cerberus is using debug firmware."
             )
         else:
             raise
@@ -153,7 +153,7 @@ def load(
 @click.option("-d", "--dry-run", is_flag=True)
 @with_client
 def recover(
-    client: "TrezorClient",
+    client: "CerberusClient",
     words: str,
     expand: bool,
     pin_protection: bool,
@@ -195,7 +195,7 @@ def recover(
 @click.option("-b", "--backup-type", type=ChoiceType(BACKUP_TYPE), default="single")
 @with_client
 def setup(
-    client: "TrezorClient",
+    client: "CerberusClient",
     show_entropy: bool,
     strength: Optional[int],
     passphrase_protection: bool,
@@ -218,7 +218,7 @@ def setup(
         and messages.Capability.ShamirGroups not in client.features.capabilities
     ):
         click.echo(
-            "WARNING: Your Trezor device does not indicate support for the requested\n"
+            "WARNING: Your Cerberus device does not indicate support for the requested\n"
             "backup type. Traditional single-seed backup may be generated instead."
         )
 
@@ -238,7 +238,7 @@ def setup(
 
 @cli.command()
 @with_client
-def backup(client: "TrezorClient") -> str:
+def backup(client: "CerberusClient") -> str:
     """Perform device seed backup."""
     return device.backup(client)
 
@@ -247,7 +247,7 @@ def backup(client: "TrezorClient") -> str:
 @click.argument("operation", type=ChoiceType(SD_PROTECT_OPERATIONS))
 @with_client
 def sd_protect(
-    client: "TrezorClient", operation: messages.SdProtectOperationType
+    client: "CerberusClient", operation: messages.SdProtectOperationType
 ) -> str:
     """Secure the device with SD card protection.
 
@@ -263,16 +263,16 @@ def sd_protect(
     refresh - Replace the current SD card secret with a new one.
     """
     if client.features.model == "1":
-        raise click.ClickException("Trezor One does not support SD card protection.")
+        raise click.ClickException("Cerberus One does not support SD card protection.")
     return device.sd_protect(client, operation)
 
 
 @cli.command()
 @click.pass_obj
-def reboot_to_bootloader(obj: "TrezorConnection") -> str:
+def reboot_to_bootloader(obj: "CerberusConnection") -> str:
     """Reboot device into bootloader mode.
 
-    Currently only supported on Trezor Model One.
+    Currently only supported on Cerberus Model One.
     """
     # avoid using @with_client because it closes the session afterwards,
     # which triggers double prompt on device
@@ -282,14 +282,14 @@ def reboot_to_bootloader(obj: "TrezorConnection") -> str:
 
 @cli.command()
 @with_client
-def tutorial(client: "TrezorClient") -> str:
+def tutorial(client: "CerberusClient") -> str:
     """Show on-device tutorial."""
     return device.show_device_tutorial(client)
 
 
 @cli.command()
 @with_client
-def unlock_bootloader(client: "TrezorClient") -> str:
+def unlock_bootloader(client: "CerberusClient") -> str:
     """Unlocks bootloader. Irreversible."""
     return device.unlock_bootloader(client)
 
@@ -304,7 +304,7 @@ def unlock_bootloader(client: "TrezorClient") -> str:
 )
 @with_client
 def set_busy(
-    client: "TrezorClient", enable: Optional[bool], expiry: Optional[int]
+    client: "CerberusClient", enable: Optional[bool], expiry: Optional[int]
 ) -> str:
     """Show a "Do not disconnect" dialog."""
     if enable is False:
@@ -324,7 +324,7 @@ def set_busy(
 @cli.command()
 @click.argument("hex_challenge", required=False)
 @with_client
-def authenticate(client: "TrezorClient", hex_challenge: Optional[str]) -> None:
+def authenticate(client: "CerberusClient", hex_challenge: Optional[str]) -> None:
     """Get information to verify the authenticity of the device."""
     if hex_challenge is None:
         hex_challenge = secrets.token_hex(32)

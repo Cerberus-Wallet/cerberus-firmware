@@ -2,9 +2,9 @@
 
 ## 1. Running the full test suite
 
-_Note: You need Poetry, as mentioned in the core's [documentation](https://docs.trezor.io/trezor-firmware/core/) section._
+_Note: You need Poetry, as mentioned in the core's [documentation](https://docs.cerberus.uraanai.com/cerberus-firmware/core/) section._
 
-In the `trezor-firmware` checkout, in the root of the monorepo, install the environment:
+In the `cerberus-firmware` checkout, in the root of the monorepo, install the environment:
 
 ```sh
 poetry install
@@ -128,7 +128,7 @@ The final executable is significantly slower due to ASAN(Address Sanitizer) inte
 If you want to catch some memory errors use this.
 
 ```sh
-time ASAN_OPTIONS=verbosity=1:detect_invalid_pointer_pairs=1:strict_init_order=true:strict_string_checks=true TREZOR_PROFILE="" poetry run make test_emu
+time ASAN_OPTIONS=verbosity=1:detect_invalid_pointer_pairs=1:strict_init_order=true:strict_string_checks=true CERBERUS_PROFILE="" poetry run make test_emu
 ```
 
 ### Coverage (Emulator only)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -23,7 +23,7 @@ from pathlib import Path
 import click
 import requests
 
-from trezorlib import btc, messages, protobuf
+from cerberuslib import btc, messages, protobuf
 
 REPOSITORY_ROOT = Path(__file__).resolve().parent.parent
 TOOLS_PATH = REPOSITORY_ROOT / "common" / "tools"
@@ -94,7 +94,7 @@ def cli(tx, coin_name):
     It is also possible to specify URL explicitly:
     ./tests/tx_cache.py bcash https://bch1.trezor.io/api/tx-specific/bc37c28dfb467d2ecb50261387bf752a3977d7e5337915071bb4151e6b711a78
 
-    The transaction will be parsed into Trezor format and saved in
+    The transaction will be parsed into Cerberus format and saved in
     tests/txcache/<COIN_NAME>/<TXHASH>.json. Note that only Bitcoin-compatible fields
     will be filled out. If you are adding a coin with special fields (Dash, Zcash...),
     it is your responsibility to fill out the missing fields properly.

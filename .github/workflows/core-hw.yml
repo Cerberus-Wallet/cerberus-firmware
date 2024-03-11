@@ -5,7 +5,7 @@ on:
     - cron: '15 23 * * *'  # every day @ 23:15
   workflow_dispatch:
 
-# [Device tests](../tests/device-tests.md) that run against an actual physical Trezors.
+# [Device tests](../tests/device-tests.md) that run against an actual physical Cerberuss.
 # The device needs to have special bootloader, found in `core/embed/bootloader_ci`, that
 # makes it possible to flash firmware without confirmation on the touchscreen.
 #
@@ -16,7 +16,7 @@ on:
 # a state where the micropython heap is too fragmented and allocations fail
 # (often manifesting as a stuck test case). For that reason some tests are
 # skipped.
-# See also: https://github.com/trezor/trezor-firmware/issues/1371
+# See also: https://github.com/cerberus-firmware/issues/1371
 jobs:
   core_device_test:
     name: Device tests
@@ -31,8 +31,8 @@ jobs:
         model: [T2T1, T2B1]
         coins: [universal, btconly]
     env:
-      TREZOR_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
-      TREZOR_PYTEST_SKIP_ALTCOINS: ${{ matrix.coins == 'btconly' && '1' || '0' }}
+      CERBERUS_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
+      CERBERUS_PYTEST_SKIP_ALTCOINS: ${{ matrix.coins == 'btconly' && '1' || '0' }}
       PYTEST_TIMEOUT: 1200
       PYOPT: 0
       DISABLE_OPTIGA: 1
@@ -47,18 +47,18 @@ jobs:
       - run: nix-shell --arg hardwareTest true --run uhubctl
       - run: nix-shell --run "poetry run make -C core build_firmware"
       - run: nix-shell --arg hardwareTest true --run "poetry run python ci/hardware_tests/bootstrap.py ${{ matrix.model }} core/build/firmware/firmware.bin"
-      - run: nix-shell --run "poetry run trezorctl list"
-      - run: nix-shell --run "poetry run trezorctl get-features"
+      - run: nix-shell --run "poetry run cerberusctl list"
+      - run: nix-shell --run "poetry run cerberusctl get-features"
       - run: |
           # log serial console to file; sleep is used because tio needs stdin that is not /dev/null
-          nix-shell --arg hardwareTest true --run "sleep 8h | tio --no-autoconnect /dev/ttyTREZOR &> trezor.log" &
+          nix-shell --arg hardwareTest true --run "sleep 8h | tio --no-autoconnect /dev/ttyCERBERUS &> cerberus.log" &
           nix-shell --run "poetry run pytest -v tests/device_tests"
-      - run: tail -n50 trezor.log || true
+      - run: tail -n50 cerberus.log || true
         if: failure()
       - uses: actions/upload-artifact@v4
         with:
           name: core-hardware-${{ matrix.model }}-${{ matrix.coins }}
-          path: trezor.log
+          path: cerberus.log
           retention-days: 7
         if: always()
 
@@ -74,7 +74,7 @@ jobs:
       matrix:
         model: [T2T1, T2B1]
     env:
-      TREZOR_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
+      CERBERUS_MODEL: ${{ matrix.model == 'T2T1' && 'T' || 'R' }}
       PYTEST_TIMEOUT: 1200
       PYOPT: 0
       DISABLE_OPTIGA: 1
@@ -88,18 +88,18 @@ jobs:
       - run: nix-shell --arg hardwareTest true --run uhubctl
       - run: nix-shell --run "poetry run make -C core build_firmware"
       - run: nix-shell --arg hardwareTest true --run "poetry run python ci/hardware_tests/bootstrap.py ${{ matrix.model }} core/build/firmware/firmware.bin"
-      - run: nix-shell --run "poetry run trezorctl list"
-      - run: nix-shell --run "poetry run trezorctl get-features"
+      - run: nix-shell --run "poetry run cerberusctl list"
+      - run: nix-shell --run "poetry run cerberusctl get-features"
       - run: |
           # log serial console to file; sleep is used because tio needs stdin that is not /dev/null
-          nix-shell --arg hardwareTest true --run "sleep 8h | tio --no-autoconnect /dev/ttyTREZOR &> trezor.log" &
+          nix-shell --arg hardwareTest true --run "sleep 8h | tio --no-autoconnect /dev/ttyCERBERUS &> cerberus.log" &
           nix-shell --arg fullDeps true --run "./core/tests/run_tests_device_emu_monero.sh $TESTOPTS"
-      - run: tail -n50 trezor.log || true
+      - run: tail -n50 cerberus.log || true
         if: failure()
       - uses: actions/upload-artifact@v4
         with:
           name: core-hardware-monero-${{ matrix.model }}
-          path: trezor.log
+          path: cerberus.log
           retention-days: 7
         if: always()
 
@@ -113,7 +113,7 @@ jobs:
       matrix:
         coins: [universal, btconly]
     env:
-      TREZOR_PYTEST_SKIP_ALTCOINS: ${{ matrix.coins == 'btconly' && '1' || '0' }}
+      CERBERUS_PYTEST_SKIP_ALTCOINS: ${{ matrix.coins == 'btconly' && '1' || '0' }}
       PYTEST_TIMEOUT: 1200
       T1_UHUB_LOCATION: 3-1
       T1_UHUB_PORT: 2

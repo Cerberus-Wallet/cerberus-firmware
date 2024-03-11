@@ -3,7 +3,7 @@
 import sys
 from hashlib import blake2s
 
-FILE_T1 = "legacy/firmware/trezor.bin"
+FILE_T1 = "legacy/firmware/cerberus.bin"
 FILE_T2 = "core/build/firmware/firmware.bin"
 
 T1_HEADER_MAGIC_OLD = b"TRZR"

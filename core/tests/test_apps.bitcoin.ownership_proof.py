@@ -81,7 +81,7 @@ class TestOwnershipProof(unittest.TestCase):
             [AlwaysMatchingSchema],
             slip21_namespaces=[[b"SLIP-0019"]],
         )
-        commitment_data = b"TREZOR"
+        commitment_data = b"CERBERUS"
 
         node = keychain.derive([49 | HARDENED, 0 | HARDENED, 0 | HARDENED, 1, 0])
         address = address_p2wpkh_in_p2sh(node.public_key(), coin)
@@ -177,7 +177,7 @@ class TestOwnershipProof(unittest.TestCase):
     def test_p2pkh_gen_proof(self):
         # SLIP-0019 test vector 3
         coin = coins.by_name("Bitcoin")
-        seed = bip39.seed(" ".join(["all"] * 12), "TREZOR")
+        seed = bip39.seed(" ".join(["all"] * 12), "CERBERUS")
         keychain = Keychain(
             seed,
             coin.curve_name,
@@ -228,7 +228,7 @@ class TestOwnershipProof(unittest.TestCase):
     def test_p2wpkh_verify_proof(self):
         # SLIP-0019 test vector 1
         coin = coins.by_name("Bitcoin")
-        seed = bip39.seed(" ".join(["all"] * 12), "TREZOR")
+        seed = bip39.seed(" ".join(["all"] * 12), "CERBERUS")
         keychain = Keychain(
             seed,
             coin.curve_name,
@@ -251,7 +251,7 @@ class TestOwnershipProof(unittest.TestCase):
     def test_p2tr_verify_proof(self):
         # SLIP-0019 test vector 5
         coin = coins.by_name("Bitcoin")
-        seed = bip39.seed(" ".join(["all"] * 12), "TREZOR")
+        seed = bip39.seed(" ".join(["all"] * 12), "CERBERUS")
         keychain = Keychain(
             seed,
             coin.curve_name,
@@ -282,7 +282,7 @@ class TestOwnershipProof(unittest.TestCase):
             "",
         )
         seed3 = bip39.seed("zoo zoo zoo zoo zoo zoo zoo zoo zoo zoo zoo wrong", "")
-        commitment_data = b"TREZOR"
+        commitment_data = b"CERBERUS"
 
         nodes = []
         keychains = []
@@ -504,7 +504,7 @@ class TestOwnershipProof(unittest.TestCase):
             [AlwaysMatchingSchema],
             slip21_namespaces=[[b"SLIP-0019"]],
         )
-        commitment_data = b"TREZOR"
+        commitment_data = b"CERBERUS"
 
         nodes = []
         for index in range(1, 3):

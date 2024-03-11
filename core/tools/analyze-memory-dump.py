@@ -7,7 +7,7 @@ if len(sys.argv) < 2:
     print("""\
 USAGE: ./analyze-memory-dump.py somefile.json
 
-Where "somefile.json" was produced by using `trezor.utils.mem_dump("somefile.json")`
+Where "somefile.json" was produced by using `cerberus.utils.mem_dump("somefile.json")`
 somewhere in emulator source code.
 
 Outputs a memory dump similar to `micropython.mem_info(True)`, except with complete
@@ -182,13 +182,13 @@ types = {
     "set": "E",
     "setitems": "e",
     "staticmethod": "C",
-    "trezor": "t",
+    "cerberus": "t",
     "tuple": "T",
     "type": "y",
     "unknown": "h",
-    "trezor-webusb": "t",
-    "trezor-vcp": "t",
-    "trezor-hid": "t",
+    "cerberus-webusb": "t",
+    "cerberus-vcp": "t",
+    "cerberus-hid": "t",
     "rawbuffer": "R",
     "qstrpool": "Q",
     "qstrdata": "q",

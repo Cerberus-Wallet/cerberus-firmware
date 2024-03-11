@@ -27,10 +27,10 @@
       }
     },
     {
-      "name": "icarus-trezor-derivation",
+      "name": "icarus-cerberus-derivation",
       "parameters": {
         "path": "m/1852'/1815'/0'",
-        "derivation_type": "ICARUS_TREZOR"
+        "derivation_type": "ICARUS_CERBERUS"
       },
       "result": {
         "public_key": "8a97a956fadbc79e09a867ed1e829af4f66a34903c9194de44c87262dfe19111",

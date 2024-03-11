@@ -1,5 +1,5 @@
 use crate::{
-    trezorhal::secbool::{secbool, sectrue},
+    cerberushal::secbool::{secbool, sectrue},
     ui::{
         component::{Child, Component, Event, EventCtx, Label, Pad},
         constant::{screen, WIDTH},
@@ -37,7 +37,7 @@ pub struct Menu {
 
 impl Menu {
     pub fn new(firmware_present: secbool) -> Self {
-        let content_reboot = IconText::new("REBOOT TREZOR", Icon::new(REFRESH24));
+        let content_reboot = IconText::new("REBOOT CERBERUS", Icon::new(REFRESH24));
         let content_reset = IconText::new("FACTORY RESET", Icon::new(FIRE24));
 
         let mut instance = Self {

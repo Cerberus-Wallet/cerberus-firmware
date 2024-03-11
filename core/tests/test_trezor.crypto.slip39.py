@@ -162,7 +162,7 @@ class TestCryptoSlip39(unittest.TestCase):
             if secret:
                 identifier, exponent, ems = slip39.recover_ems(mnemonics)
                 self.assertEqual(
-                    slip39.decrypt(ems, b"TREZOR", exponent, identifier),
+                    slip39.decrypt(ems, b"CERBERUS", exponent, identifier),
                     unhexlify(secret),
                 )
             else:

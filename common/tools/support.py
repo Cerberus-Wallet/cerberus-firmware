@@ -240,7 +240,7 @@ def release(
     force: bool,
     skip_testnets: bool,
 ):
-    """Release a new Trezor firmware.
+    """Release a new Cerberus firmware.
 
     Update support infos so that all coins have a clear support status.
     By default, marks duplicate tokens and testnets as unsupported, and all coins that

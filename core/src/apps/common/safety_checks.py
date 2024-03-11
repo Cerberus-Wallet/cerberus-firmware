@@ -2,7 +2,7 @@ import storage.cache as storage_cache
 import storage.device as storage_device
 from storage.cache import APP_COMMON_SAFETY_CHECKS_TEMPORARY
 from storage.device import SAFETY_CHECK_LEVEL_PROMPT, SAFETY_CHECK_LEVEL_STRICT
-from trezor.enums import SafetyCheckLevel
+from cerberus.enums import SafetyCheckLevel
 
 
 def read_setting() -> SafetyCheckLevel:

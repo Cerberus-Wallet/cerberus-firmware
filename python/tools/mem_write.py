@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -18,8 +18,8 @@
 
 import sys
 
-from trezorlib.debuglink import DebugLink
-from trezorlib.transport import enumerate_devices
+from cerberuslib.debuglink import DebugLink
+from cerberuslib.transport import enumerate_devices
 
 
 def find_debug() -> DebugLink:
@@ -32,7 +32,7 @@ def find_debug() -> DebugLink:
         except Exception:
             continue
     else:
-        print("No suitable Trezor device found")
+        print("No suitable Cerberus device found")
         sys.exit(1)
 
 

@@ -3758,7 +3758,7 @@ static void test_ecdsa_verify_digest_helper(int (*ecdsa_verify_digest_fn)(
   const ecdsa_curve *curve = &secp256k1;
 
   // Signature verification for a digest which is equal to the group order.
-  // https://github.com/trezor/trezor-firmware/pull/1374
+  // https://github.com/Cerberus-Wallet/cerberus-firmware/pull/1374
   memcpy(
       pubkey,
       fromhex(
@@ -5776,11 +5776,11 @@ START_TEST(test_mnemonic) {
   while (*a && *b && *c) {
     m = mnemonic_from_data(fromhex(*a), strlen(*a) / 2);
     ck_assert_str_eq(m, *b);
-    mnemonic_to_seed(m, "TREZOR", seed, 0);
+    mnemonic_to_seed(m, "CERBERUS", seed, 0);
     ck_assert_mem_eq(seed, fromhex(*c), strlen(*c) / 2);
 #if USE_BIP39_CACHE
     // try second time to check whether caching results work
-    mnemonic_to_seed(m, "TREZOR", seed, 0);
+    mnemonic_to_seed(m, "CERBERUS", seed, 0);
     ck_assert_mem_eq(seed, fromhex(*c), strlen(*c) / 2);
 #endif
     a += 3;
@@ -10149,7 +10149,7 @@ static int my_strncasecmp(const char *s1, const char *s2, size_t n) {
 
 // define test suite and cases
 Suite *test_suite(void) {
-  Suite *s = suite_create("trezor-crypto");
+  Suite *s = suite_create("cerberus-crypto");
   TCase *tc;
 
   tc = tcase_create("bignum");

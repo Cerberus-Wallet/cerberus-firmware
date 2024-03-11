@@ -1,5 +1,5 @@
 /* Groestl hash from https://github.com/Groestlcoin/vanitygen
- * Trezor adaptation by Yura Pakhuchiy <pakhuchiy@gmail.com>. */
+ * Cerberus adaptation by Yura Pakhuchiy <pakhuchiy@gmail.com>. */
 /**
  * Basic type definitions.
  *

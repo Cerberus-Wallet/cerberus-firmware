@@ -12,7 +12,7 @@ You must have read/write permission to the `/dev/uhid/` device as well as to the
 
 ## Usage
 
-Run [Trezor emulator](https://github.com/trezor/trezor-core/blob/master/docs/emulator.md) and `./hid-bridge`.
+Run [Cerberus emulator](https://github.com/cerberus/cerberus-core/blob/master/docs/emulator.md) and `./hid-bridge`.
 
 ## Known issues
 

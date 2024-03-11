@@ -31,11 +31,11 @@ See https://github.com/satoshilabs/slips/blob/master/slip-0039.md.
 """
 
 from micropython import const
-from trezorcrypto import shamir, slip39
+from cerberuscrypto import shamir, slip39
 from typing import TYPE_CHECKING
 
-from trezor.crypto import random
-from trezor.errors import MnemonicError
+from cerberus.crypto import random
+from cerberus.errors import MnemonicError
 
 if TYPE_CHECKING:
     from typing import Callable, Iterable
@@ -397,7 +397,7 @@ def _rs1024_verify_checksum(data: Indices) -> bool:
 
 def _round_function(i: int, passphrase: bytes, e: int, salt: bytes, r: bytes) -> bytes:
     """The round function used internally by the Feistel cipher."""
-    from trezor.crypto import pbkdf2
+    from cerberus.crypto import pbkdf2
 
     return pbkdf2(
         pbkdf2.HMAC_SHA256,
@@ -414,7 +414,7 @@ def _get_salt(identifier: int) -> bytes:
 
 
 def _create_digest(random_data: bytes, shared_secret: bytes) -> bytes:
-    from trezor.crypto import hmac
+    from cerberus.crypto import hmac
 
     return hmac(hmac.SHA256, random_data, shared_secret).digest()[:_DIGEST_LENGTH_BYTES]
 

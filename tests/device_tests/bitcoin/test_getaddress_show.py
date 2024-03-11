@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,9 +16,9 @@
 
 import pytest
 
-from trezorlib import btc, messages, tools
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import Cancelled, TrezorFailure
+from cerberuslib import btc, messages, tools
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import Cancelled, CerberusFailure
 
 from ...input_flows import (
     InputFlowShowAddressQRCode,
@@ -121,7 +121,7 @@ def test_show_cancel(
 
 
 def test_show_unrecognized_path(client: Client):
-    with pytest.raises(TrezorFailure):
+    with pytest.raises(CerberusFailure):
         btc.get_address(
             client,
             "Bitcoin",

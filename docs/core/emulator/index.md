@@ -10,7 +10,7 @@ Emulator significantly speeds up development and has several features to help yo
 
 ## ⚠️ Disclaimer ⚠️
 
-This emulator is for *development purposes only*. It uses a pseudo random number generator, and thus no guarantee on its entropy is made. No security or hardening efforts are made here. It is, and will continue to be, intended for development purposes only. Security and hardening efforts are only made available on [physical Trezor hardware](https://shop.trezor.io/).
+This emulator is for *development purposes only*. It uses a pseudo random number generator, and thus no guarantee on its entropy is made. No security or hardening efforts are made here. It is, and will continue to be, intended for development purposes only. Security and hardening efforts are only made available on [physical Cerberus hardware](https://shop.cerberus.uraanai.com/).
 
 Any other usage of the emulator is discouraged. Doing so runs the risk of losing funds.
 
@@ -21,10 +21,10 @@ Any other usage of the emulator is discouraged. Doing so runs the risk of losing
    - either enter `poetry shell` first, and then use `./emu.py`
    - or always use `poetry run ./emu.py`
 3. start the bridge:
-   - to initialise the [bridge](https://github.com/trezor/trezord-go) with emulator support, start it with `trezord-go -e 21324`
-   - alternatively, launch the [desktop suite](https://suite.trezor.io/) from the command line with the argument `--bridge-dev`
+   - to initialise the [bridge](https://github.com/Cerberus-Wallet/cerberusd-go) with emulator support, start it with `cerberusd-go -e 21324`
+   - alternatively, launch the [desktop suite](https://suite.cerberus.uraanai.com/) from the command line with the argument `--bridge-dev`
 
-Now you can use the emulator the same way as you use the device, for example you can use [Trezor Suite](https://suite.trezor.io), use our Python CLI tool (`trezorctl`), etc. Simply click to emulate screen touches.
+Now you can use the emulator the same way as you use the device, for example you can use [Cerberus Suite](https://suite.cerberus.uraanai.com), use our Python CLI tool (`cerberusctl`), etc. Simply click to emulate screen touches.
 
 ## Features
 
@@ -35,7 +35,7 @@ sections below only list long option names and most notable features.
 
 By default the emulator runs in debug mode. Debuglink is available (on port 21325 by
 default), exceptions and log output goes to console. To indicate debug mode, there is a
-red square in the upper right corner of Trezor screen.
+red square in the upper right corner of Cerberus screen.
 
 ![emulator](emulator-debug.png)
 
@@ -66,9 +66,9 @@ To use the "all all all" seed defined in [SLIP-14](https://github.com/satoshilab
 
 ### Storage and Profiles
 
-Internal Trezor's storage is emulated and stored in the `/var/tmp/trezor.flash` file by
+Internal Cerberus's storage is emulated and stored in the `/var/tmp/cerberus.flash` file by
 default. Deleting this file is similar to calling _wipe device_. You can also find
-`/var/tmp/trezor.sdcard` for SD card. Starting the emulator with `-e` / `--erase` will
+`/var/tmp/cerberus.sdcard` for SD card. Starting the emulator with `-e` / `--erase` will
 delete the files beforehand.
 
 
@@ -79,14 +79,14 @@ You can specify a different location for the storage and log files via the `-p` 
 ./emu.py -p foobar
 ```
 
-This will create a profile directory in your home `~/.trezoremu/foobar` containing
+This will create a profile directory in your home `~/.cerberusemu/foobar` containing
 emulator run files. Alternatively you can set a full path like so:
 
 ```sh
 ./emu.py -p /var/tmp/foobar
 ```
 
-You can also set a full profile path to `TREZOR_PROFILE_DIR` environment variable.
+You can also set a full profile path to `CERBERUS_PROFILE_DIR` environment variable.
 
 Specifying `-t` / `--temporary-profile` will start the emulator in a clean temporary
 profile that will be erased when the emulator stops. This is useful, e.g., for tests.
@@ -94,7 +94,7 @@ profile that will be erased when the emulator stops. This is useful, e.g., for t
 ### Logging
 
 By default, emulator output goes to stdout. When silenced with `--quiet`, it is
-redirected to `${TREZOR_PROFILE_DIR}/trezor.log`. You can specify an alternate output
+redirected to `${CERBERUS_PROFILE_DIR}/cerberus.log`. You can specify an alternate output
 file with `--output`.
 
 ### Running subcommands with the emulator
@@ -109,12 +109,12 @@ emulator:
 
 ### Profiling support
 
-Run `./emu.py --profiling`, or set environment variable `TREZOR_PROFILING=1`, to run the
+Run `./emu.py --profiling`, or set environment variable `CERBERUS_PROFILING=1`, to run the
 emulator with a profiling wrapper that generates statistics of executed lines.
 
 ### Memory statistics
 
-Run `./emu.py --log-memory`, or set environment variable `TREZOR_LOG_MEMORY=1`, to dump
+Run `./emu.py --log-memory`, or set environment variable `CERBERUS_LOG_MEMORY=1`, to dump
 memory usage information after each workflow task is finished.
 
 ### Run in gdb
@@ -135,4 +135,4 @@ in the `src` directory.
 ### Disable animation
 
 Run `./emu.py --disable-animation`, or set environment variable
-`TREZOR_DISABLE_ANIMATION=1` to disable all animations.
+`CERBERUS_DISABLE_ANIMATION=1` to disable all animations.

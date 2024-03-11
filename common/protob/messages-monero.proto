@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.trezor.messages.monero;
+package hw.cerberus.messages.monero;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
-option java_outer_classname = "TrezorMessageMonero";
+option java_package = "com.satoshilabs.cerberus.lib.protobuf";
+option java_outer_classname = "CerberusMessageMonero";
 
 enum MoneroNetworkType {
     MAINNET = 0;

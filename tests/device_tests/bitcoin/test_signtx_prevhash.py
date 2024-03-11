@@ -4,9 +4,9 @@ from io import BytesIO
 
 import pytest
 
-from trezorlib import btc, messages, tools
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
+from cerberuslib import btc, messages, tools
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
 
 from .signtx import forge_prevtx
 
@@ -90,7 +90,7 @@ def test_invalid_prev_hash(client: Client, prev_hash):
         script_type=messages.OutputScriptType.PAYTOADDRESS,
     )
 
-    with pytest.raises(TrezorFailure) as e:
+    with pytest.raises(CerberusFailure) as e:
         btc.sign_tx(client, "Testnet", [inp1], [out1], prev_txes={})
     _check_error_message(prev_hash, client.features.model, e.value.message)
 
@@ -128,7 +128,7 @@ def test_invalid_prev_hash_attack(client: Client, prev_hash):
         msg.tx.inputs[0].prev_hash = prev_hash
         return msg
 
-    with client, pytest.raises(TrezorFailure) as e:
+    with client, pytest.raises(CerberusFailure) as e:
         client.set_filter(messages.TxAck, attack_filter)
         btc.sign_tx(client, "Bitcoin", [inp1], [out1], prev_txes=PREV_TXES)
 
@@ -163,6 +163,6 @@ def test_invalid_prev_hash_in_prevtx(client: Client, prev_hash):
     tx_hash = hash_tx(serialize_tx(prev_tx))
     inp0.prev_hash = tx_hash
 
-    with pytest.raises(TrezorFailure) as e:
+    with pytest.raises(CerberusFailure) as e:
         btc.sign_tx(client, "Bitcoin", [inp0], [out1], prev_txes={tx_hash: prev_tx})
     _check_error_message(prev_hash, client.features.model, e.value.message)

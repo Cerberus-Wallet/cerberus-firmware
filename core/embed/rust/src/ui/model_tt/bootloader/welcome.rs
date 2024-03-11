@@ -44,7 +44,7 @@ impl Component for Welcome {
         );
         display::text_center(
             screen().top_center() + Offset::y(126),
-            "your Trezor at",
+            "your Cerberus at",
             Font::NORMAL,
             GREY_MEDIUM,
             BLACK,

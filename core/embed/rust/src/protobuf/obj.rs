@@ -313,7 +313,7 @@ pub extern "C" fn protobuf_type_for_wire(wire_id: Obj) -> Obj {
 }
 
 #[no_mangle]
-pub static mp_module_trezorproto: Module = obj_module! {
+pub static mp_module_cerberusproto: Module = obj_module! {
     /// from typing_extensions import Self
     ///
     /// # XXX
@@ -333,7 +333,7 @@ pub static mp_module_trezorproto: Module = obj_module! {
     /// mock:global
     /// T = TypeVar("T", bound=MessageType)
 
-    Qstr::MP_QSTR___name__ => Qstr::MP_QSTR_trezorproto.to_obj(),
+    Qstr::MP_QSTR___name__ => Qstr::MP_QSTR_cerberusproto.to_obj(),
 
     /// def type_for_name(name: str) -> type[MessageType]:
     ///     """Find the message definition for the given protobuf name."""

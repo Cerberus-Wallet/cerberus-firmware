@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2021 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import btc, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.tools import H_, parse_path
+from cerberuslib import btc, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.tools import H_, parse_path
 
 from ...tx_cache import TxCache
 from .signtx import (
@@ -378,7 +378,7 @@ def test_attack_script_type(client: Client):
                 messages.Failure(code=messages.FailureType.ProcessError),
             ]
         )
-        with pytest.raises(TrezorFailure) as exc:
+        with pytest.raises(CerberusFailure) as exc:
             btc.sign_tx(client, "Testnet", [inp1, inp2], [out1], prev_txes=TX_API)
         assert exc.value.code == messages.FailureType.ProcessError
         assert exc.value.message.endswith("Transaction has changed during signing")
@@ -412,7 +412,7 @@ def test_send_invalid_address(client: Client, address: str):
         script_type=messages.OutputScriptType.PAYTOADDRESS,
     )
 
-    with client, pytest.raises(TrezorFailure):
+    with client, pytest.raises(CerberusFailure):
         client.set_expected_responses(
             [
                 request_input(0),

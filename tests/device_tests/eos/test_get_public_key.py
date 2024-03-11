@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,9 +16,9 @@
 
 import pytest
 
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.eos import get_public_key
-from trezorlib.tools import parse_path
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.eos import get_public_key
+from cerberuslib.tools import parse_path
 
 from ...common import MNEMONIC12
 from ...input_flows import InputFlowShowXpubQRCode

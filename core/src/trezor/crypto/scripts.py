@@ -1,4 +1,4 @@
-from trezor.crypto.hashlib import blake256, ripemd160, sha256
+from cerberus.crypto.hashlib import blake256, ripemd160, sha256
 
 
 class sha256_ripemd160(sha256):

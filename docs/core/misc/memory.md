@@ -1,4 +1,4 @@
-# Trezor T Memory Layout
+# Cerberus T Memory Layout
 
 ## Flash
 

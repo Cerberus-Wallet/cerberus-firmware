@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.utils import BufferReader
+    from cerberus.utils import BufferReader
 
 
 def read_compact_size(r: BufferReader) -> int:

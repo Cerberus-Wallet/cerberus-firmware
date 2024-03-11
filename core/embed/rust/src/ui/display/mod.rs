@@ -10,7 +10,7 @@ use super::{
     geometry::{Offset, Point, Rect},
 };
 #[cfg(feature = "dma2d")]
-use crate::trezorhal::{
+use crate::cerberushal::{
     dma2d::{
         dma2d_setup_4bpp_over_16bpp, dma2d_setup_4bpp_over_4bpp, dma2d_start_blend,
         dma2d_wait_for_transfer,
@@ -24,16 +24,16 @@ use crate::ui::component::image::Image;
 use crate::ui::geometry::Alignment2D;
 
 #[cfg(feature = "backlight")]
-use crate::{time::Duration, trezorhal::time};
+use crate::{time::Duration, cerberushal::time};
 
 use crate::{
     strutil::TString,
-    trezorhal::{buffers, display, uzlib::UzlibContext},
+    cerberushal::{buffers, display, uzlib::UzlibContext},
     ui::lerp::Lerp,
 };
 
 // Reexports
-use crate::trezorhal::buffers::BufferText;
+use crate::cerberushal::buffers::BufferText;
 pub use crate::ui::display::toif::Icon;
 pub use color::Color;
 pub use font::{Font, Glyph, GlyphMetrics};
@@ -42,7 +42,7 @@ pub use loader::{
 };
 
 #[cfg(all(feature = "dma2d", feature = "framebuffer"))]
-use crate::trezorhal::{
+use crate::cerberushal::{
     display::{get_fb_addr, pixel},
     dma2d::{dma2d_setup_const, dma2d_start_const_multiline},
 };

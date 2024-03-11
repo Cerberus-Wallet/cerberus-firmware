@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -17,9 +17,9 @@
 import pytest
 from mnemonic import Mnemonic
 
-from trezorlib import device, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
+from cerberuslib import device, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
 
 from ...common import EXTERNAL_ENTROPY, MNEMONIC12, WITH_MOCK_URANDOM, generate_entropy
 from ...input_flows import (
@@ -63,7 +63,7 @@ def reset_device(client: Client, strength: int):
     assert resp.backup_type is messages.BackupType.Bip39
 
     # backup attempt fails because backup was done in reset
-    with pytest.raises(TrezorFailure, match="ProcessError: Seed already backed up"):
+    with pytest.raises(CerberusFailure, match="ProcessError: Seed already backed up"):
         device.backup(client)
 
 

@@ -59,14 +59,14 @@ or with openocd (best to use latest from git)
 
 Default port for "target remote" JLink GDB server is :2331, for openocd :3333
 
-![Remote debug settings](CLion_Rust_embedded_Trezor_02.png)
+![Remote debug settings](CLion_Rust_embedded_Cerberus_02.png)
 
 It should be also possible to use "Remote GDB Server" setting and let CLion execute
 openocd or JLink GDB server.
 
 ### Now you can see variables from both Rust and C, set breakpoints
 
-![Remote debug settings](CLion_Rust_embedded_Trezor_01.png)
+![Remote debug settings](CLion_Rust_embedded_Cerberus_01.png)
 
 For pointers you can use memory view from variable's context menu.
 
@@ -166,8 +166,8 @@ stm32lib):
 
               -DSTM32_HAL_H=<stm32f4xx.h>
 
-              -DTREZOR_MODEL=T
-              -DTREZOR_MODEL_T=1
+              -DCERBERUS_MODEL=T
+              -DCERBERUS_MODEL_T=1
               -DSTM32F427xx
               -DUSE_HAL_DRIVER
               -DSTM32_HAL_H="<stm32f4xx.h>"
@@ -194,10 +194,10 @@ stm32lib):
               -DENABLE_MODULE_RANGEPROOF
               -DENABLE_MODULE_RECOVERY
               -DENABLE_MODULE_ECDH
-              -DTREZOR_FONT_BOLD_ENABLE
-              -DTREZOR_FONT_NORMAL_ENABLE
-              -DTREZOR_FONT_MONO_ENABLE
-              -DTREZOR_FONT_MONO_BOLD_ENABLE
+              -DCERBERUS_FONT_BOLD_ENABLE
+              -DCERBERUS_FONT_NORMAL_ENABLE
+              -DCERBERUS_FONT_MONO_ENABLE
+              -DCERBERUS_FONT_MONO_BOLD_ENABLE
       )
 
       include_directories(vendor/micropython)

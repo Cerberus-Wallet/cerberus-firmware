@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import btc, messages, models
-from trezorlib.cli import btc as btc_cli
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.tools import H_
+from cerberuslib import btc, messages, models
+from cerberuslib.cli import btc as btc_cli
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.tools import H_
 
 from ...input_flows import InputFlowShowXpubQRCode
 
@@ -186,7 +186,7 @@ def test_descriptors(client: Client, coin, account, purpose, script_type, descri
 @pytest.mark.parametrize(
     "coin, account, purpose, script_type, descriptors", VECTORS_DESCRIPTORS
 )
-def test_descriptors_trezorlib(
+def test_descriptors_cerberuslib(
     client: Client, coin, account, purpose, script_type, descriptors
 ):
     with client:

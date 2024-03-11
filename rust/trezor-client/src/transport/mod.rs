@@ -7,7 +7,7 @@ pub mod protocol;
 pub mod udp;
 pub mod webusb;
 
-/// An available transport for a Trezor device, containing any of the different supported
+/// An available transport for a Cerberus device, containing any of the different supported
 /// transports.
 #[derive(Debug)]
 pub enum AvailableDeviceTransport {
@@ -48,7 +48,7 @@ impl ProtoMessage {
     }
 }
 
-/// The transport interface that is implemented by the different ways to communicate with a Trezor
+/// The transport interface that is implemented by the different ways to communicate with a Cerberus
 /// device.
 pub trait Transport: Sync + Send {
     fn session_begin(&mut self) -> Result<(), error::Error>;
@@ -69,17 +69,17 @@ pub fn connect(available_device: &AvailableDevice) -> Result<Box<dyn Transport>,
 
 // A collection of transport-global constants.
 mod constants {
-    pub(crate) const DEV_TREZOR_LEGACY: (u16, u16) = (0x534C, 0x0001);
-    pub(crate) const DEV_TREZOR: (u16, u16) = (0x1209, 0x53C1);
-    pub(crate) const DEV_TREZOR_BOOTLOADER: (u16, u16) = (0x1209, 0x53C0);
+    pub(crate) const DEV_CERBERUS_LEGACY: (u16, u16) = (0x534C, 0x0001);
+    pub(crate) const DEV_CERBERUS: (u16, u16) = (0x1209, 0x53C1);
+    pub(crate) const DEV_CERBERUS_BOOTLOADER: (u16, u16) = (0x1209, 0x53C0);
 }
 
-/// Derive the Trezor model from the USB device.
+/// Derive the Cerberus model from the USB device.
 pub(crate) fn derive_model(dev_id: (u16, u16)) -> Option<Model> {
     match dev_id {
-        constants::DEV_TREZOR_LEGACY => Some(Model::TrezorLegacy),
-        constants::DEV_TREZOR => Some(Model::Trezor),
-        constants::DEV_TREZOR_BOOTLOADER => Some(Model::TrezorBootloader),
+        constants::DEV_CERBERUS_LEGACY => Some(Model::CerberusLegacy),
+        constants::DEV_CERBERUS => Some(Model::Cerberus),
+        constants::DEV_CERBERUS_BOOTLOADER => Some(Model::CerberusBootloader),
         _ => None,
     }
 }

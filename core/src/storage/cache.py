@@ -3,7 +3,7 @@ import gc
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor import utils
+from cerberus import utils
 
 if TYPE_CHECKING:
     from typing import Sequence, TypeVar, overload
@@ -23,7 +23,7 @@ APP_COMMON_NONCE = const(3)
 if not utils.BITCOIN_ONLY:
     APP_COMMON_DERIVE_CARDANO = const(4)
     APP_CARDANO_ICARUS_SECRET = const(5)
-    APP_CARDANO_ICARUS_TREZOR_SECRET = const(6)
+    APP_CARDANO_ICARUS_CERBERUS_SECRET = const(6)
     APP_MONERO_LIVE_REFRESH = const(7)
 
 # Keys that are valid across sessions
@@ -115,14 +115,14 @@ class SessionCache(DataCache):
                 32,  # APP_COMMON_NONCE
                 1,  # APP_COMMON_DERIVE_CARDANO
                 96,  # APP_CARDANO_ICARUS_SECRET
-                96,  # APP_CARDANO_ICARUS_TREZOR_SECRET
+                96,  # APP_CARDANO_ICARUS_CERBERUS_SECRET
                 1,  # APP_MONERO_LIVE_REFRESH
             )
         self.last_usage = 0
         super().__init__()
 
     def export_session_id(self) -> bytes:
-        from trezorcrypto import random  # avoid pulling in trezor.crypto
+        from cerberuscrypto import random  # avoid pulling in cerberus.crypto
 
         # generate a new session id if we don't have it yet
         if not self.session_id:

@@ -11,7 +11,7 @@ from construct_classes import Struct, subcon
 from typing_extensions import Self, TypedDict
 
 from ..firmware.models import Model
-from ..models import TrezorModel
+from ..models import CerberusModel
 from ..tools import EnumAdapter, TupleAdapter
 
 # All sections need to be aligned to 2 bytes for the offset tables using u16 to work properly
@@ -300,7 +300,7 @@ def order_from_json(json_order: dict[str, str]) -> Order:
 def blob_from_defs(
     lang_data: JsonDef,
     order: Order,
-    model: TrezorModel,
+    model: CerberusModel,
     version: VersionTuple,
     fonts_dir: Path,
 ) -> TranslationsBlob:
@@ -334,7 +334,7 @@ def blob_from_defs(
 
     header = Header(
         language=json_header["language"],
-        model=Model.from_trezor_model(model),
+        model=Model.from_cerberus_model(model),
         firmware_version=version,
         data_len=len(data),
         data_hash=sha256(data).digest(),

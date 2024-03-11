@@ -17,8 +17,8 @@ fn convert_path_from_str(derivation: &str) -> Vec<u32> {
     path
 }
 
-fn device_selector() -> trezor_client::Trezor {
-    let mut devices = trezor_client::find_devices(false);
+fn device_selector() -> cerberus_client::Cerberus {
+    let mut devices = cerberus_client::find_devices(false);
 
     if devices.is_empty() {
         panic!("No devices connected");
@@ -40,13 +40,13 @@ fn device_selector() -> trezor_client::Trezor {
     }
 }
 
-fn do_main() -> Result<(), trezor_client::Error> {
+fn do_main() -> Result<(), cerberus_client::Error> {
     // init with debugging
     tracing_subscriber::fmt().with_max_level(tracing::Level::TRACE).init();
 
-    let mut trezor = device_selector();
-    trezor.init_device(None)?;
-    let f = trezor.features().expect("no features").clone();
+    let mut cerberus = device_selector();
+    cerberus.init_device(None)?;
+    let f = cerberus.features().expect("no features").clone();
 
     println!("Features:");
     println!("vendor: {}", f.vendor());
@@ -58,17 +58,17 @@ fn do_main() -> Result<(), trezor_client::Error> {
     println!("passphrase protection: {}", f.passphrase_protection());
     println!(
         "{:?}",
-        trezor.ethereum_get_address(convert_path_from_str("m/44'/60'/1'/0/0")).unwrap()
+        cerberus.ethereum_get_address(convert_path_from_str("m/44'/60'/1'/0/0")).unwrap()
     );
-    drop(trezor);
+    drop(cerberus);
 
-    let mut trezor2 = device_selector();
+    let mut cerberus2 = device_selector();
 
-    trezor2.init_device(Some(f.session_id().to_vec()))?;
+    cerberus2.init_device(Some(f.session_id().to_vec()))?;
 
     println!(
         "{:?}",
-        trezor2.ethereum_get_address(convert_path_from_str("m/44'/60'/1'/0/0")).unwrap()
+        cerberus2.ethereum_get_address(convert_path_from_str("m/44'/60'/1'/0/0")).unwrap()
     );
     //optional bool bootloader_mode = 5;          // is device in bootloader mode?
     //optional string language = 9;               // device language

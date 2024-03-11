@@ -1,7 +1,7 @@
 use crate::{
     strutil::{StringType, TString},
     translations::TR,
-    trezorhal::random,
+    cerberushal::random,
     ui::{
         component::{text::common::TextBox, Child, Component, ComponentExt, Event, EventCtx},
         display::{Font, Icon},

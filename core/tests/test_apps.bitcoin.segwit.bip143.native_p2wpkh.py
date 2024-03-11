@@ -25,7 +25,7 @@ class TestSegwitBip143NativeP2WPKH(unittest.TestCase):
     )
     inp1 = TxInput(
         address_n=[0],
-        # Trezor expects hash in reversed format
+        # Cerberus expects hash in reversed format
         prev_hash=unhexlify(
             "9f96ade4b41d5433f4eda31e1738ec2b36f6e7d1420d94a6af99801a88f7f7ff"
         ),
@@ -37,7 +37,7 @@ class TestSegwitBip143NativeP2WPKH(unittest.TestCase):
     )
     inp2 = TxInput(
         address_n=[1],
-        # Trezor expects hash in reversed format
+        # Cerberus expects hash in reversed format
         prev_hash=unhexlify(
             "8ac60eb9575db5b2d987e29f301b5b819ea83a5c6579d282d189cc04b8e151ef"
         ),

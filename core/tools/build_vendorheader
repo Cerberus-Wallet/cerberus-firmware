@@ -4,7 +4,7 @@ from pathlib import Path
 
 import click
 
-from trezorlib import firmware, toif
+from cerberuslib import firmware, toif
 
 
 def minimum_header_len(spec):

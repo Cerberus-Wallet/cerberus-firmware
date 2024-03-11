@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -24,17 +24,17 @@ from ..log import DUMP_PACKETS
 from . import DeviceIsBusy, MessagePayload, Transport, TransportException
 
 if TYPE_CHECKING:
-    from ..models import TrezorModel
+    from ..models import CerberusModel
 
 LOG = logging.getLogger(__name__)
 
-TREZORD_HOST = "http://127.0.0.1:21325"
-TREZORD_ORIGIN_HEADER = {"Origin": "https://python.trezor.io"}
+CERBERUSD_HOST = "http://127.0.0.1:21325"
+CERBERUSD_ORIGIN_HEADER = {"Origin": "https://python.cerberus.io"}
 
-TREZORD_VERSION_MODERN = (2, 0, 25)
+CERBERUSD_VERSION_MODERN = (2, 0, 25)
 
 CONNECTION = requests.Session()
-CONNECTION.headers.update(TREZORD_ORIGIN_HEADER)
+CONNECTION.headers.update(CERBERUSD_ORIGIN_HEADER)
 
 
 class BridgeException(TransportException):
@@ -42,11 +42,11 @@ class BridgeException(TransportException):
         self.path = path
         self.status = status
         self.message = message
-        super().__init__(f"trezord: {path} failed with code {status}: {message}")
+        super().__init__(f"cerberusd: {path} failed with code {status}: {message}")
 
 
 def call_bridge(path: str, data: Optional[str] = None) -> requests.Response:
-    url = TREZORD_HOST + "/" + path
+    url = CERBERUSD_HOST + "/" + path
     r = CONNECTION.post(url, data=data)
     if r.status_code != 200:
         raise BridgeException(path, r.status_code, r.json()["error"])
@@ -56,7 +56,7 @@ def call_bridge(path: str, data: Optional[str] = None) -> requests.Response:
 def is_legacy_bridge() -> bool:
     config = call_bridge("configure").json()
     version_tuple = tuple(map(int, config["version"].split(".")))
-    return version_tuple < TREZORD_VERSION_MODERN
+    return version_tuple < CERBERUSD_VERSION_MODERN
 
 
 class BridgeHandle:
@@ -105,7 +105,7 @@ class BridgeHandleLegacy(BridgeHandle):
 
 class BridgeTransport(Transport):
     """
-    BridgeTransport implements transport through Trezor Bridge (aka trezord).
+    BridgeTransport implements transport through Cerberus Bridge (aka cerberusd).
     """
 
     PATH_PREFIX = "bridge"
@@ -144,7 +144,7 @@ class BridgeTransport(Transport):
 
     @classmethod
     def enumerate(
-        cls, _models: Optional[Iterable["TrezorModel"]] = None
+        cls, _models: Optional[Iterable["CerberusModel"]] = None
     ) -> Iterable["BridgeTransport"]:
         try:
             legacy = is_legacy_bridge()

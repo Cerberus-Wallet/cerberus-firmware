@@ -25,18 +25,18 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarAsset)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarAsset)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarAsset {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarAsset.type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarAsset.type)
     pub type_: ::std::option::Option<::protobuf::EnumOrUnknown<StellarAssetType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarAsset.code)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarAsset.code)
     pub code: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarAsset.issuer)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarAsset.issuer)
     pub issuer: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarAsset.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarAsset.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -51,7 +51,7 @@ impl StellarAsset {
         ::std::default::Default::default()
     }
 
-    // required .hw.trezor.messages.stellar.StellarAssetType type = 1;
+    // required .hw.cerberus.messages.stellar.StellarAssetType type = 1;
 
     pub fn type_(&self) -> StellarAssetType {
         match self.type_ {
@@ -280,18 +280,18 @@ impl ::protobuf::reflect::ProtobufValue for StellarAsset {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarGetAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarGetAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarGetAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarGetAddress.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarGetAddress.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarGetAddress.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarGetAddress.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarGetAddress.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarGetAddress.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarGetAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarGetAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -479,14 +479,14 @@ impl ::protobuf::reflect::ProtobufValue for StellarGetAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarAddress.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarAddress.address)
     pub address: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -640,36 +640,36 @@ impl ::protobuf::reflect::ProtobufValue for StellarAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarSignTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarSignTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarSignTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignTx.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignTx.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignTx.network_passphrase)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignTx.network_passphrase)
     pub network_passphrase: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignTx.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignTx.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignTx.fee)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignTx.fee)
     pub fee: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignTx.sequence_number)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignTx.sequence_number)
     pub sequence_number: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignTx.timebounds_start)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignTx.timebounds_start)
     pub timebounds_start: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignTx.timebounds_end)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignTx.timebounds_end)
     pub timebounds_end: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignTx.memo_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignTx.memo_type)
     pub memo_type: ::std::option::Option<::protobuf::EnumOrUnknown<stellar_sign_tx::StellarMemoType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignTx.memo_text)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignTx.memo_text)
     pub memo_text: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignTx.memo_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignTx.memo_id)
     pub memo_id: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignTx.memo_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignTx.memo_hash)
     pub memo_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignTx.num_operations)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignTx.num_operations)
     pub num_operations: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarSignTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarSignTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -832,7 +832,7 @@ impl StellarSignTx {
         self.timebounds_end = ::std::option::Option::Some(v);
     }
 
-    // required .hw.trezor.messages.stellar.StellarSignTx.StellarMemoType memo_type = 10;
+    // required .hw.cerberus.messages.stellar.StellarSignTx.StellarMemoType memo_type = 10;
 
     pub fn memo_type(&self) -> stellar_sign_tx::StellarMemoType {
         match self.memo_type {
@@ -1270,17 +1270,17 @@ impl ::protobuf::reflect::ProtobufValue for StellarSignTx {
 /// Nested message and enums of message `StellarSignTx`
 pub mod stellar_sign_tx {
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.stellar.StellarSignTx.StellarMemoType)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.stellar.StellarSignTx.StellarMemoType)
     pub enum StellarMemoType {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.stellar.StellarSignTx.StellarMemoType.NONE)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.stellar.StellarSignTx.StellarMemoType.NONE)
         NONE = 0,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.stellar.StellarSignTx.StellarMemoType.TEXT)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.stellar.StellarSignTx.StellarMemoType.TEXT)
         TEXT = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.stellar.StellarSignTx.StellarMemoType.ID)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.stellar.StellarSignTx.StellarMemoType.ID)
         ID = 2,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.stellar.StellarSignTx.StellarMemoType.HASH)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.stellar.StellarSignTx.StellarMemoType.HASH)
         HASH = 3,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.stellar.StellarSignTx.StellarMemoType.RETURN)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.stellar.StellarSignTx.StellarMemoType.RETURN)
         RETURN = 4,
     }
 
@@ -1347,11 +1347,11 @@ pub mod stellar_sign_tx {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarTxOpRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarTxOpRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarTxOpRequest {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarTxOpRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarTxOpRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1450,20 +1450,20 @@ impl ::protobuf::reflect::ProtobufValue for StellarTxOpRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarPaymentOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarPaymentOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarPaymentOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPaymentOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPaymentOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPaymentOp.destination_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPaymentOp.destination_account)
     pub destination_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPaymentOp.asset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPaymentOp.asset)
     pub asset: ::protobuf::MessageField<StellarAsset>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPaymentOp.amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPaymentOp.amount)
     pub amount: ::std::option::Option<i64>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarPaymentOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarPaymentOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1732,18 +1732,18 @@ impl ::protobuf::reflect::ProtobufValue for StellarPaymentOp {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarCreateAccountOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarCreateAccountOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarCreateAccountOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarCreateAccountOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarCreateAccountOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarCreateAccountOp.new_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarCreateAccountOp.new_account)
     pub new_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarCreateAccountOp.starting_balance)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarCreateAccountOp.starting_balance)
     pub starting_balance: ::std::option::Option<i64>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarCreateAccountOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarCreateAccountOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1987,26 +1987,26 @@ impl ::protobuf::reflect::ProtobufValue for StellarCreateAccountOp {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarPathPaymentStrictReceiveOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarPathPaymentStrictReceiveOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarPathPaymentStrictReceiveOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictReceiveOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictReceiveOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictReceiveOp.send_asset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictReceiveOp.send_asset)
     pub send_asset: ::protobuf::MessageField<StellarAsset>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictReceiveOp.send_max)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictReceiveOp.send_max)
     pub send_max: ::std::option::Option<i64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictReceiveOp.destination_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictReceiveOp.destination_account)
     pub destination_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictReceiveOp.destination_asset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictReceiveOp.destination_asset)
     pub destination_asset: ::protobuf::MessageField<StellarAsset>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictReceiveOp.destination_amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictReceiveOp.destination_amount)
     pub destination_amount: ::std::option::Option<i64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictReceiveOp.paths)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictReceiveOp.paths)
     pub paths: ::std::vec::Vec<StellarAsset>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarPathPaymentStrictReceiveOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarPathPaymentStrictReceiveOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2360,26 +2360,26 @@ impl ::protobuf::reflect::ProtobufValue for StellarPathPaymentStrictReceiveOp {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarPathPaymentStrictSendOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarPathPaymentStrictSendOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarPathPaymentStrictSendOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictSendOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictSendOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictSendOp.send_asset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictSendOp.send_asset)
     pub send_asset: ::protobuf::MessageField<StellarAsset>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictSendOp.send_amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictSendOp.send_amount)
     pub send_amount: ::std::option::Option<i64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictSendOp.destination_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictSendOp.destination_account)
     pub destination_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictSendOp.destination_asset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictSendOp.destination_asset)
     pub destination_asset: ::protobuf::MessageField<StellarAsset>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictSendOp.destination_min)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictSendOp.destination_min)
     pub destination_min: ::std::option::Option<i64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarPathPaymentStrictSendOp.paths)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarPathPaymentStrictSendOp.paths)
     pub paths: ::std::vec::Vec<StellarAsset>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarPathPaymentStrictSendOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarPathPaymentStrictSendOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2733,26 +2733,26 @@ impl ::protobuf::reflect::ProtobufValue for StellarPathPaymentStrictSendOp {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarManageSellOfferOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarManageSellOfferOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarManageSellOfferOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageSellOfferOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageSellOfferOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageSellOfferOp.selling_asset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageSellOfferOp.selling_asset)
     pub selling_asset: ::protobuf::MessageField<StellarAsset>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageSellOfferOp.buying_asset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageSellOfferOp.buying_asset)
     pub buying_asset: ::protobuf::MessageField<StellarAsset>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageSellOfferOp.amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageSellOfferOp.amount)
     pub amount: ::std::option::Option<i64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageSellOfferOp.price_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageSellOfferOp.price_n)
     pub price_n: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageSellOfferOp.price_d)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageSellOfferOp.price_d)
     pub price_d: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageSellOfferOp.offer_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageSellOfferOp.offer_id)
     pub offer_id: ::std::option::Option<u64>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarManageSellOfferOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarManageSellOfferOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3105,26 +3105,26 @@ impl ::protobuf::reflect::ProtobufValue for StellarManageSellOfferOp {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarManageBuyOfferOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarManageBuyOfferOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarManageBuyOfferOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageBuyOfferOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageBuyOfferOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageBuyOfferOp.selling_asset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageBuyOfferOp.selling_asset)
     pub selling_asset: ::protobuf::MessageField<StellarAsset>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageBuyOfferOp.buying_asset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageBuyOfferOp.buying_asset)
     pub buying_asset: ::protobuf::MessageField<StellarAsset>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageBuyOfferOp.amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageBuyOfferOp.amount)
     pub amount: ::std::option::Option<i64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageBuyOfferOp.price_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageBuyOfferOp.price_n)
     pub price_n: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageBuyOfferOp.price_d)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageBuyOfferOp.price_d)
     pub price_d: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageBuyOfferOp.offer_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageBuyOfferOp.offer_id)
     pub offer_id: ::std::option::Option<u64>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarManageBuyOfferOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarManageBuyOfferOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3477,24 +3477,24 @@ impl ::protobuf::reflect::ProtobufValue for StellarManageBuyOfferOp {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarCreatePassiveSellOfferOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarCreatePassiveSellOfferOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarCreatePassiveSellOfferOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarCreatePassiveSellOfferOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarCreatePassiveSellOfferOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarCreatePassiveSellOfferOp.selling_asset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarCreatePassiveSellOfferOp.selling_asset)
     pub selling_asset: ::protobuf::MessageField<StellarAsset>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarCreatePassiveSellOfferOp.buying_asset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarCreatePassiveSellOfferOp.buying_asset)
     pub buying_asset: ::protobuf::MessageField<StellarAsset>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarCreatePassiveSellOfferOp.amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarCreatePassiveSellOfferOp.amount)
     pub amount: ::std::option::Option<i64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarCreatePassiveSellOfferOp.price_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarCreatePassiveSellOfferOp.price_n)
     pub price_n: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarCreatePassiveSellOfferOp.price_d)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarCreatePassiveSellOfferOp.price_d)
     pub price_d: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarCreatePassiveSellOfferOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarCreatePassiveSellOfferOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3809,36 +3809,36 @@ impl ::protobuf::reflect::ProtobufValue for StellarCreatePassiveSellOfferOp {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarSetOptionsOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarSetOptionsOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarSetOptionsOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSetOptionsOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSetOptionsOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSetOptionsOp.inflation_destination_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSetOptionsOp.inflation_destination_account)
     pub inflation_destination_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSetOptionsOp.clear_flags)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSetOptionsOp.clear_flags)
     pub clear_flags: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSetOptionsOp.set_flags)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSetOptionsOp.set_flags)
     pub set_flags: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSetOptionsOp.master_weight)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSetOptionsOp.master_weight)
     pub master_weight: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSetOptionsOp.low_threshold)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSetOptionsOp.low_threshold)
     pub low_threshold: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSetOptionsOp.medium_threshold)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSetOptionsOp.medium_threshold)
     pub medium_threshold: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSetOptionsOp.high_threshold)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSetOptionsOp.high_threshold)
     pub high_threshold: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSetOptionsOp.home_domain)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSetOptionsOp.home_domain)
     pub home_domain: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSetOptionsOp.signer_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSetOptionsOp.signer_type)
     pub signer_type: ::std::option::Option<::protobuf::EnumOrUnknown<stellar_set_options_op::StellarSignerType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSetOptionsOp.signer_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSetOptionsOp.signer_key)
     pub signer_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSetOptionsOp.signer_weight)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSetOptionsOp.signer_weight)
     pub signer_weight: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarSetOptionsOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarSetOptionsOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4075,7 +4075,7 @@ impl StellarSetOptionsOp {
         self.home_domain.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // optional .hw.trezor.messages.stellar.StellarSetOptionsOp.StellarSignerType signer_type = 10;
+    // optional .hw.cerberus.messages.stellar.StellarSetOptionsOp.StellarSignerType signer_type = 10;
 
     pub fn signer_type(&self) -> stellar_set_options_op::StellarSignerType {
         match self.signer_type {
@@ -4431,13 +4431,13 @@ impl ::protobuf::reflect::ProtobufValue for StellarSetOptionsOp {
 /// Nested message and enums of message `StellarSetOptionsOp`
 pub mod stellar_set_options_op {
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.stellar.StellarSetOptionsOp.StellarSignerType)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.stellar.StellarSetOptionsOp.StellarSignerType)
     pub enum StellarSignerType {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.stellar.StellarSetOptionsOp.StellarSignerType.ACCOUNT)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.stellar.StellarSetOptionsOp.StellarSignerType.ACCOUNT)
         ACCOUNT = 0,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.stellar.StellarSetOptionsOp.StellarSignerType.PRE_AUTH)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.stellar.StellarSetOptionsOp.StellarSignerType.PRE_AUTH)
         PRE_AUTH = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.stellar.StellarSetOptionsOp.StellarSignerType.HASH)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.stellar.StellarSetOptionsOp.StellarSignerType.HASH)
         HASH = 2,
     }
 
@@ -4498,18 +4498,18 @@ pub mod stellar_set_options_op {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarChangeTrustOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarChangeTrustOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarChangeTrustOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarChangeTrustOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarChangeTrustOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarChangeTrustOp.asset)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarChangeTrustOp.asset)
     pub asset: ::protobuf::MessageField<StellarAsset>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarChangeTrustOp.limit)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarChangeTrustOp.limit)
     pub limit: ::std::option::Option<u64>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarChangeTrustOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarChangeTrustOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4723,22 +4723,22 @@ impl ::protobuf::reflect::ProtobufValue for StellarChangeTrustOp {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarAllowTrustOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarAllowTrustOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarAllowTrustOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarAllowTrustOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarAllowTrustOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarAllowTrustOp.trusted_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarAllowTrustOp.trusted_account)
     pub trusted_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarAllowTrustOp.asset_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarAllowTrustOp.asset_type)
     pub asset_type: ::std::option::Option<::protobuf::EnumOrUnknown<StellarAssetType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarAllowTrustOp.asset_code)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarAllowTrustOp.asset_code)
     pub asset_code: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarAllowTrustOp.is_authorized)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarAllowTrustOp.is_authorized)
     pub is_authorized: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarAllowTrustOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarAllowTrustOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4825,7 +4825,7 @@ impl StellarAllowTrustOp {
         self.trusted_account.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // required .hw.trezor.messages.stellar.StellarAssetType asset_type = 3;
+    // required .hw.cerberus.messages.stellar.StellarAssetType asset_type = 3;
 
     pub fn asset_type(&self) -> StellarAssetType {
         match self.asset_type {
@@ -5075,16 +5075,16 @@ impl ::protobuf::reflect::ProtobufValue for StellarAllowTrustOp {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarAccountMergeOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarAccountMergeOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarAccountMergeOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarAccountMergeOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarAccountMergeOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarAccountMergeOp.destination_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarAccountMergeOp.destination_account)
     pub destination_account: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarAccountMergeOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarAccountMergeOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5290,18 +5290,18 @@ impl ::protobuf::reflect::ProtobufValue for StellarAccountMergeOp {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarManageDataOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarManageDataOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarManageDataOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageDataOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageDataOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageDataOp.key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageDataOp.key)
     pub key: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarManageDataOp.value)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarManageDataOp.value)
     pub value: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarManageDataOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarManageDataOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5559,16 +5559,16 @@ impl ::protobuf::reflect::ProtobufValue for StellarManageDataOp {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarBumpSequenceOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarBumpSequenceOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarBumpSequenceOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarBumpSequenceOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarBumpSequenceOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarBumpSequenceOp.bump_to)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarBumpSequenceOp.bump_to)
     pub bump_to: ::std::option::Option<u64>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarBumpSequenceOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarBumpSequenceOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5757,16 +5757,16 @@ impl ::protobuf::reflect::ProtobufValue for StellarBumpSequenceOp {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarClaimClaimableBalanceOp)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarClaimClaimableBalanceOp)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarClaimClaimableBalanceOp {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarClaimClaimableBalanceOp.source_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarClaimClaimableBalanceOp.source_account)
     pub source_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarClaimClaimableBalanceOp.balance_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarClaimClaimableBalanceOp.balance_id)
     pub balance_id: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarClaimClaimableBalanceOp.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarClaimClaimableBalanceOp.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5972,16 +5972,16 @@ impl ::protobuf::reflect::ProtobufValue for StellarClaimClaimableBalanceOp {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.stellar.StellarSignedTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.stellar.StellarSignedTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct StellarSignedTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignedTx.public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignedTx.public_key)
     pub public_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.stellar.StellarSignedTx.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.stellar.StellarSignedTx.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.stellar.StellarSignedTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.stellar.StellarSignedTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -6191,13 +6191,13 @@ impl ::protobuf::reflect::ProtobufValue for StellarSignedTx {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.stellar.StellarAssetType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.stellar.StellarAssetType)
 pub enum StellarAssetType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.stellar.StellarAssetType.NATIVE)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.stellar.StellarAssetType.NATIVE)
     NATIVE = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.stellar.StellarAssetType.ALPHANUM4)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.stellar.StellarAssetType.ALPHANUM4)
     ALPHANUM4 = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.stellar.StellarAssetType.ALPHANUM12)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.stellar.StellarAssetType.ALPHANUM12)
     ALPHANUM12 = 2,
 }
 
@@ -6258,8 +6258,8 @@ impl StellarAssetType {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x16messages-stellar.proto\x12\x1ahw.trezor.messages.stellar\"|\n\x0cS\
-    tellarAsset\x12@\n\x04type\x18\x01\x20\x02(\x0e2,.hw.trezor.messages.ste\
+    \n\x16messages-stellar.proto\x12\x1ahw.cerberus.messages.stellar\"|\n\x0cS\
+    tellarAsset\x12@\n\x04type\x18\x01\x20\x02(\x0e2,.hw.cerberus.messages.ste\
     llar.StellarAssetTypeR\x04type\x12\x12\n\x04code\x18\x02\x20\x01(\tR\x04\
     code\x12\x16\n\x06issuer\x18\x03\x20\x01(\tR\x06issuer\"o\n\x11StellarGe\
     tAddress\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\x12!\n\x0c\
@@ -6272,7 +6272,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     fee\x12'\n\x0fsequence_number\x18\x06\x20\x02(\x04R\x0esequenceNumber\
     \x12)\n\x10timebounds_start\x18\x08\x20\x02(\rR\x0ftimeboundsStart\x12%\
     \n\x0etimebounds_end\x18\t\x20\x02(\rR\rtimeboundsEnd\x12V\n\tmemo_type\
-    \x18\n\x20\x02(\x0e29.hw.trezor.messages.stellar.StellarSignTx.StellarMe\
+    \x18\n\x20\x02(\x0e29.hw.cerberus.messages.stellar.StellarSignTx.StellarMe\
     moTypeR\x08memoType\x12\x1b\n\tmemo_text\x18\x0b\x20\x01(\tR\x08memoText\
     \x12\x17\n\x07memo_id\x18\x0c\x20\x01(\x04R\x06memoId\x12\x1b\n\tmemo_ha\
     sh\x18\r\x20\x01(\x0cR\x08memoHash\x12%\n\x0enum_operations\x18\x0e\x20\
@@ -6281,46 +6281,46 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x03\x12\n\n\x06RETURN\x10\x04\"\x14\n\x12StellarTxOpRequest\"\xc2\x01\n\
     \x10StellarPaymentOp\x12%\n\x0esource_account\x18\x01\x20\x01(\tR\rsourc\
     eAccount\x12/\n\x13destination_account\x18\x02\x20\x02(\tR\x12destinatio\
-    nAccount\x12>\n\x05asset\x18\x03\x20\x02(\x0b2(.hw.trezor.messages.stell\
+    nAccount\x12>\n\x05asset\x18\x03\x20\x02(\x0b2(.hw.cerberus.messages.stell\
     ar.StellarAssetR\x05asset\x12\x16\n\x06amount\x18\x04\x20\x02(\x12R\x06a\
     mount\"\x8b\x01\n\x16StellarCreateAccountOp\x12%\n\x0esource_account\x18\
     \x01\x20\x01(\tR\rsourceAccount\x12\x1f\n\x0bnew_account\x18\x02\x20\x02\
     (\tR\nnewAccount\x12)\n\x10starting_balance\x18\x03\x20\x02(\x12R\x0fsta\
     rtingBalance\"\xa5\x03\n!StellarPathPaymentStrictReceiveOp\x12%\n\x0esou\
     rce_account\x18\x01\x20\x01(\tR\rsourceAccount\x12G\n\nsend_asset\x18\
-    \x02\x20\x02(\x0b2(.hw.trezor.messages.stellar.StellarAssetR\tsendAsset\
+    \x02\x20\x02(\x0b2(.hw.cerberus.messages.stellar.StellarAssetR\tsendAsset\
     \x12\x19\n\x08send_max\x18\x03\x20\x02(\x12R\x07sendMax\x12/\n\x13destin\
     ation_account\x18\x04\x20\x02(\tR\x12destinationAccount\x12U\n\x11destin\
-    ation_asset\x18\x05\x20\x02(\x0b2(.hw.trezor.messages.stellar.StellarAss\
+    ation_asset\x18\x05\x20\x02(\x0b2(.hw.cerberus.messages.stellar.StellarAss\
     etR\x10destinationAsset\x12-\n\x12destination_amount\x18\x06\x20\x02(\
     \x12R\x11destinationAmount\x12>\n\x05paths\x18\x07\x20\x03(\x0b2(.hw.tre\
     zor.messages.stellar.StellarAssetR\x05paths\"\xa2\x03\n\x1eStellarPathPa\
     ymentStrictSendOp\x12%\n\x0esource_account\x18\x01\x20\x01(\tR\rsourceAc\
-    count\x12G\n\nsend_asset\x18\x02\x20\x02(\x0b2(.hw.trezor.messages.stell\
+    count\x12G\n\nsend_asset\x18\x02\x20\x02(\x0b2(.hw.cerberus.messages.stell\
     ar.StellarAssetR\tsendAsset\x12\x1f\n\x0bsend_amount\x18\x03\x20\x02(\
     \x12R\nsendAmount\x12/\n\x13destination_account\x18\x04\x20\x02(\tR\x12d\
     estinationAccount\x12U\n\x11destination_asset\x18\x05\x20\x02(\x0b2(.hw.\
-    trezor.messages.stellar.StellarAssetR\x10destinationAsset\x12'\n\x0fdest\
+    cerberus.messages.stellar.StellarAssetR\x10destinationAsset\x12'\n\x0fdest\
     ination_min\x18\x06\x20\x02(\x12R\x0edestinationMin\x12>\n\x05paths\x18\
-    \x07\x20\x03(\x0b2(.hw.trezor.messages.stellar.StellarAssetR\x05paths\"\
+    \x07\x20\x03(\x0b2(.hw.cerberus.messages.stellar.StellarAssetR\x05paths\"\
     \xc2\x02\n\x18StellarManageSellOfferOp\x12%\n\x0esource_account\x18\x01\
     \x20\x01(\tR\rsourceAccount\x12M\n\rselling_asset\x18\x02\x20\x02(\x0b2(\
-    .hw.trezor.messages.stellar.StellarAssetR\x0csellingAsset\x12K\n\x0cbuyi\
-    ng_asset\x18\x03\x20\x02(\x0b2(.hw.trezor.messages.stellar.StellarAssetR\
+    .hw.cerberus.messages.stellar.StellarAssetR\x0csellingAsset\x12K\n\x0cbuyi\
+    ng_asset\x18\x03\x20\x02(\x0b2(.hw.cerberus.messages.stellar.StellarAssetR\
     \x0bbuyingAsset\x12\x16\n\x06amount\x18\x04\x20\x02(\x12R\x06amount\x12\
     \x17\n\x07price_n\x18\x05\x20\x02(\rR\x06priceN\x12\x17\n\x07price_d\x18\
     \x06\x20\x02(\rR\x06priceD\x12\x19\n\x08offer_id\x18\x07\x20\x02(\x04R\
     \x07offerId\"\xc1\x02\n\x17StellarManageBuyOfferOp\x12%\n\x0esource_acco\
     unt\x18\x01\x20\x01(\tR\rsourceAccount\x12M\n\rselling_asset\x18\x02\x20\
-    \x02(\x0b2(.hw.trezor.messages.stellar.StellarAssetR\x0csellingAsset\x12\
-    K\n\x0cbuying_asset\x18\x03\x20\x02(\x0b2(.hw.trezor.messages.stellar.St\
+    \x02(\x0b2(.hw.cerberus.messages.stellar.StellarAssetR\x0csellingAsset\x12\
+    K\n\x0cbuying_asset\x18\x03\x20\x02(\x0b2(.hw.cerberus.messages.stellar.St\
     ellarAssetR\x0bbuyingAsset\x12\x16\n\x06amount\x18\x04\x20\x02(\x12R\x06\
     amount\x12\x17\n\x07price_n\x18\x05\x20\x02(\rR\x06priceN\x12\x17\n\x07p\
     rice_d\x18\x06\x20\x02(\rR\x06priceD\x12\x19\n\x08offer_id\x18\x07\x20\
     \x02(\x04R\x07offerId\"\xae\x02\n\x1fStellarCreatePassiveSellOfferOp\x12\
     %\n\x0esource_account\x18\x01\x20\x01(\tR\rsourceAccount\x12M\n\rselling\
-    _asset\x18\x02\x20\x02(\x0b2(.hw.trezor.messages.stellar.StellarAssetR\
-    \x0csellingAsset\x12K\n\x0cbuying_asset\x18\x03\x20\x02(\x0b2(.hw.trezor\
+    _asset\x18\x02\x20\x02(\x0b2(.hw.cerberus.messages.stellar.StellarAssetR\
+    \x0csellingAsset\x12K\n\x0cbuying_asset\x18\x03\x20\x02(\x0b2(.hw.cerberus\
     .messages.stellar.StellarAssetR\x0bbuyingAsset\x12\x16\n\x06amount\x18\
     \x04\x20\x02(\x12R\x06amount\x12\x17\n\x07price_n\x18\x05\x20\x02(\rR\
     \x06priceN\x12\x17\n\x07price_d\x18\x06\x20\x02(\rR\x06priceD\"\xdd\x04\
@@ -6332,18 +6332,18 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     threshold\x18\x06\x20\x01(\rR\x0clowThreshold\x12)\n\x10medium_threshold\
     \x18\x07\x20\x01(\rR\x0fmediumThreshold\x12%\n\x0ehigh_threshold\x18\x08\
     \x20\x01(\rR\rhighThreshold\x12\x1f\n\x0bhome_domain\x18\t\x20\x01(\tR\n\
-    homeDomain\x12b\n\x0bsigner_type\x18\n\x20\x01(\x0e2A.hw.trezor.messages\
+    homeDomain\x12b\n\x0bsigner_type\x18\n\x20\x01(\x0e2A.hw.cerberus.messages\
     .stellar.StellarSetOptionsOp.StellarSignerTypeR\nsignerType\x12\x1d\n\ns\
     igner_key\x18\x0b\x20\x01(\x0cR\tsignerKey\x12#\n\rsigner_weight\x18\x0c\
     \x20\x01(\rR\x0csignerWeight\"8\n\x11StellarSignerType\x12\x0b\n\x07ACCO\
     UNT\x10\0\x12\x0c\n\x08PRE_AUTH\x10\x01\x12\x08\n\x04HASH\x10\x02\"\x93\
     \x01\n\x14StellarChangeTrustOp\x12%\n\x0esource_account\x18\x01\x20\x01(\
-    \tR\rsourceAccount\x12>\n\x05asset\x18\x02\x20\x02(\x0b2(.hw.trezor.mess\
+    \tR\rsourceAccount\x12>\n\x05asset\x18\x02\x20\x02(\x0b2(.hw.cerberus.mess\
     ages.stellar.StellarAssetR\x05asset\x12\x14\n\x05limit\x18\x03\x20\x02(\
     \x04R\x05limit\"\xf6\x01\n\x13StellarAllowTrustOp\x12%\n\x0esource_accou\
     nt\x18\x01\x20\x01(\tR\rsourceAccount\x12'\n\x0ftrusted_account\x18\x02\
     \x20\x02(\tR\x0etrustedAccount\x12K\n\nasset_type\x18\x03\x20\x02(\x0e2,\
-    .hw.trezor.messages.stellar.StellarAssetTypeR\tassetType\x12\x1d\n\nasse\
+    .hw.cerberus.messages.stellar.StellarAssetTypeR\tassetType\x12\x1d\n\nasse\
     t_code\x18\x04\x20\x01(\tR\tassetCode\x12#\n\ris_authorized\x18\x05\x20\
     \x02(\x08R\x0cisAuthorized\"o\n\x15StellarAccountMergeOp\x12%\n\x0esourc\
     e_account\x18\x01\x20\x01(\tR\rsourceAccount\x12/\n\x13destination_accou\
@@ -6358,7 +6358,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     key\x18\x01\x20\x02(\x0cR\tpublicKey\x12\x1c\n\tsignature\x18\x02\x20\
     \x02(\x0cR\tsignature*=\n\x10StellarAssetType\x12\n\n\x06NATIVE\x10\0\
     \x12\r\n\tALPHANUM4\x10\x01\x12\x0e\n\nALPHANUM12\x10\x02B;\n#com.satosh\
-    ilabs.trezor.lib.protobufB\x14TrezorMessageStellar\
+    ilabs.cerberus.lib.protobufB\x14CerberusMessageStellar\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

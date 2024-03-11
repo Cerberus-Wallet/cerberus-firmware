@@ -40,10 +40,10 @@ where
         };
         // `wrapper` is a closure, and to pass it over the FFI, we split it into a
         // function pointer, and a user-data pointer.
-        // `ffi::trezor_obj_call_protected` then calls the `callback` with the
+        // `ffi::cerberus_obj_call_protected` then calls the `callback` with the
         // `argument`.
         let (callback, argument) = split_func_into_callback_and_argument(&mut wrapper);
-        let exception = ffi::trezor_obj_call_protected(Some(callback), argument);
+        let exception = ffi::cerberus_obj_call_protected(Some(callback), argument);
         if exception.is_null() {
             Ok(result.assume_init())
         } else {

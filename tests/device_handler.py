@@ -1,14 +1,14 @@
 from concurrent.futures import ThreadPoolExecutor
 from typing import TYPE_CHECKING, Any, Callable
 
-from trezorlib.client import PASSPHRASE_ON_DEVICE
-from trezorlib.transport import udp
+from cerberuslib.client import PASSPHRASE_ON_DEVICE
+from cerberuslib.transport import udp
 
 if TYPE_CHECKING:
-    from trezorlib._internal.emulator import Emulator
-    from trezorlib.debuglink import DebugLink
-    from trezorlib.debuglink import TrezorClientDebugLink as Client
-    from trezorlib.messages import Features
+    from cerberuslib._internal.emulator import Emulator
+    from cerberuslib.debuglink import DebugLink
+    from cerberuslib.debuglink import CerberusClientDebugLink as Client
+    from cerberuslib.messages import Features
 
 
 udp.SOCKET_TIMEOUT = 0.1

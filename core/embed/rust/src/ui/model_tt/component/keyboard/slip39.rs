@@ -3,7 +3,7 @@ use core::iter;
 use heapless::String;
 
 use crate::{
-    trezorhal::slip39,
+    cerberushal::slip39,
     ui::{
         component::{
             text::common::{TextBox, TextEdit},

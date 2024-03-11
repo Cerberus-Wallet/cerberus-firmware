@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.trezor.messages.ripple;
+package hw.cerberus.messages.ripple;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
-option java_outer_classname = "TrezorMessageRipple";
+option java_package = "com.satoshilabs.cerberus.lib.protobuf";
+option java_outer_classname = "CerberusMessageRipple";
 
 /**
  * Request: Address at the specified index

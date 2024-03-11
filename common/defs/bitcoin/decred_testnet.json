@@ -4,7 +4,7 @@
   "coin_label": "Decred Testnet",
   "website": "https://www.decred.org",
   "github": "https://github.com/decred/dcrd",
-  "maintainer": "Saleem Rashid <trezor@saleemrashid.com>",
+  "maintainer": "Saleem Rashid <cerberus@saleemrashid.com>",
   "curve_name": "secp256k1_decred",
   "decimals": 8,
   "address_type": 3873,

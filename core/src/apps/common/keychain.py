@@ -1,14 +1,14 @@
 from typing import TYPE_CHECKING
 
-from trezor.crypto import bip32
-from trezor.wire import DataError
+from cerberus.crypto import bip32
+from cerberus.wire import DataError
 
 from . import paths, safety_checks
 
 if TYPE_CHECKING:
     from typing import Any, Awaitable, Callable, Iterable, TypeVar
 
-    from trezor.protobuf import MessageType
+    from cerberus.protobuf import MessageType
     from typing_extensions import Protocol
 
     from .seed import Slip21Node

@@ -174,7 +174,7 @@ class NorcowBitwise(Norcow):
         self.block_size = consts.WORD_SIZE
         self.magic = consts.NORCOW_MAGIC_AND_VERSION
         self.item_prefix_len = 4
-        self.lib_name = "libtrezor-storage.so"
+        self.lib_name = "libcerberus-storage.so"
 
     def get_pin_log(self):
         return PinLogBitwise(self)
@@ -234,7 +234,7 @@ class NorcowBlockwise(Norcow):
         self.small_item_size = 12
         self.magic = consts.NORCOW_MAGIC_AND_VERSION + bytes([0x00] * 8)
         self.item_prefix_len = 4 * consts.WORD_SIZE + 1
-        self.lib_name = "libtrezor-storage-qw.so"
+        self.lib_name = "libcerberus-storage-qw.so"
 
     def get_pin_log(self):
         return PinLogBlockwise(self)

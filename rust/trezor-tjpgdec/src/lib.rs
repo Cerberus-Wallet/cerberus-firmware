@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------/
-/ TJpgDec - Tiny JPEG Decompressor R0.03+trezor               (C)ChaN, 2021
+/ TJpgDec - Tiny JPEG Decompressor R0.03+cerberus               (C)ChaN, 2021
 /-----------------------------------------------------------------------------/
 / The TJpgDec is a generic JPEG decompressor module for tiny embedded systems.
 / This is a free software that opened for education, research and commercial
@@ -22,14 +22,14 @@
 / Jun 11, 2021 R0.02a Some performance improvement.
 / Jul 01, 2021 R0.03  Added JD_FASTDECODE option.
 /                     Some performance improvement.
-/ Jan 02, 2023        Rust version by Trezor Company, modified to meet our needs.
+/ Jan 02, 2023        Rust version by Cerberus Company, modified to meet our needs.
 
-Trezor modifications:
+Cerberus modifications:
  - included overflow detection from https://github.com/cmumford/TJpgDec
  - removed JD_FASTDECODE=0 option
  - removed JD_TBLCLIP option
  - allowed interrupted functionality
- - tighter integration into Trezor codebase by using our data structures
+ - tighter integration into Cerberus codebase by using our data structures
  - removed generic input and output functions, replaced by our specific functionality
 /----------------------------------------------------------------------------*/
 

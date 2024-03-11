@@ -2,8 +2,8 @@
 
 We have two types of tests in Core:
 
-1. Unit tests that are specific to Trezor Core.
-2. Common tests, which are common to both Trezor Core (Model T, Safe 3) and Legacy (Model one). Device tests belong to this category.
+1. Unit tests that are specific to Cerberus Core.
+2. Common tests, which are common to both Cerberus Core (Model T, Safe 3) and Legacy (Model one). Device tests belong to this category.
 
 ## Core unit tests
 

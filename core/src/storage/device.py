@@ -5,7 +5,7 @@ import storage.cache as storage_cache
 from storage import common
 
 if TYPE_CHECKING:
-    from trezor.enums import BackupType
+    from cerberus.enums import BackupType
     from typing_extensions import Literal
 
 # Namespace:
@@ -76,7 +76,7 @@ def is_initialized() -> bool:
 
 
 def get_device_id() -> str:
-    from trezorcrypto import random  # avoid pulling in trezor.crypto
+    from cerberuscrypto import random  # avoid pulling in cerberus.crypto
     from ubinascii import hexlify
 
     dev_id = common.get(_NAMESPACE, DEVICE_ID, public=True)
@@ -119,7 +119,7 @@ def get_mnemonic_secret() -> bytes | None:
 
 
 def get_backup_type() -> BackupType:
-    from trezor.enums import BackupType
+    from cerberus.enums import BackupType
 
     backup_type = common.get_uint8(_NAMESPACE, _BACKUP_TYPE)
     if backup_type is None:

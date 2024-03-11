@@ -2,7 +2,7 @@
 
 ## Overview
 
-`Trezor` stores translated strings in `.json` files in [core/translations directory](../../../core/translations) - e.g. [de.json](../../../core/translations/de.json).
+`Cerberus` stores translated strings in `.json` files in [core/translations directory](../../../core/translations) - e.g. [de.json](../../../core/translations/de.json).
 
 When no foreign-language is present, the English version is used - [en.json](../../../core/translations/en.json).
 
@@ -14,9 +14,9 @@ To generate up-to-date blobs, use `python core/translations/cli.py gen` - they w
 
 ## Uploading blobs
 
-To upload blobs with foreign-language translations, use `trezorctl set language <blob_location>` command.
+To upload blobs with foreign-language translations, use `cerberusctl set language <blob_location>` command.
 
-To switch the language back into `english`, use `trezorctl set language -r`.
+To switch the language back into `english`, use `cerberusctl set language -r`.
 
 # Translations blob format
 

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -20,7 +20,7 @@ from . import messages
 from .tools import expect
 
 if TYPE_CHECKING:
-    from .client import TrezorClient
+    from .client import CerberusClient
     from .protobuf import MessageType
     from .tools import Address
 
@@ -33,7 +33,7 @@ if TYPE_CHECKING:
 
 @expect(messages.MoneroAddress, field="address", ret_type=bytes)
 def get_address(
-    client: "TrezorClient",
+    client: "CerberusClient",
     n: "Address",
     show_display: bool = False,
     network_type: messages.MoneroNetworkType = messages.MoneroNetworkType.MAINNET,
@@ -51,7 +51,7 @@ def get_address(
 
 @expect(messages.MoneroWatchKey)
 def get_watch_key(
-    client: "TrezorClient",
+    client: "CerberusClient",
     n: "Address",
     network_type: messages.MoneroNetworkType = messages.MoneroNetworkType.MAINNET,
 ) -> "MessageType":

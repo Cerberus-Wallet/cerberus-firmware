@@ -20,11 +20,11 @@ from typing import Dict, List
 
 import requests
 
-from trezorlib import btc, messages
-from trezorlib.client import get_default_client
-from trezorlib.debuglink import TrezorClientDebugLink
-from trezorlib.tools import parse_path
-from trezorlib.transport import enumerate_devices
+from cerberuslib import btc, messages
+from cerberuslib.client import get_default_client
+from cerberuslib.debuglink import CerberusClientDebugLink
+from cerberuslib.tools import parse_path
+from cerberuslib.transport import enumerate_devices
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -45,7 +45,7 @@ if args.autoconfirm:
     print("Autoconfirming everything on the device.")
     for device in enumerate_devices():
         try:
-            CLIENT = TrezorClientDebugLink(device, auto_interact=True)
+            CLIENT = CerberusClientDebugLink(device, auto_interact=True)
             break
         except Exception:
             pass

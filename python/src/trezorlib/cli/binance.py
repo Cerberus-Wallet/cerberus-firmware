@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -24,7 +24,7 @@ from . import with_client
 
 if TYPE_CHECKING:
     from .. import messages
-    from ..client import TrezorClient
+    from ..client import CerberusClient
 
 
 PATH_HELP = "BIP-32 path to key, e.g. m/44h/714h/0h/0/0"
@@ -41,7 +41,7 @@ def cli() -> None:
 @click.option("-C", "--chunkify", is_flag=True)
 @with_client
 def get_address(
-    client: "TrezorClient", address: str, show_display: bool, chunkify: bool
+    client: "CerberusClient", address: str, show_display: bool, chunkify: bool
 ) -> str:
     """Get Binance address for specified path."""
     address_n = tools.parse_path(address)
@@ -52,7 +52,7 @@ def get_address(
 @click.option("-n", "--address", required=True, help=PATH_HELP)
 @click.option("-d", "--show-display", is_flag=True)
 @with_client
-def get_public_key(client: "TrezorClient", address: str, show_display: bool) -> str:
+def get_public_key(client: "CerberusClient", address: str, show_display: bool) -> str:
     """Get Binance public key."""
     address_n = tools.parse_path(address)
     return binance.get_public_key(client, address_n, show_display).hex()
@@ -65,7 +65,7 @@ def get_public_key(client: "TrezorClient", address: str, show_display: bool) -> 
 @click.option("-C", "--chunkify", is_flag=True)
 @with_client
 def sign_tx(
-    client: "TrezorClient", address: str, file: TextIO, chunkify: bool
+    client: "CerberusClient", address: str, file: TextIO, chunkify: bool
 ) -> "messages.BinanceSignedTx":
     """Sign Binance transaction.
 

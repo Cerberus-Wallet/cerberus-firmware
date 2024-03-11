@@ -20,8 +20,8 @@ pytest tests/upgrade_tests
 
 ----
 
-You can use `TREZOR_UPGRADE_TEST` environment variable if you would like to run core or legacy upgrade tests exclusively. This will run `core` only:
+You can use `CERBERUS_UPGRADE_TEST` environment variable if you would like to run core or legacy upgrade tests exclusively. This will run `core` only:
 
 ```sh
-TREZOR_UPGRADE_TEST="core" pytest tests/upgrade_tests
+CERBERUS_UPGRADE_TEST="core" pytest tests/upgrade_tests
 ```

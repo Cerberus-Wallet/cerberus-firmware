@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -58,7 +58,7 @@ class Handle(StructuralType):
 
 
 class Protocol:
-    """Wire protocol that can communicate with a Trezor device, given a Handle.
+    """Wire protocol that can communicate with a Cerberus device, given a Handle.
 
     A Protocol implements the part of the Transport API that relates to communicating
     logical messages over a physical layer. It is a thing that can:
@@ -71,7 +71,7 @@ class Protocol:
     For now, the class also handles session counting and opening the underlying Handle.
     This will probably be removed in the future.
 
-    We will need a new Protocol class if we change the way a Trezor device encapsulates
+    We will need a new Protocol class if we change the way a Cerberus device encapsulates
     its messages.
     """
 
@@ -79,7 +79,7 @@ class Protocol:
         self.handle = handle
         self.session_counter = 0
 
-    # XXX we might be able to remove this now that TrezorClient does session handling
+    # XXX we might be able to remove this now that CerberusClient does session handling
     def begin_session(self) -> None:
         if self.session_counter == 0:
             self.handle.open()
@@ -121,7 +121,7 @@ class ProtocolBasedTransport(Transport):
 
 
 class ProtocolV1(Protocol):
-    """Protocol version 1. Currently (11/2018) in use on all Trezors.
+    """Protocol version 1. Currently (11/2018) in use on all Cerberuss.
     Does not understand sessions.
     """
 

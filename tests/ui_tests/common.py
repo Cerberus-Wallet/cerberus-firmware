@@ -17,8 +17,8 @@ import pytest
 from PIL import Image
 from typing_extensions import Self
 
-from trezorlib import models
-from trezorlib.debuglink import TrezorClientDebugLink as Client
+from cerberuslib import models
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
 
 LANGUAGES = ["cs", "de", "en", "es", "fr"]
 

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,9 +16,9 @@
 
 import pytest
 
-from trezorlib import debuglink, device
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.messages import BackupType
+from cerberuslib import debuglink, device
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.messages import BackupType
 
 from ..common import (
     MNEMONIC12,

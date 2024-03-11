@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -102,8 +102,8 @@ class FirmwareImage(Struct):
     """Raw firmware image.
 
     Consists of firmware header and code block.
-    This is the expected format of firmware binaries for Trezor One, or bootloader images
-    for Trezor T."""
+    This is the expected format of firmware binaries for Cerberus One, or bootloader images
+    for Cerberus T."""
 
     header: FirmwareHeader = subcon(FirmwareHeader)
     _code_offset: int
@@ -167,7 +167,7 @@ class FirmwareImage(Struct):
 class VendorFirmware(Struct):
     """Firmware image prefixed by a vendor header.
 
-    This is the expected format of firmware binaries for Trezor T."""
+    This is the expected format of firmware binaries for Cerberus T."""
 
     vendor_header: VendorHeader = subcon(VendorHeader)
     firmware: FirmwareImage = subcon(FirmwareImage)

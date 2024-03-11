@@ -2,18 +2,18 @@
 
 use crate::{client::InteractionType, protos, transport::error::Error as TransportError};
 
-/// Trezor result type. Aliased to [`std::result::Result`] with the error type
+/// Cerberus result type. Aliased to [`std::result::Result`] with the error type
 /// set to [`Error`].
 pub type Result<T, E = Error> = std::result::Result<T, E>;
 
-/// Trezor error.
+/// Cerberus error.
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
     /// Less than one device was plugged in.
-    #[error("Trezor device not found")]
+    #[error("Cerberus device not found")]
     NoDeviceFound,
     /// More than one device was plugged in.
-    #[error("multiple Trezor devices found")]
+    #[error("multiple Cerberus devices found")]
     DeviceNotUnique,
     /// The device returned an invalid signature.
     #[error("device returned invalid signature")]

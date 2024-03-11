@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-SITE="https://data.trezor.io/dev/firmware/releases/emulators/"
+SITE="https://data.cerberus.uraanai.com/dev/firmware/releases/emulators/"
 cd "$(dirname "$0")"
 
 # download all emulators without index files, without directories and only if not present
@@ -17,7 +17,7 @@ wget -e robots=off \
     -P emulators/ \
     $SITE
 
-chmod u+x emulators/trezor-emu-*
+chmod u+x emulators/cerberus-emu-*
 
 cd ..
 # are we in Nix(OS)?

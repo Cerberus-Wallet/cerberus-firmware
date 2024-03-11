@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2023 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.solana import sign_tx
-from trezorlib.tools import parse_path
+from cerberuslib import messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.solana import sign_tx
+from cerberuslib.tools import parse_path
 
 from ...common import parametrize_using_common_fixtures
 from .construct.instructions import PROGRAMS, UnknownInstruction

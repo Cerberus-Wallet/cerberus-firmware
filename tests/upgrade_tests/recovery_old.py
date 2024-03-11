@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from .. import buttons
 
 if TYPE_CHECKING:
-    from trezorlib.debuglink import DebugLink, LayoutContent
+    from cerberuslib.debuglink import DebugLink, LayoutContent
 
 
 def _enter_word(

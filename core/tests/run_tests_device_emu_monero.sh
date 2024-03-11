@@ -23,26 +23,26 @@ fi
 
 # When updating URL and sha256sum also update the URL in ci/shell.nix.
 error=1
-: "${TREZOR_MONERO_TESTS_URL:=https://github.com/ph4r05/monero/releases/download/v0.18.1.1-dev-tests-u18.04-02/trezor_tests}"
-: "${TREZOR_MONERO_TESTS_SHA256SUM:=81424cfc3965abdc24de573274bf631337b52fd25cefc895513214c613fe05c9}"
-: "${TREZOR_MONERO_TESTS_PATH:=$CORE_DIR/tests/trezor_monero_tests}"
-: "${TREZOR_MONERO_TESTS_LOG:=$CORE_DIR/tests/trezor_monero_tests.log}"
-: "${TREZOR_MONERO_TESTS_CHAIN:=$CORE_DIR/tests/trezor_monero_tests.chain}"
+: "${CERBERUS_MONERO_TESTS_URL:=https://github.com/ph4r05/monero/releases/download/v0.18.1.1-dev-tests-u18.04-02/trezor_tests}"
+: "${CERBERUS_MONERO_TESTS_SHA256SUM:=81424cfc3965abdc24de573274bf631337b52fd25cefc895513214c613fe05c9}"
+: "${CERBERUS_MONERO_TESTS_PATH:=$CORE_DIR/tests/trezor_monero_tests}"
+: "${CERBERUS_MONERO_TESTS_LOG:=$CORE_DIR/tests/trezor_monero_tests.log}"
+: "${CERBERUS_MONERO_TESTS_CHAIN:=$CORE_DIR/tests/trezor_monero_tests.chain}"
 
-if [[ ! -f "$TREZOR_MONERO_TESTS_PATH" ]]; then
-  echo "Downloading Trezor monero tests binary ($TREZOR_MONERO_TESTS_SHA256SUM) to ${TREZOR_MONERO_TESTS_PATH}"
-  wget -O "$TREZOR_MONERO_TESTS_PATH" "$TREZOR_MONERO_TESTS_URL" \
-    && chmod +x "$TREZOR_MONERO_TESTS_PATH" \
-    && echo "${TREZOR_MONERO_TESTS_SHA256SUM}  ${TREZOR_MONERO_TESTS_PATH}" | shasum -a 256 -c
+if [[ ! -f "$CERBERUS_MONERO_TESTS_PATH" ]]; then
+  echo "Downloading Cerberus monero tests binary ($CERBERUS_MONERO_TESTS_SHA256SUM) to ${CERBERUS_MONERO_TESTS_PATH}"
+  wget -O "$CERBERUS_MONERO_TESTS_PATH" "$CERBERUS_MONERO_TESTS_URL" \
+    && chmod +x "$CERBERUS_MONERO_TESTS_PATH" \
+    && echo "${CERBERUS_MONERO_TESTS_SHA256SUM}  ${CERBERUS_MONERO_TESTS_PATH}" | shasum -a 256 -c
 else
-  echo "Trezor monero binary already present at $TREZOR_MONERO_TESTS_PATH - not downloading again."
+  echo "Cerberus monero binary already present at $CERBERUS_MONERO_TESTS_PATH - not downloading again."
 fi
 
 echo "Running tests"
 TIME_TESTS_START=$SECONDS
 if [[ "$OSTYPE" == "linux-gnu" && "$FORCE_DOCKER_USE" != 1 ]]; then
-  echo "Note: use --heavy-tests with real device (and TREZOR_PATH) env var"
-  TEST_MAX_HF=15 TEST_MIN_HF=15 "$TREZOR_MONERO_TESTS_PATH" --fix-chain --chain-path=$TREZOR_MONERO_TESTS_CHAIN $@ 2>&1 > "$TREZOR_MONERO_TESTS_LOG"
+  echo "Note: use --heavy-tests with real device (and CERBERUS_PATH) env var"
+  TEST_MAX_HF=15 TEST_MIN_HF=15 "$CERBERUS_MONERO_TESTS_PATH" --fix-chain --chain-path=$CERBERUS_MONERO_TESTS_CHAIN $@ 2>&1 > "$CERBERUS_MONERO_TESTS_LOG"
   error=$?
 
 elif [[ "$OSTYPE" == "darwin"* || "$FORCE_DOCKER_USE" == 1 ]]; then
@@ -51,7 +51,7 @@ elif [[ "$OSTYPE" == "darwin"* || "$FORCE_DOCKER_USE" == 1 ]]; then
   docker exec $DOCKER_ID apt-get install --no-install-recommends --no-upgrade -qq net-tools socat 2>/dev/null >/dev/null
   docker exec -d $DOCKER_ID socat UDP-LISTEN:21324,reuseaddr,reuseport,fork UDP4-SENDTO:host.docker.internal:21324
   docker exec -d $DOCKER_ID socat UDP-LISTEN:21325,reuseaddr,reuseport,fork UDP4-SENDTO:host.docker.internal:21325
-  docker exec -e TEST_MAX_HF=15 -e TEST_MIN_HF=15 $DOCKER_ID "$TREZOR_MONERO_TESTS_PATH" 2>&1 > "$TREZOR_MONERO_TESTS_LOG"
+  docker exec -e TEST_MAX_HF=15 -e TEST_MIN_HF=15 $DOCKER_ID "$CERBERUS_MONERO_TESTS_PATH" 2>&1 > "$CERBERUS_MONERO_TESTS_LOG"
   error=$?
 
 else
@@ -69,5 +69,5 @@ else
 fi
 
 echo "[$RESULT] Monero test in $TIME_TESTS_ELAPSED sec. "
-cat "$TREZOR_MONERO_TESTS_LOG" | grep -v DEBUG | egrep '#TEST#|tests.core\b' | tail -n 50
+cat "$CERBERUS_MONERO_TESTS_LOG" | grep -v DEBUG | egrep '#TEST#|tests.core\b' | tail -n 50
 exit $error

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -18,9 +18,9 @@ import math
 
 import pytest
 
-from trezorlib import messages as m
-from trezorlib import misc
-from trezorlib.debuglink import TrezorClientDebugLink as Client
+from cerberuslib import messages as m
+from cerberuslib import misc
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
 
 ENTROPY_LENGTHS_POW2 = [2**l for l in range(10)]
 ENTROPY_LENGTHS_POW2_1 = [2**l + 1 for l in range(10)]

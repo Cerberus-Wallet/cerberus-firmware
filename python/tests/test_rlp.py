@@ -1,6 +1,6 @@
 import pytest
 
-from trezorlib import _rlp
+from cerberuslib import _rlp
 
 VECTORS = (  # data, expected
     (b"\x10", b"\x10"),

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -43,7 +43,7 @@ def check_sig_v1(
     sigs_required: int,
     public_keys: t.Sequence[bytes],
 ) -> None:
-    """Validate signatures of `digest` using the Trezor One V1 method."""
+    """Validate signatures of `digest` using the Cerberus One V1 method."""
     distinct_indexes = set(i for i in key_indexes[:sigs_required] if i != 0)
     if not distinct_indexes:
         raise util.Unsigned
@@ -84,7 +84,7 @@ def check_sig_signmessage(
     sigs_required: int,
     public_keys: t.Sequence[bytes],
 ) -> None:
-    """Validate signatures of `digest` using the Trezor One SignMessage method."""
+    """Validate signatures of `digest` using the Cerberus One SignMessage method."""
     btc_digest = hashlib.sha256(b"\x18Bitcoin Signed Message:\n\x20" + digest).digest()
     final_digest = hashlib.sha256(btc_digest).digest()
     check_sig_v1(
@@ -97,7 +97,7 @@ def check_sig_signmessage(
 
 
 class LegacyV2Firmware(FirmwareImage):
-    """Firmware image in the format used by Trezor One 1.8.0 and newer."""
+    """Firmware image in the format used by Cerberus One 1.8.0 and newer."""
 
     V3_FIRST_VERSION = (1, 12, 0)
 
@@ -154,10 +154,10 @@ class LegacyV2Firmware(FirmwareImage):
 class LegacyFirmware(Struct):
     """Legacy firmware image.
     Consists of a custom header and code block.
-    This is the expected format of firmware binaries for Trezor One pre-1.8.0.
+    This is the expected format of firmware binaries for Cerberus One pre-1.8.0.
 
     The code block can optionally be interpreted as a new-style firmware image. That is the
-    expected format of firmware binary for Trezor One version 1.8.0, which can be installed
+    expected format of firmware binary for Cerberus One version 1.8.0, which can be installed
     by both the older and the newer bootloader."""
 
     key_indexes: t.List[int]

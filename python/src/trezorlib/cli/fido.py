@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -22,7 +22,7 @@ from .. import fido
 from . import with_client
 
 if TYPE_CHECKING:
-    from ..client import TrezorClient
+    from ..client import CerberusClient
 
 ALGORITHM_NAME = {-7: "ES256 (ECDSA w/ SHA-256)", -8: "EdDSA"}
 
@@ -41,7 +41,7 @@ def credentials() -> None:
 
 @credentials.command(name="list")
 @with_client
-def credentials_list(client: "TrezorClient") -> None:
+def credentials_list(client: "CerberusClient") -> None:
     """List all resident credentials on the device."""
     creds = fido.list_credentials(client)
     for cred in creds:
@@ -80,7 +80,7 @@ def credentials_list(client: "TrezorClient") -> None:
 @credentials.command(name="add")
 @click.argument("hex_credential_id")
 @with_client
-def credentials_add(client: "TrezorClient", hex_credential_id: str) -> str:
+def credentials_add(client: "CerberusClient", hex_credential_id: str) -> str:
     """Add the credential with the given ID as a resident credential.
 
     HEX_CREDENTIAL_ID is the credential ID as a hexadecimal string.
@@ -93,7 +93,7 @@ def credentials_add(client: "TrezorClient", hex_credential_id: str) -> str:
     "-i", "--index", required=True, type=click.IntRange(0, 99), help="Credential index."
 )
 @with_client
-def credentials_remove(client: "TrezorClient", index: int) -> str:
+def credentials_remove(client: "CerberusClient", index: int) -> str:
     """Remove the resident credential at the given index."""
     return fido.remove_credential(client, index)
 
@@ -111,14 +111,14 @@ def counter() -> None:
 @counter.command(name="set")
 @click.argument("counter", type=int)
 @with_client
-def counter_set(client: "TrezorClient", counter: int) -> str:
+def counter_set(client: "CerberusClient", counter: int) -> str:
     """Set FIDO/U2F counter value."""
     return fido.set_counter(client, counter)
 
 
 @counter.command(name="get-next")
 @with_client
-def counter_get_next(client: "TrezorClient") -> int:
+def counter_get_next(client: "CerberusClient") -> int:
     """Get-and-increase value of FIDO/U2F counter.
 
     FIDO counter value cannot be read directly. On each U2F exchange, the counter value

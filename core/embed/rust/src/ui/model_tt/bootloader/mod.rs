@@ -3,7 +3,7 @@ use num_traits::ToPrimitive;
 
 use crate::{
     strutil::hexlify,
-    trezorhal::{io::io_touch_read, secbool::secbool},
+    cerberushal::{io::io_touch_read, secbool::secbool},
     ui::{
         component::{connect::Connect, Component, Event, EventCtx, Label, Never},
         constant::{screen, HEIGHT},
@@ -286,7 +286,7 @@ extern "C" fn screen_install_progress(progress: u16, initialize: bool, initial_s
 #[no_mangle]
 extern "C" fn screen_wipe_progress(progress: u16, initialize: bool) {
     screen_progress(
-        "Resetting Trezor",
+        "Resetting Cerberus",
         progress,
         initialize,
         BLD_FG,
@@ -307,7 +307,7 @@ extern "C" fn screen_wipe_success() {
     let mut frame = ResultScreen::new(
         &RESULT_WIPE,
         Icon::new(CHECK40),
-        "Trezor reset\nsuccessfully",
+        "Cerberus reset\nsuccessfully",
         Label::centered(RECONNECT_MESSAGE, RESULT_WIPE.title_style()).vertically_centered(),
         true,
     );
@@ -319,7 +319,7 @@ extern "C" fn screen_wipe_fail() {
     let mut frame = ResultScreen::new(
         &RESULT_WIPE,
         Icon::new(WARNING40),
-        "Trezor reset was\nnot successful",
+        "Cerberus reset was\nnot successful",
         Label::centered(RECONNECT_MESSAGE, RESULT_WIPE.title_style()).vertically_centered(),
         true,
     );

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -24,7 +24,7 @@ from .util import FirmwareHashParameters
 if t.TYPE_CHECKING:
     from typing_extensions import Self
 
-    from ..models import TrezorModel
+    from ..models import CerberusModel
 
 
 class Model(Enum):
@@ -48,8 +48,8 @@ class Model(Enum):
         raise ValueError(f"Unknown hardware model: {hw_model}")
 
     @classmethod
-    def from_trezor_model(cls, trezor_model: "TrezorModel") -> "Self":
-        return cls(trezor_model.internal_name.encode("ascii"))
+    def from_cerberus_model(cls, cerberus_model: "CerberusModel") -> "Self":
+        return cls(cerberus_model.internal_name.encode("ascii"))
 
     def model_keys(self, dev_keys: bool = False) -> "ModelKeys":
         if dev_keys:
@@ -171,7 +171,7 @@ T2T1 = ModelKeys(
     firmware_sigs_needed=-1,
 )
 
-TREZOR_CORE_DEV = ModelKeys(
+CERBERUS_CORE_DEV = ModelKeys(
     production=False,
     boardloader_keys=[
         bytes.fromhex(key)
@@ -236,14 +236,14 @@ MODEL_MAP = {
     Model.T1B1: LEGACY_V3,
     Model.T2T1: T2T1,
     Model.T2B1: T2B1,
-    Model.D001: TREZOR_CORE_DEV,
+    Model.D001: CERBERUS_CORE_DEV,
 }
 
 MODEL_MAP_DEV = {
     Model.T1B1: LEGACY_V3_DEV,
-    Model.T2T1: TREZOR_CORE_DEV,
-    Model.T2B1: TREZOR_CORE_DEV,
-    Model.D001: TREZOR_CORE_DEV,
+    Model.T2T1: CERBERUS_CORE_DEV,
+    Model.T2B1: CERBERUS_CORE_DEV,
+    Model.D001: CERBERUS_CORE_DEV,
 }
 
 MODEL_HASH_PARAMS_MAP = {
@@ -255,17 +255,17 @@ MODEL_HASH_PARAMS_MAP = {
 
 # aliases
 
-TREZOR_ONE_V1V2 = LEGACY_V1V2
-TREZOR_ONE_V1V2_DEV = LEGACY_V1V2_DEV
-TREZOR_ONE_V3 = LEGACY_V3
-TREZOR_ONE_V3_DEV = LEGACY_V3_DEV
+CERBERUS_ONE_V1V2 = LEGACY_V1V2
+CERBERUS_ONE_V1V2_DEV = LEGACY_V1V2_DEV
+CERBERUS_ONE_V3 = LEGACY_V3
+CERBERUS_ONE_V3_DEV = LEGACY_V3_DEV
 
-TREZOR_T = T2T1
-TREZOR_R = T2B1
-TREZOR_T_DEV = TREZOR_CORE_DEV
-TREZOR_R_DEV = TREZOR_CORE_DEV
+CERBERUS_T = T2T1
+CERBERUS_R = T2B1
+CERBERUS_T_DEV = CERBERUS_CORE_DEV
+CERBERUS_R_DEV = CERBERUS_CORE_DEV
 
-DISC1 = TREZOR_CORE_DEV
-DISC1_DEV = TREZOR_CORE_DEV
-D001 = TREZOR_CORE_DEV
-D001_DEV = TREZOR_CORE_DEV
+DISC1 = CERBERUS_CORE_DEV
+DISC1_DEV = CERBERUS_CORE_DEV
+D001 = CERBERUS_CORE_DEV
+D001_DEV = CERBERUS_CORE_DEV

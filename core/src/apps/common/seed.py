@@ -2,14 +2,14 @@ from typing import TYPE_CHECKING
 
 import storage.cache as storage_cache
 import storage.device as storage_device
-from trezor import utils
-from trezor.crypto import hmac
+from cerberus import utils
+from cerberus.crypto import hmac
 
 from . import mnemonic
 from .passphrase import get as get_passphrase
 
 if TYPE_CHECKING:
-    from trezor.crypto import bip32
+    from cerberus.crypto import bip32
 
     from .paths import Bip32Path, Slip21Path
 
@@ -51,7 +51,7 @@ if not utils.BITCOIN_ONLY:
     # expose a method for Cardano to do the same
 
     async def derive_and_store_roots() -> None:
-        from trezor import wire
+        from cerberus import wire
 
         if not storage_device.is_initialized():
             raise wire.NotInitialized("Device is not initialized")
@@ -102,7 +102,7 @@ def _get_seed_without_passphrase() -> bytes:
 def derive_node_without_passphrase(
     path: Bip32Path, curve_name: str = "secp256k1"
 ) -> bip32.HDNode:
-    from trezor.crypto import bip32
+    from cerberus.crypto import bip32
 
     seed = _get_seed_without_passphrase()
     node = bip32.from_seed(seed, curve_name)

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,10 +16,10 @@
 
 import pytest
 
-from trezorlib import messages, tezos
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.protobuf import dict_to_proto
-from trezorlib.tools import parse_path
+from cerberuslib import messages, tezos
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.protobuf import dict_to_proto
+from cerberuslib.tools import parse_path
 
 TEZOS_PATH = parse_path("m/44h/1729h/0h")
 TEZOS_PATH_10 = parse_path("m/44h/1729h/10h")

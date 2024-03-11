@@ -1,8 +1,8 @@
-//! Bindings for Trezor protobufs.
+//! Bindings for Cerberus protobufs.
 
 // Note: we do not use the generated `mod.rs` because we want to feature-gate some modules manually.
 // This significantly improves compile times.
-// See https://github.com/joshieDo/rust-trezor-api/pull/9 for more details.
+// See https://github.com/joshieDo/rust-cerberus-api/pull/9 for more details.
 #[allow(ambiguous_glob_reexports, unreachable_pub)]
 mod generated {
     macro_rules! modules {

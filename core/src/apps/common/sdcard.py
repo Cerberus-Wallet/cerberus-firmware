@@ -1,6 +1,6 @@
 from storage.sd_salt import SD_CARD_HOT_SWAPPABLE
-from trezor import TR, io, wire
-from trezor.ui.layouts import confirm_action, show_error_and_raise
+from cerberus import TR, io, wire
+from cerberus.ui.layouts import confirm_action, show_error_and_raise
 
 
 class SdCardUnavailable(wire.ProcessError):
@@ -96,7 +96,7 @@ async def ensure_sdcard(ensure_filesystem: bool = True) -> None:
     filesystem, and allows the user to format the card if a filesystem cannot be
     mounted.
     """
-    from trezor import sdcard
+    from cerberus import sdcard
 
     while not sdcard.is_present():
         await _confirm_retry_insert_card()
@@ -122,7 +122,7 @@ async def ensure_sdcard(ensure_filesystem: bool = True) -> None:
             with sdcard.filesystem(mounted=False):
                 fatfs.mkfs()
                 fatfs.mount()
-                fatfs.setlabel("TREZOR")
+                fatfs.setlabel("CERBERUS")
 
             # format and mount succeeded
             return

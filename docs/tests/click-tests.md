@@ -4,14 +4,14 @@ This set of tests is intended for cases where USB communication must be decouple
 the input stream. They are mainly based on sending simulated clicks and reading screen
 contents. Unlike device tests that use the `client` fixture, click tests generally
 use the `device_handler` fixture. TODO fixture documentation, the important point is
-that `device_handler` runs `trezorlib` calls in the background and leaves the main
+that `device_handler` runs `cerberuslib` calls in the background and leaves the main
 thread free to interact with the device from the user's perspective.
 
 ## Running the full test suite
 
-_Note: You need Poetry, as mentioned in the core's [documentation](https://docs.trezor.io/trezor-firmware/core/) section._
+_Note: You need Poetry, as mentioned in the core's [documentation](https://docs.cerberus.uraanai.com/cerberus-firmware/core/) section._
 
-In the `trezor-firmware` checkout, in the root of the monorepo, install the environment:
+In the `cerberus-firmware` checkout, in the root of the monorepo, install the environment:
 
 ```sh
 poetry install
@@ -48,7 +48,7 @@ Run the tool with:
 python tests/click_tests/record_layout.py
 ```
 
-The tool accepts the same arguments as `trezorctl`. For example, to record yourself
+The tool accepts the same arguments as `cerberusctl`. For example, to record yourself
 getting an address, use:
 
 ```sh

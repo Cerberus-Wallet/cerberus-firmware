@@ -25,18 +25,18 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoBlockchainPointerType)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoBlockchainPointerType)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoBlockchainPointerType {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoBlockchainPointerType.block_index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoBlockchainPointerType.block_index)
     pub block_index: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoBlockchainPointerType.tx_index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoBlockchainPointerType.tx_index)
     pub tx_index: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoBlockchainPointerType.certificate_index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoBlockchainPointerType.certificate_index)
     pub certificate_index: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoBlockchainPointerType.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoBlockchainPointerType.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -249,26 +249,26 @@ impl ::protobuf::reflect::ProtobufValue for CardanoBlockchainPointerType {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoNativeScript)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoNativeScript)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoNativeScript {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoNativeScript.type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoNativeScript.type)
     pub type_: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoNativeScriptType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoNativeScript.scripts)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoNativeScript.scripts)
     pub scripts: ::std::vec::Vec<CardanoNativeScript>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoNativeScript.key_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoNativeScript.key_hash)
     pub key_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoNativeScript.key_path)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoNativeScript.key_path)
     pub key_path: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoNativeScript.required_signatures_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoNativeScript.required_signatures_count)
     pub required_signatures_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoNativeScript.invalid_before)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoNativeScript.invalid_before)
     pub invalid_before: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoNativeScript.invalid_hereafter)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoNativeScript.invalid_hereafter)
     pub invalid_hereafter: ::std::option::Option<u64>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoNativeScript.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoNativeScript.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -283,7 +283,7 @@ impl CardanoNativeScript {
         ::std::default::Default::default()
     }
 
-    // required .hw.trezor.messages.cardano.CardanoNativeScriptType type = 1;
+    // required .hw.cerberus.messages.cardano.CardanoNativeScriptType type = 1;
 
     pub fn type_(&self) -> CardanoNativeScriptType {
         match self.type_ {
@@ -606,18 +606,18 @@ impl ::protobuf::reflect::ProtobufValue for CardanoNativeScript {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoGetNativeScriptHash)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoGetNativeScriptHash)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoGetNativeScriptHash {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoGetNativeScriptHash.script)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoGetNativeScriptHash.script)
     pub script: ::protobuf::MessageField<CardanoNativeScript>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoGetNativeScriptHash.display_format)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoGetNativeScriptHash.display_format)
     pub display_format: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoNativeScriptHashDisplayFormat>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoGetNativeScriptHash.derivation_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoGetNativeScriptHash.derivation_type)
     pub derivation_type: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoDerivationType>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoGetNativeScriptHash.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoGetNativeScriptHash.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -632,7 +632,7 @@ impl CardanoGetNativeScriptHash {
         ::std::default::Default::default()
     }
 
-    // required .hw.trezor.messages.cardano.CardanoNativeScriptHashDisplayFormat display_format = 2;
+    // required .hw.cerberus.messages.cardano.CardanoNativeScriptHashDisplayFormat display_format = 2;
 
     pub fn display_format(&self) -> CardanoNativeScriptHashDisplayFormat {
         match self.display_format {
@@ -654,7 +654,7 @@ impl CardanoGetNativeScriptHash {
         self.display_format = ::std::option::Option::Some(::protobuf::EnumOrUnknown::new(v));
     }
 
-    // required .hw.trezor.messages.cardano.CardanoDerivationType derivation_type = 3;
+    // required .hw.cerberus.messages.cardano.CardanoDerivationType derivation_type = 3;
 
     pub fn derivation_type(&self) -> CardanoDerivationType {
         match self.derivation_type {
@@ -823,14 +823,14 @@ impl ::protobuf::reflect::ProtobufValue for CardanoGetNativeScriptHash {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoNativeScriptHash)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoNativeScriptHash)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoNativeScriptHash {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoNativeScriptHash.script_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoNativeScriptHash.script_hash)
     pub script_hash: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoNativeScriptHash.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoNativeScriptHash.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -984,26 +984,26 @@ impl ::protobuf::reflect::ProtobufValue for CardanoNativeScriptHash {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoAddressParametersType)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoAddressParametersType)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoAddressParametersType {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoAddressParametersType.address_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoAddressParametersType.address_type)
     pub address_type: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoAddressType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoAddressParametersType.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoAddressParametersType.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoAddressParametersType.address_n_staking)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoAddressParametersType.address_n_staking)
     pub address_n_staking: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoAddressParametersType.staking_key_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoAddressParametersType.staking_key_hash)
     pub staking_key_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoAddressParametersType.certificate_pointer)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoAddressParametersType.certificate_pointer)
     pub certificate_pointer: ::protobuf::MessageField<CardanoBlockchainPointerType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoAddressParametersType.script_payment_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoAddressParametersType.script_payment_hash)
     pub script_payment_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoAddressParametersType.script_staking_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoAddressParametersType.script_staking_hash)
     pub script_staking_hash: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoAddressParametersType.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoAddressParametersType.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1018,7 +1018,7 @@ impl CardanoAddressParametersType {
         ::std::default::Default::default()
     }
 
-    // required .hw.trezor.messages.cardano.CardanoAddressType address_type = 1;
+    // required .hw.cerberus.messages.cardano.CardanoAddressType address_type = 1;
 
     pub fn address_type(&self) -> CardanoAddressType {
         match self.address_type {
@@ -1359,24 +1359,24 @@ impl ::protobuf::reflect::ProtobufValue for CardanoAddressParametersType {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoGetAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoGetAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoGetAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoGetAddress.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoGetAddress.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoGetAddress.protocol_magic)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoGetAddress.protocol_magic)
     pub protocol_magic: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoGetAddress.network_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoGetAddress.network_id)
     pub network_id: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoGetAddress.address_parameters)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoGetAddress.address_parameters)
     pub address_parameters: ::protobuf::MessageField<CardanoAddressParametersType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoGetAddress.derivation_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoGetAddress.derivation_type)
     pub derivation_type: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoDerivationType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoGetAddress.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoGetAddress.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoGetAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoGetAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1448,7 +1448,7 @@ impl CardanoGetAddress {
         self.network_id = ::std::option::Option::Some(v);
     }
 
-    // required .hw.trezor.messages.cardano.CardanoDerivationType derivation_type = 6;
+    // required .hw.cerberus.messages.cardano.CardanoDerivationType derivation_type = 6;
 
     pub fn derivation_type(&self) -> CardanoDerivationType {
         match self.derivation_type {
@@ -1687,14 +1687,14 @@ impl ::protobuf::reflect::ProtobufValue for CardanoGetAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoAddress.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoAddress.address)
     pub address: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1848,18 +1848,18 @@ impl ::protobuf::reflect::ProtobufValue for CardanoAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoGetPublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoGetPublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoGetPublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoGetPublicKey.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoGetPublicKey.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoGetPublicKey.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoGetPublicKey.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoGetPublicKey.derivation_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoGetPublicKey.derivation_type)
     pub derivation_type: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoDerivationType>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoGetPublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoGetPublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1893,7 +1893,7 @@ impl CardanoGetPublicKey {
         self.show_display = ::std::option::Option::Some(v);
     }
 
-    // required .hw.trezor.messages.cardano.CardanoDerivationType derivation_type = 3;
+    // required .hw.cerberus.messages.cardano.CardanoDerivationType derivation_type = 3;
 
     pub fn derivation_type(&self) -> CardanoDerivationType {
         match self.derivation_type {
@@ -2053,16 +2053,16 @@ impl ::protobuf::reflect::ProtobufValue for CardanoGetPublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoPublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoPublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoPublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPublicKey.xpub)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPublicKey.xpub)
     pub xpub: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPublicKey.node)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPublicKey.node)
     pub node: ::protobuf::MessageField<super::messages_common::HDNodeType>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoPublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoPublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2241,56 +2241,56 @@ impl ::protobuf::reflect::ProtobufValue for CardanoPublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoSignTxInit)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoSignTxInit)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoSignTxInit {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.signing_mode)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.signing_mode)
     pub signing_mode: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoTxSigningMode>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.protocol_magic)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.protocol_magic)
     pub protocol_magic: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.network_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.network_id)
     pub network_id: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.inputs_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.inputs_count)
     pub inputs_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.outputs_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.outputs_count)
     pub outputs_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.fee)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.fee)
     pub fee: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.ttl)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.ttl)
     pub ttl: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.certificates_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.certificates_count)
     pub certificates_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.withdrawals_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.withdrawals_count)
     pub withdrawals_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.has_auxiliary_data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.has_auxiliary_data)
     pub has_auxiliary_data: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.validity_interval_start)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.validity_interval_start)
     pub validity_interval_start: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.witness_requests_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.witness_requests_count)
     pub witness_requests_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.minting_asset_groups_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.minting_asset_groups_count)
     pub minting_asset_groups_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.derivation_type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.derivation_type)
     pub derivation_type: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoDerivationType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.include_network_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.include_network_id)
     pub include_network_id: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.script_data_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.script_data_hash)
     pub script_data_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.collateral_inputs_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.collateral_inputs_count)
     pub collateral_inputs_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.required_signers_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.required_signers_count)
     pub required_signers_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.has_collateral_return)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.has_collateral_return)
     pub has_collateral_return: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.total_collateral)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.total_collateral)
     pub total_collateral: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.reference_inputs_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.reference_inputs_count)
     pub reference_inputs_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoSignTxInit.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoSignTxInit.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoSignTxInit.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoSignTxInit.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2305,7 +2305,7 @@ impl CardanoSignTxInit {
         ::std::default::Default::default()
     }
 
-    // required .hw.trezor.messages.cardano.CardanoTxSigningMode signing_mode = 1;
+    // required .hw.cerberus.messages.cardano.CardanoTxSigningMode signing_mode = 1;
 
     pub fn signing_mode(&self) -> CardanoTxSigningMode {
         match self.signing_mode {
@@ -2555,7 +2555,7 @@ impl CardanoSignTxInit {
         self.minting_asset_groups_count = ::std::option::Option::Some(v);
     }
 
-    // required .hw.trezor.messages.cardano.CardanoDerivationType derivation_type = 14;
+    // required .hw.cerberus.messages.cardano.CardanoDerivationType derivation_type = 14;
 
     pub fn derivation_type(&self) -> CardanoDerivationType {
         match self.derivation_type {
@@ -3224,16 +3224,16 @@ impl ::protobuf::reflect::ProtobufValue for CardanoSignTxInit {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxInput)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxInput)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxInput {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxInput.prev_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxInput.prev_hash)
     pub prev_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxInput.prev_index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxInput.prev_index)
     pub prev_index: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxInput.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxInput.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3425,28 +3425,28 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxInput {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxOutput)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxOutput)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxOutput {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxOutput.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxOutput.address)
     pub address: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxOutput.address_parameters)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxOutput.address_parameters)
     pub address_parameters: ::protobuf::MessageField<CardanoAddressParametersType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxOutput.amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxOutput.amount)
     pub amount: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxOutput.asset_groups_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxOutput.asset_groups_count)
     pub asset_groups_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxOutput.datum_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxOutput.datum_hash)
     pub datum_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxOutput.format)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxOutput.format)
     pub format: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoTxOutputSerializationFormat>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxOutput.inline_datum_size)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxOutput.inline_datum_size)
     pub inline_datum_size: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxOutput.reference_script_size)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxOutput.reference_script_size)
     pub reference_script_size: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxOutput.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxOutput.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -3571,7 +3571,7 @@ impl CardanoTxOutput {
         self.datum_hash.take().unwrap_or_else(|| ::std::vec::Vec::new())
     }
 
-    // optional .hw.trezor.messages.cardano.CardanoTxOutputSerializationFormat format = 6;
+    // optional .hw.cerberus.messages.cardano.CardanoTxOutputSerializationFormat format = 6;
 
     pub fn format(&self) -> CardanoTxOutputSerializationFormat {
         match self.format {
@@ -3855,16 +3855,16 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxOutput {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoAssetGroup)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoAssetGroup)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoAssetGroup {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoAssetGroup.policy_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoAssetGroup.policy_id)
     pub policy_id: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoAssetGroup.tokens_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoAssetGroup.tokens_count)
     pub tokens_count: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoAssetGroup.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoAssetGroup.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4056,18 +4056,18 @@ impl ::protobuf::reflect::ProtobufValue for CardanoAssetGroup {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoToken)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoToken)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoToken {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoToken.asset_name_bytes)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoToken.asset_name_bytes)
     pub asset_name_bytes: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoToken.amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoToken.amount)
     pub amount: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoToken.mint_amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoToken.mint_amount)
     pub mint_amount: ::std::option::Option<i64>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoToken.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoToken.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4291,14 +4291,14 @@ impl ::protobuf::reflect::ProtobufValue for CardanoToken {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxInlineDatumChunk)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxInlineDatumChunk)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxInlineDatumChunk {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxInlineDatumChunk.data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxInlineDatumChunk.data)
     pub data: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxInlineDatumChunk.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxInlineDatumChunk.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4452,14 +4452,14 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxInlineDatumChunk {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxReferenceScriptChunk)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxReferenceScriptChunk)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxReferenceScriptChunk {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxReferenceScriptChunk.data)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxReferenceScriptChunk.data)
     pub data: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxReferenceScriptChunk.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxReferenceScriptChunk.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4613,16 +4613,16 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxReferenceScriptChunk {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoPoolOwner)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoPoolOwner)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoPoolOwner {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolOwner.staking_key_path)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolOwner.staking_key_path)
     pub staking_key_path: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolOwner.staking_key_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolOwner.staking_key_hash)
     pub staking_key_hash: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoPoolOwner.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoPoolOwner.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4792,22 +4792,22 @@ impl ::protobuf::reflect::ProtobufValue for CardanoPoolOwner {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoPoolRelayParameters)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoPoolRelayParameters)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoPoolRelayParameters {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolRelayParameters.type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolRelayParameters.type)
     pub type_: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoPoolRelayType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolRelayParameters.ipv4_address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolRelayParameters.ipv4_address)
     pub ipv4_address: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolRelayParameters.ipv6_address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolRelayParameters.ipv6_address)
     pub ipv6_address: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolRelayParameters.host_name)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolRelayParameters.host_name)
     pub host_name: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolRelayParameters.port)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolRelayParameters.port)
     pub port: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoPoolRelayParameters.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoPoolRelayParameters.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -4822,7 +4822,7 @@ impl CardanoPoolRelayParameters {
         ::std::default::Default::default()
     }
 
-    // required .hw.trezor.messages.cardano.CardanoPoolRelayType type = 1;
+    // required .hw.cerberus.messages.cardano.CardanoPoolRelayType type = 1;
 
     pub fn type_(&self) -> CardanoPoolRelayType {
         match self.type_ {
@@ -5138,16 +5138,16 @@ impl ::protobuf::reflect::ProtobufValue for CardanoPoolRelayParameters {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoPoolMetadataType)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoPoolMetadataType)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoPoolMetadataType {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolMetadataType.url)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolMetadataType.url)
     pub url: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolMetadataType.hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolMetadataType.hash)
     pub hash: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoPoolMetadataType.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoPoolMetadataType.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5356,32 +5356,32 @@ impl ::protobuf::reflect::ProtobufValue for CardanoPoolMetadataType {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoPoolParametersType)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoPoolParametersType)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoPoolParametersType {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolParametersType.pool_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolParametersType.pool_id)
     pub pool_id: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolParametersType.vrf_key_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolParametersType.vrf_key_hash)
     pub vrf_key_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolParametersType.pledge)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolParametersType.pledge)
     pub pledge: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolParametersType.cost)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolParametersType.cost)
     pub cost: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolParametersType.margin_numerator)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolParametersType.margin_numerator)
     pub margin_numerator: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolParametersType.margin_denominator)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolParametersType.margin_denominator)
     pub margin_denominator: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolParametersType.reward_account)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolParametersType.reward_account)
     pub reward_account: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolParametersType.metadata)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolParametersType.metadata)
     pub metadata: ::protobuf::MessageField<CardanoPoolMetadataType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolParametersType.owners_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolParametersType.owners_count)
     pub owners_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoPoolParametersType.relays_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoPoolParametersType.relays_count)
     pub relays_count: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoPoolParametersType.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoPoolParametersType.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5895,24 +5895,24 @@ impl ::protobuf::reflect::ProtobufValue for CardanoPoolParametersType {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxCertificate)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxCertificate)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxCertificate {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxCertificate.type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxCertificate.type)
     pub type_: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoCertificateType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxCertificate.path)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxCertificate.path)
     pub path: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxCertificate.pool)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxCertificate.pool)
     pub pool: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxCertificate.pool_parameters)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxCertificate.pool_parameters)
     pub pool_parameters: ::protobuf::MessageField<CardanoPoolParametersType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxCertificate.script_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxCertificate.script_hash)
     pub script_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxCertificate.key_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxCertificate.key_hash)
     pub key_hash: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxCertificate.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxCertificate.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -5927,7 +5927,7 @@ impl CardanoTxCertificate {
         ::std::default::Default::default()
     }
 
-    // required .hw.trezor.messages.cardano.CardanoCertificateType type = 1;
+    // required .hw.cerberus.messages.cardano.CardanoCertificateType type = 1;
 
     pub fn type_(&self) -> CardanoCertificateType {
         match self.type_ {
@@ -6249,20 +6249,20 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxCertificate {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxWithdrawal)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxWithdrawal)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxWithdrawal {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxWithdrawal.path)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxWithdrawal.path)
     pub path: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxWithdrawal.amount)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxWithdrawal.amount)
     pub amount: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxWithdrawal.script_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxWithdrawal.script_hash)
     pub script_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxWithdrawal.key_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxWithdrawal.key_hash)
     pub key_hash: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxWithdrawal.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxWithdrawal.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -6522,16 +6522,16 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxWithdrawal {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoCVoteRegistrationDelegation)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoCVoteRegistrationDelegation)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoCVoteRegistrationDelegation {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoCVoteRegistrationDelegation.vote_public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoCVoteRegistrationDelegation.vote_public_key)
     pub vote_public_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoCVoteRegistrationDelegation.weight)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoCVoteRegistrationDelegation.weight)
     pub weight: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoCVoteRegistrationDelegation.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoCVoteRegistrationDelegation.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -6723,28 +6723,28 @@ impl ::protobuf::reflect::ProtobufValue for CardanoCVoteRegistrationDelegation {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoCVoteRegistrationParametersType)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoCVoteRegistrationParametersType)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoCVoteRegistrationParametersType {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoCVoteRegistrationParametersType.vote_public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoCVoteRegistrationParametersType.vote_public_key)
     pub vote_public_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoCVoteRegistrationParametersType.staking_path)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoCVoteRegistrationParametersType.staking_path)
     pub staking_path: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoCVoteRegistrationParametersType.payment_address_parameters)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoCVoteRegistrationParametersType.payment_address_parameters)
     pub payment_address_parameters: ::protobuf::MessageField<CardanoAddressParametersType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoCVoteRegistrationParametersType.nonce)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoCVoteRegistrationParametersType.nonce)
     pub nonce: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoCVoteRegistrationParametersType.format)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoCVoteRegistrationParametersType.format)
     pub format: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoCVoteRegistrationFormat>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoCVoteRegistrationParametersType.delegations)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoCVoteRegistrationParametersType.delegations)
     pub delegations: ::std::vec::Vec<CardanoCVoteRegistrationDelegation>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoCVoteRegistrationParametersType.voting_purpose)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoCVoteRegistrationParametersType.voting_purpose)
     pub voting_purpose: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoCVoteRegistrationParametersType.payment_address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoCVoteRegistrationParametersType.payment_address)
     pub payment_address: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoCVoteRegistrationParametersType.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoCVoteRegistrationParametersType.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -6814,7 +6814,7 @@ impl CardanoCVoteRegistrationParametersType {
         self.nonce = ::std::option::Option::Some(v);
     }
 
-    // optional .hw.trezor.messages.cardano.CardanoCVoteRegistrationFormat format = 5;
+    // optional .hw.cerberus.messages.cardano.CardanoCVoteRegistrationFormat format = 5;
 
     pub fn format(&self) -> CardanoCVoteRegistrationFormat {
         match self.format {
@@ -7121,16 +7121,16 @@ impl ::protobuf::reflect::ProtobufValue for CardanoCVoteRegistrationParametersTy
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxAuxiliaryData)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxAuxiliaryData)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxAuxiliaryData {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxAuxiliaryData.cvote_registration_parameters)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxAuxiliaryData.cvote_registration_parameters)
     pub cvote_registration_parameters: ::protobuf::MessageField<CardanoCVoteRegistrationParametersType>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxAuxiliaryData.hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxAuxiliaryData.hash)
     pub hash: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxAuxiliaryData.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxAuxiliaryData.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7303,14 +7303,14 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxAuxiliaryData {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxMint)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxMint)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxMint {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxMint.asset_groups_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxMint.asset_groups_count)
     pub asset_groups_count: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxMint.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxMint.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7447,16 +7447,16 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxMint {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxCollateralInput)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxCollateralInput)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxCollateralInput {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxCollateralInput.prev_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxCollateralInput.prev_hash)
     pub prev_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxCollateralInput.prev_index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxCollateralInput.prev_index)
     pub prev_index: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxCollateralInput.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxCollateralInput.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7648,16 +7648,16 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxCollateralInput {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxRequiredSigner)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxRequiredSigner)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxRequiredSigner {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxRequiredSigner.key_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxRequiredSigner.key_hash)
     pub key_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxRequiredSigner.key_path)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxRequiredSigner.key_path)
     pub key_path: ::std::vec::Vec<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxRequiredSigner.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxRequiredSigner.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -7827,16 +7827,16 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxRequiredSigner {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxReferenceInput)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxReferenceInput)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxReferenceInput {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxReferenceInput.prev_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxReferenceInput.prev_hash)
     pub prev_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxReferenceInput.prev_index)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxReferenceInput.prev_index)
     pub prev_index: ::std::option::Option<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxReferenceInput.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxReferenceInput.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8028,11 +8028,11 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxReferenceInput {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxItemAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxItemAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxItemAck {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxItemAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxItemAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8131,18 +8131,18 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxItemAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxAuxiliaryDataSupplement)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxAuxiliaryDataSupplement)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxAuxiliaryDataSupplement {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxAuxiliaryDataSupplement.type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxAuxiliaryDataSupplement.type)
     pub type_: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoTxAuxiliaryDataSupplementType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxAuxiliaryDataSupplement.auxiliary_data_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxAuxiliaryDataSupplement.auxiliary_data_hash)
     pub auxiliary_data_hash: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxAuxiliaryDataSupplement.cvote_registration_signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxAuxiliaryDataSupplement.cvote_registration_signature)
     pub cvote_registration_signature: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxAuxiliaryDataSupplement.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxAuxiliaryDataSupplement.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8157,7 +8157,7 @@ impl CardanoTxAuxiliaryDataSupplement {
         ::std::default::Default::default()
     }
 
-    // required .hw.trezor.messages.cardano.CardanoTxAuxiliaryDataSupplementType type = 1;
+    // required .hw.cerberus.messages.cardano.CardanoTxAuxiliaryDataSupplementType type = 1;
 
     pub fn type_(&self) -> CardanoTxAuxiliaryDataSupplementType {
         match self.type_ {
@@ -8386,14 +8386,14 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxAuxiliaryDataSupplement {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxWitnessRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxWitnessRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxWitnessRequest {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxWitnessRequest.path)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxWitnessRequest.path)
     pub path: ::std::vec::Vec<u32>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxWitnessRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxWitnessRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8511,20 +8511,20 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxWitnessRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxWitnessResponse)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxWitnessResponse)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxWitnessResponse {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxWitnessResponse.type)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxWitnessResponse.type)
     pub type_: ::std::option::Option<::protobuf::EnumOrUnknown<CardanoTxWitnessType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxWitnessResponse.pub_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxWitnessResponse.pub_key)
     pub pub_key: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxWitnessResponse.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxWitnessResponse.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxWitnessResponse.chain_code)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxWitnessResponse.chain_code)
     pub chain_code: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxWitnessResponse.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxWitnessResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8539,7 +8539,7 @@ impl CardanoTxWitnessResponse {
         ::std::default::Default::default()
     }
 
-    // required .hw.trezor.messages.cardano.CardanoTxWitnessType type = 1;
+    // required .hw.cerberus.messages.cardano.CardanoTxWitnessType type = 1;
 
     pub fn type_(&self) -> CardanoTxWitnessType {
         match self.type_ {
@@ -8826,11 +8826,11 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxWitnessResponse {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxHostAck)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxHostAck)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxHostAck {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxHostAck.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxHostAck.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -8929,14 +8929,14 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxHostAck {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoTxBodyHash)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoTxBodyHash)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoTxBodyHash {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.cardano.CardanoTxBodyHash.tx_hash)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.cardano.CardanoTxBodyHash.tx_hash)
     pub tx_hash: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoTxBodyHash.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoTxBodyHash.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9090,11 +9090,11 @@ impl ::protobuf::reflect::ProtobufValue for CardanoTxBodyHash {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.cardano.CardanoSignTxFinished)
+// @@protoc_insertion_point(message:hw.cerberus.messages.cardano.CardanoSignTxFinished)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct CardanoSignTxFinished {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.cardano.CardanoSignTxFinished.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.cardano.CardanoSignTxFinished.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -9194,14 +9194,14 @@ impl ::protobuf::reflect::ProtobufValue for CardanoSignTxFinished {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.cardano.CardanoDerivationType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.cardano.CardanoDerivationType)
 pub enum CardanoDerivationType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoDerivationType.LEDGER)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoDerivationType.LEDGER)
     LEDGER = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoDerivationType.ICARUS)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoDerivationType.ICARUS)
     ICARUS = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoDerivationType.ICARUS_TREZOR)
-    ICARUS_TREZOR = 2,
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoDerivationType.ICARUS_CERBERUS)
+    ICARUS_CERBERUS = 2,
 }
 
 impl ::protobuf::Enum for CardanoDerivationType {
@@ -9215,7 +9215,7 @@ impl ::protobuf::Enum for CardanoDerivationType {
         match value {
             0 => ::std::option::Option::Some(CardanoDerivationType::LEDGER),
             1 => ::std::option::Option::Some(CardanoDerivationType::ICARUS),
-            2 => ::std::option::Option::Some(CardanoDerivationType::ICARUS_TREZOR),
+            2 => ::std::option::Option::Some(CardanoDerivationType::ICARUS_CERBERUS),
             _ => ::std::option::Option::None
         }
     }
@@ -9224,7 +9224,7 @@ impl ::protobuf::Enum for CardanoDerivationType {
         match str {
             "LEDGER" => ::std::option::Option::Some(CardanoDerivationType::LEDGER),
             "ICARUS" => ::std::option::Option::Some(CardanoDerivationType::ICARUS),
-            "ICARUS_TREZOR" => ::std::option::Option::Some(CardanoDerivationType::ICARUS_TREZOR),
+            "ICARUS_CERBERUS" => ::std::option::Option::Some(CardanoDerivationType::ICARUS_CERBERUS),
             _ => ::std::option::Option::None
         }
     }
@@ -9232,7 +9232,7 @@ impl ::protobuf::Enum for CardanoDerivationType {
     const VALUES: &'static [CardanoDerivationType] = &[
         CardanoDerivationType::LEDGER,
         CardanoDerivationType::ICARUS,
-        CardanoDerivationType::ICARUS_TREZOR,
+        CardanoDerivationType::ICARUS_CERBERUS,
     ];
 }
 
@@ -9261,29 +9261,29 @@ impl CardanoDerivationType {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.cardano.CardanoAddressType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.cardano.CardanoAddressType)
 pub enum CardanoAddressType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoAddressType.BASE)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoAddressType.BASE)
     BASE = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoAddressType.BASE_SCRIPT_KEY)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoAddressType.BASE_SCRIPT_KEY)
     BASE_SCRIPT_KEY = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoAddressType.BASE_KEY_SCRIPT)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoAddressType.BASE_KEY_SCRIPT)
     BASE_KEY_SCRIPT = 2,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoAddressType.BASE_SCRIPT_SCRIPT)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoAddressType.BASE_SCRIPT_SCRIPT)
     BASE_SCRIPT_SCRIPT = 3,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoAddressType.POINTER)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoAddressType.POINTER)
     POINTER = 4,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoAddressType.POINTER_SCRIPT)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoAddressType.POINTER_SCRIPT)
     POINTER_SCRIPT = 5,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoAddressType.ENTERPRISE)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoAddressType.ENTERPRISE)
     ENTERPRISE = 6,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoAddressType.ENTERPRISE_SCRIPT)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoAddressType.ENTERPRISE_SCRIPT)
     ENTERPRISE_SCRIPT = 7,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoAddressType.BYRON)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoAddressType.BYRON)
     BYRON = 8,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoAddressType.REWARD)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoAddressType.REWARD)
     REWARD = 14,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoAddressType.REWARD_SCRIPT)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoAddressType.REWARD_SCRIPT)
     REWARD_SCRIPT = 15,
 }
 
@@ -9380,19 +9380,19 @@ impl CardanoAddressType {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.cardano.CardanoNativeScriptType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.cardano.CardanoNativeScriptType)
 pub enum CardanoNativeScriptType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoNativeScriptType.PUB_KEY)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoNativeScriptType.PUB_KEY)
     PUB_KEY = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoNativeScriptType.ALL)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoNativeScriptType.ALL)
     ALL = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoNativeScriptType.ANY)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoNativeScriptType.ANY)
     ANY = 2,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoNativeScriptType.N_OF_K)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoNativeScriptType.N_OF_K)
     N_OF_K = 3,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoNativeScriptType.INVALID_BEFORE)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoNativeScriptType.INVALID_BEFORE)
     INVALID_BEFORE = 4,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoNativeScriptType.INVALID_HEREAFTER)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoNativeScriptType.INVALID_HEREAFTER)
     INVALID_HEREAFTER = 5,
 }
 
@@ -9462,13 +9462,13 @@ impl CardanoNativeScriptType {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.cardano.CardanoNativeScriptHashDisplayFormat)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.cardano.CardanoNativeScriptHashDisplayFormat)
 pub enum CardanoNativeScriptHashDisplayFormat {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoNativeScriptHashDisplayFormat.HIDE)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoNativeScriptHashDisplayFormat.HIDE)
     HIDE = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoNativeScriptHashDisplayFormat.BECH32)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoNativeScriptHashDisplayFormat.BECH32)
     BECH32 = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoNativeScriptHashDisplayFormat.POLICY_ID)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoNativeScriptHashDisplayFormat.POLICY_ID)
     POLICY_ID = 2,
 }
 
@@ -9529,11 +9529,11 @@ impl CardanoNativeScriptHashDisplayFormat {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.cardano.CardanoTxOutputSerializationFormat)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.cardano.CardanoTxOutputSerializationFormat)
 pub enum CardanoTxOutputSerializationFormat {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoTxOutputSerializationFormat.ARRAY_LEGACY)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoTxOutputSerializationFormat.ARRAY_LEGACY)
     ARRAY_LEGACY = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoTxOutputSerializationFormat.MAP_BABBAGE)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoTxOutputSerializationFormat.MAP_BABBAGE)
     MAP_BABBAGE = 1,
 }
 
@@ -9591,15 +9591,15 @@ impl CardanoTxOutputSerializationFormat {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.cardano.CardanoCertificateType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.cardano.CardanoCertificateType)
 pub enum CardanoCertificateType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoCertificateType.STAKE_REGISTRATION)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoCertificateType.STAKE_REGISTRATION)
     STAKE_REGISTRATION = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoCertificateType.STAKE_DEREGISTRATION)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoCertificateType.STAKE_DEREGISTRATION)
     STAKE_DEREGISTRATION = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoCertificateType.STAKE_DELEGATION)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoCertificateType.STAKE_DELEGATION)
     STAKE_DELEGATION = 2,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoCertificateType.STAKE_POOL_REGISTRATION)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoCertificateType.STAKE_POOL_REGISTRATION)
     STAKE_POOL_REGISTRATION = 3,
 }
 
@@ -9663,13 +9663,13 @@ impl CardanoCertificateType {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.cardano.CardanoPoolRelayType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.cardano.CardanoPoolRelayType)
 pub enum CardanoPoolRelayType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoPoolRelayType.SINGLE_HOST_IP)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoPoolRelayType.SINGLE_HOST_IP)
     SINGLE_HOST_IP = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoPoolRelayType.SINGLE_HOST_NAME)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoPoolRelayType.SINGLE_HOST_NAME)
     SINGLE_HOST_NAME = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoPoolRelayType.MULTIPLE_HOST_NAME)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoPoolRelayType.MULTIPLE_HOST_NAME)
     MULTIPLE_HOST_NAME = 2,
 }
 
@@ -9730,11 +9730,11 @@ impl CardanoPoolRelayType {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.cardano.CardanoTxAuxiliaryDataSupplementType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.cardano.CardanoTxAuxiliaryDataSupplementType)
 pub enum CardanoTxAuxiliaryDataSupplementType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoTxAuxiliaryDataSupplementType.NONE)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoTxAuxiliaryDataSupplementType.NONE)
     NONE = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoTxAuxiliaryDataSupplementType.CVOTE_REGISTRATION_SIGNATURE)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoTxAuxiliaryDataSupplementType.CVOTE_REGISTRATION_SIGNATURE)
     CVOTE_REGISTRATION_SIGNATURE = 1,
 }
 
@@ -9792,11 +9792,11 @@ impl CardanoTxAuxiliaryDataSupplementType {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.cardano.CardanoCVoteRegistrationFormat)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.cardano.CardanoCVoteRegistrationFormat)
 pub enum CardanoCVoteRegistrationFormat {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoCVoteRegistrationFormat.CIP15)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoCVoteRegistrationFormat.CIP15)
     CIP15 = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoCVoteRegistrationFormat.CIP36)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoCVoteRegistrationFormat.CIP36)
     CIP36 = 1,
 }
 
@@ -9854,15 +9854,15 @@ impl CardanoCVoteRegistrationFormat {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.cardano.CardanoTxSigningMode)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.cardano.CardanoTxSigningMode)
 pub enum CardanoTxSigningMode {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoTxSigningMode.ORDINARY_TRANSACTION)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoTxSigningMode.ORDINARY_TRANSACTION)
     ORDINARY_TRANSACTION = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoTxSigningMode.POOL_REGISTRATION_AS_OWNER)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoTxSigningMode.POOL_REGISTRATION_AS_OWNER)
     POOL_REGISTRATION_AS_OWNER = 1,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoTxSigningMode.MULTISIG_TRANSACTION)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoTxSigningMode.MULTISIG_TRANSACTION)
     MULTISIG_TRANSACTION = 2,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoTxSigningMode.PLUTUS_TRANSACTION)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoTxSigningMode.PLUTUS_TRANSACTION)
     PLUTUS_TRANSACTION = 3,
 }
 
@@ -9926,11 +9926,11 @@ impl CardanoTxSigningMode {
 }
 
 #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-// @@protoc_insertion_point(enum:hw.trezor.messages.cardano.CardanoTxWitnessType)
+// @@protoc_insertion_point(enum:hw.cerberus.messages.cardano.CardanoTxWitnessType)
 pub enum CardanoTxWitnessType {
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoTxWitnessType.BYRON_WITNESS)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoTxWitnessType.BYRON_WITNESS)
     BYRON_WITNESS = 0,
-    // @@protoc_insertion_point(enum_value:hw.trezor.messages.cardano.CardanoTxWitnessType.SHELLEY_WITNESS)
+    // @@protoc_insertion_point(enum_value:hw.cerberus.messages.cardano.CardanoTxWitnessType.SHELLEY_WITNESS)
     SHELLEY_WITNESS = 1,
 }
 
@@ -9988,50 +9988,50 @@ impl CardanoTxWitnessType {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x16messages-cardano.proto\x12\x1ahw.trezor.messages.cardano\x1a\x15me\
+    \n\x16messages-cardano.proto\x12\x1ahw.cerberus.messages.cardano\x1a\x15me\
     ssages-common.proto\"\x87\x01\n\x1cCardanoBlockchainPointerType\x12\x1f\
     \n\x0bblock_index\x18\x01\x20\x02(\rR\nblockIndex\x12\x19\n\x08tx_index\
     \x18\x02\x20\x02(\rR\x07txIndex\x12+\n\x11certificate_index\x18\x03\x20\
     \x02(\rR\x10certificateIndex\"\xef\x02\n\x13CardanoNativeScript\x12G\n\
-    \x04type\x18\x01\x20\x02(\x0e23.hw.trezor.messages.cardano.CardanoNative\
-    ScriptTypeR\x04type\x12I\n\x07scripts\x18\x02\x20\x03(\x0b2/.hw.trezor.m\
+    \x04type\x18\x01\x20\x02(\x0e23.hw.cerberus.messages.cardano.CardanoNative\
+    ScriptTypeR\x04type\x12I\n\x07scripts\x18\x02\x20\x03(\x0b2/.hw.cerberus.m\
     essages.cardano.CardanoNativeScriptR\x07scripts\x12\x19\n\x08key_hash\
     \x18\x03\x20\x01(\x0cR\x07keyHash\x12\x19\n\x08key_path\x18\x04\x20\x03(\
     \rR\x07keyPath\x12:\n\x19required_signatures_count\x18\x05\x20\x01(\rR\
     \x17requiredSignaturesCount\x12%\n\x0einvalid_before\x18\x06\x20\x01(\
     \x04R\rinvalidBefore\x12+\n\x11invalid_hereafter\x18\x07\x20\x01(\x04R\
     \x10invalidHereafter\"\xaa\x02\n\x1aCardanoGetNativeScriptHash\x12G\n\
-    \x06script\x18\x01\x20\x02(\x0b2/.hw.trezor.messages.cardano.CardanoNati\
+    \x06script\x18\x01\x20\x02(\x0b2/.hw.cerberus.messages.cardano.CardanoNati\
     veScriptR\x06script\x12g\n\x0edisplay_format\x18\x02\x20\x02(\x0e2@.hw.t\
     rezor.messages.cardano.CardanoNativeScriptHashDisplayFormatR\rdisplayFor\
-    mat\x12Z\n\x0fderivation_type\x18\x03\x20\x02(\x0e21.hw.trezor.messages.\
+    mat\x12Z\n\x0fderivation_type\x18\x03\x20\x02(\x0e21.hw.cerberus.messages.\
     cardano.CardanoDerivationTypeR\x0ederivationType\":\n\x17CardanoNativeSc\
     riptHash\x12\x1f\n\x0bscript_hash\x18\x01\x20\x02(\x0cR\nscriptHash\"\
     \xaf\x03\n\x1cCardanoAddressParametersType\x12Q\n\x0caddress_type\x18\
-    \x01\x20\x02(\x0e2..hw.trezor.messages.cardano.CardanoAddressTypeR\x0bad\
+    \x01\x20\x02(\x0e2..hw.cerberus.messages.cardano.CardanoAddressTypeR\x0bad\
     dressType\x12\x1b\n\taddress_n\x18\x02\x20\x03(\rR\x08addressN\x12*\n\
     \x11address_n_staking\x18\x03\x20\x03(\rR\x0faddressNStaking\x12(\n\x10s\
     taking_key_hash\x18\x04\x20\x01(\x0cR\x0estakingKeyHash\x12i\n\x13certif\
-    icate_pointer\x18\x05\x20\x01(\x0b28.hw.trezor.messages.cardano.CardanoB\
+    icate_pointer\x18\x05\x20\x01(\x0b28.hw.cerberus.messages.cardano.CardanoB\
     lockchainPointerTypeR\x12certificatePointer\x12.\n\x13script_payment_has\
     h\x18\x06\x20\x01(\x0cR\x11scriptPaymentHash\x12.\n\x13script_staking_ha\
     sh\x18\x07\x20\x01(\x0cR\x11scriptStakingHash\"\xe4\x02\n\x11CardanoGetA\
     ddress\x12(\n\x0cshow_display\x18\x02\x20\x01(\x08:\x05falseR\x0bshowDis\
     play\x12%\n\x0eprotocol_magic\x18\x03\x20\x02(\rR\rprotocolMagic\x12\x1d\
     \n\nnetwork_id\x18\x04\x20\x02(\rR\tnetworkId\x12g\n\x12address_paramete\
-    rs\x18\x05\x20\x02(\x0b28.hw.trezor.messages.cardano.CardanoAddressParam\
+    rs\x18\x05\x20\x02(\x0b28.hw.cerberus.messages.cardano.CardanoAddressParam\
     etersTypeR\x11addressParameters\x12Z\n\x0fderivation_type\x18\x06\x20\
-    \x02(\x0e21.hw.trezor.messages.cardano.CardanoDerivationTypeR\x0ederivat\
+    \x02(\x0e21.hw.cerberus.messages.cardano.CardanoDerivationTypeR\x0ederivat\
     ionType\x12\x1a\n\x08chunkify\x18\x07\x20\x01(\x08R\x08chunkify\"*\n\x0e\
     CardanoAddress\x12\x18\n\x07address\x18\x01\x20\x02(\tR\x07address\"\xb1\
     \x01\n\x13CardanoGetPublicKey\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\
     \x08addressN\x12!\n\x0cshow_display\x18\x02\x20\x01(\x08R\x0bshowDisplay\
-    \x12Z\n\x0fderivation_type\x18\x03\x20\x02(\x0e21.hw.trezor.messages.car\
+    \x12Z\n\x0fderivation_type\x18\x03\x20\x02(\x0e21.hw.cerberus.messages.car\
     dano.CardanoDerivationTypeR\x0ederivationType\"a\n\x10CardanoPublicKey\
     \x12\x12\n\x04xpub\x18\x01\x20\x02(\tR\x04xpub\x129\n\x04node\x18\x02\
-    \x20\x02(\x0b2%.hw.trezor.messages.common.HDNodeTypeR\x04node\"\xb3\x08\
+    \x20\x02(\x0b2%.hw.cerberus.messages.common.HDNodeTypeR\x04node\"\xb3\x08\
     \n\x11CardanoSignTxInit\x12S\n\x0csigning_mode\x18\x01\x20\x02(\x0e20.hw\
-    .trezor.messages.cardano.CardanoTxSigningModeR\x0bsigningMode\x12%\n\x0e\
+    .cerberus.messages.cardano.CardanoTxSigningModeR\x0bsigningMode\x12%\n\x0e\
     protocol_magic\x18\x02\x20\x02(\rR\rprotocolMagic\x12\x1d\n\nnetwork_id\
     \x18\x03\x20\x02(\rR\tnetworkId\x12!\n\x0cinputs_count\x18\x04\x20\x02(\
     \rR\x0binputsCount\x12#\n\routputs_count\x18\x05\x20\x02(\rR\x0coutputsC\
@@ -10043,7 +10043,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x04R\x15validityIntervalStart\x124\n\x16witness_requests_count\x18\x0c\
     \x20\x02(\rR\x14witnessRequestsCount\x12;\n\x1aminting_asset_groups_coun\
     t\x18\r\x20\x02(\rR\x17mintingAssetGroupsCount\x12Z\n\x0fderivation_type\
-    \x18\x0e\x20\x02(\x0e21.hw.trezor.messages.cardano.CardanoDerivationType\
+    \x18\x0e\x20\x02(\x0e21.hw.cerberus.messages.cardano.CardanoDerivationType\
     R\x0ederivationType\x123\n\x12include_network_id\x18\x0f\x20\x01(\x08:\
     \x05falseR\x10includeNetworkId\x12(\n\x10script_data_hash\x18\x10\x20\
     \x01(\x0cR\x0escriptDataHash\x126\n\x17collateral_inputs_count\x18\x11\
@@ -10056,11 +10056,11 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     put\x12\x1b\n\tprev_hash\x18\x01\x20\x02(\x0cR\x08prevHash\x12\x1d\n\npr\
     ev_index\x18\x02\x20\x02(\rR\tprevIndex\"\xc5\x03\n\x0fCardanoTxOutput\
     \x12\x18\n\x07address\x18\x01\x20\x01(\tR\x07address\x12g\n\x12address_p\
-    arameters\x18\x02\x20\x01(\x0b28.hw.trezor.messages.cardano.CardanoAddre\
+    arameters\x18\x02\x20\x01(\x0b28.hw.cerberus.messages.cardano.CardanoAddre\
     ssParametersTypeR\x11addressParameters\x12\x16\n\x06amount\x18\x03\x20\
     \x02(\x04R\x06amount\x12,\n\x12asset_groups_count\x18\x04\x20\x02(\rR\
     \x10assetGroupsCount\x12\x1d\n\ndatum_hash\x18\x05\x20\x01(\x0cR\tdatumH\
-    ash\x12d\n\x06format\x18\x06\x20\x01(\x0e2>.hw.trezor.messages.cardano.C\
+    ash\x12d\n\x06format\x18\x06\x20\x01(\x0e2>.hw.cerberus.messages.cardano.C\
     ardanoTxOutputSerializationFormat:\x0cARRAY_LEGACYR\x06format\x12-\n\x11\
     inline_datum_size\x18\x07\x20\x01(\r:\x010R\x0finlineDatumSize\x125\n\
     \x15reference_script_size\x18\x08\x20\x01(\r:\x010R\x13referenceScriptSi\
@@ -10074,7 +10074,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     R\x04data\"f\n\x10CardanoPoolOwner\x12(\n\x10staking_key_path\x18\x01\
     \x20\x03(\rR\x0estakingKeyPath\x12(\n\x10staking_key_hash\x18\x02\x20\
     \x01(\x0cR\x0estakingKeyHash\"\xd9\x01\n\x1aCardanoPoolRelayParameters\
-    \x12D\n\x04type\x18\x01\x20\x02(\x0e20.hw.trezor.messages.cardano.Cardan\
+    \x12D\n\x04type\x18\x01\x20\x02(\x0e20.hw.cerberus.messages.cardano.Cardan\
     oPoolRelayTypeR\x04type\x12!\n\x0cipv4_address\x18\x02\x20\x01(\x0cR\x0b\
     ipv4Address\x12!\n\x0cipv6_address\x18\x03\x20\x01(\x0cR\x0bipv6Address\
     \x12\x1b\n\thost_name\x18\x04\x20\x01(\tR\x08hostName\x12\x12\n\x04port\
@@ -10087,13 +10087,13 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     numerator\x18\x05\x20\x02(\x04R\x0fmarginNumerator\x12-\n\x12margin_deno\
     minator\x18\x06\x20\x02(\x04R\x11marginDenominator\x12%\n\x0ereward_acco\
     unt\x18\x07\x20\x02(\tR\rrewardAccount\x12O\n\x08metadata\x18\n\x20\x01(\
-    \x0b23.hw.trezor.messages.cardano.CardanoPoolMetadataTypeR\x08metadata\
+    \x0b23.hw.cerberus.messages.cardano.CardanoPoolMetadataTypeR\x08metadata\
     \x12!\n\x0cowners_count\x18\x0b\x20\x02(\rR\x0bownersCount\x12!\n\x0crel\
     ays_count\x18\x0c\x20\x02(\rR\x0brelaysCount\"\xa2\x02\n\x14CardanoTxCer\
-    tificate\x12F\n\x04type\x18\x01\x20\x02(\x0e22.hw.trezor.messages.cardan\
+    tificate\x12F\n\x04type\x18\x01\x20\x02(\x0e22.hw.cerberus.messages.cardan\
     o.CardanoCertificateTypeR\x04type\x12\x12\n\x04path\x18\x02\x20\x03(\rR\
     \x04path\x12\x12\n\x04pool\x18\x03\x20\x01(\x0cR\x04pool\x12^\n\x0fpool_\
-    parameters\x18\x04\x20\x01(\x0b25.hw.trezor.messages.cardano.CardanoPool\
+    parameters\x18\x04\x20\x01(\x0b25.hw.cerberus.messages.cardano.CardanoPool\
     ParametersTypeR\x0epoolParameters\x12\x1f\n\x0bscript_hash\x18\x05\x20\
     \x01(\x0cR\nscriptHash\x12\x19\n\x08key_hash\x18\x06\x20\x01(\x0cR\x07ke\
     yHash\"}\n\x13CardanoTxWithdrawal\x12\x12\n\x04path\x18\x01\x20\x03(\rR\
@@ -10104,16 +10104,16 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x16\n\x06weight\x18\x02\x20\x02(\rR\x06weight\"\x8e\x04\n&CardanoCVoteR\
     egistrationParametersType\x12&\n\x0fvote_public_key\x18\x01\x20\x01(\x0c\
     R\rvotePublicKey\x12!\n\x0cstaking_path\x18\x02\x20\x03(\rR\x0bstakingPa\
-    th\x12v\n\x1apayment_address_parameters\x18\x03\x20\x01(\x0b28.hw.trezor\
+    th\x12v\n\x1apayment_address_parameters\x18\x03\x20\x01(\x0b28.hw.cerberus\
     .messages.cardano.CardanoAddressParametersTypeR\x18paymentAddressParamet\
     ers\x12\x14\n\x05nonce\x18\x04\x20\x02(\x04R\x05nonce\x12Y\n\x06format\
-    \x18\x05\x20\x01(\x0e2:.hw.trezor.messages.cardano.CardanoCVoteRegistrat\
+    \x18\x05\x20\x01(\x0e2:.hw.cerberus.messages.cardano.CardanoCVoteRegistrat\
     ionFormat:\x05CIP15R\x06format\x12`\n\x0bdelegations\x18\x06\x20\x03(\
-    \x0b2>.hw.trezor.messages.cardano.CardanoCVoteRegistrationDelegationR\
+    \x0b2>.hw.cerberus.messages.cardano.CardanoCVoteRegistrationDelegationR\
     \x0bdelegations\x12%\n\x0evoting_purpose\x18\x07\x20\x01(\x04R\rvotingPu\
     rpose\x12'\n\x0fpayment_address\x18\x08\x20\x01(\tR\x0epaymentAddress\"\
     \xb5\x01\n\x16CardanoTxAuxiliaryData\x12\x86\x01\n\x1dcvote_registration\
-    _parameters\x18\x01\x20\x01(\x0b2B.hw.trezor.messages.cardano.CardanoCVo\
+    _parameters\x18\x01\x20\x01(\x0b2B.hw.cerberus.messages.cardano.CardanoCVo\
     teRegistrationParametersTypeR\x1bcvoteRegistrationParameters\x12\x12\n\
     \x04hash\x18\x02\x20\x01(\x0cR\x04hash\"=\n\rCardanoTxMint\x12,\n\x12ass\
     et_groups_count\x18\x01\x20\x02(\rR\x10assetGroupsCount\"V\n\x18CardanoT\
@@ -10124,19 +10124,19 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     enceInput\x12\x1b\n\tprev_hash\x18\x01\x20\x02(\x0cR\x08prevHash\x12\x1d\
     \n\nprev_index\x18\x02\x20\x02(\rR\tprevIndex\"\x12\n\x10CardanoTxItemAc\
     k\"\xea\x01\n\x20CardanoTxAuxiliaryDataSupplement\x12T\n\x04type\x18\x01\
-    \x20\x02(\x0e2@.hw.trezor.messages.cardano.CardanoTxAuxiliaryDataSupplem\
+    \x20\x02(\x0e2@.hw.cerberus.messages.cardano.CardanoTxAuxiliaryDataSupplem\
     entTypeR\x04type\x12.\n\x13auxiliary_data_hash\x18\x02\x20\x01(\x0cR\x11\
     auxiliaryDataHash\x12@\n\x1ccvote_registration_signature\x18\x03\x20\x01\
     (\x0cR\x1acvoteRegistrationSignature\"-\n\x17CardanoTxWitnessRequest\x12\
     \x12\n\x04path\x18\x01\x20\x03(\rR\x04path\"\xb6\x01\n\x18CardanoTxWitne\
-    ssResponse\x12D\n\x04type\x18\x01\x20\x02(\x0e20.hw.trezor.messages.card\
+    ssResponse\x12D\n\x04type\x18\x01\x20\x02(\x0e20.hw.cerberus.messages.card\
     ano.CardanoTxWitnessTypeR\x04type\x12\x17\n\x07pub_key\x18\x02\x20\x02(\
     \x0cR\x06pubKey\x12\x1c\n\tsignature\x18\x03\x20\x02(\x0cR\tsignature\
     \x12\x1d\n\nchain_code\x18\x04\x20\x01(\x0cR\tchainCode\"\x12\n\x10Carda\
     noTxHostAck\",\n\x11CardanoTxBodyHash\x12\x17\n\x07tx_hash\x18\x01\x20\
     \x02(\x0cR\x06txHash\"\x17\n\x15CardanoSignTxFinished*B\n\x15CardanoDeri\
     vationType\x12\n\n\x06LEDGER\x10\0\x12\n\n\x06ICARUS\x10\x01\x12\x11\n\r\
-    ICARUS_TREZOR\x10\x02*\xd2\x01\n\x12CardanoAddressType\x12\x08\n\x04BASE\
+    ICARUS_CERBERUS\x10\x02*\xd2\x01\n\x12CardanoAddressType\x12\x08\n\x04BASE\
     \x10\0\x12\x13\n\x0fBASE_SCRIPT_KEY\x10\x01\x12\x13\n\x0fBASE_KEY_SCRIPT\
     \x10\x02\x12\x16\n\x12BASE_SCRIPT_SCRIPT\x10\x03\x12\x0b\n\x07POINTER\
     \x10\x04\x12\x12\n\x0ePOINTER_SCRIPT\x10\x05\x12\x0e\n\nENTERPRISE\x10\
@@ -10159,8 +10159,8 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x14ORDINARY_TRANSACTION\x10\0\x12\x1e\n\x1aPOOL_REGISTRATION_AS_OWNER\
     \x10\x01\x12\x18\n\x14MULTISIG_TRANSACTION\x10\x02\x12\x16\n\x12PLUTUS_T\
     RANSACTION\x10\x03*>\n\x14CardanoTxWitnessType\x12\x11\n\rBYRON_WITNESS\
-    \x10\0\x12\x13\n\x0fSHELLEY_WITNESS\x10\x01B;\n#com.satoshilabs.trezor.l\
-    ib.protobufB\x14TrezorMessageCardano\
+    \x10\0\x12\x13\n\x0fSHELLEY_WITNESS\x10\x01B;\n#com.satoshilabs.cerberus.l\
+    ib.protobufB\x14CerberusMessageCardano\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

@@ -1,5 +1,5 @@
 #
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
 # This library is free software: you can redistribute it and/or modify
@@ -18,9 +18,9 @@ import time
 
 import pytest
 
-from trezorlib import device, messages
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
+from cerberuslib import device, messages
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
 
 from ..common import TEST_ADDRESS_N, get_test_address
 
@@ -107,7 +107,7 @@ def test_apply_auto_lock_delay_out_of_range(client: Client, seconds):
         )
 
         delay = seconds * 1000
-        with pytest.raises(TrezorFailure):
+        with pytest.raises(CerberusFailure):
             device.apply_settings(client, auto_lock_delay_ms=delay)
 
 

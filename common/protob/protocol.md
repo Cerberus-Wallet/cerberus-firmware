@@ -1,4 +1,4 @@
-# Trezor Protocol
+# Cerberus Protocol
 
 ## version 1
 
@@ -22,7 +22,7 @@ Following packets has the following structure:
 
 ## Adding new message
 
-To add new message to Trezor protocol follow these steps:
+To add new message to Cerberus protocol follow these steps:
 1. Reconsider if there isn't already a message, that would suit your needs.
 2. Choose the right place (file) to put new message:
    - [`messages.proto`](messages.proto) are for management of the messages itself (wire type to message type mapping and etc.)
@@ -30,7 +30,7 @@ To add new message to Trezor protocol follow these steps:
    - all other files have a suffix `messages-SUFFIX.proto`, where suffix describes specific use case of messages contained within the file
 3. Add new message and comment it properly following our [Messages naming and documenting conventions](#messages-naming-and-documenting-conventions).
 4. If message is not embedded in another message, it has to have a wire type number
-   assigned. This number is used to map between Trezor wire identifier (uint) and a
+   assigned. This number is used to map between Cerberus wire identifier (uint) and a
    protobuf message. Mapping is defined in [`messages.proto`](messages.proto#L76).
 
 Wire identifiers are organized in logical blocks with 100 numbers per block. If you are
@@ -55,7 +55,7 @@ Documenting/commenting the messages is mandatory. Please use the following templ
 ```
 where:
 - `MSG_TYPE` is used to describe the purpose of the message and its type. Possible values are:
-  - `Request` for inbound messages (coming to the device (Trezor))
+  - `Request` for inbound messages (coming to the device (Cerberus))
   - `Response` for outbound messages (coming out from the device)
   - in case that the message is embedded in another message we don't state the message type
 - `MSG_FLOW_TAG` denotes the flow of the messages in a session (use case). Possible tags are:

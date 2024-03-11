@@ -1,25 +1,25 @@
 mod ffi {
     extern "C" {
-        // trezorhal/common.c
-        pub fn trezor_shutdown() -> !;
+        // cerberushal/common.c
+        pub fn cerberus_shutdown() -> !;
     }
 }
 
 use crate::ui::screens::screen_fatal_error;
 
 fn shutdown() -> ! {
-    unsafe { ffi::trezor_shutdown() }
+    unsafe { ffi::cerberus_shutdown() }
 }
 
 #[cfg(feature = "bootloader")]
 pub fn __fatal_error(_expr: &str, _msg: &str, _file: &str, _line: u32, _func: &str) -> ! {
-    screen_fatal_error("BL.rs", "BL.rs", "PLEASE VISIT\nTREZOR.IO/RSOD");
+    screen_fatal_error("BL.rs", "BL.rs", "PLEASE VISIT\nCERBERUS.IO/RSOD");
     shutdown()
 }
 
 #[cfg(not(feature = "bootloader"))]
 pub fn __fatal_error(_expr: &str, msg: &str, _file: &str, _line: u32, _func: &str) -> ! {
-    screen_fatal_error("INTERNAL_ERROR", msg, "PLEASE VISIT\nTREZOR.IO/RSOD");
+    screen_fatal_error("INTERNAL_ERROR", msg, "PLEASE VISIT\nCERBERUS.IO/RSOD");
     shutdown()
 }
 
@@ -65,7 +65,7 @@ macro_rules! function_name {
 
 macro_rules! unwrap {
     ($e:expr, $msg:expr) => {{
-        use crate::trezorhal::fatal_error::UnwrapOrFatalError;
+        use crate::cerberushal::fatal_error::UnwrapOrFatalError;
         $e.unwrap_or_fatal_error(stringify!($e), $msg, file!(), line!(), function_name!())
     }};
     ($expr:expr) => {
@@ -83,7 +83,7 @@ macro_rules! ensure {
 
 macro_rules! fatal_error {
     ($expr:expr, $msg:expr) => {{
-        crate::trezorhal::fatal_error::__fatal_error(
+        crate::cerberushal::fatal_error::__fatal_error(
             stringify!($expr),
             $msg,
             file!(),

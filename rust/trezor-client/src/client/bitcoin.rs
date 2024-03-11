@@ -1,4 +1,4 @@
-use super::{Trezor, TrezorResponse};
+use super::{Cerberus, CerberusResponse};
 use crate::{error::Result, flows::sign_tx::SignTxProgress, protos, utils};
 use bitcoin::{
     address::NetworkUnchecked, bip32, network::Network, psbt,
@@ -7,14 +7,14 @@ use bitcoin::{
 
 pub use crate::protos::InputScriptType;
 
-impl Trezor {
+impl Cerberus {
     pub fn get_public_key(
         &mut self,
         path: &bip32::DerivationPath,
         script_type: InputScriptType,
         network: Network,
         show_display: bool,
-    ) -> Result<TrezorResponse<'_, bip32::Xpub, protos::PublicKey>> {
+    ) -> Result<CerberusResponse<'_, bip32::Xpub, protos::PublicKey>> {
         let mut req = protos::GetPublicKey::new();
         req.address_n = utils::convert_path(path);
         req.set_show_display(show_display);
@@ -30,7 +30,7 @@ impl Trezor {
         script_type: InputScriptType,
         network: Network,
         show_display: bool,
-    ) -> Result<TrezorResponse<'_, Address, protos::Address>> {
+    ) -> Result<CerberusResponse<'_, Address, protos::Address>> {
         let mut req = protos::GetAddress::new();
         req.address_n = utils::convert_path(path);
         req.set_coin_name(utils::coin_name(network)?);
@@ -43,7 +43,7 @@ impl Trezor {
         &mut self,
         psbt: &psbt::Psbt,
         network: Network,
-    ) -> Result<TrezorResponse<'_, SignTxProgress<'_>, protos::TxRequest>> {
+    ) -> Result<CerberusResponse<'_, SignTxProgress<'_>, protos::TxRequest>> {
         let tx = &psbt.unsigned_tx;
         let mut req = protos::SignTx::new();
         req.set_inputs_count(tx.input.len() as u32);
@@ -60,7 +60,7 @@ impl Trezor {
         path: &bip32::DerivationPath,
         script_type: InputScriptType,
         network: Network,
-    ) -> Result<TrezorResponse<'_, (Address, RecoverableSignature), protos::MessageSignature>> {
+    ) -> Result<CerberusResponse<'_, (Address, RecoverableSignature), protos::MessageSignature>> {
         let mut req = protos::SignMessage::new();
         req.address_n = utils::convert_path(path);
         // Normalize to Unicode NFC.

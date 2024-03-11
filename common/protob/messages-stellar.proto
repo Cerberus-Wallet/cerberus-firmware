@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.trezor.messages.stellar;
+package hw.cerberus.messages.stellar;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
-option java_outer_classname = "TrezorMessageStellar";
+option java_package = "com.satoshilabs.cerberus.lib.protobuf";
+option java_outer_classname = "CerberusMessageStellar";
 
 // https://github.com/stellar/stellar-core/blob/02d26858069de7c0eefe065056fb0a19bf72ea56/src/xdr/Stellar-ledger-entries.x#L25-L31
 enum StellarAssetType {

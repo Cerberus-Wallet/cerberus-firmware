@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -19,9 +19,9 @@ from typing import TYPE_CHECKING, List, Optional
 
 import pytest
 
-from trezorlib import btc, debuglink, device, exceptions, fido, models
-from trezorlib.messages import BackupType
-from trezorlib.tools import H_
+from cerberuslib import btc, debuglink, device, exceptions, fido, models
+from cerberuslib.messages import BackupType
+from cerberuslib.tools import H_
 
 from ..common import MNEMONIC_SLIP39_BASIC_20_3of6, MNEMONIC_SLIP39_BASIC_20_3of6_SECRET
 from ..device_handler import BackgroundDeviceHandler
@@ -29,11 +29,11 @@ from ..emulators import ALL_TAGS, EmulatorWrapper
 from . import for_all, for_tags, recovery_old
 
 if TYPE_CHECKING:
-    from trezorlib.debuglink import TrezorClientDebugLink as Client
+    from cerberuslib.debuglink import CerberusClientDebugLink as Client
 
-models.TREZOR_ONE = dataclasses.replace(models.TREZOR_ONE, minimum_version=(1, 0, 0))
-models.TREZOR_T = dataclasses.replace(models.TREZOR_T, minimum_version=(2, 0, 0))
-models.TREZORS = {models.TREZOR_ONE, models.TREZOR_T}
+models.CERBERUS_ONE = dataclasses.replace(models.CERBERUS_ONE, minimum_version=(1, 0, 0))
+models.CERBERUS_T = dataclasses.replace(models.CERBERUS_T, minimum_version=(2, 0, 0))
+models.CERBERUSS = {models.CERBERUS_ONE, models.CERBERUS_T}
 
 # **** COMMON DEFINITIONS ****
 
@@ -180,7 +180,7 @@ def test_upgrade_wipe_code(gen: str, tag: str):
         # Check that wipe code is set by changing the PIN to it.
         emu.client.use_pin_sequence([PIN, WIPE_CODE, WIPE_CODE])
         with pytest.raises(
-            exceptions.TrezorFailure,
+            exceptions.CerberusFailure,
             match="The new PIN must be different from your wipe code",
         ):
             return device.change_pin(emu.client)

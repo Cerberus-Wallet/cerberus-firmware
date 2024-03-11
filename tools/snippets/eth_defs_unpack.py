@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2022 SatoshiLabs and contributors
 #
@@ -22,7 +22,7 @@ import requests
 import zipfile
 from pathlib import Path
 
-from trezorlib import definitions, merkle_tree
+from cerberuslib import definitions, merkle_tree
 
 ZIP_FILENAME = "definitions-sparse.zip"
 
@@ -78,7 +78,7 @@ def unpack_definitions(definitions_zip: Path, outdir: Path) -> None:
     """Script that unpacks and completes (insert missing Merkle Tree proofs
     into the definitions) the Ethereum definitions (networks and tokens).
 
-    If no local zip is provided, the latest one will be downloaded from trezor.io.
+    If no local zip is provided, the latest one will be downloaded from cerberus.io.
     """
     if definitions_zip is None:
         result = requests.get(definitions.DEFS_BASE_URL + ZIP_FILENAME)

@@ -25,18 +25,18 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.binance.BinanceGetAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.binance.BinanceGetAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct BinanceGetAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceGetAddress.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceGetAddress.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceGetAddress.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceGetAddress.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceGetAddress.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceGetAddress.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.binance.BinanceGetAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.binance.BinanceGetAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -224,14 +224,14 @@ impl ::protobuf::reflect::ProtobufValue for BinanceGetAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.binance.BinanceAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.binance.BinanceAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct BinanceAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceAddress.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceAddress.address)
     pub address: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.binance.BinanceAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.binance.BinanceAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -385,16 +385,16 @@ impl ::protobuf::reflect::ProtobufValue for BinanceAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.binance.BinanceGetPublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.binance.BinanceGetPublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct BinanceGetPublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceGetPublicKey.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceGetPublicKey.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceGetPublicKey.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceGetPublicKey.show_display)
     pub show_display: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.binance.BinanceGetPublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.binance.BinanceGetPublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -547,14 +547,14 @@ impl ::protobuf::reflect::ProtobufValue for BinanceGetPublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.binance.BinancePublicKey)
+// @@protoc_insertion_point(message:hw.cerberus.messages.binance.BinancePublicKey)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct BinancePublicKey {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinancePublicKey.public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinancePublicKey.public_key)
     pub public_key: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.binance.BinancePublicKey.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.binance.BinancePublicKey.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -708,28 +708,28 @@ impl ::protobuf::reflect::ProtobufValue for BinancePublicKey {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.binance.BinanceSignTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.binance.BinanceSignTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct BinanceSignTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceSignTx.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceSignTx.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceSignTx.msg_count)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceSignTx.msg_count)
     pub msg_count: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceSignTx.account_number)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceSignTx.account_number)
     pub account_number: ::std::option::Option<i64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceSignTx.chain_id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceSignTx.chain_id)
     pub chain_id: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceSignTx.memo)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceSignTx.memo)
     pub memo: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceSignTx.sequence)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceSignTx.sequence)
     pub sequence: ::std::option::Option<i64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceSignTx.source)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceSignTx.source)
     pub source: ::std::option::Option<i64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceSignTx.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceSignTx.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.binance.BinanceSignTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.binance.BinanceSignTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1138,11 +1138,11 @@ impl ::protobuf::reflect::ProtobufValue for BinanceSignTx {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.binance.BinanceTxRequest)
+// @@protoc_insertion_point(message:hw.cerberus.messages.binance.BinanceTxRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct BinanceTxRequest {
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.binance.BinanceTxRequest.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.binance.BinanceTxRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1241,18 +1241,18 @@ impl ::protobuf::reflect::ProtobufValue for BinanceTxRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.binance.BinanceTransferMsg)
+// @@protoc_insertion_point(message:hw.cerberus.messages.binance.BinanceTransferMsg)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct BinanceTransferMsg {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceTransferMsg.inputs)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceTransferMsg.inputs)
     pub inputs: ::std::vec::Vec<binance_transfer_msg::BinanceInputOutput>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceTransferMsg.outputs)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceTransferMsg.outputs)
     pub outputs: ::std::vec::Vec<binance_transfer_msg::BinanceInputOutput>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceTransferMsg.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceTransferMsg.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.binance.BinanceTransferMsg.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.binance.BinanceTransferMsg.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1432,16 +1432,16 @@ impl ::protobuf::reflect::ProtobufValue for BinanceTransferMsg {
 
 /// Nested message and enums of message `BinanceTransferMsg`
 pub mod binance_transfer_msg {
-    // @@protoc_insertion_point(message:hw.trezor.messages.binance.BinanceTransferMsg.BinanceInputOutput)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.binance.BinanceTransferMsg.BinanceInputOutput)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct BinanceInputOutput {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceTransferMsg.BinanceInputOutput.address)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceTransferMsg.BinanceInputOutput.address)
         pub address: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceTransferMsg.BinanceInputOutput.coins)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceTransferMsg.BinanceInputOutput.coins)
         pub coins: ::std::vec::Vec<BinanceCoin>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.binance.BinanceTransferMsg.BinanceInputOutput.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.binance.BinanceTransferMsg.BinanceInputOutput.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -1617,16 +1617,16 @@ pub mod binance_transfer_msg {
         type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
     }
 
-    // @@protoc_insertion_point(message:hw.trezor.messages.binance.BinanceTransferMsg.BinanceCoin)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.binance.BinanceTransferMsg.BinanceCoin)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct BinanceCoin {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceTransferMsg.BinanceCoin.amount)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceTransferMsg.BinanceCoin.amount)
         pub amount: ::std::option::Option<i64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceTransferMsg.BinanceCoin.denom)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceTransferMsg.BinanceCoin.denom)
         pub denom: ::std::option::Option<::std::string::String>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.binance.BinanceTransferMsg.BinanceCoin.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.binance.BinanceTransferMsg.BinanceCoin.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -1819,28 +1819,28 @@ pub mod binance_transfer_msg {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.binance.BinanceOrderMsg)
+// @@protoc_insertion_point(message:hw.cerberus.messages.binance.BinanceOrderMsg)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct BinanceOrderMsg {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceOrderMsg.id)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceOrderMsg.id)
     pub id: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceOrderMsg.ordertype)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceOrderMsg.ordertype)
     pub ordertype: ::std::option::Option<::protobuf::EnumOrUnknown<binance_order_msg::BinanceOrderType>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceOrderMsg.price)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceOrderMsg.price)
     pub price: ::std::option::Option<i64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceOrderMsg.quantity)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceOrderMsg.quantity)
     pub quantity: ::std::option::Option<i64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceOrderMsg.sender)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceOrderMsg.sender)
     pub sender: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceOrderMsg.side)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceOrderMsg.side)
     pub side: ::std::option::Option<::protobuf::EnumOrUnknown<binance_order_msg::BinanceOrderSide>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceOrderMsg.symbol)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceOrderMsg.symbol)
     pub symbol: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceOrderMsg.timeinforce)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceOrderMsg.timeinforce)
     pub timeinforce: ::std::option::Option<::protobuf::EnumOrUnknown<binance_order_msg::BinanceTimeInForce>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.binance.BinanceOrderMsg.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.binance.BinanceOrderMsg.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1891,7 +1891,7 @@ impl BinanceOrderMsg {
         self.id.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // required .hw.trezor.messages.binance.BinanceOrderMsg.BinanceOrderType ordertype = 2;
+    // required .hw.cerberus.messages.binance.BinanceOrderMsg.BinanceOrderType ordertype = 2;
 
     pub fn ordertype(&self) -> binance_order_msg::BinanceOrderType {
         match self.ordertype {
@@ -1987,7 +1987,7 @@ impl BinanceOrderMsg {
         self.sender.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // required .hw.trezor.messages.binance.BinanceOrderMsg.BinanceOrderSide side = 6;
+    // required .hw.cerberus.messages.binance.BinanceOrderMsg.BinanceOrderSide side = 6;
 
     pub fn side(&self) -> binance_order_msg::BinanceOrderSide {
         match self.side {
@@ -2045,7 +2045,7 @@ impl BinanceOrderMsg {
         self.symbol.take().unwrap_or_else(|| ::std::string::String::new())
     }
 
-    // required .hw.trezor.messages.binance.BinanceOrderMsg.BinanceTimeInForce timeinforce = 8;
+    // required .hw.cerberus.messages.binance.BinanceOrderMsg.BinanceTimeInForce timeinforce = 8;
 
     pub fn timeinforce(&self) -> binance_order_msg::BinanceTimeInForce {
         match self.timeinforce {
@@ -2297,15 +2297,15 @@ impl ::protobuf::reflect::ProtobufValue for BinanceOrderMsg {
 /// Nested message and enums of message `BinanceOrderMsg`
 pub mod binance_order_msg {
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.binance.BinanceOrderMsg.BinanceOrderType)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceOrderType)
     pub enum BinanceOrderType {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.binance.BinanceOrderMsg.BinanceOrderType.OT_UNKNOWN)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceOrderType.OT_UNKNOWN)
         OT_UNKNOWN = 0,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.binance.BinanceOrderMsg.BinanceOrderType.MARKET)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceOrderType.MARKET)
         MARKET = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.binance.BinanceOrderMsg.BinanceOrderType.LIMIT)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceOrderType.LIMIT)
         LIMIT = 2,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.binance.BinanceOrderMsg.BinanceOrderType.OT_RESERVED)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceOrderType.OT_RESERVED)
         OT_RESERVED = 3,
     }
 
@@ -2369,13 +2369,13 @@ pub mod binance_order_msg {
     }
 
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.binance.BinanceOrderMsg.BinanceOrderSide)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceOrderSide)
     pub enum BinanceOrderSide {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.binance.BinanceOrderMsg.BinanceOrderSide.SIDE_UNKNOWN)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceOrderSide.SIDE_UNKNOWN)
         SIDE_UNKNOWN = 0,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.binance.BinanceOrderMsg.BinanceOrderSide.BUY)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceOrderSide.BUY)
         BUY = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.binance.BinanceOrderMsg.BinanceOrderSide.SELL)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceOrderSide.SELL)
         SELL = 2,
     }
 
@@ -2436,15 +2436,15 @@ pub mod binance_order_msg {
     }
 
     #[derive(Clone,Copy,PartialEq,Eq,Debug,Hash)]
-    // @@protoc_insertion_point(enum:hw.trezor.messages.binance.BinanceOrderMsg.BinanceTimeInForce)
+    // @@protoc_insertion_point(enum:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceTimeInForce)
     pub enum BinanceTimeInForce {
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.binance.BinanceOrderMsg.BinanceTimeInForce.TIF_UNKNOWN)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceTimeInForce.TIF_UNKNOWN)
         TIF_UNKNOWN = 0,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.binance.BinanceOrderMsg.BinanceTimeInForce.GTE)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceTimeInForce.GTE)
         GTE = 1,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.binance.BinanceOrderMsg.BinanceTimeInForce.TIF_RESERVED)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceTimeInForce.TIF_RESERVED)
         TIF_RESERVED = 2,
-        // @@protoc_insertion_point(enum_value:hw.trezor.messages.binance.BinanceOrderMsg.BinanceTimeInForce.IOC)
+        // @@protoc_insertion_point(enum_value:hw.cerberus.messages.binance.BinanceOrderMsg.BinanceTimeInForce.IOC)
         IOC = 3,
     }
 
@@ -2508,18 +2508,18 @@ pub mod binance_order_msg {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.binance.BinanceCancelMsg)
+// @@protoc_insertion_point(message:hw.cerberus.messages.binance.BinanceCancelMsg)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct BinanceCancelMsg {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceCancelMsg.refid)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceCancelMsg.refid)
     pub refid: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceCancelMsg.sender)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceCancelMsg.sender)
     pub sender: ::std::option::Option<::std::string::String>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceCancelMsg.symbol)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceCancelMsg.symbol)
     pub symbol: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.binance.BinanceCancelMsg.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.binance.BinanceCancelMsg.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2774,16 +2774,16 @@ impl ::protobuf::reflect::ProtobufValue for BinanceCancelMsg {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.binance.BinanceSignedTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.binance.BinanceSignedTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct BinanceSignedTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceSignedTx.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceSignedTx.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.binance.BinanceSignedTx.public_key)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.binance.BinanceSignedTx.public_key)
     pub public_key: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.binance.BinanceSignedTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.binance.BinanceSignedTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -2993,7 +2993,7 @@ impl ::protobuf::reflect::ProtobufValue for BinanceSignedTx {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x16messages-binance.proto\x12\x1ahw.trezor.messages.binance\"o\n\x11B\
+    \n\x16messages-binance.proto\x12\x1ahw.cerberus.messages.binance\"o\n\x11B\
     inanceGetAddress\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\
     \x12!\n\x0cshow_display\x18\x02\x20\x01(\x08R\x0bshowDisplay\x12\x1a\n\
     \x08chunkify\x18\x03\x20\x01(\x08R\x08chunkify\"*\n\x0eBinanceAddress\
@@ -3008,23 +3008,23 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x12\x1a\n\x08sequence\x18\x06\x20\x02(\x12R\x08sequence\x12\x16\n\x06so\
     urce\x18\x07\x20\x02(\x12R\x06source\x12\x1a\n\x08chunkify\x18\x08\x20\
     \x01(\x08R\x08chunkify\"\x12\n\x10BinanceTxRequest\"\xa8\x03\n\x12Binanc\
-    eTransferMsg\x12Y\n\x06inputs\x18\x01\x20\x03(\x0b2A.hw.trezor.messages.\
+    eTransferMsg\x12Y\n\x06inputs\x18\x01\x20\x03(\x0b2A.hw.cerberus.messages.\
     binance.BinanceTransferMsg.BinanceInputOutputR\x06inputs\x12[\n\x07outpu\
-    ts\x18\x02\x20\x03(\x0b2A.hw.trezor.messages.binance.BinanceTransferMsg.\
+    ts\x18\x02\x20\x03(\x0b2A.hw.cerberus.messages.binance.BinanceTransferMsg.\
     BinanceInputOutputR\x07outputs\x12\x1a\n\x08chunkify\x18\x03\x20\x01(\
     \x08R\x08chunkify\x1a\x80\x01\n\x12BinanceInputOutput\x12\x18\n\x07addre\
     ss\x18\x01\x20\x02(\tR\x07address\x12P\n\x05coins\x18\x02\x20\x03(\x0b2:\
-    .hw.trezor.messages.binance.BinanceTransferMsg.BinanceCoinR\x05coins\x1a\
+    .hw.cerberus.messages.binance.BinanceTransferMsg.BinanceCoinR\x05coins\x1a\
     ;\n\x0bBinanceCoin\x12\x16\n\x06amount\x18\x01\x20\x02(\x12R\x06amount\
     \x12\x14\n\x05denom\x18\x02\x20\x02(\tR\x05denom\"\xe3\x04\n\x0fBinanceO\
     rderMsg\x12\x0e\n\x02id\x18\x01\x20\x01(\tR\x02id\x12Z\n\tordertype\x18\
-    \x02\x20\x02(\x0e2<.hw.trezor.messages.binance.BinanceOrderMsg.BinanceOr\
+    \x02\x20\x02(\x0e2<.hw.cerberus.messages.binance.BinanceOrderMsg.BinanceOr\
     derTypeR\tordertype\x12\x14\n\x05price\x18\x03\x20\x02(\x12R\x05price\
     \x12\x1a\n\x08quantity\x18\x04\x20\x02(\x12R\x08quantity\x12\x16\n\x06se\
     nder\x18\x05\x20\x01(\tR\x06sender\x12P\n\x04side\x18\x06\x20\x02(\x0e2<\
-    .hw.trezor.messages.binance.BinanceOrderMsg.BinanceOrderSideR\x04side\
+    .hw.cerberus.messages.binance.BinanceOrderMsg.BinanceOrderSideR\x04side\
     \x12\x16\n\x06symbol\x18\x07\x20\x01(\tR\x06symbol\x12`\n\x0btimeinforce\
-    \x18\x08\x20\x02(\x0e2>.hw.trezor.messages.binance.BinanceOrderMsg.Binan\
+    \x18\x08\x20\x02(\x0e2>.hw.cerberus.messages.binance.BinanceOrderMsg.Binan\
     ceTimeInForceR\x0btimeinforce\"J\n\x10BinanceOrderType\x12\x0e\n\nOT_UNK\
     NOWN\x10\0\x12\n\n\x06MARKET\x10\x01\x12\t\n\x05LIMIT\x10\x02\x12\x0f\n\
     \x0bOT_RESERVED\x10\x03\"7\n\x10BinanceOrderSide\x12\x10\n\x0cSIDE_UNKNO\
@@ -3035,7 +3035,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x06sender\x18\x02\x20\x01(\tR\x06sender\x12\x16\n\x06symbol\x18\x03\x20\
     \x01(\tR\x06symbol\"N\n\x0fBinanceSignedTx\x12\x1c\n\tsignature\x18\x01\
     \x20\x02(\x0cR\tsignature\x12\x1d\n\npublic_key\x18\x02\x20\x02(\x0cR\tp\
-    ublicKeyB;\n#com.satoshilabs.trezor.lib.protobufB\x14TrezorMessageBinanc\
+    ublicKeyB;\n#com.satoshilabs.cerberus.lib.protobufB\x14CerberusMessageBinanc\
     e\
 ";
 

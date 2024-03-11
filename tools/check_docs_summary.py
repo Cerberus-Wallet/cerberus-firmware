@@ -3,7 +3,7 @@ This script lists names of markdown files (.md extenstion) present in docs/ dire
 which are not referenced in SUMMARY.md file which serves as a firmware docu mainpage.
 
 Running the script:
-- `python tools/check_docs_summary.py` from trezor-firmware root directory.
+- `python tools/check_docs_summary.py` from cerberus-firmware root directory.
 """
 
 import re

@@ -1,5 +1,5 @@
 [package]
-name = "trezor_lib-fuzz"
+name = "cerberus_lib-fuzz"
 version = "0.0.0"
 authors = ["Automatically generated"]
 publish = false
@@ -11,7 +11,7 @@ cargo-fuzz = true
 [dependencies]
 libfuzzer-sys = "0.4"
 
-[dependencies.trezor_lib]
+[dependencies.cerberus_lib]
 path = ".."
 features = ["test"]
 

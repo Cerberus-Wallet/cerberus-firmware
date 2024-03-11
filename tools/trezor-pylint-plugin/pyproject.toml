@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "trezor-pylint-plugin"
+name = "cerberus-pylint-plugin"
 version = "0.1.0"
 description = ""
 authors = ["matejcik <ja@matejcik.cz>"]

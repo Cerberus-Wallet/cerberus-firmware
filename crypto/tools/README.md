@@ -1,7 +1,7 @@
-trezor-crypto tools
+cerberus-crypto tools
 ===================
 
-Set of small utilities using the trezor-crypto library.
+Set of small utilities using the cerberus-crypto library.
 
 xpubaddrgen
 -----------

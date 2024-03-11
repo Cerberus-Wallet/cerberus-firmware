@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -47,16 +47,16 @@
 #
 # 8. Scroll down to the signed XDR blob and click "View in XDR Viewer"
 #
-# 9. Scroll down to the bottom and look at the "signatures" section. The Trezor should generate the same signature
+# 9. Scroll down to the bottom and look at the "signatures" section. The Cerberus should generate the same signature
 #
 
 from base64 import b64encode
 
 import pytest
 
-from trezorlib import messages, protobuf, stellar
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.tools import parse_path
+from cerberuslib import messages, protobuf, stellar
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.tools import parse_path
 
 from ...common import parametrize_using_common_fixtures
 from ...input_flows import InputFlowShowAddressQRCode

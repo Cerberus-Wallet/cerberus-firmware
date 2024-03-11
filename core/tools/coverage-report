@@ -32,8 +32,8 @@ src/typing.py,\
 src/apps/ethereum/tokens.py,\
 src/apps/webauthn/knownapps.py,\
 src/apps/common/coininfo.py,\
-src/trezor/messages.py,\
-src/trezor/enums/__init__.py"
+src/cerberus/messages.py,\
+src/cerberus/enums/__init__.py"
 
 # Uses core/.coveragerc configuration file
 coverage html \

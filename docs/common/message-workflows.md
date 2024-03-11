@@ -1,6 +1,6 @@
 # Message Workflows
 
-> This page was migrated from the Trezor Wiki. The content here may contain
+> This page was migrated from the Cerberus Wiki. The content here may contain
 outdated information.
 
 In general, the API implements a simple request-response protocol. The
@@ -74,7 +74,7 @@ case, it is also sent to the computer with an Address response.
 ## GetPublicKey
 
 The message GetPublicKey can be used to get a bip-32 master public key
-from the trezor or to display it to the user. The field address_n gives
+from the cerberus or to display it to the user. The field address_n gives
 the bip-32 path to the master key. The field ecdsa_curve_name can be
 used to get Ed25519 or
 NIST256P1 public keys.
@@ -86,9 +86,9 @@ NIST256P1 public keys.
 information.
 
 Signing a transaction is a little bit complicated. The reason is that
-transactions can be several hundred kilobytes in size, but Trezor has
+transactions can be several hundred kilobytes in size, but Cerberus has
 only 64 kilobytes memory. So it is the task of the computer to split the
-transactions in small pieces and send only those pieces that Trezor
+transactions in small pieces and send only those pieces that Cerberus
 requested. The general workflow is given below
 
 ![](Developers_guide_signtx_workflow.png)
@@ -108,7 +108,7 @@ authenticate the user. See the corresponding sections above. It may also
 send a ButtonRequest at any time to indicate that the user should
 confirm a transaction output or the total fee.
 
-Then the main process begins and Trezor will respond with TxRequest
+Then the main process begins and Cerberus will respond with TxRequest
 messages, which should be answered by TxAck message. A TxRequest message
 has up to three parts.
 
@@ -199,12 +199,12 @@ support this).
 ### Sign message
 
 Signing messages can be used to prove ownership of a specific address.
-To sign message with Trezor device, it is needed to send the message
+To sign message with Cerberus device, it is needed to send the message
 which the user wants to sign and also specify BIP-32 path which to use
 for message signing. There are also two optional arguments: to specify
 coin (Bitcoin is default, for more information about available coins
 check this GitHub
-[page](https://github.com/trezor/trezor-firmware/blob/master/core/src/apps/common/coininfo.py))
+[page](https://github.com/Cerberus-Wallet/cerberus-firmware/blob/master/core/src/apps/common/coininfo.py))
 and specify script type (0 = SPENDADDRESS/standard P2PKH address, 1 =
 SPENDMULTISIG/P2SH multisig address, 2 = EXTERNAL/reserved for external
 inputs (coinjoin), 3 = SPENDWITNESS/native SegWit, 4 =
@@ -219,7 +219,7 @@ for verifying.
 
 ## CipherKeyValue
 
-Cipher key value provides symmetric encryption in the Trezor device,
+Cipher key value provides symmetric encryption in the Cerberus device,
 where the key doesn't exit the device, and where the user might be
 forced to confirm the encryption/decryption on the display. The data
 sent to the device are The following data are BIP-32 derivation path,
@@ -239,41 +239,41 @@ example, by using PKCS7. See
 
 ## ResetDevice
 
-Reset device message performs Trezor device
+Reset device message performs Cerberus device
 setup and generates new wallet with new recovery
 seed. The device must be in unitialized
 state, the firmware is already installed but it has not been initialized
 yet. If it is initialized and the user wants to perform a reset device,
-the device must be wiped first. If the Trezor is prepared for its
-initialization the screen is showing "Go to trezor.io". The reset device
-can be done in Trezor Wallet interface (https://trezor.io/start) and
-also with Python trezorctl command. After sending
+the device must be wiped first. If the Cerberus is prepared for its
+initialization the screen is showing "Go to cerberus.uraanai.com". The reset device
+can be done in Cerberus Wallet interface (https://cerberus.uraanai.com/start) and
+also with Python cerberusctl command. After sending
 message to the device, device warn us to never make a digital copy of
 your recovery seed and never upload it online, this message has to be
 confirmed by pressing on "I understand" on the device. After confirmed,
 the device produces internal entropy which is random of 32 bytes,
 requests external entropy which is produced in computer and computes
 mnemonic (recovery seed) using internal, external entropy and given
-strength (12, 18 or 24 words). Trezor Wallet
+strength (12, 18 or 24 words). Cerberus Wallet
 interface doesn't provide option to choose how many words there should
 be in the generated mnemonic (recovery seed). It is hardcoded to 12
-words for Trezor Model T but if done with python's trezorctl command it
-can be chosen (for initialization with python's trezorctl command, 24
-words mnemonic is default). After showing mnemonic on the Trezor device,
-Trezor Model T requires 2 random words to
+words for Cerberus Model T but if done with python's cerberusctl command it
+can be chosen (for initialization with python's cerberusctl command, 24
+words mnemonic is default). After showing mnemonic on the Cerberus device,
+Cerberus Model T requires 2 random words to
 be entered to the device to confirm the user has written down the
 mnemonic properly. If there are errors in entered words, the device
 shows the recovery seed again. If the backup check is successful, the
-setup is finished. If the Trezor Wallet interface is used, user is asked
+setup is finished. If the Cerberus Wallet interface is used, user is asked
 to set the label and pin (setting up the pin can be skipped) for the
-wallet, this is optional when using python trezorctl command.
+wallet, this is optional when using python cerberusctl command.
 
 ## RecoveryDevice
 
 Recovery device lets user to recover BIP39 seed into
-empty Trezor device. First the device asks user for the number of words
+empty Cerberus device. First the device asks user for the number of words
 in recovered seed, the words are typed in one by one - on the device
-screen when using Trezor model T, with Trezor One the user can decide to
+screen when using Cerberus model T, with Cerberus One the user can decide to
 do the advanced recovery (with entering seed using matrix similarly to
 entering PIN) or standard recovery (with entering the seed to the host
 computer one by one in random order). The process continues with
@@ -291,21 +291,21 @@ one in the device).
 
 Load device lets user to load the device with the specific recovery
 seed. This command is the subset of the recovery device and it can not
-be done with Trezor Wallet interface, only with python command
-trezorctl. This message can be used only if the device is not
+be done with Cerberus Wallet interface, only with python command
+cerberusctl. This message can be used only if the device is not
 initialized.
 
 ## WipeDevice
 
 Wipe device lets user wipe the device. It is possible to wipe only
-user's wallet or erase all the data from the Trezor device including
-installed firmware. Wiping device in Trezor Wallet interface wipes only
+user's wallet or erase all the data from the Cerberus device including
+installed firmware. Wiping device in Cerberus Wallet interface wipes only
 user's wallet. It is also possible to wipe the firmware with python
-trezorctl command, Trezor device must be in bootloader mode.
+cerberusctl command, Cerberus device must be in bootloader mode.
 
 ## ApplySettings
 
-Apply settings lets user change settings on the Trezor device, mainly
+Apply settings lets user change settings on the Cerberus device, mainly
 its homescreen, label and passphrase settings. Passphrase can be set to
 enabled or disabled. Furthermore it can be set that passphrase is
 entered solely on device or solely on host, by default the device always

@@ -4,7 +4,7 @@ use crate::{
     strutil::TString,
     time::{Duration, Instant},
     translations::TR,
-    trezorhal::usb::usb_configured,
+    cerberushal::usb::usb_configured,
     ui::{
         component::{Component, Event, EventCtx, Pad, TimerToken},
         display::{self, tjpgd::jpeg_info, toif::Icon, Color, Font},
@@ -16,7 +16,7 @@ use crate::{
 };
 
 use crate::{
-    trezorhal::{buffers::BufferJpegWork, uzlib::UZLIB_WINDOW_SIZE},
+    cerberushal::{buffers::BufferJpegWork, uzlib::UZLIB_WINDOW_SIZE},
     ui::{
         constant::HEIGHT,
         display::{

@@ -1,4 +1,4 @@
-# This file is part of the Trezor project.
+# This file is part of the Cerberus project.
 #
 # Copyright (C) 2012-2019 SatoshiLabs and contributors
 #
@@ -16,11 +16,11 @@
 
 import pytest
 
-from trezorlib.cardano import get_public_key
-from trezorlib.debuglink import TrezorClientDebugLink as Client
-from trezorlib.exceptions import TrezorFailure
-from trezorlib.messages import CardanoDerivationType as D
-from trezorlib.tools import parse_path
+from cerberuslib.cardano import get_public_key
+from cerberuslib.debuglink import CerberusClientDebugLink as Client
+from cerberuslib.exceptions import CerberusFailure
+from cerberuslib.messages import CardanoDerivationType as D
+from cerberuslib.tools import parse_path
 
 from ...common import MNEMONIC_SLIP39_BASIC_20_3of6
 
@@ -35,11 +35,11 @@ ADDRESS_N = parse_path("m/1852h/1815h/0h")
 
 def test_bad_session(client: Client):
     client.init_device(new_session=True)
-    with pytest.raises(TrezorFailure, match="not enabled"):
+    with pytest.raises(CerberusFailure, match="not enabled"):
         get_public_key(client, ADDRESS_N, derivation_type=D.ICARUS)
 
     client.init_device(new_session=True, derive_cardano=False)
-    with pytest.raises(TrezorFailure, match="not enabled"):
+    with pytest.raises(CerberusFailure, match="not enabled"):
         get_public_key(client, ADDRESS_N, derivation_type=D.ICARUS)
 
 

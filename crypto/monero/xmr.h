@@ -2,8 +2,8 @@
 // Created by Dusan Klinec on 10/05/2018.
 //
 
-#ifndef TREZOR_CRYPTO_XMR_H
-#define TREZOR_CRYPTO_XMR_H
+#ifndef CERBERUS_CRYPTO_XMR_H
+#define CERBERUS_CRYPTO_XMR_H
 
 #include "ed25519-donna/ed25519-donna.h"
 #include "hasher.h"
@@ -73,4 +73,4 @@ void xmr_get_subaddress_secret_key(bignum256modm r, uint32_t major,
 /* Generates Pedersen commitment C = aG + bH */
 void xmr_gen_c(ge25519 *r, const bignum256modm a, uint64_t amount);
 
-#endif  // TREZOR_CRYPTO_XMR_H
+#endif  // CERBERUS_CRYPTO_XMR_H

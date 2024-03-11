@@ -25,18 +25,18 @@
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_3_0;
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ripple.RippleGetAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ripple.RippleGetAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct RippleGetAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleGetAddress.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleGetAddress.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleGetAddress.show_display)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleGetAddress.show_display)
     pub show_display: ::std::option::Option<bool>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleGetAddress.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleGetAddress.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ripple.RippleGetAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ripple.RippleGetAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -224,14 +224,14 @@ impl ::protobuf::reflect::ProtobufValue for RippleGetAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ripple.RippleAddress)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ripple.RippleAddress)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct RippleAddress {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleAddress.address)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleAddress.address)
     pub address: ::std::option::Option<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ripple.RippleAddress.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ripple.RippleAddress.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -385,26 +385,26 @@ impl ::protobuf::reflect::ProtobufValue for RippleAddress {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ripple.RippleSignTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ripple.RippleSignTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct RippleSignTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleSignTx.address_n)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleSignTx.address_n)
     pub address_n: ::std::vec::Vec<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleSignTx.fee)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleSignTx.fee)
     pub fee: ::std::option::Option<u64>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleSignTx.flags)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleSignTx.flags)
     pub flags: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleSignTx.sequence)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleSignTx.sequence)
     pub sequence: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleSignTx.last_ledger_sequence)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleSignTx.last_ledger_sequence)
     pub last_ledger_sequence: ::std::option::Option<u32>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleSignTx.payment)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleSignTx.payment)
     pub payment: ::protobuf::MessageField<ripple_sign_tx::RipplePayment>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleSignTx.chunkify)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleSignTx.chunkify)
     pub chunkify: ::std::option::Option<bool>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ripple.RippleSignTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ripple.RippleSignTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -730,18 +730,18 @@ impl ::protobuf::reflect::ProtobufValue for RippleSignTx {
 
 /// Nested message and enums of message `RippleSignTx`
 pub mod ripple_sign_tx {
-    // @@protoc_insertion_point(message:hw.trezor.messages.ripple.RippleSignTx.RipplePayment)
+    // @@protoc_insertion_point(message:hw.cerberus.messages.ripple.RippleSignTx.RipplePayment)
     #[derive(PartialEq,Clone,Default,Debug)]
     pub struct RipplePayment {
         // message fields
-        // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleSignTx.RipplePayment.amount)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleSignTx.RipplePayment.amount)
         pub amount: ::std::option::Option<u64>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleSignTx.RipplePayment.destination)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleSignTx.RipplePayment.destination)
         pub destination: ::std::option::Option<::std::string::String>,
-        // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleSignTx.RipplePayment.destination_tag)
+        // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleSignTx.RipplePayment.destination_tag)
         pub destination_tag: ::std::option::Option<u32>,
         // special fields
-        // @@protoc_insertion_point(special_field:hw.trezor.messages.ripple.RippleSignTx.RipplePayment.special_fields)
+        // @@protoc_insertion_point(special_field:hw.cerberus.messages.ripple.RippleSignTx.RipplePayment.special_fields)
         pub special_fields: ::protobuf::SpecialFields,
     }
 
@@ -969,16 +969,16 @@ pub mod ripple_sign_tx {
     }
 }
 
-// @@protoc_insertion_point(message:hw.trezor.messages.ripple.RippleSignedTx)
+// @@protoc_insertion_point(message:hw.cerberus.messages.ripple.RippleSignedTx)
 #[derive(PartialEq,Clone,Default,Debug)]
 pub struct RippleSignedTx {
     // message fields
-    // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleSignedTx.signature)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleSignedTx.signature)
     pub signature: ::std::option::Option<::std::vec::Vec<u8>>,
-    // @@protoc_insertion_point(field:hw.trezor.messages.ripple.RippleSignedTx.serialized_tx)
+    // @@protoc_insertion_point(field:hw.cerberus.messages.ripple.RippleSignedTx.serialized_tx)
     pub serialized_tx: ::std::option::Option<::std::vec::Vec<u8>>,
     // special fields
-    // @@protoc_insertion_point(special_field:hw.trezor.messages.ripple.RippleSignedTx.special_fields)
+    // @@protoc_insertion_point(special_field:hw.cerberus.messages.ripple.RippleSignedTx.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
@@ -1188,7 +1188,7 @@ impl ::protobuf::reflect::ProtobufValue for RippleSignedTx {
 }
 
 static file_descriptor_proto_data: &'static [u8] = b"\
-    \n\x15messages-ripple.proto\x12\x19hw.trezor.messages.ripple\"n\n\x10Rip\
+    \n\x15messages-ripple.proto\x12\x19hw.cerberus.messages.ripple\"n\n\x10Rip\
     pleGetAddress\x12\x1b\n\taddress_n\x18\x01\x20\x03(\rR\x08addressN\x12!\
     \n\x0cshow_display\x18\x02\x20\x01(\x08R\x0bshowDisplay\x12\x1a\n\x08chu\
     nkify\x18\x03\x20\x01(\x08R\x08chunkify\")\n\rRippleAddress\x12\x18\n\
@@ -1197,14 +1197,14 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \x18\x02\x20\x02(\x04R\x03fee\x12\x17\n\x05flags\x18\x03\x20\x01(\r:\x01\
     0R\x05flags\x12\x1a\n\x08sequence\x18\x04\x20\x02(\rR\x08sequence\x120\n\
     \x14last_ledger_sequence\x18\x05\x20\x01(\rR\x12lastLedgerSequence\x12O\
-    \n\x07payment\x18\x06\x20\x02(\x0b25.hw.trezor.messages.ripple.RippleSig\
+    \n\x07payment\x18\x06\x20\x02(\x0b25.hw.cerberus.messages.ripple.RippleSig\
     nTx.RipplePaymentR\x07payment\x12\x1a\n\x08chunkify\x18\x07\x20\x01(\x08\
     R\x08chunkify\x1ar\n\rRipplePayment\x12\x16\n\x06amount\x18\x01\x20\x02(\
     \x04R\x06amount\x12\x20\n\x0bdestination\x18\x02\x20\x02(\tR\x0bdestinat\
     ion\x12'\n\x0fdestination_tag\x18\x03\x20\x01(\rR\x0edestinationTag\"S\n\
     \x0eRippleSignedTx\x12\x1c\n\tsignature\x18\x01\x20\x02(\x0cR\tsignature\
     \x12#\n\rserialized_tx\x18\x02\x20\x02(\x0cR\x0cserializedTxB:\n#com.sat\
-    oshilabs.trezor.lib.protobufB\x13TrezorMessageRipple\
+    oshilabs.cerberus.lib.protobufB\x13CerberusMessageRipple\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file
