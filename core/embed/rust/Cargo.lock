@@ -46,6 +46,28 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d26a6ce4b6a484fa3edb70f7efa6fc430fd2b87285fe8b84304fd0936faa0dc0"
 
 [[package]]
+name = "cerberus-tjpgdec"
+version = "0.1.0"
+
+[[package]]
+name = "cerberus_lib"
+version = "0.1.0"
+dependencies = [
+ "bindgen",
+ "cc",
+ "cerberus-tjpgdec",
+ "cstr_core",
+ "cty",
+ "glob",
+ "heapless",
+ "num-derive",
+ "num-traits",
+ "qrcodegen",
+ "serde_json",
+ "zeroize",
+]
+
+[[package]]
 name = "cexpr"
 version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -306,28 +328,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "unicode-xid",
-]
-
-[[package]]
-name = "cerberus-tjpgdec"
-version = "0.1.0"
-
-[[package]]
-name = "cerberus_lib"
-version = "0.1.0"
-dependencies = [
- "bindgen",
- "cc",
- "cstr_core",
- "cty",
- "glob",
- "heapless",
- "num-derive",
- "num-traits",
- "qrcodegen",
- "serde_json",
- "cerberus-tjpgdec",
- "zeroize",
 ]
 
 [[package]]
