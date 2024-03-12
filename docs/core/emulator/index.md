@@ -21,7 +21,7 @@ Any other usage of the emulator is discouraged. Doing so runs the risk of losing
    - either enter `poetry shell` first, and then use `./emu.py`
    - or always use `poetry run ./emu.py`
 3. start the bridge:
-   - to initialise the [bridge](https://github.com/Cerberus-Wallet/cerberusd-go) with emulator support, start it with `cerberusd-go -e 21324`
+   - to initialise the [bridge](https://github.com/Cerberus-Wallet/cerberusd-go) with emulator support, start it with `cerberusd-go -e 21325`
    - alternatively, launch the [desktop suite](https://suite.cerberus.uraanai.com/) from the command line with the argument `--bridge-dev`
 
 Now you can use the emulator the same way as you use the device, for example you can use [Cerberus Suite](https://suite.cerberus.uraanai.com), use our Python CLI tool (`cerberusctl`), etc. Simply click to emulate screen touches.

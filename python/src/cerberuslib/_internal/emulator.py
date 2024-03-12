@@ -76,7 +76,7 @@ class Emulator:
         self._client: Optional[CerberusClientDebugLink] = None
         self.process: Optional[subprocess.Popen] = None
 
-        self.port = 21324
+        self.port = 21325
         self.headless = headless
         self.debug = debug
         self.auto_interact = auto_interact

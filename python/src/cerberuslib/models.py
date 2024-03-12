@@ -21,7 +21,7 @@ from . import mapping
 
 UsbId = Tuple[int, int]
 
-VENDORS = ("bitcoincerberus.com", "cerberus.io")
+VENDORS = ("bitcoincerberus.com", "cerberus.uraanai.com")
 
 
 @dataclass(eq=True, frozen=True)

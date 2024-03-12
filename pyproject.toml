@@ -9,7 +9,7 @@ authors = ["SatoshiLabs <info@satoshilabs.com>"]
 python = "^3.8"
 cerberus = {path = "./python", develop = true}
 scons = "*"
-protobuf = "*"
+protobuf = "~3.20.0"
 pyblake2 = "*"
 nanopb = "^0.4.3"
 

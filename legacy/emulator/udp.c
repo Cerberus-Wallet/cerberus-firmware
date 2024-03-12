@@ -25,7 +25,7 @@
 #include <string.h>
 #include <sys/socket.h>
 
-#define CERBERUS_UDP_PORT 21324
+#define CERBERUS_UDP_PORT 21325
 
 struct usb_socket {
   int fd;

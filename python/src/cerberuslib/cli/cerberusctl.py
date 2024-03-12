@@ -294,8 +294,9 @@ def list_devices(no_resolve: bool) -> Optional[Iterable["Transport"]]:
             client.end_session()
         except DeviceIsBusy:
             description = "Device is in use by another process"
-        except Exception:
+        except Exception as e:
             description = "Failed to read details"
+            print(e)
         click.echo(f"{transport} - {description}")
     return None
 
