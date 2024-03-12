@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import aes
+from cerberus.crypto import aes
 
 
 class TestCryptoAes(unittest.TestCase):

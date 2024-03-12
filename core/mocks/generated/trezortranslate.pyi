@@ -1,5 +1,5 @@
 from typing import *
-from trezortranslate_keys import TR as TR  # noqa: F401
+from cerberustranslate_keys import TR as TR  # noqa: F401
 """Translation object with attributes."""
 
 
@@ -17,7 +17,7 @@ def get_language() -> str:
 def init() -> None:
     """Initialize the translations system.
     Loads and verifies translation data from flash. If the verification passes,
-    Trezor UI is translated from that point forward.
+    Cerberus UI is translated from that point forward.
     """
 
 

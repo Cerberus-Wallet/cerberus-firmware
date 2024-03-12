@@ -23,7 +23,7 @@ from common import *  # isort:skip
 
 """Reference tests for segwit adresses"""
 
-from trezor.crypto import bech32
+from cerberus.crypto import bech32
 
 
 def segwit_scriptpubkey(witver, witprog):

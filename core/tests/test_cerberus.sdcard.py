@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor import io, sdcard, utils
+from cerberus import io, sdcard, utils
 
 if utils.USE_SD_CARD:
     fatfs = io.fatfs

@@ -7,14 +7,14 @@ from .bitcoin import Bitcoin
 if TYPE_CHECKING:
     from typing import Sequence
 
-    from trezor.messages import PrevTx, SignTx, TxInput
+    from cerberus.messages import PrevTx, SignTx, TxInput
 
     from .tx_info import OriginalTxInfo, TxInfo
 
 
 class Bitcoinlike(Bitcoin):
     async def sign_nonsegwit_bip143_input(self, i_sign: int) -> None:
-        from trezor import wire
+        from cerberus import wire
 
         from .. import multisig
         from ..common import NONSEGWIT_INPUT_SCRIPT_TYPES

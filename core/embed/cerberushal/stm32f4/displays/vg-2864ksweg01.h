@@ -5,6 +5,6 @@
 #define MAX_DISPLAY_RESY 64
 #define DISPLAY_RESX 128
 #define DISPLAY_RESY 64
-#define TREZOR_FONT_BPP 1
+#define CERBERUS_FONT_BPP 1
 
 #endif  //_VG_2864KSWEG01_H

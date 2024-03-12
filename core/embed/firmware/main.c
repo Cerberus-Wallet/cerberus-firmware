@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -49,7 +49,7 @@
 #include "random_delays.h"
 #include "rust_ui.h"
 
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
 #ifdef USE_RGB_LED
 #include "rgb_led.h"
@@ -99,8 +99,8 @@ int main(void) {
   rdi_start();
 #endif
 
-  // reinitialize HAL for Trezor One
-#if defined TREZOR_MODEL_1
+  // reinitialize HAL for Cerberus One
+#if defined CERBERUS_MODEL_1
   HAL_Init();
 #endif
 
@@ -118,7 +118,7 @@ int main(void) {
 
   screen_boot_full();
 
-#if !defined TREZOR_MODEL_1
+#if !defined CERBERUS_MODEL_1
   parse_boardloader_capabilities();
 
   unit_variant_init();
@@ -144,7 +144,7 @@ int main(void) {
   SCB->SHCSR |= (SCB_SHCSR_USGFAULTENA_Msk | SCB_SHCSR_BUSFAULTENA_Msk);
 #endif
 
-#if defined TREZOR_MODEL_T
+#if defined CERBERUS_MODEL_T
   set_core_clock(CLOCK_180_MHZ);
 #endif
 
@@ -181,7 +181,7 @@ int main(void) {
   memzero(secret, sizeof(secret));
 #endif
 
-#if !defined TREZOR_MODEL_1
+#if !defined CERBERUS_MODEL_1
   drop_privileges();
 #endif
 

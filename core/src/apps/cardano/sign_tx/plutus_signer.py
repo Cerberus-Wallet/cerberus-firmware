@@ -1,13 +1,13 @@
 from typing import TYPE_CHECKING
 
-from trezor import wire
-from trezortranslate import TR
+from cerberus import wire
+from cerberustranslate import TR
 
 from .. import layout
 from .signer import Signer
 
 if TYPE_CHECKING:
-    from trezor import messages
+    from cerberus import messages
 
 
 class PlutusSigner(Signer):
@@ -36,7 +36,7 @@ class PlutusSigner(Signer):
         # super() omitted intentionally
         # We display tx hash so that experienced users can compare it to the tx hash
         # computed by a trusted device (in case the tx contains many items which are
-        # tedious to check one by one on the Trezor screen).
+        # tedious to check one by one on the Cerberus screen).
         is_network_id_verifiable = self._is_network_id_verifiable()
         await layout.confirm_tx(
             msg.fee,
@@ -85,7 +85,7 @@ class PlutusSigner(Signer):
         return False
 
     def _validate_certificate(self, certificate: messages.CardanoTxCertificate) -> None:
-        from trezor.enums import CardanoCertificateType
+        from cerberus.enums import CardanoCertificateType
 
         super()._validate_certificate(certificate)
         if certificate.type == CardanoCertificateType.STAKE_POOL_REGISTRATION:

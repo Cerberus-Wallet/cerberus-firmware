@@ -1,8 +1,8 @@
 from common import *  # isort:skip
 
 if not utils.BITCOIN_ONLY:
-    from trezor.crypto import monero as tcry
-    from trezor.enums import MoneroNetworkType
+    from cerberus.crypto import monero as tcry
+    from cerberus.enums import MoneroNetworkType
 
     from apps.monero.xmr import crypto, crypto_helpers, monero
     from apps.monero.xmr.addresses import encode_addr

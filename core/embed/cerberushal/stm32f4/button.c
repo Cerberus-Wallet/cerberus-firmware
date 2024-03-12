@@ -1,6 +1,6 @@
 #include STM32_HAL_H
 #include "button.h"
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
 static char last_left = 0, last_right = 0;
 

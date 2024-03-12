@@ -1,8 +1,8 @@
 from typing import Callable, Iterable
 
-import trezorui2
-from trezor import TR
-from trezor.enums import ButtonRequestType
+import cerberusui2
+from cerberus import TR
+from cerberus.enums import ButtonRequestType
 
 from ..common import interact
 from . import RustLayout, raise_if_not_confirmed, show_warning
@@ -10,7 +10,7 @@ from . import RustLayout, raise_if_not_confirmed, show_warning
 
 async def request_word_count(dry_run: bool) -> int:
     count = await interact(
-        RustLayout(trezorui2.select_word_count(dry_run=dry_run)),
+        RustLayout(cerberusui2.select_word_count(dry_run=dry_run)),
         "word_count",
         ButtonRequestType.MnemonicWordCount,
     )
@@ -21,7 +21,7 @@ async def request_word_count(dry_run: bool) -> int:
 async def request_word(
     word_index: int, word_count: int, is_slip39: bool, prefill_word: str = ""
 ) -> str:
-    from trezor.wire.context import wait
+    from cerberus.wire.context import wait
 
     prompt = TR.recovery__word_x_of_y_template.format(word_index + 1, word_count)
 
@@ -29,13 +29,13 @@ async def request_word(
 
     if is_slip39:
         word_choice = RustLayout(
-            trezorui2.request_slip39(
+            cerberusui2.request_slip39(
                 prompt=prompt, prefill_word=prefill_word, can_go_back=can_go_back
             )
         )
     else:
         word_choice = RustLayout(
-            trezorui2.request_bip39(
+            cerberusui2.request_bip39(
                 prompt=prompt, prefill_word=prefill_word, can_go_back=can_go_back
             )
         )
@@ -56,7 +56,7 @@ async def show_group_share_success(share_index: int, group_index: int) -> None:
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.show_group_share_success(
+                cerberusui2.show_group_share_success(
                     lines=[
                         TR.recovery__you_have_entered,
                         TR.recovery__share_num_template.format(share_index + 1),
@@ -91,7 +91,7 @@ async def continue_recovery(
         text += f"\n\n{subtext}"
 
     homepage = RustLayout(
-        trezorui2.confirm_recovery(
+        cerberusui2.confirm_recovery(
             title="",
             description=text,
             button=button_label.upper(),
@@ -105,7 +105,7 @@ async def continue_recovery(
         "recovery",
         ButtonRequestType.RecoveryHomepage,
     )
-    return result is trezorui2.CONFIRMED
+    return result is cerberusui2.CONFIRMED
 
 
 async def show_recovery_warning(

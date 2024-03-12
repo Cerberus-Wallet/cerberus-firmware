@@ -1,10 +1,10 @@
 from common import *  # isort:skip
 
-from trezor.crypto.curve import secp256k1
-from trezor.crypto.hashlib import sha256
+from cerberus.crypto.curve import secp256k1
+from cerberus.crypto.hashlib import sha256
 
 if not utils.BITCOIN_ONLY:
-    from trezor.messages import (
+    from cerberus.messages import (
         BinanceCancelMsg,
         BinanceCoin,
         BinanceInputOutput,

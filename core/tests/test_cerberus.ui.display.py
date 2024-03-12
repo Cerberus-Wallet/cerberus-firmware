@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.ui import display
+from cerberus.ui import display
 
 
 class TestDisplay(unittest.TestCase):

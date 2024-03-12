@@ -1,10 +1,10 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor.crypto.hashlib import blake256
-from trezor.enums import InputScriptType
-from trezor.utils import HashWriter
-from trezor.wire import DataError, ProcessError
+from cerberus.crypto.hashlib import blake256
+from cerberus.enums import InputScriptType
+from cerberus.utils import HashWriter
+from cerberus.wire import DataError, ProcessError
 
 from apps.bitcoin.sign_tx.tx_weight import TxWeightCalculator
 from apps.common.writers import write_compact_size
@@ -28,8 +28,8 @@ OUTPUT_SCRIPT_NULL_SSTXCHANGE = (
 if TYPE_CHECKING:
     from typing import Sequence
 
-    from trezor.crypto import bip32
-    from trezor.messages import PrevInput, PrevOutput, PrevTx, SignTx, TxInput, TxOutput
+    from cerberus.crypto import bip32
+    from cerberus.messages import PrevInput, PrevOutput, PrevTx, SignTx, TxInput, TxOutput
 
     from apps.common.coininfo import CoinInfo
     from apps.common.keychain import Keychain
@@ -141,7 +141,7 @@ class Decred(Bitcoin):
         coin: CoinInfo,
         approver: approvers.Approver | None,
     ) -> None:
-        from trezor.utils import ensure
+        from cerberus.utils import ensure
 
         ensure(coin.decred)
         self.h_prefix = HashWriter(blake256())
@@ -205,7 +205,7 @@ class Decred(Bitcoin):
             self.write_tx_output(self.serialized_tx, txo, script_pubkey)
 
     async def step4_serialize_inputs(self) -> None:
-        from trezor.enums import DecredStakingSpendType
+        from cerberus.enums import DecredStakingSpendType
 
         from .. import multisig
         from ..common import SigHashType, ecdsa_sign
@@ -316,7 +316,7 @@ class Decred(Bitcoin):
         txo: TxOutput | PrevOutput,
         script_pubkey: bytes,
     ) -> None:
-        from trezor.messages import PrevOutput
+        from cerberus.messages import PrevOutput
 
         writers.write_uint64(w, txo.amount)
         if PrevOutput.is_type_of(txo):

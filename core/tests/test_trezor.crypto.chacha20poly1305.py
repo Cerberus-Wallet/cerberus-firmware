@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import chacha20poly1305
+from cerberus.crypto import chacha20poly1305
 
 
 class TestCryptoChaCha20Poly1305(unittest.TestCase):

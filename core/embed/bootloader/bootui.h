@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -23,7 +23,7 @@
 #include "image.h"
 #include "secbool.h"
 #include "stdbool.h"
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
 typedef enum {
   SCREEN_INTRO = 0,

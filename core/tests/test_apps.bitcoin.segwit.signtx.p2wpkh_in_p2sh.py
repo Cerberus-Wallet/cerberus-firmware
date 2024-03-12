@@ -1,10 +1,10 @@
 from common import *  # isort:skip
 
-from trezor import wire
-from trezor.crypto import bip39
-from trezor.enums import AmountUnit, InputScriptType, OutputScriptType
-from trezor.enums.RequestType import TXFINISHED, TXINPUT, TXMETA, TXOUTPUT
-from trezor.messages import (
+from cerberus import wire
+from cerberus.crypto import bip39
+from cerberus.enums import AmountUnit, InputScriptType, OutputScriptType
+from cerberus.enums.RequestType import TXFINISHED, TXINPUT, TXMETA, TXOUTPUT
+from cerberus.messages import (
     PrevInput,
     PrevOutput,
     PrevTx,
@@ -24,7 +24,7 @@ from trezor.messages import (
     TxRequestDetailsType,
     TxRequestSerializedType,
 )
-from trezor.utils import chunks
+from cerberus.utils import chunks
 
 from apps.bitcoin.keychain import _get_schemas_for_coin
 from apps.bitcoin.sign_tx import bitcoin, helpers

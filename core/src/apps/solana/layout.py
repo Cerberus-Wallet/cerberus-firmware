@@ -1,10 +1,10 @@
 from typing import TYPE_CHECKING
 
-from trezor import TR
-from trezor.crypto import base58
-from trezor.enums import ButtonRequestType
-from trezor.strings import format_amount
-from trezor.ui.layouts import (
+from cerberus import TR
+from cerberus.crypto import base58
+from cerberus.enums import ButtonRequestType
+from cerberus.strings import format_amount
+from cerberus.ui.layouts import (
     confirm_metadata,
     confirm_properties,
     confirm_solana_tx,
@@ -173,8 +173,8 @@ async def confirm_unsupported_instruction_details(
     signer_path: list[int],
     signer_public_key: bytes,
 ) -> None:
-    from trezor.ui import NORMAL
-    from trezor.ui.layouts import confirm_properties, should_show_more
+    from cerberus.ui import NORMAL
+    from cerberus.ui.layouts import confirm_properties, should_show_more
 
     should_show_instruction_details = await should_show_more(
         title,

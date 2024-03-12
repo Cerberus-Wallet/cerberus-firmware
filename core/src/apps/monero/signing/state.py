@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import MoneroTransactionDestinationEntry
+    from cerberus.messages import MoneroTransactionDestinationEntry
 
     from apps.monero.xmr.credentials import AccountCreds
     from apps.monero.xmr.crypto import Point, Scalar
@@ -117,7 +117,7 @@ class State:
         """
         Tx prefix hasher/hash. We use the hasher to incrementally hash and then
         store the final hash in tx_prefix_hash.
-        See Monero-Trezor documentation section 3.3 for more details.
+        See Monero-Cerberus documentation section 3.3 for more details.
         """
         self.tx_prefix_hasher: KeccakXmrArchive | None = KeccakXmrArchive()
         self.tx_prefix_hash: bytes | None = None
@@ -125,7 +125,7 @@ class State:
         """
         Full message hasher/hash that is to be signed using MLSAG.
         Contains tx_prefix_hash.
-        See Monero-Trezor documentation section 3.3 for more details.
+        See Monero-Cerberus documentation section 3.3 for more details.
         """
         self.full_message_hasher: PreMlsagHasher | None = PreMlsagHasher()
         self.full_message: bytes | None = None
@@ -133,7 +133,7 @@ class State:
     def mem_trace(self, x=None, collect: bool = False) -> None:
         import gc
 
-        from trezor import log
+        from cerberus import log
 
         if __debug__:
             log.debug(

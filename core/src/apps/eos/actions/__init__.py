@@ -1,8 +1,8 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import EosTxActionAck
-    from trezor.utils import HashWriter, Writer
+    from cerberus.messages import EosTxActionAck
+    from cerberus.utils import HashWriter, Writer
 
 
 async def process_action(
@@ -85,10 +85,10 @@ async def process_action(
 
 
 async def _process_unknown_action(w: Writer, action: EosTxActionAck) -> None:
-    from trezor.crypto.hashlib import sha256
-    from trezor.messages import EosTxActionAck, EosTxActionRequest
-    from trezor.utils import HashWriter
-    from trezor.wire.context import call
+    from cerberus.crypto.hashlib import sha256
+    from cerberus.messages import EosTxActionAck, EosTxActionRequest
+    from cerberus.utils import HashWriter
+    from cerberus.wire.context import call
 
     from .. import writers
     from . import layout

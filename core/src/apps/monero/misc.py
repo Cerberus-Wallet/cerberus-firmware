@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.enums import MoneroNetworkType
+    from cerberus.enums import MoneroNetworkType
 
     from apps.common.keychain import Keychain
     from apps.common.paths import Bip32Path
@@ -44,7 +44,7 @@ def compute_tx_key(
 def compute_enc_key_host(
     view_key_private: Scalar, tx_prefix_hash: bytes
 ) -> tuple[bytes, bytes]:
-    from trezor.crypto import random
+    from cerberus.crypto import random
 
     from apps.monero.xmr import crypto_helpers
 

@@ -10,7 +10,7 @@ reset_handler:
 // or the firmware was properly signed. All other variants end up in hard fault due to MPU
 // (cf mpu_config_firmware in legacy bootloader)
 
-#if defined TREZOR_MODEL_1
+#if defined CERBERUS_MODEL_1
   cpsid if
   ldr r0, =0xE000ED08  // r0 = VTOR address
   ldr r1, =0x08010400  // r1 = FLASH_APP_START

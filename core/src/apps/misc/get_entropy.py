@@ -1,15 +1,15 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import Entropy, GetEntropy
+    from cerberus.messages import Entropy, GetEntropy
 
 
 async def get_entropy(msg: GetEntropy) -> Entropy:
-    from trezor import TR
-    from trezor.crypto import random
-    from trezor.enums import ButtonRequestType
-    from trezor.messages import Entropy
-    from trezor.ui.layouts import confirm_action
+    from cerberus import TR
+    from cerberus.crypto import random
+    from cerberus.enums import ButtonRequestType
+    from cerberus.messages import Entropy
+    from cerberus.ui.layouts import confirm_action
 
     await confirm_action(
         "get_entropy",

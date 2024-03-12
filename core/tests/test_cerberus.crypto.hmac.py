@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import hmac
+from cerberus.crypto import hmac
 
 
 class TestCryptoHmac(unittest.TestCase):

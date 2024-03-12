@@ -1,11 +1,11 @@
 from typing import TYPE_CHECKING
 
-from trezor.wire import ProcessError
+from cerberus.wire import ProcessError
 
 from .. import seed
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         CardanoPoolOwner,
         CardanoTxCertificate,
         CardanoTxOutput,

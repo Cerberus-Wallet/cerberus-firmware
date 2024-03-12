@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import cardano, slip39
+from cerberus.crypto import cardano, slip39
 
 from apps.cardano.get_public_key import _get_public_key
 from apps.cardano.seed import Keychain

@@ -2,7 +2,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from consts import StellarMessageType
-    from trezor.utils import Writer
+    from cerberus.utils import Writer
 
 
 async def process_operation(w: Writer, op: StellarMessageType) -> None:
@@ -10,7 +10,7 @@ async def process_operation(w: Writer, op: StellarMessageType) -> None:
     # (probably because the local lookup is more efficient than a global lookup)
 
     # Saves about 75 bytes here, to have just one import instead of 13
-    import trezor.messages as messages
+    import cerberus.messages as messages
 
     from .. import consts, writers
     from . import layout, serialize

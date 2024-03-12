@@ -1,7 +1,7 @@
 from typing import *
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def init(
    ui_wait_callback: Callable[[int, int, str], bool] | None = None
 ) -> None:
@@ -11,7 +11,7 @@ def init(
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def unlock(pin: str, ext_salt: bytes | None) -> bool:
     """
     Attempts to unlock the storage with the given PIN and external salt.
@@ -19,7 +19,7 @@ def unlock(pin: str, ext_salt: bytes | None) -> bool:
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def check_pin(pin: str, ext_salt: bytes | None) -> bool:
     """
     Check the given PIN with the given external salt.
@@ -27,35 +27,35 @@ def check_pin(pin: str, ext_salt: bytes | None) -> bool:
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def lock() -> None:
     """
     Locks the storage.
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def is_unlocked() -> bool:
     """
     Returns True if storage is unlocked, False otherwise.
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def has_pin() -> bool:
     """
     Returns True if storage has a configured PIN, False otherwise.
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def get_pin_rem() -> int:
     """
     Returns the number of remaining PIN entry attempts.
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def change_pin(
     oldpin: str,
     newpin: str,
@@ -67,21 +67,21 @@ def change_pin(
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def ensure_not_wipe_code(pin: str) -> None:
     """
     Wipes the device if the entered PIN is the wipe code.
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def has_wipe_code() -> bool:
     """
     Returns True if storage has a configured wipe code, False otherwise.
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def change_wipe_code(
     pin: str,
     ext_salt: bytes | None,
@@ -92,7 +92,7 @@ def change_wipe_code(
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def get(app: int, key: int, public: bool = False) -> bytes | None:
     """
     Gets the value of the given key for the given app (or None if not set).
@@ -101,14 +101,14 @@ def get(app: int, key: int, public: bool = False) -> bytes | None:
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def set(app: int, key: int, value: bytes, public: bool = False) -> None:
     """
     Sets a value of given key for given app.
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def delete(
     app: int, key: int, public: bool = False, writable_locked: bool = False
 ) -> bool:
@@ -117,7 +117,7 @@ def delete(
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def set_counter(
     app: int, key: int, count: int, writable_locked: bool = False
 ) -> None:
@@ -126,7 +126,7 @@ def set_counter(
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def next_counter(
    app: int, key: int, writable_locked: bool = False,
 ) -> int:
@@ -136,7 +136,7 @@ def next_counter(
     """
 
 
-# extmod/modtrezorconfig/modtrezorconfig.c
+# extmod/modcerberusconfig/modcerberusconfig.c
 def wipe() -> None:
     """
     Erases the whole config. Use with caution!

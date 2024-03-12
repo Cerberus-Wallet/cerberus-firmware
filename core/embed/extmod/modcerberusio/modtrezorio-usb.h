@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -24,7 +24,7 @@ enum {
   USB_OPENED = 1,
 };
 
-/// package: trezorio.__init__
+/// package: cerberusio.__init__
 
 /// class USB:
 ///     """
@@ -67,7 +67,7 @@ static const char *get_0str(mp_obj_t o, size_t min_len, size_t max_len) {
 /// ) -> None:
 ///     """
 ///     """
-STATIC mp_obj_t mod_trezorio_USB_make_new(const mp_obj_type_t *type,
+STATIC mp_obj_t mod_cerberusio_USB_make_new(const mp_obj_type_t *type,
                                           size_t n_args, size_t n_kw,
                                           const mp_obj_t *args) {
   STATIC const mp_arg_t allowed_args[] = {
@@ -154,7 +154,7 @@ STATIC mp_obj_t mod_trezorio_USB_make_new(const mp_obj_type_t *type,
 ///     """
 ///     Registers passed interface into the USB stack.
 ///     """
-STATIC mp_obj_t mod_trezorio_USB_add(mp_obj_t self, mp_obj_t iface) {
+STATIC mp_obj_t mod_cerberusio_USB_add(mp_obj_t self, mp_obj_t iface) {
   mp_obj_USB_t *o = MP_OBJ_TO_PTR(self);
 
   if (o->state != USB_CLOSED) {
@@ -164,14 +164,14 @@ STATIC mp_obj_t mod_trezorio_USB_add(mp_obj_t self, mp_obj_t iface) {
 
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorio_USB_add_obj,
-                                 mod_trezorio_USB_add);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberusio_USB_add_obj,
+                                 mod_cerberusio_USB_add);
 
 /// def open(self, serial_number: str) -> None:
 ///     """
 ///     Initializes the USB stack.
 ///     """
-STATIC mp_obj_t mod_trezorio_USB_open(mp_obj_t self,
+STATIC mp_obj_t mod_cerberusio_USB_open(mp_obj_t self,
                                       mp_obj_t serial_number_obj) {
   mp_obj_USB_t *o = MP_OBJ_TO_PTR(self);
 
@@ -198,19 +198,19 @@ STATIC mp_obj_t mod_trezorio_USB_open(mp_obj_t self,
   for (size_t i = 0; i < iface_cnt; i++) {
     mp_obj_t iface = iface_objs[i];
 
-    if (MP_OBJ_IS_TYPE(iface, &mod_trezorio_HID_type)) {
+    if (MP_OBJ_IS_TYPE(iface, &mod_cerberusio_HID_type)) {
       mp_obj_HID_t *hid = MP_OBJ_TO_PTR(iface);
       if (sectrue != usb_hid_add(&hid->info)) {
         usb_deinit();
         mp_raise_msg(&mp_type_RuntimeError, "failed to add HID interface");
       }
-    } else if (MP_OBJ_IS_TYPE(iface, &mod_trezorio_WebUSB_type)) {
+    } else if (MP_OBJ_IS_TYPE(iface, &mod_cerberusio_WebUSB_type)) {
       mp_obj_WebUSB_t *webusb = MP_OBJ_TO_PTR(iface);
       if (sectrue != usb_webusb_add(&webusb->info)) {
         usb_deinit();
         mp_raise_msg(&mp_type_RuntimeError, "failed to add WebUSB interface");
       }
-    } else if (MP_OBJ_IS_TYPE(iface, &mod_trezorio_VCP_type)) {
+    } else if (MP_OBJ_IS_TYPE(iface, &mod_cerberusio_VCP_type)) {
       mp_obj_VCP_t *vcp = MP_OBJ_TO_PTR(iface);
       if (sectrue != usb_vcp_add(&vcp->info)) {
         usb_deinit();
@@ -233,14 +233,14 @@ STATIC mp_obj_t mod_trezorio_USB_open(mp_obj_t self,
 
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorio_USB_open_obj,
-                                 mod_trezorio_USB_open);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberusio_USB_open_obj,
+                                 mod_cerberusio_USB_open);
 
 /// def close(self) -> None:
 ///     """
 ///     Cleans up the USB stack.
 ///     """
-STATIC mp_obj_t mod_trezorio_USB_close(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberusio_USB_close(mp_obj_t self) {
   mp_obj_USB_t *o = MP_OBJ_TO_PTR(self);
 
   if (o->state != USB_OPENED) {
@@ -260,10 +260,10 @@ STATIC mp_obj_t mod_trezorio_USB_close(mp_obj_t self) {
 
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorio_USB_close_obj,
-                                 mod_trezorio_USB_close);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberusio_USB_close_obj,
+                                 mod_cerberusio_USB_close);
 
-STATIC mp_obj_t mod_trezorio_USB___del__(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberusio_USB___del__(mp_obj_t self) {
   mp_obj_USB_t *o = MP_OBJ_TO_PTR(self);
   if (o->state != USB_CLOSED) {
     usb_stop();
@@ -272,21 +272,21 @@ STATIC mp_obj_t mod_trezorio_USB___del__(mp_obj_t self) {
   }
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorio_USB___del___obj,
-                                 mod_trezorio_USB___del__);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberusio_USB___del___obj,
+                                 mod_cerberusio_USB___del__);
 
-STATIC const mp_rom_map_elem_t mod_trezorio_USB_locals_dict_table[] = {
-    {MP_ROM_QSTR(MP_QSTR_add), MP_ROM_PTR(&mod_trezorio_USB_add_obj)},
-    {MP_ROM_QSTR(MP_QSTR_open), MP_ROM_PTR(&mod_trezorio_USB_open_obj)},
-    {MP_ROM_QSTR(MP_QSTR_close), MP_ROM_PTR(&mod_trezorio_USB_close_obj)},
-    {MP_ROM_QSTR(MP_QSTR___del__), MP_ROM_PTR(&mod_trezorio_USB___del___obj)},
+STATIC const mp_rom_map_elem_t mod_cerberusio_USB_locals_dict_table[] = {
+    {MP_ROM_QSTR(MP_QSTR_add), MP_ROM_PTR(&mod_cerberusio_USB_add_obj)},
+    {MP_ROM_QSTR(MP_QSTR_open), MP_ROM_PTR(&mod_cerberusio_USB_open_obj)},
+    {MP_ROM_QSTR(MP_QSTR_close), MP_ROM_PTR(&mod_cerberusio_USB_close_obj)},
+    {MP_ROM_QSTR(MP_QSTR___del__), MP_ROM_PTR(&mod_cerberusio_USB___del___obj)},
 };
-STATIC MP_DEFINE_CONST_DICT(mod_trezorio_USB_locals_dict,
-                            mod_trezorio_USB_locals_dict_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberusio_USB_locals_dict,
+                            mod_cerberusio_USB_locals_dict_table);
 
-STATIC const mp_obj_type_t mod_trezorio_USB_type = {
+STATIC const mp_obj_type_t mod_cerberusio_USB_type = {
     {&mp_type_type},
     .name = MP_QSTR_USB,
-    .make_new = mod_trezorio_USB_make_new,
-    .locals_dict = (void *)&mod_trezorio_USB_locals_dict,
+    .make_new = mod_cerberusio_USB_make_new,
+    .locals_dict = (void *)&mod_cerberusio_USB_locals_dict,
 };

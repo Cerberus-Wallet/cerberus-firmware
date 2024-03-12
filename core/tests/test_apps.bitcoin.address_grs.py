@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import bip32, bip39
+from cerberus.crypto import bip32, bip39
 
 from apps.bitcoin.addresses import *
 from apps.bitcoin.common import *
@@ -25,9 +25,9 @@ class TestAddressGRS(unittest.TestCase):
         node = node_derive(
             root, [44 | 0x80000000, 17 | 0x80000000, 0 | 0x80000000, 1, 0]
         )
-        address = node.address(coin.address_type)  # generate in trezor-crypto
+        address = node.address(coin.address_type)  # generate in cerberus-crypto
         self.assertEqual(address, "FmRaqvVBRrAp2Umfqx9V1ectZy8gw54QDN")
-        address = address_pkh(node.public_key(), coin)  # generate in trezor-core
+        address = address_pkh(node.public_key(), coin)  # generate in cerberus-core
         self.assertEqual(address, "FmRaqvVBRrAp2Umfqx9V1ectZy8gw54QDN")
 
         node = node_derive(

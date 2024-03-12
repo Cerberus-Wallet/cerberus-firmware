@@ -1,9 +1,9 @@
 from common import *  # isort:skip
 
-from trezor import wire
-from trezor.crypto import cardano, slip39
-from trezor.enums import CardanoAddressType
-from trezor.messages import CardanoAddressParametersType, CardanoBlockchainPointerType
+from cerberus import wire
+from cerberus.crypto import cardano, slip39
+from cerberus.enums import CardanoAddressType
+from cerberus.messages import CardanoAddressParametersType, CardanoBlockchainPointerType
 
 from apps.common import seed
 from apps.common.paths import HARDENED

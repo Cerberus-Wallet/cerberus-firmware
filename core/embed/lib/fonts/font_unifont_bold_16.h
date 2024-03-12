@@ -1,7 +1,7 @@
 #include <stdint.h>
 
-#if TREZOR_FONT_BPP != 1
-#error Wrong TREZOR_FONT_BPP (expected 1)
+#if CERBERUS_FONT_BPP != 1
+#error Wrong CERBERUS_FONT_BPP (expected 1)
 #endif
 #define Font_Unifont_Bold_16_HEIGHT 12      // <--- 12 from 16
 #define Font_Unifont_Bold_16_MAX_HEIGHT 12  // <--- 12 from 15

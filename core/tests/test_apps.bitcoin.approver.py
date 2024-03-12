@@ -1,19 +1,19 @@
 from common import H_, await_result, unittest  # isort:skip
 
 import storage.cache
-from trezor import wire
-from trezor.crypto import bip32
-from trezor.crypto.curve import bip340, secp256k1
-from trezor.crypto.hashlib import sha256
-from trezor.enums import InputScriptType, OutputScriptType
-from trezor.messages import (
+from cerberus import wire
+from cerberus.crypto import bip32
+from cerberus.crypto.curve import bip340, secp256k1
+from cerberus.crypto.hashlib import sha256
+from cerberus.enums import InputScriptType, OutputScriptType
+from cerberus.messages import (
     AuthorizeCoinJoin,
     CoinJoinRequest,
     SignTx,
     TxInput,
     TxOutput,
 )
-from trezor.utils import HashWriter
+from cerberus.utils import HashWriter
 
 from apps.bitcoin import writers
 from apps.bitcoin.authorization import FEE_RATE_DECIMALS, CoinJoinAuthorization

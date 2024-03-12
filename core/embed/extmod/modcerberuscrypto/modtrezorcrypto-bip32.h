@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -19,7 +19,7 @@
 
 #include "py/objstr.h"
 
-#include "embed/extmod/trezorobj.h"
+#include "embed/extmod/cerberusobj.h"
 #include "hdnode.h"
 
 #include "bip32.h"
@@ -30,7 +30,7 @@
 #include "nem.h"
 #endif
 
-/// package: trezorcrypto.bip32
+/// package: cerberuscrypto.bip32
 
 /// class HDNode:
 ///     """
@@ -49,7 +49,7 @@
 /// ) -> None:
 ///     """
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_make_new(const mp_obj_type_t *type,
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_make_new(const mp_obj_type_t *type,
                                                  size_t n_args, size_t n_kw,
                                                  const mp_obj_t *args) {
   STATIC const mp_arg_t allowed_args[] = {
@@ -83,9 +83,9 @@ STATIC mp_obj_t mod_trezorcrypto_HDNode_make_new(const mp_obj_type_t *type,
   mp_buffer_info_t private_key = {0};
   mp_buffer_info_t public_key = {0};
   mp_buffer_info_t curve_name = {0};
-  const uint32_t depth = trezor_obj_get_uint(vals[0].u_obj);
-  const uint32_t fingerprint = trezor_obj_get_uint(vals[1].u_obj);
-  const uint32_t child_num = trezor_obj_get_uint(vals[2].u_obj);
+  const uint32_t depth = cerberus_obj_get_uint(vals[0].u_obj);
+  const uint32_t fingerprint = cerberus_obj_get_uint(vals[1].u_obj);
+  const uint32_t child_num = cerberus_obj_get_uint(vals[2].u_obj);
   mp_get_buffer_raise(vals[3].u_obj, &chain_code, MP_BUFFER_READ);
   mp_get_buffer_raise(vals[4].u_obj, &private_key, MP_BUFFER_READ);
   mp_get_buffer_raise(vals[5].u_obj, &public_key, MP_BUFFER_READ);
@@ -143,10 +143,10 @@ STATIC mp_obj_t mod_trezorcrypto_HDNode_make_new(const mp_obj_type_t *type,
 ///     """
 ///     Derive a BIP0032 child node in place.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_derive(size_t n_args,
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_derive(size_t n_args,
                                                const mp_obj_t *args) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(args[0]);
-  uint32_t i = trezor_obj_get_uint(args[1]);
+  uint32_t i = cerberus_obj_get_uint(args[1]);
   uint32_t fp = hdnode_fingerprint(&o->hdnode);
   bool public = n_args > 2 && args[2] == mp_const_true;
 
@@ -173,16 +173,16 @@ STATIC mp_obj_t mod_trezorcrypto_HDNode_derive(size_t n_args,
 
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_trezorcrypto_HDNode_derive_obj,
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_cerberuscrypto_HDNode_derive_obj,
                                            2, 3,
-                                           mod_trezorcrypto_HDNode_derive);
+                                           mod_cerberuscrypto_HDNode_derive);
 
 /// def derive_path(self, path: Sequence[int]) -> None:
 ///     """
 ///     Go through a list of indexes and iteratively derive a child node in
 ///     place.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_derive_path(mp_obj_t self,
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_derive_path(mp_obj_t self,
                                                     mp_obj_t path) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
 
@@ -199,7 +199,7 @@ STATIC mp_obj_t mod_trezorcrypto_HDNode_derive_path(mp_obj_t self,
       // fingerprint is calculated from the parent of the final derivation
       o->fingerprint = hdnode_fingerprint(&o->hdnode);
     }
-    uint32_t pitem = trezor_obj_get_uint(pitems[pi]);
+    uint32_t pitem = cerberus_obj_get_uint(pitems[pi]);
     if (!hdnode_private_ckd(&o->hdnode, pitem)) {
       o->fingerprint = 0;
       memzero(&o->hdnode, sizeof(o->hdnode));
@@ -209,16 +209,16 @@ STATIC mp_obj_t mod_trezorcrypto_HDNode_derive_path(mp_obj_t self,
 
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_HDNode_derive_path_obj,
-                                 mod_trezorcrypto_HDNode_derive_path);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberuscrypto_HDNode_derive_path_obj,
+                                 mod_cerberuscrypto_HDNode_derive_path);
 
 /// def serialize_public(self, version: int) -> str:
 ///     """
 ///     Serialize the public info from HD node to base58 string.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_serialize_public(mp_obj_t self,
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_serialize_public(mp_obj_t self,
                                                          mp_obj_t version) {
-  uint32_t ver = trezor_obj_get_uint(version);
+  uint32_t ver = cerberus_obj_get_uint(version);
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
   if (hdnode_fill_public_key(&o->hdnode) != 0) {
     mp_raise_ValueError("Failed to serialize");
@@ -236,114 +236,114 @@ STATIC mp_obj_t mod_trezorcrypto_HDNode_serialize_public(mp_obj_t self,
   xpub.len = written - 1;
   return mp_obj_new_str_from_vstr(&mp_type_str, &xpub);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_HDNode_serialize_public_obj,
-                                 mod_trezorcrypto_HDNode_serialize_public);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberuscrypto_HDNode_serialize_public_obj,
+                                 mod_cerberuscrypto_HDNode_serialize_public);
 
 /// def clone(self) -> HDNode:
 ///     """
 ///     Returns a copy of the HD node.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_clone(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_clone(mp_obj_t self) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
   mp_obj_HDNode_t *copy = m_new_obj_with_finaliser(mp_obj_HDNode_t);
-  copy->base.type = &mod_trezorcrypto_HDNode_type;
+  copy->base.type = &mod_cerberuscrypto_HDNode_type;
   copy->hdnode = o->hdnode;
   copy->fingerprint = o->fingerprint;
   return MP_OBJ_FROM_PTR(copy);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_HDNode_clone_obj,
-                                 mod_trezorcrypto_HDNode_clone);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_HDNode_clone_obj,
+                                 mod_cerberuscrypto_HDNode_clone);
 
 /// def depth(self) -> int:
 ///     """
 ///     Returns a depth of the HD node.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_depth(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_depth(mp_obj_t self) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
   return mp_obj_new_int_from_uint(o->hdnode.depth);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_HDNode_depth_obj,
-                                 mod_trezorcrypto_HDNode_depth);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_HDNode_depth_obj,
+                                 mod_cerberuscrypto_HDNode_depth);
 
 /// def fingerprint(self) -> int:
 ///     """
 ///     Returns a fingerprint of the HD node (hash of the parent public key).
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_fingerprint(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_fingerprint(mp_obj_t self) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
   return mp_obj_new_int_from_uint(o->fingerprint);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_HDNode_fingerprint_obj,
-                                 mod_trezorcrypto_HDNode_fingerprint);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_HDNode_fingerprint_obj,
+                                 mod_cerberuscrypto_HDNode_fingerprint);
 
 /// def child_num(self) -> int:
 ///     """
 ///     Returns a child index of the HD node.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_child_num(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_child_num(mp_obj_t self) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
   return mp_obj_new_int_from_uint(o->hdnode.child_num);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_HDNode_child_num_obj,
-                                 mod_trezorcrypto_HDNode_child_num);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_HDNode_child_num_obj,
+                                 mod_cerberuscrypto_HDNode_child_num);
 
 /// def chain_code(self) -> bytes:
 ///     """
 ///     Returns a chain code of the HD node.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_chain_code(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_chain_code(mp_obj_t self) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
   return mp_obj_new_bytes(o->hdnode.chain_code, sizeof(o->hdnode.chain_code));
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_HDNode_chain_code_obj,
-                                 mod_trezorcrypto_HDNode_chain_code);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_HDNode_chain_code_obj,
+                                 mod_cerberuscrypto_HDNode_chain_code);
 
 /// def private_key(self) -> bytes:
 ///     """
 ///     Returns a private key of the HD node.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_private_key(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_private_key(mp_obj_t self) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
   return mp_obj_new_bytes(o->hdnode.private_key, sizeof(o->hdnode.private_key));
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_HDNode_private_key_obj,
-                                 mod_trezorcrypto_HDNode_private_key);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_HDNode_private_key_obj,
+                                 mod_cerberuscrypto_HDNode_private_key);
 
 /// def private_key_ext(self) -> bytes:
 ///     """
 ///     Returns a private key extension of the HD node.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_private_key_ext(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_private_key_ext(mp_obj_t self) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
   return mp_obj_new_bytes(o->hdnode.private_key_extension,
                           sizeof(o->hdnode.private_key_extension));
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_HDNode_private_key_ext_obj,
-                                 mod_trezorcrypto_HDNode_private_key_ext);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_HDNode_private_key_ext_obj,
+                                 mod_cerberuscrypto_HDNode_private_key_ext);
 
 /// def public_key(self) -> bytes:
 ///     """
 ///     Returns a public key of the HD node.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_public_key(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_public_key(mp_obj_t self) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
   if (hdnode_fill_public_key(&o->hdnode) != 0) {
     mp_raise_ValueError("Invalid private key");
   }
   return mp_obj_new_bytes(o->hdnode.public_key, sizeof(o->hdnode.public_key));
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_HDNode_public_key_obj,
-                                 mod_trezorcrypto_HDNode_public_key);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_HDNode_public_key_obj,
+                                 mod_cerberuscrypto_HDNode_public_key);
 
 /// def address(self, version: int) -> str:
 ///     """
 ///     Compute a base58-encoded address string from the HD node.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_address(mp_obj_t self,
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_address(mp_obj_t self,
                                                 mp_obj_t version) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
 
-  uint32_t v = trezor_obj_get_uint(version);
+  uint32_t v = cerberus_obj_get_uint(version);
 
   vstr_t address = {0};
   vstr_init_len(&address, ADDRESS_MAXLEN);
@@ -353,8 +353,8 @@ STATIC mp_obj_t mod_trezorcrypto_HDNode_address(mp_obj_t self,
   address.len = strlen(address.buf);
   return mp_obj_new_str_from_vstr(&mp_type_str, &address);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_HDNode_address_obj,
-                                 mod_trezorcrypto_HDNode_address);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberuscrypto_HDNode_address_obj,
+                                 mod_cerberuscrypto_HDNode_address);
 
 #if !BITCOIN_ONLY
 
@@ -363,11 +363,11 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_HDNode_address_obj,
 ///     """
 ///     Compute a NEM address string from the HD node.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_nem_address(mp_obj_t self,
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_nem_address(mp_obj_t self,
                                                     mp_obj_t network) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
 
-  uint8_t n = trezor_obj_get_uint8(network);
+  uint8_t n = cerberus_obj_get_uint8(network);
 
   vstr_t address = {0};
   vstr_init_len(&address, NEM_ADDRESS_SIZE);
@@ -378,8 +378,8 @@ STATIC mp_obj_t mod_trezorcrypto_HDNode_nem_address(mp_obj_t self,
   address.len = strlen(address.buf);
   return mp_obj_new_str_from_vstr(&mp_type_str, &address);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_HDNode_nem_address_obj,
-                                 mod_trezorcrypto_HDNode_nem_address);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberuscrypto_HDNode_nem_address_obj,
+                                 mod_cerberuscrypto_HDNode_nem_address);
 
 /// def nem_encrypt(
 ///     self, transfer_public_key: bytes, iv: bytes, salt: bytes, payload: bytes
@@ -387,7 +387,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_HDNode_nem_address_obj,
 ///     """
 ///     Encrypts payload using the transfer's public key
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_nem_encrypt(size_t n_args,
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_nem_encrypt(size_t n_args,
                                                     const mp_obj_t *args) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(args[0]);
 
@@ -423,8 +423,8 @@ STATIC mp_obj_t mod_trezorcrypto_HDNode_nem_encrypt(size_t n_args,
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &vstr);
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(
-    mod_trezorcrypto_HDNode_nem_encrypt_obj, 5, 5,
-    mod_trezorcrypto_HDNode_nem_encrypt);
+    mod_cerberuscrypto_HDNode_nem_encrypt_obj, 5, 5,
+    mod_cerberuscrypto_HDNode_nem_encrypt);
 
 #endif
 
@@ -432,7 +432,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(
 ///     """
 ///     Compute an Ethereum pubkeyhash (aka address) from the HD node.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode_ethereum_pubkeyhash(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_HDNode_ethereum_pubkeyhash(mp_obj_t self) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
 
   vstr_t pkh = {0};
@@ -441,8 +441,8 @@ STATIC mp_obj_t mod_trezorcrypto_HDNode_ethereum_pubkeyhash(mp_obj_t self) {
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &pkh);
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(
-    mod_trezorcrypto_HDNode_ethereum_pubkeyhash_obj,
-    mod_trezorcrypto_HDNode_ethereum_pubkeyhash);
+    mod_cerberuscrypto_HDNode_ethereum_pubkeyhash_obj,
+    mod_cerberuscrypto_HDNode_ethereum_pubkeyhash);
 
 #endif
 
@@ -450,61 +450,61 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_1(
 ///     """
 ///     Cleans up sensitive memory.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_HDNode___del__(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_HDNode___del__(mp_obj_t self) {
   mp_obj_HDNode_t *o = MP_OBJ_TO_PTR(self);
   o->fingerprint = 0;
   memzero(&o->hdnode, sizeof(o->hdnode));
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_HDNode___del___obj,
-                                 mod_trezorcrypto_HDNode___del__);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_HDNode___del___obj,
+                                 mod_cerberuscrypto_HDNode___del__);
 
-STATIC const mp_rom_map_elem_t mod_trezorcrypto_HDNode_locals_dict_table[] = {
+STATIC const mp_rom_map_elem_t mod_cerberuscrypto_HDNode_locals_dict_table[] = {
     {MP_ROM_QSTR(MP_QSTR___del__),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode___del___obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode___del___obj)},
     {MP_ROM_QSTR(MP_QSTR_derive),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_derive_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_derive_obj)},
     {MP_ROM_QSTR(MP_QSTR_derive_path),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_derive_path_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_derive_path_obj)},
     {MP_ROM_QSTR(MP_QSTR_serialize_public),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_serialize_public_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_serialize_public_obj)},
     {MP_ROM_QSTR(MP_QSTR_clone),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_clone_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_clone_obj)},
     {MP_ROM_QSTR(MP_QSTR_depth),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_depth_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_depth_obj)},
     {MP_ROM_QSTR(MP_QSTR_fingerprint),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_fingerprint_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_fingerprint_obj)},
     {MP_ROM_QSTR(MP_QSTR_child_num),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_child_num_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_child_num_obj)},
     {MP_ROM_QSTR(MP_QSTR_chain_code),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_chain_code_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_chain_code_obj)},
     {MP_ROM_QSTR(MP_QSTR_private_key),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_private_key_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_private_key_obj)},
     {MP_ROM_QSTR(MP_QSTR_private_key_ext),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_private_key_ext_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_private_key_ext_obj)},
     {MP_ROM_QSTR(MP_QSTR_public_key),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_public_key_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_public_key_obj)},
     {MP_ROM_QSTR(MP_QSTR_address),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_address_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_address_obj)},
 #if !BITCOIN_ONLY
 #if USE_NEM
     {MP_ROM_QSTR(MP_QSTR_nem_address),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_nem_address_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_nem_address_obj)},
     {MP_ROM_QSTR(MP_QSTR_nem_encrypt),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_nem_encrypt_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_nem_encrypt_obj)},
 #endif
     {MP_ROM_QSTR(MP_QSTR_ethereum_pubkeyhash),
-     MP_ROM_PTR(&mod_trezorcrypto_HDNode_ethereum_pubkeyhash_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_HDNode_ethereum_pubkeyhash_obj)},
 #endif
 };
-STATIC MP_DEFINE_CONST_DICT(mod_trezorcrypto_HDNode_locals_dict,
-                            mod_trezorcrypto_HDNode_locals_dict_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberuscrypto_HDNode_locals_dict,
+                            mod_cerberuscrypto_HDNode_locals_dict_table);
 
-const mp_obj_type_t mod_trezorcrypto_HDNode_type = {
+const mp_obj_type_t mod_cerberuscrypto_HDNode_type = {
     {&mp_type_type},
     .name = MP_QSTR_HDNode,
-    .make_new = mod_trezorcrypto_HDNode_make_new,
-    .locals_dict = (void *)&mod_trezorcrypto_HDNode_locals_dict,
+    .make_new = mod_cerberuscrypto_HDNode_make_new,
+    .locals_dict = (void *)&mod_cerberuscrypto_HDNode_locals_dict,
 };
 
 /// mock:global
@@ -513,7 +513,7 @@ const mp_obj_type_t mod_trezorcrypto_HDNode_type = {
 ///     """
 ///     Construct a BIP0032 HD node from a BIP0039 seed value.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_bip32_from_seed(mp_obj_t seed,
+STATIC mp_obj_t mod_cerberuscrypto_bip32_from_seed(mp_obj_t seed,
                                                  mp_obj_t curve_name) {
   mp_buffer_info_t seedb = {0};
   mp_get_buffer_raise(seed, &seedb, MP_BUFFER_READ);
@@ -534,24 +534,24 @@ STATIC mp_obj_t mod_trezorcrypto_bip32_from_seed(mp_obj_t seed,
   }
 
   mp_obj_HDNode_t *o = m_new_obj_with_finaliser(mp_obj_HDNode_t);
-  o->base.type = &mod_trezorcrypto_HDNode_type;
+  o->base.type = &mod_cerberuscrypto_HDNode_type;
   o->hdnode = hdnode;
   o->fingerprint = 0;
   return MP_OBJ_FROM_PTR(o);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_bip32_from_seed_obj,
-                                 mod_trezorcrypto_bip32_from_seed);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberuscrypto_bip32_from_seed_obj,
+                                 mod_cerberuscrypto_bip32_from_seed);
 
-STATIC const mp_rom_map_elem_t mod_trezorcrypto_bip32_globals_table[] = {
+STATIC const mp_rom_map_elem_t mod_cerberuscrypto_bip32_globals_table[] = {
     {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_bip32)},
-    {MP_ROM_QSTR(MP_QSTR_HDNode), MP_ROM_PTR(&mod_trezorcrypto_HDNode_type)},
+    {MP_ROM_QSTR(MP_QSTR_HDNode), MP_ROM_PTR(&mod_cerberuscrypto_HDNode_type)},
     {MP_ROM_QSTR(MP_QSTR_from_seed),
-     MP_ROM_PTR(&mod_trezorcrypto_bip32_from_seed_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_bip32_from_seed_obj)},
 };
-STATIC MP_DEFINE_CONST_DICT(mod_trezorcrypto_bip32_globals,
-                            mod_trezorcrypto_bip32_globals_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberuscrypto_bip32_globals,
+                            mod_cerberuscrypto_bip32_globals_table);
 
-STATIC const mp_obj_module_t mod_trezorcrypto_bip32_module = {
+STATIC const mp_obj_module_t mod_cerberuscrypto_bip32_module = {
     .base = {&mp_type_module},
-    .globals = (mp_obj_dict_t *)&mod_trezorcrypto_bip32_globals,
+    .globals = (mp_obj_dict_t *)&mod_cerberuscrypto_bip32_globals,
 };

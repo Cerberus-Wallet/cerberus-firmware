@@ -2,7 +2,7 @@ import gc
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor import utils
+from cerberus import utils
 
 from apps.monero.xmr import crypto, crypto_helpers
 from apps.monero.xmr.serialize.int_serialize import dump_uvarint_b_into
@@ -88,7 +88,7 @@ def _ensure_dst_key(dst: bytearray | None = None) -> bytearray:
 def memcpy(
     dst: bytearray, dst_off: int, src: bytes, src_off: int, len: int
 ) -> bytearray:
-    from trezor.utils import memcpy as tmemcpy
+    from cerberus.utils import memcpy as tmemcpy
 
     if dst is not None:
         tmemcpy(dst, dst_off, src, src_off, len)

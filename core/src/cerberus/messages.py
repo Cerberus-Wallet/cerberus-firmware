@@ -2,7 +2,7 @@
 # fmt: off
 # isort:skip_file
 
-from trezor import protobuf
+from cerberus import protobuf
 
 from typing import Any, TYPE_CHECKING
 
@@ -16,52 +16,52 @@ def __getattr__(name: str) -> Any:
 
 if TYPE_CHECKING:
     from typing import TypeGuard
-    from trezor.enums import AmountUnit  # noqa: F401
-    from trezor.enums import BackupType  # noqa: F401
-    from trezor.enums import BinanceOrderSide  # noqa: F401
-    from trezor.enums import BinanceOrderType  # noqa: F401
-    from trezor.enums import BinanceTimeInForce  # noqa: F401
-    from trezor.enums import BootCommand  # noqa: F401
-    from trezor.enums import ButtonRequestType  # noqa: F401
-    from trezor.enums import Capability  # noqa: F401
-    from trezor.enums import CardanoAddressType  # noqa: F401
-    from trezor.enums import CardanoCVoteRegistrationFormat  # noqa: F401
-    from trezor.enums import CardanoCertificateType  # noqa: F401
-    from trezor.enums import CardanoDerivationType  # noqa: F401
-    from trezor.enums import CardanoNativeScriptHashDisplayFormat  # noqa: F401
-    from trezor.enums import CardanoNativeScriptType  # noqa: F401
-    from trezor.enums import CardanoPoolRelayType  # noqa: F401
-    from trezor.enums import CardanoTxAuxiliaryDataSupplementType  # noqa: F401
-    from trezor.enums import CardanoTxOutputSerializationFormat  # noqa: F401
-    from trezor.enums import CardanoTxSigningMode  # noqa: F401
-    from trezor.enums import CardanoTxWitnessType  # noqa: F401
-    from trezor.enums import DebugButton  # noqa: F401
-    from trezor.enums import DebugPhysicalButton  # noqa: F401
-    from trezor.enums import DebugSwipeDirection  # noqa: F401
-    from trezor.enums import DecredStakingSpendType  # noqa: F401
-    from trezor.enums import EthereumDataType  # noqa: F401
-    from trezor.enums import EthereumDefinitionType  # noqa: F401
-    from trezor.enums import FailureType  # noqa: F401
-    from trezor.enums import HomescreenFormat  # noqa: F401
-    from trezor.enums import InputScriptType  # noqa: F401
-    from trezor.enums import MessageType  # noqa: F401
-    from trezor.enums import MoneroNetworkType  # noqa: F401
-    from trezor.enums import NEMImportanceTransferMode  # noqa: F401
-    from trezor.enums import NEMModificationType  # noqa: F401
-    from trezor.enums import NEMMosaicLevy  # noqa: F401
-    from trezor.enums import NEMSupplyChangeType  # noqa: F401
-    from trezor.enums import OutputScriptType  # noqa: F401
-    from trezor.enums import PinMatrixRequestType  # noqa: F401
-    from trezor.enums import RecoveryDeviceType  # noqa: F401
-    from trezor.enums import RequestType  # noqa: F401
-    from trezor.enums import SafetyCheckLevel  # noqa: F401
-    from trezor.enums import SdProtectOperationType  # noqa: F401
-    from trezor.enums import StellarAssetType  # noqa: F401
-    from trezor.enums import StellarMemoType  # noqa: F401
-    from trezor.enums import StellarSignerType  # noqa: F401
-    from trezor.enums import TezosBallotType  # noqa: F401
-    from trezor.enums import TezosContractType  # noqa: F401
-    from trezor.enums import WordRequestType  # noqa: F401
+    from cerberus.enums import AmountUnit  # noqa: F401
+    from cerberus.enums import BackupType  # noqa: F401
+    from cerberus.enums import BinanceOrderSide  # noqa: F401
+    from cerberus.enums import BinanceOrderType  # noqa: F401
+    from cerberus.enums import BinanceTimeInForce  # noqa: F401
+    from cerberus.enums import BootCommand  # noqa: F401
+    from cerberus.enums import ButtonRequestType  # noqa: F401
+    from cerberus.enums import Capability  # noqa: F401
+    from cerberus.enums import CardanoAddressType  # noqa: F401
+    from cerberus.enums import CardanoCVoteRegistrationFormat  # noqa: F401
+    from cerberus.enums import CardanoCertificateType  # noqa: F401
+    from cerberus.enums import CardanoDerivationType  # noqa: F401
+    from cerberus.enums import CardanoNativeScriptHashDisplayFormat  # noqa: F401
+    from cerberus.enums import CardanoNativeScriptType  # noqa: F401
+    from cerberus.enums import CardanoPoolRelayType  # noqa: F401
+    from cerberus.enums import CardanoTxAuxiliaryDataSupplementType  # noqa: F401
+    from cerberus.enums import CardanoTxOutputSerializationFormat  # noqa: F401
+    from cerberus.enums import CardanoTxSigningMode  # noqa: F401
+    from cerberus.enums import CardanoTxWitnessType  # noqa: F401
+    from cerberus.enums import DebugButton  # noqa: F401
+    from cerberus.enums import DebugPhysicalButton  # noqa: F401
+    from cerberus.enums import DebugSwipeDirection  # noqa: F401
+    from cerberus.enums import DecredStakingSpendType  # noqa: F401
+    from cerberus.enums import EthereumDataType  # noqa: F401
+    from cerberus.enums import EthereumDefinitionType  # noqa: F401
+    from cerberus.enums import FailureType  # noqa: F401
+    from cerberus.enums import HomescreenFormat  # noqa: F401
+    from cerberus.enums import InputScriptType  # noqa: F401
+    from cerberus.enums import MessageType  # noqa: F401
+    from cerberus.enums import MoneroNetworkType  # noqa: F401
+    from cerberus.enums import NEMImportanceTransferMode  # noqa: F401
+    from cerberus.enums import NEMModificationType  # noqa: F401
+    from cerberus.enums import NEMMosaicLevy  # noqa: F401
+    from cerberus.enums import NEMSupplyChangeType  # noqa: F401
+    from cerberus.enums import OutputScriptType  # noqa: F401
+    from cerberus.enums import PinMatrixRequestType  # noqa: F401
+    from cerberus.enums import RecoveryDeviceType  # noqa: F401
+    from cerberus.enums import RequestType  # noqa: F401
+    from cerberus.enums import SafetyCheckLevel  # noqa: F401
+    from cerberus.enums import SdProtectOperationType  # noqa: F401
+    from cerberus.enums import StellarAssetType  # noqa: F401
+    from cerberus.enums import StellarMemoType  # noqa: F401
+    from cerberus.enums import StellarSignerType  # noqa: F401
+    from cerberus.enums import TezosBallotType  # noqa: F401
+    from cerberus.enums import TezosContractType  # noqa: F401
+    from cerberus.enums import WordRequestType  # noqa: F401
 
     class BinanceGetAddress(protobuf.MessageType):
         address_n: "list[int]"

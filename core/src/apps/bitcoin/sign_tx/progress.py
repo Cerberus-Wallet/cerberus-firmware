@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import SignTx
+    from cerberus.messages import SignTx
 
     from apps.common.coininfo import CoinInfo
 
@@ -112,8 +112,8 @@ class Progress:
         self.report()
 
     def report_init(self) -> None:
-        from trezor import TR, workflow
-        from trezor.ui.layouts.progress import bitcoin_progress, coinjoin_progress
+        from cerberus import TR, workflow
+        from cerberus.ui.layouts.progress import bitcoin_progress, coinjoin_progress
 
         progress_layout = coinjoin_progress if self.is_coinjoin else bitcoin_progress
         workflow.close_others()
@@ -125,7 +125,7 @@ class Progress:
         self.progress_layout = progress_layout(text)
 
     def report(self) -> None:
-        from trezor import utils
+        from cerberus import utils
 
         if utils.DISABLE_ANIMATION:
             return
@@ -136,7 +136,7 @@ class Progress:
 
         def assert_finished(self) -> None:
             if abs(self.progress - self.steps) > 0.5:
-                from trezor import wire
+                from cerberus import wire
 
                 operation = "signing" if self.signing else "loading"
                 raise wire.FirmwareError(

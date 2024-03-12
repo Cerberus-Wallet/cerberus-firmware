@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
-from trezor.enums import StellarAssetType
-from trezor.wire import DataError, ProcessError
+from cerberus.enums import StellarAssetType
+from cerberus.wire import DataError, ProcessError
 
 from ..writers import (
     write_bool,
@@ -13,7 +13,7 @@ from ..writers import (
 )
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         StellarAccountMergeOp,
         StellarAllowTrustOp,
         StellarAsset,
@@ -30,7 +30,7 @@ if TYPE_CHECKING:
         StellarPaymentOp,
         StellarSetOptionsOp,
     )
-    from trezor.utils import Writer
+    from cerberus.utils import Writer
 
 
 def write_account_merge_op(w: Writer, msg: StellarAccountMergeOp) -> None:

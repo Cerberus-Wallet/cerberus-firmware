@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -22,9 +22,9 @@
 #include <stdint.h>
 #include <string.h>
 #include "display.h"
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
-#ifndef TREZOR_PRINT_DISABLE
+#ifndef CERBERUS_PRINT_DISABLE
 
 #define TERMINAL_COLS (DISPLAY_RESX / 6)
 #define TERMINAL_ROWS (DISPLAY_RESY / 8)
@@ -107,7 +107,7 @@ void term_print(const char *text, int textlen) {
   display_refresh();
 }
 
-#ifdef TREZOR_EMULATOR
+#ifdef CERBERUS_EMULATOR
 #define mini_vsnprintf vsnprintf
 #include <stdio.h>
 #else
@@ -128,4 +128,4 @@ void term_printf(const char *fmt, ...) {
   }
 }
 
-#endif  // TREZOR_PRINT_DISABLE
+#endif  // CERBERUS_PRINT_DISABLE

@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from trezor.wire import DataError
+from cerberus.wire import DataError
 
 from apps.common.keychain import with_slip44_keychain
 
@@ -8,7 +8,7 @@ from . import CURVE, PATTERNS, SLIP44_ID
 from .transaction import Transaction
 
 if TYPE_CHECKING:
-    from trezor.messages import SolanaSignTx, SolanaTxSignature
+    from cerberus.messages import SolanaSignTx, SolanaTxSignature
 
     from apps.common.keychain import Keychain
 
@@ -18,11 +18,11 @@ async def sign_tx(
     msg: SolanaSignTx,
     keychain: Keychain,
 ) -> SolanaTxSignature:
-    from trezor import TR
-    from trezor.crypto.curve import ed25519
-    from trezor.enums import ButtonRequestType
-    from trezor.messages import SolanaTxSignature
-    from trezor.ui.layouts import confirm_metadata, show_warning
+    from cerberus import TR
+    from cerberus.crypto.curve import ed25519
+    from cerberus.enums import ButtonRequestType
+    from cerberus.messages import SolanaTxSignature
+    from cerberus.ui.layouts import confirm_metadata, show_warning
 
     from apps.common import seed
 

@@ -3,14 +3,14 @@
 import os
 import tools
 
-TREZOR_MODEL = ARGUMENTS.get('TREZOR_MODEL', 'T')
+CERBERUS_MODEL = ARGUMENTS.get('CERBERUS_MODEL', 'T')
 CMAKELISTS = int(ARGUMENTS.get('CMAKELISTS', 0))
 
-if TREZOR_MODEL in ('1', ):
+if CERBERUS_MODEL in ('1', ):
     # skip boardloader build
     env = Environment()
     def build_boardloader(target,source,env):
-        print(f'Boardloader: nothing to build for Model {TREZOR_MODEL}')
+        print(f'Boardloader: nothing to build for Model {CERBERUS_MODEL}')
     program_bin = env.Command(
                  target='boardloader.bin',
                  source=None,
@@ -28,11 +28,11 @@ CPPDEFINES_HAL = []
 SOURCE_HAL = []
 PATH_HAL = []
 
-# modtrezorcrypto
+# modcerberuscrypto
 CCFLAGS_MOD += '-Wno-sequence-point '
 CPPPATH_MOD += [
-    'vendor/trezor-crypto',
-    'vendor/trezor-storage',
+    'vendor/cerberus-crypto',
+    'vendor/cerberus-storage',
 ]
 CPPDEFINES_MOD += [
     'AES_128',
@@ -41,18 +41,18 @@ CPPDEFINES_MOD += [
     'ED25519_NO_PRECOMP',
 ]
 SOURCE_MOD += [
-    'vendor/trezor-crypto/blake2s.c',
-    'vendor/trezor-crypto/ed25519-donna/curve25519-donna-32bit.c',
-    'vendor/trezor-crypto/ed25519-donna/curve25519-donna-helpers.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519-donna-32bit-tables.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519-donna-impl-base.c',
-    'vendor/trezor-crypto/ed25519-donna/modm-donna-32bit.c',
-    'vendor/trezor-crypto/memzero.c',
-    'vendor/trezor-crypto/sha2.c',
+    'vendor/cerberus-crypto/blake2s.c',
+    'vendor/cerberus-crypto/ed25519-donna/curve25519-donna-32bit.c',
+    'vendor/cerberus-crypto/ed25519-donna/curve25519-donna-helpers.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519-donna-32bit-tables.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519-donna-impl-base.c',
+    'vendor/cerberus-crypto/ed25519-donna/modm-donna-32bit.c',
+    'vendor/cerberus-crypto/memzero.c',
+    'vendor/cerberus-crypto/sha2.c',
 ]
 
-# modtrezorui
+# modcerberusui
 CPPPATH_MOD += [
         'vendor/micropython/lib/uzlib',
 ]
@@ -65,7 +65,7 @@ SOURCE_MOD += [
     'embed/lib/image.c',
     'embed/lib/mini_printf.c',
     'embed/lib/terminal.c',
-    'vendor/trezor-storage/flash_common.c',
+    'vendor/cerberus-storage/flash_common.c',
 
 ]
 
@@ -76,7 +76,7 @@ SOURCE_BOARDLOADER = [
 
 env = Environment(ENV=os.environ, CFLAGS='%s -DPRODUCTION=%s' % (ARGUMENTS.get('CFLAGS', ''), ARGUMENTS.get('PRODUCTION', '0')), CONSTRAINTS=["limited_util_s"])
 
-FEATURES_AVAILABLE = tools.configure_board(TREZOR_MODEL, FEATURES_WANTED, env, CPPDEFINES_HAL, SOURCE_HAL, PATH_HAL)
+FEATURES_AVAILABLE = tools.configure_board(CERBERUS_MODEL, FEATURES_WANTED, env, CPPDEFINES_HAL, SOURCE_HAL, PATH_HAL)
 
 env.Replace(
     CP='cp',
@@ -91,7 +91,7 @@ env.Replace(
     MAKECMAKELISTS='$PYTHON tools/make_cmakelists.py',)
 
 env.Replace(
-    TREZOR_MODEL=TREZOR_MODEL, )
+    CERBERUS_MODEL=CERBERUS_MODEL, )
 
 env.Replace(
     COPT=env.get('ENV').get('OPTIMIZE', '-Os'),
@@ -109,13 +109,13 @@ env.Replace(
         'embed/boardloader',
         'embed/lib',
         'embed/models',
-        'embed/trezorhal',
-        'embed/extmod/modtrezorui',
+        'embed/cerberushal',
+        'embed/extmod/modcerberusui',
         'vendor/micropython/lib/cmsis/inc',
     ] + CPPPATH_MOD + PATH_HAL,
     CPPDEFINES=[
         'BOARDLOADER',
-        'TREZOR_MODEL_'+TREZOR_MODEL,
+        'CERBERUS_MODEL_'+CERBERUS_MODEL,
         'USE_HAL_DRIVER',
     ] + CPPDEFINES_MOD + CPPDEFINES_HAL,
     ASFLAGS=env.get('ENV')['CPU_ASFLAGS'],
@@ -148,7 +148,7 @@ program_elf = env.Command(
     '$LINK -o $TARGET $CCFLAGS $CFLAGS $LINKFLAGS $SOURCES -lc_nano -lgcc',
 )
 
-BINARY_NAME = f"build/boardloader/boardloader-{tools.get_model_identifier(TREZOR_MODEL)}"
+BINARY_NAME = f"build/boardloader/boardloader-{tools.get_model_identifier(CERBERUS_MODEL)}"
 BINARY_NAME += "-" + tools.get_version('embed/boardloader/version.h')
 BINARY_NAME += "-" + tools.get_git_revision_short_hash()
 BINARY_NAME += "-dirty" if tools.get_git_modified() else ""

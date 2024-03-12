@@ -1,16 +1,16 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import EthereumVerifyMessage, Success
+    from cerberus.messages import EthereumVerifyMessage, Success
 
 
 async def verify_message(msg: EthereumVerifyMessage) -> Success:
-    from trezor import TR
-    from trezor.crypto.curve import secp256k1
-    from trezor.crypto.hashlib import sha3_256
-    from trezor.messages import Success
-    from trezor.ui.layouts import confirm_signverify, show_success
-    from trezor.wire import DataError
+    from cerberus import TR
+    from cerberus.crypto.curve import secp256k1
+    from cerberus.crypto.hashlib import sha3_256
+    from cerberus.messages import Success
+    from cerberus.ui.layouts import confirm_signverify, show_success
+    from cerberus.wire import DataError
 
     from apps.common.signverify import decode_message
 

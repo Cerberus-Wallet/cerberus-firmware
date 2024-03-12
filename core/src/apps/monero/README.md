@@ -10,9 +10,9 @@ REVIEWER = Tomas Susanka <tomas.susanka@satoshilabs.com>,
 
 -----
 
-This Monero implementation was implemented from scratch originally for Trezor by porting Monero C++ code to the Python codebase.
+This Monero implementation was implemented from scratch originally for Cerberus by porting Monero C++ code to the Python codebase.
 
-The implementation heavily relies on the [trezor-crypto] Monero functionality which implements basic crypto primitives and
+The implementation heavily relies on the [cerberus-crypto] Monero functionality which implements basic crypto primitives and
 other Monero related functionality (e.g., monero base58, accelerated and optimized Borromean range signatures)
 
 A general high level description of the integration proposal is described in the documentation: [monero-doc].
@@ -23,7 +23,7 @@ The implementation provides the following features:
 
 ### Transaction signature
 
-Signs a Monero transaction on the Trezor.
+Signs a Monero transaction on the Cerberus.
 
 - Designed so number of UTXO is practically unlimited (hundreds to thousands)
 - Maximal number of outputs per transaction is 8 (usually there are only 2)
@@ -31,13 +31,13 @@ Signs a Monero transaction on the Trezor.
 
 ### Key Image sync
 
-Key Image is computed with the spend key which is stored on the Trezor.
+Key Image is computed with the spend key which is stored on the Cerberus.
 
 In order to detect if the UTXO has been already spent (thus computing balance due to change transactions)
 and correct spending UTXOs the key images are required. Without the key images the Monero view only
 wallet incorrectly computes balance as it sees all ever received transactions as unspent.
 
-Key image sync is a protocol that allows to compute key images for incoming transfers by Trezor.
+Key image sync is a protocol that allows to compute key images for incoming transfers by Cerberus.
 
 Example: 20 XMR in the single UTXO is received, thus real balance is 20. 1 XMR is sent to a different
 address and remaining 19 are sent back with a change transaction. Correct balance is 19 but without
@@ -47,7 +47,7 @@ rejected by a Monero daemon as a double spending transaction.
 
 Normally, the Key image sync is not needed as the key image computation is done by
 the transaction signing algorithm. However, if the wallet file is somehow corrupted
-or the wallet is used on a new host / restored from the Trezor the key
+or the wallet is used on a new host / restored from the Cerberus the key
 image sync is required for correct function of the wallet. It recomputes key images
 for all received transaction inputs.
 
@@ -77,14 +77,14 @@ using the data. Cold wallet creates `signed_txset`
 ### Cold wallet protocols
 
 As cold wallet support is already present in Monero codebase, the protocols were well designed and analyzed.
-We decided to reuse the cold wallet approach when signing the transaction as the Trezor pretty much behaves as the cold wallet,
-i.e., does not have access to the blockchain or full Monero node. The whole transaction is built in the Trezor thus
+We decided to reuse the cold wallet approach when signing the transaction as the Cerberus pretty much behaves as the cold wallet,
+i.e., does not have access to the blockchain or full Monero node. The whole transaction is built in the Cerberus thus
 the integration has security properties of the cold wallet (which is belevied to be secure). This integration approach
-makes security analysis easier and enables to use existing codebase and protocols. This makes merging Trezor support to
+makes security analysis easier and enables to use existing codebase and protocols. This makes merging Cerberus support to
 the Monero codebase easier.
 We believe that by choosing a bit more high-level approach in the protocol design we could easily add more advanced features,
 
-Trezor implements cold wallet protocols in this integration scheme.
+Cerberus implements cold wallet protocols in this integration scheme.
 
 
 ## Description
@@ -113,12 +113,12 @@ Serialization is synchronous.
 Transaction signing and Key Image (KI) sync are multi-step stateful protocols.
 The protocol have several roundtrips.
 
-In the signing protocol the connected host mainly serves as a dumb storage providing values to the Trezor when needed,
-mainly due to memory constrains on Trezor. The offloaded data can be in plaintext. In this case data is HMACed with unique HMAC
+In the signing protocol the connected host mainly serves as a dumb storage providing values to the Cerberus when needed,
+mainly due to memory constrains on Cerberus. The offloaded data can be in plaintext. In this case data is HMACed with unique HMAC
 key to avoid data tampering, reordering, replay, reuse, etc... Some data are offloaded as protected, encrypted and authenticated
 with Chacha20Poly1305 with unique key (derived from the protocol step, message, purpose, counter, master secret).
 
-Trezor builds the signed Monero transaction incrementally, i.e., one UTXO per round trip, one transaction output per roundtrip.
+Cerberus builds the signed Monero transaction incrementally, i.e., one UTXO per round trip, one transaction output per roundtrip.
 
 ### Protocol workflow
 
@@ -144,7 +144,7 @@ In the KI sync cold wallet protocol KIs are generated by the cold wallet. For ea
 generated by the cold wallet (KI proof).
 
 KI sync is mainly needed to recover from some problem or when using a new hot-wallet (corruption of a wallet file or
-using Trezor on a different host).
+using Cerberus on a different host).
 
 The KI protocol has 3 steps.
 
@@ -180,23 +180,23 @@ For detailed description and rationale please refer to the [monero-doc].
 range proof details (type of the range proof, batching scheme).
 
 After receiving this message:
-- Trezor prompts user for verification of the destination addresses and amounts.
+- Cerberus prompts user for verification of the destination addresses and amounts.
 - Commitments are computed thus later potential deviations from transaction destinations are detected and signing aborts.
 - Secrets for HMACs / encryption are computed, TX key is computed.
 - Deprecated: Precomputes required sub-addresses (init message indicates which sub-addresses are needed).
 
 ### `MoneroTransactionSetInputRequest`
 
-- Sends one UTXO to the Trezor for processing, encoded as `MoneroTransactionSourceEntry`.
+- Sends one UTXO to the Cerberus for processing, encoded as `MoneroTransactionSourceEntry`.
 - Contains construction data needed for signing the transaction, computing spending key for UTXO.
 
-Trezor computes spending keys, `TxinToKey`, `pseudo_out`, HMACs for offloaded data
+Cerberus computes spending keys, `TxinToKey`, `pseudo_out`, HMACs for offloaded data
 
 ### `MoneroTransactionInputViniRequest`
 
 - Step needed to correctly hash all transaction inputs, in the right order (permutation computed in the previous step).
 - Contains `MoneroTransactionSourceEntry` and `TxinToKey` computed in the previous step.
-- Trezor Computes `tx_prefix_hash` is part of the signed data.
+- Cerberus Computes `tx_prefix_hash` is part of the signed data.
 
 
 ### `MoneroTransactionAllInputsSetRequest`
@@ -208,26 +208,26 @@ Trezor computes spending keys, `TxinToKey`, `pseudo_out`, HMACs for offloaded da
 
 - Sends transaction output, `MoneroTransactionDestinationEntry`, one per message.
 - HMAC prevents tampering with previously accepted data (in the init step).
-- Trezor computes data related to transaction output, e.g., range proofs, ECDH info for the receiver, output public key.
+- Cerberus computes data related to transaction output, e.g., range proofs, ECDH info for the receiver, output public key.
 - In case offloaded range proof is used the request can carry computed range proof.
 
 ### `MoneroTransactionAllOutSetRequest`
 
-Sent after all transaction outputs have been sent to the Trezor for processing.
+Sent after all transaction outputs have been sent to the Cerberus for processing.
 Request is empty, the response contains computed `extra` field (may contain additional public keys if sub-addresses are used),
 computed `tx_prefix_hash` and basis for the final transaction signature `MoneroRingCtSig` (fee, transaction type).
 
 ### `MoneroTransactionMlsagDoneRequest`
 
-Message sent to ask Trezor to compute pre-MLSAG hash required for the signature.
-Hash is computed incrementally by Trezor since the init message and can be finalized in this step.
+Message sent to ask Cerberus to compute pre-MLSAG hash required for the signature.
+Hash is computed incrementally by Cerberus since the init message and can be finalized in this step.
 Request is empty, response contains message hash, required for the signature.
 
 ### `MoneroTransactionSignInputRequest`
 
 - Caries `MoneroTransactionSourceEntry`, similarly as previous messages `MoneroTransactionSetInputRequest`, `MoneroTransactionInputViniRequest`.
 - Caries computed transaction inputs, pseudo outputs, HMACs, encrypted spending keys and alpha masks
-- Trezor generates MLSAG for this UTXO, returns the signature.
+- Cerberus generates MLSAG for this UTXO, returns the signature.
 - As output masks are deterministic, the pseudo output balancing is performed in this step (sum of input masks equal to the sum of output masks).
 - Multisig is not supported.
 
@@ -235,8 +235,8 @@ Request is empty, response contains message hash, required for the signature.
 
 - Sent when all UTXOs have been signed properly
 - Finalizes transaction signature
-- Returns encrypted transaction private keys which are needed later, e.g. for TX proof. As Trezor cannot store aux data
-for all signed transactions its offloaded encrypted to the wallet. Later when TX proof is implemented in the Trezor it
+- Returns encrypted transaction private keys which are needed later, e.g. for TX proof. As Cerberus cannot store aux data
+for all signed transactions its offloaded encrypted to the wallet. Later when TX proof is implemented in the Cerberus it
 will load encrypted TX keys, decrypt it and generate the proof.
 - Since Client v3+ the final response contains opening encryption key to decrypt signatures generated in the previous step.
 
@@ -247,25 +247,25 @@ Few notes on design / implementation.
 
 ### Cryptography
 
-Operation with Ed25519 points and scalars are implemented in [trezor-crypto] so the underlying cryptography layer
+Operation with Ed25519 points and scalars are implemented in [cerberus-crypto] so the underlying cryptography layer
 is fast, secure and constant-time.
 
 Ed Point coordinates are Extended Edwards, using type `ge25519` with coordinates `(x, y, z, t)`. Functions in Monero code
-in the [trezor-crypto] use the `ge25519` for points (no other different point formats).
+in the [cerberus-crypto] use the `ge25519` for points (no other different point formats).
 
 Functions like `op256_modm` (e.g., `add256_modm`) operate on scalar values, i.e., 256 bit integers modulo curve order
 `2**252 + 3*610042537739*15158679415041928064055629`.
 
 Functions `curve25519_*` operate on 256 bit integers modulo `2**255 - 19`, the coordinates of the point.
-These are used mainly internally (e.g., for `hash_to_point()`) and not exported to the [trezor-core].
+These are used mainly internally (e.g., for `hash_to_point()`) and not exported to the [cerberus-core].
 
-[trezor-crypto] contains also some Monero-specific functions, such as
-`xmr_hash_to_scalar`, `xmr_hash_to_ec`, `xmr_generate_key_derivation`. Those are used in [trezor-core] where more high
+[cerberus-crypto] contains also some Monero-specific functions, such as
+`xmr_hash_to_scalar`, `xmr_hash_to_ec`, `xmr_generate_key_derivation`. Those are used in [cerberus-core] where more high
 level operations are implemented, such as MLSAG.
 
 #### Crypto API
 
-API bridging [trezor-crypto] and [trezor-core]: `embed/extmod/modtrezorcrypto/modtrezorcrypto-monero.h`
+API bridging [cerberus-crypto] and [cerberus-core]: `embed/extmod/modcerberuscrypto/modcerberuscrypto-monero.h`
 
 It encapsulates Ed25519 points and scalars in corresponding Python classes which have memory-wiping destructor.
 API provides basic functions for work with scalars and points and Monero specific functions.
@@ -279,7 +279,7 @@ normed to avoid complications when chaining operations such as `scalarmult`s.
 Bulletproof generation and verification is implemented, however the device can handle maximum 2 batched outputs
 in the bulletproof due to high memory requirements (more on that in [monero-doc]). If number of outputs is larger
 than 2 the offloading to host is required. In such case, the bulletproofs are first computed at the host and sent to
-Trezor for verification.
+Cerberus for verification.
 
 Bulletproof implementation is covered by unit tests, the proofs in unittest were generated by the Monero C++
 implementation.
@@ -288,7 +288,7 @@ implementation.
 
 
 
-[trezor-crypto]: https://github.com/trezor/trezor-crypto
-[trezor-core]: https://github.com/trezor/trezor-core
-[monero-doc]: https://github.com/ph4r05/monero-trezor-doc
+[cerberus-crypto]: https://github.com/Cerberus-Wallet/cerberus-crypto
+[cerberus-core]: https://github.com/Cerberus-Wallet/cerberus-core
+[monero-doc]: https://github.com/ph4r05/monero-cerberus-doc
 [monero-serialize]: https://github.com/ph4r05/monero-serialize

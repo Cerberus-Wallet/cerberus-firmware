@@ -1,8 +1,8 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor.crypto import hashlib
-from trezor.enums import CardanoAddressType, CardanoCVoteRegistrationFormat
+from cerberus.crypto import hashlib
+from cerberus.enums import CardanoAddressType, CardanoCVoteRegistrationFormat
 
 from apps.common import cbor
 
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     CVoteRegistrationPayload = dict[int, Delegations | bytes | int]
     SignedCVoteRegistrationPayload = tuple[CVoteRegistrationPayload, bytes]
 
-    from trezor import messages
+    from cerberus import messages
 
     from . import seed
 
@@ -31,7 +31,7 @@ _DEFAULT_VOTING_PURPOSE = const(0)
 
 
 def assert_cond(condition: bool) -> None:
-    from trezor import wire
+    from cerberus import wire
 
     if not condition:
         raise wire.ProcessError("Invalid auxiliary data")
@@ -205,8 +205,8 @@ def get_hash_and_supplement(
     protocol_magic: int,
     network_id: int,
 ) -> tuple[bytes, messages.CardanoTxAuxiliaryDataSupplement]:
-    from trezor import messages
-    from trezor.enums import CardanoTxAuxiliaryDataSupplementType
+    from cerberus import messages
+    from cerberus.enums import CardanoTxAuxiliaryDataSupplementType
 
     if parameters := auxiliary_data.cvote_registration_parameters:
         (
@@ -312,7 +312,7 @@ def _create_cvote_registration_payload_signature(
     cvote_registration_payload: CVoteRegistrationPayload,
     path: list[int],
 ) -> bytes:
-    from trezor.crypto.curve import ed25519
+    from cerberus.crypto.curve import ed25519
 
     node = keychain.derive(path)
 

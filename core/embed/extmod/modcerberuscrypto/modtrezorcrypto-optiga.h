@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -24,7 +24,7 @@
 #include "optiga.h"
 #include "optiga_commands.h"
 
-/// package: trezorcrypto.optiga
+/// package: cerberuscrypto.optiga
 
 #define MAX_DER_SIGNATURE_SIZE 72
 
@@ -42,7 +42,7 @@ MP_DEFINE_EXCEPTION(SigningInaccessible, OptigaError)
 ///     """
 ///     Return the certificate stored at the given index.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_optiga_get_certificate(mp_obj_t cert_index) {
+STATIC mp_obj_t mod_cerberuscrypto_optiga_get_certificate(mp_obj_t cert_index) {
   mp_int_t idx = mp_obj_get_int(cert_index);
   if (idx < 0 || idx >= OPTIGA_CERT_COUNT) {
     mp_raise_ValueError("Invalid index.");
@@ -63,8 +63,8 @@ STATIC mp_obj_t mod_trezorcrypto_optiga_get_certificate(mp_obj_t cert_index) {
   cert.len = cert_size;
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &cert);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_optiga_get_certificate_obj,
-                                 mod_trezorcrypto_optiga_get_certificate);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_optiga_get_certificate_obj,
+                                 mod_cerberuscrypto_optiga_get_certificate);
 
 /// def sign(
 ///     key_index: int,
@@ -74,7 +74,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_optiga_get_certificate_obj,
 ///     Uses the private key at key_index to produce a DER-encoded signature of
 ///     the digest.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_optiga_sign(mp_obj_t key_index,
+STATIC mp_obj_t mod_cerberuscrypto_optiga_sign(mp_obj_t key_index,
                                              mp_obj_t digest) {
   mp_int_t idx = mp_obj_get_int(key_index);
   if (idx < 0 || idx >= OPTIGA_ECC_KEY_COUNT) {
@@ -105,17 +105,17 @@ STATIC mp_obj_t mod_trezorcrypto_optiga_sign(mp_obj_t key_index,
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &sig);
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_optiga_sign_obj,
-                                 mod_trezorcrypto_optiga_sign);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberuscrypto_optiga_sign_obj,
+                                 mod_cerberuscrypto_optiga_sign);
 
 /// DEVICE_CERT_INDEX: int
 /// DEVICE_ECC_KEY_INDEX: int
 
-STATIC const mp_rom_map_elem_t mod_trezorcrypto_optiga_globals_table[] = {
+STATIC const mp_rom_map_elem_t mod_cerberuscrypto_optiga_globals_table[] = {
     {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_optiga)},
     {MP_ROM_QSTR(MP_QSTR_get_certificate),
-     MP_ROM_PTR(&mod_trezorcrypto_optiga_get_certificate_obj)},
-    {MP_ROM_QSTR(MP_QSTR_sign), MP_ROM_PTR(&mod_trezorcrypto_optiga_sign_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_optiga_get_certificate_obj)},
+    {MP_ROM_QSTR(MP_QSTR_sign), MP_ROM_PTR(&mod_cerberuscrypto_optiga_sign_obj)},
     {MP_ROM_QSTR(MP_QSTR_DEVICE_CERT_INDEX),
      MP_ROM_INT(OPTIGA_DEVICE_CERT_INDEX)},
     {MP_ROM_QSTR(MP_QSTR_DEVICE_ECC_KEY_INDEX),
@@ -123,12 +123,12 @@ STATIC const mp_rom_map_elem_t mod_trezorcrypto_optiga_globals_table[] = {
     {MP_ROM_QSTR(MP_QSTR_OptigaError), MP_ROM_PTR(&mp_type_OptigaError)},
     {MP_ROM_QSTR(MP_QSTR_SigningInaccessible),
      MP_ROM_PTR(&mp_type_SigningInaccessible)}};
-STATIC MP_DEFINE_CONST_DICT(mod_trezorcrypto_optiga_globals,
-                            mod_trezorcrypto_optiga_globals_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberuscrypto_optiga_globals,
+                            mod_cerberuscrypto_optiga_globals_table);
 
-STATIC const mp_obj_module_t mod_trezorcrypto_optiga_module = {
+STATIC const mp_obj_module_t mod_cerberuscrypto_optiga_module = {
     .base = {&mp_type_module},
-    .globals = (mp_obj_dict_t *)&mod_trezorcrypto_optiga_globals,
+    .globals = (mp_obj_dict_t *)&mod_cerberuscrypto_optiga_globals,
 };
 
 #endif

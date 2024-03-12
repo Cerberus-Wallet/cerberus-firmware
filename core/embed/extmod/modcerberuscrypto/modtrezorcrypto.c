@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -25,9 +25,9 @@
 
 #include "py/runtime.h"
 
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
-#if MICROPY_PY_TREZORCRYPTO
+#if MICROPY_PY_CERBERUSCRYPTO
 
 static mp_obj_t ui_wait_callback = mp_const_none;
 
@@ -38,106 +38,106 @@ static void wrapped_ui_wait_callback(uint32_t current, uint32_t total) {
   }
 }
 
-#include "modtrezorcrypto-aes.h"
-#include "modtrezorcrypto-bech32.h"
-#include "modtrezorcrypto-bip32.h"
+#include "modcerberuscrypto-aes.h"
+#include "modcerberuscrypto-bech32.h"
+#include "modcerberuscrypto-bip32.h"
 #ifdef USE_SECP256K1_ZKP
-#include "modtrezorcrypto-bip340.h"
+#include "modcerberuscrypto-bip340.h"
 #endif
-#include "modtrezorcrypto-bip39.h"
-#include "modtrezorcrypto-blake256.h"
-#include "modtrezorcrypto-blake2b.h"
-#include "modtrezorcrypto-blake2s.h"
-#include "modtrezorcrypto-chacha20poly1305.h"
-#include "modtrezorcrypto-crc.h"
-#include "modtrezorcrypto-curve25519.h"
-#include "modtrezorcrypto-ed25519.h"
-#include "modtrezorcrypto-groestl.h"
-#include "modtrezorcrypto-hmac.h"
-#include "modtrezorcrypto-nist256p1.h"
-#include "modtrezorcrypto-pbkdf2.h"
-#include "modtrezorcrypto-random.h"
-#include "modtrezorcrypto-ripemd160.h"
-#include "modtrezorcrypto-secp256k1.h"
-#include "modtrezorcrypto-sha1.h"
-#include "modtrezorcrypto-sha256.h"
-#include "modtrezorcrypto-sha3-256.h"
-#include "modtrezorcrypto-sha3-512.h"
-#include "modtrezorcrypto-sha512.h"
-#include "modtrezorcrypto-shamir.h"
-#include "modtrezorcrypto-slip39.h"
+#include "modcerberuscrypto-bip39.h"
+#include "modcerberuscrypto-blake256.h"
+#include "modcerberuscrypto-blake2b.h"
+#include "modcerberuscrypto-blake2s.h"
+#include "modcerberuscrypto-chacha20poly1305.h"
+#include "modcerberuscrypto-crc.h"
+#include "modcerberuscrypto-curve25519.h"
+#include "modcerberuscrypto-ed25519.h"
+#include "modcerberuscrypto-groestl.h"
+#include "modcerberuscrypto-hmac.h"
+#include "modcerberuscrypto-nist256p1.h"
+#include "modcerberuscrypto-pbkdf2.h"
+#include "modcerberuscrypto-random.h"
+#include "modcerberuscrypto-ripemd160.h"
+#include "modcerberuscrypto-secp256k1.h"
+#include "modcerberuscrypto-sha1.h"
+#include "modcerberuscrypto-sha256.h"
+#include "modcerberuscrypto-sha3-256.h"
+#include "modcerberuscrypto-sha3-512.h"
+#include "modcerberuscrypto-sha512.h"
+#include "modcerberuscrypto-shamir.h"
+#include "modcerberuscrypto-slip39.h"
 #ifdef USE_OPTIGA
-#include "modtrezorcrypto-optiga.h"
+#include "modcerberuscrypto-optiga.h"
 #endif
 #if !BITCOIN_ONLY
-#include "modtrezorcrypto-cardano.h"
-#include "modtrezorcrypto-monero.h"
-#include "modtrezorcrypto-nem.h"
+#include "modcerberuscrypto-cardano.h"
+#include "modcerberuscrypto-monero.h"
+#include "modcerberuscrypto-nem.h"
 #endif
 
-STATIC const mp_rom_map_elem_t mp_module_trezorcrypto_globals_table[] = {
-    {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_trezorcrypto)},
-    {MP_ROM_QSTR(MP_QSTR_aes), MP_ROM_PTR(&mod_trezorcrypto_AES_type)},
-    {MP_ROM_QSTR(MP_QSTR_bech32), MP_ROM_PTR(&mod_trezorcrypto_bech32_module)},
-    {MP_ROM_QSTR(MP_QSTR_bip32), MP_ROM_PTR(&mod_trezorcrypto_bip32_module)},
-    {MP_ROM_QSTR(MP_QSTR_bip39), MP_ROM_PTR(&mod_trezorcrypto_bip39_module)},
+STATIC const mp_rom_map_elem_t mp_module_cerberuscrypto_globals_table[] = {
+    {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_cerberuscrypto)},
+    {MP_ROM_QSTR(MP_QSTR_aes), MP_ROM_PTR(&mod_cerberuscrypto_AES_type)},
+    {MP_ROM_QSTR(MP_QSTR_bech32), MP_ROM_PTR(&mod_cerberuscrypto_bech32_module)},
+    {MP_ROM_QSTR(MP_QSTR_bip32), MP_ROM_PTR(&mod_cerberuscrypto_bip32_module)},
+    {MP_ROM_QSTR(MP_QSTR_bip39), MP_ROM_PTR(&mod_cerberuscrypto_bip39_module)},
     {MP_ROM_QSTR(MP_QSTR_blake256),
-     MP_ROM_PTR(&mod_trezorcrypto_Blake256_type)},
-    {MP_ROM_QSTR(MP_QSTR_blake2b), MP_ROM_PTR(&mod_trezorcrypto_Blake2b_type)},
-    {MP_ROM_QSTR(MP_QSTR_blake2s), MP_ROM_PTR(&mod_trezorcrypto_Blake2s_type)},
+     MP_ROM_PTR(&mod_cerberuscrypto_Blake256_type)},
+    {MP_ROM_QSTR(MP_QSTR_blake2b), MP_ROM_PTR(&mod_cerberuscrypto_Blake2b_type)},
+    {MP_ROM_QSTR(MP_QSTR_blake2s), MP_ROM_PTR(&mod_cerberuscrypto_Blake2s_type)},
 #if !BITCOIN_ONLY
     {MP_ROM_QSTR(MP_QSTR_cardano),
-     MP_ROM_PTR(&mod_trezorcrypto_cardano_module)},
+     MP_ROM_PTR(&mod_cerberuscrypto_cardano_module)},
 #endif
     {MP_ROM_QSTR(MP_QSTR_chacha20poly1305),
-     MP_ROM_PTR(&mod_trezorcrypto_ChaCha20Poly1305_type)},
-    {MP_ROM_QSTR(MP_QSTR_crc), MP_ROM_PTR(&mod_trezorcrypto_crc_module)},
+     MP_ROM_PTR(&mod_cerberuscrypto_ChaCha20Poly1305_type)},
+    {MP_ROM_QSTR(MP_QSTR_crc), MP_ROM_PTR(&mod_cerberuscrypto_crc_module)},
     {MP_ROM_QSTR(MP_QSTR_curve25519),
-     MP_ROM_PTR(&mod_trezorcrypto_curve25519_module)},
+     MP_ROM_PTR(&mod_cerberuscrypto_curve25519_module)},
     {MP_ROM_QSTR(MP_QSTR_ed25519),
-     MP_ROM_PTR(&mod_trezorcrypto_ed25519_module)},
+     MP_ROM_PTR(&mod_cerberuscrypto_ed25519_module)},
 #if !BITCOIN_ONLY
-    {MP_ROM_QSTR(MP_QSTR_monero), MP_ROM_PTR(&mod_trezorcrypto_monero_module)},
+    {MP_ROM_QSTR(MP_QSTR_monero), MP_ROM_PTR(&mod_cerberuscrypto_monero_module)},
 #endif
     {MP_ROM_QSTR(MP_QSTR_nist256p1),
-     MP_ROM_PTR(&mod_trezorcrypto_nist256p1_module)},
+     MP_ROM_PTR(&mod_cerberuscrypto_nist256p1_module)},
     {MP_ROM_QSTR(MP_QSTR_groestl512),
-     MP_ROM_PTR(&mod_trezorcrypto_Groestl512_type)},
-    {MP_ROM_QSTR(MP_QSTR_hmac), MP_ROM_PTR(&mod_trezorcrypto_Hmac_type)},
+     MP_ROM_PTR(&mod_cerberuscrypto_Groestl512_type)},
+    {MP_ROM_QSTR(MP_QSTR_hmac), MP_ROM_PTR(&mod_cerberuscrypto_Hmac_type)},
 #if !BITCOIN_ONLY
-    {MP_ROM_QSTR(MP_QSTR_nem), MP_ROM_PTR(&mod_trezorcrypto_nem_module)},
+    {MP_ROM_QSTR(MP_QSTR_nem), MP_ROM_PTR(&mod_cerberuscrypto_nem_module)},
 #endif
-    {MP_ROM_QSTR(MP_QSTR_pbkdf2), MP_ROM_PTR(&mod_trezorcrypto_Pbkdf2_type)},
-    {MP_ROM_QSTR(MP_QSTR_random), MP_ROM_PTR(&mod_trezorcrypto_random_module)},
+    {MP_ROM_QSTR(MP_QSTR_pbkdf2), MP_ROM_PTR(&mod_cerberuscrypto_Pbkdf2_type)},
+    {MP_ROM_QSTR(MP_QSTR_random), MP_ROM_PTR(&mod_cerberuscrypto_random_module)},
     {MP_ROM_QSTR(MP_QSTR_ripemd160),
-     MP_ROM_PTR(&mod_trezorcrypto_Ripemd160_type)},
+     MP_ROM_PTR(&mod_cerberuscrypto_Ripemd160_type)},
     {MP_ROM_QSTR(MP_QSTR_secp256k1),
-     MP_ROM_PTR(&mod_trezorcrypto_secp256k1_module)},
+     MP_ROM_PTR(&mod_cerberuscrypto_secp256k1_module)},
 #if USE_SECP256K1_ZKP
-    {MP_ROM_QSTR(MP_QSTR_bip340), MP_ROM_PTR(&mod_trezorcrypto_bip340_module)},
+    {MP_ROM_QSTR(MP_QSTR_bip340), MP_ROM_PTR(&mod_cerberuscrypto_bip340_module)},
 #endif
-    {MP_ROM_QSTR(MP_QSTR_sha1), MP_ROM_PTR(&mod_trezorcrypto_Sha1_type)},
-    {MP_ROM_QSTR(MP_QSTR_sha256), MP_ROM_PTR(&mod_trezorcrypto_Sha256_type)},
-    {MP_ROM_QSTR(MP_QSTR_sha512), MP_ROM_PTR(&mod_trezorcrypto_Sha512_type)},
+    {MP_ROM_QSTR(MP_QSTR_sha1), MP_ROM_PTR(&mod_cerberuscrypto_Sha1_type)},
+    {MP_ROM_QSTR(MP_QSTR_sha256), MP_ROM_PTR(&mod_cerberuscrypto_Sha256_type)},
+    {MP_ROM_QSTR(MP_QSTR_sha512), MP_ROM_PTR(&mod_cerberuscrypto_Sha512_type)},
     {MP_ROM_QSTR(MP_QSTR_sha3_256),
-     MP_ROM_PTR(&mod_trezorcrypto_Sha3_256_type)},
+     MP_ROM_PTR(&mod_cerberuscrypto_Sha3_256_type)},
     {MP_ROM_QSTR(MP_QSTR_sha3_512),
-     MP_ROM_PTR(&mod_trezorcrypto_Sha3_512_type)},
-    {MP_ROM_QSTR(MP_QSTR_shamir), MP_ROM_PTR(&mod_trezorcrypto_shamir_module)},
-    {MP_ROM_QSTR(MP_QSTR_slip39), MP_ROM_PTR(&mod_trezorcrypto_slip39_module)},
+     MP_ROM_PTR(&mod_cerberuscrypto_Sha3_512_type)},
+    {MP_ROM_QSTR(MP_QSTR_shamir), MP_ROM_PTR(&mod_cerberuscrypto_shamir_module)},
+    {MP_ROM_QSTR(MP_QSTR_slip39), MP_ROM_PTR(&mod_cerberuscrypto_slip39_module)},
 #if USE_OPTIGA
-    {MP_ROM_QSTR(MP_QSTR_optiga), MP_ROM_PTR(&mod_trezorcrypto_optiga_module)},
+    {MP_ROM_QSTR(MP_QSTR_optiga), MP_ROM_PTR(&mod_cerberuscrypto_optiga_module)},
 #endif
 };
-STATIC MP_DEFINE_CONST_DICT(mp_module_trezorcrypto_globals,
-                            mp_module_trezorcrypto_globals_table);
+STATIC MP_DEFINE_CONST_DICT(mp_module_cerberuscrypto_globals,
+                            mp_module_cerberuscrypto_globals_table);
 
-const mp_obj_module_t mp_module_trezorcrypto = {
+const mp_obj_module_t mp_module_cerberuscrypto = {
     .base = {&mp_type_module},
-    .globals = (mp_obj_dict_t *)&mp_module_trezorcrypto_globals,
+    .globals = (mp_obj_dict_t *)&mp_module_cerberuscrypto_globals,
 };
 
-MP_REGISTER_MODULE(MP_QSTR_trezorcrypto, mp_module_trezorcrypto);
+MP_REGISTER_MODULE(MP_QSTR_cerberuscrypto, mp_module_cerberuscrypto);
 
 #ifdef USE_SECP256K1_ZKP
 void secp256k1_default_illegal_callback_fn(const char *str, void *data) {
@@ -153,4 +153,4 @@ void secp256k1_default_error_callback_fn(const char *str, void *data) {
 }
 #endif
 
-#endif  // MICROPY_PY_TREZORCRYPTO
+#endif  // MICROPY_PY_CERBERUSCRYPTO

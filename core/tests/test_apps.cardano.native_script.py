@@ -1,9 +1,9 @@
 from common import *  # isort:skip
 
-from trezor import wire
-from trezor.crypto import cardano
-from trezor.enums import CardanoNativeScriptType
-from trezor.messages import CardanoNativeScript
+from cerberus import wire
+from cerberus.crypto import cardano
+from cerberus.enums import CardanoNativeScriptType
+from cerberus.messages import CardanoNativeScript
 
 if not utils.BITCOIN_ONLY:
     from apps.cardano.native_script import (

@@ -2,7 +2,7 @@ from common import *  # isort:skip
 
 import storage
 import storage.device
-from trezor.crypto.hashlib import sha256
+from cerberus.crypto.hashlib import sha256
 
 from apps.common import mnemonic
 from apps.webauthn.credential import _NAME_MAX_LENGTH, Fido2Credential, U2fCredential

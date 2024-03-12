@@ -1,10 +1,10 @@
 from typing import TYPE_CHECKING
 
-import trezorui2
-from trezor import TR
-from trezor.enums import ButtonRequestType
-from trezor.wire import ActionCancelled
-from trezor.wire.context import wait as ctx_wait
+import cerberusui2
+from cerberus import TR
+from cerberus.enums import ButtonRequestType
+from cerberus.wire import ActionCancelled
+from cerberus.wire.context import wait as ctx_wait
 
 from ..common import interact
 from . import RustLayout, raise_if_not_confirmed
@@ -12,10 +12,10 @@ from . import RustLayout, raise_if_not_confirmed
 if TYPE_CHECKING:
     from typing import Callable, Sequence
 
-    from trezor.enums import BackupType
+    from cerberus.enums import BackupType
 
 
-CONFIRMED = trezorui2.CONFIRMED  # global_import_cache
+CONFIRMED = cerberusui2.CONFIRMED  # global_import_cache
 
 
 def _split_share_into_pages(share_words: Sequence[str], per_page: int = 4) -> list[str]:
@@ -60,7 +60,7 @@ async def show_share_words(
 
     result = await interact(
         RustLayout(
-            trezorui2.show_share_words(
+            cerberusui2.show_share_words(
                 title=title,
                 pages=pages,
             ),
@@ -97,7 +97,7 @@ async def select_word(
 
     result = await ctx_wait(
         RustLayout(
-            trezorui2.select_word(
+            cerberusui2.select_word(
                 title=title,
                 description=TR.reset__select_word_x_of_y_template.format(
                     checked_index + 1, count
@@ -113,7 +113,7 @@ async def select_word(
 
 
 async def slip39_show_checklist(step: int, backup_type: BackupType) -> None:
-    from trezor.enums import BackupType
+    from cerberus.enums import BackupType
 
     assert backup_type in (BackupType.Slip39_Basic, BackupType.Slip39_Advanced)
 
@@ -133,7 +133,7 @@ async def slip39_show_checklist(step: int, backup_type: BackupType) -> None:
 
     result = await interact(
         RustLayout(
-            trezorui2.show_checklist(
+            cerberusui2.show_checklist(
                 title=TR.reset__slip39_checklist_title,
                 button=TR.buttons__continue,
                 active=step,
@@ -157,7 +157,7 @@ async def _prompt_number(
     br_name: str,
 ) -> int:
     num_input = RustLayout(
-        trezorui2.request_number(
+        cerberusui2.request_number(
             title=title.upper(),
             description=description,
             count=count,
@@ -185,7 +185,7 @@ async def _prompt_number(
 
         await ctx_wait(
             RustLayout(
-                trezorui2.show_simple(
+                cerberusui2.show_simple(
                     title=None,
                     description=info(value),
                     button=TR.buttons__ok_i_understand,
@@ -322,7 +322,7 @@ async def slip39_advanced_prompt_group_threshold(num_of_groups: int) -> int:
 async def show_warning_backup(slip39: bool) -> None:
     result = await interact(
         RustLayout(
-            trezorui2.show_info(
+            cerberusui2.show_info(
                 title=TR.reset__never_make_digital_copy,
                 button=TR.buttons__ok_i_understand,
                 allow_cancel=False,
@@ -356,7 +356,7 @@ async def show_reset_warning(
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.show_warning(
+                cerberusui2.show_warning(
                     title=subheader or "",
                     description=content,
                     button=button.upper(),

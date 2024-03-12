@@ -3,16 +3,16 @@
 import os
 import tools
 
-TREZOR_MODEL = ARGUMENTS.get('TREZOR_MODEL', 'T')
+CERBERUS_MODEL = ARGUMENTS.get('CERBERUS_MODEL', 'T')
 CMAKELISTS = int(ARGUMENTS.get('CMAKELISTS', 0))
 BOOTLOADER_QA = ARGUMENTS.get('BOOTLOADER_QA', '0') == '1'
 PRODUCTION = 0 if BOOTLOADER_QA else ARGUMENTS.get('PRODUCTION', '0') == '1'
 
-if TREZOR_MODEL in ('1', ):
+if CERBERUS_MODEL in ('1', ):
     # skip bootloader build
     env = Environment()
     def build_bootloader(target,source,env):
-        print(f'Bootloader: nothing to build for Model {TREZOR_MODEL}')
+        print(f'Bootloader: nothing to build for Model {CERBERUS_MODEL}')
     program_bin = env.Command(
                  target='bootloader.bin',
                  source=None,
@@ -30,56 +30,56 @@ CPPDEFINES_HAL = []
 SOURCE_HAL = []
 PATH_HAL = []
 
-if TREZOR_MODEL in ('R', ):
+if CERBERUS_MODEL in ('R', ):
     FONT_NORMAL='Font_PixelOperator_Regular_8'
     FONT_DEMIBOLD='Font_PixelOperator_Regular_8'
     FONT_BOLD='Font_PixelOperator_Bold_8'
     FONT_MONO='Font_PixelOperator_Regular_8'
     FONT_BIG=None
-elif TREZOR_MODEL in ('T', 'DISC1'):
+elif CERBERUS_MODEL in ('T', 'DISC1'):
     FONT_NORMAL='Font_TTHoves_Regular_21'
     FONT_DEMIBOLD=None
     FONT_BOLD='Font_TTHoves_Bold_17'
     FONT_MONO=None
     FONT_BIG=None
 
-# modtrezorcrypto
+# modcerberuscrypto
 CCFLAGS_MOD += '-Wno-sequence-point '
 CPPPATH_MOD += [
-    'vendor/trezor-crypto',
-    'vendor/trezor-storage',
+    'vendor/cerberus-crypto',
+    'vendor/cerberus-storage',
 ]
 CPPDEFINES_MOD += [
     'AES_128',
     'AES_192',
     'USE_KECCAK',
     'ED25519_NO_PRECOMP',
-    'TREZOR_UI2',
+    'CERBERUS_UI2',
     'FANCY_FATAL_ERROR',
 ]
 
 SOURCE_MOD += [
-    'vendor/trezor-crypto/blake2s.c',
-    'vendor/trezor-crypto/chacha_drbg.c',
-    'vendor/trezor-crypto/chacha20poly1305/chacha_merged.c',
-    'vendor/trezor-crypto/ed25519-donna/curve25519-donna-32bit.c',
-    'vendor/trezor-crypto/ed25519-donna/curve25519-donna-helpers.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519-donna-32bit-tables.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519-donna-impl-base.c',
-    'vendor/trezor-crypto/ed25519-donna/modm-donna-32bit.c',
-    'vendor/trezor-crypto/memzero.c',
-    'vendor/trezor-crypto/rand.c',
-    'vendor/trezor-crypto/sha2.c',
+    'vendor/cerberus-crypto/blake2s.c',
+    'vendor/cerberus-crypto/chacha_drbg.c',
+    'vendor/cerberus-crypto/chacha20poly1305/chacha_merged.c',
+    'vendor/cerberus-crypto/ed25519-donna/curve25519-donna-32bit.c',
+    'vendor/cerberus-crypto/ed25519-donna/curve25519-donna-helpers.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519-donna-32bit-tables.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519-donna-impl-base.c',
+    'vendor/cerberus-crypto/ed25519-donna/modm-donna-32bit.c',
+    'vendor/cerberus-crypto/memzero.c',
+    'vendor/cerberus-crypto/rand.c',
+    'vendor/cerberus-crypto/sha2.c',
 ]
 
-# modtrezorui
+# modcerberusui
 CPPPATH_MOD += [
         'vendor/micropython/lib/uzlib',
 ]
 
 SOURCE_MOD += [
-    'embed/extmod/modtrezorcrypto/rand.c',
+    'embed/extmod/modcerberuscrypto/rand.c',
     'embed/lib/buffers.c',
     'embed/lib/colors.c',
     'embed/lib/display_utils.c',
@@ -93,7 +93,7 @@ SOURCE_MOD += [
     'vendor/micropython/lib/uzlib/adler32.c',
     'vendor/micropython/lib/uzlib/crc32.c',
     'vendor/micropython/lib/uzlib/tinflate.c',
-    'vendor/trezor-storage/flash_common.c',
+    'vendor/cerberus-storage/flash_common.c',
 ]
 
 SOURCE_NANOPB = [
@@ -120,7 +120,7 @@ tools.add_font('BIG', FONT_BIG, CPPDEFINES_MOD, SOURCE_MOD)
 
 env = Environment(ENV=os.environ, CFLAGS=f"{ARGUMENTS.get('CFLAGS', '')} -DPRODUCTION={int(PRODUCTION)} -DBOOTLOADER_QA={int(BOOTLOADER_QA)}")
 
-FEATURES_AVAILABLE = tools.configure_board(TREZOR_MODEL, FEATURES_WANTED, env, CPPDEFINES_HAL, SOURCE_HAL, PATH_HAL)
+FEATURES_AVAILABLE = tools.configure_board(CERBERUS_MODEL, FEATURES_WANTED, env, CPPDEFINES_HAL, SOURCE_HAL, PATH_HAL)
 
 env.Replace(
     CP='cp',
@@ -135,7 +135,7 @@ env.Replace(
     MAKECMAKELISTS='$PYTHON tools/make_cmakelists.py', )
 
 env.Replace(
-    TREZOR_MODEL=TREZOR_MODEL, )
+    CERBERUS_MODEL=CERBERUS_MODEL, )
 
 env.Replace(
     COPT=env.get('ENV').get('OPTIMIZE', '-Os'),
@@ -156,14 +156,14 @@ env.Replace(
         'embed/bootloader/protob',
         'embed/lib',
         'embed/models',
-        'embed/trezorhal',
-        'embed/extmod/modtrezorui',
+        'embed/cerberushal',
+        'embed/extmod/modcerberusui',
         'vendor/micropython/lib/cmsis/inc',
         'vendor/nanopb',
     ] + CPPPATH_MOD + PATH_HAL,
     CPPDEFINES=[
         'BOOTLOADER',
-        'TREZOR_MODEL_'+TREZOR_MODEL,
+        'CERBERUS_MODEL_'+CERBERUS_MODEL,
         'USE_HAL_DRIVER',
         'PB_FIELD_16BIT',
         'PB_ENCODE_ARRAYS_UNPACKED',
@@ -193,7 +193,7 @@ cmake_gen = env.Command(
 #
 
 RUST_PROFILE = 'release'
-RUST_LIB = 'trezor_lib'
+RUST_LIB = 'cerberus_lib'
 RUST_LIBDIR = f'build/bootloader/rust/{env.get("ENV")["RUST_TARGET"]}/{RUST_PROFILE}'
 RUST_LIBPATH = f'{RUST_LIBDIR}/lib{RUST_LIB}.a'
 
@@ -203,9 +203,9 @@ def cargo_build():
         profile = '--release'
     else:
         profile = ''
-    if TREZOR_MODEL in ("1",):
+    if CERBERUS_MODEL in ("1",):
         features = ["model_t1"]
-    elif TREZOR_MODEL in ("R",):
+    elif CERBERUS_MODEL in ("R",):
         features = ["model_tr"]
     else:
         features = ["model_tt"]
@@ -255,7 +255,7 @@ env.Depends(program_elf, rust)
 
 SUFFIX = '_qa' if BOOTLOADER_QA else ''
 
-BINARY_NAME = f"build/bootloader/bootloader-{tools.get_model_identifier(TREZOR_MODEL)}{SUFFIX}"
+BINARY_NAME = f"build/bootloader/bootloader-{tools.get_model_identifier(CERBERUS_MODEL)}{SUFFIX}"
 BINARY_NAME += "-" + tools.get_version('embed/bootloader/version.h')
 BINARY_NAME += "-" + tools.get_git_revision_short_hash()
 BINARY_NAME += "-dirty" if tools.get_git_modified() else ""

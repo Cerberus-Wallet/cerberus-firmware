@@ -123,7 +123,7 @@
 #define MICROPY_PY_SYS_EXIT         (0)
 #define MICROPY_PY_SYS_STDFILES     (0)
 #define MICROPY_PY_SYS_STDIO_BUFFER (0)
-#define MICROPY_PY_SYS_PLATFORM     "trezor"
+#define MICROPY_PY_SYS_PLATFORM     "cerberus"
 #define MICROPY_PY_UERRNO           (0)
 #define MICROPY_PY_THREAD           (0)
 #define MICROPY_PY_FSTRINGS         (1)
@@ -157,14 +157,14 @@
 #define MICROPY_PY_USOCKET          (0)
 #define MICROPY_PY_NETWORK          (0)
 
-#define MICROPY_PY_TREZORCONFIG     (1)
-#define MICROPY_PY_TREZORCRYPTO     (1)
-#define MICROPY_PY_TREZORIO         (1)
-#define MICROPY_PY_TREZORUI         (1)
-#define MICROPY_PY_TREZORUTILS      (1)
-#define MICROPY_PY_TREZORPROTO      (1)
-#define MICROPY_PY_TREZORTRANSLATE  (1)
-#define MICROPY_PY_TREZORUI2        (1)
+#define MICROPY_PY_CERBERUSCONFIG     (1)
+#define MICROPY_PY_CERBERUSCRYPTO     (1)
+#define MICROPY_PY_CERBERUSIO         (1)
+#define MICROPY_PY_CERBERUSUI         (1)
+#define MICROPY_PY_CERBERUSUTILS      (1)
+#define MICROPY_PY_CERBERUSPROTO      (1)
+#define MICROPY_PY_CERBERUSTRANSLATE  (1)
+#define MICROPY_PY_CERBERUSUI2        (1)
 
 #ifdef SYSTEM_VIEW
 #define MP_PLAT_PRINT_STRN(str, len) segger_print(str, len)
@@ -203,7 +203,7 @@ typedef long mp_off_t;
         __WFI(); \
     } while (0);
 
-#define MICROPY_HW_BOARD_NAME "TREZORv2"
+#define MICROPY_HW_BOARD_NAME "CERBERUSv2"
 #define MICROPY_HW_MCU_NAME "STM32F427xx"
 #define MICROPY_HW_HAS_SDCARD 1
 
@@ -216,7 +216,7 @@ typedef long mp_off_t;
 #define realloc(p, n) m_realloc(p, n)
 
 #define MICROPY_PORT_ROOT_POINTERS \
-    mp_obj_t trezorconfig_ui_wait_callback; \
+    mp_obj_t cerberusconfig_ui_wait_callback; \
 
 // We need to provide a declaration/definition of alloca()
 #include <alloca.h>

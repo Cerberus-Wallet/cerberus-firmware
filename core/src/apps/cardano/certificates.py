@@ -1,8 +1,8 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor.enums import CardanoCertificateType, CardanoPoolRelayType
-from trezor.wire import ProcessError
+from cerberus.enums import CardanoCertificateType, CardanoPoolRelayType
+from cerberus.wire import ProcessError
 
 from . import addresses
 from .helpers.utils import get_public_key_hash
@@ -10,7 +10,7 @@ from .helpers.utils import get_public_key_hash
 if TYPE_CHECKING:
     from typing import Any
 
-    from trezor import messages
+    from cerberus import messages
 
     from apps.common.cbor import CborSequence
 

@@ -1,10 +1,10 @@
 from typing import TYPE_CHECKING
 
-import trezorui2
-from trezor import TR, io, loop, ui
-from trezor.enums import ButtonRequestType
-from trezor.wire import ActionCancelled
-from trezor.wire.context import wait as ctx_wait
+import cerberusui2
+from cerberus import TR, io, loop, ui
+from cerberus.enums import ButtonRequestType
+from cerberus.wire import ActionCancelled
+from cerberus.wire.context import wait as ctx_wait
 
 from ..common import button_request, interact
 
@@ -18,15 +18,15 @@ if TYPE_CHECKING:
 
 BR_TYPE_OTHER = ButtonRequestType.Other  # global_import_cache
 
-CONFIRMED = trezorui2.CONFIRMED
-CANCELLED = trezorui2.CANCELLED
-INFO = trezorui2.INFO
+CONFIRMED = cerberusui2.CONFIRMED
+CANCELLED = cerberusui2.CANCELLED
+INFO = cerberusui2.INFO
 
 
 if __debug__:
-    from trezor.utils import DISABLE_ANIMATION
+    from cerberus.utils import DISABLE_ANIMATION
 
-    trezorui2.disable_animation(bool(DISABLE_ANIMATION))
+    cerberusui2.disable_animation(bool(DISABLE_ANIMATION))
 
 
 class RustLayout(ui.Layout):
@@ -90,7 +90,7 @@ class RustLayout(ui.Layout):
             self.layout.trace(callback)
 
         async def handle_swipe(self):
-            from trezor.enums import DebugSwipeDirection
+            from cerberus.enums import DebugSwipeDirection
 
             from apps.debug import notify_layout_change, swipe_signal
 
@@ -124,7 +124,7 @@ class RustLayout(ui.Layout):
             hold_ms: int | None,
         ) -> Any:
             from storage import debug as debug_storage
-            from trezor import workflow
+            from cerberus import workflow
 
             from apps.debug import notify_layout_change
 
@@ -138,7 +138,7 @@ class RustLayout(ui.Layout):
                 debug_storage.new_layout_event_id = event_id
                 raise ui.Result(msg)
 
-            # So that these presses will keep trezor awake
+            # So that these presses will keep cerberus awake
             # (it will not be locked after auto_lock_delay_ms)
             workflow.idle_timer.touch()
 
@@ -188,7 +188,7 @@ class RustLayout(ui.Layout):
         ui.backlight_fade(self.BACKLIGHT_LEVEL)
 
     def handle_input_and_rendering(self) -> loop.Task:  # type: ignore [awaitable-is-generator]
-        from trezor import workflow
+        from cerberus import workflow
 
         touch = loop.wait(io.TOUCH)
         self._first_paint()
@@ -260,7 +260,7 @@ async def confirm_action(
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.confirm_action(
+                cerberusui2.confirm_action(
                     title=title.upper(),
                     action=action,
                     description=description,
@@ -298,7 +298,7 @@ async def confirm_single(
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.confirm_emphasized(
+                cerberusui2.confirm_emphasized(
                     title=title.upper(),
                     items=(begin, (True, description_param), end),
                     verb=verb,
@@ -319,7 +319,7 @@ async def confirm_reset_device(title: str, recovery: bool = False) -> None:
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.confirm_reset_device(
+                cerberusui2.confirm_reset_device(
                     title=title.upper(),
                     button=button,
                 )
@@ -338,7 +338,7 @@ async def confirm_reset_device(title: str, recovery: bool = False) -> None:
 async def prompt_backup() -> bool:
     result = await interact(
         RustLayout(
-            trezorui2.confirm_action(
+            cerberusui2.confirm_action(
                 title=TR.words__title_success,
                 action=TR.backup__new_wallet_successfully_created,
                 description=TR.backup__it_should_be_backed_up,
@@ -354,7 +354,7 @@ async def prompt_backup() -> bool:
 
     result = await interact(
         RustLayout(
-            trezorui2.confirm_action(
+            cerberusui2.confirm_action(
                 title=TR.words__warning.upper(),
                 action=TR.backup__want_to_skip,
                 description=TR.backup__can_back_up_anytime,
@@ -380,7 +380,7 @@ async def confirm_path_warning(
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.show_warning(
+                cerberusui2.show_warning(
                     title=title,
                     value=path,
                     description=TR.words__continue_anyway,
@@ -399,7 +399,7 @@ async def confirm_homescreen(
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.confirm_homescreen(
+                cerberusui2.confirm_homescreen(
                     title=TR.homescreen__title_set,
                     image=image,
                 )
@@ -439,7 +439,7 @@ async def show_address(
         details_title = title
 
     layout = RustLayout(
-        trezorui2.confirm_address(
+        cerberusui2.confirm_address(
             title=title,
             data=address,
             description=network or "",
@@ -477,7 +477,7 @@ async def show_address(
 
             result = await ctx_wait(
                 RustLayout(
-                    trezorui2.show_address_details(
+                    cerberusui2.show_address_details(
                         qr_title=title,
                         address=address if address_qr is None else address_qr,
                         case_sensitive=case_sensitive,
@@ -492,7 +492,7 @@ async def show_address(
 
         else:
             result = await ctx_wait(
-                RustLayout(trezorui2.show_mismatch(title=mismatch_title))
+                RustLayout(cerberusui2.show_mismatch(title=mismatch_title))
             )
             assert result in (CONFIRMED, CANCELLED)
             # Right button aborts action, left goes back to showing address.
@@ -533,7 +533,7 @@ async def show_error_and_raise(
     button = button or TR.buttons__try_again  # def_arg
     await interact(
         RustLayout(
-            trezorui2.show_error(
+            cerberusui2.show_error(
                 title=subheader or "",
                 description=content,
                 button=button.upper(),
@@ -557,7 +557,7 @@ async def show_warning(
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.show_warning(
+                cerberusui2.show_warning(
                     title=content,
                     description=subheader or "",
                     button=button.upper(),
@@ -579,7 +579,7 @@ async def show_success(
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.show_success(
+                cerberusui2.show_success(
                     title=content,
                     description=subheader or "",
                     button=button.upper(),
@@ -618,7 +618,7 @@ async def confirm_output(
     while True:
         result = await interact(
             RustLayout(
-                trezorui2.confirm_value(
+                cerberusui2.confirm_value(
                     title=recipient_title.upper(),
                     subtitle=address_label,
                     description=None,
@@ -637,7 +637,7 @@ async def confirm_output(
 
         result = await interact(
             RustLayout(
-                trezorui2.confirm_value(
+                cerberusui2.confirm_value(
                     title=amount_title.upper(),
                     subtitle=None,
                     description=None,
@@ -662,7 +662,7 @@ async def confirm_payment_request(
 ) -> bool:
     result = await interact(
         RustLayout(
-            trezorui2.confirm_with_info(
+            cerberusui2.confirm_with_info(
                 title=TR.send__title_sending,
                 items=[(ui.NORMAL, f"{amount} to\n{recipient_name}")]
                 + [(ui.NORMAL, memo) for memo in memos],
@@ -703,7 +703,7 @@ async def should_show_more(
 
     result = await interact(
         RustLayout(
-            trezorui2.confirm_with_info(
+            cerberusui2.confirm_with_info(
                 title=title.upper(),
                 items=para,
                 button=confirm.upper(),
@@ -747,7 +747,7 @@ async def _confirm_ask_pagination(
 
         if paginated is None:
             paginated = RustLayout(
-                trezorui2.confirm_more(
+                cerberusui2.confirm_more(
                     title=title,
                     button=TR.buttons__close,
                     items=[(ui.MONO, data)],
@@ -777,7 +777,7 @@ async def confirm_blob(
     verb = verb or TR.buttons__confirm  # def_arg
     title = title.upper()
     layout = RustLayout(
-        trezorui2.confirm_blob(
+        cerberusui2.confirm_blob(
             title=title,
             description=description,
             data=data,
@@ -880,7 +880,7 @@ def confirm_value(
 
     info_items = info_items or []
     info_layout = RustLayout(
-        trezorui2.show_info_with_cancel(
+        cerberusui2.show_info_with_cancel(
             title=info_title if info_title else TR.words__title_information,
             items=info_items,
             chunkify=chunkify_info,
@@ -890,7 +890,7 @@ def confirm_value(
     return raise_if_not_confirmed(
         with_info(
             RustLayout(
-                trezorui2.confirm_value(
+                cerberusui2.confirm_value(
                     title=title.upper(),
                     subtitle=subtitle,
                     description=description,
@@ -921,7 +921,7 @@ async def confirm_properties(
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.confirm_properties(
+                cerberusui2.confirm_properties(
                     title=title.upper(),
                     items=items,
                     hold=hold,
@@ -978,7 +978,7 @@ async def confirm_summary(
     title = title or TR.words__title_summary  # def_arg
 
     total_layout = RustLayout(
-        trezorui2.confirm_total(
+        cerberusui2.confirm_total(
             title=title.upper(),
             items=items,
             info_button=bool(info_items),
@@ -986,7 +986,7 @@ async def confirm_summary(
     )
     info_items = info_items or []
     info_layout = RustLayout(
-        trezorui2.show_info_with_cancel(
+        cerberusui2.show_info_with_cancel(
             title=info_title.upper() if info_title else TR.words__title_information,
             items=info_items,
         )
@@ -1004,7 +1004,7 @@ async def confirm_ethereum_tx(
     chunkify: bool = False,
 ) -> None:
     total_layout = RustLayout(
-        trezorui2.confirm_total(
+        cerberusui2.confirm_total(
             title=TR.words__title_summary,
             items=[
                 (f"{TR.words__amount}:", total_amount),
@@ -1015,7 +1015,7 @@ async def confirm_ethereum_tx(
         )
     )
     info_layout = RustLayout(
-        trezorui2.show_info_with_cancel(
+        cerberusui2.show_info_with_cancel(
             title=TR.confirm_total__title_fee,
             items=items,
         )
@@ -1112,7 +1112,7 @@ async def confirm_joint_total(spending_amount: str, total_amount: str) -> None:
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.confirm_total(
+                cerberusui2.confirm_total(
                     title=TR.send__title_joint_transaction,
                     items=[
                         (TR.send__you_are_contributing, spending_amount),
@@ -1166,7 +1166,7 @@ async def confirm_modify_output(
     amount_new: str,
 ) -> None:
     address_layout = RustLayout(
-        trezorui2.confirm_blob(
+        cerberusui2.confirm_blob(
             title=TR.modify_amount__title,
             data=address,
             verb=TR.buttons__continue,
@@ -1176,7 +1176,7 @@ async def confirm_modify_output(
         )
     )
     modify_layout = RustLayout(
-        trezorui2.confirm_modify_output(
+        cerberusui2.confirm_modify_output(
             sign=sign,
             amount_change=amount_change,
             amount_new=amount_new,
@@ -1237,7 +1237,7 @@ async def confirm_modify_fee(
     fee_rate_amount: str | None = None,
 ) -> None:
     fee_layout = RustLayout(
-        trezorui2.confirm_modify_fee(
+        cerberusui2.confirm_modify_fee(
             title=title.upper(),
             sign=sign,
             user_fee_change=user_fee_change,
@@ -1249,7 +1249,7 @@ async def confirm_modify_fee(
     if fee_rate_amount:
         items.append((TR.bitcoin__new_fee_rate, fee_rate_amount))
     info_layout = RustLayout(
-        trezorui2.show_info_with_cancel(
+        cerberusui2.show_info_with_cancel(
             title=TR.confirm_total__title_fee,
             items=items,
         )
@@ -1263,7 +1263,7 @@ async def confirm_coinjoin(max_rounds: int, max_fee_per_vbyte: str) -> None:
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.confirm_coinjoin(
+                cerberusui2.confirm_coinjoin(
                     max_rounds=str(max_rounds),
                     max_feerate=max_fee_per_vbyte,
                 )
@@ -1303,7 +1303,7 @@ async def confirm_signverify(
         br_type = "sign_message"
 
     address_layout = RustLayout(
-        trezorui2.confirm_address(
+        cerberusui2.confirm_address(
             title=address_title,
             data=address,
             description="",
@@ -1326,7 +1326,7 @@ async def confirm_signverify(
     )
 
     info_layout = RustLayout(
-        trezorui2.show_info_with_cancel(
+        cerberusui2.show_info_with_cancel(
             title=TR.words__title_information,
             items=items,
             horizontal=True,
@@ -1334,7 +1334,7 @@ async def confirm_signverify(
     )
 
     message_layout = RustLayout(
-        trezorui2.confirm_blob(
+        cerberusui2.confirm_blob(
             title=TR.sign_message__confirm_message,
             description=None,
             data=message,
@@ -1350,7 +1350,7 @@ async def confirm_signverify(
         )
         if result is not CONFIRMED:
             result = await ctx_wait(
-                RustLayout(trezorui2.show_mismatch(title=TR.addr_mismatch__mismatch))
+                RustLayout(cerberusui2.show_mismatch(title=TR.addr_mismatch__mismatch))
             )
             assert result in (CONFIRMED, CANCELLED)
             # Right button aborts action, left goes back to showing address.
@@ -1383,7 +1383,7 @@ async def show_error_popup(
     if subtitle:
         title += f"\n{subtitle}"
     await RustLayout(
-        trezorui2.show_error(
+        cerberusui2.show_error(
             title=title,
             description=description.format(description_param),
             button=button,
@@ -1395,7 +1395,7 @@ async def show_error_popup(
 
 def request_passphrase_on_host() -> None:
     draw_simple(
-        trezorui2.show_simple(
+        cerberusui2.show_simple(
             title=None,
             description=TR.passphrase__please_enter,
         )
@@ -1403,13 +1403,13 @@ def request_passphrase_on_host() -> None:
 
 
 def show_wait_text(message: str) -> None:
-    draw_simple(trezorui2.show_wait_text(message))
+    draw_simple(cerberusui2.show_wait_text(message))
 
 
 async def request_passphrase_on_device(max_len: int) -> str:
     result = await interact(
         RustLayout(
-            trezorui2.request_passphrase(
+            cerberusui2.request_passphrase(
                 prompt=TR.passphrase__title_enter, max_len=max_len
             )
         ),
@@ -1429,7 +1429,7 @@ async def request_pin_on_device(
     allow_cancel: bool,
     wrong_pin: bool = False,
 ) -> str:
-    from trezor.wire import PinCancelled
+    from cerberus.wire import PinCancelled
 
     if attempts_remaining is None:
         subprompt = ""
@@ -1440,7 +1440,7 @@ async def request_pin_on_device(
 
     result = await interact(
         RustLayout(
-            trezorui2.request_pin(
+            cerberusui2.request_pin(
                 prompt=prompt,
                 subprompt=subprompt,
                 allow_cancel=allow_cancel,
@@ -1495,7 +1495,7 @@ async def confirm_set_new_pin(
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.confirm_emphasized(
+                cerberusui2.confirm_emphasized(
                     title=title.upper(),
                     items=(
                         (True, description + "\n\n"),
@@ -1514,7 +1514,7 @@ async def confirm_firmware_update(description: str, fingerprint: str) -> None:
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.confirm_firmware_update(
+                cerberusui2.confirm_firmware_update(
                     description=description, fingerprint=fingerprint
                 )
             ),

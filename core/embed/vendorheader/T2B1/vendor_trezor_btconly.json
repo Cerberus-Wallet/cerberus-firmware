@@ -1,6 +1,6 @@
 {
     "header_len": 512,
-    "text": "Trezor Bitcoin-only",
+    "text": "Cerberus Bitcoin-only",
     "hw_model": "T2B1",
     "expiry": 0,
     "version": [0, 1],

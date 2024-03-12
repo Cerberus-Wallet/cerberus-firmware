@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.enums import MoneroNetworkType
+    from cerberus.enums import MoneroNetworkType
 
 
 class MainNet:
@@ -30,7 +30,7 @@ def net_version(
     """
     Network version bytes used for address construction
     """
-    from trezor.enums import MoneroNetworkType
+    from cerberus.enums import MoneroNetworkType
 
     if network_type is None:
         network_type = MoneroNetworkType.MAINNET

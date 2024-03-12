@@ -29,7 +29,7 @@ int\
 </%def>\
 from typing import TYPE_CHECKING
 
-from trezor.wire import DataError
+from cerberus.wire import DataError
 
 from apps.common.readers import read_uint32_le, read_uint64_le
 

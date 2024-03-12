@@ -3,8 +3,8 @@ from common import *  # isort:skip
 if not utils.BITCOIN_ONLY:
     import ubinascii
 
-    from trezor.crypto import monero as tcry
-    from trezor.crypto import random
+    from cerberus.crypto import monero as tcry
+    from cerberus.crypto import random
 
     from apps.monero.xmr import clsag, crypto, crypto_helpers
     from apps.monero.xmr.serialize_messages.tx_ct_key import CtKey

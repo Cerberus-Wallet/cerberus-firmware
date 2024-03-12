@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -24,13 +24,13 @@
 
 #include "rand.h"
 
-/// package: trezorcrypto.ed25519
+/// package: cerberuscrypto.ed25519
 
 /// def generate_secret() -> bytes:
 ///     """
 ///     Generate secret key.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_ed25519_generate_secret() {
+STATIC mp_obj_t mod_cerberuscrypto_ed25519_generate_secret() {
   vstr_t sk = {0};
   vstr_init_len(&sk, 32);
   random_buffer((uint8_t *)sk.buf, sk.len);
@@ -40,14 +40,14 @@ STATIC mp_obj_t mod_trezorcrypto_ed25519_generate_secret() {
   sk.buf[31] |= 64;
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &sk);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_trezorcrypto_ed25519_generate_secret_obj,
-                                 mod_trezorcrypto_ed25519_generate_secret);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_cerberuscrypto_ed25519_generate_secret_obj,
+                                 mod_cerberuscrypto_ed25519_generate_secret);
 
 /// def publickey(secret_key: bytes) -> bytes:
 ///     """
 ///     Computes public key from secret key.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_ed25519_publickey(mp_obj_t secret_key) {
+STATIC mp_obj_t mod_cerberuscrypto_ed25519_publickey(mp_obj_t secret_key) {
   mp_buffer_info_t sk = {0};
   mp_get_buffer_raise(secret_key, &sk, MP_BUFFER_READ);
   if (sk.len != 32) {
@@ -59,14 +59,14 @@ STATIC mp_obj_t mod_trezorcrypto_ed25519_publickey(mp_obj_t secret_key) {
                     *(ed25519_public_key *)pk.buf);
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &pk);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_ed25519_publickey_obj,
-                                 mod_trezorcrypto_ed25519_publickey);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_ed25519_publickey_obj,
+                                 mod_cerberuscrypto_ed25519_publickey);
 
 /// def sign(secret_key: bytes, message: bytes, hasher: str = "") -> bytes:
 ///     """
 ///     Uses secret key to produce the signature of message.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_ed25519_sign(size_t n_args,
+STATIC mp_obj_t mod_cerberuscrypto_ed25519_sign(size_t n_args,
                                               const mp_obj_t *args) {
   mp_buffer_info_t sk = {0}, msg = {0};
   mp_get_buffer_raise(args[0], &sk, MP_BUFFER_READ);
@@ -98,8 +98,8 @@ STATIC mp_obj_t mod_trezorcrypto_ed25519_sign(size_t n_args,
 
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &sig);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_trezorcrypto_ed25519_sign_obj, 2,
-                                           3, mod_trezorcrypto_ed25519_sign);
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_cerberuscrypto_ed25519_sign_obj, 2,
+                                           3, mod_cerberuscrypto_ed25519_sign);
 
 #if !BITCOIN_ONLY
 
@@ -109,7 +109,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_trezorcrypto_ed25519_sign_obj, 2,
 ///     """
 ///     Uses secret key to produce the cardano signature of message.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_ed25519_sign_ext(mp_obj_t secret_key,
+STATIC mp_obj_t mod_cerberuscrypto_ed25519_sign_ext(mp_obj_t secret_key,
                                                   mp_obj_t secret_extension,
                                                   mp_obj_t message) {
   mp_buffer_info_t sk = {0}, skext = {0}, msg = {0};
@@ -132,8 +132,8 @@ STATIC mp_obj_t mod_trezorcrypto_ed25519_sign_ext(mp_obj_t secret_key,
                    *(ed25519_signature *)sig.buf);
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &sig);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_trezorcrypto_ed25519_sign_ext_obj,
-                                 mod_trezorcrypto_ed25519_sign_ext);
+STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_cerberuscrypto_ed25519_sign_ext_obj,
+                                 mod_cerberuscrypto_ed25519_sign_ext);
 
 #endif
 
@@ -142,7 +142,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_trezorcrypto_ed25519_sign_ext_obj,
 ///     Uses public key to verify the signature of the message.
 ///     Returns True on success.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_ed25519_verify(mp_obj_t public_key,
+STATIC mp_obj_t mod_cerberuscrypto_ed25519_verify(mp_obj_t public_key,
                                                 mp_obj_t signature,
                                                 mp_obj_t message) {
   mp_buffer_info_t pk = {0}, sig = {0}, msg = {0};
@@ -164,15 +164,15 @@ STATIC mp_obj_t mod_trezorcrypto_ed25519_verify(mp_obj_t public_key,
              ? mp_const_true
              : mp_const_false;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_trezorcrypto_ed25519_verify_obj,
-                                 mod_trezorcrypto_ed25519_verify);
+STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_cerberuscrypto_ed25519_verify_obj,
+                                 mod_cerberuscrypto_ed25519_verify);
 
 /// def cosi_combine_publickeys(public_keys: list[bytes]) -> bytes:
 ///     """
 ///     Combines a list of public keys used in COSI cosigning scheme.
 ///     """
 STATIC mp_obj_t
-mod_trezorcrypto_ed25519_cosi_combine_publickeys(mp_obj_t public_keys) {
+mod_cerberuscrypto_ed25519_cosi_combine_publickeys(mp_obj_t public_keys) {
   size_t pklen = 0;
   mp_obj_t *pkitems = NULL;
   mp_obj_get_array(public_keys, &pklen, &pkitems);
@@ -199,14 +199,14 @@ mod_trezorcrypto_ed25519_cosi_combine_publickeys(mp_obj_t public_keys) {
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &pk);
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_1(
-    mod_trezorcrypto_ed25519_cosi_combine_publickeys_obj,
-    mod_trezorcrypto_ed25519_cosi_combine_publickeys);
+    mod_cerberuscrypto_ed25519_cosi_combine_publickeys_obj,
+    mod_cerberuscrypto_ed25519_cosi_combine_publickeys);
 
 /// def cosi_combine_signatures(R: bytes, signatures: list[bytes]) -> bytes:
 ///     """
 ///     Combines a list of signatures used in COSI cosigning scheme.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_ed25519_cosi_combine_signatures(
+STATIC mp_obj_t mod_cerberuscrypto_ed25519_cosi_combine_signatures(
     mp_obj_t R, mp_obj_t signatures) {
   mp_buffer_info_t sigR = {0};
   mp_get_buffer_raise(R, &sigR, MP_BUFFER_READ);
@@ -237,14 +237,14 @@ STATIC mp_obj_t mod_trezorcrypto_ed25519_cosi_combine_signatures(
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &sig);
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_2(
-    mod_trezorcrypto_ed25519_cosi_combine_signatures_obj,
-    mod_trezorcrypto_ed25519_cosi_combine_signatures);
+    mod_cerberuscrypto_ed25519_cosi_combine_signatures_obj,
+    mod_cerberuscrypto_ed25519_cosi_combine_signatures);
 
 /// def cosi_commit() -> tuple[bytes, bytes]:
 ///     """
 ///     Generate a nonce and commitment for the CoSi cosigning scheme.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_ed25519_cosi_commit() {
+STATIC mp_obj_t mod_cerberuscrypto_ed25519_cosi_commit() {
   vstr_t nonce = {0};
   vstr_t commitment = {0};
   vstr_init_len(&nonce, 32);
@@ -256,8 +256,8 @@ STATIC mp_obj_t mod_trezorcrypto_ed25519_cosi_commit() {
   tuple->items[1] = mp_obj_new_str_from_vstr(&mp_type_bytes, &commitment);
   return MP_OBJ_FROM_PTR(tuple);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_trezorcrypto_ed25519_cosi_commit_obj,
-                                 mod_trezorcrypto_ed25519_cosi_commit);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_cerberuscrypto_ed25519_cosi_commit_obj,
+                                 mod_cerberuscrypto_ed25519_cosi_commit);
 
 /// def cosi_sign(
 ///     secret_key: bytes,
@@ -269,7 +269,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_trezorcrypto_ed25519_cosi_commit_obj,
 ///     """
 ///     Produce signature of message using COSI cosigning scheme.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_ed25519_cosi_sign(size_t n_args,
+STATIC mp_obj_t mod_cerberuscrypto_ed25519_cosi_sign(size_t n_args,
                                                    const mp_obj_t *args) {
   mp_buffer_info_t sk = {0}, msg = {0}, nonce = {0}, sigR = {0}, pk = {0};
   mp_get_buffer_raise(args[0], &sk, MP_BUFFER_READ);
@@ -303,35 +303,35 @@ STATIC mp_obj_t mod_trezorcrypto_ed25519_cosi_sign(size_t n_args,
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &sig);
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(
-    mod_trezorcrypto_ed25519_cosi_sign_obj, 5, 5,
-    mod_trezorcrypto_ed25519_cosi_sign);
+    mod_cerberuscrypto_ed25519_cosi_sign_obj, 5, 5,
+    mod_cerberuscrypto_ed25519_cosi_sign);
 
-STATIC const mp_rom_map_elem_t mod_trezorcrypto_ed25519_globals_table[] = {
+STATIC const mp_rom_map_elem_t mod_cerberuscrypto_ed25519_globals_table[] = {
     {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_ed25519)},
     {MP_ROM_QSTR(MP_QSTR_generate_secret),
-     MP_ROM_PTR(&mod_trezorcrypto_ed25519_generate_secret_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_ed25519_generate_secret_obj)},
     {MP_ROM_QSTR(MP_QSTR_publickey),
-     MP_ROM_PTR(&mod_trezorcrypto_ed25519_publickey_obj)},
-    {MP_ROM_QSTR(MP_QSTR_sign), MP_ROM_PTR(&mod_trezorcrypto_ed25519_sign_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_ed25519_publickey_obj)},
+    {MP_ROM_QSTR(MP_QSTR_sign), MP_ROM_PTR(&mod_cerberuscrypto_ed25519_sign_obj)},
 #if !BITCOIN_ONLY
     {MP_ROM_QSTR(MP_QSTR_sign_ext),
-     MP_ROM_PTR(&mod_trezorcrypto_ed25519_sign_ext_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_ed25519_sign_ext_obj)},
 #endif
     {MP_ROM_QSTR(MP_QSTR_verify),
-     MP_ROM_PTR(&mod_trezorcrypto_ed25519_verify_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_ed25519_verify_obj)},
     {MP_ROM_QSTR(MP_QSTR_cosi_combine_publickeys),
-     MP_ROM_PTR(&mod_trezorcrypto_ed25519_cosi_combine_publickeys_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_ed25519_cosi_combine_publickeys_obj)},
     {MP_ROM_QSTR(MP_QSTR_cosi_combine_signatures),
-     MP_ROM_PTR(&mod_trezorcrypto_ed25519_cosi_combine_signatures_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_ed25519_cosi_combine_signatures_obj)},
     {MP_ROM_QSTR(MP_QSTR_cosi_commit),
-     MP_ROM_PTR(&mod_trezorcrypto_ed25519_cosi_commit_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_ed25519_cosi_commit_obj)},
     {MP_ROM_QSTR(MP_QSTR_cosi_sign),
-     MP_ROM_PTR(&mod_trezorcrypto_ed25519_cosi_sign_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_ed25519_cosi_sign_obj)},
 };
-STATIC MP_DEFINE_CONST_DICT(mod_trezorcrypto_ed25519_globals,
-                            mod_trezorcrypto_ed25519_globals_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberuscrypto_ed25519_globals,
+                            mod_cerberuscrypto_ed25519_globals_table);
 
-STATIC const mp_obj_module_t mod_trezorcrypto_ed25519_module = {
+STATIC const mp_obj_module_t mod_cerberuscrypto_ed25519_module = {
     .base = {&mp_type_module},
-    .globals = (mp_obj_dict_t *)&mod_trezorcrypto_ed25519_globals,
+    .globals = (mp_obj_dict_t *)&mod_cerberuscrypto_ed25519_globals,
 };

@@ -1,6 +1,6 @@
 from common import * # isort:skip
 
-from trezor.crypto import base32
+from cerberus.crypto import base32
 
 
 class TestCryptoBase32(unittest.TestCase):

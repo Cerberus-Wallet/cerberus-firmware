@@ -1,8 +1,8 @@
 from typing import TYPE_CHECKING
 
-from trezor import utils
-from trezor.enums import RequestType
-from trezor.wire import DataError
+from cerberus import utils
+from cerberus.enums import RequestType
+from cerberus.wire import DataError
 
 from .. import common
 from ..writers import TX_HASH_SIZE
@@ -11,8 +11,8 @@ from . import layout
 if TYPE_CHECKING:
     from typing import Any, Awaitable
 
-    from trezor.enums import AmountUnit
-    from trezor.messages import (
+    from cerberus.enums import AmountUnit
+    from cerberus.messages import (
         PrevInput,
         PrevOutput,
         PrevTx,
@@ -302,7 +302,7 @@ def confirm_multiple_accounts() -> Awaitable[Any]:  # type: ignore [awaitable-is
 
 
 def request_tx_meta(tx_req: TxRequest, coin: CoinInfo, tx_hash: bytes | None = None) -> Awaitable[PrevTx]:  # type: ignore [awaitable-is-generator]
-    from trezor.messages import TxAckPrevMeta
+    from cerberus.messages import TxAckPrevMeta
 
     assert tx_req.details is not None
     tx_req.request_type = RequestType.TXMETA
@@ -315,7 +315,7 @@ def request_tx_meta(tx_req: TxRequest, coin: CoinInfo, tx_hash: bytes | None = N
 def request_tx_extra_data(
     tx_req: TxRequest, offset: int, size: int, tx_hash: bytes | None = None
 ) -> Awaitable[bytearray]:  # type: ignore [awaitable-is-generator]
-    from trezor.messages import TxAckPrevExtraData
+    from cerberus.messages import TxAckPrevExtraData
 
     details = tx_req.details  # local_cache_attribute
 
@@ -330,7 +330,7 @@ def request_tx_extra_data(
 
 
 def request_tx_input(tx_req: TxRequest, i: int, coin: CoinInfo, tx_hash: bytes | None = None) -> Awaitable[TxInput]:  # type: ignore [awaitable-is-generator]
-    from trezor.messages import TxAckInput
+    from cerberus.messages import TxAckInput
 
     assert tx_req.details is not None
     if tx_hash:
@@ -345,7 +345,7 @@ def request_tx_input(tx_req: TxRequest, i: int, coin: CoinInfo, tx_hash: bytes |
 
 
 def request_tx_prev_input(tx_req: TxRequest, i: int, coin: CoinInfo, tx_hash: bytes | None = None) -> Awaitable[PrevInput]:  # type: ignore [awaitable-is-generator]
-    from trezor.messages import TxAckPrevInput
+    from cerberus.messages import TxAckPrevInput
 
     assert tx_req.details is not None
     tx_req.request_type = RequestType.TXINPUT
@@ -357,7 +357,7 @@ def request_tx_prev_input(tx_req: TxRequest, i: int, coin: CoinInfo, tx_hash: by
 
 
 def request_tx_output(tx_req: TxRequest, i: int, coin: CoinInfo, tx_hash: bytes | None = None) -> Awaitable[TxOutput]:  # type: ignore [awaitable-is-generator]
-    from trezor.messages import TxAckOutput
+    from cerberus.messages import TxAckOutput
 
     assert tx_req.details is not None
     if tx_hash:
@@ -372,7 +372,7 @@ def request_tx_output(tx_req: TxRequest, i: int, coin: CoinInfo, tx_hash: bytes 
 
 
 def request_tx_prev_output(tx_req: TxRequest, i: int, coin: CoinInfo, tx_hash: bytes | None = None) -> Awaitable[PrevOutput]:  # type: ignore [awaitable-is-generator]
-    from trezor.messages import TxAckPrevOutput
+    from cerberus.messages import TxAckPrevOutput
 
     assert tx_req.details is not None
     tx_req.request_type = RequestType.TXOUTPUT
@@ -385,7 +385,7 @@ def request_tx_prev_output(tx_req: TxRequest, i: int, coin: CoinInfo, tx_hash: b
 
 
 def request_payment_req(tx_req: TxRequest, i: int) -> Awaitable[TxAckPaymentRequest]:  # type: ignore [awaitable-is-generator]
-    from trezor.messages import TxAckPaymentRequest
+    from cerberus.messages import TxAckPaymentRequest
 
     assert tx_req.details is not None
     tx_req.request_type = RequestType.TXPAYMENTREQ
@@ -472,8 +472,8 @@ def _sanitize_tx_meta(tx: PrevTx, coin: CoinInfo) -> PrevTx:
 
 
 def _sanitize_tx_input(txi: TxInput, coin: CoinInfo) -> TxInput:
-    from trezor.enums import InputScriptType
-    from trezor.wire import DataError  # local_cache_global
+    from cerberus.enums import InputScriptType
+    from cerberus.wire import DataError  # local_cache_global
 
     script_type = txi.script_type  # local_cache_attribute
 
@@ -529,8 +529,8 @@ def _sanitize_tx_prev_input(txi: PrevInput, coin: CoinInfo) -> PrevInput:
 
 
 def _sanitize_tx_output(txo: TxOutput, coin: CoinInfo) -> TxOutput:
-    from trezor.enums import OutputScriptType
-    from trezor.wire import DataError  # local_cache_global
+    from cerberus.enums import OutputScriptType
+    from cerberus.wire import DataError  # local_cache_global
 
     script_type = txo.script_type  # local_cache_attribute
     address_n = txo.address_n  # local_cache_attribute

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 #include "boot_internal.h"
 #include "bootui.h"
 #include "common.h"
@@ -94,7 +94,7 @@ __attribute__((noreturn)) void display_error_and_die(const char *message,
                                                      const char *title,
                                                      const char *footer) {
   if (footer == NULL) {
-    footer = "PLEASE VISIT\nTREZOR.IO/RSOD";
+    footer = "PLEASE VISIT\nCERBERUS.IO/RSOD";
   }
   if (title == NULL) {
     title = "INTERNAL ERROR";

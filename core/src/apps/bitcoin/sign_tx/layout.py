@@ -1,11 +1,11 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor import TR
-from trezor.enums import ButtonRequestType
-from trezor.strings import format_amount
-from trezor.ui import layouts
-from trezor.ui.layouts import confirm_metadata
+from cerberus import TR
+from cerberus.enums import ButtonRequestType
+from cerberus.strings import format_amount
+from cerberus.ui import layouts
+from cerberus.ui.layouts import confirm_metadata
 
 from apps.common.paths import address_n_to_str
 
@@ -20,9 +20,9 @@ from ..keychain import address_n_to_name
 if TYPE_CHECKING:
     from typing import Any
 
-    from trezor.enums import AmountUnit
-    from trezor.messages import TxAckPaymentRequest, TxOutput
-    from trezor.ui.layouts import LayoutType
+    from cerberus.enums import AmountUnit
+    from cerberus.messages import TxAckPaymentRequest, TxOutput
+    from cerberus.ui.layouts import LayoutType
 
     from apps.common.coininfo import CoinInfo
     from apps.common.paths import Bip32Path
@@ -31,7 +31,7 @@ _LOCKTIME_TIMESTAMP_MIN_VALUE = const(500_000_000)
 
 
 def format_coin_amount(amount: int, coin: CoinInfo, amount_unit: AmountUnit) -> str:
-    from trezor.enums import AmountUnit
+    from cerberus.enums import AmountUnit
 
     decimals, shortcut = coin.decimals, coin.coin_shortcut
     if amount_unit == AmountUnit.SATOSHI:
@@ -65,7 +65,7 @@ async def confirm_output(
     output_index: int,
     chunkify: bool,
 ) -> None:
-    from trezor.enums import OutputScriptType
+    from cerberus.enums import OutputScriptType
 
     from . import omni
 
@@ -99,7 +99,7 @@ async def confirm_output(
 
         address_label = None
         if output.address_n and not output.multisig:
-            from trezor import utils
+            from cerberus import utils
 
             # Showing the account string only for T2B1 model
             show_account_str = utils.INTERNAL_MODEL == "T2B1"
@@ -157,7 +157,7 @@ async def confirm_payment_request(
     coin: CoinInfo,
     amount_unit: AmountUnit,
 ) -> Any:
-    from trezor import wire
+    from cerberus import wire
 
     memo_texts: list[str] = []
     for m in msg.memos:
@@ -293,7 +293,7 @@ async def confirm_multiple_accounts() -> None:
 
 
 async def confirm_nondefault_locktime(lock_time: int, lock_time_disabled: bool) -> None:
-    from trezor.strings import format_timestamp
+    from cerberus.strings import format_timestamp
 
     if lock_time_disabled:
         await layouts.show_warning(

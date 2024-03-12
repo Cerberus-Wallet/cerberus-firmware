@@ -1,7 +1,7 @@
 #include <stdint.h>
 
-#if TREZOR_FONT_BPP != 1
-#error Wrong TREZOR_FONT_BPP (expected 1)
+#if CERBERUS_FONT_BPP != 1
+#error Wrong CERBERUS_FONT_BPP (expected 1)
 #endif
 #define Font_PixelOperatorMono_Regular_8_HEIGHT 8
 #define Font_PixelOperatorMono_Regular_8_MAX_HEIGHT 8

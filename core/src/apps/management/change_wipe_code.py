@@ -1,19 +1,19 @@
 from typing import TYPE_CHECKING
 
-from trezor import TR
+from cerberus import TR
 
 if TYPE_CHECKING:
     from typing import Awaitable
 
-    from trezor.messages import ChangeWipeCode, Success
+    from cerberus.messages import ChangeWipeCode, Success
 
 
 async def change_wipe_code(msg: ChangeWipeCode) -> Success:
     from storage.device import is_initialized
-    from trezor import config
-    from trezor.messages import Success
-    from trezor.ui.layouts import show_success
-    from trezor.wire import NotInitialized
+    from cerberus import config
+    from cerberus.messages import Success
+    from cerberus.ui.layouts import show_success
+    from cerberus.wire import NotInitialized
 
     from apps.common.request_pin import error_pin_invalid, request_pin_and_sd_salt
 
@@ -59,8 +59,8 @@ async def change_wipe_code(msg: ChangeWipeCode) -> Success:
 def _require_confirm_action(
     msg: ChangeWipeCode, has_wipe_code: bool
 ) -> Awaitable[None]:
-    from trezor.ui.layouts import confirm_action, confirm_set_new_pin
-    from trezor.wire import ProcessError
+    from cerberus.ui.layouts import confirm_action, confirm_set_new_pin
+    from cerberus.wire import ProcessError
 
     if msg.remove and has_wipe_code:
         return confirm_action(
@@ -91,7 +91,7 @@ def _require_confirm_action(
 
 
 async def _request_wipe_code_confirm(pin: str) -> str:
-    from trezor.ui.layouts import (
+    from cerberus.ui.layouts import (
         confirm_reenter_pin,
         pin_mismatch_popup,
         wipe_code_same_as_pin_popup,

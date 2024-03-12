@@ -1,8 +1,8 @@
 from common import unhexlify, unittest  # isort:skip
 
-from trezor.crypto import bip39
-from trezor.enums import InputScriptType
-from trezor.messages import HDNodeType, MultisigRedeemScriptType
+from cerberus.crypto import bip39
+from cerberus.enums import InputScriptType
+from cerberus.messages import HDNodeType, MultisigRedeemScriptType
 
 from apps.bitcoin import ownership, scripts
 from apps.bitcoin.addresses import (

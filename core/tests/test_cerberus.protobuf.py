@@ -1,7 +1,7 @@
 from common import *  # isort:skip
 
-from trezor import protobuf
-from trezor.messages import (
+from cerberus import protobuf
+from cerberus.messages import (
     DebugLinkMemoryRead,
     Failure,
     SignMessage,

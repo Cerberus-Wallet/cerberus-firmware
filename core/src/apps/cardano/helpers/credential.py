@@ -1,13 +1,13 @@
 from typing import TYPE_CHECKING
 
-from trezor import TR
-from trezor.enums import CardanoAddressType
+from cerberus import TR
+from cerberus.enums import CardanoAddressType
 
 from .paths import SCHEMA_PAYMENT
 
 if TYPE_CHECKING:
-    from trezor import messages
-    from trezor.ui.layouts import PropertyType
+    from cerberus import messages
+    from cerberus.ui.layouts import PropertyType
 
 CREDENTIAL_TYPE_PAYMENT: str = "payment"
 CREDENTIAL_TYPE_STAKE: str = "stake"

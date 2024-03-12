@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -19,7 +19,7 @@
 
 #include <string.h>
 
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 #include "board_capabilities.h"
 #include "common.h"
 #include "compiler_traits.h"
@@ -122,7 +122,7 @@ static void progress_callback(int pos, int len) { term_printf("."); }
 static secbool copy_sdcard(void) {
   display_backlight(255);
 
-  term_printf("Trezor Boardloader\n");
+  term_printf("Cerberus Boardloader\n");
   term_printf("==================\n\n");
 
   term_printf("bootloader found on the SD card\n\n");

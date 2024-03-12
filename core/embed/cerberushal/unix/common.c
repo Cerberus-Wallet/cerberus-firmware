@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -33,7 +33,7 @@
 
 extern void main_clean_exit(int);
 
-void __attribute__((noreturn)) trezor_shutdown(void) {
+void __attribute__((noreturn)) cerberus_shutdown(void) {
   printf("SHUTDOWN\n");
   main_clean_exit(3);
   for (;;)
@@ -53,7 +53,7 @@ error_uni(const char *label, const char *msg, const char *footer) {
 
 #ifdef FANCY_FATAL_ERROR
 
-  screen_fatal_error_rust(label, msg, "PLEASE VISIT\nTREZOR.IO/RSOD");
+  screen_fatal_error_rust(label, msg, "PLEASE VISIT\nCERBERUS.IO/RSOD");
   display_refresh();
 #else
   term_set_color(COLOR_WHITE, COLOR_FATAL_ERROR);
@@ -70,7 +70,7 @@ error_uni(const char *label, const char *msg, const char *footer) {
   display_backlight(255);
   display_refresh();
   hal_delay(3000);
-  trezor_shutdown();
+  cerberus_shutdown();
 }
 
 void __attribute__((noreturn))
@@ -85,10 +85,10 @@ __fatal_error(const char *expr, const char *msg, const char *file, int line,
     char buf[256] = {0};
     snprintf(buf, sizeof(buf), "%s: %d", file, line);
     screen_fatal_error_rust("INTERNAL ERROR", buf,
-                            "PLEASE VISIT\nTREZOR.IO/RSOD");
+                            "PLEASE VISIT\nCERBERUS.IO/RSOD");
   } else {
     screen_fatal_error_rust("INTERNAL ERROR", msg,
-                            "PLEASE VISIT\nTREZOR.IO/RSOD");
+                            "PLEASE VISIT\nCERBERUS.IO/RSOD");
   }
 
   display_refresh();
@@ -123,13 +123,13 @@ __fatal_error(const char *expr, const char *msg, const char *file, int line,
   printf("Hint:\nIsn't the emulator already running?\n");
 #endif
   hal_delay(3000);
-  trezor_shutdown();
+  cerberus_shutdown();
 }
 
 void __attribute__((noreturn))
 error_shutdown(const char *label, const char *msg) {
 #ifdef FANCY_FATAL_ERROR
-  screen_fatal_error_rust(label, msg, "PLEASE VISIT\nTREZOR.IO/RSOD");
+  screen_fatal_error_rust(label, msg, "PLEASE VISIT\nCERBERUS.IO/RSOD");
   display_refresh();
 #else
   display_clear();
@@ -166,7 +166,7 @@ uint32_t hal_ticks_ms() {
 static int SDLCALL emulator_event_filter(void *userdata, SDL_Event *event) {
   switch (event->type) {
     case SDL_QUIT:
-      trezor_shutdown();
+      cerberus_shutdown();
       return 0;
     case SDL_KEYUP:
       if (event->key.repeat) {
@@ -174,7 +174,7 @@ static int SDLCALL emulator_event_filter(void *userdata, SDL_Event *event) {
       }
       switch (event->key.keysym.sym) {
         case SDLK_ESCAPE:
-          trezor_shutdown();
+          cerberus_shutdown();
           return 0;
         case SDLK_p:
           display_save("emu");

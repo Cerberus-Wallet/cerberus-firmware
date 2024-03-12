@@ -10,7 +10,7 @@ ADVISORS = Grégory Saive, Saleem Rashid
 
 -----
 
-This implementation of NEM for Trezor Core is mostly based on the trezor-mcu C implementation by Saleem Rashid. The protobuf messages are heavily inspired by the [NEM NSI API](https://nemproject.github.io/).
+This implementation of NEM for Cerberus Core is mostly based on the cerberus-mcu C implementation by Saleem Rashid. The protobuf messages are heavily inspired by the [NEM NSI API](https://nemproject.github.io/).
 
 You can read a lot about NEM in the [Technical Reference paper](https://nem.io/wp-content/themes/nem/files/NEM_techRef.pdf).
 
@@ -22,7 +22,7 @@ In this app we support the following:
 
 You can read more on mosaics [here](https://blog.nem.io/mosaics-and-namespaces-2/). Each mosaic has a name and lives under certain namespace, this identification _namespace.mosaic_ is unique in the network.
 
-Trezor Core supports mosaic creation and changing the mosaic's supply.
+Cerberus Core supports mosaic creation and changing the mosaic's supply.
 
 ### Namespaces
 
@@ -42,7 +42,7 @@ Except XEM you can also transfer mosaics. Mosaics are _attached_ to a regular tr
 
 Each such attached mosaic has a `quantity` denoting the amount of such mosaic to be transferred. There is a catch though: the actual amount of the mosaic to be transferred isn't `quantity` but `mosaic.quantity * transfer.amount`. In other words, the quantity is multiplied by the `amount` field in transfer. This is most likely due to backwards compatibility where transfers with amount 0 where discarded.
 
-You can also transfer XEM and mosaics at the same time. In that case you need to attach the nem.xem mosaic. From the user point of view Trezor shows this as a regular XEM transfer.
+You can also transfer XEM and mosaics at the same time. In that case you need to attach the nem.xem mosaic. From the user point of view Cerberus shows this as a regular XEM transfer.
 
 ##### Importance transfer
 
@@ -56,9 +56,9 @@ Multisig is a wrapper, so you can use any of the services mentioned above wrappe
 
 A common scenario to test out multisig with NanoWallet might be:
 
-- Create a simple account without Trezor (account A)
-- Create another account with Trezor One (account B)
+- Create a simple account without Cerberus (account A)
+- Create another account with Cerberus One (account B)
 - Convert A to a multisig with B as a cosigner
-- Create another account with Trezor T (account C)
+- Create another account with Cerberus T (account C)
 - Add C as a cosigner
 - Try to send a transaction where B and C cosigns

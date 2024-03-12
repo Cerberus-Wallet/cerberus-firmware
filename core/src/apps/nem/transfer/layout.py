@@ -1,15 +1,15 @@
 from typing import TYPE_CHECKING
 
-from trezor import TR
-from trezor.enums import ButtonRequestType
-from trezor.strings import format_amount
+from cerberus import TR
+from cerberus.enums import ButtonRequestType
+from cerberus.strings import format_amount
 
 from ..helpers import NEM_MOSAIC_AMOUNT_DIVISOR
 from ..layout import require_confirm_final
 from ..mosaic.helpers import is_nem_xem_mosaic
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         NEMImportanceTransfer,
         NEMMosaic,
         NEMTransactionCommon,
@@ -23,7 +23,7 @@ async def ask_transfer(
     encrypted: bool,
     chunkify: bool,
 ) -> None:
-    from trezor.ui.layouts import confirm_output, confirm_text
+    from cerberus.ui.layouts import confirm_output, confirm_text
 
     from ..helpers import NEM_MAX_DIVISIBILITY
 
@@ -53,8 +53,8 @@ async def ask_transfer(
 async def _ask_transfer_mosaic(
     common: NEMTransactionCommon, transfer: NEMTransfer, mosaic: NEMMosaic
 ) -> None:
-    from trezor.enums import NEMMosaicLevy
-    from trezor.ui.layouts import confirm_action, confirm_properties
+    from cerberus.enums import NEMMosaicLevy
+    from cerberus.ui.layouts import confirm_action, confirm_properties
 
     from ..helpers import NEM_LEVY_PERCENTILE_DIVISOR_ABSOLUTE
     from ..mosaic.helpers import get_mosaic_definition
@@ -135,7 +135,7 @@ def _get_xem_amount(transfer: NEMTransfer) -> int:
 async def ask_importance_transfer(
     common: NEMTransactionCommon, imp: NEMImportanceTransfer
 ) -> None:
-    from trezor.enums import NEMImportanceTransferMode
+    from cerberus.enums import NEMImportanceTransferMode
 
     from ..layout import require_confirm_text
 

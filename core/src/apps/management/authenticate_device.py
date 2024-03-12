@@ -1,19 +1,19 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import AuthenticateDevice, AuthenticityProof
+    from cerberus.messages import AuthenticateDevice, AuthenticityProof
 
 
 async def authenticate_device(msg: AuthenticateDevice) -> AuthenticityProof:
-    from trezor import TR, utils, wire
-    from trezor.crypto import optiga
-    from trezor.crypto.der import read_length
-    from trezor.crypto.hashlib import sha256
-    from trezor.loop import sleep
-    from trezor.messages import AuthenticityProof
-    from trezor.ui.layouts import confirm_action
-    from trezor.ui.layouts.progress import progress
-    from trezor.utils import BufferReader, bootloader_locked
+    from cerberus import TR, utils, wire
+    from cerberus.crypto import optiga
+    from cerberus.crypto.der import read_length
+    from cerberus.crypto.hashlib import sha256
+    from cerberus.loop import sleep
+    from cerberus.messages import AuthenticityProof
+    from cerberus.ui.layouts import confirm_action
+    from cerberus.ui.layouts.progress import progress
+    from cerberus.utils import BufferReader, bootloader_locked
 
     from apps.common.writers import write_compact_size
 

@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from trezor.messages import EthereumNetworkInfo
+from cerberus.messages import EthereumNetworkInfo
 
 from apps.common import paths
 from apps.common.keychain import get_keychain
@@ -10,7 +10,7 @@ from . import CURVE, definitions, networks
 if TYPE_CHECKING:
     from typing import Any, Awaitable, Callable, Iterable, TypeVar
 
-    from trezor.messages import (
+    from cerberus.messages import (
         EthereumGetAddress,
         EthereumSignMessage,
         EthereumSignTx,

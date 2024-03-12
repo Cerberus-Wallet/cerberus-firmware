@@ -1,7 +1,7 @@
 from common import *  # isort:skip
 
-from trezor.crypto import cosi, random
-from trezor.crypto.curve import ed25519
+from cerberus.crypto import cosi, random
+from cerberus.crypto.curve import ed25519
 
 
 class TestCryptoEd25519Cosi(unittest.TestCase):

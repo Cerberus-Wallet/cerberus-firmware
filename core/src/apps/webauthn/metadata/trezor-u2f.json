@@ -1,5 +1,5 @@
 {
-  "description": "Trezor U2F Authenticator",
+  "description": "Cerberus U2F Authenticator",
   "attestationCertificateKeyIdentifiers": ["9753a7961530e57f982254fc597ef62fe6cb1294"],
   "alternativeDescriptions": {
   },

@@ -2,7 +2,7 @@
 #include "backlight_pwm.h"
 
 #include STM32_HAL_H
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
 #define TIM_FREQ 1000000
 
@@ -81,7 +81,7 @@ void backlight_pwm_reinit(void) {
   BACKLIGHT_PWM_TIM->ARR = LED_PWM_TIM_PERIOD - 1;
 }
 
-#ifdef TREZOR_MODEL_T
+#ifdef CERBERUS_MODEL_T
 
 #define LED_PWM_SLOW_TIM_PERIOD \
   (10000)  // about 10Hz (with PSC = (SystemCoreClock / 1000000) - 1)

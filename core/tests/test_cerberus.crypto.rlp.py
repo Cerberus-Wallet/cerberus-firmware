@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import rlp
+from cerberus.crypto import rlp
 
 
 class TestCryptoRlp(unittest.TestCase):

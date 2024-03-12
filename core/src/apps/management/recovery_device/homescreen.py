@@ -3,18 +3,18 @@ from typing import TYPE_CHECKING
 import storage.device as storage_device
 import storage.recovery as storage_recovery
 import storage.recovery_shares as storage_recovery_shares
-from trezor import TR, wire
-from trezor.messages import Success
+from cerberus import TR, wire
+from cerberus.messages import Success
 
 from .. import backup_types
 from . import layout, recover
 
 if TYPE_CHECKING:
-    from trezor.enums import BackupType
+    from cerberus.enums import BackupType
 
 
 async def recovery_homescreen() -> None:
-    from trezor import workflow
+    from cerberus import workflow
 
     from apps.homescreen import homescreen
 
@@ -27,7 +27,7 @@ async def recovery_homescreen() -> None:
 
 async def recovery_process() -> Success:
     import storage
-    from trezor.enums import MessageType
+    from cerberus.enums import MessageType
 
     wire.AVOID_RESTARTING_FOR = (MessageType.Initialize, MessageType.GetFeatures)
     try:
@@ -42,8 +42,8 @@ async def recovery_process() -> Success:
 
 
 async def _continue_recovery_process() -> Success:
-    from trezor import utils
-    from trezor.errors import MnemonicError
+    from cerberus import utils
+    from cerberus.errors import MnemonicError
 
     # gather the current recovery state from storage
     dry_run = storage_recovery.is_dry_run()
@@ -102,8 +102,8 @@ async def _continue_recovery_process() -> Success:
 
 
 async def _finish_recovery_dry_run(secret: bytes, backup_type: BackupType) -> Success:
-    from trezor import utils
-    from trezor.crypto.hashlib import sha256
+    from cerberus import utils
+    from cerberus.crypto.hashlib import sha256
 
     from apps.common import mnemonic
 
@@ -138,8 +138,8 @@ async def _finish_recovery_dry_run(secret: bytes, backup_type: BackupType) -> Su
 
 
 async def _finish_recovery(secret: bytes, backup_type: BackupType) -> Success:
-    from trezor.enums import BackupType
-    from trezor.ui.layouts import show_success
+    from cerberus.enums import BackupType
+    from cerberus.ui.layouts import show_success
 
     if backup_type is None:
         raise RuntimeError
@@ -204,7 +204,7 @@ async def _request_share_first_screen(word_count: int) -> None:
 
 
 async def _request_share_next_screen() -> None:
-    from trezor import strings
+    from cerberus import strings
 
     remaining = storage_recovery.fetch_slip39_remaining_shares()
     group_count = storage_recovery.get_slip39_group_count()
@@ -238,7 +238,7 @@ async def _show_remaining_groups_and_shares() -> None:
     """
     Show info dialog for Slip39 Advanced - what shares are to be entered.
     """
-    from trezor.crypto import slip39
+    from cerberus.crypto import slip39
 
     shares_remaining = storage_recovery.fetch_slip39_remaining_shares()
     # should be stored at this point

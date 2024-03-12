@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -19,13 +19,13 @@
 
 #include "py/obj.h"
 
-#include "embed/extmod/trezorobj.h"
+#include "embed/extmod/cerberusobj.h"
 
 #include "shamir.h"
 
 #define SHAMIR_MAX_SHARE_COUNT 16
 
-/// package: trezorcrypto.shamir
+/// package: cerberuscrypto.shamir
 
 /// def interpolate(shares: list[tuple[int, bytes]], x: int) -> bytes:
 ///     """
@@ -38,21 +38,21 @@
 ///     :return: Evaluations of the polynomials in x.
 ///     :rtype: Array of bytes.
 ///     """
-mp_obj_t mod_trezorcrypto_shamir_interpolate(mp_obj_t shares, mp_obj_t x) {
+mp_obj_t mod_cerberuscrypto_shamir_interpolate(mp_obj_t shares, mp_obj_t x) {
   size_t share_count = 0;
   mp_obj_t *share_items = NULL;
   mp_obj_get_array(shares, &share_count, &share_items);
   if (share_count < 1 || share_count > SHAMIR_MAX_SHARE_COUNT) {
     mp_raise_ValueError("Invalid number of shares.");
   }
-  uint8_t x_uint8 = trezor_obj_get_uint8(x);
+  uint8_t x_uint8 = cerberus_obj_get_uint8(x);
   uint8_t share_indices[SHAMIR_MAX_SHARE_COUNT] = {0};
   const uint8_t *share_values[SHAMIR_MAX_SHARE_COUNT] = {0};
   size_t value_len = 0;
   for (int i = 0; i < share_count; ++i) {
     mp_obj_t *share = NULL;
     mp_obj_get_array_fixed_n(share_items[i], 2, &share);
-    share_indices[i] = trezor_obj_get_uint8(share[0]);
+    share_indices[i] = cerberus_obj_get_uint8(share[0]);
     mp_buffer_info_t value;
     mp_get_buffer_raise(share[1], &value, MP_BUFFER_READ);
     if (value_len == 0) {
@@ -75,18 +75,18 @@ mp_obj_t mod_trezorcrypto_shamir_interpolate(mp_obj_t shares, mp_obj_t x) {
   }
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &vstr);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_shamir_interpolate_obj,
-                                 mod_trezorcrypto_shamir_interpolate);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberuscrypto_shamir_interpolate_obj,
+                                 mod_cerberuscrypto_shamir_interpolate);
 
-STATIC const mp_rom_map_elem_t mod_trezorcrypto_shamir_globals_table[] = {
+STATIC const mp_rom_map_elem_t mod_cerberuscrypto_shamir_globals_table[] = {
     {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_shamir)},
     {MP_ROM_QSTR(MP_QSTR_interpolate),
-     MP_ROM_PTR(&mod_trezorcrypto_shamir_interpolate_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_shamir_interpolate_obj)},
 };
-STATIC MP_DEFINE_CONST_DICT(mod_trezorcrypto_shamir_globals,
-                            mod_trezorcrypto_shamir_globals_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberuscrypto_shamir_globals,
+                            mod_cerberuscrypto_shamir_globals_table);
 
-STATIC const mp_obj_module_t mod_trezorcrypto_shamir_module = {
+STATIC const mp_obj_module_t mod_cerberuscrypto_shamir_module = {
     .base = {&mp_type_module},
-    .globals = (mp_obj_dict_t *)&mod_trezorcrypto_shamir_globals,
+    .globals = (mp_obj_dict_t *)&mod_cerberuscrypto_shamir_globals,
 };

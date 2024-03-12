@@ -1,7 +1,7 @@
 from common import *  # isort:skip
 
-from trezor.enums import InputScriptType
-from trezor.messages import TxInput
+from cerberus.enums import InputScriptType
+from cerberus.messages import TxInput
 
 from apps.bitcoin import writers
 

@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from apps.monero.xmr.serialize import int_serialize
 
 if TYPE_CHECKING:
-    from trezor.utils import HashContext, HashWriter
+    from cerberus.utils import HashContext, HashWriter
 
 
 class KeccakXmrArchive:
@@ -24,7 +24,7 @@ class KeccakXmrArchive:
 
 
 def get_keccak_writer(ctx: HashContext | None = None) -> HashWriter:
-    from trezor.utils import HashWriter
+    from cerberus.utils import HashWriter
 
     from apps.monero.xmr import crypto_helpers
 

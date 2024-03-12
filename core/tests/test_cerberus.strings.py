@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor import strings
+from cerberus import strings
 
 
 class TestStrings(unittest.TestCase):

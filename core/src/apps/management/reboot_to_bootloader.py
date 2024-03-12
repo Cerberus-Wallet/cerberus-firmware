@@ -3,8 +3,8 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import NoReturn
 
-    from trezor.enums import BootCommand
-    from trezor.messages import RebootToBootloader
+    from cerberus.enums import BootCommand
+    from cerberus.messages import RebootToBootloader
 
 
 async def install_upgrade(
@@ -12,9 +12,9 @@ async def install_upgrade(
 ) -> tuple[BootCommand, bytes]:
     from ubinascii import hexlify
 
-    from trezor import TR, utils, wire
-    from trezor.enums import BootCommand
-    from trezor.ui.layouts import confirm_firmware_update, show_wait_text
+    from cerberus import TR, utils, wire
+    from cerberus.enums import BootCommand
+    from cerberus.ui.layouts import confirm_firmware_update, show_wait_text
 
     from apps.management.change_language import do_change_language
 
@@ -55,11 +55,11 @@ async def install_upgrade(
 
 
 async def reboot_to_bootloader(msg: RebootToBootloader) -> NoReturn:
-    from trezor import TR, io, loop, utils
-    from trezor.enums import BootCommand
-    from trezor.messages import Success
-    from trezor.ui.layouts import confirm_action
-    from trezor.wire.context import get_context
+    from cerberus import TR, io, loop, utils
+    from cerberus.enums import BootCommand
+    from cerberus.messages import Success
+    from cerberus.ui.layouts import confirm_action
+    from cerberus.wire.context import get_context
 
     # Bootloader will only allow the INSTALL_UPGRADE flow for official images.
     # This is to prevent a problematic custom signed firmware from self-updating

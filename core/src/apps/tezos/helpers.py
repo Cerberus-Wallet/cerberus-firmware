@@ -1,13 +1,13 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor.utils import BufferReader, ensure
-from trezor.wire import DataError
+from cerberus.utils import BufferReader, ensure
+from cerberus.wire import DataError
 
 from apps.common.readers import read_uint32_be
 
 if TYPE_CHECKING:
-    from trezor.utils import Writer
+    from cerberus.utils import Writer
 
 
 TEZOS_AMOUNT_DECIMALS = const(6)
@@ -81,7 +81,7 @@ _EP_TAG_NAMED = const(255)
 
 
 def base58_encode_check(payload: bytes, prefix: str | None = None) -> str:
-    from trezor.crypto import base58
+    from cerberus.crypto import base58
 
     result = payload
     if prefix is not None:

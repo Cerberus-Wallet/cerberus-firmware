@@ -1,9 +1,9 @@
 from typing import TYPE_CHECKING
 
-from trezor import log, workflow
-from trezor.enums import ButtonRequestType
-from trezor.messages import ButtonAck, ButtonRequest
-from trezor.wire import context
+from cerberus import log, workflow
+from cerberus.enums import ButtonRequestType
+from cerberus.messages import ButtonAck, ButtonRequest
+from cerberus.wire import context
 
 if TYPE_CHECKING:
     from typing import Any, Awaitable, Protocol

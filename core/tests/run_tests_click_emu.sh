@@ -3,7 +3,7 @@
 : "${RUN_TEST_EMU:=1}"
 
 CORE_DIR="$(SHELL_SESSION_FILE='' && cd "$( dirname "${BASH_SOURCE[0]}" )/.." >/dev/null 2>&1 && pwd )"
-MICROPYTHON="${MICROPYTHON:-$CORE_DIR/build/unix/trezor-emu-core}"
+MICROPYTHON="${MICROPYTHON:-$CORE_DIR/build/unix/cerberus-emu-core}"
 CERBERUS_SRC="${CORE_DIR}/src"
 
 DISABLE_ANIMATION=1
@@ -12,11 +12,11 @@ upy_pid=""
 
 # run emulator if RUN_TEST_EMU
 if [[ $RUN_TEST_EMU > 0 ]]; then
-  source ../trezor_cmd.sh
+  source ../cerberus_cmd.sh
 
   # remove flash and sdcard files before run to prevent inconsistent states
-  mv "${CERBERUS_PROFILE_DIR}/trezor.flash" "${CERBERUS_PROFILE_DIR}/trezor.flash.bkp" 2>/dev/null
-  mv "${CERBERUS_PROFILE_DIR}/trezor.sdcard" "${CERBERUS_PROFILE_DIR}/trezor.sdcard.bkp" 2>/dev/null
+  mv "${CERBERUS_PROFILE_DIR}/cerberus.flash" "${CERBERUS_PROFILE_DIR}/cerberus.flash.bkp" 2>/dev/null
+  mv "${CERBERUS_PROFILE_DIR}/cerberus.sdcard" "${CERBERUS_PROFILE_DIR}/cerberus.sdcard.bkp" 2>/dev/null
 
   cd "${CERBERUS_SRC}"
   echo "Starting emulator: $MICROPYTHON $ARGS ${MAIN}"

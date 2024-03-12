@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TREZORHAL_RANDOM_DELAYS_H__
-#define __TREZORHAL_RANDOM_DELAYS_H__
+#ifndef __CERBERUSHAL_RANDOM_DELAYS_H__
+#define __CERBERUSHAL_RANDOM_DELAYS_H__
 
 void random_delays_init(void);
 void wait_random(void);

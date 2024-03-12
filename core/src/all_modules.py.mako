@@ -12,7 +12,7 @@ SRCDIR = THIS_FILE.parent
 PATTERNS = (
     "*.py",
     "storage/**/*.py",
-    "trezor/**/*.py",
+    "cerberus/**/*.py",
     "apps/**/*.py",
 )
 
@@ -47,7 +47,7 @@ imports_common = [import_name for import_name in imports if not any(a in import_
 imports_altcoin = [import_name for import_name in imports if import_name not in imports_common]
 
 %>\
-from trezor.utils import halt
+from cerberus.utils import halt
 
 # this module should not be part of the build, its purpose is only to add missed Qstrings
 halt("Tried to import excluded module.")
@@ -72,7 +72,7 @@ halt("Tried to import excluded module.")
 # interned, and some operation somewhere (rendering?) is reading strings character by
 # character.
 
-from trezor import utils
+from cerberus import utils
 
 % for import_name in imports_common:
 ${import_name}

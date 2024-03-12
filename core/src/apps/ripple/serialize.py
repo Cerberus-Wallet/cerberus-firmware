@@ -12,8 +12,8 @@ from micropython import const
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import RippleSignTx
-    from trezor.utils import Writer
+    from cerberus.messages import RippleSignTx
+    from cerberus.utils import Writer
 
 
 _FIELD_TYPE_INT16 = const(1)

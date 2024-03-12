@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -19,12 +19,12 @@
 
 #include <string.h>
 
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
 #include "bootui.h"
 #include "display.h"
 #include "display_utils.h"
-#ifdef TREZOR_EMULATOR
+#ifdef CERBERUS_EMULATOR
 #include "emulator.h"
 #else
 #include "mini_printf.h"
@@ -49,7 +49,7 @@
 #define COLOR_BL_GRAY COLOR_BL_FG
 #endif
 
-#ifndef TREZOR_MODEL_R
+#ifndef CERBERUS_MODEL_R
 #define BOOT_WAIT_HEIGHT 25
 #define BOOT_WAIT_Y_TOP (DISPLAY_RESY - BOOT_WAIT_HEIGHT)
 #else
@@ -88,7 +88,7 @@ void ui_screen_boot(const vendor_header *const vhdr,
 
   display_bar(0, 0, DISPLAY_RESX, DISPLAY_RESY, boot_background);
 
-#ifndef TREZOR_MODEL_R
+#ifndef CERBERUS_MODEL_R
   int image_top = show_string ? 30 : (DISPLAY_RESY - 120) / 2;
   // check whether vendor image is 120x120
   if (memcmp(vimg, "TOIF\x78\x00\x78\x00", 8) == 0) {
@@ -263,7 +263,7 @@ void ui_screen_install_restricted(void) {
   screen_fatal_error_rust(
       "INSTALL RESTRICTED",
       "Installation of custom firmware is currently restricted.",
-      "Please visit\ntrezor.io/bootloader");
+      "Please visit\ncerberus.uraanai.com/bootloader");
 
   display_refresh();
 }

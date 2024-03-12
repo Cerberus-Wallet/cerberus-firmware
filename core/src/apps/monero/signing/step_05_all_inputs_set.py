@@ -6,7 +6,7 @@ If in the applicable offloading mode, generate commitment masks.
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import MoneroTransactionAllInputsSetAck
+    from cerberus.messages import MoneroTransactionAllInputsSetAck
 
     from apps.monero.layout import MoneroTransactionProgress
 
@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 def all_inputs_set(
     state: State, progress: MoneroTransactionProgress
 ) -> MoneroTransactionAllInputsSetAck:
-    from trezor.messages import MoneroTransactionAllInputsSetAck
+    from cerberus.messages import MoneroTransactionAllInputsSetAck
 
     from apps.monero.xmr import crypto
 

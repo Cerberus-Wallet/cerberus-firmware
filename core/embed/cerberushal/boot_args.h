@@ -1,5 +1,5 @@
-#ifndef TREZORHAL_BOOT_ARGS_H
-#define TREZORHAL_BOOT_ARGS_H
+#ifndef CERBERUSHAL_BOOT_ARGS_H
+#define CERBERUSHAL_BOOT_ARGS_H
 
 // Defines boot command for 'svc_reboot_to_bootloader()' function
 typedef enum {
@@ -15,4 +15,4 @@ typedef enum {
 // 'svc_reboot_to_bootloader()' function
 #define BOOT_ARGS_SIZE 256
 
-#endif  // TREZORHAL_BOOT_ARGS_H
+#endif  // CERBERUSHAL_BOOT_ARGS_H

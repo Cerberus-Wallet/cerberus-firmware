@@ -1,8 +1,8 @@
 from common import *  # isort:skip
 
-from trezor.enums import InputScriptType
-from trezor.messages import PrevOutput, SignTx, TxInput
-from trezor.utils import HashWriter
+from cerberus.enums import InputScriptType
+from cerberus.messages import PrevOutput, SignTx, TxInput
+from cerberus.utils import HashWriter
 
 from apps.zcash.hasher import ZcashHasher, blake2b, write_hash
 

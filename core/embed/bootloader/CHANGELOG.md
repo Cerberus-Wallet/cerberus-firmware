@@ -53,7 +53,7 @@ Internal only release for Model R prototypes.
 ### Added
 - Optimize touch controller communication  [#262]
 - Bootloader redesign  [#1049]
-- Add basic Trezor Model R hardware support  [#2243]
+- Add basic Cerberus Model R hardware support  [#2243]
 - Jump and stay in bootloader from firmware through SVC call reverse trampoline.  [#2284]
 - Add RGB LED for Model R  [#2300]
 - Using hardware acceleration (dma2d) for rendering  [#2414]
@@ -93,27 +93,27 @@ Internal only release for Model R prototypes.
 
 ### Added
 - First public release
-[#262]: https://github.com/trezor/trezor-firmware/pull/262
-[#1049]: https://github.com/trezor/trezor-firmware/pull/1049
-[#1599]: https://github.com/trezor/trezor-firmware/pull/1599
-[#1642]: https://github.com/trezor/trezor-firmware/pull/1642
-[#2243]: https://github.com/trezor/trezor-firmware/pull/2243
-[#2284]: https://github.com/trezor/trezor-firmware/pull/2284
-[#2300]: https://github.com/trezor/trezor-firmware/pull/2300
-[#2414]: https://github.com/trezor/trezor-firmware/pull/2414
-[#2427]: https://github.com/trezor/trezor-firmware/pull/2427
-[#2587]: https://github.com/trezor/trezor-firmware/pull/2587
-[#2595]: https://github.com/trezor/trezor-firmware/pull/2595
-[#2623]: https://github.com/trezor/trezor-firmware/pull/2623
-[#2794]: https://github.com/trezor/trezor-firmware/pull/2794
-[#2879]: https://github.com/trezor/trezor-firmware/pull/2879
-[#2896]: https://github.com/trezor/trezor-firmware/pull/2896
-[#2919]: https://github.com/trezor/trezor-firmware/pull/2919
-[#2941]: https://github.com/trezor/trezor-firmware/pull/2941
-[#2955]: https://github.com/trezor/trezor-firmware/pull/2955
-[#2989]: https://github.com/trezor/trezor-firmware/pull/2989
-[#3048]: https://github.com/trezor/trezor-firmware/pull/3048
-[#3122]: https://github.com/trezor/trezor-firmware/pull/3122
-[#3205]: https://github.com/trezor/trezor-firmware/pull/3205
-[#3222]: https://github.com/trezor/trezor-firmware/pull/3222
-[#3303]: https://github.com/trezor/trezor-firmware/pull/3303
+[#262]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/262
+[#1049]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/1049
+[#1599]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/1599
+[#1642]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/1642
+[#2243]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2243
+[#2284]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2284
+[#2300]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2300
+[#2414]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2414
+[#2427]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2427
+[#2587]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2587
+[#2595]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2595
+[#2623]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2623
+[#2794]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2794
+[#2879]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2879
+[#2896]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2896
+[#2919]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2919
+[#2941]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2941
+[#2955]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2955
+[#2989]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2989
+[#3048]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/3048
+[#3122]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/3122
+[#3205]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/3205
+[#3222]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/3222
+[#3303]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/3303

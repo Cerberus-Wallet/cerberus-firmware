@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -19,16 +19,16 @@
 
 #include "py/objstr.h"
 
-#include "vendor/trezor-crypto/ecdsa.h"
-#include "vendor/trezor-crypto/secp256k1.h"
+#include "vendor/cerberus-crypto/ecdsa.h"
+#include "vendor/cerberus-crypto/secp256k1.h"
 
-/// package: trezorcrypto.secp256k1
+/// package: cerberuscrypto.secp256k1
 
 /// def generate_secret() -> bytes:
 ///     """
 ///     Generate secret key.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_secp256k1_generate_secret() {
+STATIC mp_obj_t mod_cerberuscrypto_secp256k1_generate_secret() {
   vstr_t sk = {0};
   vstr_init_len(&sk, 32);
   for (;;) {
@@ -52,14 +52,14 @@ STATIC mp_obj_t mod_trezorcrypto_secp256k1_generate_secret() {
   }
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &sk);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_trezorcrypto_secp256k1_generate_secret_obj,
-                                 mod_trezorcrypto_secp256k1_generate_secret);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_cerberuscrypto_secp256k1_generate_secret_obj,
+                                 mod_cerberuscrypto_secp256k1_generate_secret);
 
 /// def publickey(secret_key: bytes, compressed: bool = True) -> bytes:
 ///     """
 ///     Computes public key from secret key.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_secp256k1_publickey(size_t n_args,
+STATIC mp_obj_t mod_cerberuscrypto_secp256k1_publickey(size_t n_args,
                                                      const mp_obj_t *args) {
   mp_buffer_info_t sk = {0};
   mp_get_buffer_raise(args[0], &sk, MP_BUFFER_READ);
@@ -85,8 +85,8 @@ STATIC mp_obj_t mod_trezorcrypto_secp256k1_publickey(size_t n_args,
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &pk);
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(
-    mod_trezorcrypto_secp256k1_publickey_obj, 1, 2,
-    mod_trezorcrypto_secp256k1_publickey);
+    mod_cerberuscrypto_secp256k1_publickey_obj, 1, 2,
+    mod_cerberuscrypto_secp256k1_publickey);
 
 #if !BITCOIN_ONLY
 
@@ -123,7 +123,7 @@ enum {
 ///     """
 ///     Uses secret key to produce the signature of the digest.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_secp256k1_sign(size_t n_args,
+STATIC mp_obj_t mod_cerberuscrypto_secp256k1_sign(size_t n_args,
                                                 const mp_obj_t *args) {
   mp_buffer_info_t sk = {0};
   mp_buffer_info_t dig = {0};
@@ -160,16 +160,16 @@ STATIC mp_obj_t mod_trezorcrypto_secp256k1_sign(size_t n_args,
   sig.buf[0] = 27 + pby + compressed * 4;
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &sig);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_trezorcrypto_secp256k1_sign_obj,
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_cerberuscrypto_secp256k1_sign_obj,
                                            2, 4,
-                                           mod_trezorcrypto_secp256k1_sign);
+                                           mod_cerberuscrypto_secp256k1_sign);
 
 /// def verify(public_key: bytes, signature: bytes, digest: bytes) -> bool:
 ///     """
 ///     Uses public key to verify the signature of the digest.
 ///     Returns True on success.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_secp256k1_verify(mp_obj_t public_key,
+STATIC mp_obj_t mod_cerberuscrypto_secp256k1_verify(mp_obj_t public_key,
                                                   mp_obj_t signature,
                                                   mp_obj_t digest) {
   mp_buffer_info_t pk = {0}, sig = {0}, dig = {0};
@@ -191,15 +191,15 @@ STATIC mp_obj_t mod_trezorcrypto_secp256k1_verify(mp_obj_t public_key,
                                 (const uint8_t *)dig.buf);
   return mp_obj_new_bool(ret == 0);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_trezorcrypto_secp256k1_verify_obj,
-                                 mod_trezorcrypto_secp256k1_verify);
+STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_cerberuscrypto_secp256k1_verify_obj,
+                                 mod_cerberuscrypto_secp256k1_verify);
 
 /// def verify_recover(signature: bytes, digest: bytes) -> bytes:
 ///     """
 ///     Uses signature of the digest to verify the digest and recover the public
 ///     key. Returns public key on success, None if the signature is invalid.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_secp256k1_verify_recover(mp_obj_t signature,
+STATIC mp_obj_t mod_cerberuscrypto_secp256k1_verify_recover(mp_obj_t signature,
                                                           mp_obj_t digest) {
   mp_buffer_info_t sig = {0}, dig = {0};
   mp_get_buffer_raise(signature, &sig, MP_BUFFER_READ);
@@ -230,15 +230,15 @@ STATIC mp_obj_t mod_trezorcrypto_secp256k1_verify_recover(mp_obj_t signature,
     return mp_const_none;
   }
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_secp256k1_verify_recover_obj,
-                                 mod_trezorcrypto_secp256k1_verify_recover);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberuscrypto_secp256k1_verify_recover_obj,
+                                 mod_cerberuscrypto_secp256k1_verify_recover);
 
 /// def multiply(secret_key: bytes, public_key: bytes) -> bytes:
 ///     """
 ///     Multiplies point defined by public_key with scalar defined by
 ///     secret_key. Useful for ECDH.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_secp256k1_multiply(mp_obj_t secret_key,
+STATIC mp_obj_t mod_cerberuscrypto_secp256k1_multiply(mp_obj_t secret_key,
                                                     mp_obj_t public_key) {
   mp_buffer_info_t sk = {0}, pk = {0};
   mp_get_buffer_raise(secret_key, &sk, MP_BUFFER_READ);
@@ -258,33 +258,33 @@ STATIC mp_obj_t mod_trezorcrypto_secp256k1_multiply(mp_obj_t secret_key,
   }
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &out);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_secp256k1_multiply_obj,
-                                 mod_trezorcrypto_secp256k1_multiply);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberuscrypto_secp256k1_multiply_obj,
+                                 mod_cerberuscrypto_secp256k1_multiply);
 
-STATIC const mp_rom_map_elem_t mod_trezorcrypto_secp256k1_globals_table[] = {
+STATIC const mp_rom_map_elem_t mod_cerberuscrypto_secp256k1_globals_table[] = {
     {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_secp256k1)},
     {MP_ROM_QSTR(MP_QSTR_generate_secret),
-     MP_ROM_PTR(&mod_trezorcrypto_secp256k1_generate_secret_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_secp256k1_generate_secret_obj)},
     {MP_ROM_QSTR(MP_QSTR_publickey),
-     MP_ROM_PTR(&mod_trezorcrypto_secp256k1_publickey_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_secp256k1_publickey_obj)},
     {MP_ROM_QSTR(MP_QSTR_sign),
-     MP_ROM_PTR(&mod_trezorcrypto_secp256k1_sign_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_secp256k1_sign_obj)},
     {MP_ROM_QSTR(MP_QSTR_verify),
-     MP_ROM_PTR(&mod_trezorcrypto_secp256k1_verify_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_secp256k1_verify_obj)},
     {MP_ROM_QSTR(MP_QSTR_verify_recover),
-     MP_ROM_PTR(&mod_trezorcrypto_secp256k1_verify_recover_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_secp256k1_verify_recover_obj)},
     {MP_ROM_QSTR(MP_QSTR_multiply),
-     MP_ROM_PTR(&mod_trezorcrypto_secp256k1_multiply_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_secp256k1_multiply_obj)},
 #if !BITCOIN_ONLY
     {MP_ROM_QSTR(MP_QSTR_CANONICAL_SIG_ETHEREUM),
      MP_ROM_INT(CANONICAL_SIG_ETHEREUM)},
     {MP_ROM_QSTR(MP_QSTR_CANONICAL_SIG_EOS), MP_ROM_INT(CANONICAL_SIG_EOS)},
 #endif
 };
-STATIC MP_DEFINE_CONST_DICT(mod_trezorcrypto_secp256k1_globals,
-                            mod_trezorcrypto_secp256k1_globals_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberuscrypto_secp256k1_globals,
+                            mod_cerberuscrypto_secp256k1_globals_table);
 
-STATIC const mp_obj_module_t mod_trezorcrypto_secp256k1_module = {
+STATIC const mp_obj_module_t mod_cerberuscrypto_secp256k1_module = {
     .base = {&mp_type_module},
-    .globals = (mp_obj_dict_t *)&mod_trezorcrypto_secp256k1_globals,
+    .globals = (mp_obj_dict_t *)&mod_cerberuscrypto_secp256k1_globals,
 };

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -22,7 +22,7 @@
 
 #include <stdint.h>
 #include "common.h"
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
 #ifndef DISPLAY_FRAMEBUFFER_OFFSET_Y
 #define DISPLAY_FRAMEBUFFER_OFFSET_Y 0

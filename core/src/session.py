@@ -1,5 +1,5 @@
 # isort: skip_file
-from trezor import log, loop, utils, wire, workflow
+from cerberus import log, loop, utils, wire, workflow
 
 import apps.base
 import usb

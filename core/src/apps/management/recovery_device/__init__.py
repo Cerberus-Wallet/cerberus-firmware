@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import RecoveryDevice, Success
+    from cerberus.messages import RecoveryDevice, Success
 
 # List of RecoveryDevice fields that can be set when doing dry-run recovery.
 # All except `dry_run` are allowed for T1 compatibility, but their values are ignored.
@@ -12,16 +12,16 @@ DRY_RUN_ALLOWED_FIELDS = ("dry_run", "word_count", "enforce_wordlist", "type")
 async def recovery_device(msg: RecoveryDevice) -> Success:
     """
     Recover BIP39/SLIP39 seed into empty device.
-    Recovery is also possible with replugged Trezor. We call this process Persistence.
+    Recovery is also possible with replugged Cerberus. We call this process Persistence.
     User starts the process here using the RecoveryDevice msg and then they can unplug
     the device anytime and continue without a computer.
     """
     import storage
     import storage.device as storage_device
     import storage.recovery as storage_recovery
-    from trezor import TR, config, wire, workflow
-    from trezor.enums import ButtonRequestType
-    from trezor.ui.layouts import confirm_action, confirm_reset_device
+    from cerberus import TR, config, wire, workflow
+    from cerberus.enums import ButtonRequestType
+    from cerberus.ui.layouts import confirm_action, confirm_reset_device
 
     from apps.common.request_pin import (
         error_pin_invalid,
@@ -41,7 +41,7 @@ async def recovery_device(msg: RecoveryDevice) -> Success:
         raise wire.NotInitialized("Device is not initialized")
     if msg.enforce_wordlist is False:
         raise wire.ProcessError(
-            "Value enforce_wordlist must be True, Trezor Core enforces words automatically."
+            "Value enforce_wordlist must be True, Cerberus Core enforces words automatically."
         )
     if dry_run:
         # check that only allowed fields are set

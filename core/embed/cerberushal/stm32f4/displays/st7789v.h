@@ -8,13 +8,13 @@ typedef struct {
   uint16_t y;
 } display_padding_t;
 
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
 // ILI9341V, GC9307 and ST7789V drivers support 240px x 320px display resolution
 #define MAX_DISPLAY_RESX 240
 #define MAX_DISPLAY_RESY 320
 #define DISPLAY_COLOR_MODE DMA2D_OUTPUT_RGB565
-#define TREZOR_FONT_BPP 4
+#define CERBERUS_FONT_BPP 4
 
 #ifdef USE_DISP_I8080_16BIT_DW
 #define DISP_MEM_TYPE uint16_t

@@ -4,7 +4,7 @@ from apps.common.keychain import auto_keychain
 from apps.monero.layout import MoneroTransactionProgress
 
 if TYPE_CHECKING:
-    from trezor.messages import MoneroTransactionFinalAck
+    from cerberus.messages import MoneroTransactionFinalAck
 
     from apps.common.keychain import Keychain
     from apps.monero.signing.state import State
@@ -14,8 +14,8 @@ if TYPE_CHECKING:
 async def sign_tx(received_msg, keychain: Keychain) -> MoneroTransactionFinalAck:
     import gc
 
-    from trezor import log, utils
-    from trezor.wire.context import get_context
+    from cerberus import log, utils
+    from cerberus.wire.context import get_context
 
     from apps.monero.signing.state import State
 
@@ -51,8 +51,8 @@ async def sign_tx(received_msg, keychain: Keychain) -> MoneroTransactionFinalAck
 async def _sign_tx_dispatch(
     state: State, msg, keychain: Keychain, progress: MoneroTransactionProgress
 ) -> tuple:
-    from trezor import wire
-    from trezor.enums import MessageType
+    from cerberus import wire
+    from cerberus.enums import MessageType
 
     MESSAGE_WIRE_TYPE = msg.MESSAGE_WIRE_TYPE  # local_cache_attribute
 

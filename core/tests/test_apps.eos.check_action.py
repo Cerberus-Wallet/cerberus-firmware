@@ -1,7 +1,7 @@
 from common import *  # isort:skip
 
 if not utils.BITCOIN_ONLY:
-    from trezor.messages import EosTxActionAck
+    from cerberus.messages import EosTxActionAck
 
     from apps.eos.actions import _check_action
 

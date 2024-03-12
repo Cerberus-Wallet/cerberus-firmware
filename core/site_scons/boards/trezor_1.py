@@ -12,7 +12,7 @@ def configure(
     paths: list[str],
 ) -> list[str]:
     features_available: list[str] = []
-    board = "trezor_1.h"
+    board = "cerberus_1.h"
     display = "vg-2864ksweg01.c"
     hw_model = get_hw_model_as_number("T1B1")
     hw_revision = 0
@@ -28,30 +28,30 @@ def configure(
     env.get("ENV")["RUST_TARGET"] = "thumbv7m-none-eabi"
 
     defines += [mcu]
-    defines += [f'TREZOR_BOARD=\\"boards/{board}\\"']
+    defines += [f'CERBERUS_BOARD=\\"boards/{board}\\"']
     defines += [f"HW_MODEL={hw_model}"]
     defines += [f"HW_REVISION={hw_revision}"]
     sources += [
         "embed/models/model_T1B1_layout.c",
     ]
-    sources += [f"embed/trezorhal/stm32f4/displays/{display}"]
+    sources += [f"embed/cerberushal/stm32f4/displays/{display}"]
 
     if "input" in features_wanted:
-        sources += ["embed/trezorhal/stm32f4/button.c"]
+        sources += ["embed/cerberushal/stm32f4/button.c"]
         features_available.append("button")
 
     if "usb" in features_wanted:
         sources += [
-            "embed/trezorhal/stm32f4/usb.c",
-            "embed/trezorhal/stm32f4/usbd_conf.c",
-            "embed/trezorhal/stm32f4/usbd_core.c",
-            "embed/trezorhal/stm32f4/usbd_ctlreq.c",
-            "embed/trezorhal/stm32f4/usbd_ioreq.c",
+            "embed/cerberushal/stm32f4/usb.c",
+            "embed/cerberushal/stm32f4/usbd_conf.c",
+            "embed/cerberushal/stm32f4/usbd_core.c",
+            "embed/cerberushal/stm32f4/usbd_ctlreq.c",
+            "embed/cerberushal/stm32f4/usbd_ioreq.c",
             "vendor/micropython/lib/stm32lib/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c",
         ]
         features_available.append("usb")
 
-    env.get("ENV")["TREZOR_BOARD"] = board
+    env.get("ENV")["CERBERUS_BOARD"] = board
     env.get("ENV")["MCU_TYPE"] = mcu
 
     return features_available

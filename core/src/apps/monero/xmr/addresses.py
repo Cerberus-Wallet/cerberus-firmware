@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         MoneroAccountPublicAddress,
         MoneroTransactionDestinationEntry,
     )
@@ -13,7 +13,7 @@ def encode_addr(
     """
     Builds Monero address from public keys
     """
-    from trezor.crypto import monero as tcry
+    from cerberus.crypto import monero as tcry
 
     buf = spend_pub + view_pub
     if payment_id:

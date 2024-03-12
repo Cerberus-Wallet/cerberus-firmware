@@ -1,10 +1,10 @@
 from micropython import const
 from typing import Sequence
 
-from trezor import TR
-from trezor.enums import ButtonRequestType
-from trezor.ui.layouts import show_success
-from trezor.ui.layouts.reset import (  # noqa: F401
+from cerberus import TR
+from cerberus.enums import ButtonRequestType
+from cerberus.ui.layouts import show_success
+from cerberus.ui.layouts.reset import (  # noqa: F401
     show_share_words,
     slip39_advanced_prompt_group_threshold,
     slip39_advanced_prompt_number_of_groups,
@@ -17,7 +17,7 @@ _NUM_OF_CHOICES = const(3)
 
 
 async def show_internal_entropy(entropy: bytes) -> None:
-    from trezor.ui.layouts import confirm_blob
+    from cerberus.ui.layouts import confirm_blob
 
     await confirm_blob(
         "entropy",
@@ -34,8 +34,8 @@ async def _confirm_word(
     count: int,
     group_index: int | None = None,
 ) -> bool:
-    from trezor.crypto import random
-    from trezor.ui.layouts.reset import select_word
+    from cerberus.crypto import random
+    from cerberus.ui.layouts.reset import select_word
 
     # remove duplicates
     non_duplicates = list(set(share_words))
@@ -89,7 +89,7 @@ async def _do_confirm_share_words(
     share_words: Sequence[str],
     group_index: int | None = None,
 ) -> bool:
-    from trezor import utils
+    from cerberus import utils
 
     # divide list into thirds, rounding up, so that chunking by `third` always yields
     # three parts (the last one might be shorter)
@@ -139,7 +139,7 @@ async def _show_confirmation_success(
 
 
 async def _show_confirmation_failure() -> None:
-    from trezor.ui.layouts.reset import show_reset_warning
+    from cerberus.ui.layouts.reset import show_reset_warning
 
     await show_reset_warning(
         "warning_backup_check",
@@ -151,13 +151,13 @@ async def _show_confirmation_failure() -> None:
 
 
 async def show_backup_warning(slip39: bool = False) -> None:
-    from trezor.ui.layouts.reset import show_warning_backup
+    from cerberus.ui.layouts.reset import show_warning_backup
 
     await show_warning_backup(slip39)
 
 
 async def show_backup_success() -> None:
-    from trezor.ui.layouts.reset import show_success_backup
+    from cerberus.ui.layouts.reset import show_success_backup
 
     await show_success_backup()
 

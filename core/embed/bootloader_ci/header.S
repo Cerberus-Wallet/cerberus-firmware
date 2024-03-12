@@ -10,7 +10,7 @@
 g_header:
     .byte 'T','R','Z','B'            // magic
     .word g_header_end - g_header    // hdrlen
-#ifdef TREZOR_MODEL_T
+#ifdef CERBERUS_MODEL_T
     .word 0                          // expiry
 #else
     .word 1                          // expiry

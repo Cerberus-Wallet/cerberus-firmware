@@ -3,9 +3,9 @@ from typing import Coroutine
 import storage
 import storage.cache
 import storage.device
-from trezor import config, wire
-from trezor.enums import MessageType
-from trezor.ui.layouts.homescreen import Busyscreen, Homescreen, Lockscreen
+from cerberus import config, wire
+from cerberus.enums import MessageType
+from cerberus.ui.layouts.homescreen import Busyscreen, Homescreen, Lockscreen
 
 from apps.base import busy_expiry_ms, lock_device
 from apps.common.authorization import is_set_any_session
@@ -16,7 +16,7 @@ async def busyscreen() -> None:
 
 
 async def homescreen() -> None:
-    from trezor import TR
+    from cerberus import TR
 
     if storage.device.is_initialized():
         label = storage.device.get_label()

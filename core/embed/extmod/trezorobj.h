@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -20,8 +20,8 @@
 #include "py/objint.h"
 #include "py/runtime.h"
 
-#ifndef __TREZOROBJ_H__
-#define __TREZOROBJ_H__
+#ifndef __CERBERUSOBJ_H__
+#define __CERBERUSOBJ_H__
 
 #if MICROPY_LONGINT_IMPL != MICROPY_LONGINT_IMPL_MPZ
 #error Use MPZ for MicroPython long int implementation.
@@ -29,7 +29,7 @@
 
 // Casts int object into mp_int_t, without any conversions. Raises if object is
 // not int or if it does not fit into mp_int_t representation.
-static inline mp_int_t trezor_obj_get_int(mp_obj_t obj) {
+static inline mp_int_t cerberus_obj_get_int(mp_obj_t obj) {
   if (MP_OBJ_IS_SMALL_INT(obj)) {
     mp_int_t i = MP_OBJ_SMALL_INT_VALUE(obj);
     return i;
@@ -49,7 +49,7 @@ static inline mp_int_t trezor_obj_get_int(mp_obj_t obj) {
 // Casts int object into mp_uint_t, without any conversions. Raises if object is
 // not int or if it does not fit into mp_uint_t representation (or is less than
 // 0).
-static inline mp_uint_t trezor_obj_get_uint(mp_obj_t obj) {
+static inline mp_uint_t cerberus_obj_get_uint(mp_obj_t obj) {
   if (MP_OBJ_IS_SMALL_INT(obj)) {
     mp_int_t i = MP_OBJ_SMALL_INT_VALUE(obj);
     if (i < 0) {
@@ -70,15 +70,15 @@ static inline mp_uint_t trezor_obj_get_uint(mp_obj_t obj) {
   }
 }
 
-static inline uint8_t trezor_obj_get_uint8(mp_obj_t obj) {
-  mp_uint_t u = trezor_obj_get_uint(obj);
+static inline uint8_t cerberus_obj_get_uint8(mp_obj_t obj) {
+  mp_uint_t u = cerberus_obj_get_uint(obj);
   if (u > 0xFF) {
     mp_raise_msg(&mp_type_OverflowError, "value does not fit into byte type");
   }
   return u;
 }
 
-static inline uint64_t trezor_obj_get_uint64(mp_const_obj_t obj) {
+static inline uint64_t cerberus_obj_get_uint64(mp_const_obj_t obj) {
   if (MP_OBJ_IS_SMALL_INT(obj)) {
     mp_int_t i = MP_OBJ_SMALL_INT_VALUE(obj);
     if (i < 0) {
@@ -99,10 +99,10 @@ static inline uint64_t trezor_obj_get_uint64(mp_const_obj_t obj) {
   }
 }
 
-bool trezor_obj_get_ll_checked(mp_obj_t obj, long long *value);
+bool cerberus_obj_get_ll_checked(mp_obj_t obj, long long *value);
 
-mp_obj_t trezor_obj_call_protected(void (*func)(void *), void *arg);
+mp_obj_t cerberus_obj_call_protected(void (*func)(void *), void *arg);
 
-mp_obj_t trezor_obj_str_from_rom_text(const char *str);
+mp_obj_t cerberus_obj_str_from_rom_text(const char *str);
 
 #endif

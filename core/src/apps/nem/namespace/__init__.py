@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import NEMProvisionNamespace, NEMTransactionCommon
+    from cerberus.messages import NEMProvisionNamespace, NEMTransactionCommon
 
 
 async def namespace(

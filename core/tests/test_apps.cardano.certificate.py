@@ -1,8 +1,8 @@
 from common import *  # isort:skip
 
-from trezor import wire
-from trezor.enums import CardanoCertificateType
-from trezor.messages import CardanoPoolParametersType, CardanoTxCertificate
+from cerberus import wire
+from cerberus.enums import CardanoCertificateType
+from cerberus.messages import CardanoPoolParametersType, CardanoTxCertificate
 
 from apps.common.paths import HARDENED
 

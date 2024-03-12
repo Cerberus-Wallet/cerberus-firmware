@@ -1,11 +1,11 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import EosAsset
+    from cerberus.messages import EosAsset
 
 
 def base58_encode(prefix: str, sig_prefix: str, data: bytes) -> str:
-    from trezor.crypto import base58
+    from cerberus.crypto import base58
 
     b58 = base58.encode(data + base58.ripemd160_32(data + sig_prefix.encode()))
     if sig_prefix:
@@ -44,7 +44,7 @@ def eos_asset_to_string(asset: EosAsset) -> str:
 
 
 def public_key_to_wif(pub_key: bytes) -> str:
-    from trezor.wire import DataError
+    from cerberus.wire import DataError
 
     if pub_key[0] == 0x04 and len(pub_key) == 65:
         head = b"\x03" if pub_key[64] & 0x01 else b"\x02"

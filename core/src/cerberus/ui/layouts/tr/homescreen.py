@@ -1,15 +1,15 @@
 from typing import TYPE_CHECKING
 
 import storage.cache as storage_cache
-import trezorui2
-from trezor import TR, ui
+import cerberusui2
+from cerberus import TR, ui
 
 from . import RustLayout
 
 if TYPE_CHECKING:
     from typing import Any, Tuple
 
-    from trezor import loop
+    from cerberus import loop
 
 
 class HomescreenBase(RustLayout):
@@ -49,7 +49,7 @@ class Homescreen(HomescreenBase):
 
         skip = storage_cache.homescreen_shown is self.RENDER_INDICATOR
         super().__init__(
-            layout=trezorui2.show_homescreen(
+            layout=cerberusui2.show_homescreen(
                 label=label,
                 notification=notification,
                 notification_level=level,
@@ -59,7 +59,7 @@ class Homescreen(HomescreenBase):
         )
 
     async def usb_checker_task(self) -> None:
-        from trezor import io, loop
+        from cerberus import io, loop
 
         usbcheck = loop.wait(io.USB_CHECK)
         while True:
@@ -86,7 +86,7 @@ class Lockscreen(HomescreenBase):
             not bootscreen and storage_cache.homescreen_shown is self.RENDER_INDICATOR
         )
         super().__init__(
-            layout=trezorui2.show_lockscreen(
+            layout=cerberusui2.show_lockscreen(
                 label=label,
                 bootscreen=bootscreen,
                 skip_first_paint=skip,
@@ -105,11 +105,11 @@ class Busyscreen(HomescreenBase):
     RENDER_INDICATOR = storage_cache.BUSYSCREEN_ON
 
     def __init__(self, delay_ms: int) -> None:
-        from trezor import TR
+        from cerberus import TR
 
         skip = storage_cache.homescreen_shown is self.RENDER_INDICATOR
         super().__init__(
-            layout=trezorui2.show_progress_coinjoin(
+            layout=cerberusui2.show_progress_coinjoin(
                 title=TR.coinjoin__waiting_for_others,
                 indeterminate=True,
                 time_ms=delay_ms,
@@ -122,7 +122,7 @@ class Busyscreen(HomescreenBase):
 
         # Handle timeout.
         result = await super().__iter__()
-        assert result == trezorui2.CANCELLED
+        assert result == cerberusui2.CANCELLED
         storage_cache.delete(storage_cache.APP_COMMON_BUSY_DEADLINE_MS)
         set_homescreen()
         return result

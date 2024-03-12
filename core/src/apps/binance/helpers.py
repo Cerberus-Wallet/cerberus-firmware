@@ -2,8 +2,8 @@ from micropython import const
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import BinanceInputOutput, BinanceSignTx
-    from trezor.protobuf import MessageType
+    from cerberus.messages import BinanceInputOutput, BinanceSignTx
+    from cerberus.protobuf import MessageType
 
 # 1*10^8 Jagers equal 1 BNB https://www.binance.vision/glossary/jager
 DECIMALS = const(8)
@@ -21,8 +21,8 @@ def _make_input_output(input_output: BinanceInputOutput) -> str:
 
 
 def produce_json_for_signing(envelope: BinanceSignTx, msg: MessageType) -> str:
-    from trezor import wire
-    from trezor.messages import BinanceCancelMsg, BinanceOrderMsg, BinanceTransferMsg
+    from cerberus import wire
+    from cerberus.messages import BinanceCancelMsg, BinanceOrderMsg, BinanceTransferMsg
 
     # NOTE: not defining kwargs in format string saves 7 bytes per each argument
     ENVELOPE_BLUEPRINT = '{{"account_number":"{}","chain_id":"{}","data":null,"memo":"{}","msgs":[{}],"sequence":"{}","source":"{}"}}'
@@ -69,8 +69,8 @@ def address_from_public_key(pubkey: bytes, hrp: str) -> str:
     Address_Bech32 = HRP + '1' + bech32.encode(convert8BitsTo5Bits(RIPEMD160(SHA256(compressed public key))))
     HRP - bnb for productions, tbnb for tests
     """
-    from trezor.crypto import bech32
-    from trezor.crypto.scripts import sha256_ripemd160
+    from cerberus.crypto import bech32
+    from cerberus.crypto.scripts import sha256_ripemd160
 
     h = sha256_ripemd160(pubkey).digest()
 

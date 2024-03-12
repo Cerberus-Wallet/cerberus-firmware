@@ -1,12 +1,12 @@
-from trezor import TR
-from trezor.enums import ButtonRequestType
-from trezor.ui.layouts import confirm_address, confirm_metadata, confirm_properties
+from cerberus import TR
+from cerberus.enums import ButtonRequestType
+from cerberus.ui.layouts import confirm_address, confirm_metadata, confirm_properties
 
 BR_SIGN_TX = ButtonRequestType.SignTx  # global_import_cache
 
 
 async def require_confirm_tx(to: str, value: int, chunkify: bool = False) -> None:
-    from trezor.ui.layouts import confirm_output
+    from cerberus.ui.layouts import confirm_output
 
     await confirm_output(
         to,
@@ -17,7 +17,7 @@ async def require_confirm_tx(to: str, value: int, chunkify: bool = False) -> Non
 
 
 async def require_confirm_fee(value: int, fee: int) -> None:
-    from trezor.ui.layouts import confirm_total
+    from cerberus.ui.layouts import confirm_total
 
     await confirm_total(
         format_tezos_amount(value),
@@ -83,7 +83,7 @@ async def require_confirm_register_delegate(address: str, fee: int) -> None:
 
 
 def format_tezos_amount(value: int) -> str:
-    from trezor.strings import format_amount
+    from cerberus.strings import format_amount
 
     from .helpers import TEZOS_AMOUNT_DECIMALS
 

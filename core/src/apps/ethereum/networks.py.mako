@@ -7,8 +7,8 @@
 
 from typing import TYPE_CHECKING
 
-from trezor import utils
-from trezor.messages import EthereumNetworkInfo
+from cerberus import utils
+from cerberus.messages import EthereumNetworkInfo
 
 if TYPE_CHECKING:
     from typing import Iterator

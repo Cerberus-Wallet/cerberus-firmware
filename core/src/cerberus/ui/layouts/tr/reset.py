@@ -1,19 +1,19 @@
 from typing import TYPE_CHECKING
 
-import trezorui2
-from trezor import TR
-from trezor.enums import ButtonRequestType
-from trezor.wire import ActionCancelled
+import cerberusui2
+from cerberus import TR
+from cerberus.enums import ButtonRequestType
+from cerberus.wire import ActionCancelled
 
 from ..common import interact
 from . import RustLayout, confirm_action, show_warning
 
-CONFIRMED = trezorui2.CONFIRMED  # global_import_cache
+CONFIRMED = cerberusui2.CONFIRMED  # global_import_cache
 
 if TYPE_CHECKING:
     from typing import Sequence
 
-    from trezor.enums import BackupType
+    from cerberus.enums import BackupType
 
 
 async def show_share_words(
@@ -51,7 +51,7 @@ async def show_share_words(
 
         result = await interact(
             RustLayout(
-                trezorui2.show_share_words(  # type: ignore [Arguments missing for parameters]
+                cerberusui2.show_share_words(  # type: ignore [Arguments missing for parameters]
                     share_words=share_words,  # type: ignore [No parameter named "share_words"]
                 )
             ),
@@ -78,8 +78,8 @@ async def select_word(
     count: int,
     group_index: int | None = None,
 ) -> str:
-    from trezor.strings import format_ordinal
-    from trezor.wire.context import wait
+    from cerberus.strings import format_ordinal
+    from cerberus.wire.context import wait
 
     # It may happen (with a very low probability)
     # that there will be less than three unique words to choose from.
@@ -91,7 +91,7 @@ async def select_word(
     word_ordinal = format_ordinal(checked_index + 1).upper()
     result = await wait(
         RustLayout(
-            trezorui2.select_word(
+            cerberusui2.select_word(
                 title="",
                 description=TR.reset__select_word_template.format(word_ordinal),
                 words=(words[0].lower(), words[1].lower(), words[2].lower()),
@@ -105,7 +105,7 @@ async def select_word(
 
 
 async def slip39_show_checklist(step: int, backup_type: BackupType) -> None:
-    from trezor.enums import BackupType
+    from cerberus.enums import BackupType
 
     assert backup_type in (BackupType.Slip39_Basic, BackupType.Slip39_Advanced)
 
@@ -125,7 +125,7 @@ async def slip39_show_checklist(step: int, backup_type: BackupType) -> None:
 
     result = await interact(
         RustLayout(
-            trezorui2.show_checklist(
+            cerberusui2.show_checklist(
                 title=TR.reset__slip39_checklist_title,
                 button=TR.buttons__continue,
                 active=step,
@@ -147,7 +147,7 @@ async def _prompt_number(
     br_name: str,
 ) -> int:
     num_input = RustLayout(
-        trezorui2.request_number(
+        cerberusui2.request_number(
             title=title.upper(),
             count=count,
             min_count=min_count,

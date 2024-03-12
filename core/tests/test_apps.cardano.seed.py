@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import cardano
+from cerberus.crypto import cardano
 
 from apps.common.paths import HARDENED
 
@@ -78,8 +78,8 @@ class TestCardanoDerivation(unittest.TestCase):
             "d176bd8fd4ec60b4731c3918a2a72a0226c0cd119ec35b47e4d55884667f552a"
             "23f7fdcd4a10c6cd2c7393ac61d877873e248f417634aa3d812af327ffe9d620",
         )
-        secret_trezor = cardano.derive_icarus(mnemonic, "", True)
-        self.assertEqual(secret, secret_trezor)
+        secret_cerberus = cardano.derive_icarus(mnemonic, "", True)
+        self.assertEqual(secret, secret_cerberus)
 
         secret = cardano.derive_icarus(mnemonic, "foo", False)
         self.assertEqual(
@@ -88,10 +88,10 @@ class TestCardanoDerivation(unittest.TestCase):
             "d7b5738d9c893feea55512a3004acb0d222c35d3e3d5cde943a15a9824cbac59"
             "443cf67e589614076ba01e354b1a432e0e6db3b59e37fc56b5fb0222970a010e",
         )
-        secret_trezor = cardano.derive_icarus(mnemonic, "foo", True)
-        self.assertEqual(secret, secret_trezor)
+        secret_cerberus = cardano.derive_icarus(mnemonic, "foo", True)
+        self.assertEqual(secret, secret_cerberus)
 
-    def test_icarus_trezor(self):
+    def test_icarus_cerberus(self):
         mnemonic = (
             "void come effort suffer camp survey warrior heavy "
             "shoot primary clutch crush open amazing screen patrol "

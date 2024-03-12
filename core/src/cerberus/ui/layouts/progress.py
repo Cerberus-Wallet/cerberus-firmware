@@ -1,4 +1,4 @@
-from trezor import utils
+from cerberus import utils
 
 if utils.UI_LAYOUT == "TT":
     from .tt.progress import *  # noqa: F401,F403

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -30,6 +30,6 @@ typedef struct _mp_obj_HDNode_t {
   HDNode hdnode;
 } mp_obj_HDNode_t;
 
-extern const mp_obj_type_t mod_trezorcrypto_HDNode_type;
+extern const mp_obj_type_t mod_cerberuscrypto_HDNode_type;
 
 #endif

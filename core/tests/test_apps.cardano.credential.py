@@ -1,7 +1,7 @@
 from common import *  # isort:skip
 
-from trezor.enums import CardanoAddressType
-from trezor.messages import CardanoAddressParametersType, CardanoBlockchainPointerType
+from cerberus.enums import CardanoAddressType
+from cerberus.messages import CardanoAddressParametersType, CardanoBlockchainPointerType
 
 from apps.cardano.helpers.credential import Credential
 from apps.common.paths import HARDENED

@@ -1,17 +1,17 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import FirmwareHash, GetFirmwareHash
-    from trezor.ui.layouts.common import ProgressLayout
+    from cerberus.messages import FirmwareHash, GetFirmwareHash
+    from cerberus.ui.layouts.common import ProgressLayout
 
 _progress_obj: ProgressLayout | None = None
 
 
 async def get_firmware_hash(msg: GetFirmwareHash) -> FirmwareHash:
-    from trezor import wire, workflow
-    from trezor.messages import FirmwareHash
-    from trezor.ui.layouts.progress import progress
-    from trezor.utils import firmware_hash
+    from cerberus import wire, workflow
+    from cerberus.messages import FirmwareHash
+    from cerberus.ui.layouts.progress import progress
+    from cerberus.utils import firmware_hash
 
     workflow.close_others()
     global _progress_obj

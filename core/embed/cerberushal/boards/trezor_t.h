@@ -1,5 +1,5 @@
-#ifndef _TREZOR_T_H
-#define _TREZOR_T_H
+#ifndef _CERBERUS_T_H
+#define _CERBERUS_T_H
 
 #define HSE_8MHZ
 
@@ -59,4 +59,4 @@
 #define SD_ENABLE_PORT GPIOC
 #define SD_ENABLE_PIN GPIO_PIN_0
 
-#endif  //_TREZOR_T_H
+#endif  //_CERBERUS_T_H

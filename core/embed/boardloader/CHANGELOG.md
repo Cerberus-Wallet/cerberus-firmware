@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 Internal only release for Model R prototypes.
 
 ### Added
-- Add basic Trezor Model R hardware support  [#2243]
+- Add basic Cerberus Model R hardware support  [#2243]
 - Boardloader capabilities structure  [#2324]
 - Using hardware acceleration (dma2d) for rendering  [#2414]
 - Check image model when replacing bootloader  [#2623]
@@ -33,14 +33,14 @@ Internal only release for Model R prototypes.
 - Avoid accidental build with broken stack protector  [#1642]
 
 
-[#1642]: https://github.com/trezor/trezor-firmware/pull/1642
-[#2243]: https://github.com/trezor/trezor-firmware/pull/2243
-[#2324]: https://github.com/trezor/trezor-firmware/pull/2324
-[#2414]: https://github.com/trezor/trezor-firmware/pull/2414
-[#2587]: https://github.com/trezor/trezor-firmware/pull/2587
-[#2595]: https://github.com/trezor/trezor-firmware/pull/2595
-[#2623]: https://github.com/trezor/trezor-firmware/pull/2623
-[#2955]: https://github.com/trezor/trezor-firmware/pull/2955
-[#2989]: https://github.com/trezor/trezor-firmware/pull/2989
-[#3048]: https://github.com/trezor/trezor-firmware/pull/3048
-[#3222]: https://github.com/trezor/trezor-firmware/pull/3222
+[#1642]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/1642
+[#2243]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2243
+[#2324]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2324
+[#2414]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2414
+[#2587]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2587
+[#2595]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2595
+[#2623]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2623
+[#2955]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2955
+[#2989]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/2989
+[#3048]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/3048
+[#3222]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/3222

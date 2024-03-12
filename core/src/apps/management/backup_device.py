@@ -1,13 +1,13 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import BackupDevice, Success
+    from cerberus.messages import BackupDevice, Success
 
 
 async def backup_device(msg: BackupDevice) -> Success:
     import storage.device as storage_device
-    from trezor import wire
-    from trezor.messages import Success
+    from cerberus import wire
+    from cerberus.messages import Success
 
     from apps.common import mnemonic
 

@@ -1,4 +1,4 @@
-# Trezor Core
+# Cerberus Core
 
 Firmware currently running on Model T.
 

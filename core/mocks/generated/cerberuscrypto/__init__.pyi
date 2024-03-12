@@ -1,7 +1,7 @@
 from typing import *
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-aes.h
+# extmod/modcerberuscrypto/modcerberuscrypto-aes.h
 class aes:
     """
     AES context.
@@ -33,7 +33,7 @@ class aes:
         """
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-blake256.h
+# extmod/modcerberuscrypto/modcerberuscrypto-blake256.h
 class blake256:
     """
     Blake256 context.
@@ -57,7 +57,7 @@ class blake256:
         """
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-blake2b.h
+# extmod/modcerberuscrypto/modcerberuscrypto-blake2b.h
 class blake2b:
     """
     Blake2b context.
@@ -87,7 +87,7 @@ class blake2b:
         """
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-blake2s.h
+# extmod/modcerberuscrypto/modcerberuscrypto-blake2s.h
 class blake2s:
     """
     Blake2s context.
@@ -117,7 +117,7 @@ class blake2s:
         """
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-chacha20poly1305.h
+# extmod/modcerberuscrypto/modcerberuscrypto-chacha20poly1305.h
 class chacha20poly1305:
     """
     ChaCha20Poly1305 context.
@@ -154,7 +154,7 @@ class chacha20poly1305:
         """
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-groestl.h
+# extmod/modcerberuscrypto/modcerberuscrypto-groestl.h
 class groestl512:
     """
     GROESTL512 context.
@@ -178,7 +178,7 @@ class groestl512:
         """
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-hmac.h
+# extmod/modcerberuscrypto/modcerberuscrypto-hmac.h
 class hmac:
     """
     HMAC context.
@@ -207,7 +207,7 @@ class hmac:
         """
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-pbkdf2.h
+# extmod/modcerberuscrypto/modcerberuscrypto-pbkdf2.h
 class pbkdf2:
     """
     PBKDF2 context.
@@ -238,7 +238,7 @@ class pbkdf2:
         """
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-ripemd160.h
+# extmod/modcerberuscrypto/modcerberuscrypto-ripemd160.h
 class ripemd160:
     """
     RIPEMD160 context.
@@ -262,7 +262,7 @@ class ripemd160:
         """
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-sha1.h
+# extmod/modcerberuscrypto/modcerberuscrypto-sha1.h
 class sha1:
     """
     SHA1 context.
@@ -286,7 +286,7 @@ class sha1:
         """
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-sha256.h
+# extmod/modcerberuscrypto/modcerberuscrypto-sha256.h
 class sha256:
     """
     SHA256 context.
@@ -310,7 +310,7 @@ class sha256:
         """
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-sha3-256.h
+# extmod/modcerberuscrypto/modcerberuscrypto-sha3-256.h
 class sha3_256:
     """
     SHA3_256 context.
@@ -343,7 +343,7 @@ class sha3_256:
         """
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-sha3-512.h
+# extmod/modcerberuscrypto/modcerberuscrypto-sha3-512.h
 class sha3_512:
     """
     SHA3_512 context.
@@ -376,7 +376,7 @@ class sha3_512:
         """
 
 
-# extmod/modtrezorcrypto/modtrezorcrypto-sha512.h
+# extmod/modcerberuscrypto/modcerberuscrypto-sha512.h
 class sha512:
     """
     SHA512 context.

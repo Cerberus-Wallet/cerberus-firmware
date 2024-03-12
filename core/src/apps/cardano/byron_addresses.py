@@ -1,8 +1,8 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor.crypto import crc
-from trezor.wire import ProcessError
+from cerberus.crypto import crc
+from cerberus.wire import ProcessError
 
 from apps.common import cbor
 
@@ -52,7 +52,7 @@ def validate(address: bytes, protocol_magic: int) -> None:
 
 
 def _address_hash(data: list) -> bytes:
-    from trezor.crypto import hashlib
+    from cerberus.crypto import hashlib
 
     cbor_data = cbor.encode(data)
     sha_data_hash = hashlib.sha3_256(cbor_data).digest()
@@ -61,7 +61,7 @@ def _address_hash(data: list) -> bytes:
 
 
 def _decode_raw(address: bytes) -> bytes:
-    from trezor import log
+    from cerberus import log
 
     try:
         address_unpacked = cbor.decode(address)

@@ -408,7 +408,7 @@ void HAL_PCD_DisconnectCallback(PCD_HandleTypeDef *hpcd)
 USBD_StatusTypeDef  USBD_LL_Init (USBD_HandleTypeDef *pdev)
 {
 #if defined(USE_USB_FS)
-  // Trezor 1 uses the OTG_FS peripheral
+  // Cerberus 1 uses the OTG_FS peripheral
   if (pdev->id == USB_PHY_FS_ID) {
     /*Set LL Driver parameters */
     pcd_fs_handle.Instance = USB_OTG_FS;
@@ -441,7 +441,7 @@ USBD_StatusTypeDef  USBD_LL_Init (USBD_HandleTypeDef *pdev)
   }
 #endif
 #if defined(USE_USB_HS_IN_FS)
-  // Trezor T uses the OTG_HS peripheral
+  // Cerberus T uses the OTG_HS peripheral
   if (pdev->id == USB_PHY_HS_ID) {
     /* Set LL Driver parameters */
     pcd_hs_handle.Instance = USB_OTG_HS;
@@ -453,7 +453,7 @@ USBD_StatusTypeDef  USBD_LL_Init (USBD_HandleTypeDef *pdev)
     pcd_hs_handle.Init.phy_itface = PCD_PHY_EMBEDDED;
     pcd_hs_handle.Init.Sof_enable = 1;
     pcd_hs_handle.Init.speed = PCD_SPEED_HIGH_IN_FULL;
-    // Trezor T hardware has PB13 connected to HS_VBUS
+    // Cerberus T hardware has PB13 connected to HS_VBUS
     // but we leave vbus sensing disabled because
     // we don't use it for anything. the device is a bus powered peripheral.
     pcd_hs_handle.Init.vbus_sensing_enable = 0;

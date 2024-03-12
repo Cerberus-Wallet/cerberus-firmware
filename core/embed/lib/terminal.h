@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -22,7 +22,7 @@
 
 #include "colors.h"
 
-#ifndef TREZOR_PRINT_DISABLE
+#ifndef CERBERUS_PRINT_DISABLE
 void term_set_color(uint16_t fgcolor, uint16_t bgcolor);
 void term_print(const char *text, int textlen);
 void term_printf(const char *fmt, ...)

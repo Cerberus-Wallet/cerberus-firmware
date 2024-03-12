@@ -1,7 +1,7 @@
 from common import *  # isort:skip
 
-from trezor.crypto import base58
-from trezor.crypto.hashlib import ripemd160
+from cerberus.crypto import base58
+from cerberus.crypto.hashlib import ripemd160
 
 
 def digestfunc_graphene(x):

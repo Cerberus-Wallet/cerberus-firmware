@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TREZORHAL_OPTIGA_COMMON_H
-#define TREZORHAL_OPTIGA_COMMON_H
+#ifndef CERBERUSHAL_OPTIGA_COMMON_H
+#define CERBERUSHAL_OPTIGA_COMMON_H
 
 typedef enum _optiga_result {
   OPTIGA_SUCCESS = 0,     // Operation completed successfully.

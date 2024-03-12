@@ -6,12 +6,12 @@ from pathlib import Path
 
 from boards import (
     discovery,
-    trezor_1,
-    trezor_r_v3,
-    trezor_r_v4,
-    trezor_r_v6,
-    trezor_r_v10,
-    trezor_t,
+    cerberus_1,
+    cerberus_r_v3,
+    cerberus_r_v4,
+    cerberus_r_v6,
+    cerberus_r_v10,
+    cerberus_t,
 )
 
 HERE = Path(__file__).parent.resolve()
@@ -25,8 +25,8 @@ def add_font(
 ) -> None:
     if font is not None:
         defines += [
-            "TREZOR_FONT_" + font_name + "_ENABLE=" + font,
-            "TREZOR_FONT_" + font_name + '_INCLUDE=\\"' + font.lower() + '.h\\"',
+            "CERBERUS_FONT_" + font_name + "_ENABLE=" + font,
+            "CERBERUS_FONT_" + font_name + '_INCLUDE=\\"' + font.lower() + '.h\\"',
         ]
         sourcefile = "embed/lib/fonts/" + font.lower() + ".c"
         if sourcefile not in sources:
@@ -44,18 +44,18 @@ def configure_board(
     model_r_version = 10
 
     if model in ("1",):
-        return trezor_1.configure(env, features_wanted, defines, sources, paths)
+        return cerberus_1.configure(env, features_wanted, defines, sources, paths)
     elif model in ("T",):
-        return trezor_t.configure(env, features_wanted, defines, sources, paths)
+        return cerberus_t.configure(env, features_wanted, defines, sources, paths)
     elif model in ("R",):
         if model_r_version == 3:
-            return trezor_r_v3.configure(env, features_wanted, defines, sources, paths)
+            return cerberus_r_v3.configure(env, features_wanted, defines, sources, paths)
         elif model_r_version == 4:
-            return trezor_r_v4.configure(env, features_wanted, defines, sources, paths)
+            return cerberus_r_v4.configure(env, features_wanted, defines, sources, paths)
         elif model_r_version == 6:
-            return trezor_r_v6.configure(env, features_wanted, defines, sources, paths)
+            return cerberus_r_v6.configure(env, features_wanted, defines, sources, paths)
         elif model_r_version == 10:
-            return trezor_r_v10.configure(env, features_wanted, defines, sources, paths)
+            return cerberus_r_v10.configure(env, features_wanted, defines, sources, paths)
         raise Exception("Unknown model_r_version")
     elif model in ("DISC1",):
         return discovery.configure(env, features_wanted, defines, sources, paths)

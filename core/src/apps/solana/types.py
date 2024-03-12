@@ -4,7 +4,7 @@ if TYPE_CHECKING:
     from enum import IntEnum
     from typing import Any, Callable, Generic, TypeVar
 
-    from trezor.utils import BufferReader
+    from cerberus.utils import BufferReader
 
     from .transaction import Instruction
 

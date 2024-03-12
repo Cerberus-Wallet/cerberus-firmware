@@ -1,14 +1,14 @@
 from micropython import const
 
-from trezor import io, utils
+from cerberus import io, utils
 
 bus = io.USB(
     vendor_id=0x1209,
     product_id=0x53C1,
     release_num=0x0200,
     manufacturer="SatoshiLabs",
-    product="TREZOR",
-    interface="TREZOR Interface",
+    product="CERBERUS",
+    interface="CERBERUS Interface",
     usb21_landing=False,
 )
 
@@ -21,7 +21,7 @@ _VCP_PORT_OFFSET = const(3)
 if utils.EMULATOR:
     import uos
 
-    UDP_PORT = int(uos.getenv("TREZOR_UDP_PORT") or "21325")
+    UDP_PORT = int(uos.getenv("CERBERUS_UDP_PORT") or "21325")
 
 _iface_iter = iter(range(5))
 
@@ -29,7 +29,7 @@ ENABLE_IFACE_DEBUG = __debug__
 ENABLE_IFACE_WEBAUTHN = not utils.BITCOIN_ONLY
 ENABLE_IFACE_VCP = __debug__
 
-# interface used for trezor wire protocol
+# interface used for cerberus wire protocol
 id_wire = next(_iface_iter)
 iface_wire = io.WebUSB(
     iface_num=id_wire,
@@ -51,7 +51,7 @@ bus.add(iface_wire)
 # so that it can be correctly excluded from the resulting build.
 
 if __debug__ and ENABLE_IFACE_DEBUG:
-    # interface used for debug messages with trezor wire protocol
+    # interface used for debug messages with cerberus wire protocol
     id_debug = next(_iface_iter)
     iface_debug = io.WebUSB(
         iface_num=id_debug,

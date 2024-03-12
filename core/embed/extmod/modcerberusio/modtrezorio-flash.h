@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -19,9 +19,9 @@
 
 #include "flash.h"
 
-#include "embed/extmod/trezorobj.h"
+#include "embed/extmod/cerberusobj.h"
 
-/// package: trezorio.__init__
+/// package: cerberusio.__init__
 
 /// class FlashOTP:
 ///     """
@@ -33,7 +33,7 @@ typedef struct _mp_obj_FlashOTP_t {
 /// def __init__(self) -> None:
 ///     """
 ///     """
-STATIC mp_obj_t mod_trezorio_FlashOTP_make_new(const mp_obj_type_t *type,
+STATIC mp_obj_t mod_cerberusio_FlashOTP_make_new(const mp_obj_type_t *type,
                                                size_t n_args, size_t n_kw,
                                                const mp_obj_t *args) {
   mp_arg_check_num(n_args, n_kw, 0, 0, false);
@@ -45,10 +45,10 @@ STATIC mp_obj_t mod_trezorio_FlashOTP_make_new(const mp_obj_type_t *type,
 ///     """
 ///     Writes data to OTP flash
 ///     """
-STATIC mp_obj_t mod_trezorio_FlashOTP_write(size_t n_args,
+STATIC mp_obj_t mod_cerberusio_FlashOTP_write(size_t n_args,
                                             const mp_obj_t *args) {
-  uint8_t block = trezor_obj_get_uint8(args[1]);
-  uint8_t offset = trezor_obj_get_uint8(args[2]);
+  uint8_t block = cerberus_obj_get_uint8(args[1]);
+  uint8_t offset = cerberus_obj_get_uint8(args[2]);
   mp_buffer_info_t data = {0};
   mp_get_buffer_raise(args[3], &data, MP_BUFFER_READ);
   if (sectrue != flash_otp_write(block, offset, data.buf, data.len)) {
@@ -56,17 +56,17 @@ STATIC mp_obj_t mod_trezorio_FlashOTP_write(size_t n_args,
   }
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_trezorio_FlashOTP_write_obj, 4,
-                                           4, mod_trezorio_FlashOTP_write);
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_cerberusio_FlashOTP_write_obj, 4,
+                                           4, mod_cerberusio_FlashOTP_write);
 
 /// def read(self, block: int, offset: int, data: bytearray) -> None:
 ///     """
 ///     Reads data from OTP flash
 ///     """
-STATIC mp_obj_t mod_trezorio_FlashOTP_read(size_t n_args,
+STATIC mp_obj_t mod_cerberusio_FlashOTP_read(size_t n_args,
                                            const mp_obj_t *args) {
-  uint8_t block = trezor_obj_get_uint8(args[1]);
-  uint8_t offset = trezor_obj_get_uint8(args[2]);
+  uint8_t block = cerberus_obj_get_uint8(args[1]);
+  uint8_t offset = cerberus_obj_get_uint8(args[2]);
   mp_buffer_info_t data = {0};
   mp_get_buffer_raise(args[3], &data, MP_BUFFER_WRITE);
   if (sectrue != flash_otp_read(block, offset, data.buf, data.len)) {
@@ -74,47 +74,47 @@ STATIC mp_obj_t mod_trezorio_FlashOTP_read(size_t n_args,
   }
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_trezorio_FlashOTP_read_obj, 4, 4,
-                                           mod_trezorio_FlashOTP_read);
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_cerberusio_FlashOTP_read_obj, 4, 4,
+                                           mod_cerberusio_FlashOTP_read);
 
 /// def lock(self, block: int) -> None:
 ///     """
 ///     Lock OTP flash block
 ///     """
-STATIC mp_obj_t mod_trezorio_FlashOTP_lock(mp_obj_t self, mp_obj_t block) {
-  uint8_t b = trezor_obj_get_uint8(block);
+STATIC mp_obj_t mod_cerberusio_FlashOTP_lock(mp_obj_t self, mp_obj_t block) {
+  uint8_t b = cerberus_obj_get_uint8(block);
   if (sectrue != flash_otp_lock(b)) {
     mp_raise_ValueError("lock failed");
   }
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorio_FlashOTP_lock_obj,
-                                 mod_trezorio_FlashOTP_lock);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberusio_FlashOTP_lock_obj,
+                                 mod_cerberusio_FlashOTP_lock);
 
 /// def is_locked(self, block: int) -> bool:
 ///     """
 ///     Is OTP flash block locked?
 ///     """
-STATIC mp_obj_t mod_trezorio_FlashOTP_is_locked(mp_obj_t self, mp_obj_t block) {
-  uint8_t b = trezor_obj_get_uint8(block);
+STATIC mp_obj_t mod_cerberusio_FlashOTP_is_locked(mp_obj_t self, mp_obj_t block) {
+  uint8_t b = cerberus_obj_get_uint8(block);
   return (sectrue == flash_otp_is_locked(b)) ? mp_const_true : mp_const_false;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorio_FlashOTP_is_locked_obj,
-                                 mod_trezorio_FlashOTP_is_locked);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberusio_FlashOTP_is_locked_obj,
+                                 mod_cerberusio_FlashOTP_is_locked);
 
-STATIC const mp_rom_map_elem_t mod_trezorio_FlashOTP_locals_dict_table[] = {
-    {MP_ROM_QSTR(MP_QSTR_read), MP_ROM_PTR(&mod_trezorio_FlashOTP_read_obj)},
-    {MP_ROM_QSTR(MP_QSTR_write), MP_ROM_PTR(&mod_trezorio_FlashOTP_write_obj)},
-    {MP_ROM_QSTR(MP_QSTR_lock), MP_ROM_PTR(&mod_trezorio_FlashOTP_lock_obj)},
+STATIC const mp_rom_map_elem_t mod_cerberusio_FlashOTP_locals_dict_table[] = {
+    {MP_ROM_QSTR(MP_QSTR_read), MP_ROM_PTR(&mod_cerberusio_FlashOTP_read_obj)},
+    {MP_ROM_QSTR(MP_QSTR_write), MP_ROM_PTR(&mod_cerberusio_FlashOTP_write_obj)},
+    {MP_ROM_QSTR(MP_QSTR_lock), MP_ROM_PTR(&mod_cerberusio_FlashOTP_lock_obj)},
     {MP_ROM_QSTR(MP_QSTR_is_locked),
-     MP_ROM_PTR(&mod_trezorio_FlashOTP_is_locked_obj)},
+     MP_ROM_PTR(&mod_cerberusio_FlashOTP_is_locked_obj)},
 };
-STATIC MP_DEFINE_CONST_DICT(mod_trezorio_FlashOTP_locals_dict,
-                            mod_trezorio_FlashOTP_locals_dict_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberusio_FlashOTP_locals_dict,
+                            mod_cerberusio_FlashOTP_locals_dict_table);
 
-STATIC const mp_obj_type_t mod_trezorio_FlashOTP_type = {
+STATIC const mp_obj_type_t mod_cerberusio_FlashOTP_type = {
     {&mp_type_type},
     .name = MP_QSTR_FlashOTP,
-    .make_new = mod_trezorio_FlashOTP_make_new,
-    .locals_dict = (void *)&mod_trezorio_FlashOTP_locals_dict,
+    .make_new = mod_cerberusio_FlashOTP_make_new,
+    .locals_dict = (void *)&mod_cerberusio_FlashOTP_locals_dict,
 };

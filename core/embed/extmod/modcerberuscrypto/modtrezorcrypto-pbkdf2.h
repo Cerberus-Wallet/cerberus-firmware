@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -25,7 +25,7 @@
 #define PRF_HMAC_SHA256 256
 #define PRF_HMAC_SHA512 512
 
-/// package: trezorcrypto.__init__
+/// package: cerberuscrypto.__init__
 
 /// class pbkdf2:
 ///     """
@@ -42,7 +42,7 @@ typedef struct _mp_obj_Pbkdf2_t {
   uint32_t prf;
 } mp_obj_Pbkdf2_t;
 
-STATIC mp_obj_t mod_trezorcrypto_Pbkdf2_update(mp_obj_t self, mp_obj_t data);
+STATIC mp_obj_t mod_cerberuscrypto_Pbkdf2_update(mp_obj_t self, mp_obj_t data);
 
 /// def __init__(
 ///     self,
@@ -55,7 +55,7 @@ STATIC mp_obj_t mod_trezorcrypto_Pbkdf2_update(mp_obj_t self, mp_obj_t data);
 ///     """
 ///     Create a PBKDF2 context.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_Pbkdf2_make_new(const mp_obj_type_t *type,
+STATIC mp_obj_t mod_cerberuscrypto_Pbkdf2_make_new(const mp_obj_type_t *type,
                                                  size_t n_args, size_t n_kw,
                                                  const mp_obj_t *args) {
   mp_arg_check_num(n_args, n_kw, 3, 4, false);
@@ -76,10 +76,10 @@ STATIC mp_obj_t mod_trezorcrypto_Pbkdf2_make_new(const mp_obj_type_t *type,
 
   uint32_t blocknr = 1;
   if (n_args > 4) {  // blocknr is set
-    blocknr = trezor_obj_get_uint(args[4]);
+    blocknr = cerberus_obj_get_uint(args[4]);
   }
 
-  o->prf = trezor_obj_get_uint(args[0]);
+  o->prf = cerberus_obj_get_uint(args[0]);
   if (o->prf == PRF_HMAC_SHA256) {
     pbkdf2_hmac_sha256_Init(&(o->ctx256), password.buf, password.len, salt.buf,
                             salt.len, blocknr);
@@ -91,7 +91,7 @@ STATIC mp_obj_t mod_trezorcrypto_Pbkdf2_make_new(const mp_obj_type_t *type,
   }
   // constructor called with iterations as fourth parameter
   if (n_args > 3) {
-    mod_trezorcrypto_Pbkdf2_update(MP_OBJ_FROM_PTR(o), args[3]);
+    mod_cerberuscrypto_Pbkdf2_update(MP_OBJ_FROM_PTR(o), args[3]);
   }
   return MP_OBJ_FROM_PTR(o);
 }
@@ -100,10 +100,10 @@ STATIC mp_obj_t mod_trezorcrypto_Pbkdf2_make_new(const mp_obj_type_t *type,
 ///     """
 ///     Update a PBKDF2 context.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_Pbkdf2_update(mp_obj_t self,
+STATIC mp_obj_t mod_cerberuscrypto_Pbkdf2_update(mp_obj_t self,
                                                mp_obj_t iterations) {
   mp_obj_Pbkdf2_t *o = MP_OBJ_TO_PTR(self);
-  uint32_t iter = trezor_obj_get_uint(iterations);
+  uint32_t iter = cerberus_obj_get_uint(iterations);
   if (o->prf == PRF_HMAC_SHA256) {
     pbkdf2_hmac_sha256_Update(&(o->ctx256), iter);
   } else if (o->prf == PRF_HMAC_SHA512) {
@@ -114,14 +114,14 @@ STATIC mp_obj_t mod_trezorcrypto_Pbkdf2_update(mp_obj_t self,
 
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_Pbkdf2_update_obj,
-                                 mod_trezorcrypto_Pbkdf2_update);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberuscrypto_Pbkdf2_update_obj,
+                                 mod_cerberuscrypto_Pbkdf2_update);
 
 /// def key(self) -> bytes:
 ///     """
 ///     Retrieve derived key.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_Pbkdf2_key(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_Pbkdf2_key(mp_obj_t self) {
   mp_obj_Pbkdf2_t *o = MP_OBJ_TO_PTR(self);
   vstr_t out = {0};
   if (o->prf == PRF_HMAC_SHA256) {
@@ -141,33 +141,33 @@ STATIC mp_obj_t mod_trezorcrypto_Pbkdf2_key(mp_obj_t self) {
   }
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &out);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_Pbkdf2_key_obj,
-                                 mod_trezorcrypto_Pbkdf2_key);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_Pbkdf2_key_obj,
+                                 mod_cerberuscrypto_Pbkdf2_key);
 
-STATIC mp_obj_t mod_trezorcrypto_Pbkdf2___del__(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_Pbkdf2___del__(mp_obj_t self) {
   mp_obj_Pbkdf2_t *o = MP_OBJ_TO_PTR(self);
   memzero(&(o->ctx256), sizeof(PBKDF2_HMAC_SHA256_CTX));
   memzero(&(o->ctx512), sizeof(PBKDF2_HMAC_SHA512_CTX));
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_Pbkdf2___del___obj,
-                                 mod_trezorcrypto_Pbkdf2___del__);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_Pbkdf2___del___obj,
+                                 mod_cerberuscrypto_Pbkdf2___del__);
 
-STATIC const mp_rom_map_elem_t mod_trezorcrypto_Pbkdf2_locals_dict_table[] = {
+STATIC const mp_rom_map_elem_t mod_cerberuscrypto_Pbkdf2_locals_dict_table[] = {
     {MP_ROM_QSTR(MP_QSTR_update),
-     MP_ROM_PTR(&mod_trezorcrypto_Pbkdf2_update_obj)},
-    {MP_ROM_QSTR(MP_QSTR_key), MP_ROM_PTR(&mod_trezorcrypto_Pbkdf2_key_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_Pbkdf2_update_obj)},
+    {MP_ROM_QSTR(MP_QSTR_key), MP_ROM_PTR(&mod_cerberuscrypto_Pbkdf2_key_obj)},
     {MP_ROM_QSTR(MP_QSTR___del__),
-     MP_ROM_PTR(&mod_trezorcrypto_Pbkdf2___del___obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_Pbkdf2___del___obj)},
     {MP_ROM_QSTR(MP_QSTR_HMAC_SHA256), MP_ROM_INT(PRF_HMAC_SHA256)},
     {MP_ROM_QSTR(MP_QSTR_HMAC_SHA512), MP_ROM_INT(PRF_HMAC_SHA512)},
 };
-STATIC MP_DEFINE_CONST_DICT(mod_trezorcrypto_Pbkdf2_locals_dict,
-                            mod_trezorcrypto_Pbkdf2_locals_dict_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberuscrypto_Pbkdf2_locals_dict,
+                            mod_cerberuscrypto_Pbkdf2_locals_dict_table);
 
-STATIC const mp_obj_type_t mod_trezorcrypto_Pbkdf2_type = {
+STATIC const mp_obj_type_t mod_cerberuscrypto_Pbkdf2_type = {
     {&mp_type_type},
     .name = MP_QSTR_Pbkdf2,
-    .make_new = mod_trezorcrypto_Pbkdf2_make_new,
-    .locals_dict = (void *)&mod_trezorcrypto_Pbkdf2_locals_dict,
+    .make_new = mod_cerberuscrypto_Pbkdf2_make_new,
+    .locals_dict = (void *)&mod_cerberuscrypto_Pbkdf2_locals_dict,
 };

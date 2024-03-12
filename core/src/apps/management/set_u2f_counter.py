@@ -1,15 +1,15 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import SetU2FCounter, Success
+    from cerberus.messages import SetU2FCounter, Success
 
 
 async def set_u2f_counter(msg: SetU2FCounter) -> Success:
     import storage.device as storage_device
-    from trezor import TR, wire
-    from trezor.enums import ButtonRequestType
-    from trezor.messages import Success
-    from trezor.ui.layouts import confirm_action
+    from cerberus import TR, wire
+    from cerberus.enums import ButtonRequestType
+    from cerberus.messages import Success
+    from cerberus.ui.layouts import confirm_action
 
     if not storage_device.is_initialized():
         raise wire.NotInitialized("Device is not initialized")

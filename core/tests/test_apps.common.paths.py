@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.utils import ensure
+from cerberus.utils import ensure
 
 from apps.common.paths import *
 

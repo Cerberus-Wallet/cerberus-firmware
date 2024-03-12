@@ -1,9 +1,9 @@
 from typing import TYPE_CHECKING
 
-from trezor import TR
-from trezor.enums import ButtonRequestType
-from trezor.ui.layouts import confirm_action, confirm_metadata  # noqa: F401
-from trezor.ui.layouts.progress import (  # noqa: F401
+from cerberus import TR
+from cerberus.enums import ButtonRequestType
+from cerberus.ui.layouts import confirm_action, confirm_metadata  # noqa: F401
+from cerberus.ui.layouts.progress import (  # noqa: F401
     monero_keyimage_sync_progress,
     monero_live_refresh_progress,
     monero_transaction_progress_inner,
@@ -13,8 +13,8 @@ DUMMY_PAYMENT_ID = b"\x00\x00\x00\x00\x00\x00\x00\x00"
 
 
 if TYPE_CHECKING:
-    from trezor.enums import MoneroNetworkType
-    from trezor.messages import MoneroTransactionData, MoneroTransactionDestinationEntry
+    from cerberus.enums import MoneroNetworkType
+    from cerberus.messages import MoneroTransactionData, MoneroTransactionDestinationEntry
 
     from .signing.state import State
 
@@ -54,7 +54,7 @@ class MoneroTransactionProgress:
 
 
 def _format_amount(value: int) -> str:
-    from trezor import strings
+    from cerberus import strings
 
     return f"{strings.format_amount(value, 12)} XMR"
 
@@ -151,7 +151,7 @@ async def _require_confirm_output(
     """
     Single transaction destination confirmation
     """
-    from trezor.ui.layouts import confirm_output
+    from cerberus.ui.layouts import confirm_output
 
     from apps.monero.xmr.addresses import encode_addr
     from apps.monero.xmr.networks import net_version
@@ -170,7 +170,7 @@ async def _require_confirm_output(
 
 
 async def _require_confirm_payment_id(payment_id: bytes) -> None:
-    from trezor.ui.layouts import confirm_blob
+    from cerberus.ui.layouts import confirm_blob
 
     await confirm_blob(
         "confirm_payment_id",

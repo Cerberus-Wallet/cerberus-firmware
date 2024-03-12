@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -19,12 +19,12 @@
 
 #include "py/objstr.h"
 
-#include "embed/extmod/trezorobj.h"
+#include "embed/extmod/cerberusobj.h"
 
 #include "blake2b.h"
 #include "memzero.h"
 
-/// package: trezorcrypto.__init__
+/// package: cerberuscrypto.__init__
 
 /// class blake2b:
 ///     """
@@ -37,7 +37,7 @@ typedef struct _mp_obj_Blake2b_t {
   BLAKE2B_CTX ctx;
 } mp_obj_Blake2b_t;
 
-STATIC mp_obj_t mod_trezorcrypto_Blake2b_update(mp_obj_t self, mp_obj_t data);
+STATIC mp_obj_t mod_cerberuscrypto_Blake2b_update(mp_obj_t self, mp_obj_t data);
 
 /// def __init__(
 ///     self,
@@ -49,7 +49,7 @@ STATIC mp_obj_t mod_trezorcrypto_Blake2b_update(mp_obj_t self, mp_obj_t data);
 ///     """
 ///     Creates a hash context object.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_Blake2b_make_new(const mp_obj_type_t *type,
+STATIC mp_obj_t mod_cerberuscrypto_Blake2b_make_new(const mp_obj_type_t *type,
                                                   size_t n_args, size_t n_kw,
                                                   const mp_obj_t *args) {
   STATIC const mp_arg_t allowed_args[] = {
@@ -113,7 +113,7 @@ STATIC mp_obj_t mod_trezorcrypto_Blake2b_make_new(const mp_obj_type_t *type,
 ///     """
 ///     Update the hash context with hashed data.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_Blake2b_update(mp_obj_t self, mp_obj_t data) {
+STATIC mp_obj_t mod_cerberuscrypto_Blake2b_update(mp_obj_t self, mp_obj_t data) {
   mp_obj_Blake2b_t *o = MP_OBJ_TO_PTR(self);
   mp_buffer_info_t msg = {0};
   mp_get_buffer_raise(data, &msg, MP_BUFFER_READ);
@@ -122,14 +122,14 @@ STATIC mp_obj_t mod_trezorcrypto_Blake2b_update(mp_obj_t self, mp_obj_t data) {
   }
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_Blake2b_update_obj,
-                                 mod_trezorcrypto_Blake2b_update);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberuscrypto_Blake2b_update_obj,
+                                 mod_cerberuscrypto_Blake2b_update);
 
 /// def digest(self) -> bytes:
 ///     """
 ///     Returns the digest of hashed data.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_Blake2b_digest(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_Blake2b_digest(mp_obj_t self) {
   mp_obj_Blake2b_t *o = MP_OBJ_TO_PTR(self);
   BLAKE2B_CTX ctx = {0};
   memcpy(&ctx, &(o->ctx), sizeof(BLAKE2B_CTX));
@@ -139,33 +139,33 @@ STATIC mp_obj_t mod_trezorcrypto_Blake2b_digest(mp_obj_t self) {
   memzero(&ctx, sizeof(BLAKE2B_CTX));
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &hash);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_Blake2b_digest_obj,
-                                 mod_trezorcrypto_Blake2b_digest);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_Blake2b_digest_obj,
+                                 mod_cerberuscrypto_Blake2b_digest);
 
-STATIC mp_obj_t mod_trezorcrypto_Blake2b___del__(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_Blake2b___del__(mp_obj_t self) {
   mp_obj_Blake2b_t *o = MP_OBJ_TO_PTR(self);
   memzero(&(o->ctx), sizeof(BLAKE2B_CTX));
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_Blake2b___del___obj,
-                                 mod_trezorcrypto_Blake2b___del__);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_Blake2b___del___obj,
+                                 mod_cerberuscrypto_Blake2b___del__);
 
-STATIC const mp_rom_map_elem_t mod_trezorcrypto_Blake2b_locals_dict_table[] = {
+STATIC const mp_rom_map_elem_t mod_cerberuscrypto_Blake2b_locals_dict_table[] = {
     {MP_ROM_QSTR(MP_QSTR_update),
-     MP_ROM_PTR(&mod_trezorcrypto_Blake2b_update_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_Blake2b_update_obj)},
     {MP_ROM_QSTR(MP_QSTR_digest),
-     MP_ROM_PTR(&mod_trezorcrypto_Blake2b_digest_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_Blake2b_digest_obj)},
     {MP_ROM_QSTR(MP_QSTR___del__),
-     MP_ROM_PTR(&mod_trezorcrypto_Blake2b___del___obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_Blake2b___del___obj)},
     {MP_ROM_QSTR(MP_QSTR_block_size), MP_ROM_INT(BLAKE2B_BLOCK_LENGTH)},
     {MP_ROM_QSTR(MP_QSTR_digest_size), MP_ROM_INT(BLAKE2B_DIGEST_LENGTH)},
 };
-STATIC MP_DEFINE_CONST_DICT(mod_trezorcrypto_Blake2b_locals_dict,
-                            mod_trezorcrypto_Blake2b_locals_dict_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberuscrypto_Blake2b_locals_dict,
+                            mod_cerberuscrypto_Blake2b_locals_dict_table);
 
-STATIC const mp_obj_type_t mod_trezorcrypto_Blake2b_type = {
+STATIC const mp_obj_type_t mod_cerberuscrypto_Blake2b_type = {
     {&mp_type_type},
     .name = MP_QSTR_Blake2b,
-    .make_new = mod_trezorcrypto_Blake2b_make_new,
-    .locals_dict = (void *)&mod_trezorcrypto_Blake2b_locals_dict,
+    .make_new = mod_cerberuscrypto_Blake2b_make_new,
+    .locals_dict = (void *)&mod_cerberuscrypto_Blake2b_locals_dict,
 };

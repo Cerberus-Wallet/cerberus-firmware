@@ -1,17 +1,17 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.enums import InputScriptType
-    from trezor.messages import Success, VerifyMessage
+    from cerberus.enums import InputScriptType
+    from cerberus.messages import Success, VerifyMessage
 
     from apps.common.coininfo import CoinInfo
 
 
 def _address_to_script_type(address: str, coin: CoinInfo) -> InputScriptType:
-    from trezor import utils
-    from trezor.crypto import base58
-    from trezor.enums import InputScriptType
-    from trezor.wire import DataError
+    from cerberus import utils
+    from cerberus.crypto import base58
+    from cerberus.enums import InputScriptType
+    from cerberus.wire import DataError
 
     from apps.common import address_type
 
@@ -51,12 +51,12 @@ def _address_to_script_type(address: str, coin: CoinInfo) -> InputScriptType:
 
 
 async def verify_message(msg: VerifyMessage) -> Success:
-    from trezor import TR, utils
-    from trezor.crypto.curve import secp256k1
-    from trezor.enums import InputScriptType
-    from trezor.messages import Success
-    from trezor.ui.layouts import confirm_signverify, show_success
-    from trezor.wire import ProcessError
+    from cerberus import TR, utils
+    from cerberus.crypto.curve import secp256k1
+    from cerberus.enums import InputScriptType
+    from cerberus.messages import Success
+    from cerberus.ui.layouts import confirm_signverify, show_success
+    from cerberus.wire import ProcessError
 
     from apps.common import coins
     from apps.common.signverify import decode_message, message_digest

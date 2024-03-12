@@ -1,14 +1,14 @@
 from typing import TYPE_CHECKING, Sequence
 
-from trezor import TR
-from trezor.enums import ButtonRequestType
-from trezor.strings import format_amount
-from trezor.ui.layouts import confirm_properties
+from cerberus import TR
+from cerberus.enums import ButtonRequestType
+from cerberus.strings import format_amount
+from cerberus.ui.layouts import confirm_properties
 
 from .helpers import DECIMALS
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         BinanceCancelMsg,
         BinanceInputOutput,
         BinanceOrderMsg,
@@ -41,7 +41,7 @@ async def require_confirm_transfer(msg: BinanceTransferMsg) -> None:
 async def _confirm_transfer(
     inputs_outputs: Sequence[tuple[str, str, str]], chunkify: bool
 ) -> None:
-    from trezor.ui.layouts import confirm_output
+    from cerberus.ui.layouts import confirm_output
 
     for index, (title, amount, address) in enumerate(inputs_outputs):
         # Having hold=True on the last item
@@ -64,7 +64,7 @@ async def require_confirm_cancel(msg: BinanceCancelMsg) -> None:
 
 
 async def require_confirm_order(msg: BinanceOrderMsg) -> None:
-    from trezor.enums import BinanceOrderSide
+    from cerberus.enums import BinanceOrderSide
 
     if msg.side == BinanceOrderSide.BUY:
         side = TR.binance__buy

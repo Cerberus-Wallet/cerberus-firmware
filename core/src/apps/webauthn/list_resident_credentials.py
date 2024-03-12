@@ -1,15 +1,15 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import WebAuthnCredentials, WebAuthnListResidentCredentials
+    from cerberus.messages import WebAuthnCredentials, WebAuthnListResidentCredentials
 
 
 async def list_resident_credentials(
     msg: WebAuthnListResidentCredentials,
 ) -> WebAuthnCredentials:
-    from trezor import TR
-    from trezor.messages import WebAuthnCredential, WebAuthnCredentials
-    from trezor.ui.layouts import confirm_action
+    from cerberus import TR
+    from cerberus.messages import WebAuthnCredential, WebAuthnCredentials
+    from cerberus.ui.layouts import confirm_action
 
     from . import resident_credentials
 

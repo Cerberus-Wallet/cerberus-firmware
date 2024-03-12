@@ -1,22 +1,22 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor import TR, translations
-from trezor.wire import DataError
+from cerberus import TR, translations
+from cerberus.wire import DataError
 
 if TYPE_CHECKING:
     from typing import Callable
 
-    from trezor.messages import ChangeLanguage, Success
-    from trezor.ui.layouts.common import ProgressLayout
+    from cerberus.messages import ChangeLanguage, Success
+    from cerberus.ui.layouts.common import ProgressLayout
 
 _CHUNK_SIZE = const(1024)
 
 
 async def change_language(msg: ChangeLanguage) -> Success:
-    from trezor import utils, workflow
-    from trezor.messages import Success
-    from trezor.ui.layouts.progress import progress
+    from cerberus import utils, workflow
+    from cerberus.messages import Success
+    from cerberus.ui.layouts.progress import progress
 
     loader: ProgressLayout | None = None
 
@@ -61,7 +61,7 @@ async def do_change_language(
     report: Callable[[int], None],
 ) -> None:
     import storage.device
-    from trezor import utils
+    from cerberus import utils
 
     if data_length > translations.area_bytesize():
         raise DataError("Translations too long")
@@ -134,8 +134,8 @@ async def do_change_language(
 
 
 async def _get_data_chunk(data_left: int, offset: int) -> bytes:
-    from trezor.messages import TranslationDataAck, TranslationDataRequest
-    from trezor.wire.context import call
+    from cerberus.messages import TranslationDataAck, TranslationDataRequest
+    from cerberus.wire.context import call
 
     data_length = min(data_left, _CHUNK_SIZE)
     req = TranslationDataRequest(data_length=data_length, data_offset=offset)
@@ -148,8 +148,8 @@ async def _require_confirm_change_language(
     silent_install: bool,
     show_display: bool | None,
 ) -> None:
-    from trezor.enums import ButtonRequestType
-    from trezor.ui.layouts import confirm_action
+    from cerberus.enums import ButtonRequestType
+    from cerberus.ui.layouts import confirm_action
 
     lang = "en-US" if header is None else header.language
 
@@ -173,7 +173,7 @@ async def _require_confirm_change_language(
 
 
 async def _show_success(silent_install: bool, show_display: bool | None) -> None:
-    from trezor.ui.layouts import show_success
+    from cerberus.ui.layouts import show_success
 
     if silent_install and show_display is not True:
         return

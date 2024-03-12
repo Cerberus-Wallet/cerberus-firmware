@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import crc
+from cerberus.crypto import crc
 
 
 class TestCryptoCrc(unittest.TestCase):

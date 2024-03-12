@@ -1,9 +1,9 @@
 from typing import TYPE_CHECKING
 
-from trezor.crypto import base58
+from cerberus.crypto import base58
 
 if TYPE_CHECKING:
-    from trezor.messages import SolanaTxTokenAccountInfo
+    from cerberus.messages import SolanaTxTokenAccountInfo
 
 ASSOCIATED_TOKEN_ACCOUNT_PROGRAM = "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
 
@@ -16,7 +16,7 @@ def assert_is_associated_token_account(
     token_program: bytes,
     token_mint: bytes,
 ) -> None:
-    from trezor.crypto.hashlib import sha256
+    from cerberus.crypto.hashlib import sha256
 
     # based on the following sources:
     # https://spl.solana.com/associated-token-account#finding-the-associated-token-account-address

@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import der
+from cerberus.crypto import der
 
 
 class TestCryptoDer(unittest.TestCase):

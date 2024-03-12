@@ -8,14 +8,14 @@ from ..writers import (
 )
 
 if TYPE_CHECKING:
-    from trezor.crypto import bip32
-    from trezor.messages import (
+    from cerberus.crypto import bip32
+    from cerberus.messages import (
         NEMImportanceTransfer,
         NEMMosaic,
         NEMTransactionCommon,
         NEMTransfer,
     )
-    from trezor.utils import Writer
+    from cerberus.utils import Writer
 
 
 def serialize_transfer(
@@ -85,7 +85,7 @@ def serialize_importance_transfer(
 def get_transfer_payload(
     transfer: NEMTransfer, node: bip32.HDNode
 ) -> tuple[bytes, bool]:
-    from trezor.crypto import random
+    from cerberus.crypto import random
 
     from ..helpers import AES_BLOCK_SIZE, NEM_SALT_SIZE
 

@@ -1,14 +1,14 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import EthereumGetPublicKey, EthereumPublicKey
+    from cerberus.messages import EthereumGetPublicKey, EthereumPublicKey
 
 
 async def get_public_key(msg: EthereumGetPublicKey) -> EthereumPublicKey:
     from ubinascii import hexlify
 
-    from trezor.messages import EthereumPublicKey, GetPublicKey
-    from trezor.ui.layouts import show_pubkey
+    from cerberus.messages import EthereumPublicKey, GetPublicKey
+    from cerberus.ui.layouts import show_pubkey
 
     from apps.bitcoin import get_public_key as bitcoin_get_public_key
 

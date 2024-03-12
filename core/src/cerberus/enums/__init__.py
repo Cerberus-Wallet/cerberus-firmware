@@ -351,7 +351,7 @@ if TYPE_CHECKING:
     class CardanoDerivationType(IntEnum):
         LEDGER = 0
         ICARUS = 1
-        ICARUS_TREZOR = 2
+        ICARUS_CERBERUS = 2
 
     class CardanoAddressType(IntEnum):
         BASE = 0

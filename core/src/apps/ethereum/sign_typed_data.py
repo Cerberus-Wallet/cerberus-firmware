@@ -1,21 +1,21 @@
 from typing import TYPE_CHECKING
 
-from trezor.enums import EthereumDataType
-from trezor.wire import DataError
-from trezor.wire.context import call
+from cerberus.enums import EthereumDataType
+from cerberus.wire import DataError
+from cerberus.wire.context import call
 
 from .helpers import get_type_name
 from .keychain import PATTERNS_ADDRESS, with_keychain_from_path
 from .layout import should_show_struct
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         EthereumFieldType,
         EthereumSignTypedData,
         EthereumTypedDataSignature,
         EthereumTypedDataStructAck,
     )
-    from trezor.utils import HashWriter
+    from cerberus.utils import HashWriter
 
     from apps.common.keychain import Keychain
 
@@ -28,8 +28,8 @@ async def sign_typed_data(
     keychain: Keychain,
     defs: Definitions,
 ) -> EthereumTypedDataSignature:
-    from trezor.crypto.curve import secp256k1
-    from trezor.messages import EthereumTypedDataSignature
+    from cerberus.crypto.curve import secp256k1
+    from cerberus.messages import EthereumTypedDataSignature
 
     from apps.common import paths
 
@@ -67,7 +67,7 @@ async def _generate_typed_data_hash(
 
     metamask_v4_compat - a flag that enables compatibility with MetaMask's signTypedData_v4 method
     """
-    from trezor import TR
+    from cerberus import TR
 
     from .layout import (
         confirm_empty_typed_message,
@@ -116,8 +116,8 @@ async def _generate_typed_data_hash(
 
 
 def get_hash_writer() -> HashWriter:
-    from trezor.crypto.hashlib import sha3_256
-    from trezor.utils import HashWriter
+    from cerberus.crypto.hashlib import sha3_256
+    from cerberus.utils import HashWriter
 
     return HashWriter(sha3_256(keccak=True))
 
@@ -147,7 +147,7 @@ class TypedDataEnvelope:
 
     async def _collect_types(self, type_name: str) -> None:
         """Recursively collect types from the client."""
-        from trezor.messages import (
+        from cerberus.messages import (
             EthereumTypedDataStructAck,
             EthereumTypedDataStructRequest,
         )
@@ -428,7 +428,7 @@ def _validate_value(field: EthereumFieldType, value: bytes) -> None:
     # Checking if the size corresponds to what is defined in types.
     # Not having any maximum field size - it is a responsibility of the client
     # (and message creator) to make sure the data is not too large to cause problems
-    # on the Trezor side.
+    # on the Cerberus side.
     if field.size is not None and len(value) != field.size:
         raise DataError("Invalid length")
 
@@ -499,7 +499,7 @@ def validate_field_type(field: EthereumFieldType) -> None:
 
 async def _get_array_size(member_path: list[int]) -> int:
     """Get the length of an array at specific `member_path` from the client."""
-    from trezor.messages import EthereumFieldType
+    from cerberus.messages import EthereumFieldType
 
     # Field type for getting the array length from client, so we can check the return value
     ARRAY_LENGTH_TYPE = EthereumFieldType(data_type=EthereumDataType.UINT, size=2)
@@ -512,7 +512,7 @@ async def get_value(
     member_value_path: list[int],
 ) -> bytes:
     """Get a single value from the client and perform its validation."""
-    from trezor.messages import EthereumTypedDataValueAck, EthereumTypedDataValueRequest
+    from cerberus.messages import EthereumTypedDataValueAck, EthereumTypedDataValueRequest
 
     req = EthereumTypedDataValueRequest(
         member_path=member_value_path,

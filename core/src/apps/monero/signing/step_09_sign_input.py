@@ -14,7 +14,7 @@ import gc
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         MoneroTransactionSignInputAck,
         MoneroTransactionSourceEntry,
     )
@@ -40,7 +40,7 @@ def sign_input(
     :param state: transaction state
     :param src_entr: Source entry
     :param vini_bin: tx.vin[i] for the transaction. Contains key image, offsets, amount (usually zero)
-    :param vini_hmac: HMAC for the tx.vin[i] as returned from Trezor
+    :param vini_hmac: HMAC for the tx.vin[i] as returned from Cerberus
     :param pseudo_out: Pedersen commitment for the current input, uses pseudo_out_alpha
                        as a mask. Only applicable for RCTTypeSimple.
     :param pseudo_out_hmac: HMAC for pseudo_out
@@ -49,7 +49,7 @@ def sign_input(
     :param orig_idx: original index of the src_entr before sorting (HMAC check)
     :return: Generated signature MGs[i]
     """
-    from trezor import utils
+    from cerberus import utils
 
     from apps.monero.xmr import crypto, crypto_helpers
 
@@ -200,7 +200,7 @@ def sign_input(
     del (CtKey, input_secret_key, pseudo_out_alpha, clsag, ring_pubkeys)
     mem_trace(6, True)
 
-    from trezor.messages import MoneroTransactionSignInputAck
+    from cerberus.messages import MoneroTransactionSignInputAck
 
     # Encrypt signature, reveal once protocol finishes OK
     utils.unimport_end(mods)
@@ -220,7 +220,7 @@ def _protect_signature(state: State, mg_buffer: list[bytes]) -> list[bytes]:
     After protocol finishes without error, opening_key is sent to the
     host.
     """
-    from trezor.crypto import chacha20poly1305, random
+    from cerberus.crypto import chacha20poly1305, random
 
     from apps.monero.signing import offloading_keys
 

@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from apps.common.keychain import auto_keychain
 
 if TYPE_CHECKING:
-    from trezor.messages import RippleSignedTx, RippleSignTx
+    from cerberus.messages import RippleSignedTx, RippleSignTx
 
     from apps.common.keychain import Keychain
 
@@ -11,11 +11,11 @@ if TYPE_CHECKING:
 # NOTE: it is one big function because that way it is the most flash-space-efficient
 @auto_keychain(__name__)
 async def sign_tx(msg: RippleSignTx, keychain: Keychain) -> RippleSignedTx:
-    from trezor.crypto import der
-    from trezor.crypto.curve import secp256k1
-    from trezor.crypto.hashlib import sha512
-    from trezor.messages import RippleSignedTx
-    from trezor.wire import ProcessError
+    from cerberus.crypto import der
+    from cerberus.crypto.curve import secp256k1
+    from cerberus.crypto.hashlib import sha512
+    from cerberus.messages import RippleSignedTx
+    from cerberus.wire import ProcessError
 
     from apps.common import paths
 
@@ -35,7 +35,7 @@ async def sign_tx(msg: RippleSignTx, keychain: Keychain) -> RippleSignedTx:
     # Our ECDSA implementation already returns fully-canonical signatures,
     # so we're enforcing it in the transaction using the designated flag
     # - see https://wiki.ripple.com/Transaction_Malleability#Using_Fully-Canonical_Signatures
-    # - see https://github.com/trezor/trezor-crypto/blob/3e8974ff8871263a70b7fbb9a27a1da5b0d810f7/ecdsa.c#L791
+    # - see https://github.com/Cerberus-Wallet/cerberus-crypto/blob/3e8974ff8871263a70b7fbb9a27a1da5b0d810f7/ecdsa.c#L791
     msg.flags |= helpers.FLAG_FULLY_CANONICAL
 
     tx = serialize(msg, source_address, node.public_key())

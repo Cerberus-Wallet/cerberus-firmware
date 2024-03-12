@@ -1,9 +1,9 @@
 from common import *  # isort:skip
 
-from trezor.crypto import bip39
-from trezor.enums import AmountUnit, OutputScriptType
-from trezor.enums.RequestType import TXFINISHED, TXINPUT, TXMETA, TXOUTPUT
-from trezor.messages import (
+from cerberus.crypto import bip39
+from cerberus.enums import AmountUnit, OutputScriptType
+from cerberus.enums.RequestType import TXFINISHED, TXINPUT, TXMETA, TXOUTPUT
+from cerberus.messages import (
     PrevInput,
     PrevOutput,
     PrevTx,
@@ -23,7 +23,7 @@ from trezor.messages import (
     TxRequestDetailsType,
     TxRequestSerializedType,
 )
-from trezor.utils import chunks
+from cerberus.utils import chunks
 
 from apps.bitcoin.keychain import _get_schemas_for_coin
 from apps.bitcoin.sign_tx import bitcoin, helpers
@@ -40,7 +40,7 @@ class TestSignTx(unittest.TestCase):
         # input tx: 1f326f65768d55ef146efbb345bd87abe84ac7185726d0457a026fc347a26ef3
         # input 0: 0.03801747 BTC
 
-        # output tx: https://btc1.trezor.io/tx/e590d5d76867e9f14466f715e26438845afff0ae082cda1f2f55aa8bf7f98140
+        # output tx: https://btc1.cerberuscheck.io/tx/e590d5d76867e9f14466f715e26438845afff0ae082cda1f2f55aa8bf7f98140
 
         coin_bitcoin = coins.by_name("Bitcoin")
 

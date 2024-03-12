@@ -1,7 +1,7 @@
 from common import *  # isort:skip
 
 if not utils.BITCOIN_ONLY:
-    from trezor.messages import RipplePayment, RippleSignTx
+    from cerberus.messages import RipplePayment, RippleSignTx
 
     from apps.ripple import helpers
     from apps.ripple.serialize import serialize

@@ -1,10 +1,10 @@
 from ubinascii import unhexlify  # noqa: F401
 
-from trezor import messages, protobuf
-from trezor.crypto import cosi
-from trezor.crypto.curve import ed25519
-from trezor.crypto.hashlib import sha256
-from trezor.enums import EthereumDefinitionType
+from cerberus import messages, protobuf
+from cerberus.crypto import cosi
+from cerberus.crypto.curve import ed25519
+from cerberus.crypto.hashlib import sha256
+from cerberus.enums import EthereumDefinitionType
 
 PRIVATE_KEYS_DEV = [byte * 32 for byte in (b"\xdd", b"\xde", b"\xdf")]
 

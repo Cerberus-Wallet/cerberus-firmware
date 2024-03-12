@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor import utils
+from cerberus import utils
 
 
 class TestUtils(unittest.TestCase):

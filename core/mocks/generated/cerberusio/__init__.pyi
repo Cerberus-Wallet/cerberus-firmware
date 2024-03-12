@@ -1,7 +1,7 @@
 from typing import *
 
 
-# extmod/modtrezorio/modtrezorio-flash.h
+# extmod/modcerberusio/modcerberusio-flash.h
 class FlashOTP:
     """
     """
@@ -31,7 +31,7 @@ class FlashOTP:
         """
 
 
-# extmod/modtrezorio/modtrezorio-hid.h
+# extmod/modcerberusio/modcerberusio-hid.h
 class HID:
     """
     USB HID interface configuration.
@@ -68,7 +68,7 @@ class HID:
         """
 
 
-# extmod/modtrezorio/modtrezorio-poll.h
+# extmod/modcerberusio/modcerberusio-poll.h
 def poll(ifaces: Iterable[int], list_ref: list, timeout_ms: int) -> bool:
     """
     Wait until one of `ifaces` is ready to read or write (using masks
@@ -83,7 +83,7 @@ def poll(ifaces: Iterable[int], list_ref: list, timeout_ms: int) -> bool:
     """
 
 
-# extmod/modtrezorio/modtrezorio-sbu.h
+# extmod/modcerberusio/modcerberusio-sbu.h
 class SBU:
     """
     """
@@ -98,7 +98,7 @@ class SBU:
         """
 
 
-# extmod/modtrezorio/modtrezorio-usb.h
+# extmod/modcerberusio/modcerberusio-usb.h
 class USB:
     """
     USB device configuration.
@@ -137,7 +137,7 @@ class USB:
         """
 
 
-# extmod/modtrezorio/modtrezorio-vcp.h
+# extmod/modcerberusio/modcerberusio-vcp.h
 class VCP:
     """
     USB VCP interface configuration.
@@ -161,7 +161,7 @@ class VCP:
         """
 
 
-# extmod/modtrezorio/modtrezorio-webusb.h
+# extmod/modcerberusio/modcerberusio-webusb.h
 class WebUSB:
     """
     USB WebUSB interface configuration.

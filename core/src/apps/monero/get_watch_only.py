@@ -3,14 +3,14 @@ from typing import TYPE_CHECKING
 from apps.common.keychain import auto_keychain
 
 if TYPE_CHECKING:
-    from trezor.messages import MoneroGetWatchKey, MoneroWatchKey
+    from cerberus.messages import MoneroGetWatchKey, MoneroWatchKey
 
     from apps.common.keychain import Keychain
 
 
 @auto_keychain(__name__)
 async def get_watch_only(msg: MoneroGetWatchKey, keychain: Keychain) -> MoneroWatchKey:
-    from trezor.messages import MoneroWatchKey
+    from cerberus.messages import MoneroWatchKey
 
     from apps.common import paths
     from apps.monero import layout, misc

@@ -3,14 +3,14 @@
 import os
 import tools
 
-TREZOR_MODEL = ARGUMENTS.get('TREZOR_MODEL', 'T')
+CERBERUS_MODEL = ARGUMENTS.get('CERBERUS_MODEL', 'T')
 CMAKELISTS = int(ARGUMENTS.get('CMAKELISTS', 0))
 
-if TREZOR_MODEL in ('DISC1', ):
+if CERBERUS_MODEL in ('DISC1', ):
     # skip reflash build
     env = Environment()
     def build_reflash(target,source,env):
-        print(f'Reflash: nothing to build for Model {TREZOR_MODEL}')
+        print(f'Reflash: nothing to build for Model {CERBERUS_MODEL}')
     program_bin = env.Command(
                  target='reflash.bin',
                  source=None,
@@ -27,29 +27,29 @@ CPPDEFINES_HAL = []
 SOURCE_HAL = []
 PATH_HAL = []
 
-if TREZOR_MODEL in ('1', 'R'):
+if CERBERUS_MODEL in ('1', 'R'):
     FONT_NORMAL=None
     FONT_DEMIBOLD=None
     FONT_BOLD='Font_PixelOperator_Bold_8'
     FONT_MONO=None
     FONT_BIG=None
-elif TREZOR_MODEL in ('T', ):
+elif CERBERUS_MODEL in ('T', ):
     FONT_NORMAL=None
     FONT_DEMIBOLD=None
     FONT_BOLD='Font_Roboto_Bold_20'
     FONT_MONO=None
     FONT_BIG=None
 
-# modtrezorcrypto
+# modcerberuscrypto
 CPPPATH_MOD += [
-    'vendor/trezor-crypto',
-    'vendor/trezor-storage',
+    'vendor/cerberus-crypto',
+    'vendor/cerberus-storage',
 ]
 SOURCE_MOD += [
-    'vendor/trezor-crypto/memzero.c',
+    'vendor/cerberus-crypto/memzero.c',
 ]
 
-# modtrezorui
+# modcerberusui
 CPPPATH_MOD += [
         'vendor/micropython/lib/uzlib',
 ]
@@ -65,7 +65,7 @@ SOURCE_MOD += [
     'vendor/micropython/lib/uzlib/adler32.c',
     'vendor/micropython/lib/uzlib/crc32.c',
     'vendor/micropython/lib/uzlib/tinflate.c',
-    'vendor/trezor-storage/flash_common.c',
+    'vendor/cerberus-storage/flash_common.c',
 ]
 
 SOURCE_REFLASH = [
@@ -83,7 +83,7 @@ tools.add_font('BIG', FONT_BIG, CPPDEFINES_MOD, SOURCE_MOD)
 
 env = Environment(ENV=os.environ, CFLAGS='%s -DPRODUCTION=%s' % (ARGUMENTS.get('CFLAGS', ''), ARGUMENTS.get('PRODUCTION', '0')), CONSTRAINTS=["limited_util_s"])
 
-FEATURES_AVAILABLE = tools.configure_board(TREZOR_MODEL, FEATURES_WANTED, env, CPPDEFINES_HAL, SOURCE_HAL, PATH_HAL)
+FEATURES_AVAILABLE = tools.configure_board(CERBERUS_MODEL, FEATURES_WANTED, env, CPPDEFINES_HAL, SOURCE_HAL, PATH_HAL)
 
 env.Replace(
     CP='cp',
@@ -98,7 +98,7 @@ env.Replace(
     MAKECMAKELISTS='$PYTHON tools/make_cmakelists.py',)
 
 env.Replace(
-    TREZOR_MODEL=TREZOR_MODEL, )
+    CERBERUS_MODEL=CERBERUS_MODEL, )
 
 env.Replace(
     COPT=env.get('ENV').get('OPTIMIZE', '-Os'),
@@ -116,12 +116,12 @@ env.Replace(
         'embed/reflash',
         'embed/lib',
         'embed/models',
-        'embed/trezorhal',
-        'embed/extmod/modtrezorui',
+        'embed/cerberushal',
+        'embed/extmod/modcerberusui',
         'vendor/micropython/lib/cmsis/inc',
     ] + CPPPATH_MOD + PATH_HAL,
     CPPDEFINES=[
-        'TREZOR_MODEL_'+TREZOR_MODEL,
+        'CERBERUS_MODEL_'+CERBERUS_MODEL,
         'USE_HAL_DRIVER',
     ] + CPPDEFINES_MOD + CPPDEFINES_HAL,
     ASFLAGS=env.get('ENV')['CPU_ASFLAGS'],
@@ -151,7 +151,7 @@ obj_program += env.Object(source=SOURCE_MOD)
 obj_program += env.Object(source=SOURCE_REFLASH)
 obj_program += env.Object(source=SOURCE_HAL)
 
-MODEL_IDENTIFIER = tools.get_model_identifier(TREZOR_MODEL)
+MODEL_IDENTIFIER = tools.get_model_identifier(CERBERUS_MODEL)
 
 VENDORHEADER = f'embed/vendorheader/{MODEL_IDENTIFIER}/vendorheader_' + ('unsafe_signed_dev.bin' if ARGUMENTS.get('PRODUCTION', '0') == '0' else 'satoshilabs_signed_prod.bin')
 
@@ -170,7 +170,7 @@ program_elf = env.Command(
     '$LINK -o $TARGET $CCFLAGS $CFLAGS $LINKFLAGS $SOURCES -lc_nano -lgcc',
 )
 
-BINARY_NAME = f"build/reflash/reflash-{tools.get_model_identifier(TREZOR_MODEL)}"
+BINARY_NAME = f"build/reflash/reflash-{tools.get_model_identifier(CERBERUS_MODEL)}"
 BINARY_NAME += "-" + tools.get_version('embed/reflash/version.h')
 BINARY_NAME += "-" + tools.get_git_revision_short_hash()
 BINARY_NAME += "-dirty" if tools.get_git_modified() else ""

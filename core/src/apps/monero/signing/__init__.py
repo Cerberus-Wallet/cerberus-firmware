@@ -1,4 +1,4 @@
-from trezor.wire import DataError
+from cerberus.wire import DataError
 
 
 class Error(DataError):

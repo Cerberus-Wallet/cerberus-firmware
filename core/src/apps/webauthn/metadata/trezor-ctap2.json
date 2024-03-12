@@ -1,5 +1,5 @@
 {
-  "description": "Trezor FIDO2 CTAP2 Authenticator",
+  "description": "Cerberus FIDO2 CTAP2 Authenticator",
   "aaguid": "d6d0bdc3-62ee-c4db-de8d-7a656e4a4487",
   "alternativeDescriptions": {
   },

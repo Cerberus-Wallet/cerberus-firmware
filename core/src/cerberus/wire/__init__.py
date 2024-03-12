@@ -5,7 +5,7 @@ Handles on-the-wire communication with a host computer. The communication is:
 
 - Request / response.
 - Protobuf-encoded, see `protobuf.py`.
-- Wrapped in a simple envelope format, see `trezor/wire/codec_v1.py`.
+- Wrapped in a simple envelope format, see `cerberus/wire/codec_v1.py`.
 - Transferred over USB interface, or UDP in case of Unix emulation.
 
 This module:
@@ -27,19 +27,19 @@ from micropython import const
 from typing import TYPE_CHECKING
 
 from storage.cache import InvalidSessionError
-from trezor import log, loop, protobuf, utils, workflow
-from trezor.enums import FailureType
-from trezor.messages import Failure
-from trezor.wire import codec_v1, context
-from trezor.wire.errors import ActionCancelled, DataError, Error
+from cerberus import log, loop, protobuf, utils, workflow
+from cerberus.enums import FailureType
+from cerberus.messages import Failure
+from cerberus.wire import codec_v1, context
+from cerberus.wire.errors import ActionCancelled, DataError, Error
 
 # Import all errors into namespace, so that `wire.Error` is available from
 # other packages.
-from trezor.wire.errors import *  # isort:skip # noqa: F401,F403
+from cerberus.wire.errors import *  # isort:skip # noqa: F401,F403
 
 
 if TYPE_CHECKING:
-    from trezorio import WireInterface
+    from cerberusio import WireInterface
     from typing import Any, Callable, Container, Coroutine, TypeVar
 
     Msg = TypeVar("Msg", bound=protobuf.MessageType)

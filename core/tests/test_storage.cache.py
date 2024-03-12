@@ -2,7 +2,7 @@ from common import *  # isort:skip
 
 from mock_storage import mock_storage
 from storage import cache
-from trezor.messages import EndSession, Initialize
+from cerberus.messages import EndSession, Initialize
 
 from apps.base import handle_EndSession, handle_Initialize
 

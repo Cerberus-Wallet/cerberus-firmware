@@ -1,7 +1,7 @@
 from common import *  # isort:skip
 
 if not utils.BITCOIN_ONLY:
-    from trezor.messages import EosAsset
+    from cerberus.messages import EosAsset
 
     from apps.eos import helpers
 

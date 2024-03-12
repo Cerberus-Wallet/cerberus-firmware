@@ -3,15 +3,15 @@ from typing import TYPE_CHECKING
 from apps.common.keychain import auto_keychain
 
 if TYPE_CHECKING:
-    from trezor.messages import StellarAddress, StellarGetAddress
+    from cerberus.messages import StellarAddress, StellarGetAddress
 
     from apps.common.keychain import Keychain
 
 
 @auto_keychain(__name__)
 async def get_address(msg: StellarGetAddress, keychain: Keychain) -> StellarAddress:
-    from trezor.messages import StellarAddress
-    from trezor.ui.layouts import show_address
+    from cerberus.messages import StellarAddress
+    from cerberus.ui.layouts import show_address
 
     from apps.common import paths, seed
 

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -19,17 +19,17 @@
 
 #include "py/objstr.h"
 #include "py/runtime.h"
-#ifndef TREZOR_EMULATOR
+#ifndef CERBERUS_EMULATOR
 #include "supervise.h"
 #endif
 
 #include "image.h"
 #include "version.h"
 
-#if MICROPY_PY_TREZORUTILS
+#if MICROPY_PY_CERBERUSUTILS
 
-#include "embed/extmod/modtrezorutils/modtrezorutils-meminfo.h"
-#include "embed/extmod/trezorobj.h"
+#include "embed/extmod/modcerberusutils/modcerberusutils-meminfo.h"
+#include "embed/extmod/cerberusobj.h"
 
 #include <string.h>
 #include "blake2s.h"
@@ -37,14 +37,14 @@
 #include "flash.h"
 #include "unit_variant.h"
 #include "usb.h"
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 #include "model.h"
 
-#ifndef TREZOR_EMULATOR
+#ifndef CERBERUS_EMULATOR
 #include "image.h"
 #endif
 
-#if USE_OPTIGA && !defined(TREZOR_EMULATOR)
+#if USE_OPTIGA && !defined(CERBERUS_EMULATOR)
 #include "secret.h"
 #endif
 
@@ -65,7 +65,7 @@ static void ui_progress(mp_obj_t ui_wait_callback, uint32_t current,
 ///     of `pub`.  Can access memory behind valid length of `sec`, caller is
 ///     expected to avoid any invalid memory access.
 ///     """
-STATIC mp_obj_t mod_trezorutils_consteq(mp_obj_t sec, mp_obj_t pub) {
+STATIC mp_obj_t mod_cerberusutils_consteq(mp_obj_t sec, mp_obj_t pub) {
   mp_buffer_info_t secbuf = {0};
   mp_get_buffer_raise(sec, &secbuf, MP_BUFFER_READ);
   mp_buffer_info_t pubbuf = {0};
@@ -84,8 +84,8 @@ STATIC mp_obj_t mod_trezorutils_consteq(mp_obj_t sec, mp_obj_t pub) {
     return mp_const_false;
   }
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorutils_consteq_obj,
-                                 mod_trezorutils_consteq);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberusutils_consteq_obj,
+                                 mod_cerberusutils_consteq);
 
 /// def memcpy(
 ///     dst: bytearray | memoryview,
@@ -100,20 +100,20 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorutils_consteq_obj,
 ///     copied bytes. If `n` is not specified, tries to copy
 ///     as much as possible.
 ///     """
-STATIC mp_obj_t mod_trezorutils_memcpy(size_t n_args, const mp_obj_t *args) {
+STATIC mp_obj_t mod_cerberusutils_memcpy(size_t n_args, const mp_obj_t *args) {
   mp_arg_check_num(n_args, 0, 4, 5, false);
 
   mp_buffer_info_t dst = {0};
   mp_get_buffer_raise(args[0], &dst, MP_BUFFER_WRITE);
-  uint32_t dst_ofs = trezor_obj_get_uint(args[1]);
+  uint32_t dst_ofs = cerberus_obj_get_uint(args[1]);
 
   mp_buffer_info_t src = {0};
   mp_get_buffer_raise(args[2], &src, MP_BUFFER_READ);
-  uint32_t src_ofs = trezor_obj_get_uint(args[3]);
+  uint32_t src_ofs = cerberus_obj_get_uint(args[3]);
 
   uint32_t n = 0;
   if (n_args > 4) {
-    n = trezor_obj_get_uint(args[4]);
+    n = cerberus_obj_get_uint(args[4]);
   } else {
     n = src.len;
   }
@@ -126,14 +126,14 @@ STATIC mp_obj_t mod_trezorutils_memcpy(size_t n_args, const mp_obj_t *args) {
 
   return mp_obj_new_int(ncpy);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_trezorutils_memcpy_obj, 4, 5,
-                                           mod_trezorutils_memcpy);
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_cerberusutils_memcpy_obj, 4, 5,
+                                           mod_cerberusutils_memcpy);
 
 /// def halt(msg: str | None = None) -> None:
 ///     """
 ///     Halts execution.
 ///     """
-STATIC mp_obj_t mod_trezorutils_halt(size_t n_args, const mp_obj_t *args) {
+STATIC mp_obj_t mod_cerberusutils_halt(size_t n_args, const mp_obj_t *args) {
   mp_buffer_info_t msg = {0};
   if (n_args > 0 && mp_get_buffer(args[0], &msg, MP_BUFFER_READ)) {
     ensure(secfalse, msg.buf);
@@ -142,8 +142,8 @@ STATIC mp_obj_t mod_trezorutils_halt(size_t n_args, const mp_obj_t *args) {
   }
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_trezorutils_halt_obj, 0, 1,
-                                           mod_trezorutils_halt);
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_cerberusutils_halt_obj, 0, 1,
+                                           mod_cerberusutils_halt);
 
 /// def firmware_hash(
 ///     challenge: bytes | None = None,
@@ -153,7 +153,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_trezorutils_halt_obj, 0, 1,
 ///     Computes the Blake2s hash of the firmware with an optional challenge as
 ///     the key.
 ///     """
-STATIC mp_obj_t mod_trezorutils_firmware_hash(size_t n_args,
+STATIC mp_obj_t mod_cerberusutils_firmware_hash(size_t n_args,
                                               const mp_obj_t *args) {
   BLAKE2S_CTX ctx;
   mp_buffer_info_t chal = {0};
@@ -204,15 +204,15 @@ STATIC mp_obj_t mod_trezorutils_firmware_hash(size_t n_args,
 
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &vstr);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_trezorutils_firmware_hash_obj, 0,
-                                           2, mod_trezorutils_firmware_hash);
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_cerberusutils_firmware_hash_obj, 0,
+                                           2, mod_cerberusutils_firmware_hash);
 
 /// def firmware_vendor() -> str:
 ///     """
 ///     Returns the firmware vendor string from the vendor header.
 ///     """
-STATIC mp_obj_t mod_trezorutils_firmware_vendor(void) {
-#ifdef TREZOR_EMULATOR
+STATIC mp_obj_t mod_cerberusutils_firmware_vendor(void) {
+#ifdef CERBERUS_EMULATOR
   return mp_obj_new_str_copy(&mp_type_str, (const uint8_t *)"EMULATOR", 8);
 #else
   vendor_header vhdr = {0};
@@ -224,34 +224,34 @@ STATIC mp_obj_t mod_trezorutils_firmware_vendor(void) {
                              vhdr.vstr_len);
 #endif
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_trezorutils_firmware_vendor_obj,
-                                 mod_trezorutils_firmware_vendor);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_cerberusutils_firmware_vendor_obj,
+                                 mod_cerberusutils_firmware_vendor);
 
 /// def unit_color() -> int | None:
 ///     """
 ///     Returns the color of the unit.
 ///     """
-STATIC mp_obj_t mod_trezorutils_unit_color(void) {
+STATIC mp_obj_t mod_cerberusutils_unit_color(void) {
   if (!unit_variant_present()) {
     return mp_const_none;
   }
   return mp_obj_new_int(unit_variant_get_color());
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_trezorutils_unit_color_obj,
-                                 mod_trezorutils_unit_color);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_cerberusutils_unit_color_obj,
+                                 mod_cerberusutils_unit_color);
 
 /// def unit_btconly() -> bool | None:
 ///     """
 ///     Returns True if the unit is BTConly.
 ///     """
-STATIC mp_obj_t mod_trezorutils_unit_btconly(void) {
+STATIC mp_obj_t mod_cerberusutils_unit_btconly(void) {
   if (!unit_variant_present()) {
     return mp_const_none;
   }
   return unit_variant_get_btconly() ? mp_const_true : mp_const_false;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_trezorutils_unit_btconly_obj,
-                                 mod_trezorutils_unit_btconly);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_cerberusutils_unit_btconly_obj,
+                                 mod_cerberusutils_unit_btconly);
 
 /// def reboot_to_bootloader(
 ///     boot_command : int = 0,
@@ -260,9 +260,9 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_trezorutils_unit_btconly_obj,
 ///     """
 ///     Reboots to bootloader.
 ///     """
-STATIC mp_obj_t mod_trezorutils_reboot_to_bootloader(size_t n_args,
+STATIC mp_obj_t mod_cerberusutils_reboot_to_bootloader(size_t n_args,
                                                      const mp_obj_t *args) {
-#ifndef TREZOR_EMULATOR
+#ifndef CERBERUS_EMULATOR
   boot_command_t boot_command = BOOT_COMMAND_NONE;
   mp_buffer_info_t boot_args = {0};
 
@@ -292,8 +292,8 @@ STATIC mp_obj_t mod_trezorutils_reboot_to_bootloader(size_t n_args,
 }
 
 STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(
-    mod_trezorutils_reboot_to_bootloader_obj, 0, 2,
-    mod_trezorutils_reboot_to_bootloader);
+    mod_cerberusutils_reboot_to_bootloader_obj, 0, 2,
+    mod_cerberusutils_reboot_to_bootloader);
 
 /// VersionTuple = Tuple[int, int, int, int]
 ///
@@ -307,7 +307,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(
 ///
 /// def check_firmware_header(header : bytes) -> FirmwareHeaderInfo:
 ///     """Parses incoming firmware header and returns information about it."""
-STATIC mp_obj_t mod_trezorutils_check_firmware_header(mp_obj_t header) {
+STATIC mp_obj_t mod_cerberusutils_check_firmware_header(mp_obj_t header) {
   mp_buffer_info_t header_buf = {0};
   mp_get_buffer_raise(header, &header_buf, MP_BUFFER_READ);
 
@@ -331,17 +331,17 @@ STATIC mp_obj_t mod_trezorutils_check_firmware_header(mp_obj_t header) {
   mp_raise_ValueError("Invalid value.");
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorutils_check_firmware_header_obj,
-                                 mod_trezorutils_check_firmware_header);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberusutils_check_firmware_header_obj,
+                                 mod_cerberusutils_check_firmware_header);
 
 /// def bootloader_locked() -> bool | None:
 ///     """
 ///     Returns True/False if the the bootloader is locked/unlocked and None if
 ///     the feature is not supported.
 ///     """
-STATIC mp_obj_t mod_trezorutils_bootloader_locked() {
+STATIC mp_obj_t mod_cerberusutils_bootloader_locked() {
 #if USE_OPTIGA
-#ifdef TREZOR_EMULATOR
+#ifdef CERBERUS_EMULATOR
   return mp_const_true;
 #else
   return (secret_bootloader_locked() == sectrue) ? mp_const_true
@@ -351,22 +351,22 @@ STATIC mp_obj_t mod_trezorutils_bootloader_locked() {
   return mp_const_none;
 #endif
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_trezorutils_bootloader_locked_obj,
-                                 mod_trezorutils_bootloader_locked);
+STATIC MP_DEFINE_CONST_FUN_OBJ_0(mod_cerberusutils_bootloader_locked_obj,
+                                 mod_cerberusutils_bootloader_locked);
 
-STATIC mp_obj_str_t mod_trezorutils_revision_obj = {
+STATIC mp_obj_str_t mod_cerberusutils_revision_obj = {
     {&mp_type_bytes}, 0, sizeof(SCM_REVISION) - 1, (const byte *)SCM_REVISION};
 
-STATIC mp_obj_str_t mod_trezorutils_model_name_obj = {
+STATIC mp_obj_str_t mod_cerberusutils_model_name_obj = {
     {&mp_type_str}, 0, sizeof(MODEL_NAME) - 1, (const byte *)MODEL_NAME};
 
-STATIC mp_obj_str_t mod_trezorutils_full_name_obj = {
+STATIC mp_obj_str_t mod_cerberusutils_full_name_obj = {
     {&mp_type_str},
     0,
     sizeof(MODEL_FULL_NAME) - 1,
     (const byte *)MODEL_FULL_NAME};
 
-STATIC mp_obj_tuple_t mod_trezorutils_version_obj = {
+STATIC mp_obj_tuple_t mod_cerberusutils_version_obj = {
     {&mp_type_tuple},
     4,
     {MP_OBJ_NEW_SMALL_INT(VERSION_MAJOR), MP_OBJ_NEW_SMALL_INT(VERSION_MINOR),
@@ -385,7 +385,7 @@ STATIC mp_obj_tuple_t mod_trezorutils_version_obj = {
 /// MODEL: str
 /// """Model name."""
 /// MODEL_FULL_NAME: str
-/// """Full name including Trezor prefix."""
+/// """Full name including Cerberus prefix."""
 /// INTERNAL_MODEL: str
 /// """Internal model code."""
 /// EMULATOR: bool
@@ -395,29 +395,29 @@ STATIC mp_obj_tuple_t mod_trezorutils_version_obj = {
 /// UI_LAYOUT: str
 /// """UI layout identifier ("tt" for model T, "tr" for models One and R)."""
 
-STATIC const mp_rom_map_elem_t mp_module_trezorutils_globals_table[] = {
-    {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_trezorutils)},
-    {MP_ROM_QSTR(MP_QSTR_consteq), MP_ROM_PTR(&mod_trezorutils_consteq_obj)},
-    {MP_ROM_QSTR(MP_QSTR_memcpy), MP_ROM_PTR(&mod_trezorutils_memcpy_obj)},
-    {MP_ROM_QSTR(MP_QSTR_halt), MP_ROM_PTR(&mod_trezorutils_halt_obj)},
+STATIC const mp_rom_map_elem_t mp_module_cerberusutils_globals_table[] = {
+    {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_cerberusutils)},
+    {MP_ROM_QSTR(MP_QSTR_consteq), MP_ROM_PTR(&mod_cerberusutils_consteq_obj)},
+    {MP_ROM_QSTR(MP_QSTR_memcpy), MP_ROM_PTR(&mod_cerberusutils_memcpy_obj)},
+    {MP_ROM_QSTR(MP_QSTR_halt), MP_ROM_PTR(&mod_cerberusutils_halt_obj)},
     {MP_ROM_QSTR(MP_QSTR_firmware_hash),
-     MP_ROM_PTR(&mod_trezorutils_firmware_hash_obj)},
+     MP_ROM_PTR(&mod_cerberusutils_firmware_hash_obj)},
     {MP_ROM_QSTR(MP_QSTR_firmware_vendor),
-     MP_ROM_PTR(&mod_trezorutils_firmware_vendor_obj)},
+     MP_ROM_PTR(&mod_cerberusutils_firmware_vendor_obj)},
     {MP_ROM_QSTR(MP_QSTR_reboot_to_bootloader),
-     MP_ROM_PTR(&mod_trezorutils_reboot_to_bootloader_obj)},
+     MP_ROM_PTR(&mod_cerberusutils_reboot_to_bootloader_obj)},
     {MP_ROM_QSTR(MP_QSTR_check_firmware_header),
-     MP_ROM_PTR(&mod_trezorutils_check_firmware_header_obj)},
+     MP_ROM_PTR(&mod_cerberusutils_check_firmware_header_obj)},
     {MP_ROM_QSTR(MP_QSTR_bootloader_locked),
-     MP_ROM_PTR(&mod_trezorutils_bootloader_locked_obj)},
+     MP_ROM_PTR(&mod_cerberusutils_bootloader_locked_obj)},
     {MP_ROM_QSTR(MP_QSTR_unit_color),
-     MP_ROM_PTR(&mod_trezorutils_unit_color_obj)},
+     MP_ROM_PTR(&mod_cerberusutils_unit_color_obj)},
     {MP_ROM_QSTR(MP_QSTR_unit_btconly),
-     MP_ROM_PTR(&mod_trezorutils_unit_btconly_obj)},
+     MP_ROM_PTR(&mod_cerberusutils_unit_btconly_obj)},
     // various built-in constants
     {MP_ROM_QSTR(MP_QSTR_SCM_REVISION),
-     MP_ROM_PTR(&mod_trezorutils_revision_obj)},
-    {MP_ROM_QSTR(MP_QSTR_VERSION), MP_ROM_PTR(&mod_trezorutils_version_obj)},
+     MP_ROM_PTR(&mod_cerberusutils_revision_obj)},
+    {MP_ROM_QSTR(MP_QSTR_VERSION), MP_ROM_PTR(&mod_cerberusutils_version_obj)},
 #ifdef USE_SD_CARD
     {MP_ROM_QSTR(MP_QSTR_USE_SD_CARD), mp_const_true},
 #else
@@ -433,12 +433,12 @@ STATIC const mp_rom_map_elem_t mp_module_trezorutils_globals_table[] = {
 #else
     {MP_ROM_QSTR(MP_QSTR_USE_OPTIGA), mp_const_false},
 #endif
-    {MP_ROM_QSTR(MP_QSTR_MODEL), MP_ROM_PTR(&mod_trezorutils_model_name_obj)},
+    {MP_ROM_QSTR(MP_QSTR_MODEL), MP_ROM_PTR(&mod_cerberusutils_model_name_obj)},
     {MP_ROM_QSTR(MP_QSTR_MODEL_FULL_NAME),
-     MP_ROM_PTR(&mod_trezorutils_full_name_obj)},
+     MP_ROM_PTR(&mod_cerberusutils_full_name_obj)},
     {MP_ROM_QSTR(MP_QSTR_INTERNAL_MODEL),
      MP_ROM_QSTR(MODEL_INTERNAL_NAME_QSTR)},
-#ifdef TREZOR_EMULATOR
+#ifdef CERBERUS_EMULATOR
     {MP_ROM_QSTR(MP_QSTR_EMULATOR), mp_const_true},
     MEMINFO_DICT_ENTRIES
 #else
@@ -458,14 +458,14 @@ STATIC const mp_rom_map_elem_t mp_module_trezorutils_globals_table[] = {
 #endif
 };
 
-STATIC MP_DEFINE_CONST_DICT(mp_module_trezorutils_globals,
-                            mp_module_trezorutils_globals_table);
+STATIC MP_DEFINE_CONST_DICT(mp_module_cerberusutils_globals,
+                            mp_module_cerberusutils_globals_table);
 
-const mp_obj_module_t mp_module_trezorutils = {
+const mp_obj_module_t mp_module_cerberusutils = {
     .base = {&mp_type_module},
-    .globals = (mp_obj_dict_t *)&mp_module_trezorutils_globals,
+    .globals = (mp_obj_dict_t *)&mp_module_cerberusutils_globals,
 };
 
-MP_REGISTER_MODULE(MP_QSTR_trezorutils, mp_module_trezorutils);
+MP_REGISTER_MODULE(MP_QSTR_cerberusutils, mp_module_cerberusutils);
 
-#endif  // MICROPY_PY_TREZORUTILS
+#endif  // MICROPY_PY_CERBERUSUTILS

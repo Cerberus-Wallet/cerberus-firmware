@@ -1,15 +1,15 @@
 from typing import TYPE_CHECKING
 
-import trezorproto
+import cerberusproto
 
-decode = trezorproto.decode
-encode = trezorproto.encode
-encoded_length = trezorproto.encoded_length
-type_for_name = trezorproto.type_for_name
-type_for_wire = trezorproto.type_for_wire
+decode = cerberusproto.decode
+encode = cerberusproto.encode
+encoded_length = cerberusproto.encoded_length
+type_for_name = cerberusproto.type_for_name
+type_for_wire = cerberusproto.type_for_wire
 
 if TYPE_CHECKING:
-    MessageType = trezorproto.MessageType
+    MessageType = cerberusproto.MessageType
 
 
 def load_message_buffer(

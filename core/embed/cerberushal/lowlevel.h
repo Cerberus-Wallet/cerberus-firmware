@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TREZORHAL_LOWLEVEL_H__
-#define __TREZORHAL_LOWLEVEL_H__
+#ifndef __CERBERUSHAL_LOWLEVEL_H__
+#define __CERBERUSHAL_LOWLEVEL_H__
 
 #include "secbool.h"
 
@@ -31,4 +31,4 @@ void periph_init(void);
 secbool reset_flags_check(void);
 void reset_flags_reset(void);
 
-#endif  // __TREZORHAL_LOWLEVEL_H__
+#endif  // __CERBERUSHAL_LOWLEVEL_H__

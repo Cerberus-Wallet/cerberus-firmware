@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -23,13 +23,13 @@
 #include "bip39.h"
 #include "sha2.h"
 
-/// package: trezorcrypto.bip39
+/// package: cerberuscrypto.bip39
 
 /// def generate(strength: int) -> str:
 ///     """
 ///     Generate a mnemonic of given strength (128, 160, 192, 224 and 256 bits).
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_bip39_generate(mp_obj_t strength) {
+STATIC mp_obj_t mod_cerberuscrypto_bip39_generate(mp_obj_t strength) {
   int bits = mp_obj_get_int(strength);
   if (bits % 32 || bits < 128 || bits > 256) {
     mp_raise_ValueError(
@@ -42,14 +42,14 @@ STATIC mp_obj_t mod_trezorcrypto_bip39_generate(mp_obj_t strength) {
   mnemonic_clear();
   return res;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_bip39_generate_obj,
-                                 mod_trezorcrypto_bip39_generate);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_bip39_generate_obj,
+                                 mod_cerberuscrypto_bip39_generate);
 
 /// def from_data(data: bytes) -> str:
 ///     """
 ///     Generate a mnemonic from given data (of 16, 20, 24, 28 and 32 bytes).
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_bip39_from_data(mp_obj_t data) {
+STATIC mp_obj_t mod_cerberuscrypto_bip39_from_data(mp_obj_t data) {
   mp_buffer_info_t bin = {0};
   mp_get_buffer_raise(data, &bin, MP_BUFFER_READ);
   if (bin.len % 4 || bin.len < 16 || bin.len > 32) {
@@ -62,21 +62,21 @@ STATIC mp_obj_t mod_trezorcrypto_bip39_from_data(mp_obj_t data) {
   mnemonic_clear();
   return res;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_bip39_from_data_obj,
-                                 mod_trezorcrypto_bip39_from_data);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_bip39_from_data_obj,
+                                 mod_cerberuscrypto_bip39_from_data);
 
 /// def check(mnemonic: str) -> bool:
 ///     """
 ///     Check whether given mnemonic is valid.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_bip39_check(mp_obj_t mnemonic) {
+STATIC mp_obj_t mod_cerberuscrypto_bip39_check(mp_obj_t mnemonic) {
   mp_buffer_info_t text = {0};
   mp_get_buffer_raise(mnemonic, &text, MP_BUFFER_READ);
   return (text.len > 0 && mnemonic_check(text.buf)) ? mp_const_true
                                                     : mp_const_false;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_bip39_check_obj,
-                                 mod_trezorcrypto_bip39_check);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_bip39_check_obj,
+                                 mod_cerberuscrypto_bip39_check);
 
 /// def seed(
 ///     mnemonic: str,
@@ -86,7 +86,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_bip39_check_obj,
 ///     """
 ///     Generate seed from mnemonic and passphrase.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_bip39_seed(size_t n_args,
+STATIC mp_obj_t mod_cerberuscrypto_bip39_seed(size_t n_args,
                                             const mp_obj_t *args) {
   mp_buffer_info_t mnemo = {0};
   mp_buffer_info_t phrase = {0};
@@ -108,22 +108,22 @@ STATIC mp_obj_t mod_trezorcrypto_bip39_seed(size_t n_args,
   }
   return mp_obj_new_str_from_vstr(&mp_type_bytes, &seed);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_trezorcrypto_bip39_seed_obj, 2,
-                                           3, mod_trezorcrypto_bip39_seed);
+STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(mod_cerberuscrypto_bip39_seed_obj, 2,
+                                           3, mod_cerberuscrypto_bip39_seed);
 
-STATIC const mp_rom_map_elem_t mod_trezorcrypto_bip39_globals_table[] = {
+STATIC const mp_rom_map_elem_t mod_cerberuscrypto_bip39_globals_table[] = {
     {MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_bip39)},
     {MP_ROM_QSTR(MP_QSTR_generate),
-     MP_ROM_PTR(&mod_trezorcrypto_bip39_generate_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_bip39_generate_obj)},
     {MP_ROM_QSTR(MP_QSTR_from_data),
-     MP_ROM_PTR(&mod_trezorcrypto_bip39_from_data_obj)},
-    {MP_ROM_QSTR(MP_QSTR_check), MP_ROM_PTR(&mod_trezorcrypto_bip39_check_obj)},
-    {MP_ROM_QSTR(MP_QSTR_seed), MP_ROM_PTR(&mod_trezorcrypto_bip39_seed_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_bip39_from_data_obj)},
+    {MP_ROM_QSTR(MP_QSTR_check), MP_ROM_PTR(&mod_cerberuscrypto_bip39_check_obj)},
+    {MP_ROM_QSTR(MP_QSTR_seed), MP_ROM_PTR(&mod_cerberuscrypto_bip39_seed_obj)},
 };
-STATIC MP_DEFINE_CONST_DICT(mod_trezorcrypto_bip39_globals,
-                            mod_trezorcrypto_bip39_globals_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberuscrypto_bip39_globals,
+                            mod_cerberuscrypto_bip39_globals_table);
 
-STATIC const mp_obj_module_t mod_trezorcrypto_bip39_module = {
+STATIC const mp_obj_module_t mod_cerberuscrypto_bip39_module = {
     .base = {&mp_type_module},
-    .globals = (mp_obj_dict_t *)&mod_trezorcrypto_bip39_globals,
+    .globals = (mp_obj_dict_t *)&mod_cerberuscrypto_bip39_globals,
 };

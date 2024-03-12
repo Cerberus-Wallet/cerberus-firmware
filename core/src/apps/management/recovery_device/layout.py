@@ -1,9 +1,9 @@
 from typing import TYPE_CHECKING
 
-from trezor import TR
-from trezor.enums import ButtonRequestType
-from trezor.ui.layouts import confirm_action
-from trezor.ui.layouts.recovery import (  # noqa: F401
+from cerberus import TR
+from cerberus.enums import ButtonRequestType
+from cerberus.ui.layouts import confirm_action
+from cerberus.ui.layouts.recovery import (  # noqa: F401
     request_word_count,
     show_group_share_success,
     show_recovery_warning,
@@ -15,7 +15,7 @@ from .. import backup_types
 if TYPE_CHECKING:
     from typing import Callable
 
-    from trezor.enums import BackupType
+    from cerberus.enums import BackupType
 
 
 async def _confirm_abort(dry_run: bool = False) -> None:
@@ -43,8 +43,8 @@ async def _confirm_abort(dry_run: bool = False) -> None:
 async def request_mnemonic(
     word_count: int, backup_type: BackupType | None
 ) -> str | None:
-    from trezor.ui.layouts.common import button_request
-    from trezor.ui.layouts.recovery import request_word
+    from cerberus.ui.layouts.common import button_request
+    from cerberus.ui.layouts.recovery import request_word
 
     from . import word_validity
 
@@ -107,7 +107,7 @@ async def request_mnemonic(
 
 
 async def show_dry_run_result(result: bool, is_slip39: bool) -> None:
-    from trezor.ui.layouts import show_success
+    from cerberus.ui.layouts import show_success
 
     if result:
         if is_slip39:
@@ -148,8 +148,8 @@ async def homescreen_dialog(
     show_info: bool = False,
 ) -> None:
     import storage.recovery as storage_recovery
-    from trezor.ui.layouts.recovery import continue_recovery
-    from trezor.wire import ActionCancelled
+    from cerberus.ui.layouts.recovery import continue_recovery
+    from cerberus.wire import ActionCancelled
 
     from .recover import RecoveryAborted
 

@@ -2,11 +2,11 @@ from typing import TYPE_CHECKING
 
 import storage.device as storage_device
 import storage.sd_salt as storage_sd_salt
-from trezor import TR, config
-from trezor.enums import SdProtectOperationType
-from trezor.messages import Success
-from trezor.ui.layouts import show_success
-from trezor.wire import ProcessError
+from cerberus import TR, config
+from cerberus.enums import SdProtectOperationType
+from cerberus.messages import Success
+from cerberus.ui.layouts import show_success
+from cerberus.wire import ProcessError
 
 from apps.common.request_pin import error_pin_invalid, request_pin_and_sd_salt
 from apps.common.sdcard import ensure_sdcard
@@ -14,11 +14,11 @@ from apps.common.sdcard import ensure_sdcard
 if TYPE_CHECKING:
     from typing import Awaitable
 
-    from trezor.messages import SdProtect
+    from cerberus.messages import SdProtect
 
 
 def _make_salt() -> tuple[bytes, bytes, bytes]:
-    from trezor.crypto import random
+    from cerberus.crypto import random
 
     salt = random.bytes(storage_sd_salt.SD_SALT_LEN_BYTES)
     auth_key = random.bytes(storage_device.SD_SALT_AUTH_KEY_LEN_BYTES)
@@ -38,7 +38,7 @@ async def _set_salt(salt: bytes, salt_tag: bytes, stage: bool = False) -> None:
 
 
 async def sd_protect(msg: SdProtect) -> Success:
-    from trezor.wire import NotInitialized
+    from cerberus.wire import NotInitialized
 
     if not storage_device.is_initialized():
         raise NotInitialized("Device is not initialized")
@@ -160,7 +160,7 @@ async def _sd_protect_refresh(msg: SdProtect) -> Success:
 
 
 def require_confirm_sd_protect(msg: SdProtect) -> Awaitable[None]:
-    from trezor.ui.layouts import confirm_action
+    from cerberus.ui.layouts import confirm_action
 
     if msg.operation == SdProtectOperationType.ENABLE:
         text = TR.sd_card__enable

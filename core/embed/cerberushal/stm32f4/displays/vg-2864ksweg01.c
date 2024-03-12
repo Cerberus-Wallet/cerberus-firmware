@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -19,7 +19,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 #include "display_interface.h"
 #include STM32_HAL_H
 

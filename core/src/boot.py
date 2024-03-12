@@ -10,13 +10,13 @@ welcome_screen_start_ms = utime.ticks_ms()
 
 import storage
 import storage.device
-from trezor import config, log, loop, ui, utils, wire, translations
-from trezor.pin import (
+from cerberus import config, log, loop, ui, utils, wire, translations
+from cerberus.pin import (
     allow_all_loader_messages,
     ignore_nonpin_loader_messages,
     show_pin_timeout,
 )
-from trezor.ui.layouts.homescreen import Lockscreen
+from cerberus.ui.layouts.homescreen import Lockscreen
 
 from apps.common.request_pin import can_lock_device, verify_user_pin
 

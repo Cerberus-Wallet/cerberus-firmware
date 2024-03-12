@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/// package: trezorio.__init__
+/// package: cerberusio.__init__
 
 /// class HID:
 ///     """
@@ -42,7 +42,7 @@ typedef struct _mp_obj_HID_t {
 /// ) -> None:
 ///     """
 ///     """
-STATIC mp_obj_t mod_trezorio_HID_make_new(const mp_obj_type_t *type,
+STATIC mp_obj_t mod_cerberusio_HID_make_new(const mp_obj_type_t *type,
                                           size_t n_args, size_t n_kw,
                                           const mp_obj_t *args) {
   STATIC const mp_arg_t allowed_args[] = {
@@ -99,7 +99,7 @@ STATIC mp_obj_t mod_trezorio_HID_make_new(const mp_obj_type_t *type,
   o->info.rx_buffer = m_new(uint8_t, max_packet_len);
   o->info.report_desc = report_desc.buf;
   o->info.iface_num = (uint8_t)(iface_num);
-#ifdef TREZOR_EMULATOR
+#ifdef CERBERUS_EMULATOR
   o->info.emu_port = (uint16_t)(emu_port);
 #else
   o->info.ep_in = (uint8_t)(ep_in);
@@ -118,57 +118,57 @@ STATIC mp_obj_t mod_trezorio_HID_make_new(const mp_obj_type_t *type,
 ///     """
 ///     Returns the configured number of this interface.
 ///     """
-STATIC mp_obj_t mod_trezorio_HID_iface_num(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberusio_HID_iface_num(mp_obj_t self) {
   mp_obj_HID_t *o = MP_OBJ_TO_PTR(self);
   return MP_OBJ_NEW_SMALL_INT(o->info.iface_num);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorio_HID_iface_num_obj,
-                                 mod_trezorio_HID_iface_num);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberusio_HID_iface_num_obj,
+                                 mod_cerberusio_HID_iface_num);
 
 /// def write(self, msg: bytes) -> int:
 ///     """
 ///     Sends message using USB HID (device) or UDP (emulator).
 ///     """
-STATIC mp_obj_t mod_trezorio_HID_write(mp_obj_t self, mp_obj_t msg) {
+STATIC mp_obj_t mod_cerberusio_HID_write(mp_obj_t self, mp_obj_t msg) {
   mp_obj_HID_t *o = MP_OBJ_TO_PTR(self);
   mp_buffer_info_t buf = {0};
   mp_get_buffer_raise(msg, &buf, MP_BUFFER_READ);
   ssize_t r = usb_hid_write(o->info.iface_num, buf.buf, buf.len);
   return MP_OBJ_NEW_SMALL_INT(r);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorio_HID_write_obj,
-                                 mod_trezorio_HID_write);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberusio_HID_write_obj,
+                                 mod_cerberusio_HID_write);
 
 /// def write_blocking(self, msg: bytes, timeout_ms: int) -> int:
 ///     """
 ///     Sends message using USB HID (device) or UDP (emulator).
 ///     """
-STATIC mp_obj_t mod_trezorio_HID_write_blocking(mp_obj_t self, mp_obj_t msg,
+STATIC mp_obj_t mod_cerberusio_HID_write_blocking(mp_obj_t self, mp_obj_t msg,
                                                 mp_obj_t timeout_ms) {
   mp_obj_HID_t *o = MP_OBJ_TO_PTR(self);
   mp_buffer_info_t buf = {0};
   mp_get_buffer_raise(msg, &buf, MP_BUFFER_READ);
-  uint32_t timeout = trezor_obj_get_uint(timeout_ms);
+  uint32_t timeout = cerberus_obj_get_uint(timeout_ms);
   ssize_t r =
       usb_hid_write_blocking(o->info.iface_num, buf.buf, buf.len, timeout);
   return MP_OBJ_NEW_SMALL_INT(r);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_trezorio_HID_write_blocking_obj,
-                                 mod_trezorio_HID_write_blocking);
+STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_cerberusio_HID_write_blocking_obj,
+                                 mod_cerberusio_HID_write_blocking);
 
-STATIC const mp_rom_map_elem_t mod_trezorio_HID_locals_dict_table[] = {
+STATIC const mp_rom_map_elem_t mod_cerberusio_HID_locals_dict_table[] = {
     {MP_ROM_QSTR(MP_QSTR_iface_num),
-     MP_ROM_PTR(&mod_trezorio_HID_iface_num_obj)},
-    {MP_ROM_QSTR(MP_QSTR_write), MP_ROM_PTR(&mod_trezorio_HID_write_obj)},
+     MP_ROM_PTR(&mod_cerberusio_HID_iface_num_obj)},
+    {MP_ROM_QSTR(MP_QSTR_write), MP_ROM_PTR(&mod_cerberusio_HID_write_obj)},
     {MP_ROM_QSTR(MP_QSTR_write_blocking),
-     MP_ROM_PTR(&mod_trezorio_HID_write_blocking_obj)},
+     MP_ROM_PTR(&mod_cerberusio_HID_write_blocking_obj)},
 };
-STATIC MP_DEFINE_CONST_DICT(mod_trezorio_HID_locals_dict,
-                            mod_trezorio_HID_locals_dict_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberusio_HID_locals_dict,
+                            mod_cerberusio_HID_locals_dict_table);
 
-STATIC const mp_obj_type_t mod_trezorio_HID_type = {
+STATIC const mp_obj_type_t mod_cerberusio_HID_type = {
     {&mp_type_type},
     .name = MP_QSTR_HID,
-    .make_new = mod_trezorio_HID_make_new,
-    .locals_dict = (void *)&mod_trezorio_HID_locals_dict,
+    .make_new = mod_cerberusio_HID_make_new,
+    .locals_dict = (void *)&mod_cerberusio_HID_locals_dict,
 };

@@ -1,9 +1,9 @@
 from typing import TYPE_CHECKING
 
-from trezor.crypto import base58
-from trezor.crypto.hashlib import sha256
-from trezor.utils import HashWriter
-from trezor.wire import ProcessError
+from cerberus.crypto import base58
+from cerberus.crypto.hashlib import sha256
+from cerberus.utils import HashWriter
+from cerberus.wire import ProcessError
 
 from apps.common import address_type
 
@@ -11,9 +11,9 @@ from .common import ecdsa_hash_pubkey, encode_bech32_address
 from .scripts import output_script_native_segwit, write_output_script_multisig
 
 if TYPE_CHECKING:
-    from trezor.crypto import bip32
-    from trezor.enums import InputScriptType
-    from trezor.messages import MultisigRedeemScriptType
+    from cerberus.crypto import bip32
+    from cerberus.enums import InputScriptType
+    from cerberus.messages import MultisigRedeemScriptType
 
     from apps.common.coininfo import CoinInfo
 
@@ -24,7 +24,7 @@ def get_address(
     node: bip32.HDNode,
     multisig: MultisigRedeemScriptType | None = None,
 ) -> str:
-    from trezor.enums import InputScriptType
+    from cerberus.enums import InputScriptType
 
     from .multisig import multisig_get_pubkeys, multisig_pubkey_index
 
@@ -150,7 +150,7 @@ def _address_p2wsh(witness_script_hash: bytes, hrp: str) -> str:
 
 
 def _address_p2tr(pubkey: bytes, coin: CoinInfo) -> str:
-    from trezor.crypto.curve import bip340
+    from cerberus.crypto.curve import bip340
 
     assert coin.bech32_prefix is not None
     output_pubkey = bip340.tweak_public_key(pubkey[1:])
@@ -158,7 +158,7 @@ def _address_p2tr(pubkey: bytes, coin: CoinInfo) -> str:
 
 
 def address_to_cashaddr(address: str, coin: CoinInfo) -> str:
-    from trezor.crypto import cashaddr
+    from cerberus.crypto import cashaddr
 
     assert coin.cashaddr_prefix is not None
     raw = base58.decode_check(address, coin.b58_hash)

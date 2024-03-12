@@ -1,7 +1,7 @@
 
 
 #include STM32_HAL_H
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 #include "i2c.h"
 #include "common.h"
 

@@ -2,7 +2,7 @@
 from pathlib import Path
 from hashlib import blake2s
 
-from trezorlib.firmware.core import FirmwareImage
+from cerberuslib.firmware.core import FirmwareImage
 
 ALIGNED_SIZE = 128 * 1024
 

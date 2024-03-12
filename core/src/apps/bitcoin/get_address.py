@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from .keychain import with_keychain
 
 if TYPE_CHECKING:
-    from trezor.messages import Address, GetAddress, HDNodeType
+    from cerberus.messages import Address, GetAddress, HDNodeType
 
     from apps.common.coininfo import CoinInfo
     from apps.common.keychain import Keychain
@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 def _get_xpubs(
     coin: CoinInfo, xpub_magic: int, pubnodes: list[HDNodeType]
 ) -> list[str]:
-    from trezor.crypto import bip32
+    from cerberus.crypto import bip32
 
     result = []
     for pubnode in pubnodes:
@@ -31,10 +31,10 @@ def _get_xpubs(
 
 @with_keychain
 async def get_address(msg: GetAddress, keychain: Keychain, coin: CoinInfo) -> Address:
-    from trezor import TR
-    from trezor.enums import InputScriptType
-    from trezor.messages import Address
-    from trezor.ui.layouts import show_address, show_warning
+    from cerberus import TR
+    from cerberus.enums import InputScriptType
+    from cerberus.messages import Address
+    from cerberus.ui.layouts import show_address, show_warning
 
     from apps.common.address_mac import get_address_mac
     from apps.common.paths import address_n_to_str, validate_path

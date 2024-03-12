@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import base58
+from cerberus.crypto import base58
 
 from apps.solana.predefined_transaction import is_predefined_token_transfer
 from apps.solana.transaction.instruction import Instruction

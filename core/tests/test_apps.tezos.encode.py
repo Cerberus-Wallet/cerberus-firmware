@@ -1,8 +1,8 @@
 from common import *  # isort:skip
 
 if not utils.BITCOIN_ONLY:
-    from trezor.enums import TezosContractType
-    from trezor.messages import TezosContractID
+    from cerberus.enums import TezosContractType
+    from cerberus.messages import TezosContractID
 
     from apps.tezos.helpers import CONTRACT_ID_SIZE, base58_encode_check, write_bool
     from apps.tezos.sign_tx import (

@@ -1,13 +1,13 @@
 from typing import TYPE_CHECKING
 
-from trezor.strings import format_amount, format_timestamp
+from cerberus.strings import format_amount, format_timestamp
 
 if TYPE_CHECKING:
     from .transaction.instructions import Instruction
 
 
 def format_pubkey(_: Instruction, value: bytes | None) -> str:
-    from trezor.crypto import base58
+    from cerberus.crypto import base58
 
     if value is None:
         raise ValueError  # should not be called with optional pubkey

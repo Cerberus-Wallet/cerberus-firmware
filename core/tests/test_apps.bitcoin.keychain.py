@@ -1,8 +1,8 @@
 from common import *  # isort:skip
 
 from storage import cache
-from trezor import wire
-from trezor.crypto import bip39
+from cerberus import wire
+from cerberus.crypto import bip39
 
 from apps.bitcoin.keychain import _get_coin_by_name, _get_keychain_for_coin
 

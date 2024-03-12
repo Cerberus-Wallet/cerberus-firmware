@@ -9,8 +9,8 @@ from pathlib import Path
 
 import click
 
-from trezorlib import cosi, models, merkle_tree
-from trezorlib._internal import translations
+from cerberuslib import cosi, models, merkle_tree
+from cerberuslib._internal import translations
 
 HERE = Path(__file__).parent.resolve()
 LOG = logging.getLogger(__name__)

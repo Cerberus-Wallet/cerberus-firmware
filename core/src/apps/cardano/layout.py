@@ -1,15 +1,15 @@
 from typing import TYPE_CHECKING
 
-from trezor import TR, ui
-from trezor.enums import (
+from cerberus import TR, ui
+from cerberus.enums import (
     ButtonRequestType,
     CardanoAddressType,
     CardanoCertificateType,
     CardanoNativeScriptType,
 )
-from trezor.strings import format_amount
-from trezor.ui import layouts
-from trezor.ui.layouts import confirm_metadata, confirm_properties
+from cerberus.strings import format_amount
+from cerberus.ui import layouts
+from cerberus.ui.layouts import confirm_metadata, confirm_properties
 
 from apps.common.paths import address_n_to_str
 
@@ -25,9 +25,9 @@ from .helpers.utils import (
 if TYPE_CHECKING:
     from typing import Literal
 
-    from trezor import messages
-    from trezor.enums import CardanoNativeScriptHashDisplayFormat
-    from trezor.ui.layouts import PropertyType
+    from cerberus import messages
+    from cerberus.enums import CardanoNativeScriptHashDisplayFormat
+    from cerberus.ui.layouts import PropertyType
 
     from .helpers.credential import Credential
     from .seed import Keychain
@@ -152,7 +152,7 @@ async def show_script_hash(
     script_hash: bytes,
     display_format: CardanoNativeScriptHashDisplayFormat,
 ) -> None:
-    from trezor.enums import CardanoNativeScriptHashDisplayFormat
+    from cerberus.enums import CardanoNativeScriptHashDisplayFormat
 
     assert display_format in (
         CardanoNativeScriptHashDisplayFormat.BECH32,
@@ -610,7 +610,7 @@ async def confirm_stake_pool_owner(
     protocol_magic: int,
     network_id: int,
 ) -> None:
-    from trezor import messages
+    from cerberus import messages
 
     props: list[tuple[str, str | None]] = []
     if owner.staking_key_path:

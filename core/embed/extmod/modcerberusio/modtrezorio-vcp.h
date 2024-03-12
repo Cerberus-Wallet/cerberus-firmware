@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -19,7 +19,7 @@
 
 void pendsv_kbd_intr(void);
 
-/// package: trezorio.__init__
+/// package: cerberusio.__init__
 
 /// class VCP:
 ///     """
@@ -41,7 +41,7 @@ typedef struct _mp_obj_VCP_t {
 /// ) -> None:
 ///     """
 ///     """
-STATIC mp_obj_t mod_trezorio_VCP_make_new(const mp_obj_type_t *type,
+STATIC mp_obj_t mod_cerberusio_VCP_make_new(const mp_obj_type_t *type,
                                           size_t n_args, size_t n_kw,
                                           const mp_obj_t *args) {
   STATIC const mp_arg_t allowed_args[] = {
@@ -97,7 +97,7 @@ STATIC mp_obj_t mod_trezorio_VCP_make_new(const mp_obj_type_t *type,
   o->info.rx_intr_byte = 3;  // Ctrl-C
   o->info.iface_num = (uint8_t)(iface_num);
   o->info.data_iface_num = (uint8_t)(data_iface_num);
-#ifdef TREZOR_EMULATOR
+#ifdef CERBERUS_EMULATOR
   o->info.emu_port = (uint16_t)(emu_port);
 #else
   o->info.ep_cmd = (uint8_t)(ep_cmd);
@@ -114,23 +114,23 @@ STATIC mp_obj_t mod_trezorio_VCP_make_new(const mp_obj_type_t *type,
 ///     """
 ///     Returns the configured number of this interface.
 ///     """
-STATIC mp_obj_t mod_trezorio_VCP_iface_num(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberusio_VCP_iface_num(mp_obj_t self) {
   mp_obj_VCP_t *o = MP_OBJ_TO_PTR(self);
   return MP_OBJ_NEW_SMALL_INT(o->info.iface_num);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorio_VCP_iface_num_obj,
-                                 mod_trezorio_VCP_iface_num);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberusio_VCP_iface_num_obj,
+                                 mod_cerberusio_VCP_iface_num);
 
-STATIC const mp_rom_map_elem_t mod_trezorio_VCP_locals_dict_table[] = {
+STATIC const mp_rom_map_elem_t mod_cerberusio_VCP_locals_dict_table[] = {
     {MP_ROM_QSTR(MP_QSTR_iface_num),
-     MP_ROM_PTR(&mod_trezorio_VCP_iface_num_obj)},
+     MP_ROM_PTR(&mod_cerberusio_VCP_iface_num_obj)},
 };
-STATIC MP_DEFINE_CONST_DICT(mod_trezorio_VCP_locals_dict,
-                            mod_trezorio_VCP_locals_dict_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberusio_VCP_locals_dict,
+                            mod_cerberusio_VCP_locals_dict_table);
 
-STATIC const mp_obj_type_t mod_trezorio_VCP_type = {
+STATIC const mp_obj_type_t mod_cerberusio_VCP_type = {
     {&mp_type_type},
     .name = MP_QSTR_VCP,
-    .make_new = mod_trezorio_VCP_make_new,
-    .locals_dict = (void *)&mod_trezorio_VCP_locals_dict,
+    .make_new = mod_cerberusio_VCP_make_new,
+    .locals_dict = (void *)&mod_cerberusio_VCP_locals_dict,
 };

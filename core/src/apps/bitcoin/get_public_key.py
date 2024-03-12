@@ -1,18 +1,18 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.crypto import bip32
-    from trezor.enums import InputScriptType
-    from trezor.messages import GetPublicKey, PublicKey
-    from trezor.protobuf import MessageType
+    from cerberus.crypto import bip32
+    from cerberus.enums import InputScriptType
+    from cerberus.messages import GetPublicKey, PublicKey
+    from cerberus.protobuf import MessageType
 
 
 async def get_public_key(
     msg: GetPublicKey, auth_msg: MessageType | None = None
 ) -> PublicKey:
-    from trezor import TR, wire
-    from trezor.enums import InputScriptType
-    from trezor.messages import HDNodeType, PublicKey, UnlockPath
+    from cerberus import TR, wire
+    from cerberus.enums import InputScriptType
+    from cerberus.messages import HDNodeType, PublicKey, UnlockPath
 
     from apps.common import coininfo, paths
     from apps.common.keychain import FORBIDDEN_KEY_PATH, get_keychain
@@ -84,7 +84,7 @@ async def get_public_key(
     )
 
     if msg.show_display:
-        from trezor.ui.layouts import confirm_path_warning, show_pubkey
+        from cerberus.ui.layouts import confirm_path_warning, show_pubkey
 
         from apps.common.paths import address_n_to_str
 
@@ -128,7 +128,7 @@ def _xpub_descriptor(
     script_type: InputScriptType,
     fingerprint: int,
 ) -> str | None:
-    from trezor.enums import InputScriptType
+    from cerberus.enums import InputScriptType
 
     from apps.common import paths
 

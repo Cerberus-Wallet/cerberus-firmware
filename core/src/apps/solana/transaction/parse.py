@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from apps.common.readers import read_uint64_le
 
 if TYPE_CHECKING:
-    from trezor.utils import BufferReader
+    from cerberus.utils import BufferReader
 
 
 def parse_var_int(serialized_tx: BufferReader) -> int:

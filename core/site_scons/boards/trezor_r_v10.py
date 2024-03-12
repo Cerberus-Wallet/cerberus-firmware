@@ -14,7 +14,7 @@ def configure(
     features_available: list[str] = []
     hw_model = get_hw_model_as_number("T2B1")
     hw_revision = 10
-    board = "trezor_r_v10.h"
+    board = "cerberus_r_v10.h"
     display = "vg-2864ksweg01.c"
 
     mcu = "STM32F427xx"
@@ -30,51 +30,51 @@ def configure(
     env.get("ENV")["RUST_TARGET"] = "thumbv7em-none-eabihf"
 
     defines += [mcu]
-    defines += [f'TREZOR_BOARD=\\"boards/{board}\\"']
+    defines += [f'CERBERUS_BOARD=\\"boards/{board}\\"']
     defines += [f"HW_MODEL={hw_model}"]
     defines += [f"HW_REVISION={hw_revision}"]
     sources += [
         "embed/models/model_T2B1_layout.c",
     ]
-    sources += [f"embed/trezorhal/stm32f4/displays/{display}"]
+    sources += [f"embed/cerberushal/stm32f4/displays/{display}"]
 
-    sources += ["embed/trezorhal/stm32f4/i2c.c"]
+    sources += ["embed/cerberushal/stm32f4/i2c.c"]
 
     if "input" in features_wanted:
-        sources += ["embed/trezorhal/stm32f4/button.c"]
+        sources += ["embed/cerberushal/stm32f4/button.c"]
         features_available.append("button")
 
     if "sbu" in features_wanted:
-        sources += ["embed/trezorhal/stm32f4/sbu.c"]
+        sources += ["embed/cerberushal/stm32f4/sbu.c"]
         features_available.append("sbu")
 
     if "consumption_mask" in features_wanted:
-        sources += ["embed/trezorhal/stm32f4/consumption_mask.c"]
+        sources += ["embed/cerberushal/stm32f4/consumption_mask.c"]
         sources += [
             "vendor/micropython/lib/stm32lib/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c"
         ]
     if "usb" in features_wanted:
         sources += [
-            "embed/trezorhal/stm32f4/usb.c",
-            "embed/trezorhal/stm32f4/usbd_conf.c",
-            "embed/trezorhal/stm32f4/usbd_core.c",
-            "embed/trezorhal/stm32f4/usbd_ctlreq.c",
-            "embed/trezorhal/stm32f4/usbd_ioreq.c",
+            "embed/cerberushal/stm32f4/usb.c",
+            "embed/cerberushal/stm32f4/usbd_conf.c",
+            "embed/cerberushal/stm32f4/usbd_core.c",
+            "embed/cerberushal/stm32f4/usbd_ctlreq.c",
+            "embed/cerberushal/stm32f4/usbd_ioreq.c",
             "vendor/micropython/lib/stm32lib/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c",
         ]
         features_available.append("usb")
 
     if "optiga" in features_wanted:
         defines += ["USE_OPTIGA=1"]
-        sources += ["embed/trezorhal/stm32f4/optiga_hal.c"]
-        sources += ["embed/trezorhal/optiga/optiga.c"]
-        sources += ["embed/trezorhal/optiga/optiga_commands.c"]
-        sources += ["embed/trezorhal/optiga/optiga_transport.c"]
-        sources += ["embed/trezorhal/stm32f4/secret.c"]
-        sources += ["vendor/trezor-crypto/hash_to_curve.c"]
+        sources += ["embed/cerberushal/stm32f4/optiga_hal.c"]
+        sources += ["embed/cerberushal/optiga/optiga.c"]
+        sources += ["embed/cerberushal/optiga/optiga_commands.c"]
+        sources += ["embed/cerberushal/optiga/optiga_transport.c"]
+        sources += ["embed/cerberushal/stm32f4/secret.c"]
+        sources += ["vendor/cerberus-crypto/hash_to_curve.c"]
         features_available.append("optiga")
 
-    env.get("ENV")["TREZOR_BOARD"] = board
+    env.get("ENV")["CERBERUS_BOARD"] = board
     env.get("ENV")["MCU_TYPE"] = mcu
 
     return features_available

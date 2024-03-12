@@ -6,15 +6,15 @@
 # as possible.
 
 # === Import always-active modules
-# trezor imports only C modules
-import trezor
-# trezor.utils import only C modules
-from trezor import utils
-# we need space for 30 items in the trezor module
-utils.presize_module("trezor", 30)
+# cerberus imports only C modules
+import cerberus
+# cerberus.utils import only C modules
+from cerberus import utils
+# we need space for 30 items in the cerberus module
+utils.presize_module("cerberus", 30)
 
 # storage imports storage.common, storage.cache and storage.device.
-# These import trezor, trezor.config (which is a C module), trezor.utils, and each other.
+# These import cerberus, cerberus.config (which is a C module), cerberus.utils, and each other.
 import storage
 # we will need space for 12 items in the storage module
 utils.presize_module("storage", 12)
@@ -27,13 +27,13 @@ if __debug__:
     # storage.debug only imports C modules
     import storage.debug
 
-# trezor.pin imports trezor.utils
-# We need it as an always-active module because trezor.pin.show_pin_timeout is used
+# cerberus.pin imports cerberus.utils
+# We need it as an always-active module because cerberus.pin.show_pin_timeout is used
 # as a UI callback for storage, which can be invoked at any time
-import trezor.pin  # noqa: F401
+import cerberus.pin  # noqa: F401
 
 # === Prepare the USB interfaces first. Do not connect to the host yet.
-# usb imports trezor.utils and trezor.io which is a C module
+# usb imports cerberus.utils and cerberus.uraanai.com which is a C module
 import usb
 
 # create an unimport manager that will be reused in the main loop

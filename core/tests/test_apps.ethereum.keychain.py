@@ -3,15 +3,15 @@ from common import *  # isort:skip
 import unittest
 
 from storage import cache
-from trezor import utils, wire
-from trezor.crypto import bip39
+from cerberus import utils, wire
+from cerberus.crypto import bip39
 
 from apps.common.keychain import get_keychain
 from apps.common.paths import HARDENED
 
 if not utils.BITCOIN_ONLY:
     from ethereum_common import encode_network, make_network
-    from trezor.messages import (
+    from cerberus.messages import (
         EthereumDefinitions,
         EthereumGetAddress,
         EthereumSignMessage,

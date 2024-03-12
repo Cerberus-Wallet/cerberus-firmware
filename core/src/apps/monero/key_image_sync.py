@@ -1,19 +1,19 @@
 from typing import TYPE_CHECKING
 
-from trezor.wire import DataError
+from cerberus.wire import DataError
 
 from apps.common.keychain import auto_keychain
 from apps.monero import layout
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         MoneroKeyImageExportInitAck,
         MoneroKeyImageExportInitRequest,
         MoneroKeyImageSyncFinalAck,
         MoneroKeyImageSyncStepAck,
         MoneroKeyImageSyncStepRequest,
     )
-    from trezor.ui.layouts.common import ProgressLayout
+    from cerberus.ui.layouts.common import ProgressLayout
 
     from apps.common.keychain import Keychain
 
@@ -26,12 +26,12 @@ async def key_image_sync(
 ) -> MoneroKeyImageSyncFinalAck:
     import gc
 
-    from trezor.messages import (
+    from cerberus.messages import (
         MoneroKeyImageSyncFinalAck,
         MoneroKeyImageSyncFinalRequest,
         MoneroKeyImageSyncStepRequest,
     )
-    from trezor.wire.context import call
+    from cerberus.wire.context import call
 
     state = KeyImageSync()
 
@@ -70,8 +70,8 @@ async def _init_step(
     msg: MoneroKeyImageExportInitRequest,
     keychain: Keychain,
 ) -> MoneroKeyImageExportInitAck:
-    from trezor.crypto import random
-    from trezor.messages import MoneroKeyImageExportInitAck
+    from cerberus.crypto import random
+    from cerberus.messages import MoneroKeyImageExportInitAck
 
     from apps.common import paths
     from apps.monero import misc
@@ -100,8 +100,8 @@ def _sync_step(
     tds: MoneroKeyImageSyncStepRequest,
     progress: ProgressLayout,
 ) -> MoneroKeyImageSyncStepAck:
-    from trezor import log
-    from trezor.messages import MoneroExportedKeyImage, MoneroKeyImageSyncStepAck
+    from cerberus import log
+    from cerberus.messages import MoneroExportedKeyImage, MoneroKeyImageSyncStepAck
 
     from apps.monero.xmr import chacha_poly, crypto, key_image
 

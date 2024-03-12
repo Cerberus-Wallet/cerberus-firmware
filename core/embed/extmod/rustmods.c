@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -21,14 +21,14 @@
 #include "librust_fonts.h"
 #include "py/runtime.h"
 
-#if MICROPY_PY_TREZORUI2
-MP_REGISTER_MODULE(MP_QSTR_trezorui2, mp_module_trezorui2);
+#if MICROPY_PY_CERBERUSUI2
+MP_REGISTER_MODULE(MP_QSTR_cerberusui2, mp_module_cerberusui2);
 #endif
 
-#if MICROPY_PY_TREZORPROTO
-MP_REGISTER_MODULE(MP_QSTR_trezorproto, mp_module_trezorproto);
+#if MICROPY_PY_CERBERUSPROTO
+MP_REGISTER_MODULE(MP_QSTR_cerberusproto, mp_module_cerberusproto);
 #endif
 
-#if MICROPY_PY_TREZORTRANSLATE
-MP_REGISTER_MODULE(MP_QSTR_trezortranslate, mp_module_trezortranslate);
+#if MICROPY_PY_CERBERUSTRANSLATE
+MP_REGISTER_MODULE(MP_QSTR_cerberustranslate, mp_module_cerberustranslate);
 #endif

@@ -11,7 +11,7 @@ permissions:
 
 env:
   PULL_COMMENT: |
-    |legacy UI changes|[device test](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T1B1-legacy_device_test/index.html)([screens](https://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}/T1B1-legacy_device_test/differing_screens.html)) [main](https://data.trezorcheck.io/dev/firmware/master_diff/${{ github.run_id }}/)([screens](https://data.trezorcheck.io/dev/firmware/master_diff/${{ github.run_id }}/master_diff.html))|
+    |legacy UI changes|[device test](https://data.trezer.io/dev/firmware/ui_report/${{ github.run_id }}/T1B1-legacy_device_test/index.html)([screens](https://data.trezer.io/dev/firmware/ui_report/${{ github.run_id }}/T1B1-legacy_device_test/differing_screens.html)) [main](https://data.trezer.io/dev/firmware/master_diff/${{ github.run_id }}/)([screens](https://data.trezer.io/dev/firmware/master_diff/${{ github.run_id }}/master_diff.html))|
     |-----------------|-----|
 
 jobs:
@@ -167,7 +167,7 @@ jobs:
       - run: mv tests/ui_tests/reports/master_diff .
       - name: Upload main branch diff
         run: |
-          aws s3 sync master_diff s3://data.trezorcheck.io/dev/firmware/master_diff/${{ github.run_id }}
+          aws s3 sync master_diff s3://data.trezer.io/dev/firmware/master_diff/${{ github.run_id }}
 
   legacy_ui_comment:
     name: Post comment with UI diff URLs

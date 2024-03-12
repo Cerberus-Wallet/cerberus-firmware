@@ -1,15 +1,15 @@
 from typing import Callable, Iterable
 
-import trezorui2
-from trezor import TR
-from trezor.enums import ButtonRequestType
-from trezor.wire.context import wait as ctx_wait
+import cerberusui2
+from cerberus import TR
+from cerberus.enums import ButtonRequestType
+from cerberus.wire.context import wait as ctx_wait
 
 from ..common import interact
 from . import RustLayout, raise_if_not_confirmed
 
-CONFIRMED = trezorui2.CONFIRMED  # global_import_cache
-INFO = trezorui2.INFO  # global_import_cache
+CONFIRMED = cerberusui2.CONFIRMED  # global_import_cache
+INFO = cerberusui2.INFO  # global_import_cache
 
 
 async def _is_confirmed_info(
@@ -19,7 +19,7 @@ async def _is_confirmed_info(
     while True:
         result = await ctx_wait(dialog)
 
-        if result is trezorui2.INFO:
+        if result is cerberusui2.INFO:
             await info_func()
             dialog.request_complete_repaint()
         else:
@@ -27,7 +27,7 @@ async def _is_confirmed_info(
 
 
 async def request_word_count(dry_run: bool) -> int:
-    selector = RustLayout(trezorui2.select_word_count(dry_run=dry_run))
+    selector = RustLayout(cerberusui2.select_word_count(dry_run=dry_run))
     count = await interact(selector, "word_count", ButtonRequestType.MnemonicWordCount)
     return int(count)
 
@@ -39,13 +39,13 @@ async def request_word(
     can_go_back = word_index > 0
     if is_slip39:
         keyboard = RustLayout(
-            trezorui2.request_slip39(
+            cerberusui2.request_slip39(
                 prompt=prompt, prefill_word=prefill_word, can_go_back=can_go_back
             )
         )
     else:
         keyboard = RustLayout(
-            trezorui2.request_bip39(
+            cerberusui2.request_bip39(
                 prompt=prompt, prefill_word=prefill_word, can_go_back=can_go_back
             )
         )
@@ -59,8 +59,8 @@ async def show_remaining_shares(
     shares_remaining: list[int],
     group_threshold: int,
 ) -> None:
-    from trezor import strings
-    from trezor.crypto.slip39 import MAX_SHARE_COUNT
+    from cerberus import strings
+    from cerberus.crypto.slip39 import MAX_SHARE_COUNT
 
     pages: list[tuple[str, str]] = []
     for remaining, group in groups:
@@ -86,7 +86,7 @@ async def show_remaining_shares(
 
     await raise_if_not_confirmed(
         interact(
-            RustLayout(trezorui2.show_remaining_shares(pages=pages)),
+            RustLayout(cerberusui2.show_remaining_shares(pages=pages)),
             "show_shares",
             ButtonRequestType.Other,
         )
@@ -97,7 +97,7 @@ async def show_group_share_success(share_index: int, group_index: int) -> None:
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.show_group_share_success(
+                cerberusui2.show_group_share_success(
                     lines=[
                         TR.recovery__you_have_entered,
                         TR.recovery__share_num_template.format(share_index + 1),
@@ -129,7 +129,7 @@ async def continue_recovery(
         description = subtext or ""
 
     homepage = RustLayout(
-        trezorui2.confirm_recovery(
+        cerberusui2.confirm_recovery(
             title=text,
             description=description,
             button=button_label.upper(),
@@ -158,7 +158,7 @@ async def show_recovery_warning(
     await raise_if_not_confirmed(
         interact(
             RustLayout(
-                trezorui2.show_warning(
+                cerberusui2.show_warning(
                     title=content,
                     description=subheader or "",
                     button=button.upper(),

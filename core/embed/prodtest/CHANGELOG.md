@@ -20,4 +20,4 @@
 - [T2B1] Start with all-white screen instead of border.  [#3325]
 
 
-[#3325]: https://github.com/trezor/trezor-firmware/pull/3325
+[#3325]: https://github.com/Cerberus-Wallet/cerberus-firmware/pull/3325

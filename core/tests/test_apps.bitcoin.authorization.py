@@ -1,8 +1,8 @@
 from common import H_, unittest  # isort:skip
 
 import storage.cache
-from trezor.enums import InputScriptType
-from trezor.messages import AuthorizeCoinJoin, GetOwnershipProof, SignTx
+from cerberus.enums import InputScriptType
+from cerberus.messages import AuthorizeCoinJoin, GetOwnershipProof, SignTx
 
 from apps.bitcoin.authorization import CoinJoinAuthorization
 from apps.common import coins

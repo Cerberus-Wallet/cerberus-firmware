@@ -2,9 +2,9 @@ from common import *  # isort:skip
 
 from mock_storage import mock_storage
 from storage import cache
-from trezor import wire
-from trezor.crypto import bip39
-from trezor.enums import SafetyCheckLevel
+from cerberus import wire
+from cerberus.crypto import bip39
+from cerberus.enums import SafetyCheckLevel
 
 from apps.common import safety_checks
 from apps.common.keychain import Keychain, LRUCache, get_keychain, with_slip44_keychain

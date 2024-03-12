@@ -1,4 +1,4 @@
-from trezor.crypto import base32
+from cerberus.crypto import base32
 
 
 def public_key_from_address(address: str) -> bytes:
@@ -6,7 +6,7 @@ def public_key_from_address(address: str) -> bytes:
     Stellar address is in format:
     <1-byte version> <32-bytes ed25519 public key> <2-bytes CRC-16 checksum>
     """
-    from trezor.wire import ProcessError
+    from cerberus.wire import ProcessError
 
     b = base32.decode(address)
     # verify checksum - function deleted as it saved 50 bytes from the binary

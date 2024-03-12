@@ -1,7 +1,7 @@
 from common import *  # isort:skip
 
-from trezor.enums import InputScriptType
-from trezor.messages import PrevOutput, SignTx, TxInput
+from cerberus.enums import InputScriptType
+from cerberus.messages import PrevOutput, SignTx, TxInput
 
 from apps.bitcoin.common import SigHashType
 from apps.bitcoin.sign_tx.sig_hasher import BitcoinSigHasher

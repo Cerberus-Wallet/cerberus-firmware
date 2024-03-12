@@ -1,9 +1,9 @@
 from typing import TYPE_CHECKING
 
-from trezor import utils
-from trezor.crypto import base58
-from trezor.crypto.base58 import blake256d_32
-from trezor.wire import DataError
+from cerberus import utils
+from cerberus.crypto import base58
+from cerberus.crypto.base58 import blake256d_32
+from cerberus.wire import DataError
 
 from . import scripts
 from .scripts import (  # noqa: F401
@@ -14,8 +14,8 @@ from .scripts import (  # noqa: F401
 from .writers import write_compact_size
 
 if TYPE_CHECKING:
-    from trezor.enums import InputScriptType
-    from trezor.messages import MultisigRedeemScriptType
+    from cerberus.enums import InputScriptType
+    from cerberus.messages import MultisigRedeemScriptType
 
     from apps.common.coininfo import CoinInfo
 
@@ -32,8 +32,8 @@ def write_input_script_prefixed(
     pubkey: bytes,
     signature: bytes,
 ) -> None:
-    from trezor import wire
-    from trezor.enums import InputScriptType
+    from cerberus import wire
+    from cerberus.enums import InputScriptType
 
     from .multisig import multisig_pubkey_index
 

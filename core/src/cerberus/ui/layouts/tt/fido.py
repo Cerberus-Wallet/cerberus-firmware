@@ -1,17 +1,17 @@
 from typing import TYPE_CHECKING
 
-import trezorui2
-from trezor.enums import ButtonRequestType
+import cerberusui2
+from cerberus.enums import ButtonRequestType
 
 from ..common import interact
 from . import RustLayout
 
 if TYPE_CHECKING:
-    from trezor.loop import AwaitableTask
+    from cerberus.loop import AwaitableTask
 
 
 if __debug__:
-    from trezor import io, ui
+    from cerberus import io, ui
 
     from ... import Result
 
@@ -28,7 +28,7 @@ if __debug__:
             from apps.debug import result_signal
 
             _event_id, result = await result_signal()
-            if result is not trezorui2.CONFIRMED:
+            if result is not cerberusui2.CONFIRMED:
                 raise Result(result)
 
             for event, x, y in (
@@ -55,7 +55,7 @@ async def confirm_fido(
 ) -> int:
     """Webauthn confirmation for one or more credentials."""
     confirm = _RustFidoLayout(
-        trezorui2.confirm_fido(
+        cerberusui2.confirm_fido(
             title=header.upper(),
             app_name=app_name,
             icon_name=icon_name,
@@ -70,20 +70,20 @@ async def confirm_fido(
         return result
 
     # Late import won't get executed on the happy path.
-    from trezor.wire import ActionCancelled
+    from cerberus.wire import ActionCancelled
 
     raise ActionCancelled
 
 
 async def confirm_fido_reset() -> bool:
-    from trezor import TR
+    from cerberus import TR
 
     confirm = RustLayout(
-        trezorui2.confirm_action(
+        cerberusui2.confirm_action(
             title=TR.fido__title_reset,
             action=TR.fido__erase_credentials,
             description=TR.words__really_wanna,
             reverse=True,
         )
     )
-    return (await confirm) is trezorui2.CONFIRMED
+    return (await confirm) is cerberusui2.CONFIRMED

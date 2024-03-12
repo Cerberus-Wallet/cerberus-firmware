@@ -2,7 +2,7 @@
 # fmt: off
 # isort:skip_file
 
-from trezor import utils
+from cerberus import utils
 
 Bitcoin = 1
 Crypto = 5

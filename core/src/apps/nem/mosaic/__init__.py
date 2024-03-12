@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from . import layout, serialize
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         NEMMosaicCreation,
         NEMMosaicSupplyChange,
         NEMTransactionCommon,

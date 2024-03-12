@@ -1,12 +1,12 @@
 from common import *  # isort:skip
 
-from trezor import wire
-from trezor.enums import EthereumDataType as EDT
-from trezor.messages import EthereumFieldType as EFT
-from trezor.messages import EthereumStructMember as ESM
-from trezor.messages import EthereumTypedDataStructAck as ETDSA
-from trezor.messages import EthereumTypedDataValueAck
-from trezor.wire import context
+from cerberus import wire
+from cerberus.enums import EthereumDataType as EDT
+from cerberus.messages import EthereumFieldType as EFT
+from cerberus.messages import EthereumStructMember as ESM
+from cerberus.messages import EthereumTypedDataStructAck as ETDSA
+from cerberus.messages import EthereumTypedDataValueAck
+from cerberus.wire import context
 
 if not utils.BITCOIN_ONLY:
     from apps.ethereum.helpers import decode_typed_data, get_type_name
@@ -42,7 +42,7 @@ class MockContext:
         return EthereumTypedDataValueAck(value=self.next_response)
 
 
-# Helper functions from trezorctl to build expected type data structures
+# Helper functions from cerberusctl to build expected type data structures
 # TODO: it could be better to group these functions into a class, to visibly differentiate it
 def get_type_definitions(types: dict) -> dict:
     result = {}

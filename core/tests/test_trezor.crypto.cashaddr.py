@@ -24,7 +24,7 @@ from common import *  # isort:skip
 
 """Reference tests for cashaddr adresses"""
 
-from trezor.crypto import base58, cashaddr
+from cerberus.crypto import base58, cashaddr
 
 VALID_CHECKSUM = [
     "prefix:x64nx6hz",

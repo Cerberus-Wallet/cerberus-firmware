@@ -1,1 +1,0 @@
-../trezortranslate_keys.pyi

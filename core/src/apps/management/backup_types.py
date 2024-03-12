@@ -1,9 +1,9 @@
 from typing import TYPE_CHECKING
 
-from trezor.enums import BackupType
+from cerberus.enums import BackupType
 
 if TYPE_CHECKING:
-    from trezor.crypto.slip39 import Share
+    from cerberus.crypto.slip39 import Share
 
 _BIP39_WORD_COUNTS = (12, 18, 24)
 _SLIP39_WORD_COUNTS = (20, 33)

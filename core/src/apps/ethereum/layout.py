@@ -1,8 +1,8 @@
 from typing import TYPE_CHECKING
 
-from trezor import TR, ui
-from trezor.enums import ButtonRequestType
-from trezor.ui.layouts import (
+from cerberus import TR, ui
+from cerberus.enums import ButtonRequestType
+from cerberus.ui.layouts import (
     confirm_blob,
     confirm_ethereum_staking_tx,
     confirm_text,
@@ -14,7 +14,7 @@ from .helpers import address_from_bytes, decode_typed_data, format_ethereum_amou
 if TYPE_CHECKING:
     from typing import Awaitable, Iterable
 
-    from trezor.messages import (
+    from cerberus.messages import (
         EthereumFieldType,
         EthereumNetworkInfo,
         EthereumStructMember,
@@ -31,7 +31,7 @@ async def require_confirm_tx(
     token: EthereumTokenInfo | None,
     chunkify: bool,
 ) -> None:
-    from trezor.ui.layouts import confirm_ethereum_tx
+    from cerberus.ui.layouts import confirm_ethereum_tx
 
     if to_bytes:
         to_str = address_from_bytes(to_bytes, network)
@@ -120,7 +120,7 @@ async def require_confirm_claim(
 def require_confirm_unknown_token(address_bytes: bytes) -> Awaitable[None]:
     from ubinascii import hexlify
 
-    from trezor.ui.layouts import confirm_address
+    from cerberus.ui.layouts import confirm_address
 
     contract_address_hex = "0x" + hexlify(address_bytes).decode()
     return confirm_address(
@@ -135,7 +135,7 @@ def require_confirm_unknown_token(address_bytes: bytes) -> Awaitable[None]:
 def require_confirm_address(address_bytes: bytes) -> Awaitable[None]:
     from ubinascii import hexlify
 
-    from trezor.ui.layouts import confirm_address
+    from cerberus.ui.layouts import confirm_address
 
     address_hex = "0x" + hexlify(address_bytes).decode()
     return confirm_address(
@@ -157,7 +157,7 @@ def require_confirm_other_data(data: bytes, data_total: int) -> Awaitable[None]:
 
 
 async def confirm_typed_data_final() -> None:
-    from trezor.ui.layouts import confirm_action
+    from cerberus.ui.layouts import confirm_action
 
     await confirm_action(
         "confirm_typed_data_final",
@@ -200,7 +200,7 @@ async def should_show_struct(
     title: str | None = None,
     button_text: str | None = None,
 ) -> bool:
-    from trezor.strings import format_plural
+    from cerberus.strings import format_plural
 
     title = title or TR.ethereum__title_confirm_struct  # def_arg
     button_text = button_text or TR.ethereum__show_full_struct  # def_arg
@@ -231,7 +231,7 @@ async def should_show_array(
     data_type: str,
     size: int,
 ) -> bool:
-    from trezor.strings import format_plural_english
+    from cerberus.strings import format_plural_english
 
     # Leaving english plural form because of dynamic noun - data_type
     plural = format_plural_english("{count} {plural}", size, data_type)
@@ -252,7 +252,7 @@ async def confirm_typed_value(
     field: EthereumFieldType,
     array_index: int | None = None,
 ) -> None:
-    from trezor.enums import EthereumDataType
+    from cerberus.enums import EthereumDataType
 
     from .helpers import get_type_name
 

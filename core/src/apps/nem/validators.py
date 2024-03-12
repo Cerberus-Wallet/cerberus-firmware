@@ -1,15 +1,15 @@
 from typing import TYPE_CHECKING
 
-from trezor.wire import ProcessError
+from cerberus.wire import ProcessError
 
 if TYPE_CHECKING:
-    from trezor.messages import NEMSignTx, NEMTransactionCommon
+    from cerberus.messages import NEMSignTx, NEMTransactionCommon
 
 
 def validate(msg: NEMSignTx) -> None:
-    from trezor.crypto import nem
-    from trezor.enums import NEMModificationType
-    from trezor.wire import ProcessError  # local_cache_global
+    from cerberus.crypto import nem
+    from cerberus.enums import NEMModificationType
+    from cerberus.wire import ProcessError  # local_cache_global
 
     from .helpers import (
         NEM_MAX_DIVISIBILITY,

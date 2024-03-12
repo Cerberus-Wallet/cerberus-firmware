@@ -1,7 +1,7 @@
 from common import *  # isort:skip
 
 if not utils.BITCOIN_ONLY:
-    from trezor.messages import (
+    from cerberus.messages import (
         NEMAggregateModification,
         NEMCosignatoryModification,
         NEMProvisionNamespace,

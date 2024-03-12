@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import hashlib
+from cerberus.crypto import hashlib
 
 
 class TestCryptoRipemd160(unittest.TestCase):

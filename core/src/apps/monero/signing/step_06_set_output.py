@@ -4,13 +4,13 @@ Computes destination one-time address, amount key, range proof + HMAC, out_pk, e
 """
 from typing import TYPE_CHECKING
 
-from trezor import utils
+from cerberus import utils
 
 from apps.monero.signing import offloading_keys
 from apps.monero.xmr import crypto, crypto_helpers
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         MoneroTransactionDestinationEntry,
         MoneroTransactionRsigData,
         MoneroTransactionSetOutputAck,
@@ -69,7 +69,7 @@ def set_output(
 
     # If det masks & offloading, return as we are handling offloaded BP.
     if state.is_processing_offloaded:
-        from trezor.messages import MoneroTransactionSetOutputAck
+        from cerberus.messages import MoneroTransactionSetOutputAck
 
         return MoneroTransactionSetOutputAck()
 
@@ -105,7 +105,7 @@ def set_output(
     state.last_step = state.STEP_OUT
     mem_trace(14, True)
 
-    from trezor.messages import MoneroTransactionSetOutputAck
+    from cerberus.messages import MoneroTransactionSetOutputAck
 
     out_pk_bin = bytearray(64)
     utils.memcpy(out_pk_bin, 0, out_pk_dest, 0, 32)
@@ -283,7 +283,7 @@ def _range_proof(
 
     state.mem_trace("pre-rproof" if __debug__ else None, collect=True)
     if not rsig_offload:
-        # Bulletproof calculation in Trezor
+        # Bulletproof calculation in Cerberus
         rsig = _rsig_bp(state)
 
     elif not is_processing_offloaded:
@@ -312,7 +312,7 @@ def _range_proof(
 
 
 def _rsig_bp(state: State) -> bytes:
-    """Bulletproof calculation in trezor"""
+    """Bulletproof calculation in cerberus"""
     from apps.monero.xmr import range_signatures
 
     rsig = range_signatures.prove_range_bp_batch(
@@ -411,7 +411,7 @@ def _return_rsig_data(
     if rsig is None and mask is None:
         return None
 
-    from trezor.messages import MoneroTransactionRsigData
+    from cerberus.messages import MoneroTransactionRsigData
 
     rsig_data = MoneroTransactionRsigData()
 

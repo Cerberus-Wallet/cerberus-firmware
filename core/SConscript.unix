@@ -6,23 +6,23 @@ import tools
 
 BITCOIN_ONLY = ARGUMENTS.get('BITCOIN_ONLY', '0')
 EVERYTHING = BITCOIN_ONLY != '1'
-TREZOR_MODEL = ARGUMENTS.get('TREZOR_MODEL', 'T')
-DMA2D =  TREZOR_MODEL in ('T', )
+CERBERUS_MODEL = ARGUMENTS.get('CERBERUS_MODEL', 'T')
+DMA2D =  CERBERUS_MODEL in ('T', )
 CMAKELISTS = int(ARGUMENTS.get('CMAKELISTS', 0))
 
-if TREZOR_MODEL in ('DISC1', ):
+if CERBERUS_MODEL in ('DISC1', ):
     # skip unix build
     env = Environment()
     def build_unix(target,source,env):
-        print(f'Emulator: nothing to build for Model {TREZOR_MODEL}')
+        print(f'Emulator: nothing to build for Model {CERBERUS_MODEL}')
     program_bin = env.Command(
-                 target='trezor-emu-core',
+                 target='cerberus-emu-core',
                  source=None,
                  action=build_unix)
     Return()
 
 FEATURE_FLAGS = {
-    "SECP256K1_ZKP": True,  # required for trezor.crypto.curve.bip340 (BIP340/Taproot)
+    "SECP256K1_ZKP": True,  # required for cerberus.crypto.curve.bip340 (BIP340/Taproot)
 }
 
 CCFLAGS_MOD = ''
@@ -33,39 +33,39 @@ SOURCE_MOD = [
 ]
 
 PYOPT = ARGUMENTS.get('PYOPT', '1')
-FROZEN = ARGUMENTS.get('TREZOR_EMULATOR_FROZEN', 0)
-RASPI = os.getenv('TREZOR_EMULATOR_RASPI') == '1'
+FROZEN = ARGUMENTS.get('CERBERUS_EMULATOR_FROZEN', 0)
+RASPI = os.getenv('CERBERUS_EMULATOR_RASPI') == '1'
 
-if TREZOR_MODEL in ('1', 'R'):
+if CERBERUS_MODEL in ('1', 'R'):
     FONT_NORMAL='Font_PixelOperator_Regular_8'
     FONT_DEMIBOLD='Font_Unifont_Bold_16'
     FONT_BOLD='Font_PixelOperator_Bold_8'
     FONT_MONO='Font_PixelOperatorMono_Regular_8'
     FONT_BIG='Font_Unifont_Regular_16'
-elif TREZOR_MODEL in ('T', ):
+elif CERBERUS_MODEL in ('T', ):
     FONT_NORMAL='Font_TTHoves_Regular_21'
     FONT_DEMIBOLD='Font_TTHoves_DemiBold_21'
     FONT_BOLD='Font_TTHoves_Bold_17'
     FONT_MONO='Font_RobotoMono_Medium_20'
     FONT_BIG=None
 
-# modtrezorconfig
+# modcerberusconfig
 CPPPATH_MOD += [
-    'embed/extmod/modtrezorconfig',
-    'vendor/trezor-storage',
+    'embed/extmod/modcerberusconfig',
+    'vendor/cerberus-storage',
 ]
 SOURCE_MOD += [
-    'embed/extmod/modtrezorconfig/modtrezorconfig.c',
-    'vendor/trezor-storage/norcow.c',
-    'vendor/trezor-storage/storage.c',
-    'vendor/trezor-storage/storage_utils.c',
-    'vendor/trezor-storage/flash_common.c',
+    'embed/extmod/modcerberusconfig/modcerberusconfig.c',
+    'vendor/cerberus-storage/norcow.c',
+    'vendor/cerberus-storage/storage.c',
+    'vendor/cerberus-storage/storage_utils.c',
+    'vendor/cerberus-storage/flash_common.c',
 ]
 
-# modtrezorcrypto
+# modcerberuscrypto
 CCFLAGS_MOD += '-Wno-sequence-point '
 CPPPATH_MOD += [
-    'vendor/trezor-crypto',
+    'vendor/cerberus-crypto',
 ]
 CPPDEFINES_MOD += [
     'AES_128',
@@ -76,71 +76,71 @@ CPPDEFINES_MOD += [
     ('USE_ETHEREUM', '1' if EVERYTHING else '0'),
     ('USE_MONERO', '1' if EVERYTHING else '0'),
     ('USE_CARDANO', '1' if EVERYTHING else '0'),
-    ('USE_NEM', '1' if (EVERYTHING and TREZOR_MODEL != "R") else '0'),
-    ('USE_EOS', '1' if (EVERYTHING and TREZOR_MODEL != "R") else '0'),
+    ('USE_NEM', '1' if (EVERYTHING and CERBERUS_MODEL != "R") else '0'),
+    ('USE_EOS', '1' if (EVERYTHING and CERBERUS_MODEL != "R") else '0'),
 ]
 SOURCE_MOD += [
-    'embed/extmod/trezorobj.c',
-    'embed/extmod/modtrezorcrypto/crc.c',
-    'embed/extmod/modtrezorcrypto/modtrezorcrypto.c',
-    'vendor/trezor-crypto/address.c',
-    'vendor/trezor-crypto/aes/aes_modes.c',
-    'vendor/trezor-crypto/aes/aescrypt.c',
-    'vendor/trezor-crypto/aes/aeskey.c',
-    'vendor/trezor-crypto/aes/aestab.c',
-    'vendor/trezor-crypto/base32.c',
-    'vendor/trezor-crypto/base58.c',
-    'vendor/trezor-crypto/bignum.c',
-    'vendor/trezor-crypto/bip32.c',
-    'vendor/trezor-crypto/bip39.c',
-    'vendor/trezor-crypto/bip39_english.c',
-    'vendor/trezor-crypto/blake256.c',
-    'vendor/trezor-crypto/blake2b.c',
-    'vendor/trezor-crypto/blake2s.c',
-    'vendor/trezor-crypto/buffer.c',
-    'vendor/trezor-crypto/chacha20poly1305/chacha20poly1305.c',
-    'vendor/trezor-crypto/chacha20poly1305/chacha_merged.c',
-    'vendor/trezor-crypto/chacha20poly1305/poly1305-donna.c',
-    'vendor/trezor-crypto/chacha20poly1305/rfc7539.c',
-    'vendor/trezor-crypto/chacha_drbg.c',
-    'vendor/trezor-crypto/curves.c',
-    'vendor/trezor-crypto/der.c',
-    'vendor/trezor-crypto/ecdsa.c',
-    'vendor/trezor-crypto/ed25519-donna/curve25519-donna-32bit.c',
-    'vendor/trezor-crypto/ed25519-donna/curve25519-donna-helpers.c',
-    'vendor/trezor-crypto/ed25519-donna/curve25519-donna-scalarmult-base.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519-donna-32bit-tables.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519-donna-basepoint-table.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519-donna-impl-base.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519-keccak.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519-sha3.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519.c',
-    'vendor/trezor-crypto/ed25519-donna/modm-donna-32bit.c',
-    'vendor/trezor-crypto/groestl.c',
-    'vendor/trezor-crypto/hasher.c',
-    'vendor/trezor-crypto/hmac.c',
-    'vendor/trezor-crypto/hmac_drbg.c',
-    'vendor/trezor-crypto/memzero.c',
-    'vendor/trezor-crypto/nem.c',
-    'vendor/trezor-crypto/nist256p1.c',
-    'vendor/trezor-crypto/pbkdf2.c',
-    'vendor/trezor-crypto/rand.c',
-    'vendor/trezor-crypto/rfc6979.c',
-    'vendor/trezor-crypto/ripemd160.c',
-    'vendor/trezor-crypto/secp256k1.c',
-    'vendor/trezor-crypto/segwit_addr.c',
-    'vendor/trezor-crypto/sha2.c',
-    'vendor/trezor-crypto/sha3.c',
-    'vendor/trezor-crypto/shamir.c',
-    'vendor/trezor-crypto/slip39.c',
-    'vendor/trezor-crypto/slip39_english.c',
+    'embed/extmod/cerberusobj.c',
+    'embed/extmod/modcerberuscrypto/crc.c',
+    'embed/extmod/modcerberuscrypto/modcerberuscrypto.c',
+    'vendor/cerberus-crypto/address.c',
+    'vendor/cerberus-crypto/aes/aes_modes.c',
+    'vendor/cerberus-crypto/aes/aescrypt.c',
+    'vendor/cerberus-crypto/aes/aeskey.c',
+    'vendor/cerberus-crypto/aes/aestab.c',
+    'vendor/cerberus-crypto/base32.c',
+    'vendor/cerberus-crypto/base58.c',
+    'vendor/cerberus-crypto/bignum.c',
+    'vendor/cerberus-crypto/bip32.c',
+    'vendor/cerberus-crypto/bip39.c',
+    'vendor/cerberus-crypto/bip39_english.c',
+    'vendor/cerberus-crypto/blake256.c',
+    'vendor/cerberus-crypto/blake2b.c',
+    'vendor/cerberus-crypto/blake2s.c',
+    'vendor/cerberus-crypto/buffer.c',
+    'vendor/cerberus-crypto/chacha20poly1305/chacha20poly1305.c',
+    'vendor/cerberus-crypto/chacha20poly1305/chacha_merged.c',
+    'vendor/cerberus-crypto/chacha20poly1305/poly1305-donna.c',
+    'vendor/cerberus-crypto/chacha20poly1305/rfc7539.c',
+    'vendor/cerberus-crypto/chacha_drbg.c',
+    'vendor/cerberus-crypto/curves.c',
+    'vendor/cerberus-crypto/der.c',
+    'vendor/cerberus-crypto/ecdsa.c',
+    'vendor/cerberus-crypto/ed25519-donna/curve25519-donna-32bit.c',
+    'vendor/cerberus-crypto/ed25519-donna/curve25519-donna-helpers.c',
+    'vendor/cerberus-crypto/ed25519-donna/curve25519-donna-scalarmult-base.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519-donna-32bit-tables.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519-donna-basepoint-table.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519-donna-impl-base.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519-keccak.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519-sha3.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519.c',
+    'vendor/cerberus-crypto/ed25519-donna/modm-donna-32bit.c',
+    'vendor/cerberus-crypto/groestl.c',
+    'vendor/cerberus-crypto/hasher.c',
+    'vendor/cerberus-crypto/hmac.c',
+    'vendor/cerberus-crypto/hmac_drbg.c',
+    'vendor/cerberus-crypto/memzero.c',
+    'vendor/cerberus-crypto/nem.c',
+    'vendor/cerberus-crypto/nist256p1.c',
+    'vendor/cerberus-crypto/pbkdf2.c',
+    'vendor/cerberus-crypto/rand.c',
+    'vendor/cerberus-crypto/rfc6979.c',
+    'vendor/cerberus-crypto/ripemd160.c',
+    'vendor/cerberus-crypto/secp256k1.c',
+    'vendor/cerberus-crypto/segwit_addr.c',
+    'vendor/cerberus-crypto/sha2.c',
+    'vendor/cerberus-crypto/sha3.c',
+    'vendor/cerberus-crypto/shamir.c',
+    'vendor/cerberus-crypto/slip39.c',
+    'vendor/cerberus-crypto/slip39_english.c',
 ]
 if EVERYTHING:
     SOURCE_MOD += [
-        'vendor/trezor-crypto/cardano.c',
-        'vendor/trezor-crypto/monero/base58.c',
-        'vendor/trezor-crypto/monero/serialize.c',
-        'vendor/trezor-crypto/monero/xmr.c',
+        'vendor/cerberus-crypto/cardano.c',
+        'vendor/cerberus-crypto/monero/base58.c',
+        'vendor/cerberus-crypto/monero/serialize.c',
+        'vendor/cerberus-crypto/monero/xmr.c',
     ]
 
 # libsecp256k1-zkp
@@ -168,27 +168,27 @@ if FEATURE_FLAGS["SECP256K1_ZKP"]:
         'vendor/secp256k1-zkp/src/precomputed_ecmult_gen.c',
     ]
     SOURCE_MOD += [
-        'vendor/trezor-crypto/zkp_context.c',
-        'vendor/trezor-crypto/zkp_ecdsa.c',
-        'vendor/trezor-crypto/zkp_bip340.c',
+        'vendor/cerberus-crypto/zkp_context.c',
+        'vendor/cerberus-crypto/zkp_ecdsa.c',
+        'vendor/cerberus-crypto/zkp_bip340.c',
     ]
 
-# modtrezorio
+# modcerberusio
 SOURCE_MOD += [
-    'embed/extmod/modtrezorio/modtrezorio.c',
+    'embed/extmod/modcerberusio/modcerberusio.c',
 ]
-if TREZOR_MODEL in ('T',):
+if CERBERUS_MODEL in ('T',):
     SOURCE_MOD += [
-        'embed/extmod/modtrezorio/ff.c',
-        'embed/extmod/modtrezorio/ffunicode.c',
+        'embed/extmod/modcerberusio/ff.c',
+        'embed/extmod/modcerberusio/ffunicode.c',
     ]
 
-# modtrezorui
+# modcerberusui
 CPPPATH_MOD += [
         'vendor/micropython/lib/uzlib',
 ]
 SOURCE_MOD += [
-    'embed/extmod/modtrezorui/modtrezorui.c',
+    'embed/extmod/modcerberusui/modcerberusui.c',
     'embed/lib/buffers.c',
     'embed/lib/colors.c',
     'embed/lib/display_utils.c',
@@ -203,15 +203,15 @@ SOURCE_MOD += [
     'vendor/micropython/lib/uzlib/tinflate.c',
 ]
 
-if TREZOR_MODEL in ('1', ):
+if CERBERUS_MODEL in ('1', ):
     SOURCE_MOD += [
         'embed/models/model_T1B1_layout.c',
     ]
-elif TREZOR_MODEL in ('T', ):
+elif CERBERUS_MODEL in ('T', ):
     SOURCE_MOD += [
         'embed/models/model_T2T1_layout.c',
     ]
-elif TREZOR_MODEL in ('R', ):
+elif CERBERUS_MODEL in ('R', ):
     SOURCE_MOD += [
         'embed/models/model_T2B1_layout.c',
     ]
@@ -219,22 +219,22 @@ elif TREZOR_MODEL in ('R', ):
 
 
 CPPDEFINES_MOD += [
-    'TREZOR_UI2',
+    'CERBERUS_UI2',
     'TRANSLATIONS',
 ]
-if TREZOR_MODEL not in ('1', ):
+if CERBERUS_MODEL not in ('1', ):
     CPPDEFINES_MOD += [
         'FANCY_FATAL_ERROR',
     ]
 
 if FROZEN:
-    CPPDEFINES_MOD += ['TREZOR_EMULATOR_FROZEN']
+    CPPDEFINES_MOD += ['CERBERUS_EMULATOR_FROZEN']
 if RASPI:
-    CPPDEFINES_MOD += ['TREZOR_EMULATOR_RASPI']
+    CPPDEFINES_MOD += ['CERBERUS_EMULATOR_RASPI']
 
-# modtrezorutils
+# modcerberusutils
 SOURCE_MOD += [
-    'embed/extmod/modtrezorutils/modtrezorutils.c',
+    'embed/extmod/modcerberusutils/modcerberusutils.c',
 ]
 
 # rust mods
@@ -374,14 +374,14 @@ SOURCE_MICROPYTHON = [
 ]
 
 SOURCE_UNIX = [
-    'embed/trezorhal/unix/translations.c',
-    'embed/trezorhal/unix/common.c',
-    'embed/trezorhal/unix/display-unix.c',
-    'embed/trezorhal/unix/flash.c',
-    'embed/trezorhal/unix/random_delays.c',
-    'embed/trezorhal/unix/rng.c',
-    'embed/trezorhal/unix/usb.c',
-    'embed/trezorhal/unix/touch/touch.c',
+    'embed/cerberushal/unix/translations.c',
+    'embed/cerberushal/unix/common.c',
+    'embed/cerberushal/unix/display-unix.c',
+    'embed/cerberushal/unix/flash.c',
+    'embed/cerberushal/unix/random_delays.c',
+    'embed/cerberushal/unix/rng.c',
+    'embed/cerberushal/unix/usb.c',
+    'embed/cerberushal/unix/touch/touch.c',
     'embed/unix/main.c',
     'embed/unix/main_main.c',
     'embed/unix/profile.c',
@@ -391,14 +391,14 @@ SOURCE_UNIX = [
     'vendor/micropython/ports/unix/input.c',
     'vendor/micropython/ports/unix/unix_mphal.c',
 ]
-if TREZOR_MODEL in ('T', 'R'):
+if CERBERUS_MODEL in ('T', 'R'):
     SOURCE_UNIX += [
-        'embed/trezorhal/unix/sbu.c',
+        'embed/cerberushal/unix/sbu.c',
     ]
 
-if TREZOR_MODEL == 'R':
+if CERBERUS_MODEL == 'R':
     SOURCE_UNIX += [
-        'embed/trezorhal/unix/optiga.c',
+        'embed/cerberushal/unix/optiga.c',
     ]
 
 if DMA2D:
@@ -428,19 +428,19 @@ else:
 env = Environment(ENV=os.environ, CFLAGS='%s -DPYOPT=%s -DBITCOIN_ONLY=%s %s' % (ARGUMENTS.get('CFLAGS', ''), PYOPT, BITCOIN_ONLY, STATIC))
 
 
-if TREZOR_MODEL in ('T',):
+if CERBERUS_MODEL in ('T',):
     UI_LAYOUT = 'UI_LAYOUT_TT'
     ui_layout_feature = 'model_tt'
-elif TREZOR_MODEL in ('1', 'R'):
+elif CERBERUS_MODEL in ('1', 'R'):
     UI_LAYOUT = 'UI_LAYOUT_TR'
     ui_layout_feature = 'model_tr'
 else:
-    raise ValueError('Unknown Trezor model')
+    raise ValueError('Unknown Cerberus model')
 
-if TREZOR_MODEL in ('T',):
+if CERBERUS_MODEL in ('T',):
     SDCARD = True
     SOURCE_UNIX += [
-        'embed/trezorhal/unix/sdcard.c',
+        'embed/cerberushal/unix/sdcard.c',
     ]
 else:
     SDCARD = False
@@ -458,12 +458,12 @@ env.Replace(
     OBJCOPY='objcopy',
     COPT=os.getenv('OPTIMIZE', '-Os'), )
 
-if ARGUMENTS.get('TREZOR_EMULATOR_CLANG', '0') == '1':
+if ARGUMENTS.get('CERBERUS_EMULATOR_CLANG', '0') == '1':
     env.Replace(
         CC='clang',
         LINK='clang', )
 
-if ARGUMENTS.get('TREZOR_EMULATOR_ASAN', '0') == '1':
+if ARGUMENTS.get('CERBERUS_EMULATOR_ASAN', '0') == '1':
     asan_flags=(
         ' -fsanitize=address,undefined'+
         ' -fno-omit-frame-pointer'+
@@ -480,27 +480,27 @@ if ARGUMENTS.get('TREZOR_EMULATOR_ASAN', '0') == '1':
             'RUSTFLAGS': '-Z sanitizer=address',
         }, )
 
-if ARGUMENTS.get('TREZOR_EMULATOR_DEBUGGABLE', '0') == '1':
+if ARGUMENTS.get('CERBERUS_EMULATOR_DEBUGGABLE', '0') == '1':
     env.Replace(
         COPT=' -Og -ggdb',
         STRIP='true', )
 
-if ARGUMENTS.get('TREZOR_MEMPERF', '0') == '1':
+if ARGUMENTS.get('CERBERUS_MEMPERF', '0') == '1':
     CPPDEFINES_MOD += [
-        ('MICROPY_TREZOR_MEMPERF', '\(1\)')
+        ('MICROPY_CERBERUS_MEMPERF', '\(1\)')
     ]
 
 env.Replace(
-    TREZOR_MODEL=TREZOR_MODEL, )
+    CERBERUS_MODEL=CERBERUS_MODEL, )
 
-if TREZOR_MODEL in ('T', 'R'):
+if CERBERUS_MODEL in ('T', 'R'):
     CPU_MODEL   = 'STM32F427xx'
-elif TREZOR_MODEL in ('DISC1', ):
+elif CERBERUS_MODEL in ('DISC1', ):
     CPU_MODEL   = 'STM32F429xx'
-elif TREZOR_MODEL in ('1',):
+elif CERBERUS_MODEL in ('1',):
     CPU_MODEL   = 'STM32F405xx'
 else:
-    raise ValueError('Unknown Trezor model')
+    raise ValueError('Unknown Cerberus model')
 
 env.Replace(
     CCFLAGS='$COPT '
@@ -515,18 +515,18 @@ env.Replace(
         'embed/lib',
         'embed/models',
         'embed/unix',
-        'embed/trezorhal',
-        'embed/trezorhal/unix',
-        'embed/extmod/modtrezorui',
+        'embed/cerberushal',
+        'embed/cerberushal/unix',
+        'embed/extmod/modcerberusui',
         'vendor/micropython',
         'vendor/micropython/ports/unix',
         'vendor/micropython/lib/mp-readline',
     ] + CPPPATH_MOD,
     CPPDEFINES=[
         CPU_MODEL,
-        'TREZOR_EMULATOR',
-        'TREZOR_MODEL_'+TREZOR_MODEL,
-        'TREZOR_BOARD=\\"boards/board-unix.h\\"',
+        'CERBERUS_EMULATOR',
+        'CERBERUS_MODEL_'+CERBERUS_MODEL,
+        'CERBERUS_BOARD=\\"boards/board-unix.h\\"',
         ('FLASH_BIT_ACCESS', '1'),
         ('FLASH_BLOCK_WORDS', '1'),
         'MCU_TYPE='+CPU_MODEL,
@@ -622,36 +622,36 @@ if FROZEN:
     SOURCE_PY_DIR = 'src/'
 
     SOURCE_PY = Glob(SOURCE_PY_DIR + '*.py')
-    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/*.py',
+    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/*.py',
         exclude=[
-            SOURCE_PY_DIR + 'trezor/sdcard.py',
+            SOURCE_PY_DIR + 'cerberus/sdcard.py',
         ] if not SDCARD else []
     ))
-    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/crypto/*.py'))
-    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/ui/*.py'))
+    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/crypto/*.py'))
+    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/ui/*.py'))
 
     # UI layouts - common files and then model-specific. Exclude FIDO when BTC-only.
-    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/ui/layouts/*.py',
+    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/ui/layouts/*.py',
         exclude=[
-            SOURCE_PY_DIR + 'trezor/ui/layouts/fido.py',
+            SOURCE_PY_DIR + 'cerberus/ui/layouts/fido.py',
         ] if not EVERYTHING else []
     ))
     if UI_LAYOUT == 'UI_LAYOUT_TT':
-        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/ui/layouts/tt/*.py',
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/ui/layouts/tt/*.py',
             exclude=[
-                SOURCE_PY_DIR + 'trezor/ui/layouts/tt/fido.py',
+                SOURCE_PY_DIR + 'cerberus/ui/layouts/tt/fido.py',
             ] if not EVERYTHING else []
         ))
     elif UI_LAYOUT == 'UI_LAYOUT_TR':
-        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/ui/layouts/tr/*.py',
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/ui/layouts/tr/*.py',
             exclude=[
-                SOURCE_PY_DIR + 'trezor/ui/layouts/tr/fido.py',
+                SOURCE_PY_DIR + 'cerberus/ui/layouts/tr/fido.py',
             ] if not EVERYTHING else []
         ))
     else:
         raise ValueError('Unknown layout')
 
-    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/wire/*.py'))
+    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/wire/*.py'))
 
     SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'storage/*.py',
         exclude=[
@@ -659,21 +659,21 @@ if FROZEN:
         ] if not SDCARD else []
     ))
 
-    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/messages/__init__.py'))
-    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/*.py',
+    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/messages/__init__.py'))
+    SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/enums/*.py',
         exclude=[
-            SOURCE_PY_DIR + 'trezor/enums/Binance*.py',
-            SOURCE_PY_DIR + 'trezor/enums/Cardano*.py',
-            SOURCE_PY_DIR + 'trezor/enums/DebugMonero*.py',
-            SOURCE_PY_DIR + 'trezor/enums/Eos*.py',
-            SOURCE_PY_DIR + 'trezor/enums/Ethereum*.py',
-            SOURCE_PY_DIR + 'trezor/enums/Monero*.py',
-            SOURCE_PY_DIR + 'trezor/enums/NEM*.py',
-            SOURCE_PY_DIR + 'trezor/enums/Ripple*.py',
-            SOURCE_PY_DIR + 'trezor/enums/Solana*.py',
-            SOURCE_PY_DIR + 'trezor/enums/Stellar*.py',
-            SOURCE_PY_DIR + 'trezor/enums/Tezos*.py',
-            SOURCE_PY_DIR + 'trezor/enums/Zcash*.py',
+            SOURCE_PY_DIR + 'cerberus/enums/Binance*.py',
+            SOURCE_PY_DIR + 'cerberus/enums/Cardano*.py',
+            SOURCE_PY_DIR + 'cerberus/enums/DebugMonero*.py',
+            SOURCE_PY_DIR + 'cerberus/enums/Eos*.py',
+            SOURCE_PY_DIR + 'cerberus/enums/Ethereum*.py',
+            SOURCE_PY_DIR + 'cerberus/enums/Monero*.py',
+            SOURCE_PY_DIR + 'cerberus/enums/NEM*.py',
+            SOURCE_PY_DIR + 'cerberus/enums/Ripple*.py',
+            SOURCE_PY_DIR + 'cerberus/enums/Solana*.py',
+            SOURCE_PY_DIR + 'cerberus/enums/Stellar*.py',
+            SOURCE_PY_DIR + 'cerberus/enums/Tezos*.py',
+            SOURCE_PY_DIR + 'cerberus/enums/Zcash*.py',
         ])
     )
 
@@ -690,7 +690,7 @@ if FROZEN:
             SOURCE_PY_DIR + 'apps/management/sd_protect.py',
         ] if not SDCARD else [] + [
             SOURCE_PY_DIR + 'apps/management/authenticate_device.py',
-        ] if TREZOR_MODEL not in ('R',) else [])
+        ] if CERBERUS_MODEL not in ('R',) else [])
     )
     SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/management/*/*.py'))
     SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/misc/*.py'))
@@ -705,61 +705,61 @@ if FROZEN:
 
     if EVERYTHING:
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/binance/*.py'))
-        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/Binance*.py'))
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/enums/Binance*.py'))
 
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/cardano/*.py'))
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/cardano/*/*.py'))
-        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/Cardano*.py'))
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/enums/Cardano*.py'))
 
-        if TREZOR_MODEL != "R":
+        if CERBERUS_MODEL != "R":
             SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/eos/*.py'))
             SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/eos/*/*.py'))
-            SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/Eos*.py'))
+            SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/enums/Eos*.py'))
 
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/ethereum/*.py'))
-        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/Ethereum*.py'))
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/enums/Ethereum*.py'))
 
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/monero/*.py'))
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/monero/*/*.py'))
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/monero/*/*/*.py'))
-        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/DebugMonero*.py'))
-        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/Monero*.py'))
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/enums/DebugMonero*.py'))
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/enums/Monero*.py'))
 
-        if TREZOR_MODEL != "R":
+        if CERBERUS_MODEL != "R":
             SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/nem/*.py'))
             SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/nem/*/*.py'))
-            SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/NEM*.py'))
+            SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/enums/NEM*.py'))
 
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/ripple/*.py'))
-        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/Ripple*.py'))
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/enums/Ripple*.py'))
 
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/solana/*.py'))
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/solana/*/*.py'))
-        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/Solana*.py'))
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/enums/Solana*.py'))
 
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/stellar/*.py'))
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/stellar/*/*.py'))
-        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/Stellar*.py'))
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/enums/Stellar*.py'))
 
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/tezos/*.py'))
-        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/Tezos*.py'))
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/enums/Tezos*.py'))
 
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/zcash/*.py'))
 
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/webauthn/*.py'))
 
-        if TREZOR_MODEL != "R":
+        if CERBERUS_MODEL != "R":
             SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/bitcoin/sign_tx/decred.py'))
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/bitcoin/sign_tx/bitcoinlike.py'))
         SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'apps/bitcoin/sign_tx/zcash_v4.py'))
-        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'trezor/enums/Zcash*.py'))
+        SOURCE_PY.extend(Glob(SOURCE_PY_DIR + 'cerberus/enums/Zcash*.py'))
 
     source_mpy = env.FrozenModule(
         source=SOURCE_PY,
         source_dir=SOURCE_PY_DIR,
         bitcoin_only=BITCOIN_ONLY,
-        backlight=TREZOR_MODEL in ('T',),
-        optiga=TREZOR_MODEL in ('R',),
+        backlight=CERBERUS_MODEL in ('T',),
+        optiga=CERBERUS_MODEL in ('R',),
         ui_layout=UI_LAYOUT,
         )
 
@@ -786,13 +786,13 @@ env.Depends(protobuf_blobs, qstr_generated)
 
 TARGET = os.popen("rustc -vV | sed -n 's/host: //p'").read().strip()
 
-if ARGUMENTS.get('TREZOR_EMULATOR_DEBUGGABLE', '0') == '1':
+if ARGUMENTS.get('CERBERUS_EMULATOR_DEBUGGABLE', '0') == '1':
     RUST_PROFILE = 'dev'
     RUST_LIBDIR = f'build/unix/rust/{TARGET}/debug'
 else:
     RUST_PROFILE = 'release'
     RUST_LIBDIR = f'build/unix/rust/{TARGET}/release'
-RUST_LIB = 'trezor_lib'
+RUST_LIB = 'cerberus_lib'
 RUST_LIBPATH = f'{RUST_LIBDIR}/lib{RUST_LIB}.a'
 
 def cargo_build():
@@ -806,13 +806,13 @@ def cargo_build():
     if DMA2D:
         features.append('dma2d')
 
-    if TREZOR_MODEL in ('T',):
+    if CERBERUS_MODEL in ('T',):
         features.append('touch')
         features.append('sd_card')
-    if TREZOR_MODEL in ('R', '1'):
+    if CERBERUS_MODEL in ('R', '1'):
         features.append('button')
 
-    env.get('ENV')['TREZOR_MODEL'] = TREZOR_MODEL
+    env.get('ENV')['CERBERUS_MODEL'] = CERBERUS_MODEL
 
     return f'cd embed/rust; cargo build --profile {RUST_PROFILE} --target-dir=../../build/unix/rust --no-default-features --features "{" ".join(features)}"  --target {TARGET}'
 
@@ -856,7 +856,7 @@ cmake_gen = env.Command(
 env.Depends(obj_program, qstr_generated)
 
 program = env.Command(
-    target='trezor-emu-core',
+    target='cerberus-emu-core',
     source=obj_program,
     action='$CC -o $TARGET $SOURCES $_LIBDIRFLAGS $_LIBFLAGS $LINKFLAGS', )
 

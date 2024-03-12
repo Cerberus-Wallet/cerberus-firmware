@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -23,7 +23,7 @@
 #include <stdbool.h>
 
 #include "common.h"
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
 #define BUFFER_PIXELS DISPLAY_RESX
 
@@ -51,7 +51,7 @@
 #define BUFFER_SECTION
 #endif
 
-#if defined BOOTLOADER || defined TREZOR_EMULATOR
+#if defined BOOTLOADER || defined CERBERUS_EMULATOR
 #define NODMA_BUFFER_SECTION
 #else
 #define NODMA_BUFFER_SECTION __attribute__((section(".no_dma_buffers")))

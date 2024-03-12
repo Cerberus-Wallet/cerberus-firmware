@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -49,9 +49,9 @@
 #include "memzero.h"
 #include "stm32f4xx_ll_utils.h"
 
-#ifdef TREZOR_MODEL_T
-#define MODEL_IDENTIFIER "TREZOR2-"
-#elif TREZOR_MODEL_R
+#ifdef CERBERUS_MODEL_T
+#define MODEL_IDENTIFIER "CERBERUS2-"
+#elif CERBERUS_MODEL_R
 #define MODEL_IDENTIFIER "T2B1-"
 #endif
 
@@ -107,9 +107,9 @@ static void usb_init_all(void) {
       .product_id = 0x53C1,
       .release_num = 0x0400,
       .manufacturer = "SatoshiLabs",
-      .product = "TREZOR",
+      .product = "CERBERUS",
       .serial_number = "000000000000",
-      .interface = "TREZOR Interface",
+      .interface = "CERBERUS Interface",
       .usb21_enabled = secfalse,
       .usb21_landing = secfalse,
   };
@@ -151,7 +151,7 @@ static void draw_border(int width, int padding) {
 }
 
 static void draw_welcome_screen(void) {
-#if TREZOR_MODEL_R
+#if CERBERUS_MODEL_R
   display_bar(0, 0, DISPLAY_RESX, DISPLAY_RESY, 0xFFFF);
   display_refresh();
 #else
@@ -576,7 +576,7 @@ int main(void) {
   draw_welcome_screen();
 
   char dom[32];
-  // format: TREZOR2-YYMMDD
+  // format: CERBERUS2-YYMMDD
   if (sectrue == flash_otp_read(FLASH_OTP_BLOCK_BATCH, 0, (uint8_t *)dom, 32) &&
       sectrue == startswith(dom, MODEL_IDENTIFIER) && dom[31] == 0) {
     display_qrcode(DISPLAY_RESX / 2, DISPLAY_RESY / 2, dom, 4);

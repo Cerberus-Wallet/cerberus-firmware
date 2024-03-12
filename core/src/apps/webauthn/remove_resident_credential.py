@@ -1,15 +1,15 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import Success, WebAuthnRemoveResidentCredential
+    from cerberus.messages import Success, WebAuthnRemoveResidentCredential
 
 
 async def remove_resident_credential(msg: WebAuthnRemoveResidentCredential) -> Success:
     import storage.device
     import storage.resident_credentials
-    from trezor import TR, wire
-    from trezor.messages import Success
-    from trezor.ui.layouts.fido import confirm_fido
+    from cerberus import TR, wire
+    from cerberus.messages import Success
+    from cerberus.ui.layouts.fido import confirm_fido
 
     from .resident_credentials import get_resident_credential
 

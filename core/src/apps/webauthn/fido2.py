@@ -5,10 +5,10 @@ from micropython import const
 from typing import TYPE_CHECKING
 
 import storage.device as storage_device
-from trezor import TR, config, io, log, loop, utils, wire, workflow
-from trezor.crypto import hashlib
-from trezor.crypto.curve import nist256p1
-from trezor.ui.layouts import show_error_popup
+from cerberus import TR, config, io, log, loop, utils, wire, workflow
+from cerberus.crypto import hashlib
+from cerberus.crypto.curve import nist256p1
+from cerberus.ui.layouts import show_error_popup
 
 from apps.base import set_homescreen
 from apps.common import cbor
@@ -164,12 +164,12 @@ _U2FHID_IF_VERSION = const(2)  # interface version
 # register response
 _U2F_REGISTER_ID = const(0x05)  # version 2 registration identifier
 _FIDO_ATT_PRIV_KEY = b"q&\xac+\xf6D\xdca\x86\xad\x83\xef\x1f\xcd\xf1*W\xb5\xcf\xa2\x00\x0b\x8a\xd0'\xe9V\xe8T\xc5\n\x8b"
-_FIDO_ATT_CERT = b"0\x82\x01\xcd0\x82\x01s\xa0\x03\x02\x01\x02\x02\x04\x03E`\xc40\n\x06\x08*\x86H\xce=\x04\x03\x020.1,0*\x06\x03U\x04\x03\x0c#Trezor FIDO Root CA Serial 841513560 \x17\r200406100417Z\x18\x0f20500406100417Z0x1\x0b0\t\x06\x03U\x04\x06\x13\x02CZ1\x1c0\x1a\x06\x03U\x04\n\x0c\x13SatoshiLabs, s.r.o.1\"0 \x06\x03U\x04\x0b\x0c\x19Authenticator Attestation1'0%\x06\x03U\x04\x03\x0c\x1eTrezor FIDO EE Serial 548784040Y0\x13\x06\x07*\x86H\xce=\x02\x01\x06\x08*\x86H\xce=\x03\x01\x07\x03B\x00\x04\xd9\x18\xbd\xfa\x8aT\xac\x92\xe9\r\xa9\x1f\xcaz\xa2dT\xc0\xd1s61M\xde\x83\xa5K\x86\xb5\xdfN\xf0Re\x9a\x1do\xfc\xb7F\x7f\x1a\xcd\xdb\x8a3\x08\x0b^\xed\x91\x89\x13\xf4C\xa5&\x1b\xc7{h`o\xc1\xa33010!\x06\x0b+\x06\x01\x04\x01\x82\xe5\x1c\x01\x01\x04\x04\x12\x04\x10\xd6\xd0\xbd\xc3b\xee\xc4\xdb\xde\x8dzenJD\x870\x0c\x06\x03U\x1d\x13\x01\x01\xff\x04\x020\x000\n\x06\x08*\x86H\xce=\x04\x03\x02\x03H\x000E\x02 \x0b\xce\xc4R\xc3\n\x11'\xe5\xd5\xf5\xfc\xf5\xd6Wy\x11+\xe50\xad\x9d-TXJ\xbeE\x86\xda\x93\xc6\x02!\x00\xaf\xca=\xcf\xd8A\xb0\xadz\x9e$}\x0ff\xf4L,\x83\xf9T\xab\x95O\x896\xc15\x08\x7fX\xf1\x95"
+_FIDO_ATT_CERT = b"0\x82\x01\xcd0\x82\x01s\xa0\x03\x02\x01\x02\x02\x04\x03E`\xc40\n\x06\x08*\x86H\xce=\x04\x03\x020.1,0*\x06\x03U\x04\x03\x0c#Cerberus FIDO Root CA Serial 841513560 \x17\r200406100417Z\x18\x0f20500406100417Z0x1\x0b0\t\x06\x03U\x04\x06\x13\x02CZ1\x1c0\x1a\x06\x03U\x04\n\x0c\x13SatoshiLabs, s.r.o.1\"0 \x06\x03U\x04\x0b\x0c\x19Authenticator Attestation1'0%\x06\x03U\x04\x03\x0c\x1eCerberus FIDO EE Serial 548784040Y0\x13\x06\x07*\x86H\xce=\x02\x01\x06\x08*\x86H\xce=\x03\x01\x07\x03B\x00\x04\xd9\x18\xbd\xfa\x8aT\xac\x92\xe9\r\xa9\x1f\xcaz\xa2dT\xc0\xd1s61M\xde\x83\xa5K\x86\xb5\xdfN\xf0Re\x9a\x1do\xfc\xb7F\x7f\x1a\xcd\xdb\x8a3\x08\x0b^\xed\x91\x89\x13\xf4C\xa5&\x1b\xc7{h`o\xc1\xa33010!\x06\x0b+\x06\x01\x04\x01\x82\xe5\x1c\x01\x01\x04\x04\x12\x04\x10\xd6\xd0\xbd\xc3b\xee\xc4\xdb\xde\x8dzenJD\x870\x0c\x06\x03U\x1d\x13\x01\x01\xff\x04\x020\x000\n\x06\x08*\x86H\xce=\x04\x03\x02\x03H\x000E\x02 \x0b\xce\xc4R\xc3\n\x11'\xe5\xd5\xf5\xfc\xf5\xd6Wy\x11+\xe50\xad\x9d-TXJ\xbeE\x86\xda\x93\xc6\x02!\x00\xaf\xca=\xcf\xd8A\xb0\xadz\x9e$}\x0ff\xf4L,\x83\xf9T\xab\x95O\x896\xc15\x08\x7fX\xf1\x95"
 _BOGUS_RP_ID = ".dummy"
 _BOGUS_APPID_CHROME = b"A" * 32
 _BOGUS_APPID_FIREFOX = b"\0" * 32
 _BOGUS_APPIDS = (_BOGUS_APPID_CHROME, _BOGUS_APPID_FIREFOX)
-_AAGUID = b"\xd6\xd0\xbd\xc3b\xee\xc4\xdb\xde\x8dzenJD\x87"  # First 16 bytes of SHA-256("TREZOR 2")
+_AAGUID = b"\xd6\xd0\xbd\xc3b\xee\xc4\xdb\xde\x8dzenJD\x87"  # First 16 bytes of SHA-256("CERBERUS 2")
 
 # authentication control byte
 _AUTH_ENFORCE = const(0x03)  # enforce user presence and sign
@@ -567,25 +567,25 @@ class KeepaliveCallback:
 
 
 async def verify_user(keepalive_callback: KeepaliveCallback) -> bool:
-    import trezor.pin
-    from trezor.wire import PinCancelled, PinInvalid
+    import cerberus.pin
+    from cerberus.wire import PinCancelled, PinInvalid
 
     from apps.common.request_pin import verify_user_pin
 
     try:
-        trezor.pin.keepalive_callback = keepalive_callback
+        cerberus.pin.keepalive_callback = keepalive_callback
         await verify_user_pin(cache_time_ms=_UV_CACHE_TIME_MS)
         ret = True
     except (PinCancelled, PinInvalid):
         ret = False
     finally:
-        trezor.pin.keepalive_callback = None
+        cerberus.pin.keepalive_callback = None
 
     return ret
 
 
 def _confirm_fido_choose(title: str, credentials: list[Credential]) -> Awaitable[int]:
-    from trezor.ui.layouts.fido import confirm_fido
+    from cerberus.ui.layouts.fido import confirm_fido
 
     from . import knownapps
 
@@ -708,7 +708,7 @@ class U2fUnlock(State):
         return _U2F_CONFIRM_TIMEOUT_MS
 
     async def confirm_dialog(self) -> bool:
-        from trezor.wire import PinCancelled, PinInvalid
+        from cerberus.wire import PinCancelled, PinInvalid
 
         from apps.common.request_pin import verify_user_pin
 
@@ -955,7 +955,7 @@ class Fido2ConfirmNoCredentials(Fido2ConfirmGetAssertion):
 
 class Fido2ConfirmReset(Fido2State):
     async def confirm_dialog(self) -> bool:
-        from trezor.ui.layouts.fido import confirm_fido_reset
+        from cerberus.ui.layouts.fido import confirm_fido_reset
 
         return await confirm_fido_reset()
 
@@ -1178,7 +1178,7 @@ def _dispatch_cmd(req: Cmd, dialog_mgr: DialogManager) -> Cmd | None:
 
 
 def cmd_init(req: Cmd) -> Cmd:
-    from trezor.crypto import random
+    from cerberus.crypto import random
 
     cid = req.cid  # local_cache_attribute
 
@@ -1204,7 +1204,7 @@ def cmd_init(req: Cmd) -> Cmd:
 
 
 def _cmd_wink(req: Cmd) -> Cmd:
-    from trezor import ui
+    from cerberus import ui
 
     global _last_wink_cid
     if _last_wink_cid != req.cid:
@@ -1272,7 +1272,7 @@ def _msg_register(req: Msg, dialog_mgr: DialogManager) -> Cmd:
 
 
 def basic_attestation_sign(data: Iterable[bytes]) -> bytes:
-    from trezor.crypto import der
+    from cerberus.crypto import der
 
     dig = hashlib.sha256()
     for segment in data:
@@ -1797,7 +1797,7 @@ def _cbor_get_assertion_hmac_secret(
     cred: Credential, hmac_secret: dict
 ) -> bytes | None:
     from storage.fido2 import KEY_AGREEMENT_PRIVKEY
-    from trezor.crypto import aes, hmac
+    from cerberus.crypto import aes, hmac
 
     key_agreement = hmac_secret[1]  # The public key of platform key agreement key.
     # NOTE: We should check the key_agreement[COSE_KEY_ALG] here, but to avoid compatibility issues we don't,

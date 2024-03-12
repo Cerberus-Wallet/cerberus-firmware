@@ -1,4 +1,4 @@
-from trezor import utils
+from cerberus import utils
 
 from .common import *  # noqa: F401,F403
 

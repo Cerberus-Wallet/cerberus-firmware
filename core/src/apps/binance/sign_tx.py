@@ -3,25 +3,25 @@ from typing import TYPE_CHECKING
 from apps.common.keychain import auto_keychain
 
 if TYPE_CHECKING:
-    from trezor.messages import BinanceSignedTx, BinanceSignTx
+    from cerberus.messages import BinanceSignedTx, BinanceSignTx
 
     from apps.common.keychain import Keychain
 
 
 @auto_keychain(__name__)
 async def sign_tx(envelope: BinanceSignTx, keychain: Keychain) -> BinanceSignedTx:
-    from trezor import wire
-    from trezor.crypto.curve import secp256k1
-    from trezor.crypto.hashlib import sha256
-    from trezor.enums import MessageType
-    from trezor.messages import (
+    from cerberus import wire
+    from cerberus.crypto.curve import secp256k1
+    from cerberus.crypto.hashlib import sha256
+    from cerberus.enums import MessageType
+    from cerberus.messages import (
         BinanceCancelMsg,
         BinanceOrderMsg,
         BinanceSignedTx,
         BinanceTransferMsg,
         BinanceTxRequest,
     )
-    from trezor.wire.context import call_any
+    from cerberus.wire.context import call_any
 
     from apps.common import paths
 

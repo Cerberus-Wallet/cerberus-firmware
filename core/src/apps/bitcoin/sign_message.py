@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from .keychain import with_keychain
 
 if TYPE_CHECKING:
-    from trezor.messages import MessageSignature, SignMessage
+    from cerberus.messages import MessageSignature, SignMessage
 
     from apps.common.coininfo import CoinInfo
     from apps.common.keychain import Keychain
@@ -13,11 +13,11 @@ if TYPE_CHECKING:
 async def sign_message(
     msg: SignMessage, keychain: Keychain, coin: CoinInfo
 ) -> MessageSignature:
-    from trezor import wire
-    from trezor.crypto.curve import secp256k1
-    from trezor.enums import InputScriptType
-    from trezor.messages import MessageSignature
-    from trezor.ui.layouts import confirm_signverify
+    from cerberus import wire
+    from cerberus.crypto.curve import secp256k1
+    from cerberus.enums import InputScriptType
+    from cerberus.messages import MessageSignature
+    from cerberus.ui.layouts import confirm_signverify
 
     from apps.common.paths import address_n_to_str, validate_path
     from apps.common.signverify import decode_message, message_digest

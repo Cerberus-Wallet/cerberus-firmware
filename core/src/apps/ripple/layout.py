@@ -1,6 +1,6 @@
-from trezor.enums import ButtonRequestType
-from trezor.strings import format_amount
-from trezor.ui.layouts import confirm_metadata, confirm_total
+from cerberus.enums import ButtonRequestType
+from cerberus.strings import format_amount
+from cerberus.ui.layouts import confirm_metadata, confirm_total
 
 from .helpers import DECIMALS
 
@@ -13,7 +13,7 @@ async def require_confirm_total(total: int, fee: int) -> None:
 
 
 async def require_confirm_destination_tag(tag: int) -> None:
-    from trezor import TR
+    from cerberus import TR
 
     await confirm_metadata(
         "confirm_destination_tag",
@@ -25,6 +25,6 @@ async def require_confirm_destination_tag(tag: int) -> None:
 
 
 async def require_confirm_tx(to: str, value: int, chunkify: bool = False) -> None:
-    from trezor.ui.layouts import confirm_output
+    from cerberus.ui.layouts import confirm_output
 
     await confirm_output(to, format_amount(value, DECIMALS) + " XRP", chunkify=chunkify)

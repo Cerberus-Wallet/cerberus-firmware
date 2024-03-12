@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from trezor.crypto import base58
+from cerberus.crypto import base58
 
 from apps.common import seed
 from apps.common.keychain import with_slip44_keychain
@@ -8,7 +8,7 @@ from apps.common.keychain import with_slip44_keychain
 from . import CURVE, PATTERNS, SLIP44_ID
 
 if TYPE_CHECKING:
-    from trezor.messages import SolanaGetPublicKey, SolanaPublicKey
+    from cerberus.messages import SolanaGetPublicKey, SolanaPublicKey
 
     from apps.common.keychain import Keychain
 
@@ -17,8 +17,8 @@ if TYPE_CHECKING:
 async def get_public_key(
     msg: SolanaGetPublicKey, keychain: Keychain
 ) -> SolanaPublicKey:
-    from trezor.messages import SolanaPublicKey
-    from trezor.ui.layouts import show_pubkey
+    from cerberus.messages import SolanaPublicKey
+    from cerberus.ui.layouts import show_pubkey
 
     public_key = derive_public_key(keychain, msg.address_n)
 

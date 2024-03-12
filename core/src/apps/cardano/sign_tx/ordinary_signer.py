@@ -1,14 +1,14 @@
 from typing import TYPE_CHECKING
 
-from trezor import TR
-from trezor.wire import ProcessError
+from cerberus import TR
+from cerberus.wire import ProcessError
 
 from .. import layout
 from ..helpers.paths import SCHEMA_MINT
 from .signer import Signer
 
 if TYPE_CHECKING:
-    from trezor import messages
+    from cerberus import messages
 
 
 class OrdinarySigner(Signer):
@@ -46,7 +46,7 @@ class OrdinarySigner(Signer):
         )
 
     def _validate_certificate(self, certificate: messages.CardanoTxCertificate) -> None:
-        from trezor.enums import CardanoCertificateType
+        from cerberus.enums import CardanoCertificateType
 
         super()._validate_certificate(certificate)
         if certificate.type == CardanoCertificateType.STAKE_POOL_REGISTRATION:
@@ -81,7 +81,7 @@ class OrdinarySigner(Signer):
         # super() omitted intentionally
         # We only allow payment, staking or minting paths.
         # If the path is an unusual payment or staking path, we either fail or show the
-        # path to the user depending on Trezor's configuration. If it's a minting path,
+        # path to the user depending on Cerberus's configuration. If it's a minting path,
         # we always show it.
         is_payment = SCHEMA_PAYMENT.match(witness_path)
         is_staking = SCHEMA_STAKING.match(witness_path)

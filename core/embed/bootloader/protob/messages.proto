@@ -2,7 +2,7 @@ syntax = "proto2";
 
 
 /**
- * Mapping between Trezor wire identifier (uint) and a protobuf message
+ * Mapping between Cerberus wire identifier (uint) and a protobuf message
  */
 enum MessageType {
     MessageType_Initialize = 0;
@@ -41,7 +41,7 @@ message GetFeatures {
  * @end
  */
 message Features {
-    optional string vendor = 1;                 // name of the manufacturer, e.g. "trezor.io"
+    optional string vendor = 1;                 // name of the manufacturer, e.g. "cerberus.uraanai.com"
     required uint32 major_version = 2;          // major version of the firmware/bootloader, e.g. 1
     required uint32 minor_version = 3;          // minor version of the firmware/bootloader, e.g. 0
     required uint32 patch_version = 4;          // patch version of the firmware/bootloader, e.g. 0

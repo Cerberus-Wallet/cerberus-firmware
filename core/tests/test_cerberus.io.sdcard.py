@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor import io, utils
+from cerberus import io, utils
 
 
 class TestCerberusIoSdcard(unittest.TestCase):

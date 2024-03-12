@@ -4,14 +4,14 @@ from apps.common.keychain import auto_keychain
 from apps.monero import layout, misc
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         MoneroLiveRefreshFinalAck,
         MoneroLiveRefreshStartAck,
         MoneroLiveRefreshStartRequest,
         MoneroLiveRefreshStepAck,
         MoneroLiveRefreshStepRequest,
     )
-    from trezor.ui.layouts.common import ProgressLayout
+    from cerberus.ui.layouts.common import ProgressLayout
 
     from apps.common.keychain import Keychain
 
@@ -24,9 +24,9 @@ async def live_refresh(
 ) -> MoneroLiveRefreshFinalAck:
     import gc
 
-    from trezor.enums import MessageType
-    from trezor.messages import MoneroLiveRefreshFinalAck, MoneroLiveRefreshStepRequest
-    from trezor.wire.context import call_any
+    from cerberus.enums import MessageType
+    from cerberus.messages import MoneroLiveRefreshFinalAck, MoneroLiveRefreshStepRequest
+    from cerberus.wire.context import call_any
 
     state = LiveRefreshState()
 
@@ -58,7 +58,7 @@ async def _init_step(
     keychain: Keychain,
 ) -> MoneroLiveRefreshStartAck:
     import storage.cache as storage_cache
-    from trezor.messages import MoneroLiveRefreshStartAck
+    from cerberus.messages import MoneroLiveRefreshStartAck
 
     from apps.common import paths
 
@@ -78,8 +78,8 @@ def _refresh_step(
     msg: MoneroLiveRefreshStepRequest,
     progress: ProgressLayout,
 ) -> MoneroLiveRefreshStepAck:
-    from trezor import log
-    from trezor.messages import MoneroLiveRefreshStepAck
+    from cerberus import log
+    from cerberus.messages import MoneroLiveRefreshStepAck
 
     from apps.monero.xmr import chacha_poly, crypto, crypto_helpers, key_image, monero
 

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -31,7 +31,7 @@
 #include "optiga_hal.h"
 #include "tls_prf.h"
 
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
 // Maximum possible packet size that can be transmitted.
 #define OPTIGA_MAX_PACKET_SIZE (OPTIGA_DATA_REG_LEN - 5)

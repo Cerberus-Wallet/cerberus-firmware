@@ -1,17 +1,17 @@
 from typing import TYPE_CHECKING
 
-from trezor import TR, config, wire
+from cerberus import TR, config, wire
 
 if TYPE_CHECKING:
     from typing import Awaitable
 
-    from trezor.messages import ChangePin, Success
+    from cerberus.messages import ChangePin, Success
 
 
 async def change_pin(msg: ChangePin) -> Success:
     from storage.device import is_initialized
-    from trezor.messages import Success
-    from trezor.ui.layouts import show_success
+    from cerberus.messages import Success
+    from cerberus.ui.layouts import show_success
 
     from apps.common.request_pin import (
         error_pin_invalid,
@@ -63,7 +63,7 @@ async def change_pin(msg: ChangePin) -> Success:
 
 
 def _require_confirm_change_pin(msg: ChangePin) -> Awaitable[None]:
-    from trezor.ui.layouts import confirm_action, confirm_set_new_pin
+    from cerberus.ui.layouts import confirm_action, confirm_set_new_pin
 
     has_pin = config.has_pin()
 

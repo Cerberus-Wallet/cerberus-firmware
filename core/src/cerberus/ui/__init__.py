@@ -1,14 +1,14 @@
 # pylint: disable=wrong-import-position
 import utime
-from trezorui import Display
+from cerberusui import Display
 from typing import TYPE_CHECKING, Any, Awaitable, Generator
 
-from trezor import loop, utils
+from cerberus import loop, utils
 
 # all rendering is done through a singleton of `Display`
 display = Display()
 
-# re-export constants from modtrezorui
+# re-export constants from modcerberusui
 NORMAL: int = Display.FONT_NORMAL
 BOLD: int = Display.FONT_BOLD
 DEMIBOLD: int = Display.FONT_DEMIBOLD
@@ -43,7 +43,7 @@ if utils.EMULATOR or utils.INTERNAL_MODEL in ("T1B1", "T2B1"):
 
 
 # import style later to avoid circular dep
-from trezor.ui import style  # isort:skip
+from cerberus.ui import style  # isort:skip
 
 
 async def _alert(count: int) -> None:

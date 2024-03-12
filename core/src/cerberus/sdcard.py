@@ -1,5 +1,5 @@
 try:
-    from trezorio import fatfs, sdcard
+    from cerberusio import fatfs, sdcard
 
     HAVE_SDCARD = True
     is_present = sdcard.is_present  # type: ignore [obscured-by-same-name]

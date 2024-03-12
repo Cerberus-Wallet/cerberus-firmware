@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -37,7 +37,7 @@
 #include "mini_printf.h"
 #include "stm32f4xx_ll_utils.h"
 
-#ifdef TREZOR_MODEL_T
+#ifdef CERBERUS_MODEL_T
 #include "backlight_pwm.h"
 #endif
 
@@ -52,7 +52,7 @@ uint32_t systick_val_copy = 0;
 // from util.s
 extern void shutdown_privileged(void);
 
-void __attribute__((noreturn)) trezor_shutdown(void) {
+void __attribute__((noreturn)) cerberus_shutdown(void) {
 #ifdef USE_SVC_SHUTDOWN
   svc_shutdown();
 #else
@@ -70,7 +70,7 @@ error_uni(const char *label, const char *msg, const char *footer) {
 
 #ifdef FANCY_FATAL_ERROR
 
-  screen_fatal_error_rust(label, msg, "PLEASE VISIT\nTREZOR.IO/RSOD");
+  screen_fatal_error_rust(label, msg, "PLEASE VISIT\nCERBERUS.IO/RSOD");
   display_refresh();
 #else
   term_set_color(COLOR_WHITE, COLOR_FATAL_ERROR);
@@ -86,7 +86,7 @@ error_uni(const char *label, const char *msg, const char *footer) {
 #endif
   display_backlight(255);
   display_refresh();
-  trezor_shutdown();
+  cerberus_shutdown();
 }
 
 void __attribute__((noreturn))
@@ -99,7 +99,7 @@ __fatal_error(const char *expr, const char *msg, const char *file, int line,
   char buf[256] = {0};
   mini_snprintf(buf, sizeof(buf), "%s: %d", file, line);
   screen_fatal_error_rust("INTERNAL ERROR", msg != NULL ? msg : buf,
-                          "PLEASE VISIT\nTREZOR.IO/RSOD");
+                          "PLEASE VISIT\nCERBERUS.IO/RSOD");
   display_refresh();
 #else
   term_set_color(COLOR_WHITE, COLOR_FATAL_ERROR);
@@ -121,9 +121,9 @@ __fatal_error(const char *expr, const char *msg, const char *file, int line,
   term_printf("rev : %02x%02x%02x%02x%02x\n", rev[0], rev[1], rev[2], rev[3],
               rev[4]);
 #endif
-  term_printf("\nPlease contact Trezor support.\n");
+  term_printf("\nPlease contact Cerberus support.\n");
 #endif
-  trezor_shutdown();
+  cerberus_shutdown();
 }
 
 void __attribute__((noreturn))
@@ -132,7 +132,7 @@ error_shutdown(const char *label, const char *msg) {
 
 #ifdef FANCY_FATAL_ERROR
 
-  screen_fatal_error_rust(label, msg, "PLEASE VISIT\nTREZOR.IO/RSOD");
+  screen_fatal_error_rust(label, msg, "PLEASE VISIT\nCERBERUS.IO/RSOD");
   display_refresh();
 #else
   term_set_color(COLOR_WHITE, COLOR_FATAL_ERROR);
@@ -142,10 +142,10 @@ error_shutdown(const char *label, const char *msg) {
   if (msg) {
     term_printf("%s\n", msg);
   }
-  term_printf("\nPLEASE VISIT TREZOR.IO/RSOD\n");
+  term_printf("\nPLEASE VISIT CERBERUS.IO/RSOD\n");
 #endif
   display_backlight(255);
-  trezor_shutdown();
+  cerberus_shutdown();
 }
 
 #ifndef NDEBUG
@@ -222,7 +222,7 @@ void collect_hw_entropy(void) {
 // which might be incompatible with the other layers older versions,
 // where this setting might be unknown
 void ensure_compatible_settings(void) {
-#ifdef TREZOR_MODEL_T
+#ifdef CERBERUS_MODEL_T
   display_set_big_endian();
   display_orientation(0);
   set_core_clock(CLOCK_168_MHZ);

@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.utils import HashContext
+    from cerberus.utils import HashContext
 
     from .serialize_messages.tx_rsig_bulletproof import BulletproofPlus
 

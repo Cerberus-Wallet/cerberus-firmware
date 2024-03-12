@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from trezor.crypto import base58
+from cerberus.crypto import base58
 
 from .transaction import Transaction
 from .transaction.instructions import (
@@ -11,7 +11,7 @@ from .transaction.instructions import (
 )
 
 if TYPE_CHECKING:
-    from trezor.messages import SolanaTxAdditionalInfo
+    from cerberus.messages import SolanaTxAdditionalInfo
 
     TransferTokenInstruction = (
         TokenProgramTransferCheckedInstruction

@@ -41,8 +41,8 @@ class Instruction:
     def parse_instruction_data(
         instruction_data: InstructionData, property_templates: list[PropertyTemplate]
     ):
-        from trezor.utils import BufferReader
-        from trezor.wire import DataError
+        from cerberus.utils import BufferReader
+        from cerberus.wire import DataError
 
         reader = BufferReader(instruction_data)
 

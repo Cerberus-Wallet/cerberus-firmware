@@ -1,5 +1,5 @@
 # Production Test Firmware
-This document outlines the protocol used during production for testing and the initial provisioning of Trezor devices.
+This document outlines the protocol used during production for testing and the initial provisioning of Cerberus devices.
 
 ## Commands and Responses
 In the production environment, the test equipment sends single-line text commands.
@@ -14,7 +14,7 @@ Example:
 CPUID READ
 ```
 
-The Trezor device responds with single-line text responses that start with either `OK` or `ERROR`, followed by output values separated by spaces.
+The Cerberus device responds with single-line text responses that start with either `OK` or `ERROR`, followed by output values separated by spaces.
 If the device receives an unrecognized command, it responds with the text `UNKNOWN`.
 
 Device responds with single line text response starting with words `OK` or `ERROR` optionally followed by output values delimited by spaces.
@@ -219,7 +219,7 @@ OK <hexadecimal string>
 ```
 
 ### CERTDEV WRITE
-Writes the X.509 certificate issued by the Trezor Company for the device.
+Writes the X.509 certificate issued by the Cerberus Company for the device.
 
 Example:
 ```
@@ -228,7 +228,7 @@ OK
 ```
 
 ### CERTDEV READ
-Returns the X.509 certificate issued by the Trezor Company for the device.
+Returns the X.509 certificate issued by the Cerberus Company for the device.
 
 Example:
 ```
@@ -237,7 +237,7 @@ OK <hexadecimal string>
 ```
 
 ### CERTFIDO WRITE
-Writes the X.509 certificate issued by the Trezor Company for the FIDO attestation key.
+Writes the X.509 certificate issued by the Cerberus Company for the FIDO attestation key.
 
 Example:
 ```
@@ -246,7 +246,7 @@ OK
 ```
 
 ### CERTFIDO READ
-Returns the X.509 certificate issued by the Trezor Company for the FIDO attestation key.
+Returns the X.509 certificate issued by the Cerberus Company for the FIDO attestation key.
 
 Example:
 ```

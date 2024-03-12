@@ -1,13 +1,13 @@
 from typing import TYPE_CHECKING
 
-from trezor.crypto import base58
+from cerberus.crypto import base58
 
 from apps.common.keychain import with_slip44_keychain
 
 from . import CURVE, PATTERNS, SLIP44_ID
 
 if TYPE_CHECKING:
-    from trezor.messages import SolanaAddress, SolanaGetAddress
+    from cerberus.messages import SolanaAddress, SolanaGetAddress
 
     from apps.common.keychain import Keychain
 
@@ -17,8 +17,8 @@ async def get_address(
     msg: SolanaGetAddress,
     keychain: Keychain,
 ) -> SolanaAddress:
-    from trezor.messages import SolanaAddress
-    from trezor.ui.layouts import show_address
+    from cerberus.messages import SolanaAddress
+    from cerberus.ui.layouts import show_address
 
     from apps.common import paths
 

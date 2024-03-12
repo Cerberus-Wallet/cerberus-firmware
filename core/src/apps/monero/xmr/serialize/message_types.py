@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from trezor.utils import obj_eq, obj_repr
+from cerberus.utils import obj_eq, obj_repr
 
 from apps.monero.xmr.serialize.int_serialize import dump_uvarint, load_uvarint
 

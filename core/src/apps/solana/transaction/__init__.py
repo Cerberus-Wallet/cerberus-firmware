@@ -1,8 +1,8 @@
 from typing import TYPE_CHECKING
 
-from trezor.crypto import base58
-from trezor.utils import BufferReader
-from trezor.wire import DataError
+from cerberus.crypto import base58
+from cerberus.utils import BufferReader
+from cerberus.wire import DataError
 
 from ..types import AddressType
 from .instruction import Instruction

@@ -15,12 +15,12 @@ for ButtonRequests. Of course, `context.wait()` transparently works in such situ
 
 from typing import TYPE_CHECKING
 
-from trezor import log, loop, protobuf
+from cerberus import log, loop, protobuf
 
 from . import codec_v1
 
 if TYPE_CHECKING:
-    from trezorio import WireInterface
+    from cerberusio import WireInterface
     from typing import (
         Any,
         Awaitable,

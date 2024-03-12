@@ -1,15 +1,15 @@
 from typing import TYPE_CHECKING
 
 import storage.device as storage_device
-import trezorui2
-from trezor import TR
-from trezor.enums import ButtonRequestType
-from trezor.ui.layouts import confirm_action
-from trezor.wire import DataError
+import cerberusui2
+from cerberus import TR
+from cerberus.enums import ButtonRequestType
+from cerberus.ui.layouts import confirm_action
+from cerberus.wire import DataError
 
 if TYPE_CHECKING:
-    from trezor.enums import SafetyCheckLevel
-    from trezor.messages import ApplySettings, Success
+    from cerberus.enums import SafetyCheckLevel
+    from cerberus.messages import ApplySettings, Success
 
 
 BRT_PROTECT_CALL = ButtonRequestType.ProtectCall  # CACHE
@@ -25,13 +25,13 @@ def _validate_homescreen(homescreen: bytes) -> None:
         raise DataError(
             f"Homescreen is too large, maximum size is {storage_device.HOMESCREEN_MAXSIZE} bytes"
         )
-    if not trezorui2.check_homescreen_format(homescreen):
+    if not cerberusui2.check_homescreen_format(homescreen):
         raise DataError("Wrong homescreen format")
 
 
 async def apply_settings(msg: ApplySettings) -> Success:
-    from trezor.messages import Success
-    from trezor.wire import NotInitialized, ProcessError
+    from cerberus.messages import Success
+    from cerberus.wire import NotInitialized, ProcessError
 
     from apps.base import reload_settings_from_storage
     from apps.common import safety_checks
@@ -120,13 +120,13 @@ async def apply_settings(msg: ApplySettings) -> Success:
 
 
 async def _require_confirm_change_homescreen(homescreen: bytes) -> None:
-    from trezor.ui.layouts import confirm_homescreen
+    from cerberus.ui.layouts import confirm_homescreen
 
     await confirm_homescreen(homescreen)
 
 
 async def _require_confirm_change_label(label: str) -> None:
-    from trezor.ui.layouts import confirm_single
+    from cerberus.ui.layouts import confirm_single
 
     await confirm_single(
         "set_label",
@@ -187,7 +187,7 @@ async def _require_confirm_change_display_rotation(rotation: int) -> None:
 
 
 async def _require_confirm_change_autolock_delay(delay_ms: int) -> None:
-    from trezor.strings import format_duration_ms
+    from cerberus.strings import format_duration_ms
 
     unit_plurals = {
         "millisecond": TR.plurals__lock_after_x_milliseconds,
@@ -206,7 +206,7 @@ async def _require_confirm_change_autolock_delay(delay_ms: int) -> None:
 
 
 async def _require_confirm_safety_checks(level: SafetyCheckLevel) -> None:
-    from trezor.enums import SafetyCheckLevel
+    from cerberus.enums import SafetyCheckLevel
 
     if level == SafetyCheckLevel.Strict:
         await confirm_action(

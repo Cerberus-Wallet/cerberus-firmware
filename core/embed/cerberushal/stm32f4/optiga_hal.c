@@ -1,6 +1,6 @@
 #include "optiga_hal.h"
 #include "common.h"
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
 void optiga_hal_init(void) {
   // init reset pin

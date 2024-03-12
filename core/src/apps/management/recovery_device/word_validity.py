@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.enums import BackupType
+    from cerberus.enums import BackupType
 
 
 class WordValidityResult(Exception):
@@ -21,7 +21,7 @@ class ThresholdReached(WordValidityResult):
 
 
 def check(backup_type: BackupType | None, partial_mnemonic: list[str]) -> None:
-    from trezor.enums import BackupType
+    from cerberus.enums import BackupType
 
     from . import recover
 

@@ -22,7 +22,7 @@ from apps.common.keychain import auto_keychain
 _GET_TX_KEY_REASON_TX_DERIVATION = const(1)
 
 if TYPE_CHECKING:
-    from trezor.messages import MoneroGetTxKeyAck, MoneroGetTxKeyRequest
+    from cerberus.messages import MoneroGetTxKeyAck, MoneroGetTxKeyRequest
 
     from apps.common.keychain import Keychain
 
@@ -31,8 +31,8 @@ if TYPE_CHECKING:
 async def get_tx_keys(
     msg: MoneroGetTxKeyRequest, keychain: Keychain
 ) -> MoneroGetTxKeyAck:
-    from trezor import utils, wire
-    from trezor.messages import MoneroGetTxKeyAck
+    from cerberus import utils, wire
+    from cerberus.messages import MoneroGetTxKeyAck
 
     from apps.common import paths
     from apps.monero import layout, misc

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -107,7 +107,7 @@ void display_text_render_buffer(const char *text, int textlen, int font,
     const uint8_t adv = g[2];    // advance
     const uint8_t bearX = g[3];  // bearingX
     const uint8_t bearY = g[4];  // bearingY
-#if TREZOR_FONT_BPP == 4
+#if CERBERUS_FONT_BPP == 4
     uint8_t wa = w + (w & 1);
 #else
     uint8_t wa = w;
@@ -116,17 +116,17 @@ void display_text_render_buffer(const char *text, int textlen, int font,
       for (int j = 0; j < h; j++) {
         for (int i = 0; i < wa; i++) {
           const int a = i + j * wa;
-#if TREZOR_FONT_BPP == 1
+#if CERBERUS_FONT_BPP == 1
           const uint8_t c = ((g[5 + a / 8] >> (7 - (a % 8) * 1)) & 0x01) * 15;
-#elif TREZOR_FONT_BPP == 2
+#elif CERBERUS_FONT_BPP == 2
           const uint8_t c = ((g[5 + a / 4] >> (6 - (a % 4) * 2)) & 0x03) * 5;
-#elif TREZOR_FONT_BPP == 4
+#elif CERBERUS_FONT_BPP == 4
           const uint8_t c = (g[5 + a / 2] >> ((a % 2) * 4)) & 0x0F;
-#elif TREZOR_FONT_BPP == 8
-#error Rendering into buffer not supported when using TREZOR_FONT_BPP = 8
+#elif CERBERUS_FONT_BPP == 8
+#error Rendering into buffer not supported when using CERBERUS_FONT_BPP = 8
           // const uint8_t c = g[5 + a / 1] >> 4;
 #else
-#error Unsupported TREZOR_FONT_BPP value
+#error Unsupported CERBERUS_FONT_BPP value
 #endif
 
           int x_pos = text_offset + i + x + bearX;
@@ -180,7 +180,7 @@ static void display_text_render(int x, int y, const char *text, int textlen,
     const uint8_t bearX = g[3];  // bearingX
     const uint8_t bearY = g[4];  // bearingY
 
-#if TREZOR_FONT_BPP == 4
+#if CERBERUS_FONT_BPP == 4
     uint8_t wa = w + (w & 1);
 #else
     uint8_t wa = w;
@@ -190,17 +190,17 @@ static void display_text_render(int x, int y, const char *text, int textlen,
       for (int j = 0; j < h; j++) {
         for (int i = 0; i < wa; i++) {
           const int a = i + j * wa;
-#if TREZOR_FONT_BPP == 1
+#if CERBERUS_FONT_BPP == 1
           const uint8_t c = ((g[5 + a / 8] >> (7 - (a % 8) * 1)) & 0x01) * 15;
-#elif TREZOR_FONT_BPP == 2
+#elif CERBERUS_FONT_BPP == 2
           const uint8_t c = ((g[5 + a / 4] >> (6 - (a % 4) * 2)) & 0x03) * 5;
-#elif TREZOR_FONT_BPP == 4
+#elif CERBERUS_FONT_BPP == 4
           const uint8_t c = (g[5 + a / 2] >> ((a % 2) * 4)) & 0x0F;
-#elif TREZOR_FONT_BPP == 8
-#error Rendering into buffer not supported when using TREZOR_FONT_BPP = 8
+#elif CERBERUS_FONT_BPP == 8
+#error Rendering into buffer not supported when using CERBERUS_FONT_BPP = 8
           // const uint8_t c = g[5 + a / 1] >> 4;
 #else
-#error Unsupported TREZOR_FONT_BPP value
+#error Unsupported CERBERUS_FONT_BPP value
 #endif
 
           int x_pos = x + i + total_adv + bearX;
@@ -243,7 +243,7 @@ static void display_text_render(int x, int y, const char *text, int textlen,
     const uint8_t bearX = g[3];  // bearingX
     const uint8_t bearY = g[4];  // bearingY
 
-#if TREZOR_FONT_BPP == 4
+#if CERBERUS_FONT_BPP == 4
     uint8_t wa = w + (w & 1);
 #else
     uint8_t wa = w;
@@ -259,16 +259,16 @@ static void display_text_render(int x, int y, const char *text, int textlen,
           const int rx = i - sx;
           const int ry = j - sy;
           const int a = rx + ry * wa;
-#if TREZOR_FONT_BPP == 1
+#if CERBERUS_FONT_BPP == 1
           const uint8_t c = ((g[5 + a / 8] >> (7 - (a % 8) * 1)) & 0x01) * 15;
-#elif TREZOR_FONT_BPP == 2
+#elif CERBERUS_FONT_BPP == 2
           const uint8_t c = ((g[5 + a / 4] >> (6 - (a % 4) * 2)) & 0x03) * 5;
-#elif TREZOR_FONT_BPP == 4
+#elif CERBERUS_FONT_BPP == 4
           const uint8_t c = (g[5 + a / 2] >> ((a % 2) * 4)) & 0x0F;
-#elif TREZOR_FONT_BPP == 8
+#elif CERBERUS_FONT_BPP == 8
           const uint8_t c = g[5 + a / 1] >> 4;
 #else
-#error Unsupported TREZOR_FONT_BPP value
+#error Unsupported CERBERUS_FONT_BPP value
 #endif
           PIXELDATA(colortable[c]);
         }
@@ -303,7 +303,7 @@ void display_text_right(int x, int y, const char *text, int textlen, int font,
   display_text_render(x - w, y, text, textlen, font, fgcolor, bgcolor);
 }
 
-#ifdef TREZOR_PRODTEST
+#ifdef CERBERUS_PRODTEST
 
 #include "qr-code-generator/qrcodegen.h"
 #define QR_MAX_VERSION 9

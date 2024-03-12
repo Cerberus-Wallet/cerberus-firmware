@@ -35,7 +35,7 @@ def address_from_public_key(pubkey: bytes) -> str:
     Returns the Ripple address created using base58
     """
     # NOTE: local imports here saves 8 bytes
-    from trezor.crypto.hashlib import ripemd160, sha256
+    from cerberus.crypto.hashlib import ripemd160, sha256
 
     h = sha256(pubkey).digest()
     h = ripemd160(h).digest()

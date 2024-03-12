@@ -4,15 +4,15 @@ import os
 import tools
 import boards
 
-TREZOR_MODEL = ARGUMENTS.get('TREZOR_MODEL', 'T')
+CERBERUS_MODEL = ARGUMENTS.get('CERBERUS_MODEL', 'T')
 CMAKELISTS = int(ARGUMENTS.get('CMAKELISTS', 0))
 DMA2D = False
 
-if TREZOR_MODEL in ('1', 'DISC1'):
+if CERBERUS_MODEL in ('1', 'DISC1'):
     # skip bootloader build
     env = Environment()
     def build_bootloader(target,source,env):
-        print(f'Bootloader: nothing to build for Model {TREZOR_MODEL}')
+        print(f'Bootloader: nothing to build for Model {CERBERUS_MODEL}')
     program_bin = env.Command(
                  target='bootloader.elf',
                  source=None,
@@ -27,57 +27,57 @@ CPPPATH_MOD = []
 CPPDEFINES_MOD = []
 SOURCE_MOD = []
 
-if TREZOR_MODEL in ('1', 'R'):
+if CERBERUS_MODEL in ('1', 'R'):
     FONT_NORMAL='Font_PixelOperator_Regular_8'
     FONT_DEMIBOLD='Font_PixelOperator_Regular_8'
     FONT_BOLD='Font_PixelOperator_Bold_8'
     FONT_MONO='Font_PixelOperator_Regular_8'
     FONT_BIG=None
-elif TREZOR_MODEL in ('T', ):
+elif CERBERUS_MODEL in ('T', ):
     FONT_NORMAL='Font_TTHoves_Regular_21'
     FONT_DEMIBOLD=None
     FONT_BOLD='Font_TTHoves_Bold_17'
     FONT_MONO=None
     FONT_BIG=None
 
-# modtrezorcrypto
+# modcerberuscrypto
 CCFLAGS_MOD += '-Wno-sequence-point '
 CPPPATH_MOD += [
-    'vendor/trezor-crypto',
-    'vendor/trezor-storage',
+    'vendor/cerberus-crypto',
+    'vendor/cerberus-storage',
 ]
 CPPDEFINES_MOD += [
     'AES_128',
     'AES_192',
     'USE_KECCAK',
     'ED25519_NO_PRECOMP',
-    'TREZOR_UI2',
+    'CERBERUS_UI2',
     'FANCY_FATAL_ERROR'
 ]
 SOURCE_MOD += [
-    'vendor/trezor-crypto/blake2s.c',
-    'vendor/trezor-crypto/chacha_drbg.c',
-    'vendor/trezor-crypto/chacha20poly1305/chacha_merged.c',
-    'vendor/trezor-crypto/ed25519-donna/curve25519-donna-32bit.c',
-    'vendor/trezor-crypto/ed25519-donna/curve25519-donna-helpers.c',
-    'vendor/trezor-crypto/ed25519-donna/curve25519-donna-scalarmult-base.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519-donna-32bit-tables.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519-donna-basepoint-table.c',
-    'vendor/trezor-crypto/ed25519-donna/ed25519-donna-impl-base.c',
-    'vendor/trezor-crypto/ed25519-donna/modm-donna-32bit.c',
-    'vendor/trezor-crypto/memzero.c',
-    'vendor/trezor-crypto/rand.c',
-    'vendor/trezor-crypto/sha2.c',
+    'vendor/cerberus-crypto/blake2s.c',
+    'vendor/cerberus-crypto/chacha_drbg.c',
+    'vendor/cerberus-crypto/chacha20poly1305/chacha_merged.c',
+    'vendor/cerberus-crypto/ed25519-donna/curve25519-donna-32bit.c',
+    'vendor/cerberus-crypto/ed25519-donna/curve25519-donna-helpers.c',
+    'vendor/cerberus-crypto/ed25519-donna/curve25519-donna-scalarmult-base.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519-donna-32bit-tables.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519-donna-basepoint-table.c',
+    'vendor/cerberus-crypto/ed25519-donna/ed25519-donna-impl-base.c',
+    'vendor/cerberus-crypto/ed25519-donna/modm-donna-32bit.c',
+    'vendor/cerberus-crypto/memzero.c',
+    'vendor/cerberus-crypto/rand.c',
+    'vendor/cerberus-crypto/sha2.c',
 ]
 
-# modtrezorui
+# modcerberusui
 CPPPATH_MOD += [
         'vendor/micropython/lib/uzlib',
 ]
 
 SOURCE_MOD += [
-    'embed/extmod/modtrezorcrypto/rand.c',
+    'embed/extmod/modcerberuscrypto/rand.c',
     'embed/lib/buffers.c',
     'embed/lib/colors.c',
     'embed/lib/display_utils.c',
@@ -91,18 +91,18 @@ SOURCE_MOD += [
     'vendor/micropython/lib/uzlib/adler32.c',
     'vendor/micropython/lib/uzlib/crc32.c',
     'vendor/micropython/lib/uzlib/tinflate.c',
-    'vendor/trezor-storage/flash_common.c',
+    'vendor/cerberus-storage/flash_common.c',
 ]
 
-if TREZOR_MODEL in ('1', ):
+if CERBERUS_MODEL in ('1', ):
     SOURCE_MOD += [
         'embed/models/model_T1B1_layout.c',
     ]
-elif TREZOR_MODEL in ('T', ):
+elif CERBERUS_MODEL in ('T', ):
     SOURCE_MOD += [
         'embed/models/model_T2T1_layout.c',
     ]
-elif TREZOR_MODEL in ('R', ):
+elif CERBERUS_MODEL in ('R', ):
     SOURCE_MOD += [
         'embed/models/model_T2B1_layout.c',
     ]
@@ -122,20 +122,20 @@ SOURCE_BOOTLOADER = [
     'embed/bootloader/protob/messages.pb.c',
 ]
 
-SOURCE_TREZORHAL = [
-    'embed/trezorhal/unix/display-unix.c',
-    'embed/trezorhal/unix/flash.c',
-    'embed/trezorhal/unix/common.c',
-    'embed/trezorhal/unix/touch/touch.c',
-    'embed/trezorhal/unix/rng.c',
-    'embed/trezorhal/unix/usb.c',
-    'embed/trezorhal/unix/random_delays.c',
+SOURCE_CERBERUSHAL = [
+    'embed/cerberushal/unix/display-unix.c',
+    'embed/cerberushal/unix/flash.c',
+    'embed/cerberushal/unix/common.c',
+    'embed/cerberushal/unix/touch/touch.c',
+    'embed/cerberushal/unix/rng.c',
+    'embed/cerberushal/unix/usb.c',
+    'embed/cerberushal/unix/random_delays.c',
 ]
 
-if TREZOR_MODEL in ('R', ):
-    SOURCE_TREZORHAL += [
-        'embed/trezorhal/unix/secret.c',
-        'embed/trezorhal/unix/optiga_hal.c',
+if CERBERUS_MODEL in ('R', ):
+    SOURCE_CERBERUSHAL += [
+        'embed/cerberushal/unix/secret.c',
+        'embed/cerberushal/unix/optiga_hal.c',
     ]
 
 SOURCE_UNIX = [
@@ -164,18 +164,18 @@ env.Replace(
     MAKECMAKELISTS='$PYTHON tools/make_cmakelists.py', )
 
 env.Replace(
-    TREZOR_MODEL=TREZOR_MODEL, )
+    CERBERUS_MODEL=CERBERUS_MODEL, )
 
-if TREZOR_MODEL in ('T', 'R'):
+if CERBERUS_MODEL in ('T', 'R'):
     CPU_MODEL   = 'STM32F427xx'
-elif TREZOR_MODEL in ('DISC1', ):
+elif CERBERUS_MODEL in ('DISC1', ):
     CPU_MODEL   = 'STM32F429xx'
-elif TREZOR_MODEL in ('1',):
+elif CERBERUS_MODEL in ('1',):
     CPU_MODEL   = 'STM32F405xx'
 else:
-    raise ValueError('Unknown Trezor model')
+    raise ValueError('Unknown Cerberus model')
 
-MODEL_IDENTIFIER = tools.get_model_identifier(TREZOR_MODEL)
+MODEL_IDENTIFIER = tools.get_model_identifier(CERBERUS_MODEL)
 MODEL_AS_NUMBER = str(boards.get_hw_model_as_number(MODEL_IDENTIFIER))
 
 env.Replace(
@@ -195,20 +195,20 @@ env.Replace(
         'embed/bootloader/protob',
         'embed/lib',
         'embed/models',
-        'embed/trezorhal',
-        'embed/trezorhal/unix',
+        'embed/cerberushal',
+        'embed/cerberushal/unix',
         'embed/unix',
-        'embed/extmod/modtrezorui',
+        'embed/extmod/modcerberusui',
         'vendor/nanopb',
     ] + CPPPATH_MOD,
     CPPDEFINES=[
         'BOOTLOADER',
-        'TREZOR_EMULATOR',
+        'CERBERUS_EMULATOR',
         CPU_MODEL,
         'HW_MODEL=' + MODEL_AS_NUMBER,
-        'HW_REVISION=' + ('10' if TREZOR_MODEL in ('R',) else '0'),
-        'TREZOR_MODEL_'+TREZOR_MODEL,
-        'TREZOR_BOARD=\\"boards/board-unix.h\\"',
+        'HW_REVISION=' + ('10' if CERBERUS_MODEL in ('R',) else '0'),
+        'CERBERUS_MODEL_'+CERBERUS_MODEL,
+        'CERBERUS_BOARD=\\"boards/board-unix.h\\"',
         ('FLASH_BIT_ACCESS', '1'),
         ('FLASH_BLOCK_WORDS', '1'),
         'MCU_TYPE='+CPU_MODEL,
@@ -225,7 +225,7 @@ except OSError:
 
 
 env.Replace(
-    ALLSOURCES=SOURCE_MOD + SOURCE_BOOTLOADER + SOURCE_NANOPB + SOURCE_TREZORHAL + SOURCE_UNIX,
+    ALLSOURCES=SOURCE_MOD + SOURCE_BOOTLOADER + SOURCE_NANOPB + SOURCE_CERBERUSHAL + SOURCE_UNIX,
     ALLDEFS=tools.get_defs_for_cmake(env['CPPDEFINES']))
 
 cmake_gen = env.Command(
@@ -241,7 +241,7 @@ cmake_gen = env.Command(
 
 RUST_TARGET = 'x86_64-unknown-linux-gnu'
 RUST_PROFILE = 'release'
-RUST_LIB = 'trezor_lib'
+RUST_LIB = 'cerberus_lib'
 RUST_LIBDIR = f'build/bootloader_emu/rust/{RUST_TARGET}/{RUST_PROFILE}'
 RUST_LIBPATH = f'{RUST_LIBDIR}/lib{RUST_LIB}.a'
 
@@ -251,17 +251,17 @@ def cargo_build():
         profile = '--release'
     else:
         profile = ''
-    if TREZOR_MODEL in ("1",):
+    if CERBERUS_MODEL in ("1",):
         features = ["model_t1"]
-    elif TREZOR_MODEL in ("R",):
+    elif CERBERUS_MODEL in ("R",):
         features = ["model_tr"]
     else:
         features = ["model_tt"]
 
-    if TREZOR_MODEL in ('T',):
+    if CERBERUS_MODEL in ('T',):
         features.append('touch')
         features.append('backlight')
-    if TREZOR_MODEL in ('R', '1'):
+    if CERBERUS_MODEL in ('R', '1'):
         features.append('button')
 
     features.append("bitcoin_only")
@@ -296,7 +296,7 @@ obj_program = []
 obj_program += env.Object(source=SOURCE_MOD)
 obj_program += env.Object(source=SOURCE_BOOTLOADER)
 obj_program += env.Object(source=SOURCE_NANOPB)
-obj_program += env.Object(source=SOURCE_TREZORHAL)
+obj_program += env.Object(source=SOURCE_CERBERUSHAL)
 obj_program += env.Object(source=SOURCE_UNIX)
 
 program_elf = env.Command(

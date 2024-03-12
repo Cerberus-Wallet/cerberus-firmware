@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from apps.common.keychain import auto_keychain
 
 if TYPE_CHECKING:
-    from trezor.messages import RippleAddress, RippleGetAddress
+    from cerberus.messages import RippleAddress, RippleGetAddress
 
     from apps.common.keychain import Keychain
 
@@ -11,8 +11,8 @@ if TYPE_CHECKING:
 @auto_keychain(__name__)
 async def get_address(msg: RippleGetAddress, keychain: Keychain) -> RippleAddress:
     # NOTE: local imports here saves 20 bytes
-    from trezor.messages import RippleAddress
-    from trezor.ui.layouts import show_address
+    from cerberus.messages import RippleAddress
+    from cerberus.ui.layouts import show_address
 
     from apps.common import paths
 

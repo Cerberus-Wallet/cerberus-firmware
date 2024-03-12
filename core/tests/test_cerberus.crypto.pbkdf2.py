@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import pbkdf2
+from cerberus.crypto import pbkdf2
 
 
 class TestCryptoPbkdf2(unittest.TestCase):

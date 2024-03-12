@@ -1,8 +1,8 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor.enums import InputScriptType
-from trezor.messages import AuthorizeCoinJoin, SignMessage
+from cerberus.enums import InputScriptType
+from cerberus.messages import AuthorizeCoinJoin, SignMessage
 
 from apps.common.paths import PATTERN_BIP44, PATTERN_CASA, PathSchema, unharden
 
@@ -12,7 +12,7 @@ from .common import BIP32_WALLET_DEPTH, BITCOIN_NAMES
 if TYPE_CHECKING:
     from typing import Awaitable, Callable, Iterable, TypeVar
 
-    from trezor.messages import (
+    from cerberus.messages import (
         GetAddress,
         GetOwnershipId,
         GetOwnershipProof,
@@ -20,7 +20,7 @@ if TYPE_CHECKING:
         SignTx,
         VerifyMessage,
     )
-    from trezor.protobuf import MessageType
+    from cerberus.protobuf import MessageType
     from typing_extensions import Protocol
 
     from apps.common import coininfo
@@ -100,7 +100,7 @@ def validate_path_against_script_type(
     script_type: InputScriptType | None = None,
     multisig: bool = False,
 ) -> bool:
-    from trezor.enums import InputScriptType
+    from cerberus.enums import InputScriptType
 
     patterns = []
     append = patterns.append  # local_cache_attribute
@@ -250,7 +250,7 @@ def get_schemas_from_patterns(
 
 
 def _get_coin_by_name(coin_name: str | None) -> coininfo.CoinInfo:
-    from trezor import wire
+    from cerberus import wire
 
     from apps.common import coininfo
 
@@ -282,7 +282,7 @@ def _get_unlock_schemas(
     Provides additional keychain schemas that are unlocked by the particular
     combination of `msg` and `auth_msg`.
     """
-    from trezor.messages import GetOwnershipProof, SignTx, UnlockPath
+    from cerberus.messages import GetOwnershipProof, SignTx, UnlockPath
 
     if AuthorizeCoinJoin.is_type_of(msg):
         # When processing the AuthorizeCoinJoin message, validate_path() always
@@ -464,7 +464,7 @@ def address_n_to_name_or_unknown(
     account_level: bool = False,
     show_account_str: bool = False,
 ) -> str:
-    from trezor import TR
+    from cerberus import TR
 
     account_name = address_n_to_name(coin, address_n, script_type)
     if account_name is None:

@@ -16,8 +16,8 @@
 
 from typing import Iterator
 
-from trezor import utils
-from trezor.messages import EthereumTokenInfo
+from cerberus import utils
+from cerberus.messages import EthereumTokenInfo
 
 UNKNOWN_TOKEN = EthereumTokenInfo(
     symbol="Wei UNKN",

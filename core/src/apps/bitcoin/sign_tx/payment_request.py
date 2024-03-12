@@ -1,12 +1,12 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor.wire import DataError
+from cerberus.wire import DataError
 
 from .. import writers
 
 if TYPE_CHECKING:
-    from trezor.messages import TxAckPaymentRequest, TxOutput
+    from cerberus.messages import TxAckPaymentRequest, TxOutput
 
     from apps.common import coininfo
     from apps.common.keychain import Keychain
@@ -27,8 +27,8 @@ class PaymentRequestVerifier:
         self, msg: TxAckPaymentRequest, coin: coininfo.CoinInfo, keychain: Keychain
     ) -> None:
         from storage import cache
-        from trezor.crypto.hashlib import sha256
-        from trezor.utils import HashWriter
+        from cerberus.crypto.hashlib import sha256
+        from cerberus.utils import HashWriter
 
         from apps.common.address_mac import check_address_mac
 
@@ -76,7 +76,7 @@ class PaymentRequestVerifier:
         writers.write_uint32(self.h_pr, coin.slip44)
 
     def verify(self) -> None:
-        from trezor.crypto.curve import secp256k1
+        from cerberus.crypto.curve import secp256k1
 
         if self.expected_amount is not None and self.amount != self.expected_amount:
             raise DataError("Invalid amount in payment request.")

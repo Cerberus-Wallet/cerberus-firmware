@@ -32,17 +32,17 @@ REVIEWER = Jan Matejek <jan.matejek@satoshilabs.com>, Tomas Susanka <tomas.susan
 When using a **BIP-39 seed phrase**, multiple seed derivation schemes are [specified](https://github.com/cardano-foundation/CIPs/blob/master/CIP-0003/README.md):
 
 * `ICARUS`, which is the recommended default.
-* `ICARUS_TREZOR`, which differs from Icarus for 24-word seed phrases due to a [historic bug](https://github.com/trezor/trezor-firmware/issues/1387).
+* `ICARUS_CERBERUS`, which differs from Icarus for 24-word seed phrases due to a [historic bug](https://github.com/Cerberus-Wallet/cerberus-firmware/issues/1387).
   When a seed shorter than 24 words is used, the result is the same as `ICARUS`.
 * `LEDGER`, designed and used by the Ledger wallet.
 
 Given the same seed phrase, each of the schemes may produce a different master seed,
 and so opens a different wallet.
 
-Icarus (and Icarus-Trezor) scheme processes the seed phrase in a manner incompatible
+Icarus (and Icarus-Cerberus) scheme processes the seed phrase in a manner incompatible
 with BIP-39. A separate derivation step is required when using the Icarus scheme, which
-prolongs Trezor's first-response time by 2 seconds, plus additional 2 seconds for
-Icarus-Trezor if the seed phrase is 24 words long.
+prolongs Cerberus's first-response time by 2 seconds, plus additional 2 seconds for
+Icarus-Cerberus if the seed phrase is 24 words long.
 
 Since firmware version 2.4.3, wallets that require the Cardano-derived seed must specify
 `derive_cardano=true` in the `Initialize` call. Otherwise an error will be returned when
@@ -52,11 +52,11 @@ Ledger derivation scheme is compatible with BIP-39 and does not require the sepa
 derivation step. For that reason, it is available even if `derive_cardano=true` was not
 specified.
 
-Since firmware version 2.4.3, Trezor requires the caller to specify derivation type in
-every Cardano call. In older versions, the Icarus-Trezor derivation is always used.
+Since firmware version 2.4.3, Cerberus requires the caller to specify derivation type in
+every Cardano call. In older versions, the Icarus-Cerberus derivation is always used.
 
 For compatibility with older firmwares, wallet implementations should default to the
-Icarus-Trezor derivation. For compatibility with other wallet vendors, wallets should
+Icarus-Cerberus derivation. For compatibility with other wallet vendors, wallets should
 make the derivation scheme configurable by user -- or perform a discovery for all three
 schemes.
 
@@ -172,9 +172,9 @@ Transactions don't have a distinct type. Every transaction may transfer funds, p
 
 ### Transaction streaming
 
-In the past transaction parameters have been sent to Trezor as a single, large object which would get processed, and the whole signed and serialized transaction would be returned by Trezor. However, as transactions kept on growing, this approach proved to be very memory inefficient, and the supported transaction size was quite limited (around 2kB).
+In the past transaction parameters have been sent to Cerberus as a single, large object which would get processed, and the whole signed and serialized transaction would be returned by Cerberus. However, as transactions kept on growing, this approach proved to be very memory inefficient, and the supported transaction size was quite limited (around 2kB).
 
-We have iteratively updated the Cardano implementation so that now the transaction parameters are sent to Trezor one by one and are also processed one-by-one. For example the inputs of a transaction are all sent and processed separately, which means that the number of inputs a single transaction can contain is very large (perhaps even infinite). All lists and maps are processed similarly to the inputs.
+We have iteratively updated the Cardano implementation so that now the transaction parameters are sent to Cerberus one by one and are also processed one-by-one. For example the inputs of a transaction are all sent and processed separately, which means that the number of inputs a single transaction can contain is very large (perhaps even infinite). All lists and maps are processed similarly to the inputs.
 
 Thanks to transaction streaming, it's now possible to sign a transaction with 65 inputs, 40 outputs, another 10 outputs with 12 policies and 10 assets each. The multiasset outputs included in the transaction were all over the 4kB max size given by the protocol. The whole transaction was 62kB (current protocol transaction size limit is 16kB). It could also probably handle much much more, but these tests already took long enough to complete.
 
@@ -268,11 +268,11 @@ Certificates are posted to the blockchain via transactions and they mark a certa
 * delegation certificate
 * stake pool registration certificate
 
-And these two which are not supported by Trezor at the moment:
+And these two which are not supported by Cerberus at the moment:
 * stake pool retirement certificate
 * operational key certificate
 
-Stake key de-registration and delegation certificates both need to be witnessed by the corresponding staking key. A stake pool registration certificate can only be signed on Trezor by a pool owner and the `POOL_REGISTRATION_AS_OWNER` signing mode has to be used. Pool operator support isn't available on Trezor.
+Stake key de-registration and delegation certificates both need to be witnessed by the corresponding staking key. A stake pool registration certificate can only be signed on Cerberus by a pool owner and the `POOL_REGISTRATION_AS_OWNER` signing mode has to be used. Pool operator support isn't available on Cerberus.
 
 You can read more on certificates in the [delegation design spec](https://hydra.iohk.io/build/2006688/download/1/delegation_design_spec.pdf#subsection.3.4).
 Info about their structure can be found [here](https://github.com/input-output-hk/cardano-ledger-specs/blob/097890495cbb0e8b62106bcd090a5721c3f4b36f/shelley-ma/shelley-ma-test/cddl-files/shelley-ma.cddl#L102).
@@ -289,9 +289,9 @@ _Auxiliary data have replaced metadata in the Cardano Mary era_
 
 Each transaction may contain auxiliary data. Auxiliary data format can be found [here](https://github.com/input-output-hk/cardano-ledger-specs/blob/57c27d168b8d4288534ce74e77c1df33870e756a/shelley-ma/shelley-ma-test/cddl-files/shelley-ma.cddl#L212).
 
-Auxiliary data can be sent to Trezor as a hash or as an object with parameters. The hash will be included in the transaction body as is and will be shown to the user.
+Auxiliary data can be sent to Cerberus as a hash or as an object with parameters. The hash will be included in the transaction body as is and will be shown to the user.
 
-The only object currently supported is CIP-15/CIP-36 vote key registration (currently, this is used only by Catalyst, but there may be other voting use cases in the future). To be in compliance with the CDDL and other Cardano tools, vote key registration object is being wrapped in a tuple and an empty tuple follows it. The empty tuple represents `auxiliary_scripts` which are not yet supported on Trezor and are thus always empty. Byron addresses are not supported as the addresses to receive rewards. The registration signature is returned in the form of `CardanoTxAuxiliaryDataSupplement` which also contains the auxiliary data hash calculated by Trezor.
+The only object currently supported is CIP-15/CIP-36 vote key registration (currently, this is used only by Catalyst, but there may be other voting use cases in the future). To be in compliance with the CDDL and other Cardano tools, vote key registration object is being wrapped in a tuple and an empty tuple follows it. The empty tuple represents `auxiliary_scripts` which are not yet supported on Cerberus and are thus always empty. Byron addresses are not supported as the addresses to receive rewards. The registration signature is returned in the form of `CardanoTxAuxiliaryDataSupplement` which also contains the auxiliary data hash calculated by Cerberus.
 
 [CIP-36 Vote Registration Transaction Metadata Format](https://cips.cardano.org/cips/cip36/)
 
@@ -299,7 +299,7 @@ The only object currently supported is CIP-15/CIP-36 vote key registration (curr
 
 Native scripts are used to describe the multi-sig scheme belonging to a script address or the minting/burning policy of native tokens. Native scripts define what keys need to be used to witness a transaction and what condition needs to be fulfilled in order for that transaction to be valid. See [CDDL](https://github.com/input-output-hk/cardano-ledger-specs/blob/3ff2b08c7e094a3b9035fafb170e0e1da9b75401/eras/alonzo/test-suite/cddl-files/alonzo.cddl#L334) and [CIP-1854](https://cips.cardano.org/cips/cip1854/) for more details.
 
-In order for the user to be able to verify native scripts a `get_native_script_hash` is available on Trezor. This enables the user to verify the contents and the final hash of the script.
+In order for the user to be able to verify native scripts a `get_native_script_hash` is available on Cerberus. This enables the user to verify the contents and the final hash of the script.
 
 ### Plutus scripts
 
@@ -311,7 +311,7 @@ A UTXO can also contain a `reference_script` -- a script body that the user want
 
 Note that including `inline_datum` and/or `reference_script` requires using the `MAP_BABBAGE` (also known as post-Alonzo) output serialization format introduced in the Babbage era.
 
-When one wants to spend funds from a Plutus script address (which is possible only in the Plutus signing mode), they have to attach the Plutus script body as well as the datum referenced in the UTXO (if they did not utilize `inline_datum` and `reference_script` with `reference_inputs`). A redeemer must be provided too. These items are outside the transaction body which is signed by Trezor, so their hash is included in the transaction body as `script_data_hash`.
+When one wants to spend funds from a Plutus script address (which is possible only in the Plutus signing mode), they have to attach the Plutus script body as well as the datum referenced in the UTXO (if they did not utilize `inline_datum` and `reference_script` with `reference_inputs`). A redeemer must be provided too. These items are outside the transaction body which is signed by Cerberus, so their hash is included in the transaction body as `script_data_hash`.
 
 ### Level of details ("Show All"/"Show Simple")
 
@@ -329,7 +329,7 @@ You can use a combination of [cardano-node](https://github.com/input-output-hk/c
 Cardano uses [CBOR](https://www.rfc-editor.org/info/rfc7049) as a serialization format. [Here](https://github.com/input-output-hk/cardano-ledger/blob/1cbf1fc2bb005a8206e5b5a7cdf44d35baaca455/eras/babbage/test-suite/cddl-files/babbage.cddl) is the [CDDL](https://tools.ietf.org/html/rfc8610) specification for Babbage era.
 
 ### Transaction body example
-Input for trezorctl to sign the transaction can be found [here](https://gist.github.com/gabrielKerekes/ad6c168b12ebb43b082df5b92d67e276). The command to use is `trezorctl cardano sign-tx -f tx_for_readme.json -s ORDINARY_TRANSACTION`.
+Input for cerberusctl to sign the transaction can be found [here](https://gist.github.com/gabrielKerekes/ad6c168b12ebb43b082df5b92d67e276). The command to use is `cerberusctl cardano sign-tx -f tx_for_readme.json -s ORDINARY_TRANSACTION`.
 
 ```
 a900818258203b40265111d8bb3c3c608d95b3a0bf83461ace32d79336579a1939b3aad1c0b700018382583901eb0baa5e570cffbe2934db29df0b6a3d7c0430ee65d4c3a7ab2fefb91bc428e4720702ebd5dab4fb175324c192dc9bb76cc5da956e3c8dff821904d2a1581c95a292ffee938be03e9bae5657982a74e9014eb4960108c9e23a5b39a14874652474436f696e1910e18258390180f9e2c88e6c817008f3a812ed889b4a4da8e0bd103f86e7335422aa122a946b9ad3d2ddf029d3a828f0468aece76895f15c9efbd69b427719115c83581d71477e52b3116b62fe8cd34a312615f5fcd678c94e1d6cdb86c1a3964c190c4658203b40265111d8bb3c3c608d95b3a0bf83461ace32d79336579a1939b3aad1c0b702182a030a048182008200581c122a946b9ad3d2ddf029d3a828f0468aece76895f15c9efbd69b427705a1581de1122a946b9ad3d2ddf029d3a828f0468aece76895f15c9efbd69b42771903e8075820a943e9166f1bb6d767b175384d3bd7d23645170df36fc1861fbf344135d8e120081409a1581c95a292ffee938be03e9bae5657982a74e9014eb4960108c9e23a5b39a24874652474436f696e1a007838624875652474436f696e3a00783861

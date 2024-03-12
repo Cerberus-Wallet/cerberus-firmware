@@ -1,5 +1,5 @@
-import trezorio as io
-import trezorui as ui
+import cerberusio as io
+import cerberusui as ui
 import utime
 
 usb_vcp = io.VCP(

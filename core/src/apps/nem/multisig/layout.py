@@ -1,10 +1,10 @@
 from typing import TYPE_CHECKING
 
-from trezor import TR
-from trezor.crypto import nem
+from cerberus import TR
+from cerberus.crypto import nem
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         NEMAggregateModification,
         NEMSignTx,
         NEMTransactionCommon,
@@ -29,7 +29,7 @@ async def ask_aggregate_modification(
     mod: NEMAggregateModification,
     multisig: bool,
 ) -> None:
-    from trezor.enums import NEMModificationType
+    from cerberus.enums import NEMModificationType
 
     from ..layout import require_confirm_final, require_confirm_text
 
@@ -55,8 +55,8 @@ async def ask_aggregate_modification(
 
 
 async def _require_confirm_address(action: str, address: str) -> None:
-    from trezor.enums import ButtonRequestType
-    from trezor.ui.layouts import confirm_address
+    from cerberus.enums import ButtonRequestType
+    from cerberus.ui.layouts import confirm_address
 
     await confirm_address(
         TR.nem__confirm_address,

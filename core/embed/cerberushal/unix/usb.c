@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -69,7 +69,7 @@ void usb_init(const usb_dev_info_t *dev_info) {
 void usb_deinit(void) {}
 
 void usb_start(void) {
-  const char *ip = getenv("TREZOR_UDP_IP");
+  const char *ip = getenv("CERBERUS_UDP_IP");
 
   // iterate interfaces
   for (int i = 0; i < USBD_MAX_NUM_INTERFACES; i++) {

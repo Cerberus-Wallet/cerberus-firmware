@@ -1,6 +1,6 @@
 import gc
 import sys
-from trezorutils import (  # noqa: F401
+from cerberusutils import (  # noqa: F401
     BITCOIN_ONLY,
     EMULATOR,
     INTERNAL_MODEL,
@@ -35,15 +35,15 @@ if __debug__:
     if EMULATOR:
         import uos
 
-        DISABLE_ANIMATION = int(uos.getenv("TREZOR_DISABLE_ANIMATION") or "0")
-        LOG_MEMORY = int(uos.getenv("TREZOR_LOG_MEMORY") or "0")
+        DISABLE_ANIMATION = int(uos.getenv("CERBERUS_DISABLE_ANIMATION") or "0")
+        LOG_MEMORY = int(uos.getenv("CERBERUS_LOG_MEMORY") or "0")
     else:
         LOG_MEMORY = 0
 
 if TYPE_CHECKING:
     from typing import Any, Iterator, Protocol, Sequence, TypeVar
 
-    from trezor.protobuf import MessageType
+    from cerberus.protobuf import MessageType
 
 
 def unimport_begin() -> set[str]:
@@ -95,7 +95,7 @@ class unimport:
 def presize_module(modname: str, size: int) -> None:
     """Ensure the module's dict is preallocated to an expected size.
 
-    This is used in modules like `trezor`, whose dict size depends not only on the
+    This is used in modules like `cerberus`, whose dict size depends not only on the
     symbols defined in the file itself, but also on the number of submodules that will
     be inserted into the module's namespace.
     """
@@ -115,7 +115,7 @@ if __debug__:
         for mod in sys.modules:
             print("*", mod)
         if EMULATOR:
-            from trezorutils import meminfo
+            from cerberusutils import meminfo
 
             print("### dumping to", filename)
             meminfo(filename)
@@ -188,7 +188,7 @@ if False:  # noqa
         def digest(self) -> bytes:
             from ubinascii import hexlify
 
-            from trezor import log
+            from cerberus import log
 
             digest = self.ctx.digest()
             log.debug(

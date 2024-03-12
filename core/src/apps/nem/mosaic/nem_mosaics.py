@@ -7,7 +7,7 @@
 
 from typing import Iterator
 
-from trezor.enums import NEMMosaicLevy
+from cerberus.enums import NEMMosaicLevy
 
 
 class MosaicLevy:

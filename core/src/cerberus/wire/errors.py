@@ -1,4 +1,4 @@
-from trezor.enums import FailureType
+from cerberus.enums import FailureType
 
 
 class Error(Exception):

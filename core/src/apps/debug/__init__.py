@@ -1,24 +1,24 @@
 if not __debug__:
-    from trezor.utils import halt
+    from cerberus.utils import halt
 
     halt("debug mode inactive")
 
 if __debug__:
     from typing import TYPE_CHECKING
 
-    import trezorui2
+    import cerberusui2
     from storage import debug as storage
     from storage.debug import debug_events
-    from trezor import log, loop, utils, wire
-    from trezor.enums import MessageType
-    from trezor.messages import DebugLinkLayout, Success
-    from trezor.ui import display
-    from trezor.wire import context
+    from cerberus import log, loop, utils, wire
+    from cerberus.enums import MessageType
+    from cerberus.messages import DebugLinkLayout, Success
+    from cerberus.ui import display
+    from cerberus.wire import context
 
     from apps import workflow_handlers
 
     if TYPE_CHECKING:
-        from trezor.messages import (
+        from cerberus.messages import (
             DebugLinkDecision,
             DebugLinkEraseSdCard,
             DebugLinkGetState,
@@ -28,7 +28,7 @@ if __debug__:
             DebugLinkState,
             DebugLinkWatchLayout,
         )
-        from trezor.ui import Layout
+        from cerberus.ui import Layout
 
     swipe_chan = loop.chan()
     result_chan = loop.chan()
@@ -70,15 +70,15 @@ if __debug__:
     async def _dispatch_debuglink_decision(
         event_id: int | None, msg: DebugLinkDecision
     ) -> None:
-        from trezor.enums import DebugButton
+        from cerberus.enums import DebugButton
 
         if msg.button is not None:
             if msg.button == DebugButton.NO:
-                await result_chan.put((event_id, trezorui2.CANCELLED))
+                await result_chan.put((event_id, cerberusui2.CANCELLED))
             elif msg.button == DebugButton.YES:
-                await result_chan.put((event_id, trezorui2.CONFIRMED))
+                await result_chan.put((event_id, cerberusui2.CONFIRMED))
             elif msg.button == DebugButton.INFO:
-                await result_chan.put((event_id, trezorui2.INFO))
+                await result_chan.put((event_id, cerberusui2.INFO))
             else:
                 raise RuntimeError(f"Invalid msg.button - {msg.button}")
         elif msg.input is not None:
@@ -133,13 +133,13 @@ if __debug__:
         if storage.layout_watcher is LAYOUT_WATCHER_LAYOUT:
             await DEBUG_CONTEXT.write(DebugLinkLayout(tokens=content_tokens))
         else:
-            from trezor.messages import DebugLinkState
+            from cerberus.messages import DebugLinkState
 
             await DEBUG_CONTEXT.write(DebugLinkState(tokens=content_tokens))
         storage.layout_watcher = LAYOUT_WATCHER_NONE
 
     async def dispatch_DebugLinkWatchLayout(msg: DebugLinkWatchLayout) -> Success:
-        from trezor import ui
+        from cerberus import ui
 
         layout_change_chan.putters.clear()
         if msg.watch:
@@ -157,7 +157,7 @@ if __debug__:
         return Success()
 
     async def dispatch_DebugLinkDecision(msg: DebugLinkDecision) -> None:
-        from trezor import workflow
+        from cerberus import workflow
 
         workflow.idle_timer.touch()
 
@@ -191,7 +191,7 @@ if __debug__:
     async def dispatch_DebugLinkGetState(
         msg: DebugLinkGetState,
     ) -> DebugLinkState | None:
-        from trezor.messages import DebugLinkState
+        from cerberus.messages import DebugLinkState
 
         from apps.common import mnemonic, passphrase
 
@@ -231,13 +231,13 @@ if __debug__:
 
     async def dispatch_DebugLinkReseedRandom(msg: DebugLinkReseedRandom) -> Success:
         if msg.value is not None:
-            from trezor.crypto import random
+            from cerberus.crypto import random
 
             random.reseed(msg.value)
         return Success()
 
     async def dispatch_DebugLinkEraseSdCard(msg: DebugLinkEraseSdCard) -> Success:
-        from trezor import io
+        from cerberus import io
 
         sdcard = io.sdcard  # local_cache_attribute
 

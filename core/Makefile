@@ -30,8 +30,8 @@ PYOPT      ?= 1
 BITCOIN_ONLY ?= 0
 BOOTLOADER_QA ?= 0
 BOOTLOADER_DEVEL ?= 0
-TREZOR_MODEL ?= T
-TREZOR_MEMPERF ?= 0
+CERBERUS_MODEL ?= T
+CERBERUS_MEMPERF ?= 0
 ADDRESS_SANITIZER ?= 0
 CMAKELISTS ?= 0
 PYTEST_TIMEOUT ?= 500
@@ -62,13 +62,13 @@ CFLAGS += -DSCM_REVISION='\"$(shell git rev-parse HEAD | sed 's:\(..\):\\x\1:g')
 TESTPATH = $(CURDIR)/../tests
 
 EMU = $(CURDIR)/emu.py
-EMU_LOG_FILE ?= $(TESTPATH)/trezor.log
+EMU_LOG_FILE ?= $(TESTPATH)/cerberus.log
 EMU_TEST_ARGS = --disable-animation --headless --output=$(EMU_LOG_FILE) --temporary-profile
 EMU_TEST = $(EMU) $(EMU_TEST_ARGS) -c
 
 JUNIT_XML ?= $(TESTPATH)/junit.xml
 PYTEST = pytest --junitxml=$(JUNIT_XML)
-TREZOR_FIDO2_UDP_PORT = 21326
+CERBERUS_FIDO2_UDP_PORT = 21326
 RUST_TARGET=$(shell rustc -vV | sed -n 's/host: //p')
 
 MULTICORE ?= "auto"
@@ -86,7 +86,7 @@ vendor: ## update git submodules
 ## emulator commands:
 
 run: ## run unix port
-	cd src ; ../$(UNIX_BUILD_DIR)/trezor-emu-core
+	cd src ; ../$(UNIX_BUILD_DIR)/cerberus-emu-core
 
 emu: ## run emulator
 	$(EMU)
@@ -98,10 +98,10 @@ test: ## run unit tests
 
 test_rust: ## run rs unit tests
 	cd embed/rust ; cargo test $(TESTOPTS) --target=$(RUST_TARGET) \
-		--no-default-features --features model_t$(shell echo $(TREZOR_MODEL) | tr "TR" "tr"),test \
+		--no-default-features --features model_t$(shell echo $(CERBERUS_MODEL) | tr "TR" "tr"),test \
 		-- --test-threads=1 --nocapture
 
-test_emu: ## run selected device tests from python-trezor
+test_emu: ## run selected device tests from python-cerberus
 	$(EMU_TEST) $(PYTEST) $(TESTPATH)/device_tests $(TESTOPTS) --lang=$(TEST_LANG)
 
 test_emu_multicore: ## run device tests using multiple cores
@@ -113,12 +113,12 @@ test_emu_monero: ## run selected monero device tests from monero-agent
 	cd tests ; $(EMU_TEST) ./run_tests_device_emu_monero.sh $(TESTOPTS)
 
 test_emu_u2f: ## run selected u2f device tests from u2f-tests-hid
-	$(EMU_TEST) --slip0014 $(TESTPATH)/fido_tests/u2f-tests-hid/HIDTest $(TREZOR_FIDO2_UDP_PORT) $(TESTOPTS)
-	$(EMU_TEST) --slip0014 $(TESTPATH)/fido_tests/u2f-tests-hid/U2FTest $(TREZOR_FIDO2_UDP_PORT) $(TESTOPTS)
+	$(EMU_TEST) --slip0014 $(TESTPATH)/fido_tests/u2f-tests-hid/HIDTest $(CERBERUS_FIDO2_UDP_PORT) $(TESTOPTS)
+	$(EMU_TEST) --slip0014 $(TESTPATH)/fido_tests/u2f-tests-hid/U2FTest $(CERBERUS_FIDO2_UDP_PORT) $(TESTOPTS)
 
 test_emu_fido2: ## run fido2 device tests
 	cd $(TESTPATH)/fido_tests/fido2 ; \
-		$(EMU_TEST) --slip0014 $(PYTEST) --maxfail=5 --sim tests/standard/ --vendor trezor $(TESTOPTS)
+		$(EMU_TEST) --slip0014 $(PYTEST) --maxfail=5 --sim tests/standard/ --vendor cerberus $(TESTOPTS)
 
 test_emu_click: ## run click tests
 	$(EMU_TEST) $(PYTEST) $(TESTPATH)/click_tests $(TESTOPTS) --lang=$(TEST_LANG)
@@ -189,53 +189,53 @@ build: build_boardloader build_bootloader build_firmware build_prodtest build_un
 build_embed: build_boardloader build_bootloader build_firmware # build boardloader, bootloader, firmware
 
 build_boardloader: ## build boardloader
-	$(SCONS) CFLAGS="$(CFLAGS)" PRODUCTION="$(PRODUCTION)" TREZOR_MODEL="$(TREZOR_MODEL)" \
+	$(SCONS) CFLAGS="$(CFLAGS)" PRODUCTION="$(PRODUCTION)" CERBERUS_MODEL="$(CERBERUS_MODEL)" \
 		CMAKELISTS="$(CMAKELISTS)" $(BOARDLOADER_BUILD_DIR)/boardloader.bin
 
 build_bootloader: ## build bootloader
-	$(SCONS) CFLAGS="$(CFLAGS)" PRODUCTION="$(PRODUCTION)" TREZOR_MODEL="$(TREZOR_MODEL)" \
+	$(SCONS) CFLAGS="$(CFLAGS)" PRODUCTION="$(PRODUCTION)" CERBERUS_MODEL="$(CERBERUS_MODEL)" \
 		CMAKELISTS="$(CMAKELISTS)" BOOTLOADER_QA="$(BOOTLOADER_QA)" BOOTLOADER_DEVEL="$(BOOTLOADER_DEVEL)" $(BOOTLOADER_BUILD_DIR)/bootloader.bin
 
 build_bootloader_ci: ## build CI device testing bootloader
-	$(SCONS) CFLAGS="$(CFLAGS)" PRODUCTION="$(PRODUCTION)" TREZOR_MODEL="$(TREZOR_MODEL)" \
+	$(SCONS) CFLAGS="$(CFLAGS)" PRODUCTION="$(PRODUCTION)" CERBERUS_MODEL="$(CERBERUS_MODEL)" \
 		CMAKELISTS="$(CMAKELISTS)" $(BOOTLOADER_CI_BUILD_DIR)/bootloader.bin
 
 build_bootloader_emu: ## build the unix bootloader emulator
-	$(SCONS) CFLAGS="$(CFLAGS)" PRODUCTION="$(PRODUCTION)" TREZOR_MODEL="$(TREZOR_MODEL)" CMAKELISTS="$(CMAKELISTS)" $(BOOTLOADER_EMU_BUILD_DIR)/bootloader.elf
+	$(SCONS) CFLAGS="$(CFLAGS)" PRODUCTION="$(PRODUCTION)" CERBERUS_MODEL="$(CERBERUS_MODEL)" CMAKELISTS="$(CMAKELISTS)" $(BOOTLOADER_EMU_BUILD_DIR)/bootloader.elf
 
 build_prodtest: ## build production test firmware
-	$(SCONS) CFLAGS="$(CFLAGS)" PRODUCTION="$(PRODUCTION)" TREZOR_MODEL="$(TREZOR_MODEL)" \
+	$(SCONS) CFLAGS="$(CFLAGS)" PRODUCTION="$(PRODUCTION)" CERBERUS_MODEL="$(CERBERUS_MODEL)" \
 		CMAKELISTS="$(CMAKELISTS)" BOOTLOADER_DEVEL="$(BOOTLOADER_DEVEL)" $(PRODTEST_BUILD_DIR)/prodtest.bin
 
 build_reflash: ## build reflash firmware + reflash image
-	$(SCONS) CFLAGS="$(CFLAGS)" PRODUCTION="$(PRODUCTION)" TREZOR_MODEL="$(TREZOR_MODEL)" \
+	$(SCONS) CFLAGS="$(CFLAGS)" PRODUCTION="$(PRODUCTION)" CERBERUS_MODEL="$(CERBERUS_MODEL)" \
 		CMAKELISTS="$(CMAKELISTS)" $(REFLASH_BUILD_DIR)/reflash.bin
 	dd if=build/boardloader/boardloader.bin of=$(REFLASH_BUILD_DIR)/sdimage.bin bs=1 seek=0
 	dd if=build/bootloader/bootloader.bin of=$(REFLASH_BUILD_DIR)/sdimage.bin bs=1 seek=49152
 
 build_firmware: templates build_cross ## build firmware with frozen modules
 	$(SCONS) CFLAGS="$(CFLAGS)" PRODUCTION="$(PRODUCTION)" \
-		TREZOR_MODEL="$(TREZOR_MODEL)" CMAKELISTS="$(CMAKELISTS)" \
+		CERBERUS_MODEL="$(CERBERUS_MODEL)" CMAKELISTS="$(CMAKELISTS)" \
 		PYOPT="$(PYOPT)" BITCOIN_ONLY="$(BITCOIN_ONLY)" \
 		BOOTLOADER_QA="$(BOOTLOADER_QA)" BOOTLOADER_DEVEL="$(BOOTLOADER_DEVEL)" \
 		DISABLE_OPTIGA="$(DISABLE_OPTIGA)" \
 		$(FIRMWARE_BUILD_DIR)/firmware.bin
 
 build_unix: templates ## build unix port
-	$(SCONS) CFLAGS="$(CFLAGS)" $(UNIX_BUILD_DIR)/trezor-emu-core $(UNIX_PORT_OPTS) \
-		TREZOR_MODEL="$(TREZOR_MODEL)" CMAKELISTS="$(CMAKELISTS)" \
-		PYOPT="0" BITCOIN_ONLY="$(BITCOIN_ONLY)" TREZOR_EMULATOR_ASAN="$(ADDRESS_SANITIZER)"
+	$(SCONS) CFLAGS="$(CFLAGS)" $(UNIX_BUILD_DIR)/cerberus-emu-core $(UNIX_PORT_OPTS) \
+		CERBERUS_MODEL="$(CERBERUS_MODEL)" CMAKELISTS="$(CMAKELISTS)" \
+		PYOPT="0" BITCOIN_ONLY="$(BITCOIN_ONLY)" CERBERUS_EMULATOR_ASAN="$(ADDRESS_SANITIZER)"
 
 build_unix_frozen: templates build_cross ## build unix port with frozen modules
-	$(SCONS) CFLAGS="$(CFLAGS)" $(UNIX_BUILD_DIR)/trezor-emu-core $(UNIX_PORT_OPTS) \
-		TREZOR_MODEL="$(TREZOR_MODEL)" CMAKELISTS="$(CMAKELISTS)" \
-		PYOPT="$(PYOPT)" BITCOIN_ONLY="$(BITCOIN_ONLY)" TREZOR_EMULATOR_ASAN="$(ADDRESS_SANITIZER)" \
-		TREZOR_MEMPERF="$(TREZOR_MEMPERF)" TREZOR_EMULATOR_FROZEN=1
+	$(SCONS) CFLAGS="$(CFLAGS)" $(UNIX_BUILD_DIR)/cerberus-emu-core $(UNIX_PORT_OPTS) \
+		CERBERUS_MODEL="$(CERBERUS_MODEL)" CMAKELISTS="$(CMAKELISTS)" \
+		PYOPT="$(PYOPT)" BITCOIN_ONLY="$(BITCOIN_ONLY)" CERBERUS_EMULATOR_ASAN="$(ADDRESS_SANITIZER)" \
+		CERBERUS_MEMPERF="$(CERBERUS_MEMPERF)" CERBERUS_EMULATOR_FROZEN=1
 
 build_unix_debug: templates ## build unix port
-	$(SCONS) --max-drift=1 CFLAGS="$(CFLAGS)" $(UNIX_BUILD_DIR)/trezor-emu-core $(UNIX_PORT_OPTS) \
-		TREZOR_MODEL="$(TREZOR_MODEL)" CMAKELISTS="$(CMAKELISTS)" \
-		BITCOIN_ONLY="$(BITCOIN_ONLY)" TREZOR_EMULATOR_ASAN=1 TREZOR_EMULATOR_DEBUGGABLE=1
+	$(SCONS) --max-drift=1 CFLAGS="$(CFLAGS)" $(UNIX_BUILD_DIR)/cerberus-emu-core $(UNIX_PORT_OPTS) \
+		CERBERUS_MODEL="$(CERBERUS_MODEL)" CMAKELISTS="$(CMAKELISTS)" \
+		BITCOIN_ONLY="$(BITCOIN_ONLY)" CERBERUS_EMULATOR_ASAN=1 CERBERUS_EMULATOR_DEBUGGABLE=1
 
 build_cross: ## build mpy-cross port
 	$(MAKE) -C vendor/micropython/mpy-cross $(CROSS_PORT_OPTS)
@@ -369,11 +369,11 @@ combine: ## combine boardloader + bootloader + prodtest into one combined image
 		$(PRODTEST_BUILD_DIR)/prodtest.bin \
 		$(PRODTEST_BUILD_DIR)/combined.bin
 
-upload: ## upload firmware using trezorctl
-	trezorctl firmware_update -s -f $(FIRMWARE_BUILD_DIR)/firmware.bin
+upload: ## upload firmware using cerberusctl
+	cerberusctl firmware_update -s -f $(FIRMWARE_BUILD_DIR)/firmware.bin
 
-upload_prodtest: ## upload prodtest using trezorctl
-	trezorctl firmware_update -s -f $(PRODTEST_BUILD_DIR)/prodtest.bin
+upload_prodtest: ## upload prodtest using cerberusctl
+	cerberusctl firmware_update -s -f $(PRODTEST_BUILD_DIR)/prodtest.bin
 
 coverage:  ## generate coverage report
 	./tools/coverage-report

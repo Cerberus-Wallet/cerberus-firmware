@@ -1,14 +1,14 @@
 from typing import TYPE_CHECKING
 
-import trezor.ui.layouts as layouts
-from trezor import TR, strings
-from trezor.enums import ButtonRequestType
+import cerberus.ui.layouts as layouts
+from cerberus import TR, strings
+from cerberus.enums import ButtonRequestType
 
 from . import consts
 
 if TYPE_CHECKING:
-    from trezor.enums import StellarMemoType
-    from trezor.messages import StellarAsset
+    from cerberus.enums import StellarMemoType
+    from cerberus.messages import StellarAsset
 
 
 async def require_confirm_init(
@@ -68,7 +68,7 @@ async def require_confirm_timebounds(start: int, end: int) -> None:
 
 
 async def require_confirm_memo(memo_type: StellarMemoType, memo_text: str) -> None:
-    from trezor.enums import StellarMemoType
+    from cerberus.enums import StellarMemoType
 
     if memo_type == StellarMemoType.TEXT:
         description = "Memo (TEXT)"
@@ -114,8 +114,8 @@ async def require_confirm_final(fee: int, num_operations: int) -> None:
 
 
 def format_asset(asset: StellarAsset | None) -> str:
-    from trezor.enums import StellarAssetType
-    from trezor.wire import DataError
+    from cerberus.enums import StellarAssetType
+    from cerberus.wire import DataError
 
     if asset is None or asset.type == StellarAssetType.NATIVE:
         return "XLM"

@@ -1,15 +1,15 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import Success, WebAuthnAddResidentCredential
+    from cerberus.messages import Success, WebAuthnAddResidentCredential
 
 
 async def add_resident_credential(msg: WebAuthnAddResidentCredential) -> Success:
     import storage.device as storage_device
-    from trezor import TR, wire
-    from trezor.messages import Success
-    from trezor.ui.layouts import show_error_and_raise
-    from trezor.ui.layouts.fido import confirm_fido
+    from cerberus import TR, wire
+    from cerberus.messages import Success
+    from cerberus.ui.layouts import show_error_and_raise
+    from cerberus.ui.layouts.fido import confirm_fido
 
     from .credential import Fido2Credential
     from .resident_credentials import store_resident_credential

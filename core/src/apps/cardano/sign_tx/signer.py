@@ -1,15 +1,15 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor import messages
-from trezor.enums import (
+from cerberus import messages
+from cerberus.enums import (
     CardanoCertificateType,
     CardanoTxOutputSerializationFormat,
     CardanoTxWitnessType,
 )
-from trezor.messages import CardanoTxItemAck, CardanoTxOutput
-from trezor.wire import DataError, ProcessError
-from trezor.wire.context import call as ctx_call
+from cerberus.messages import CardanoTxItemAck, CardanoTxOutput
+from cerberus.wire import DataError, ProcessError
+from cerberus.wire.context import call as ctx_call
 
 from apps.common import safety_checks
 
@@ -23,7 +23,7 @@ from ..helpers.utils import derive_public_key
 if TYPE_CHECKING:
     from typing import Any, Awaitable, ClassVar
 
-    from trezor.enums import CardanoAddressType
+    from cerberus.enums import CardanoAddressType
 
     from apps.common import cbor
     from apps.common.paths import PathSchema
@@ -116,7 +116,7 @@ class Signer:
         self.should_show_details = False
 
     async def sign(self) -> None:
-        from trezor.crypto import hashlib
+        from cerberus.crypto import hashlib
 
         hash_fn = hashlib.blake2b(outlen=32)
         self.tx_dict.start(hash_fn)
@@ -1122,7 +1122,7 @@ class Signer:
     def _is_network_id_verifiable(self) -> bool:
         """
         Checks whether there is at least one element that contains information about
-        network ID, otherwise Trezor cannot guarantee that the tx is actually meant for
+        network ID, otherwise Cerberus cannot guarantee that the tx is actually meant for
         the given network.
 
         Note: Shelley addresses contain network id. The intended network of Byron
@@ -1156,7 +1156,7 @@ class Signer:
     def _derive_withdrawal_address_bytes(
         self, withdrawal: messages.CardanoTxWithdrawal
     ) -> bytes:
-        from trezor.enums import CardanoAddressType
+        from cerberus.enums import CardanoAddressType
 
         reward_address_type = (
             CardanoAddressType.REWARD
@@ -1212,7 +1212,7 @@ class Signer:
         )
 
     def _sign_tx_hash(self, tx_body_hash: bytes, path: list[int]) -> bytes:
-        from trezor.crypto.curve import ed25519
+        from cerberus.crypto.curve import ed25519
 
         node = self.keychain.derive(path)
         return ed25519.sign_ext(

@@ -5,16 +5,16 @@ from apps.common.keychain import with_slip44_keychain
 from . import CURVE, PATTERNS, SLIP44_ID
 
 if TYPE_CHECKING:
-    from trezor.messages import TezosAddress, TezosGetAddress
+    from cerberus.messages import TezosAddress, TezosGetAddress
 
     from apps.common.keychain import Keychain
 
 
 @with_slip44_keychain(*PATTERNS, slip44_id=SLIP44_ID, curve=CURVE)
 async def get_address(msg: TezosGetAddress, keychain: Keychain) -> TezosAddress:
-    from trezor.crypto import hashlib
-    from trezor.messages import TezosAddress
-    from trezor.ui.layouts import show_address
+    from cerberus.crypto import hashlib
+    from cerberus.messages import TezosAddress
+    from cerberus.ui.layouts import show_address
 
     from apps.common import paths, seed
 

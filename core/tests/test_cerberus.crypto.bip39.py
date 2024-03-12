@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import bip39
+from cerberus.crypto import bip39
 
 
 class TestCryptoBip39(unittest.TestCase):

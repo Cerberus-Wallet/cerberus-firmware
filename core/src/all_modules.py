@@ -4,7 +4,7 @@
 # flake8: noqa
 # fmt: off
 # isort:skip_file
-from trezor.utils import halt
+from cerberus.utils import halt
 
 # this module should not be part of the build, its purpose is only to add missed Qstrings
 halt("Tried to import excluded module.")
@@ -29,7 +29,7 @@ halt("Tried to import excluded module.")
 # interned, and some operation somewhere (rendering?) is reading strings character by
 # character.
 
-from trezor import utils
+from cerberus import utils
 
 all_modules
 import all_modules
@@ -63,144 +63,144 @@ storage.resident_credentials
 import storage.resident_credentials
 storage.sd_salt
 import storage.sd_salt
-trezor
-import trezor
-trezor.crypto
-import trezor.crypto
-trezor.crypto.base32
-import trezor.crypto.base32
-trezor.crypto.base58
-import trezor.crypto.base58
-trezor.crypto.bech32
-import trezor.crypto.bech32
-trezor.crypto.cashaddr
-import trezor.crypto.cashaddr
-trezor.crypto.cosi
-import trezor.crypto.cosi
-trezor.crypto.curve
-import trezor.crypto.curve
-trezor.crypto.der
-import trezor.crypto.der
-trezor.crypto.hashlib
-import trezor.crypto.hashlib
-trezor.crypto.rlp
-import trezor.crypto.rlp
-trezor.crypto.scripts
-import trezor.crypto.scripts
-trezor.crypto.slip39
-import trezor.crypto.slip39
-trezor.enums.AmountUnit
-import trezor.enums.AmountUnit
-trezor.enums.BackupType
-import trezor.enums.BackupType
-trezor.enums.BootCommand
-import trezor.enums.BootCommand
-trezor.enums.ButtonRequestType
-import trezor.enums.ButtonRequestType
-trezor.enums.Capability
-import trezor.enums.Capability
-trezor.enums.DebugButton
-import trezor.enums.DebugButton
-trezor.enums.DebugPhysicalButton
-import trezor.enums.DebugPhysicalButton
-trezor.enums.DebugSwipeDirection
-import trezor.enums.DebugSwipeDirection
-trezor.enums.DecredStakingSpendType
-import trezor.enums.DecredStakingSpendType
-trezor.enums.FailureType
-import trezor.enums.FailureType
-trezor.enums.HomescreenFormat
-import trezor.enums.HomescreenFormat
-trezor.enums.InputScriptType
-import trezor.enums.InputScriptType
-trezor.enums.MessageType
-import trezor.enums.MessageType
-trezor.enums.OutputScriptType
-import trezor.enums.OutputScriptType
-trezor.enums.PinMatrixRequestType
-import trezor.enums.PinMatrixRequestType
-trezor.enums.RecoveryDeviceType
-import trezor.enums.RecoveryDeviceType
-trezor.enums.RequestType
-import trezor.enums.RequestType
-trezor.enums.SafetyCheckLevel
-import trezor.enums.SafetyCheckLevel
-trezor.enums.SdProtectOperationType
-import trezor.enums.SdProtectOperationType
-trezor.enums.WordRequestType
-import trezor.enums.WordRequestType
-trezor.enums
-import trezor.enums
-trezor.errors
-import trezor.errors
-trezor.log
-import trezor.log
-trezor.loop
-import trezor.loop
-trezor.messages
-import trezor.messages
-trezor.pin
-import trezor.pin
-trezor.protobuf
-import trezor.protobuf
-trezor.sdcard
-import trezor.sdcard
-trezor.strings
-import trezor.strings
-trezor.ui
-import trezor.ui
-trezor.ui.layouts
-import trezor.ui.layouts
-trezor.ui.layouts.common
-import trezor.ui.layouts.common
-trezor.ui.layouts.fido
-import trezor.ui.layouts.fido
-trezor.ui.layouts.homescreen
-import trezor.ui.layouts.homescreen
-trezor.ui.layouts.progress
-import trezor.ui.layouts.progress
-trezor.ui.layouts.recovery
-import trezor.ui.layouts.recovery
-trezor.ui.layouts.reset
-import trezor.ui.layouts.reset
-trezor.ui.layouts.tr
-import trezor.ui.layouts.tr
-trezor.ui.layouts.tr.fido
-import trezor.ui.layouts.tr.fido
-trezor.ui.layouts.tr.homescreen
-import trezor.ui.layouts.tr.homescreen
-trezor.ui.layouts.tr.progress
-import trezor.ui.layouts.tr.progress
-trezor.ui.layouts.tr.recovery
-import trezor.ui.layouts.tr.recovery
-trezor.ui.layouts.tr.reset
-import trezor.ui.layouts.tr.reset
-trezor.ui.layouts.tt
-import trezor.ui.layouts.tt
-trezor.ui.layouts.tt.fido
-import trezor.ui.layouts.tt.fido
-trezor.ui.layouts.tt.homescreen
-import trezor.ui.layouts.tt.homescreen
-trezor.ui.layouts.tt.progress
-import trezor.ui.layouts.tt.progress
-trezor.ui.layouts.tt.recovery
-import trezor.ui.layouts.tt.recovery
-trezor.ui.layouts.tt.reset
-import trezor.ui.layouts.tt.reset
-trezor.ui.style
-import trezor.ui.style
-trezor.utils
-import trezor.utils
-trezor.wire
-import trezor.wire
-trezor.wire.codec_v1
-import trezor.wire.codec_v1
-trezor.wire.context
-import trezor.wire.context
-trezor.wire.errors
-import trezor.wire.errors
-trezor.workflow
-import trezor.workflow
+cerberus
+import cerberus
+cerberus.crypto
+import cerberus.crypto
+cerberus.crypto.base32
+import cerberus.crypto.base32
+cerberus.crypto.base58
+import cerberus.crypto.base58
+cerberus.crypto.bech32
+import cerberus.crypto.bech32
+cerberus.crypto.cashaddr
+import cerberus.crypto.cashaddr
+cerberus.crypto.cosi
+import cerberus.crypto.cosi
+cerberus.crypto.curve
+import cerberus.crypto.curve
+cerberus.crypto.der
+import cerberus.crypto.der
+cerberus.crypto.hashlib
+import cerberus.crypto.hashlib
+cerberus.crypto.rlp
+import cerberus.crypto.rlp
+cerberus.crypto.scripts
+import cerberus.crypto.scripts
+cerberus.crypto.slip39
+import cerberus.crypto.slip39
+cerberus.enums.AmountUnit
+import cerberus.enums.AmountUnit
+cerberus.enums.BackupType
+import cerberus.enums.BackupType
+cerberus.enums.BootCommand
+import cerberus.enums.BootCommand
+cerberus.enums.ButtonRequestType
+import cerberus.enums.ButtonRequestType
+cerberus.enums.Capability
+import cerberus.enums.Capability
+cerberus.enums.DebugButton
+import cerberus.enums.DebugButton
+cerberus.enums.DebugPhysicalButton
+import cerberus.enums.DebugPhysicalButton
+cerberus.enums.DebugSwipeDirection
+import cerberus.enums.DebugSwipeDirection
+cerberus.enums.DecredStakingSpendType
+import cerberus.enums.DecredStakingSpendType
+cerberus.enums.FailureType
+import cerberus.enums.FailureType
+cerberus.enums.HomescreenFormat
+import cerberus.enums.HomescreenFormat
+cerberus.enums.InputScriptType
+import cerberus.enums.InputScriptType
+cerberus.enums.MessageType
+import cerberus.enums.MessageType
+cerberus.enums.OutputScriptType
+import cerberus.enums.OutputScriptType
+cerberus.enums.PinMatrixRequestType
+import cerberus.enums.PinMatrixRequestType
+cerberus.enums.RecoveryDeviceType
+import cerberus.enums.RecoveryDeviceType
+cerberus.enums.RequestType
+import cerberus.enums.RequestType
+cerberus.enums.SafetyCheckLevel
+import cerberus.enums.SafetyCheckLevel
+cerberus.enums.SdProtectOperationType
+import cerberus.enums.SdProtectOperationType
+cerberus.enums.WordRequestType
+import cerberus.enums.WordRequestType
+cerberus.enums
+import cerberus.enums
+cerberus.errors
+import cerberus.errors
+cerberus.log
+import cerberus.log
+cerberus.loop
+import cerberus.loop
+cerberus.messages
+import cerberus.messages
+cerberus.pin
+import cerberus.pin
+cerberus.protobuf
+import cerberus.protobuf
+cerberus.sdcard
+import cerberus.sdcard
+cerberus.strings
+import cerberus.strings
+cerberus.ui
+import cerberus.ui
+cerberus.ui.layouts
+import cerberus.ui.layouts
+cerberus.ui.layouts.common
+import cerberus.ui.layouts.common
+cerberus.ui.layouts.fido
+import cerberus.ui.layouts.fido
+cerberus.ui.layouts.homescreen
+import cerberus.ui.layouts.homescreen
+cerberus.ui.layouts.progress
+import cerberus.ui.layouts.progress
+cerberus.ui.layouts.recovery
+import cerberus.ui.layouts.recovery
+cerberus.ui.layouts.reset
+import cerberus.ui.layouts.reset
+cerberus.ui.layouts.tr
+import cerberus.ui.layouts.tr
+cerberus.ui.layouts.tr.fido
+import cerberus.ui.layouts.tr.fido
+cerberus.ui.layouts.tr.homescreen
+import cerberus.ui.layouts.tr.homescreen
+cerberus.ui.layouts.tr.progress
+import cerberus.ui.layouts.tr.progress
+cerberus.ui.layouts.tr.recovery
+import cerberus.ui.layouts.tr.recovery
+cerberus.ui.layouts.tr.reset
+import cerberus.ui.layouts.tr.reset
+cerberus.ui.layouts.tt
+import cerberus.ui.layouts.tt
+cerberus.ui.layouts.tt.fido
+import cerberus.ui.layouts.tt.fido
+cerberus.ui.layouts.tt.homescreen
+import cerberus.ui.layouts.tt.homescreen
+cerberus.ui.layouts.tt.progress
+import cerberus.ui.layouts.tt.progress
+cerberus.ui.layouts.tt.recovery
+import cerberus.ui.layouts.tt.recovery
+cerberus.ui.layouts.tt.reset
+import cerberus.ui.layouts.tt.reset
+cerberus.ui.style
+import cerberus.ui.style
+cerberus.utils
+import cerberus.utils
+cerberus.wire
+import cerberus.wire
+cerberus.wire.codec_v1
+import cerberus.wire.codec_v1
+cerberus.wire.context
+import cerberus.wire.context
+cerberus.wire.errors
+import cerberus.wire.errors
+cerberus.workflow
+import cerberus.workflow
 apps
 import apps
 apps.base
@@ -373,58 +373,58 @@ apps.workflow_handlers
 import apps.workflow_handlers
 
 if not utils.BITCOIN_ONLY:
-    trezor.enums.BinanceOrderSide
-    import trezor.enums.BinanceOrderSide
-    trezor.enums.BinanceOrderType
-    import trezor.enums.BinanceOrderType
-    trezor.enums.BinanceTimeInForce
-    import trezor.enums.BinanceTimeInForce
-    trezor.enums.CardanoAddressType
-    import trezor.enums.CardanoAddressType
-    trezor.enums.CardanoCVoteRegistrationFormat
-    import trezor.enums.CardanoCVoteRegistrationFormat
-    trezor.enums.CardanoCertificateType
-    import trezor.enums.CardanoCertificateType
-    trezor.enums.CardanoDerivationType
-    import trezor.enums.CardanoDerivationType
-    trezor.enums.CardanoNativeScriptHashDisplayFormat
-    import trezor.enums.CardanoNativeScriptHashDisplayFormat
-    trezor.enums.CardanoNativeScriptType
-    import trezor.enums.CardanoNativeScriptType
-    trezor.enums.CardanoPoolRelayType
-    import trezor.enums.CardanoPoolRelayType
-    trezor.enums.CardanoTxAuxiliaryDataSupplementType
-    import trezor.enums.CardanoTxAuxiliaryDataSupplementType
-    trezor.enums.CardanoTxOutputSerializationFormat
-    import trezor.enums.CardanoTxOutputSerializationFormat
-    trezor.enums.CardanoTxSigningMode
-    import trezor.enums.CardanoTxSigningMode
-    trezor.enums.CardanoTxWitnessType
-    import trezor.enums.CardanoTxWitnessType
-    trezor.enums.EthereumDataType
-    import trezor.enums.EthereumDataType
-    trezor.enums.EthereumDefinitionType
-    import trezor.enums.EthereumDefinitionType
-    trezor.enums.MoneroNetworkType
-    import trezor.enums.MoneroNetworkType
-    trezor.enums.NEMImportanceTransferMode
-    import trezor.enums.NEMImportanceTransferMode
-    trezor.enums.NEMModificationType
-    import trezor.enums.NEMModificationType
-    trezor.enums.NEMMosaicLevy
-    import trezor.enums.NEMMosaicLevy
-    trezor.enums.NEMSupplyChangeType
-    import trezor.enums.NEMSupplyChangeType
-    trezor.enums.StellarAssetType
-    import trezor.enums.StellarAssetType
-    trezor.enums.StellarMemoType
-    import trezor.enums.StellarMemoType
-    trezor.enums.StellarSignerType
-    import trezor.enums.StellarSignerType
-    trezor.enums.TezosBallotType
-    import trezor.enums.TezosBallotType
-    trezor.enums.TezosContractType
-    import trezor.enums.TezosContractType
+    cerberus.enums.BinanceOrderSide
+    import cerberus.enums.BinanceOrderSide
+    cerberus.enums.BinanceOrderType
+    import cerberus.enums.BinanceOrderType
+    cerberus.enums.BinanceTimeInForce
+    import cerberus.enums.BinanceTimeInForce
+    cerberus.enums.CardanoAddressType
+    import cerberus.enums.CardanoAddressType
+    cerberus.enums.CardanoCVoteRegistrationFormat
+    import cerberus.enums.CardanoCVoteRegistrationFormat
+    cerberus.enums.CardanoCertificateType
+    import cerberus.enums.CardanoCertificateType
+    cerberus.enums.CardanoDerivationType
+    import cerberus.enums.CardanoDerivationType
+    cerberus.enums.CardanoNativeScriptHashDisplayFormat
+    import cerberus.enums.CardanoNativeScriptHashDisplayFormat
+    cerberus.enums.CardanoNativeScriptType
+    import cerberus.enums.CardanoNativeScriptType
+    cerberus.enums.CardanoPoolRelayType
+    import cerberus.enums.CardanoPoolRelayType
+    cerberus.enums.CardanoTxAuxiliaryDataSupplementType
+    import cerberus.enums.CardanoTxAuxiliaryDataSupplementType
+    cerberus.enums.CardanoTxOutputSerializationFormat
+    import cerberus.enums.CardanoTxOutputSerializationFormat
+    cerberus.enums.CardanoTxSigningMode
+    import cerberus.enums.CardanoTxSigningMode
+    cerberus.enums.CardanoTxWitnessType
+    import cerberus.enums.CardanoTxWitnessType
+    cerberus.enums.EthereumDataType
+    import cerberus.enums.EthereumDataType
+    cerberus.enums.EthereumDefinitionType
+    import cerberus.enums.EthereumDefinitionType
+    cerberus.enums.MoneroNetworkType
+    import cerberus.enums.MoneroNetworkType
+    cerberus.enums.NEMImportanceTransferMode
+    import cerberus.enums.NEMImportanceTransferMode
+    cerberus.enums.NEMModificationType
+    import cerberus.enums.NEMModificationType
+    cerberus.enums.NEMMosaicLevy
+    import cerberus.enums.NEMMosaicLevy
+    cerberus.enums.NEMSupplyChangeType
+    import cerberus.enums.NEMSupplyChangeType
+    cerberus.enums.StellarAssetType
+    import cerberus.enums.StellarAssetType
+    cerberus.enums.StellarMemoType
+    import cerberus.enums.StellarMemoType
+    cerberus.enums.StellarSignerType
+    import cerberus.enums.StellarSignerType
+    cerberus.enums.TezosBallotType
+    import cerberus.enums.TezosBallotType
+    cerberus.enums.TezosContractType
+    import cerberus.enums.TezosContractType
     apps.binance
     import apps.binance
     apps.binance.get_address

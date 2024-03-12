@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto.curve import secp256k1
+from cerberus.crypto.curve import secp256k1
 
 if not utils.BITCOIN_ONLY:
     from apps.binance.helpers import address_from_public_key

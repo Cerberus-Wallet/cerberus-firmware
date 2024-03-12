@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -30,7 +30,7 @@ enum AESMode {
   CTR = 0x04,
 };
 
-/// package: trezorcrypto.__init__
+/// package: cerberuscrypto.__init__
 
 /// class aes:
 ///     """
@@ -58,7 +58,7 @@ typedef struct _mp_obj_AES_t {
 ///     """
 ///     Initialize AES context.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_AES_make_new(const mp_obj_type_t *type,
+STATIC mp_obj_t mod_cerberuscrypto_AES_make_new(const mp_obj_type_t *type,
                                               size_t n_args, size_t n_kw,
                                               const mp_obj_t *args) {
   mp_arg_check_num(n_args, n_kw, 2, 3, false);
@@ -161,51 +161,51 @@ static mp_obj_t aes_update(mp_obj_t self, mp_obj_t data, bool encrypt) {
 ///     """
 ///     Encrypt data and update AES context.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_AES_encrypt(mp_obj_t self, mp_obj_t data) {
+STATIC mp_obj_t mod_cerberuscrypto_AES_encrypt(mp_obj_t self, mp_obj_t data) {
   return aes_update(self, data, true);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_AES_encrypt_obj,
-                                 mod_trezorcrypto_AES_encrypt);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberuscrypto_AES_encrypt_obj,
+                                 mod_cerberuscrypto_AES_encrypt);
 
 /// def decrypt(self, data: bytes) -> bytes:
 ///     """
 ///     Decrypt data and update AES context.
 ///     """
-STATIC mp_obj_t mod_trezorcrypto_AES_decrypt(mp_obj_t self, mp_obj_t data) {
+STATIC mp_obj_t mod_cerberuscrypto_AES_decrypt(mp_obj_t self, mp_obj_t data) {
   return aes_update(self, data, false);
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_trezorcrypto_AES_decrypt_obj,
-                                 mod_trezorcrypto_AES_decrypt);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(mod_cerberuscrypto_AES_decrypt_obj,
+                                 mod_cerberuscrypto_AES_decrypt);
 
-STATIC mp_obj_t mod_trezorcrypto_AES___del__(mp_obj_t self) {
+STATIC mp_obj_t mod_cerberuscrypto_AES___del__(mp_obj_t self) {
   mp_obj_AES_t *o = MP_OBJ_TO_PTR(self);
   memzero(&(o->encrypt_ctx), sizeof(aes_encrypt_ctx));
   memzero(&(o->decrypt_ctx), sizeof(aes_decrypt_ctx));
   memzero(o->iv, AES_BLOCK_SIZE);
   return mp_const_none;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_trezorcrypto_AES___del___obj,
-                                 mod_trezorcrypto_AES___del__);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(mod_cerberuscrypto_AES___del___obj,
+                                 mod_cerberuscrypto_AES___del__);
 
-STATIC const mp_rom_map_elem_t mod_trezorcrypto_AES_locals_dict_table[] = {
+STATIC const mp_rom_map_elem_t mod_cerberuscrypto_AES_locals_dict_table[] = {
     {MP_ROM_QSTR(MP_QSTR_encrypt),
-     MP_ROM_PTR(&mod_trezorcrypto_AES_encrypt_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_AES_encrypt_obj)},
     {MP_ROM_QSTR(MP_QSTR_decrypt),
-     MP_ROM_PTR(&mod_trezorcrypto_AES_decrypt_obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_AES_decrypt_obj)},
     {MP_ROM_QSTR(MP_QSTR___del__),
-     MP_ROM_PTR(&mod_trezorcrypto_AES___del___obj)},
+     MP_ROM_PTR(&mod_cerberuscrypto_AES___del___obj)},
     {MP_ROM_QSTR(MP_QSTR_ECB), MP_ROM_INT(ECB)},
     {MP_ROM_QSTR(MP_QSTR_CBC), MP_ROM_INT(CBC)},
     {MP_ROM_QSTR(MP_QSTR_CFB), MP_ROM_INT(CFB)},
     {MP_ROM_QSTR(MP_QSTR_OFB), MP_ROM_INT(OFB)},
     {MP_ROM_QSTR(MP_QSTR_CTR), MP_ROM_INT(CTR)},
 };
-STATIC MP_DEFINE_CONST_DICT(mod_trezorcrypto_AES_locals_dict,
-                            mod_trezorcrypto_AES_locals_dict_table);
+STATIC MP_DEFINE_CONST_DICT(mod_cerberuscrypto_AES_locals_dict,
+                            mod_cerberuscrypto_AES_locals_dict_table);
 
-STATIC const mp_obj_type_t mod_trezorcrypto_AES_type = {
+STATIC const mp_obj_type_t mod_cerberuscrypto_AES_type = {
     {&mp_type_type},
     .name = MP_QSTR_AES,
-    .make_new = mod_trezorcrypto_AES_make_new,
-    .locals_dict = (void *)&mod_trezorcrypto_AES_locals_dict,
+    .make_new = mod_cerberuscrypto_AES_make_new,
+    .locals_dict = (void *)&mod_cerberuscrypto_AES_locals_dict,
 };

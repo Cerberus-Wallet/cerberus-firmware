@@ -1,9 +1,9 @@
 from common import *  # isort:skip
 
-from trezor import utils
+from cerberus import utils
 
 if utils.USE_SD_CARD:
-    from trezorio import fatfs, sdcard
+    from cerberusio import fatfs, sdcard
 
 
 class TestCerberusIoFatfs(unittest.TestCase):

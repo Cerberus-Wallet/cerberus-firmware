@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -36,9 +36,9 @@
 
 #define EMULATOR_BORDER 16
 
-#if defined TREZOR_MODEL_T
+#if defined CERBERUS_MODEL_T
 
-#ifdef TREZOR_EMULATOR_RASPI
+#ifdef CERBERUS_EMULATOR_RASPI
 #define WINDOW_WIDTH 480
 #define WINDOW_HEIGHT 320
 #define TOUCH_OFFSET_X 110
@@ -50,14 +50,14 @@
 #define TOUCH_OFFSET_Y 110
 #endif
 
-#elif defined TREZOR_MODEL_1
+#elif defined CERBERUS_MODEL_1
 
 #define WINDOW_WIDTH 200
 #define WINDOW_HEIGHT 340
 #define TOUCH_OFFSET_X 36
 #define TOUCH_OFFSET_Y 92
 
-#elif defined TREZOR_MODEL_R
+#elif defined CERBERUS_MODEL_R
 
 #define WINDOW_WIDTH 193
 #define WINDOW_HEIGHT 339
@@ -65,7 +65,7 @@
 #define TOUCH_OFFSET_Y 84
 
 #else
-#error Unknown Trezor model
+#error Unknown Cerberus model
 #endif
 
 static SDL_Window *WINDOW;
@@ -100,7 +100,7 @@ static struct {
 } PIXELWINDOW;
 
 void display_pixeldata(pixel_color c) {
-#if defined TREZOR_MODEL_1 || defined TREZOR_MODEL_R
+#if defined CERBERUS_MODEL_1 || defined CERBERUS_MODEL_R
   // set to white if highest bits of all R, G, B values are set to 1
   // bin(10000 100000 10000) = hex(0x8410)
   // otherwise set to black
@@ -155,17 +155,17 @@ void display_init(void) {
 
   char *window_title = NULL;
   char *window_title_alloc = NULL;
-  if (asprintf(&window_title_alloc, "Trezor^emu: %s", profile_name()) > 0) {
+  if (asprintf(&window_title_alloc, "Cerberus^emu: %s", profile_name()) > 0) {
     window_title = window_title_alloc;
   } else {
-    window_title = "Trezor^emu";
+    window_title = "Cerberus^emu";
     window_title_alloc = NULL;
   }
 
   WINDOW =
       SDL_CreateWindow(window_title, SDL_WINDOWPOS_UNDEFINED,
                        SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH, WINDOW_HEIGHT,
-#ifdef TREZOR_EMULATOR_RASPI
+#ifdef CERBERUS_EMULATOR_RASPI
                        SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN
 #else
                        SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI
@@ -195,21 +195,21 @@ void display_init(void) {
   SDL_PumpEvents();
   SDL_SetWindowSize(WINDOW, WINDOW_WIDTH, WINDOW_HEIGHT);
 #endif
-#ifdef TREZOR_EMULATOR_RASPI
+#ifdef CERBERUS_EMULATOR_RASPI
 #include "background_raspi.h"
   BACKGROUND = IMG_LoadTexture_RW(
       RENDERER, SDL_RWFromMem(background_raspi_jpg, background_raspi_jpg_len),
       0);
 #else
-#if defined TREZOR_MODEL_T
+#if defined CERBERUS_MODEL_T
 #include "background_T.h"
   BACKGROUND = IMG_LoadTexture_RW(
       RENDERER, SDL_RWFromMem(background_T_jpg, background_T_jpg_len), 0);
-#elif defined TREZOR_MODEL_1
+#elif defined CERBERUS_MODEL_1
 #include "background_1.h"
   BACKGROUND = IMG_LoadTexture_RW(
       RENDERER, SDL_RWFromMem(background_1_jpg, background_1_jpg_len), 0);
-#elif defined TREZOR_MODEL_R
+#elif defined CERBERUS_MODEL_R
 #include "background_T2B1.h"
   BACKGROUND = IMG_LoadTexture_RW(
       RENDERER, SDL_RWFromMem(background_T2B1_png, background_T2B1_png_len), 0);
@@ -225,7 +225,7 @@ void display_init(void) {
     sdl_touch_offset_x = EMULATOR_BORDER;
     sdl_touch_offset_y = EMULATOR_BORDER;
   }
-#if defined TREZOR_MODEL_1 || defined TREZOR_MODEL_R
+#if defined CERBERUS_MODEL_1 || defined CERBERUS_MODEL_R
   // T1 and TR do not have backlight capabilities in hardware, so
   // setting its value here for emulator to avoid
   // calling any `set_backlight` functions
@@ -233,7 +233,7 @@ void display_init(void) {
 #else
   DISPLAY_BACKLIGHT = 0;
 #endif
-#ifdef TREZOR_EMULATOR_RASPI
+#ifdef CERBERUS_EMULATOR_RASPI
   DISPLAY_ORIENTATION = 270;
   SDL_ShowCursor(SDL_DISABLE);
 #else
@@ -284,12 +284,12 @@ void display_refresh(void) {
 
 int display_orientation(int degrees) {
   if (degrees != DISPLAY_ORIENTATION) {
-#if defined TREZOR_MODEL_T
+#if defined CERBERUS_MODEL_T
     if (degrees == 0 || degrees == 90 || degrees == 180 || degrees == 270) {
-#elif defined TREZOR_MODEL_1 || defined TREZOR_MODEL_R
+#elif defined CERBERUS_MODEL_1 || defined CERBERUS_MODEL_R
     if (degrees == 0 || degrees == 180) {
 #else
-#error Unknown Trezor model
+#error Unknown Cerberus model
 #endif
       DISPLAY_ORIENTATION = degrees;
       display_refresh();
@@ -301,7 +301,7 @@ int display_orientation(int degrees) {
 int display_get_orientation(void) { return DISPLAY_ORIENTATION; }
 
 int display_backlight(int val) {
-#if defined TREZOR_MODEL_1 || defined TREZOR_MODEL_R
+#if defined CERBERUS_MODEL_1 || defined CERBERUS_MODEL_R
   val = 255;
 #endif
   if (DISPLAY_BACKLIGHT != val && val >= 0 && val <= 255) {

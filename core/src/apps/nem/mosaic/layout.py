@@ -1,11 +1,11 @@
 from typing import TYPE_CHECKING
 
-from trezor import TR
+from cerberus import TR
 
 from ..layout import require_confirm_content, require_confirm_final
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         NEMMosaicCreation,
         NEMMosaicDefinition,
         NEMMosaicSupplyChange,
@@ -32,7 +32,7 @@ async def ask_mosaic_creation(
 async def ask_supply_change(
     common: NEMTransactionCommon, change: NEMMosaicSupplyChange
 ) -> None:
-    from trezor.enums import NEMSupplyChangeType
+    from cerberus.enums import NEMSupplyChangeType
 
     from ..layout import require_confirm_text
 
@@ -55,8 +55,8 @@ async def ask_supply_change(
 
 
 async def _require_confirm_properties(definition: NEMMosaicDefinition) -> None:
-    from trezor.enums import NEMMosaicLevy
-    from trezor.ui.layouts import confirm_properties
+    from cerberus.enums import NEMMosaicLevy
+    from cerberus.ui.layouts import confirm_properties
 
     properties = []
     append = properties.append  # local_cache_attribute

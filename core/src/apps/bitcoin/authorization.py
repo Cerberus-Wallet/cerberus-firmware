@@ -4,14 +4,14 @@ from typing import TYPE_CHECKING
 from .common import BIP32_WALLET_DEPTH
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         AuthorizeCoinJoin,
         GetOwnershipProof,
         SignTx,
         TxInput,
         TxOutput,
     )
-    from trezor.protobuf import MessageType
+    from cerberus.protobuf import MessageType
 
 FEE_RATE_DECIMALS = const(6)
 
@@ -21,7 +21,7 @@ class CoinJoinAuthorization:
         self.params = params
 
     def check_get_ownership_proof(self, msg: GetOwnershipProof) -> bool:
-        from trezor import utils
+        from cerberus import utils
 
         from .writers import write_bytes_prefixed
 
@@ -75,8 +75,8 @@ class CoinJoinAuthorization:
 
 
 def from_cached_message(auth_msg: MessageType) -> CoinJoinAuthorization:
-    from trezor import wire
-    from trezor.messages import AuthorizeCoinJoin
+    from cerberus import wire
+    from cerberus.messages import AuthorizeCoinJoin
 
     if not AuthorizeCoinJoin.is_type_of(auth_msg):
         raise wire.ProcessError("Appropriate params was not found")

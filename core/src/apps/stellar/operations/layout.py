@@ -1,20 +1,20 @@
 from typing import TYPE_CHECKING
 from ubinascii import hexlify
 
-from trezor import TR
-from trezor.ui.layouts import (
+from cerberus import TR
+from cerberus.ui.layouts import (
     confirm_address,
     confirm_amount,
     confirm_metadata,
     confirm_output,
     confirm_properties,
 )
-from trezor.wire import DataError, ProcessError
+from cerberus.wire import DataError, ProcessError
 
 from ..layout import format_amount
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         StellarAccountMergeOp,
         StellarAllowTrustOp,
         StellarAsset,
@@ -127,7 +127,7 @@ async def _confirm_offer(
     | StellarManageSellOfferOp
     | StellarManageBuyOfferOp,
 ) -> None:
-    from trezor.messages import StellarManageBuyOfferOp
+    from cerberus.messages import StellarManageBuyOfferOp
 
     from ..layout import format_asset
 
@@ -164,7 +164,7 @@ async def _confirm_offer(
 
 
 async def confirm_manage_data_op(op: StellarManageDataOp) -> None:
-    from trezor.crypto.hashlib import sha256
+    from cerberus.crypto.hashlib import sha256
 
     if op.value:
         digest = sha256(op.value).digest()
@@ -229,8 +229,8 @@ async def confirm_payment_op(op: StellarPaymentOp) -> None:
 
 
 async def confirm_set_options_op(op: StellarSetOptionsOp) -> None:
-    from trezor.enums import StellarSignerType
-    from trezor.ui.layouts import confirm_blob, confirm_text
+    from cerberus.enums import StellarSignerType
+    from cerberus.ui.layouts import confirm_blob, confirm_text
 
     from .. import helpers
 
@@ -328,7 +328,7 @@ def _format_flags(flags: int) -> str:
 
 
 async def confirm_asset_issuer(asset: StellarAsset) -> None:
-    from trezor.enums import StellarAssetType
+    from cerberus.enums import StellarAssetType
 
     if asset.type == StellarAssetType.NATIVE:
         return

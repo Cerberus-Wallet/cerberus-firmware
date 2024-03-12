@@ -2,9 +2,9 @@ from typing import TYPE_CHECKING
 
 import storage
 import storage.device as storage_device
-from trezor.crypto import slip39
-from trezor.enums import BackupType
-from trezor.wire import ProcessError
+from cerberus.crypto import slip39
+from cerberus.enums import BackupType
+from cerberus.wire import ProcessError
 
 from . import layout
 
@@ -12,7 +12,7 @@ if __debug__:
     import storage.debug
 
 if TYPE_CHECKING:
-    from trezor.messages import ResetDevice, Success
+    from cerberus.messages import ResetDevice, Success
 
 
 BAK_T_BIP39 = BackupType.Bip39  # global_import_cache
@@ -22,12 +22,12 @@ _DEFAULT_BACKUP_TYPE = BAK_T_BIP39
 
 
 async def reset_device(msg: ResetDevice) -> Success:
-    from trezor import TR, config
-    from trezor.crypto import bip39, random
-    from trezor.messages import EntropyAck, EntropyRequest, Success
-    from trezor.pin import render_empty_loader
-    from trezor.ui.layouts import confirm_reset_device, prompt_backup
-    from trezor.wire.context import call
+    from cerberus import TR, config
+    from cerberus.crypto import bip39, random
+    from cerberus.messages import EntropyAck, EntropyRequest, Success
+    from cerberus.pin import render_empty_loader
+    from cerberus.ui.layouts import confirm_reset_device, prompt_backup
+    from cerberus.wire.context import call
 
     from apps.common.request_pin import request_pin_confirm
 
@@ -174,7 +174,7 @@ async def _backup_slip39_advanced(encrypted_master_secret: bytes) -> None:
 
 
 def _validate_reset_device(msg: ResetDevice) -> None:
-    from trezor.wire import UnexpectedMessage
+    from cerberus.wire import UnexpectedMessage
 
     from .. import backup_types
 
@@ -200,7 +200,7 @@ def _validate_reset_device(msg: ResetDevice) -> None:
 def _compute_secret_from_entropy(
     int_entropy: bytes, ext_entropy: bytes, strength_in_bytes: int
 ) -> bytes:
-    from trezor.crypto import hashlib
+    from cerberus.crypto import hashlib
 
     # combine internal and external entropy
     ehash = hashlib.sha256()

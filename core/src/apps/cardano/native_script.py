@@ -1,12 +1,12 @@
 from typing import TYPE_CHECKING
 
-from trezor.enums import CardanoNativeScriptType
-from trezor.wire import ProcessError
+from cerberus.enums import CardanoNativeScriptType
+from cerberus.wire import ProcessError
 
 if TYPE_CHECKING:
     from typing import Any
 
-    from trezor import messages
+    from cerberus import messages
 
     from apps.common.cbor import CborSequence
 
@@ -121,7 +121,7 @@ def _validate_native_script_structure(script: messages.CardanoNativeScript) -> N
 def get_native_script_hash(
     keychain: seed.Keychain, script: messages.CardanoNativeScript
 ) -> bytes:
-    from trezor.crypto import hashlib
+    from cerberus.crypto import hashlib
 
     from apps.common import cbor
 

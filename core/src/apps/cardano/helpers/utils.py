@@ -1,12 +1,12 @@
 from typing import TYPE_CHECKING
 
-from trezor.crypto import hashlib
+from cerberus.crypto import hashlib
 
 from . import ADDRESS_KEY_HASH_SIZE, bech32
 from .paths import ACCOUNT_PATH_INDEX
 
 if TYPE_CHECKING:
-    from trezor.wire import ProcessError
+    from cerberus.wire import ProcessError
 
     from .. import seed
 
@@ -104,7 +104,7 @@ def validate_network_info(network_id: int, protocol_magic: int) -> None:
     belong to the mainnet or that both belong to a testnet. We don't need to check for
     consistency between various testnets (at least for now).
     """
-    from trezor import wire
+    from cerberus import wire
 
     from . import network_ids, protocol_magics
 

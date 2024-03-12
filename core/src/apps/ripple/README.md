@@ -18,7 +18,7 @@ Ripple has different transaction types, see the [documentation](https://develope
 
 We do not support transaction types other than the [Payment](https://developers.ripple.com/payment.html) transaction, which represents the simple "A pays to B" scenario. Other transaction types might be added later on.
 
-We currently sign transactions using ECDSA and the secp256k1 curve same as in Bitcoin. Ripple also supports ed25519, which is currently not supported by Trezor, although the implementation would be quite straightforward.
+We currently sign transactions using ECDSA and the secp256k1 curve same as in Bitcoin. Ripple also supports ed25519, which is currently not supported by Cerberus, although the implementation would be quite straightforward.
 
 Non-XRP currencies are not supported. Float and negative amounts are not supported.
 
@@ -28,7 +28,7 @@ Non-XRP currencies are not supported. Float and negative amounts are not support
 
 #### Submitting a transaction
 
-You can use [ripple-lib](https://github.com/ripple/ripple-lib) and its [submit](https://github.com/ripple/ripple-lib/blob/develop/docs/index.md#submit) method to publish a transaction into the Ripple network. Python-trezor returns a serialized signed transaction, which is exactly what you provide as an argument into the submit function.
+You can use [ripple-lib](https://github.com/ripple/ripple-lib) and its [submit](https://github.com/ripple/ripple-lib/blob/develop/docs/index.md#submit) method to publish a transaction into the Ripple network. Python-cerberus returns a serialized signed transaction, which is exactly what you provide as an argument into the submit function.
 
 ## Serialization format
 
@@ -38,4 +38,4 @@ Our implementation in `serialize.py` is a simplification of the protocol tailore
 
 ## Tests
 
-Unit tests are located in the `tests` directory, device tests are in the python-trezor repository.
+Unit tests are located in the `tests` directory, device tests are in the python-cerberus repository.

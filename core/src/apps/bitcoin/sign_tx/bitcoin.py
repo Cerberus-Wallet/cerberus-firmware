@@ -1,11 +1,11 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor import workflow
-from trezor.crypto.hashlib import sha256
-from trezor.enums import InputScriptType
-from trezor.utils import HashWriter, empty_bytearray
-from trezor.wire import DataError, ProcessError
+from cerberus import workflow
+from cerberus.crypto.hashlib import sha256
+from cerberus.enums import InputScriptType
+from cerberus.utils import HashWriter, empty_bytearray
+from cerberus.wire import DataError, ProcessError
 
 from apps.common.writers import write_compact_size
 
@@ -22,8 +22,8 @@ from .tx_info import OriginalTxInfo
 if TYPE_CHECKING:
     from typing import Sequence
 
-    from trezor.crypto import bip32
-    from trezor.messages import PrevInput, PrevOutput, PrevTx, SignTx, TxInput, TxOutput
+    from cerberus.crypto import bip32
+    from cerberus.messages import PrevInput, PrevOutput, PrevTx, SignTx, TxInput, TxOutput
 
     from apps.common.coininfo import CoinInfo
     from apps.common.keychain import Keychain
@@ -97,7 +97,7 @@ class Bitcoin:
         coin: CoinInfo,
         approver: approvers.Approver | None,
     ) -> None:
-        from trezor.messages import (
+        from cerberus.messages import (
             TxRequest,
             TxRequestDetailsType,
             TxRequestSerializedType,
@@ -905,7 +905,7 @@ class Bitcoin:
         self.write_tx_footer(w, tx)
 
     def set_serialized_signature(self, index: int, signature: bytes) -> None:
-        from trezor.utils import ensure
+        from cerberus.utils import ensure
 
         serialized = self.tx_req.serialized  # local_cache_attribute
 
@@ -933,7 +933,7 @@ class Bitcoin:
         return scripts.output_derive_script(address, self.coin)
 
     def output_derive_script(self, txo: TxOutput) -> bytes:
-        from trezor.enums import OutputScriptType
+        from cerberus.enums import OutputScriptType
 
         if txo.script_type == OutputScriptType.PAYTOOPRETURN:
             assert txo.op_return_data is not None  # checked in _sanitize_tx_output

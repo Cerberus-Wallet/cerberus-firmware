@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
-from trezor.enums import TezosContractType
-from trezor.wire import DataError
+from cerberus.enums import TezosContractType
+from cerberus.wire import DataError
 
 from apps.common.keychain import with_slip44_keychain
 from apps.common.writers import write_bytes_fixed, write_uint8, write_uint32_be
@@ -16,7 +16,7 @@ from .helpers import (  # symbols used more than once
 )
 
 if TYPE_CHECKING:
-    from trezor.messages import (
+    from cerberus.messages import (
         TezosContractID,
         TezosDelegationOp,
         TezosOriginationOp,
@@ -25,17 +25,17 @@ if TYPE_CHECKING:
         TezosSignTx,
         TezosTransactionOp,
     )
-    from trezor.utils import Writer
+    from cerberus.utils import Writer
 
     from apps.common.keychain import Keychain
 
 
 @with_slip44_keychain(*PATTERNS, slip44_id=SLIP44_ID, curve=CURVE)
 async def sign_tx(msg: TezosSignTx, keychain: Keychain) -> TezosSignedTx:
-    from trezor.crypto import hashlib
-    from trezor.crypto.curve import ed25519
-    from trezor.enums import TezosBallotType
-    from trezor.messages import TezosSignedTx
+    from cerberus.crypto import hashlib
+    from cerberus.crypto.curve import ed25519
+    from cerberus.enums import TezosBallotType
+    from cerberus.messages import TezosSignedTx
 
     from apps.common.paths import validate_path
 

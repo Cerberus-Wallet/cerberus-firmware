@@ -9,7 +9,7 @@ def stm32f4_common_files(env, defines, sources, paths):
     ]
 
     paths += [
-        "embed/trezorhal/stm32f4",
+        "embed/cerberushal/stm32f4",
         "vendor/micropython/lib/stm32lib/STM32F4xx_HAL_Driver/Inc",
         "vendor/micropython/lib/stm32lib/CMSIS/STM32F4xx/Include",
     ]
@@ -38,18 +38,18 @@ def stm32f4_common_files(env, defines, sources, paths):
     ]
 
     sources += [
-        "embed/trezorhal/stm32f4/board_capabilities.c",
-        "embed/trezorhal/stm32f4/common.c",
-        "embed/trezorhal/stm32f4/flash.c",
-        "embed/trezorhal/stm32f4/lowlevel.c",
-        "embed/trezorhal/stm32f4/mpu.c",
-        "embed/trezorhal/stm32f4/platform.c",
-        "embed/trezorhal/stm32f4/systick.c",
-        "embed/trezorhal/stm32f4/supervise.c",
-        "embed/trezorhal/stm32f4/random_delays.c",
-        "embed/trezorhal/stm32f4/rng.c",
-        "embed/trezorhal/stm32f4/vectortable.s",
-        "embed/trezorhal/stm32f4/translations.c",
+        "embed/cerberushal/stm32f4/board_capabilities.c",
+        "embed/cerberushal/stm32f4/common.c",
+        "embed/cerberushal/stm32f4/flash.c",
+        "embed/cerberushal/stm32f4/lowlevel.c",
+        "embed/cerberushal/stm32f4/mpu.c",
+        "embed/cerberushal/stm32f4/platform.c",
+        "embed/cerberushal/stm32f4/systick.c",
+        "embed/cerberushal/stm32f4/supervise.c",
+        "embed/cerberushal/stm32f4/random_delays.c",
+        "embed/cerberushal/stm32f4/rng.c",
+        "embed/cerberushal/stm32f4/vectortable.s",
+        "embed/cerberushal/stm32f4/translations.c",
     ]
 
     # boardloader needs separate assembler for some function unencumbered by various FW+bootloader hacks
@@ -57,15 +57,15 @@ def stm32f4_common_files(env, defines, sources, paths):
     env_constraints = env.get("CONSTRAINTS")
     if env_constraints and "limited_util_s" in env_constraints:
         sources += [
-            "embed/trezorhal/stm32f4/limited_util.s",
+            "embed/cerberushal/stm32f4/limited_util.s",
         ]
     else:
         sources += [
-            "embed/trezorhal/stm32f4/util.s",
+            "embed/cerberushal/stm32f4/util.s",
         ]
 
     env.get("ENV")["RUST_INCLUDES"] = (
-        "-I../trezorhal/stm32f4;"
+        "-I../cerberushal/stm32f4;"
         "-I../../vendor/micropython/lib/stm32lib/STM32F4xx_HAL_Driver/Inc;"
         "-I../../vendor/micropython/lib/stm32lib/CMSIS/STM32F4xx/Include;"
         "-DSTM32_HAL_H=<stm32f4xx.h>;"

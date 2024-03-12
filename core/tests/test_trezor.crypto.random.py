@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto import random
+from cerberus.crypto import random
 
 
 class TestCryptoRandom(unittest.TestCase):

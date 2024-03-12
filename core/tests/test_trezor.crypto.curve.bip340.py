@@ -1,7 +1,7 @@
 from common import *  # isort:skip
 
-from trezor.crypto import random
-from trezor.crypto.curve import bip340
+from cerberus.crypto import random
+from cerberus.crypto.curve import bip340
 
 
 class TestCryptoBip340(unittest.TestCase):

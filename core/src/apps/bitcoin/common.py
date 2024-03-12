@@ -1,17 +1,17 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor import wire
-from trezor.crypto import bech32
-from trezor.crypto.curve import bip340
-from trezor.enums import InputScriptType, OutputScriptType
+from cerberus import wire
+from cerberus.crypto import bech32
+from cerberus.crypto.curve import bip340
+from cerberus.enums import InputScriptType, OutputScriptType
 
 if TYPE_CHECKING:
     from enum import IntEnum
 
-    from trezor.crypto import bip32
-    from trezor.messages import TxInput
-    from trezor.utils import HashWriter
+    from cerberus.crypto import bip32
+    from cerberus.messages import TxInput
+    from cerberus.utils import HashWriter
 
     from apps.common.coininfo import CoinInfo
 else:
@@ -103,8 +103,8 @@ NONSEGWIT_INPUT_SCRIPT_TYPES = (
 
 
 def ecdsa_sign(node: bip32.HDNode, digest: bytes) -> bytes:
-    from trezor.crypto import der
-    from trezor.crypto.curve import secp256k1
+    from cerberus.crypto import der
+    from cerberus.crypto.curve import secp256k1
 
     sig = secp256k1.sign(node.private_key(), digest)
     sigder = der.encode_seq((sig[1:33], sig[33:65]))
@@ -118,7 +118,7 @@ def bip340_sign(node: bip32.HDNode, digest: bytes) -> bytes:
 
 
 def ecdsa_hash_pubkey(pubkey: bytes, coin: CoinInfo) -> bytes:
-    from trezor.utils import ensure
+    from cerberus.utils import ensure
 
     if pubkey[0] == 0x04:
         ensure(len(pubkey) == 65)  # uncompressed format
@@ -186,8 +186,8 @@ def input_is_external_unverified(txi: TxInput) -> bool:
 
 
 def tagged_hashwriter(tag: bytes) -> HashWriter:
-    from trezor.crypto.hashlib import sha256
-    from trezor.utils import HashWriter
+    from cerberus.crypto.hashlib import sha256
+    from cerberus.utils import HashWriter
 
     tag_digest = sha256(tag).digest()
     ctx = sha256(tag_digest)
@@ -198,7 +198,7 @@ def tagged_hashwriter(tag: bytes) -> HashWriter:
 def format_fee_rate(
     fee_rate: float, coin: CoinInfo, include_shortcut: bool = False
 ) -> str:
-    from trezor.strings import format_amount
+    from cerberus.strings import format_amount
 
     # Use format_amount to get correct thousands separator -- micropython's built-in
     # formatting doesn't add thousands sep to floating point numbers.
@@ -214,7 +214,7 @@ def format_fee_rate(
     return f"{fee_rate_formatted} sat{shortcut}/{'v' if coin.segwit else ''}B"
 
 
-# function copied from python/src/trezorlib/tools.py
+# function copied from python/src/cerberuslib/tools.py
 def descriptor_checksum(desc: str) -> str:
     def _polymod(c: int, val: int) -> int:
         c0 = c >> 35

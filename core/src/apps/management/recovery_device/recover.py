@@ -2,10 +2,10 @@ from typing import TYPE_CHECKING
 
 import storage.recovery as storage_recovery
 import storage.recovery_shares as storage_recovery_shares
-from trezor.crypto import slip39
+from cerberus.crypto import slip39
 
 if TYPE_CHECKING:
-    from trezor.enums import BackupType
+    from cerberus.enums import BackupType
 
 
 class RecoveryAborted(Exception):
@@ -17,8 +17,8 @@ def process_bip39(words: str) -> bytes:
     Receives single mnemonic and processes it. Returns what is then stored
     in the storage, which is the mnemonic itself for BIP-39.
     """
-    from trezor.crypto import bip39
-    from trezor.errors import MnemonicError
+    from cerberus.crypto import bip39
+    from cerberus.errors import MnemonicError
 
     if not bip39.check(words):
         raise MnemonicError

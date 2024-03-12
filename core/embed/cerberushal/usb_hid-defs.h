@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -41,7 +41,7 @@ typedef struct {
   const uint8_t *report_desc;  // With length of report_desc_len bytes
   uint8_t *rx_buffer;          // With length of max_packet_len bytes
   uint8_t iface_num;           // Address of this HID interface
-#ifdef TREZOR_EMULATOR
+#ifdef CERBERUS_EMULATOR
   uint16_t emu_port;  // UDP port of this interface in the emulator.
 #else
   uint8_t ep_in;   // Address of IN endpoint (with the highest bit set)

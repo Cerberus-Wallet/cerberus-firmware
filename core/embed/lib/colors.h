@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -21,7 +21,7 @@
 #define _COLORS_H
 
 #include "common.h"
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
 #ifdef USE_RGB_COLORS
 #define RGB16(R, G, B) ((R & 0xF8) << 8) | ((G & 0xFC) << 3) | ((B & 0xF8) >> 3)

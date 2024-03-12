@@ -1,10 +1,10 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor import utils
-from trezor.crypto.hashlib import sha256
-from trezor.utils import HashWriter
-from trezor.wire import DataError
+from cerberus import utils
+from cerberus.crypto.hashlib import sha256
+from cerberus.utils import HashWriter
+from cerberus.wire import DataError
 
 from apps.bitcoin.writers import write_bytes_prefixed
 from apps.common.readers import read_compact_size
@@ -12,9 +12,9 @@ from apps.common.readers import read_compact_size
 from .scripts import read_bip322_signature_proof
 
 if TYPE_CHECKING:
-    from trezor.crypto import bip32
-    from trezor.enums import InputScriptType
-    from trezor.messages import MultisigRedeemScriptType
+    from cerberus.crypto import bip32
+    from cerberus.enums import InputScriptType
+    from cerberus.messages import MultisigRedeemScriptType
 
     from apps.common.coininfo import CoinInfo
     from apps.common.keychain import Keychain
@@ -39,7 +39,7 @@ def generate_proof(
     script_pubkey: bytes,
     commitment_data: bytes,
 ) -> tuple[bytes, bytes]:
-    from trezor.enums import InputScriptType
+    from cerberus.enums import InputScriptType
 
     from apps.bitcoin.writers import write_bytes_fixed, write_compact_size, write_uint8
 
@@ -149,7 +149,7 @@ def read_scriptsig_witness(ownership_proof: bytes) -> tuple[memoryview, memoryvi
 
 
 def get_identifier(script_pubkey: bytes, keychain: Keychain) -> bytes:
-    from trezor.crypto import hmac
+    from cerberus.crypto import hmac
 
     # k = Key(m/"SLIP-0019"/"Ownership identification key")
     node = keychain.derive_slip21(_OWNERSHIP_ID_KEY_PATH)

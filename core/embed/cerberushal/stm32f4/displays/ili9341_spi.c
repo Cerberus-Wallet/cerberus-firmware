@@ -1,7 +1,7 @@
 
 
 #include <stdint.h>
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 #include "ili9341_spi.h"
 #include STM32_HAL_H
 

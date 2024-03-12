@@ -1,6 +1,6 @@
 from micropython import const
 
-from trezor import TR
+from cerberus import TR
 
 # https://book.world.dev.cardano.org/environments.html
 MAINNET = const(764824073)

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -105,7 +105,7 @@ typedef struct {
   uint8_t iface_num;         // Address of this VCP interface
   uint8_t data_iface_num;    // Address of data interface of the VCP interface
                              // association
-#ifdef TREZOR_EMULATOR
+#ifdef CERBERUS_EMULATOR
   uint16_t emu_port;  // UDP port of this interface in the emulator.
 #else
   uint8_t ep_cmd;  // Address of IN CMD endpoint (with the highest bit set)

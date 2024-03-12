@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -48,7 +48,7 @@ static bool mpz_as_ll_checked(const mpz_t *i, long long *value) {
   return true;
 }
 
-bool trezor_obj_get_ll_checked(mp_obj_t obj, long long *value) {
+bool cerberus_obj_get_ll_checked(mp_obj_t obj, long long *value) {
   if (mp_obj_is_small_int(obj)) {
     // Value is fitting in a small int range. Return it directly.
     *value = MP_OBJ_SMALL_INT_VALUE(obj);
@@ -66,7 +66,7 @@ bool trezor_obj_get_ll_checked(mp_obj_t obj, long long *value) {
   }
 }
 
-mp_obj_t trezor_obj_call_protected(void (*func)(void *), void *arg) {
+mp_obj_t cerberus_obj_call_protected(void (*func)(void *), void *arg) {
   nlr_buf_t nlr;
   if (nlr_push(&nlr) == 0) {
     (*func)(arg);
@@ -77,7 +77,7 @@ mp_obj_t trezor_obj_call_protected(void (*func)(void *), void *arg) {
   }
 }
 
-mp_obj_t trezor_obj_str_from_rom_text(const char *str) {
+mp_obj_t cerberus_obj_str_from_rom_text(const char *str) {
   // taken from mp_obj_new_exception_msg
   mp_obj_str_t *o_str = m_new_obj_maybe(mp_obj_str_t);
   if (o_str == NULL) return NULL;

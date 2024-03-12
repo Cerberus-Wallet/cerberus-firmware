@@ -1,6 +1,6 @@
 from common import *  # isort:skip
 
-from trezor.crypto.curve import curve25519
+from cerberus.crypto.curve import curve25519
 
 
 class TestCryptoCurve25519(unittest.TestCase):

@@ -1,11 +1,11 @@
 from typing import TYPE_CHECKING
 
-from trezor.crypto.hashlib import sha256
+from cerberus.crypto.hashlib import sha256
 
 from apps.common import coininfo
 
 if TYPE_CHECKING:
-    from trezor.messages import IdentityType, SignedIdentity, SignIdentity
+    from cerberus.messages import IdentityType, SignedIdentity, SignIdentity
 
     from apps.common.paths import Bip32Path
 
@@ -14,8 +14,8 @@ if TYPE_CHECKING:
 
 
 async def sign_identity(msg: SignIdentity) -> SignedIdentity:
-    from trezor.messages import SignedIdentity
-    from trezor.ui.layouts import confirm_sign_identity
+    from cerberus.messages import SignedIdentity
+    from cerberus.ui.layouts import confirm_sign_identity
 
     from apps.common.keychain import get_keychain
     from apps.common.paths import AlwaysMatchingSchema
@@ -106,7 +106,7 @@ def sign_challenge(
     sigtype: str | coininfo.CoinInfo,
     curve: str,
 ) -> bytes:
-    from trezor.wire import DataError
+    from cerberus.wire import DataError
 
     from apps.common.signverify import message_digest
 
@@ -132,15 +132,15 @@ def sign_challenge(
         raise DataError("Unsupported sigtype")
 
     if curve == "secp256k1":
-        from trezor.crypto.curve import secp256k1
+        from cerberus.crypto.curve import secp256k1
 
         signature = secp256k1.sign(seckey, data)
     elif curve == "nist256p1":
-        from trezor.crypto.curve import nist256p1
+        from cerberus.crypto.curve import nist256p1
 
         signature = nist256p1.sign(seckey, data)
     elif curve == "ed25519":
-        from trezor.crypto.curve import ed25519
+        from cerberus.crypto.curve import ed25519
 
         signature = ed25519.sign(seckey, data)
     else:

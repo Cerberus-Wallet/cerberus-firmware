@@ -25,11 +25,11 @@ runs:
       shell: sh
     - name: Upload report
       run: |
-        aws s3 sync ${{ github.run_id }} s3://data.trezorcheck.io/dev/firmware/ui_report/${{ github.run_id }}
+        aws s3 sync ${{ github.run_id }} s3://data.trezer.io/dev/firmware/ui_report/${{ github.run_id }}
       shell: sh
     - name: Upload test screen recording
       run: |
-        aws s3 sync ci/ui_test_records s3://data.trezorcheck.io/dev/firmware/ui_tests
+        aws s3 sync ci/ui_test_records s3://data.trezer.io/dev/firmware/ui_tests
         # TODO: generate directory listing / autoindex
       shell: sh
     - uses: actions/upload-artifact@v4

@@ -1,13 +1,13 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import NEMProvisionNamespace, NEMTransactionCommon
+    from cerberus.messages import NEMProvisionNamespace, NEMTransactionCommon
 
 
 async def ask_provision_namespace(
     common: NEMTransactionCommon, namespace: NEMProvisionNamespace
 ) -> None:
-    from trezor import TR
+    from cerberus import TR
 
     from ..layout import (
         require_confirm_content,

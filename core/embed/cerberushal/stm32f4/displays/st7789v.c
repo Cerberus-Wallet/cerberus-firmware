@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -19,14 +19,14 @@
 
 #include <stdbool.h>
 #include <stdint.h>
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 #include "backlight_pwm.h"
 #include "display_interface.h"
 #include "memzero.h"
 #include "st7789v.h"
 #include STM32_HAL_H
 
-#ifdef TREZOR_MODEL_T
+#ifdef CERBERUS_MODEL_T
 #include "displays/panels/154a.h"
 #include "displays/panels/lx154a2411.h"
 #include "displays/panels/lx154a2422.h"
@@ -189,7 +189,7 @@ int display_orientation(int degrees) {
         // 2 bytes per pixel because we're using RGB 5-6-5 format
         PIXELDATA(0x0000);
       }
-#ifdef TREZOR_MODEL_T
+#ifdef CERBERUS_MODEL_T
       uint32_t id = display_identify();
       if (id == DISPLAY_ID_GC9307) {
         tf15411a_rotate(degrees, &DISPLAY_PADDING);
@@ -221,7 +221,7 @@ void display_init_seq(void) {
   HAL_Delay(120);
 
   // identify the controller we will communicate with
-#ifdef TREZOR_MODEL_T
+#ifdef CERBERUS_MODEL_T
   uint32_t id = display_identify();
   if (id == DISPLAY_ID_GC9307) {
     tf15411a_init_seq();
@@ -362,7 +362,7 @@ void display_reinit(void) {
 
   backlight_pwm_reinit();
 
-#ifdef TREZOR_MODEL_T
+#ifdef CERBERUS_MODEL_T
   uint32_t id = display_identify();
   if (id == DISPLAY_ID_ST7789V && display_is_inverted()) {
     // newest TT display - set proper gamma

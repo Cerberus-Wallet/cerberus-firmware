@@ -1,4 +1,4 @@
-from trezor import utils
+from cerberus import utils
 
 if utils.UI_LAYOUT == "TT":
     from .tt.fido import *  # noqa: F401,F403

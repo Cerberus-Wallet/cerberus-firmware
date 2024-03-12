@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import Any, Generic, TypeVar
 
-    from trezor.messages import TxInput, TxOutput
+    from cerberus.messages import TxInput, TxOutput
 
     from apps.common.paths import Bip32Path
 
@@ -49,7 +49,7 @@ class MatchChecker(Generic[T]):
         raise NotImplementedError
 
     def add_input(self, txi: TxInput) -> None:
-        from trezor.utils import ensure
+        from cerberus.utils import ensure
 
         ensure(not self.read_only)
 
@@ -65,7 +65,7 @@ class MatchChecker(Generic[T]):
             self.attribute = self.MISMATCH
 
     def check_input(self, txi: TxInput) -> None:
-        from trezor import wire
+        from cerberus import wire
 
         if self.attribute is self.MISMATCH:
             return  # There was already a mismatch when adding inputs, ignore it now.
@@ -109,8 +109,8 @@ class MultisigFingerprintChecker(MatchChecker):
 
 class ScriptTypeChecker(MatchChecker):
     def attribute_from_tx(self, txio: TxInput | TxOutput) -> Any:
-        from trezor.enums import InputScriptType
-        from trezor.messages import TxOutput
+        from cerberus.enums import InputScriptType
+        from cerberus.messages import TxOutput
 
         from ..common import CHANGE_OUTPUT_TO_INPUT_SCRIPT_TYPES
 

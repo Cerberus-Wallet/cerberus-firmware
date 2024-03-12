@@ -8,7 +8,7 @@ import micropython
 # frozen modules, and regular build can import it from current directory.
 sys.path.insert(0, "")
 
-PATH_PREFIX = (getenv("TREZOR_SRC") or ".") + "/"
+PATH_PREFIX = (getenv("CERBERUS_SRC") or ".") + "/"
 
 
 class Coverage:
@@ -121,7 +121,7 @@ sys.atexit(atexit)
 
 global __prof__
 if not "__prof__" in globals():
-    if getenv("TREZOR_MEMPERF") == "1":
+    if getenv("CERBERUS_MEMPERF") == "1":
         __prof__ = AllocCounter()
     else:
         __prof__ = _Prof()

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -60,7 +60,7 @@
 #include "rust_ui.h"
 #include "unit_variant.h"
 
-#ifdef TREZOR_EMULATOR
+#ifdef CERBERUS_EMULATOR
 #include "emulator.h"
 #else
 #include "compiler_traits.h"
@@ -90,9 +90,9 @@ static void usb_init_all(secbool usb21_landing) {
       .product_id = 0x53C0,
       .release_num = 0x0200,
       .manufacturer = "SatoshiLabs",
-      .product = "TREZOR",
+      .product = "CERBERUS",
       .serial_number = "000000000000000000000000",
-      .interface = "TREZOR Interface",
+      .interface = "CERBERUS Interface",
       .usb21_enabled = sectrue,
       .usb21_landing = usb21_landing,
   };
@@ -101,7 +101,7 @@ static void usb_init_all(secbool usb21_landing) {
 
   static const usb_webusb_info_t webusb_info = {
       .iface_num = USB_IFACE_NUM,
-#ifdef TREZOR_EMULATOR
+#ifdef CERBERUS_EMULATOR
       .emu_port = 21325,
 #else
       .ep_in = USB_EP_DIR_IN | 0x01,
@@ -130,7 +130,7 @@ static usb_result_t bootloader_usb_loop(const vendor_header *const vhdr,
   uint8_t buf[USB_PACKET_SIZE];
 
   for (;;) {
-#ifdef TREZOR_EMULATOR
+#ifdef CERBERUS_EMULATOR
     emulator_poll_events();
 #endif
     int r = usb_webusb_read_blocking(USB_IFACE_NUM, buf, USB_PACKET_SIZE,
@@ -320,7 +320,7 @@ void real_jump_to_firmware(void) {
 #ifdef USE_OPTIGA
   if (((vhdr.vtrust & VTRUST_SECRET) != 0) && (sectrue != secret_wiped())) {
     ui_screen_install_restricted();
-    trezor_shutdown();
+    cerberus_shutdown();
   }
 #endif
 
@@ -357,7 +357,7 @@ void real_jump_to_firmware(void) {
   jump_to(FIRMWARE_START + vhdr.hdrlen + IMAGE_HEADER_SIZE);
 }
 
-#ifndef TREZOR_EMULATOR
+#ifndef CERBERUS_EMULATOR
 int main(void) {
 #else
 int bootloader_main(void) {
@@ -376,7 +376,7 @@ int bootloader_main(void) {
 
   mpu_config_bootloader();
 
-#ifdef TREZOR_EMULATOR
+#ifdef CERBERUS_EMULATOR
   // wait a bit so that the empty lock icon is visible
   // (on a real device, we are waiting for touch init which takes longer)
   hal_delay(400);
@@ -428,7 +428,7 @@ int bootloader_main(void) {
     firmware_present_backup = firmware_present;
   }
 
-#if defined TREZOR_MODEL_T
+#if defined CERBERUS_MODEL_T
   set_core_clock(CLOCK_180_MHZ);
   display_set_little_endian();
 #endif
@@ -492,7 +492,7 @@ int bootloader_main(void) {
       if (touched) {
         break;
       }
-#ifdef TREZOR_EMULATOR
+#ifdef CERBERUS_EMULATOR
       hal_delay(25);
 #else
       hal_delay(1);

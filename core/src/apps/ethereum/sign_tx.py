@@ -1,9 +1,9 @@
 from typing import TYPE_CHECKING
 
-from trezor.crypto import rlp
-from trezor.messages import EthereumTxRequest
-from trezor.utils import BufferReader
-from trezor.wire import DataError
+from cerberus.crypto import rlp
+from cerberus.messages import EthereumTxRequest
+from cerberus.utils import BufferReader
+from cerberus.wire import DataError
 
 from apps.ethereum import staking_tx_constants as constants
 
@@ -13,7 +13,7 @@ from .keychain import with_keychain_from_chain_id
 if TYPE_CHECKING:
     from typing import Iterable
 
-    from trezor.messages import (
+    from cerberus.messages import (
         EthereumNetworkInfo,
         EthereumSignTx,
         EthereumTokenInfo,
@@ -38,8 +38,8 @@ async def sign_tx(
     keychain: Keychain,
     defs: Definitions,
 ) -> EthereumTxRequest:
-    from trezor.crypto.hashlib import sha3_256
-    from trezor.utils import HashWriter
+    from cerberus.crypto.hashlib import sha3_256
+    from cerberus.utils import HashWriter
 
     from apps.common import paths
 
@@ -233,8 +233,8 @@ def _get_total_length(msg: EthereumSignTx, data_total: int) -> int:
 
 
 async def send_request_chunk(data_left: int) -> EthereumTxAck:
-    from trezor.messages import EthereumTxAck
-    from trezor.wire.context import call
+    from cerberus.messages import EthereumTxAck
+    from cerberus.wire.context import call
 
     # TODO: layoutProgress ?
     req = EthereumTxRequest()
@@ -245,7 +245,7 @@ async def send_request_chunk(data_left: int) -> EthereumTxAck:
 def _sign_digest(
     msg: EthereumSignTx, keychain: Keychain, digest: bytes
 ) -> EthereumTxRequest:
-    from trezor.crypto.curve import secp256k1
+    from cerberus.crypto.curve import secp256k1
 
     node = keychain.derive(msg.address_n)
     signature = secp256k1.sign(

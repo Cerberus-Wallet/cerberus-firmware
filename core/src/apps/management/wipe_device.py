@@ -1,15 +1,15 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import Success, WipeDevice
+    from cerberus.messages import Success, WipeDevice
 
 
 async def wipe_device(msg: WipeDevice) -> Success:
     import storage
-    from trezor import TR, translations
-    from trezor.enums import ButtonRequestType
-    from trezor.messages import Success
-    from trezor.ui.layouts import confirm_action
+    from cerberus import TR, translations
+    from cerberus.enums import ButtonRequestType
+    from cerberus.messages import Success
+    from cerberus.ui.layouts import confirm_action
 
     from apps.base import reload_settings_from_storage
 

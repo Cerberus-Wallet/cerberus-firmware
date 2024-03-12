@@ -1,8 +1,8 @@
 from common import *  # isort:skip
 
-from trezor.crypto import bip39
-from trezor.enums import InputScriptType, OutputScriptType
-from trezor.messages import PrevOutput, SignTx, TxInput, TxOutput
+from cerberus.crypto import bip39
+from cerberus.enums import InputScriptType, OutputScriptType
+from cerberus.messages import PrevOutput, SignTx, TxInput, TxOutput
 
 from apps.bitcoin.common import SigHashType
 from apps.bitcoin.scripts import output_derive_script

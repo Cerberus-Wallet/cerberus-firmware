@@ -3,13 +3,13 @@ from common import *  # isort:skip
 import typing as t
 import unittest
 
-from trezor import utils, wire
+from cerberus import utils, wire
 
 if not utils.BITCOIN_ONLY:
 
     from ethereum_common import *
-    from trezor.enums import EthereumDefinitionType
-    from trezor.messages import EthereumNetworkInfo, EthereumTokenInfo
+    from cerberus.enums import EthereumDefinitionType
+    from cerberus.messages import EthereumNetworkInfo, EthereumTokenInfo
 
     from apps.ethereum import networks, tokens
     from apps.ethereum.definitions import Definitions, decode_definition

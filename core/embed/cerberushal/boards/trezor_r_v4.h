@@ -1,5 +1,5 @@
-#ifndef _TREZOR_R_V4_H
-#define _TREZOR_R_V4_H
+#ifndef _CERBERUS_R_V4_H
+#define _CERBERUS_R_V4_H
 
 #define HSE_8MHZ
 
@@ -35,4 +35,4 @@
 #define OLED_SPI_MOSI_PIN GPIO_PIN_6  // PE6 | SPI MOSI
 #define OLED_SPI_MOSI_CLK_ENA __HAL_RCC_GPIOE_CLK_ENABLE
 
-#endif  //_TREZOR_R_V4_H
+#endif  //_CERBERUS_R_V4_H

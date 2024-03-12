@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -45,30 +45,30 @@
 
 const char *profile_name(void) {
   SVAR(_profile_name);
-  GETENV(_profile_name, "TREZOR_PROFILE_NAME", PROFILE_NAME_DEFAULT);
+  GETENV(_profile_name, "CERBERUS_PROFILE_NAME", PROFILE_NAME_DEFAULT);
   return _profile_name;
 }
 
 const char *profile_dir(void) {
   SVAR(_profile_dir);
-  GETENV(_profile_dir, "TREZOR_PROFILE_DIR", PROFILE_DIR_DEFAULT);
+  GETENV(_profile_dir, "CERBERUS_PROFILE_DIR", PROFILE_DIR_DEFAULT);
   return _profile_dir;
 }
 
 const char *profile_flash_path(void) {
   SVAR(_flash_path);
-  FILE_PATH(_flash_path, "/trezor.flash");
+  FILE_PATH(_flash_path, "/cerberus.flash");
   return _flash_path;
 }
 
 const char *profile_sdcard_path(void) {
   SVAR(_sdcard_path);
-  FILE_PATH(_sdcard_path, "/trezor.sdcard");
+  FILE_PATH(_sdcard_path, "/cerberus.sdcard");
   return _sdcard_path;
 }
 
 const char *profile_usb_disconnect_path(void) {
   SVAR(_disconnect_path);
-  FILE_PATH(_disconnect_path, "/trezor.usb_data_disconnected");
+  FILE_PATH(_disconnect_path, "/cerberus.usb_data_disconnected");
   return _disconnect_path;
 }

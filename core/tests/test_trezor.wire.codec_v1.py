@@ -2,10 +2,10 @@ from common import *  # isort:skip
 
 import ustruct
 
-from trezor import io
-from trezor.loop import wait
-from trezor.utils import chunks
-from trezor.wire import codec_v1
+from cerberus import io
+from cerberus.loop import wait
+from cerberus.utils import chunks
+from cerberus.wire import codec_v1
 
 
 class MockHID:

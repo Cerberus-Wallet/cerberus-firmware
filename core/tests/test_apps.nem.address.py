@@ -3,7 +3,7 @@ from common import *  # isort:skip
 from apps.common.paths import HARDENED
 
 if not utils.BITCOIN_ONLY:
-    from trezor.crypto import nem
+    from cerberus.crypto import nem
 
     from apps.nem.helpers import (
         NEM_NETWORK_MAINNET,

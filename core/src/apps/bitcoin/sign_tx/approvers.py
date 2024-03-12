@@ -1,10 +1,10 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor.crypto.curve import bip340, secp256k1
-from trezor.crypto.hashlib import sha256
-from trezor.utils import HashWriter
-from trezor.wire import DataError, ProcessError
+from cerberus.crypto.curve import bip340, secp256k1
+from cerberus.crypto.hashlib import sha256
+from cerberus.utils import HashWriter
+from cerberus.wire import DataError, ProcessError
 
 from apps.common import safety_checks
 
@@ -16,8 +16,8 @@ from .sig_hasher import BitcoinSigHasher
 from .tx_info import OriginalTxInfo
 
 if TYPE_CHECKING:
-    from trezor.crypto import bip32
-    from trezor.messages import SignTx, TxAckPaymentRequest, TxInput, TxOutput
+    from cerberus.crypto import bip32
+    from cerberus.messages import SignTx, TxAckPaymentRequest, TxInput, TxOutput
 
     from apps.common.coininfo import CoinInfo
     from apps.common.keychain import Keychain
@@ -187,7 +187,7 @@ class BasicApprover(Approver):
         script_pubkey: bytes,
         orig_txo: TxOutput | None = None,
     ) -> None:
-        from trezor.enums import OutputScriptType
+        from cerberus.enums import OutputScriptType
 
         await super().add_external_output(txo, script_pubkey, orig_txo)
 
@@ -257,7 +257,7 @@ class BasicApprover(Approver):
     def _replacement_title(
         self, tx_info: TxInfo, orig_txs: list[OriginalTxInfo]
     ) -> str:
-        from trezor import TR
+        from cerberus import TR
 
         if self.is_payjoin():
             return TR.bitcoin__title_payjoin
@@ -271,7 +271,7 @@ class BasicApprover(Approver):
             return TR.bitcoin__title_update_transaction
 
     async def approve_tx(self, tx_info: TxInfo, orig_txs: list[OriginalTxInfo]) -> None:
-        from trezor.wire import NotEnoughFunds
+        from cerberus.wire import NotEnoughFunds
 
         coin = self.coin  # local_cache_attribute
         amount_unit = self.amount_unit  # local_cache_attribute
@@ -381,7 +381,7 @@ class CoinJoinApprover(Approver):
     # The coinjoin request may specify an even lower amount.
     MIN_REGISTRABLE_OUTPUT_AMOUNT = const(5000)
 
-    # Largest possible weight of an output supported by Trezor (P2TR or P2WSH).
+    # Largest possible weight of an output supported by Cerberus (P2TR or P2WSH).
     MAX_OUTPUT_WEIGHT = 4 * (8 + 1 + 1 + 1 + 32)
 
     # Masks for the signable and no_fee bits in coinjoin_flags.

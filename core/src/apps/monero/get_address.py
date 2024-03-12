@@ -3,16 +3,16 @@ from typing import TYPE_CHECKING
 from apps.common.keychain import auto_keychain
 
 if TYPE_CHECKING:
-    from trezor.messages import MoneroAddress, MoneroGetAddress
+    from cerberus.messages import MoneroAddress, MoneroGetAddress
 
     from apps.common.keychain import Keychain
 
 
 @auto_keychain(__name__)
 async def get_address(msg: MoneroGetAddress, keychain: Keychain) -> MoneroAddress:
-    from trezor import wire
-    from trezor.messages import MoneroAddress
-    from trezor.ui.layouts import show_address
+    from cerberus import wire
+    from cerberus.messages import MoneroAddress
+    from cerberus.ui.layouts import show_address
 
     from apps.common import paths
     from apps.monero import misc

@@ -48,7 +48,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import Any, TypeGuard, TypeVar
 
-    from trezor.messages import MoneroRctKeyPublic
+    from cerberus.messages import MoneroRctKeyPublic
 
     from apps.monero.xmr import crypto
 

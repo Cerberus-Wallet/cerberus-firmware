@@ -1,9 +1,9 @@
 from common import *  # isort:skip
 
-from trezor.crypto import hashlib
+from cerberus.crypto import hashlib
 
 if not utils.BITCOIN_ONLY:
-    from trezor.messages import NEMMosaic, NEMSignTx, NEMTransactionCommon, NEMTransfer
+    from cerberus.messages import NEMMosaic, NEMSignTx, NEMTransactionCommon, NEMTransfer
 
     from apps.nem.helpers import *
     from apps.nem.mosaic import *

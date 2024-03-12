@@ -1,7 +1,7 @@
-from trezor import TR
-from trezor.enums import ButtonRequestType
-from trezor.strings import format_amount
-from trezor.ui.layouts import confirm_metadata
+from cerberus import TR
+from cerberus.enums import ButtonRequestType
+from cerberus.strings import format_amount
+from cerberus.ui.layouts import confirm_metadata
 
 from .helpers import NEM_MAX_DIVISIBILITY
 
@@ -26,7 +26,7 @@ async def require_confirm_fee(action: str, fee: int) -> None:
 
 
 async def require_confirm_content(headline: str, content: list) -> None:
-    from trezor.ui.layouts import confirm_properties
+    from cerberus.ui.layouts import confirm_properties
 
     await confirm_properties(
         "confirm_content",

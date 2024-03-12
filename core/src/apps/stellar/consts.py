@@ -1,11 +1,11 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor.enums import MessageType
+from cerberus.enums import MessageType
 
 if TYPE_CHECKING:
-    from trezor import protobuf
-    from trezor.messages import (
+    from cerberus import protobuf
+    from cerberus.messages import (
         StellarAccountMergeOp,
         StellarAllowTrustOp,
         StellarBumpSequenceOp,
@@ -43,7 +43,7 @@ if TYPE_CHECKING:
 TX_TYPE = b"\x00\x00\x00\x02"
 
 # source: https://github.com/stellar/go/blob/a1db2a6b1f/xdr/Stellar-transaction.x#L35
-# Inflation not supported see https://github.com/trezor/trezor-core/issues/202#issuecomment-393342089
+# Inflation not supported see https://github.com/Cerberus-Wallet/cerberus-core/issues/202#issuecomment-393342089
 op_codes: dict[int, int] = {
     MessageType.StellarAccountMergeOp: 8,
     MessageType.StellarAllowTrustOp: 7,

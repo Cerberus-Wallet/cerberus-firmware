@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -22,7 +22,7 @@
 #include "button.h"
 #include "common.h"
 #include "display.h"
-#include "embed/extmod/trezorobj.h"
+#include "embed/extmod/cerberusobj.h"
 
 #define USB_DATA_IFACE (253)
 #define BUTTON_IFACE (254)
@@ -32,7 +32,7 @@
 
 extern bool usb_connected_previously;
 
-/// package: trezorio.__init__
+/// package: cerberusio.__init__
 
 /// def poll(ifaces: Iterable[int], list_ref: list, timeout_ms: int) -> bool:
 ///     """
@@ -49,7 +49,7 @@ extern bool usb_connected_previously;
 ///
 ///     If timeout occurs, False is returned, True otherwise.
 ///     """
-STATIC mp_obj_t mod_trezorio_poll(mp_obj_t ifaces, mp_obj_t list_ref,
+STATIC mp_obj_t mod_cerberusio_poll(mp_obj_t ifaces, mp_obj_t list_ref,
                                   mp_obj_t timeout_ms) {
   mp_obj_list_t *ret = MP_OBJ_TO_PTR(list_ref);
   if (!MP_OBJ_IS_TYPE(list_ref, &mp_type_list) || ret->len < 2) {
@@ -64,7 +64,7 @@ STATIC mp_obj_t mod_trezorio_poll(mp_obj_t ifaces, mp_obj_t list_ref,
   // just coerce it to an uint. Deliberately assigning *get_int* to *uint_t*
   // will give us C's wrapping unsigned overflow behavior, and the `deadline`
   // result will come out correct.
-  const mp_uint_t timeout = trezor_obj_get_int(timeout_ms);
+  const mp_uint_t timeout = cerberus_obj_get_int(timeout_ms);
   const mp_uint_t deadline = mp_hal_ticks_ms() + timeout;
   mp_obj_iter_buf_t iterbuf = {0};
 
@@ -72,11 +72,11 @@ STATIC mp_obj_t mod_trezorio_poll(mp_obj_t ifaces, mp_obj_t list_ref,
     mp_obj_t iter = mp_getiter(ifaces, &iterbuf);
     mp_obj_t item = 0;
     while ((item = mp_iternext(iter)) != MP_OBJ_STOP_ITERATION) {
-      const mp_uint_t i = trezor_obj_get_uint(item);
+      const mp_uint_t i = cerberus_obj_get_uint(item);
       const mp_uint_t iface = i & 0x00FF;
       const mp_uint_t mode = i & 0xFF00;
 
-#if defined TREZOR_EMULATOR
+#if defined CERBERUS_EMULATOR
       emulator_poll_events();
 #endif
 
@@ -185,4 +185,4 @@ STATIC mp_obj_t mod_trezorio_poll(mp_obj_t ifaces, mp_obj_t list_ref,
 
   return mp_const_false;
 }
-STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_trezorio_poll_obj, mod_trezorio_poll);
+STATIC MP_DEFINE_CONST_FUN_OBJ_3(mod_cerberusio_poll_obj, mod_cerberusio_poll);

@@ -1,7 +1,7 @@
 from common import *  # isort:skip
 
-from trezor import wire
-from trezor.crypto import bip39
+from cerberus import wire
+from cerberus.crypto import bip39
 
 from apps.common.keychain import Keychain
 from apps.common.seed import Slip21Node

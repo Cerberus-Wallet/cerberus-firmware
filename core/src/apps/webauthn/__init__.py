@@ -1,6 +1,6 @@
 def boot() -> None:
     import usb
-    from trezor import loop
+    from cerberus import loop
 
     from .fido2 import handle_reports
 

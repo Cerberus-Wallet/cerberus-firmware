@@ -3,15 +3,15 @@ from typing import TYPE_CHECKING
 from apps.common.keychain import auto_keychain
 
 if TYPE_CHECKING:
-    from trezor.messages import BinanceAddress, BinanceGetAddress
+    from cerberus.messages import BinanceAddress, BinanceGetAddress
 
     from apps.common.keychain import Keychain
 
 
 @auto_keychain(__name__)
 async def get_address(msg: BinanceGetAddress, keychain: Keychain) -> BinanceAddress:
-    from trezor.messages import BinanceAddress
-    from trezor.ui.layouts import show_address
+    from cerberus.messages import BinanceAddress
+    from cerberus.ui.layouts import show_address
 
     from apps.common import paths
 

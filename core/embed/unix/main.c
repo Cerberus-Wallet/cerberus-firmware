@@ -480,7 +480,7 @@ MP_NOINLINE int main_(int argc, char **argv) {
 
   pre_process_options(argc, argv);
 
-  // Map trezor.flash to memory.
+  // Map cerberus.flash to memory.
   flash_init();
 
 #if MICROPY_ENABLE_GC
@@ -658,11 +658,11 @@ MP_NOINLINE int main_(int argc, char **argv) {
 #endif
 
 #if MICROPY_PY_MICROPYTHON_MEM_INFO
-  char *env_str_trezor_log_memory = getenv("TREZOR_LOG_MEMORY");
-  if (!env_str_trezor_log_memory || atoi(env_str_trezor_log_memory) == 0) {
-    env_str_trezor_log_memory = NULL;
+  char *env_str_cerberus_log_memory = getenv("CERBERUS_LOG_MEMORY");
+  if (!env_str_cerberus_log_memory || atoi(env_str_cerberus_log_memory) == 0) {
+    env_str_cerberus_log_memory = NULL;
   }
-  if (mp_verbose_flag || env_str_trezor_log_memory) {
+  if (mp_verbose_flag || env_str_cerberus_log_memory) {
     mp_micropython_mem_info(0, NULL);
   }
 #endif
@@ -681,7 +681,7 @@ MP_NOINLINE int main_(int argc, char **argv) {
 
 #if !MICROPY_VFS
 
-#ifdef TREZOR_EMULATOR_FROZEN
+#ifdef CERBERUS_EMULATOR_FROZEN
 uint mp_import_stat(const char *path) { return MP_IMPORT_STAT_NO_EXIST; }
 #else
 uint mp_import_stat(const char *path) {

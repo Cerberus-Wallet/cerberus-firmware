@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TREZORHAL_STM32_H
-#define TREZORHAL_STM32_H
+#ifndef CERBERUSHAL_STM32_H
+#define CERBERUSHAL_STM32_H
 
 #include STM32_HAL_H
 #include <stdint.h>
@@ -42,4 +42,4 @@ void drop_privileges(void);
 
 extern uint32_t __stack_chk_guard;
 
-#endif  // TREZORHAL_STM32_H
+#endif  // CERBERUSHAL_STM32_H

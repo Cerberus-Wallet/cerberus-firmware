@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -23,7 +23,7 @@
 #include <stdint.h>
 #include "image.h"
 #include "secbool.h"
-#include TREZOR_BOARD
+#include CERBERUS_BOARD
 
 #define USB_TIMEOUT 500
 #define USB_PACKET_SIZE 64

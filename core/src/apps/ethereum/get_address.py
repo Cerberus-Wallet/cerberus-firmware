@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from .keychain import PATTERNS_ADDRESS, with_keychain_from_path
 
 if TYPE_CHECKING:
-    from trezor.messages import EthereumAddress, EthereumGetAddress
+    from cerberus.messages import EthereumAddress, EthereumGetAddress
 
     from apps.common.keychain import Keychain
 
@@ -16,8 +16,8 @@ async def get_address(
     keychain: Keychain,
     defs: Definitions,
 ) -> EthereumAddress:
-    from trezor.messages import EthereumAddress
-    from trezor.ui.layouts import show_address
+    from cerberus.messages import EthereumAddress
+    from cerberus.ui.layouts import show_address
 
     from apps.common import paths
 

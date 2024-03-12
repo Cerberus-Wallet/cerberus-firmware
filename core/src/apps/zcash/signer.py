@@ -1,15 +1,15 @@
 from micropython import const
 from typing import TYPE_CHECKING
 
-from trezor.wire import DataError
+from cerberus.wire import DataError
 
 from apps.bitcoin.sign_tx.bitcoinlike import Bitcoinlike
 
 if TYPE_CHECKING:
     from typing import Sequence
 
-    from trezor.messages import PrevTx, SignTx, TxInput, TxOutput
-    from trezor.utils import HashWriter
+    from cerberus.messages import PrevTx, SignTx, TxInput, TxOutput
+    from cerberus.utils import HashWriter
 
     from apps.bitcoin.keychain import Keychain
     from apps.bitcoin.sign_tx.approvers import Approver
@@ -30,7 +30,7 @@ class Zcash(Bitcoinlike):
         coin: CoinInfo,
         approver: Approver | None,
     ) -> None:
-        from trezor.utils import ensure
+        from cerberus.utils import ensure
 
         ensure(coin.overwintered)
         if tx.version != 5:
@@ -75,7 +75,7 @@ class Zcash(Bitcoinlike):
         return node.public_key(), signature
 
     async def process_original_input(self, txi: TxInput, script_pubkey: bytes) -> None:
-        from trezor.wire import ProcessError
+        from cerberus.wire import ProcessError
 
         raise ProcessError("Replacement transactions are not supported.")
         # Zcash transaction fees are very low
@@ -122,7 +122,7 @@ class Zcash(Bitcoinlike):
         write_compact_size(w, 0)  # nActionsOrchard
 
     def output_derive_script(self, txo: TxOutput) -> bytes:
-        from trezor.enums import OutputScriptType
+        from cerberus.enums import OutputScriptType
 
         from apps.bitcoin import scripts
 

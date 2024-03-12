@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -51,9 +51,9 @@ static void usb_init_all(secbool usb21_landing) {
       .product_id = 0x53C0,
       .release_num = 0x0200,
       .manufacturer = "SatoshiLabs",
-      .product = "TREZOR",
+      .product = "CERBERUS",
       .serial_number = "000000000000000000000000",
-      .interface = "TREZOR Interface",
+      .interface = "CERBERUS Interface",
       .usb21_enabled = sectrue,
       .usb21_landing = usb21_landing,
   };

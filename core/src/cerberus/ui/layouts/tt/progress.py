@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
-import trezorui2
-from trezor import TR, ui
+import cerberusui2
+from cerberus import TR, ui
 
 if TYPE_CHECKING:
     from typing import Any
@@ -37,7 +37,7 @@ def progress(
 ) -> ProgressLayout:
     message = message or TR.progress__please_wait  # def_arg
     return RustProgress(
-        layout=trezorui2.show_progress(
+        layout=cerberusui2.show_progress(
             title=message.upper(),
             indeterminate=indeterminate,
             description=description or "",
@@ -51,7 +51,7 @@ def bitcoin_progress(message: str) -> ProgressLayout:
 
 def coinjoin_progress(message: str) -> ProgressLayout:
     return RustProgress(
-        layout=trezorui2.show_progress_coinjoin(title=message, indeterminate=False)
+        layout=cerberusui2.show_progress_coinjoin(title=message, indeterminate=False)
     )
 
 

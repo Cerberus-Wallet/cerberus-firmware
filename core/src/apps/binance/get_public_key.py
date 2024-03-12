@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from apps.common.keychain import auto_keychain
 
 if TYPE_CHECKING:
-    from trezor.messages import BinanceGetPublicKey, BinancePublicKey
+    from cerberus.messages import BinanceGetPublicKey, BinancePublicKey
 
     from apps.common.keychain import Keychain
 
@@ -14,8 +14,8 @@ async def get_public_key(
 ) -> BinancePublicKey:
     from ubinascii import hexlify
 
-    from trezor.messages import BinancePublicKey
-    from trezor.ui.layouts import show_pubkey
+    from cerberus.messages import BinancePublicKey
+    from cerberus.ui.layouts import show_pubkey
 
     from apps.common import paths
 

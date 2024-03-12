@@ -3,15 +3,15 @@ from typing import TYPE_CHECKING
 from . import seed
 
 if TYPE_CHECKING:
-    from trezor.messages import CardanoAddress, CardanoGetAddress
+    from cerberus.messages import CardanoAddress, CardanoGetAddress
 
 
 @seed.with_keychain
 async def get_address(
     msg: CardanoGetAddress, keychain: seed.Keychain
 ) -> CardanoAddress:
-    from trezor import log, wire
-    from trezor.messages import CardanoAddress
+    from cerberus import log, wire
+    from cerberus.messages import CardanoAddress
 
     from . import addresses
     from .helpers.credential import Credential, should_show_credentials

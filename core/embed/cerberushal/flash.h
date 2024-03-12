@@ -1,5 +1,5 @@
 /*
- * This file is part of the Trezor project, https://trezor.io/
+ * This file is part of the Cerberus project, https://cerberus.uraanai.com/
  *
  * Copyright (c) SatoshiLabs
  *
@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TREZORHAL_FLASH_H
-#define TREZORHAL_FLASH_H
+#ifndef CERBERUSHAL_FLASH_H
+#define CERBERUSHAL_FLASH_H
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -30,7 +30,7 @@
 
 /**
  * Flash driver interface is designed to abstract away differences between
- * various MCUs used in Trezor devices.
+ * various MCUs used in Cerberus devices.
  *
  * Generally, flash memory is divided into sectors. On different MCUs, sectors
  * may have different sizes, and therefore, different number of sectors are used
@@ -68,4 +68,4 @@ secbool __wur flash_otp_write(uint8_t block, uint8_t offset,
 secbool __wur flash_otp_lock(uint8_t block);
 secbool __wur flash_otp_is_locked(uint8_t block);
 
-#endif  // TREZORHAL_FLASH_H
+#endif  // CERBERUSHAL_FLASH_H

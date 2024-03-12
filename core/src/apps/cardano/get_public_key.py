@@ -1,20 +1,20 @@
 from typing import TYPE_CHECKING
 from ubinascii import hexlify
 
-from trezor import TR
+from cerberus import TR
 
 from . import seed
 
 if TYPE_CHECKING:
-    from trezor.messages import CardanoGetPublicKey, CardanoPublicKey
+    from cerberus.messages import CardanoGetPublicKey, CardanoPublicKey
 
 
 @seed.with_keychain
 async def get_public_key(
     msg: CardanoGetPublicKey, keychain: seed.Keychain
 ) -> CardanoPublicKey:
-    from trezor import log, wire
-    from trezor.ui.layouts import show_pubkey
+    from cerberus import log, wire
+    from cerberus.ui.layouts import show_pubkey
 
     from apps.common import paths
 
@@ -47,7 +47,7 @@ async def get_public_key(
 def _get_public_key(
     keychain: seed.Keychain, derivation_path: list[int]
 ) -> CardanoPublicKey:
-    from trezor.messages import CardanoPublicKey, HDNodeType
+    from cerberus.messages import CardanoPublicKey, HDNodeType
 
     from .helpers.utils import derive_public_key
 

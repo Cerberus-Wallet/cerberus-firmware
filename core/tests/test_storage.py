@@ -1,7 +1,7 @@
 from common import *  # isort:skip
 
 from storage import device
-from trezor import config
+from cerberus import config
 
 
 class TestConfig(unittest.TestCase):

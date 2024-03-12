@@ -1,10 +1,10 @@
 from common import *  # isort:skip
 
-from trezor import wire
-from trezor.crypto import bip32, bip39
-from trezor.enums import InputScriptType
-from trezor.messages import GetAddress
-from trezor.utils import HashWriter
+from cerberus import wire
+from cerberus.crypto import bip32, bip39
+from cerberus.enums import InputScriptType
+from cerberus.messages import GetAddress
+from cerberus.utils import HashWriter
 
 from apps.bitcoin.addresses import *
 from apps.bitcoin.addresses import (

@@ -42,7 +42,7 @@ def generate(env):
         # replace "utils.BITCOIN_ONLY" with literal constant (True/False)
         # so the compiler can optimize out the things we don't want
         btc_only = env["bitcoin_only"] == "1"
-        is_t2b1 = env["TREZOR_MODEL"] == "R"
+        is_t2b1 = env["CERBERUS_MODEL"] == "R"
         backlight = env["backlight"]
         optiga = env["optiga"]
         layout_tt = env["ui_layout"] == "UI_LAYOUT_TT"

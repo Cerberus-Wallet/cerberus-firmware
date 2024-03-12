@@ -2,16 +2,16 @@ from typing import TYPE_CHECKING
 
 import storage.cache as storage_cache
 import storage.device as storage_device
-from trezor import TR, config, utils, wire, workflow
-from trezor.enums import HomescreenFormat, MessageType
-from trezor.messages import Success, UnlockPath
-from trezor.ui.layouts import confirm_action
+from cerberus import TR, config, utils, wire, workflow
+from cerberus.enums import HomescreenFormat, MessageType
+from cerberus.messages import Success, UnlockPath
+from cerberus.ui.layouts import confirm_action
 
 from . import workflow_handlers
 
 if TYPE_CHECKING:
-    from trezor import protobuf
-    from trezor.messages import (
+    from cerberus import protobuf
+    from cerberus.messages import (
         Cancel,
         CancelAuthorization,
         DoPreauthorized,
@@ -48,7 +48,7 @@ def _language_version_matches() -> bool | None:
     Whether translation blob version matches firmware version.
     Returns None if there is no blob.
     """
-    from trezor import translations
+    from cerberus import translations
 
     header = translations.TranslationsHeader.load_from_flash()
     if header is None:
@@ -59,17 +59,17 @@ def _language_version_matches() -> bool | None:
 
 def get_features() -> Features:
     import storage.recovery as storage_recovery
-    from trezor import translations
-    from trezor.enums import Capability
-    from trezor.messages import Features
-    from trezor.ui import HEIGHT, WIDTH
+    from cerberus import translations
+    from cerberus.enums import Capability
+    from cerberus.messages import Features
+    from cerberus.ui import HEIGHT, WIDTH
 
     from apps.common import mnemonic, safety_checks
 
     v_major, v_minor, v_patch, _v_build = utils.VERSION
 
     f = Features(
-        vendor="trezor.io",
+        vendor="cerberus.uraanai.com",
         fw_vendor=utils.firmware_vendor(),
         language=translations.get_language(),
         language_version_matches=_language_version_matches(),
@@ -136,7 +136,7 @@ def get_features() -> Features:
 
     # Only some models are capable of SD card
     if utils.USE_SD_CARD:
-        from trezor import sdcard
+        from cerberus import sdcard
 
         f.sd_card_present = sdcard.is_present()
     else:
@@ -239,16 +239,16 @@ async def handle_EndSession(msg: EndSession) -> Success:
 
 async def handle_Ping(msg: Ping) -> Success:
     if msg.button_protection:
-        from trezor.enums import ButtonRequestType as B
-        from trezor.ui.layouts import confirm_action
+        from cerberus.enums import ButtonRequestType as B
+        from cerberus.ui.layouts import confirm_action
 
         await confirm_action("ping", TR.words__confirm, "ping", br_code=B.ProtectCall)
     return Success(message=msg.message)
 
 
 async def handle_DoPreauthorized(msg: DoPreauthorized) -> protobuf.MessageType:
-    from trezor.messages import PreauthorizedRequest
-    from trezor.wire.context import call_any, get_context
+    from cerberus.messages import PreauthorizedRequest
+    from cerberus.wire.context import call_any, get_context
 
     from apps.common import authorization
 
@@ -271,15 +271,15 @@ async def handle_DoPreauthorized(msg: DoPreauthorized) -> protobuf.MessageType:
 
 
 async def handle_UnlockPath(msg: UnlockPath) -> protobuf.MessageType:
-    from trezor.crypto import hmac
-    from trezor.messages import UnlockedPathRequest
-    from trezor.wire.context import call_any, get_context
+    from cerberus.crypto import hmac
+    from cerberus.messages import UnlockedPathRequest
+    from cerberus.wire.context import call_any, get_context
 
     from apps.common.paths import SLIP25_PURPOSE
     from apps.common.seed import Slip21Node, get_seed
     from apps.common.writers import write_uint32_le
 
-    _KEYCHAIN_MAC_KEY_PATH = [b"TREZOR", b"Keychain MAC key"]
+    _KEYCHAIN_MAC_KEY_PATH = [b"CERBERUS", b"Keychain MAC key"]
 
     # UnlockPath is relevant only for SLIP-25 paths.
     # Note: Currently we only allow unlocking the entire SLIP-25 purpose subtree instead of
@@ -426,7 +426,7 @@ def get_pinlocked_handler(
 
 # this function is also called when handling ApplySettings
 def reload_settings_from_storage() -> None:
-    from trezor import ui
+    from cerberus import ui
 
     workflow.idle_timer.set(
         storage_device.get_autolock_delay_ms(), lock_device_if_unlocked

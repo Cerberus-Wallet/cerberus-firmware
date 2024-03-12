@@ -3,19 +3,19 @@ from typing import TYPE_CHECKING
 from apps.common.keychain import auto_keychain
 
 if TYPE_CHECKING:
-    from trezor.messages import EosSignedTx, EosSignTx
+    from cerberus.messages import EosSignedTx, EosSignTx
 
     from apps.common.keychain import Keychain
 
 
 @auto_keychain(__name__)
 async def sign_tx(msg: EosSignTx, keychain: Keychain) -> EosSignedTx:
-    from trezor.crypto.curve import secp256k1
-    from trezor.crypto.hashlib import sha256
-    from trezor.messages import EosSignedTx, EosTxActionAck, EosTxActionRequest
-    from trezor.utils import HashWriter
-    from trezor.wire import DataError
-    from trezor.wire.context import call
+    from cerberus.crypto.curve import secp256k1
+    from cerberus.crypto.hashlib import sha256
+    from cerberus.messages import EosSignedTx, EosTxActionAck, EosTxActionRequest
+    from cerberus.utils import HashWriter
+    from cerberus.wire import DataError
+    from cerberus.wire.context import call
 
     from apps.common import paths
 

@@ -1,4 +1,4 @@
-/* Trezor v2 bootloader linker script */
+/* Cerberus v2 bootloader linker script */
 
 ENTRY(reset_handler)
 

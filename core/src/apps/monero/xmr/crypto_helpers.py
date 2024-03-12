@@ -9,17 +9,17 @@
 
 from typing import TYPE_CHECKING
 
-from trezor.crypto import monero as tcry
+from cerberus.crypto import monero as tcry
 
 if TYPE_CHECKING:
-    from trezor.crypto.hashlib import sha3_256
+    from cerberus.crypto.hashlib import sha3_256
 
 
 NULL_KEY_ENC = b"\x00" * 32
 
 
 def get_keccak(data: bytes | None = None) -> sha3_256:
-    from trezor.crypto.hashlib import sha3_256
+    from cerberus.crypto.hashlib import sha3_256
 
     return sha3_256(data=data, keccak=True)
 

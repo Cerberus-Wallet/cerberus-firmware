@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from trezor.messages import Failure
+    from cerberus.messages import Failure
 
 
 if __debug__:
@@ -9,7 +9,7 @@ if __debug__:
     import micropython
     import sys
 
-    from trezor import log
+    from cerberus import log
 
     PREV_MEM = gc.mem_free()
     CUR_MES = 0
@@ -40,7 +40,7 @@ if __debug__:
         PREV_MEM = free
 
     def retit(**kwargs) -> Failure:
-        from trezor.messages import Failure
+        from cerberus.messages import Failure
 
         return Failure(**kwargs)
 

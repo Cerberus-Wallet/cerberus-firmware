@@ -3,7 +3,7 @@ from common import *  # isort:skip
 import storage
 import storage.recovery
 from mock_storage import mock_storage
-from trezor.enums import BackupType
+from cerberus.enums import BackupType
 
 from apps.management.recovery_device.recover import process_slip39
 from apps.management.recovery_device.word_validity import (

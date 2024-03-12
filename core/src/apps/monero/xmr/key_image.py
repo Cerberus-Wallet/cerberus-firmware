@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 from apps.monero.xmr import crypto_helpers, monero
 
 if TYPE_CHECKING:
-    from trezor.messages import MoneroTransferDetails
+    from cerberus.messages import MoneroTransferDetails
 
     from apps.monero.xmr import crypto
     from apps.monero.xmr.credentials import AccountCreds
@@ -78,7 +78,7 @@ def generate_ring_signature(
     Generates ring signature with key image.
     void crypto_ops::generate_ring_signature()
     """
-    from trezor.utils import memcpy
+    from cerberus.utils import memcpy
 
     from apps.monero.xmr import crypto
 
