@@ -246,7 +246,7 @@ state, the firmware is already installed but it has not been initialized
 yet. If it is initialized and the user wants to perform a reset device,
 the device must be wiped first. If the Cerberus is prepared for its
 initialization the screen is showing "Go to cerberus.uraanai.com". The reset device
-can be done in Cerberus Wallet interface (https://cerberus.uraanai.com/start) and
+can be done in Cerberus Wallet interface (https://cerberus.test/start) and
 also with Python cerberusctl command. After sending
 message to the device, device warn us to never make a digital copy of
 your recovery seed and never upload it online, this message has to be

@@ -541,7 +541,7 @@ static void usbInit(bool firmware_present) {
   usbd_register_set_config_callback(usbd_dev, set_config);
   usb21_setup(usbd_dev, firmware_present ? &bos_descriptor_no_landing
                                          : &bos_descriptor_landing);
-  webusb_setup(usbd_dev, "cerberus.uraanai.com/start");
+  webusb_setup(usbd_dev, "cerberus.test/start");
   winusb_setup(usbd_dev, USB_INTERFACE_INDEX_MAIN);
 }
 

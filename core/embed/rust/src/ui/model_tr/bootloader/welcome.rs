@@ -51,7 +51,7 @@ impl Component for Welcome {
         );
         display::text_center(
             top_center + Offset::y(48),
-            "cerberus.uraanai.com/start",
+            "cerberus.test/start",
             Font::BOLD,
             BLD_FG,
             BLD_BG,

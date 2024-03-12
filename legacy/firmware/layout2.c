@@ -331,7 +331,7 @@ void layoutHomescreen(void) {
   }
   layoutLast = layoutHomescreen;
 
-  char label[MAX_LABEL_LEN + 1] = _("Go to cerberus.uraanai.com/start");
+  char label[MAX_LABEL_LEN + 1] = _("Go to cerberus.test/start");
   if (config_isInitialized()) {
     config_getLabel(label, sizeof(label));
   }

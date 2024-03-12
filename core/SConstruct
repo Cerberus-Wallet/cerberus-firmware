@@ -1,5 +1,5 @@
 # pylint: disable=E0602
-Decider('content-timestamp')
+# Decider('content-timestamp')
 SetOption('max_drift', 10)
 SetOption('implicit_cache', 1)
 
