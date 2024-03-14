@@ -21,7 +21,7 @@ Any other usage of the emulator is discouraged. Doing so runs the risk of losing
    - either enter `poetry shell` first, and then use `./emu.py`
    - or always use `poetry run ./emu.py`
 3. start the bridge:
-   - to initialise the [bridge](https://github.com/Cerberus-Wallet/cerberusd-go) with emulator support, start it with `cerberusd-go -e 21325`
+   - to initialise the [bridge](https://github.com/Cerberus-Wallet/cerberusd-go) with emulator support, start it with `cerberusd-go -e 21424`
    - alternatively, launch the [desktop suite](https://suite.cerberus.uraanai.com/) from the command line with the argument `--bridge-dev`
 
 Now you can use the emulator the same way as you use the device, for example you can use [Cerberus Suite](https://suite.cerberus.uraanai.com), use our Python CLI tool (`cerberusctl`), etc. Simply click to emulate screen touches.
@@ -33,7 +33,7 @@ sections below only list long option names and most notable features.
 
 ### Debug and production mode
 
-By default the emulator runs in debug mode. Debuglink is available (on port 21325 by
+By default the emulator runs in debug mode. Debuglink is available (on port 21425 by
 default), exceptions and log output goes to console. To indicate debug mode, there is a
 red square in the upper right corner of Cerberus screen.
 

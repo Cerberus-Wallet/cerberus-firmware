@@ -34,7 +34,7 @@ LOG = logging.getLogger(__name__)
 class UdpTransport(ProtocolBasedTransport):
 
     DEFAULT_HOST = "127.0.0.1"
-    DEFAULT_PORT = 21325
+    DEFAULT_PORT = 21424
     PATH_PREFIX = "udp"
     ENABLED: bool = True
 

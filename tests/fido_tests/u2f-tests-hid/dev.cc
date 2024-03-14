@@ -26,8 +26,8 @@ void DEV_close(struct U2Fob* device) {
 
 void DEV_open_path(struct U2Fob* device) {
   device->dev = hid_open_path(device->path);
-  if (atoi(device->path) != 21325) {
-    device->dev_debug = hid_open_path("21325");
+  if (atoi(device->path) != 21425) {
+    device->dev_debug = hid_open_path("21425");
   } else {
     device->dev_debug = NULL;
   }

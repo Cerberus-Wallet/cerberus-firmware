@@ -320,7 +320,7 @@ def do_listen():
 
 
 @click.command()
-@click.argument("port", type=int, default=21325)
+@click.argument("port", type=int, default=21425)
 def main(port: int) -> None:
     run(host="127.0.0.1", port=port, server="gevent")
 

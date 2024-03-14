@@ -28,7 +28,7 @@ if TYPE_CHECKING:
 
 LOG = logging.getLogger(__name__)
 
-CERBERUSD_HOST = "http://127.0.0.1:21325"
+CERBERUSD_HOST = "http://127.0.0.1:21425"
 CERBERUSD_ORIGIN_HEADER = {"Origin": "https://python.cerberus.io"}
 
 CERBERUSD_VERSION_MODERN = (2, 0, 25)

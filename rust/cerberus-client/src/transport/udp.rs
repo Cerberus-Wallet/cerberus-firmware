@@ -9,8 +9,8 @@ use std::{fmt, net::UdpSocket, result::Result, time::Duration};
 // A collection of constants related to the Emulator Ports.
 mod constants {
     pub(crate) const DEFAULT_HOST: &str = "127.0.0.1";
-    pub(crate) const DEFAULT_PORT: &str = "21325";
-    pub(crate) const DEFAULT_DEBUG_PORT: &str = "21325";
+    pub(crate) const DEFAULT_PORT: &str = "21424";
+    pub(crate) const DEFAULT_DEBUG_PORT: &str = "21425";
     pub(crate) const LOCAL_LISTENER: &str = "127.0.0.1:0";
 }
 

@@ -60,7 +60,7 @@ cd legacy
 # set up poetry
 poetry install
 # set up environment variables. For example, to build emulator with debuglink:
-export EMULATOR=1 DEBUG_LINK=1
+export EMULATOR=1 DEBUG_LINK=1 PRODUCTION=0 DEBUG_LOG=1
 # clear build artifacts
 poetry run ./script/setup
 # run build process

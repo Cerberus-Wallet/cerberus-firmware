@@ -21,7 +21,7 @@ _VCP_PORT_OFFSET = const(3)
 if utils.EMULATOR:
     import uos
 
-    UDP_PORT = int(uos.getenv("CERBERUS_UDP_PORT") or "21325")
+    UDP_PORT = int(uos.getenv("CERBERUS_UDP_PORT") or "21424")
 
 _iface_iter = iter(range(5))
 

@@ -102,7 +102,7 @@ static void usb_init_all(secbool usb21_landing) {
   static const usb_webusb_info_t webusb_info = {
       .iface_num = USB_IFACE_NUM,
 #ifdef CERBERUS_EMULATOR
-      .emu_port = 21325,
+      .emu_port = 21424,
 #else
       .ep_in = USB_EP_DIR_IN | 0x01,
       .ep_out = USB_EP_DIR_OUT | 0x01,

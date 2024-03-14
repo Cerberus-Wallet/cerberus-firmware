@@ -4,7 +4,7 @@ import socket
 import sys
 import time
 
-DEFAULT_ADDR = "127.0.0.1:21325"
+DEFAULT_ADDR = "127.0.0.1:21424"
 
 if len(sys.argv) > 1:
     addr = sys.argv[1]
