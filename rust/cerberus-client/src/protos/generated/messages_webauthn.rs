@@ -1220,7 +1220,7 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     hmac_secret\x18\t\x20\x01(\x08R\nhmacSecret\x12$\n\x0euse_sign_count\x18\
     \n\x20\x01(\x08R\x0cuseSignCount\x12\x1c\n\talgorithm\x18\x0b\x20\x01(\
     \x11R\talgorithm\x12\x14\n\x05curve\x18\x0c\x20\x01(\x11R\x05curveB<\n#c\
-    om.satoshilabs.trezor.lib.protobufB\x15CerberusMessageWebAuthn\
+    om.satoshilabs.cerberus.lib.protobufB\x15CerberusMessageWebAuthn\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file

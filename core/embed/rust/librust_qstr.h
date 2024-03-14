@@ -940,7 +940,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_tutorial__title_screen_scroll;
   MP_QSTR_tutorial__title_skip;
   MP_QSTR_tutorial__title_tutorial_complete;
-  MP_QSTR_tutorial__use_trezor;
+  MP_QSTR_tutorial__use_cerberus;
   MP_QSTR_tutorial__welcome_press_right;
   MP_QSTR_type_for_name;
   MP_QSTR_type_for_wire;
@@ -996,7 +996,7 @@ static void _librust_qstrs(void) {
   MP_QSTR_words__from;
   MP_QSTR_words__keep_it_safe;
   MP_QSTR_words__know_what_your_doing;
-  MP_QSTR_words__my_trezor;
+  MP_QSTR_words__my_cerberus;
   MP_QSTR_words__no;
   MP_QSTR_words__outputs;
   MP_QSTR_words__please_check_again;
