@@ -205,6 +205,12 @@
       "https://eth2.trezor.io"
     ]
   },
+  "eth:VG": {
+    "type": "blockbook",
+    "url": [
+      "https://vg.cerberus.uraanai.com"
+    ]
+  },
   "eth:tROP": {
     "type": "blockbook",
     "url": [

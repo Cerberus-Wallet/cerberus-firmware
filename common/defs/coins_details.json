@@ -33626,6 +33626,25 @@
                 }
             ]
         },
+        "erc20:eth:VANRY": {
+            "address": "0x8DE5B80a0C1B02Fe4976851D030B36122dbb8624",
+            "links": {
+                "Homepage": "https://vanarchain.com"
+            },
+            "marketcap_usd": 0,
+            "name": "Vanar Chain",
+            "network": "eth",
+            "shortcut": "VANRY",
+            "t1_enabled": "yes",
+            "t2_enabled": "yes",
+            "type": "erc20",
+            "wallet": [
+                {
+                    "name": "Cerberus Suite",
+                    "url": "https://suite.cerberus.uraanai.com"
+                }
+            ]
+        },
         "eth:$BNI": {
             "links": {
                 "Homepage": "https://bitindi.org"
@@ -41678,6 +41697,23 @@
                 {
                     "name": "MyEtherWallet",
                     "url": "https://www.myetherwallet.com"
+                }
+            ]
+        },
+        "eth:VG": {
+            "links": {
+                "Homepage": "https://vanarchain.com"
+            },
+            "marketcap_usd": 0,
+            "name": "Vanguard",
+            "shortcut": "VG",
+            "t1_enabled": "yes",
+            "t2_enabled": "yes",
+            "type": "coin",
+            "wallet": [
+                {
+                    "name": "Cerberus Suite",
+                    "url": "https://suite.cerberus.uraanai.com"
                 }
             ]
         },
