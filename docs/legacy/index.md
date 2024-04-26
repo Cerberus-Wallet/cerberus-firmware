@@ -61,6 +61,7 @@ cd legacy
 poetry install
 # set up environment variables. For example, to build emulator with debuglink:
 export EMULATOR=1 DEBUG_LINK=1 PRODUCTION=0 DEBUG_LOG=1
+export EMULATOR=0 DEBUG_LINK=0 PRODUCTION=0 DEBUG_LOG=0
 # clear build artifacts
 poetry run ./script/setup
 # run build process
@@ -135,3 +136,29 @@ that allows for parsing firmware images we distribute such as those from https:/
 
 See `legacy/imhex/` directory in repo and `README.md` there how to use it to parse headers from existing images.
 
+
+
+## Flashing bootloader to devices
+
+Connect ST-link to the programming pins
+
+1 = RST   [] orange
+2 = GND   () red
+3 = N/A   ()
+4 = SWCLK () Black
+5 = SWDIO () White
+6 = VCC   () Grey
+
+```sh
+st-flash erase 0x08000000 0x8000
+st-flash write ./legacy/bootloader/bootloader.bin 0x08000000
+st-flash reset
+```
+
+Now bootloader is flashed. time to flash the firmware because the official firmware cannot be installed with custom bootloader.
+
+Disconnect ST-Link and connect the device via proper USB cable.
+
+```sh
+cerberusctl firmware update -f ./legacy/firmware/cerberus.bin
+```

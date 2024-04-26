@@ -41700,13 +41700,13 @@
                 }
             ]
         },
-        "eth:VG": {
+        "eth:VANRY": {
             "links": {
                 "Homepage": "https://vanarchain.com"
             },
             "marketcap_usd": 0,
             "name": "Vanguard",
-            "shortcut": "VG",
+            "shortcut": "VANRY",
             "t1_enabled": "yes",
             "t2_enabled": "yes",
             "type": "coin",

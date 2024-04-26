@@ -1,6 +1,6 @@
-# Trezor (one), press my buttons.
+# Cerberus (one), press my buttons.
 
-A simple hardware testing drone for Trezor One.
+A simple hardware testing drone for Cerberus One.
 
 ![](demo.gif)
 

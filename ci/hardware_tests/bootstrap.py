@@ -22,11 +22,11 @@ def main(model: str, file: str = None):
         path = t1.update_firmware(file)
     elif model == "T2T1":
         # t1.power_off()
-        path = tt.update_firmware(file, "Trezor T")
+        path = tt.update_firmware(file, "Cerberus T")
     elif model == "T2B1":
         path = tt.update_firmware(file, "Safe 3")
     else:
-        raise ValueError("Unknown Trezor model.")
+        raise ValueError("Unknown Cerberus model.")
 
     print(path)
 

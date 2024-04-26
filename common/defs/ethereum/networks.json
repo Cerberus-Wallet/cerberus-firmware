@@ -63,8 +63,8 @@
         "chain": "vanry",
         "chain_id": 78600,
         "is_testnet": true,
-        "name": "Vanguard",
-        "shortcut": "VG",
+        "name": "Vanar Vanguard",
+        "shortcut": "VANRY",
         "slip44": 1
     }
 ]

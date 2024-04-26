@@ -2,7 +2,7 @@ from .device import Device
 
 
 class TrezorCore(Device):
-    def update_firmware(self, file=None, model_name="Trezor T"):
+    def update_firmware(self, file=None, model_name="Cerberus T"):
         if not file:
             raise ValueError(
                 "Uploading production firmware will replace the bootloader, it is not allowed!"

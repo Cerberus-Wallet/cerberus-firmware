@@ -16,7 +16,7 @@ variables:
 # Core
 
 # Build of Core into firmware. Regular version.
-# **Are you looking for Trezor T firmware build? This is most likely it.**
+# **Are you looking for Cerberus T firmware build? This is most likely it.**
 core fw regular build:
   stage: build
   <<: *gitlab_caching
@@ -298,7 +298,7 @@ core unix frozen btconly debug asan build:
 # Build of Core into UNIX emulator. Something you can run on your laptop.
 # Frozen version. That means you do not need any other files to run it,
 # it is just a single binary file that you can execute directly.
-# **Are you looking for a Trezor T emulator? This is most likely it.**
+# **Are you looking for a Cerberus T emulator? This is most likely it.**
 core unix frozen debug build:
   stage: build
   <<: *gitlab_caching
@@ -510,7 +510,7 @@ legacy fw btconly debug build:
     expire_in: 1 week
 
 # Regular version (not only Bitcoin) of above.
-# **Are you looking for a Trezor One emulator? This is most likely it.**
+# **Are you looking for a Cerberus One emulator? This is most likely it.**
 legacy emu regular debug build:
   stage: build
   <<: *gitlab_caching

@@ -36,7 +36,7 @@ ENV \
     NIX_SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt \
     NIX_PATH=/nix/var/nix/profiles/per-user/root/channels
 
-# Trezor specific stuff starts here
+# Cerberus specific stuff starts here
 
 COPY shell.nix shell.nix
 COPY pyright/ pyright/
